@@ -34,5 +34,5 @@ optional arguments:
 
 ### Results
 
-Script was run for models Social Network (`x3JXgWhJ3uti5Dzxz`), Courses (`iP5JL36afv5KbDKP6`), Production line (`dyj49tEp7j6aWAQQX`) and Train Station (`cXPP9QBPTYgTX6WJ6`) with scope 3. Stats are [here](results/log.txt]) and groups in [results folder](results). Note: takes a few hours to run.
+Script was run for models Social Network (`x3JXgWhJ3uti5Dzxz`), Courses (`iP5JL36afv5KbDKP6`), Production line (`dyj49tEp7j6aWAQQX`) and Train Station (`cXPP9QBPTYgTX6WJ6`) with scope 3. Stats are [here](results/log.txt) and groups in [results folder](results). Note: takes a few hours to run.
 
