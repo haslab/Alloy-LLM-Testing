@@ -56,13 +56,13 @@ optional arguments:
 
 ### Results
 
-The script was run for models Social Network (`x3JXgWhJ3uti5Dzxz`), Courses (`iP5JL36afv5KbDKP6`), Production line (`dyj49tEp7j6aWAQQX`) and Train Station (`cXPP9QBPTYgTX6WJ6`), with scope 3, for the Alloy4Fun database `models_20250916.json.gz`. Statistics are [here](log_group.txt) and groups in [results folder](results). Note: this takes a few hours to run.
+The script was run for models Social Network (`x3JXgWhJ3uti5Dzxz`), Courses (`iP5JL36afv5KbDKP6`), Production line (`dyj49tEp7j6aWAQQX`) and Train Station (`cXPP9QBPTYgTX6WJ6`), with scope 3, for the Alloy4Fun database `models_20250916.json.gz`. Statistics are [here](results/log_group.txt) and groups in [results folder](results). Note: this takes a few hours to run.
 
 ```
 python3 semantic_grouping.py ./alloytools.jar ./models_20250916.json.gz cXPP9QBPTYgTX6WJ6 x3JXgWhJ3uti5Dzxz iP5JL36afv5KbDKP6 dyj49tEp7j6aWAQQX
 ```
 
-This groups have merged into the provided [requirements](requirements.json) in file [`merged_reqs.json`](merged_reqs.json). Statistics are [here](log_merge.txt).
+This groups have merged into the provided [requirements](requirements.json) in file [`merged_reqs.json`](results/merged_reqs.json). Statistics are [here](results/log_merge.txt).
 
 ```
 python3 merge_reqs_groups.py results requirements.json
