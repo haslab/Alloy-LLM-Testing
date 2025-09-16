@@ -141,21 +141,20 @@ def checkEquiv(entry, original, pred, errors, warns, groups, scope):
             for group in groups:
                 test = f"check {{ ({challenge_code}) iff ({group[0][1]}) }} for {scope}"
                 new_code = models[original]["code"] + "\n" + test
+
                 try:
                     new_world = CompUtil.parseEverything_fromString(None,new_code)
                     new_cmds = new_world.getAllCommands()
-                    solution = TranslateAlloyToKodkod.execute_command(None, new_world.getAllSigs(), new_cmds.get(new_cmds.size()-1), A4Options())
+                    solution = TranslateAlloyToKodkod.execute_command(None, new_world.getAllReachableSigs(), new_cmds.get(new_cmds.size()-1), A4Options())
                     if not solution.satisfiable():
                         found = True
                         group.append((entry,challenge_code))
                         break
                 except JException as e:
                     warns.append(entry)
-                    failed = True
                     # print(e)                            
-                    break
 
-            if not found and not failed:
+            if not found:
                 groups.append([(entry,challenge_code)])
             break
 
