@@ -50,7 +50,7 @@ def main():
                 print(f"Java failed to parse the following {len(errors)} entries. This shouldn't happen, DB has been filtered for successful executions.")
                 print(errors)
             if warns != []:
-                print(f"Java failed to check equivalences for the following {len(warns)} entries. Usually because code uses helper predicates/functions besides the challenge invariant.")
+                print(f"Java failed to check equivalences for the following {len(warns)} pairs. Usually because code uses helper predicates/functions besides the challenge invariant.")
                 print(warns)
 
             duration = round(time.time() - start)
@@ -151,7 +151,7 @@ def checkEquiv(entry, original, pred, errors, warns, groups, scope):
                         group.append((entry,challenge_code))
                         break
                 except JException as e:
-                    warns.append(entry)
+                    warns.append((entry,group[0][0]))
                     # print(e)                            
 
             if not found:

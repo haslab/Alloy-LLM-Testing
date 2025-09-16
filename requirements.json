@@ -1,0 +1,28 @@
+[
+    {
+        "example": "Photo sharing social network",
+        "model": "sig User { follows : set User, sees : set Photo, posts : set Photo, suggested : set User } sig Influencer extends User {} sig Photo { date : one Day } sig Ad extends Photo {} sig Day {}",
+        "id": "x3JXgWhJ3uti5Dzxz",
+        "requirements": [
+            {
+                "description": "Every photo is posted by one user",
+                "pred":"this/inv1"
+            },
+            {
+                "description": "Users cannot follow themselves",
+                "pred":"this/inv2"
+            }
+        ]
+    },
+    {
+        "example": "Production line",
+        "model": "sig Workstation { workers : set Worker, succ : set Workstation } one sig begin, end in Workstation {} sig Worker {} sig Human, Robot extends Worker {} abstract sig Product { parts : set Product } sig Material extends Product {} sig Component extends Product { workstation : set Workstation } sig Dangerous in Product {}",
+        "id": "dyj49tEp7j6aWAQQX",
+        "requirements": [
+            {
+                "description": "Workers are either human or robots",
+                "pred":"this/inv1"
+            }
+        ]
+    }
+]
