@@ -114,7 +114,7 @@ def parseArgs():
     parser.add_argument("originals", nargs=argparse.REMAINDER, help="Ids for the models to process")
 
     parser.add_argument("-o", "--output", help="Output folder path (default=results)", default="results")
-    parser.add_argument("-s", "--scope", help="Scope for equivalence tests (default=3)", default=3)
+    parser.add_argument("-s", "--scope", help="Scope for equivalence tests (default=3)", default=3, type=int)
 
     return parser.parse_args()
 

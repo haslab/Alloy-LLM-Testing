@@ -7,6 +7,7 @@ def parseArgs():
     parser.add_argument("groups", help="folder with JSONs with entry groups")
     parser.add_argument("reqs", help="JSON with challenge requirements")
     parser.add_argument("-o", "--output", help="Output JSON path (default=merged_reqs.json)", default="merged_reqs.json")
+    parser.add_argument("-t", "--threshold", help="Member group filtering threshold (default=2)", default=2, type=int)
     
     return parser.parse_args()
 
@@ -28,7 +29,7 @@ def main():
         for req in model["requirements"]:
             if req["pred"] not in groups:
                 print(f"Couldn't find file for {req['pred']}")
-            groups_pred_bad = filter(lambda x:x["count"]>1 and not x["correct"],groups[req["pred"]]["groups"])
+            groups_pred_bad = filter(lambda x:x["count"]>=args.threshold and not x["correct"],groups[req["pred"]]["groups"])
             groups_pred_good = filter(lambda x:x["correct"],groups[req["pred"]]["groups"])
             req["oracle"] = next(groups_pred_good)["elems"][0]["code"]
             req["erroneous"] = list(map(lambda x:x["elems"][0]["code"],groups_pred_bad))

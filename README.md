@@ -40,7 +40,7 @@ optional arguments:
 
 Finally, run the merging script into the requirements:
 ```
-usage: merge_reqs_groups.py [-h] [-o OUTPUT] groups reqs
+usage: merge_reqs_groups.py [-h] [-o OUTPUT] [-t THRESHOLD] groups reqs
 
 Script for merging entry groups with challenge requirements
 
@@ -52,6 +52,8 @@ optional arguments:
   -h, --help            show this help message and exit
   -o OUTPUT, --output OUTPUT
                         Output JSON path (default=merged_reqs.json)
+  -t THRESHOLD, --threshold THRESHOLD
+                        Member group filtering threshold (default=2)
 ```
 
 ### Results
