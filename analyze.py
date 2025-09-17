@@ -3,7 +3,7 @@ import sys
 
 # check if there is one application parameter
 if len(sys.argv) != 2:
-    print("Usage: python analyze.py <llm>")
+    print("Usage: python analyze.py <dataset>")
     sys.exit(1)
 
 instances = 3
@@ -12,7 +12,7 @@ llm = sys.argv[1]
 import jpype
 import jpype.imports
 
-jpype.startJVM(classpath=["org.alloytools.alloy.dist.jar"])
+jpype.startJVM(classpath=["alloytools.jar"])
 
 from edu.mit.csail.sdg.parser import CompUtil
 from edu.mit.csail.sdg.translator import A4Options, TranslateAlloyToKodkod
@@ -35,7 +35,6 @@ with open(llm+'.json', 'r') as f:
                 world = CompUtil.parseEverything_fromString(None,alloy_model)
             except:
                 print("Failed to parse Alloy model")
-                print(alloy_model)
                 continue
 
             # Check if instances are well formed (can generate exactly one instance without facts)
@@ -63,7 +62,6 @@ with open(llm+'.json', 'r') as f:
                     commands_well_formed = False
                 """
             if not commands_well_formed:
-                print(alloy_model)
                 continue
 
             # check if instances satisfy previous requirements
@@ -106,6 +104,7 @@ with open(llm+'.json', 'r') as f:
                 continue
 
             # check if instances detect erroneous specifications
+            count = 0
             for spec in req["erroneous"]:
                 alloy_model_erroneous = alloy_model + f'\nfact {{{spec}}}'
                 world = CompUtil.parseEverything_fromString(None,alloy_model_erroneous)
@@ -119,7 +118,9 @@ with open(llm+'.json', 'r') as f:
                     elif command.expects == 0 and solution.satisfiable():
                         detected_erroneous = True
                 if not detected_erroneous:
-                    print(alloy_model_erroneous)
+                    print(spec)
+                    count += 1
+            print(f'Failed to detect {count} erroneous specifications out of {len(req["erroneous"])}')
 
 
             # save requirement oracle to check next instances

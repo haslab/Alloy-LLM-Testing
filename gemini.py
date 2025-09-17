@@ -3,9 +3,8 @@ from google.genai import types
 import json
 import sys
 
-# check if there is one application parameter
-if len(sys.argv) != 2:
-    print("Usage: python gemini.py <prompt>")
+if len(sys.argv) != 3:
+    print("Usage: python gemini.py <prompt> <dataset>")
     sys.exit(1)
 
 with open(sys.argv[1], 'r') as f:
@@ -16,7 +15,7 @@ client = genai.Client()
 instances = 3
 llm = "gemini-2.5-pro"
 
-with open('dataset.json', 'r') as f, open(llm+'.json', 'w') as g:
+with open(sys.argv[2], 'r') as f, open(llm+'.json', 'w') as g:
     dataset = json.load(f)
     for example in dataset:
         print("========================================")

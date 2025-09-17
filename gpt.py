@@ -1,31 +1,20 @@
 from openai import OpenAI
-client = OpenAI()
-
-response = client.responses.create(
-    model="gpt-5",
-    input="Write a one-sentence bedtime story about a unicorn."
-)
-
-print(response.output_text)
-exit()
-
 import json
 import sys
 
-# check if there is one application parameter
-if len(sys.argv) != 2:
-    print("Usage: python gemini.py <prompt>")
+if len(sys.argv) != 3:
+    print("Usage: python gpt.py <prompt> <dataset>")
     sys.exit(1)
 
 with open(sys.argv[1], 'r') as f:
     system_prompt = f.read()
 
-client = genai.Client()
+client = OpenAI()
 
 instances = 3
-llm = "gemini-2.5-pro"
+llm = "gpt-5"
 
-with open('dataset.json', 'r') as f, open(llm+'.json', 'w') as g:
+with open(sys.argv[2], 'r') as f, open(llm+'.json', 'w') as g:
     dataset = json.load(f)
     for example in dataset:
         print("========================================")
@@ -47,17 +36,18 @@ with open('dataset.json', 'r') as f, open(llm+'.json', 'w') as g:
             reqs.append(req['description'])
             while True:
                 try:
-                    response = client.models.generate_content(
+                    response = client.responses.create(
                         model=llm,
-                        config=types.GenerateContentConfig(system_instruction=system_prompt,temperature=0,seed=0), 
-                        contents=task
+                        instructions=system_prompt,
+                        input=task,
+                        temperature=0
                     )
                 except Exception as e:
                     print(e)
                     continue
                 else:
                     break
-            req['instances'] = response.text
+            req['instances'] = response.output_text
     json.dump(dataset, g, indent = 4)
 
 
