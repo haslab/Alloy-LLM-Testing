@@ -24,7 +24,7 @@ with open(sys.argv[2], 'r') as f, open(llm+'.json', 'w') as g:
         model = example['model']
         reqs = []
         for req in example['requirements']:
-            print(req['description'])
+            print("> " + req['description'])
             task = f'Generate {instances} positive and {instances} negative instances for the requirement "{req["description"]}" for the following model.' 
             if len(reqs) == 1:
                 task += f' All instances must also satisfy the requirement "{reqs[0]}".'
@@ -48,6 +48,7 @@ with open(sys.argv[2], 'r') as f, open(llm+'.json', 'w') as g:
                 else:
                     break
             req['instances'] = response.text
+            req['tokens'] = response.usage_metadata.total_token_count
     json.dump(dataset, g, indent = 4)
 
 

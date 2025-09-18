@@ -40,7 +40,8 @@ with open(sys.argv[2], 'r') as f, open(llm+'.json', 'w') as g:
                         model=llm,
                         instructions=system_prompt,
                         input=task,
-                        temperature=0
+                        # Temperature not supported in gpt-5
+                        # temperature=0
                     )
                 except Exception as e:
                     print(e)
@@ -48,6 +49,7 @@ with open(sys.argv[2], 'r') as f, open(llm+'.json', 'w') as g:
                 else:
                     break
             req['instances'] = response.output_text
+            req['tokens'] = response.usage.total_tokens
     json.dump(dataset, g, indent = 4)
 
 

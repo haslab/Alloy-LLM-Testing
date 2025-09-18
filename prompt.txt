@@ -73,15 +73,43 @@ run Instance1 {
     }
 } for 3 Person, 2 Car expect 1
 
-In the following I will ask you to generate positive and negative instances for requirements in different models. Here are some instructions:
+A model can also declare relations of arity higher than 2 and use the module ordering to impose a total ordering on a signature. That total ordering is implicitly defined in a binary relation called next. For example de following model includes the price of each car that is owned and Value is a totally ordered signature. Relation owns is now a ternary relation.
+
+open util/ordering[Value]
+sig Person {
+    owns : Car -> lone Value
+}
+sig Car {}
+sig Value {}
+
+When specifying an instance for a model that uses ordering we must specify the value of the next total ordering, as done in the following instance. Since there can be multiple total orders you must disambiguate which next relation is being defined using the <: operator with the signature on the left. The same applies if more that one relation is declared with the same name. 
+
+run Instance1 {
+    some disj Person1,Person2,Person3 : Person | some disj Car1, Car2 : Car | some disj Value1,Value2,Value3 : Value {
+        Person = Person1 + Person2 + Person3
+        Car = Car1 + Car2
+		Value = Value1 + Value2 + Value3
+        owns = Person1->Car1->Value1 + Person2->Car2->Value2 + Person3->Car2->Value2
+		Value <: next = Value1->Value2 + Value2->Value3
+    }
+} for 3 Person, 2 Car, 3 Value expect 1
+
+In this instance Car1 has the lowest price, since Value1 is the first element in the total order. Since owns is now a ternary relation its value is defined as sets of triples.
+
+In the following interaction you will act as an Alloy expert. I will ask you to generate positive and negative instances for different requirements for a given model.
+
+Here are some instructions:
 - Do not attempt to formalize the requirement with a fact, just output the requested instances as run commands.
-- All instances should define the scopes for all top-level signatures in the model. 
-- I'll state how many positive and negative instances you should output. 
+- I will clearly state how many positive and negative instances you should output. 
 - All instances should be truly different (be aware that the names of the elements are actually irrelevant).
 - Try to produce minimal instances with few elements.
-- All instances should include a comment (after //) explaining in natural language why it is positive or negative
+- All instances must include a comment (comments are specified after //) explaining in natural language why it is positive or negative.
+- All instances must define the scopes for all top-level signatures in the model. 
 - In every instance you must specify the values for all declared sets and relations.
-- If a set or relation is empty you must explicitly state it with the no keyword followed by the name of the set or relation.
-- Always use disj after some to declare that all elements are different.
+- To declare the elements of each signature use a some quantifier with the disj keyword to ensure that all elements are different.
+- The value of a relation should take into account its arity. For example, if it is a ternary relation its value must be a set of triples.
+- If a model uses module ordering you must also specify the value of the next total order relation.
+- If a set or relation is empty you must explicitly state it with the no keyword followed by the name of the set or relation. Do not specify its value with = none.
+- If there are two relations with the same name you must disambiguate using the <: operator. The same applies to the next relation when ordering is used.
 - If the value of some sets and relations is irrelevant for a given requirement you can just state that they are empty with the no keyword or assign them random values.
 - Generate only Alloy code, do not include any explanations outside the code, do not use markdown syntax.
