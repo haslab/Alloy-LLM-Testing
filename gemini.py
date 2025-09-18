@@ -48,7 +48,8 @@ with open(sys.argv[2], 'r') as f, open(llm+'.json', 'w') as g:
                 else:
                     break
             req['instances'] = response.text
-            req['tokens'] = response.usage_metadata.total_token_count
+            req['input tokens'] = response.usage_metadata.prompt_token_count
+            req['output tokens'] = response.usage_metadata.candidates_token_count + response.usage_metadata.thoughts_token_count
     json.dump(dataset, g, indent = 4)
 
 
