@@ -12,7 +12,7 @@ with open(sys.argv[1], 'r') as f:
 client = OpenAI()
 
 instances = 3
-llm = "gpt-5"
+llm = "gpt-5-2025-08-07"
 
 with open(sys.argv[2], 'r') as f, open(llm+'.json', 'w') as g:
     dataset = json.load(f)
@@ -49,7 +49,8 @@ with open(sys.argv[2], 'r') as f, open(llm+'.json', 'w') as g:
                 else:
                     break
             req['instances'] = response.output_text
-            req['tokens'] = response.usage.total_tokens
+            req['input tokens'] = response.usage.input_tokens
+            req['output tokens'] = response.usage.output_tokens
     json.dump(dataset, g, indent = 4)
 
 

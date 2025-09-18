@@ -27,7 +27,9 @@ with open(llm+'.json', 'r') as f:
         model = example['model']
         reqs = []
         for req in example['requirements']:
-            print(req['description'])
+            print('> ' + req['description'])
+            print(str(req['input tokens']) + ' input tokens used')
+            print(str(req['output tokens']) + ' output tokens used')
 
             # Check syntax
             alloy_model = model + "\n" + req['instances']
@@ -35,6 +37,7 @@ with open(llm+'.json', 'r') as f:
                 world = CompUtil.parseEverything_fromString(None,alloy_model)
             except:
                 print("Failed to parse Alloy model")
+                print(alloy_model)
                 continue
 
             # Check if instances are well formed (can generate exactly one instance without facts)
@@ -62,6 +65,7 @@ with open(llm+'.json', 'r') as f:
                     commands_well_formed = False
                 """
             if not commands_well_formed:
+                print(alloy_model)
                 continue
 
             # check if instances satisfy previous requirements
