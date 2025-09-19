@@ -14,7 +14,7 @@ client = OpenAI()
 instances = 3
 llm = "gpt-5-2025-08-07"
 
-with open(sys.argv[2], 'r') as f, open(llm+'.json', 'w') as g:
+with open(sys.argv[2], 'r') as f, open(llm+'_'+sys.argv[2], 'w') as g:
     dataset = json.load(f)
     for example in dataset:
         print("========================================")

@@ -16,7 +16,7 @@ instances = 3
 #llm = "claude-sonnet-4-20250514"
 llm = "claude-opus-4-1-20250805"
 
-with open(sys.argv[2], 'r') as f, open(llm+'.json', 'w') as g:
+with open(sys.argv[2], 'r') as f, open(llm+'_'+sys.argv[2], 'w') as g:
     dataset = json.load(f)
     for example in dataset:
         print("========================================")
@@ -52,7 +52,11 @@ with open(sys.argv[2], 'r') as f, open(llm+'.json', 'w') as g:
                     continue
                 else:
                     break
-            req['instances'] = response.content[0].text
+            if response.content[0].text.startswith("```alloy"):
+                instances = response.content[0].text[8:-3]
+            else:
+                instances = response.content[0].text
+            req['instances'] = instances
             req['input tokens'] = response.usage.input_tokens
             req['output tokens'] = response.usage.output_tokens
     json.dump(dataset, g, indent = 4)
