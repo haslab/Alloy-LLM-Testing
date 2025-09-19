@@ -18,7 +18,7 @@ from edu.mit.csail.sdg.parser import CompUtil
 from edu.mit.csail.sdg.translator import A4Options, TranslateAlloyToKodkod
 from edu.mit.csail.sdg.alloy4 import A4Reporter
 
-with open(dataset+'.json', 'r') as f:
+with open(dataset, 'r') as f:
     dataset = json.load(f)
     for example in dataset:
         print("========================================")
