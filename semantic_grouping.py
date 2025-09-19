@@ -50,7 +50,7 @@ def main():
                 print(f"Java failed to parse the following {len(errors)} entries. This shouldn't happen, DB has been filtered for successful executions.")
                 print(errors)
             if warns != []:
-                print(f"Java failed to check equivalences for the following {len(warns)} pairs. Usually because code uses helper predicates/functions besides the challenge invariant.")
+                print(f"The following {len(warns)} entries did not have standalone predicates (usually because code uses helper predicates/functions).")
                 print(warns)
 
             duration = round(time.time() - start)
@@ -144,21 +144,26 @@ def checkEquiv(entry, original, pred, errors, warns, groups, scope):
             ls[-1] = ls[-1][:ps.x2]
             challenge_code = "\n".join(ls)
             found = False
+            # test if parses as standalone
+            test_standalone = f"check {{ {challenge_code} }} for {scope}"
+            new_code_standalone = models[original]["code"] + "\n" + test_standalone
+            try:
+                new_world = CompUtil.parseEverything_fromString(None,new_code_standalone)
+            except JException as e:
+                warns.append(entry)
+                continue
+
             for group in groups:
                 test = f"check {{ ({challenge_code}) iff ({group[0][1]}) }} for {scope}"
                 new_code = models[original]["code"] + "\n" + test
 
-                try:
-                    new_world = CompUtil.parseEverything_fromString(None,new_code)
-                    new_cmds = new_world.getAllCommands()
-                    solution = TranslateAlloyToKodkod.execute_command(None, new_world.getAllReachableSigs(), new_cmds.get(new_cmds.size()-1), A4Options())
-                    if not solution.satisfiable():
-                        found = True
-                        group.append((entry,challenge_code,normalized))
-                        break
-                except JException as e:
-                    warns.append((entry,group[0][0]))
-                    # print(e)                            
+                new_world = CompUtil.parseEverything_fromString(None,new_code)
+                new_cmds = new_world.getAllCommands()
+                solution = TranslateAlloyToKodkod.execute_command(None, new_world.getAllReachableSigs(), new_cmds.get(new_cmds.size()-1), A4Options())
+                if not solution.satisfiable():
+                    found = True
+                    group.append((entry,challenge_code,normalized))
+                    break
 
             if not found:
                 groups.append([(entry,challenge_code,normalized)])

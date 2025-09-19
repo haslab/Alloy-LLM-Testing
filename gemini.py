@@ -15,7 +15,7 @@ client = genai.Client()
 instances = 3
 llm = "gemini-2.5-pro"
 
-with open(sys.argv[2], 'r') as f, open(llm+'.json', 'w') as g:
+with open(sys.argv[2], 'r') as f, open(llm+'_'+sys.argv[2], 'w') as g:
     dataset = json.load(f)
     for example in dataset:
         print("========================================")
@@ -47,7 +47,11 @@ with open(sys.argv[2], 'r') as f, open(llm+'.json', 'w') as g:
                     continue
                 else:
                     break
-            req['instances'] = response.text
+            if response.text.startswith("```alloy"):
+                instances = response.text[8:-3]
+            else:
+                instances = response.text
+            req['instances'] = instances
             req['input tokens'] = response.usage_metadata.prompt_token_count
             req['output tokens'] = response.usage_metadata.candidates_token_count + response.usage_metadata.thoughts_token_count
     json.dump(dataset, g, indent = 4)

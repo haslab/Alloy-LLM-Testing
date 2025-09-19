@@ -14,7 +14,7 @@ client = OpenAI()
 instances = 3
 llm = "gpt-5-2025-08-07"
 
-with open(sys.argv[2], 'r') as f, open(llm+'.json', 'w') as g:
+with open(sys.argv[2], 'r') as f, open(llm+'_'+sys.argv[2], 'w') as g:
     dataset = json.load(f)
     for example in dataset:
         print("========================================")
@@ -48,7 +48,11 @@ with open(sys.argv[2], 'r') as f, open(llm+'.json', 'w') as g:
                     continue
                 else:
                     break
-            req['instances'] = response.output_text
+            if response.output_text.startswith("```alloy"):
+                instances = response.output_text[8:-3]
+            else:
+                instances = response.output_text
+            req['instances'] = instances
             req['input tokens'] = response.usage.input_tokens
             req['output tokens'] = response.usage.output_tokens
     json.dump(dataset, g, indent = 4)
