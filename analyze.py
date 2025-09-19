@@ -7,7 +7,7 @@ if len(sys.argv) != 2:
     sys.exit(1)
 
 instances = 3
-llm = sys.argv[1]
+dataset = sys.argv[1]
 
 import jpype
 import jpype.imports
@@ -18,7 +18,7 @@ from edu.mit.csail.sdg.parser import CompUtil
 from edu.mit.csail.sdg.translator import A4Options, TranslateAlloyToKodkod
 from edu.mit.csail.sdg.alloy4 import A4Reporter
 
-with open(llm+'.json', 'r') as f:
+with open(dataset+'.json', 'r') as f:
     dataset = json.load(f)
     for example in dataset:
         print("========================================")
@@ -109,9 +109,14 @@ with open(llm+'.json', 'r') as f:
 
             # check if instances detect erroneous specifications
             count = 0
+            total = 0
             for spec in req["erroneous"]:
                 alloy_model_erroneous = alloy_model + f'\nfact {{{spec}}}'
-                world = CompUtil.parseEverything_fromString(None,alloy_model_erroneous)
+                try:
+                    world = CompUtil.parseEverything_fromString(None,alloy_model_erroneous)
+                except:
+                    continue
+                total += 1
                 commands = world.getAllCommands()
                 detected_erroneous = False
                 for command in commands:
@@ -122,9 +127,9 @@ with open(llm+'.json', 'r') as f:
                     elif command.expects == 0 and solution.satisfiable():
                         detected_erroneous = True
                 if not detected_erroneous:
-                    print(spec)
+                    #print(spec)
                     count += 1
-            print(f'Failed to detect {count} erroneous specifications out of {len(req["erroneous"])}')
+            print(f'Failed to detect {count} erroneous specifications out of {total}')
 
 
             # save requirement oracle to check next instances
