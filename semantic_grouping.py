@@ -75,8 +75,13 @@ def dumpJSON(cmd,pred,duration,scope,entries,groups,output):
     grps = json_dict.setdefault("groups",[])
     
     for group in groups:
-        lst = list(map(lambda x: {"id":x[0], "code":x[1]}, group))
-        grps.append({"count":len(lst),"elems":lst,"correct":models[group[0][0]]["sat"] != 1})
+        syntatic = []
+        uniques = {x[2] for x in group}
+        for norm in uniques:
+            ids = [x[0:2] for x in group if x[2] == norm]
+            syntatic.append({"entry_count":len(ids),"code":ids[0][1],"ids":list(map(lambda x:x[0],ids))})
+        syntatic.sort(key=lambda x:-len(x["ids"]))
+        grps.append({"entry_count":len(group),"group_count":len(syntatic),"correct":models[group[0][0]]["sat"] != 1,"elems":syntatic})
         
     with open(output, 'w') as fp:
         json.dump(json_dict, fp, indent=4)
@@ -122,6 +127,7 @@ def checkEquiv(entry, original, pred, errors, warns, groups, scope):
     code = models[entry]["code"]
     from edu.mit.csail.sdg.parser import CompUtil
     from edu.mit.csail.sdg.translator import A4Options, TranslateAlloyToKodkod
+    from edu.mit.csail.sdg.ast import ExprNormalizer
     try:
         world = CompUtil.parseEverything_fromString(None,code)
     except JException as e:
@@ -131,13 +137,13 @@ def checkEquiv(entry, original, pred, errors, warns, groups, scope):
 
     for f in world.getAllFunc():
         if f.label == pred:
+            normalized = str(ExprNormalizer.normalize(f.getBody()))
             ps = f.getBody().pos()
             ls = code.split("\n")[ps.y-1:ps.y2]
             ls[0] = ls[0][ps.x-1:]
             ls[-1] = ls[-1][:ps.x2]
             challenge_code = "\n".join(ls)
             found = False
-            failed = False
             for group in groups:
                 test = f"check {{ ({challenge_code}) iff ({group[0][1]}) }} for {scope}"
                 new_code = models[original]["code"] + "\n" + test
@@ -148,14 +154,14 @@ def checkEquiv(entry, original, pred, errors, warns, groups, scope):
                     solution = TranslateAlloyToKodkod.execute_command(None, new_world.getAllReachableSigs(), new_cmds.get(new_cmds.size()-1), A4Options())
                     if not solution.satisfiable():
                         found = True
-                        group.append((entry,challenge_code))
+                        group.append((entry,challenge_code,normalized))
                         break
                 except JException as e:
                     warns.append((entry,group[0][0]))
                     # print(e)                            
 
             if not found:
-                groups.append([(entry,challenge_code)])
+                groups.append([(entry,challenge_code,normalized)])
             break
 
 

@@ -29,7 +29,7 @@ def main():
         for req in model["requirements"]:
             if req["pred"] not in groups:
                 print(f"Couldn't find file for {req['pred']}")
-            groups_pred_bad = filter(lambda x:x["count"]>=args.threshold and not x["correct"],groups[req["pred"]]["groups"])
+            groups_pred_bad = filter(lambda x:x["entry_count"]>=args.threshold and not x["correct"],groups[req["pred"]]["groups"])
             groups_pred_good = filter(lambda x:x["correct"],groups[req["pred"]]["groups"])
             req["oracle"] = next(groups_pred_good)["elems"][0]["code"]
             req["erroneous"] = list(map(lambda x:x["elems"][0]["code"],groups_pred_bad))
