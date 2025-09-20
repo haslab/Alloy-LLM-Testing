@@ -255,6 +255,13 @@
                 },
                 {
                     "entry_count": 1,
+                    "code": "{\n\t// The station has no cycles\n  all t:Track | (t.^succs-t)=t.^succs\n\n}",
+                    "ids": [
+                        "xNbPxQAxeS9SvkPRE"
+                    ]
+                },
+                {
+                    "entry_count": 1,
                     "code": "{\n\t// The station has no cycles\n\tall t: Track | t not in t.^succs\n\tall t: Track | t not in t.succs\n}",
                     "ids": [
                         "T9q2X88BzS9768Mbo"
@@ -262,9 +269,23 @@
                 },
                 {
                     "entry_count": 1,
+                    "code": "{\n\t// The station has no cycles\n\tall t:Track | (t & t.^succs = none)\n}",
+                    "ids": [
+                        "3uiAL2Wh5Da342PzF"
+                    ]
+                },
+                {
+                    "entry_count": 1,
                     "code": "{\n\t// The station has no cycles\n\tall t:Track | not t in t.^(succs)\n\tall t:Track | not t in (^succs).t\n}",
                     "ids": [
                         "4qBYE6K8t5xh6AKgr"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The station has no cycles\n\tall t : Track | all t1:Track | (t1 in t.succs => t not in t1.^succs) and t not in t.succs\n}",
+                    "ids": [
+                        "iXBTgs6kWEFvdDwrq"
                     ]
                 },
                 {
@@ -286,27 +307,6 @@
                     "code": "{\n\t// The station has no cycles\n  all t : Track | all t1 : Track | t1 in t.^(succs) implies t not in t1.succs\n\n}",
                     "ids": [
                         "x3Fujd2HLdKBFwCjZ"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// The station has no cycles\n\tall t : Track | all t1:Track | (t1 in t.succs => t not in t1.^succs) and t not in t.succs\n}",
-                    "ids": [
-                        "iXBTgs6kWEFvdDwrq"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// The station has no cycles\n  all t:Track | (t.^succs-t)=t.^succs\n\n}",
-                    "ids": [
-                        "xNbPxQAxeS9SvkPRE"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// The station has no cycles\n\tall t:Track | (t & t.^succs = none)\n}",
-                    "ids": [
-                        "3uiAL2Wh5Da342PzF"
                     ]
                 }
             ]
@@ -357,16 +357,30 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// The station has no cycles\n  all t : Track | no (t & t.*succs)\n\n}",
+                    "code": "{\n\t// The station has no cycles\n  all t:Track | (t.*succs-t)=t.*succs\n\n}",
                     "ids": [
-                        "KbrvKbYE6YzanMNEE"
+                        "GrZa2hJHgQ5NvyqDr"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// The station has no cycles\n  all t:Track | (t.*succs-t)=t.*succs\n\n}",
+                    "code": "{\n\t// The station has no cycles\n\tno t : Track | t in t.*succs\n}",
                     "ids": [
-                        "GrZa2hJHgQ5NvyqDr"
+                        "RSDJkbQvkDpZWvqnT"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The station has no cycles\n\tall t : Track | t.succs not in t.^succs\n}",
+                    "ids": [
+                        "cADYR2jAXAi8CvSii"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The station has no cycles\n  all t : Track | no (t & t.*succs)\n\n}",
+                    "ids": [
+                        "KbrvKbYE6YzanMNEE"
                     ]
                 },
                 {
@@ -378,9 +392,16 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// The station has no cycles\n\tno t : Track | t in t.*succs\n}",
+                    "code": "{\n\t// The station has no cycles\n\tall t : Track | t.succs not in t.*succs\n}",
                     "ids": [
-                        "RSDJkbQvkDpZWvqnT"
+                        "CPZoovqDv2rBTpfDv"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The station has no cycles\n  \tno t: Track | t -> t in *succs\n\n}",
+                    "ids": [
+                        "Qjw3yaq5ae2TLzeGg"
                     ]
                 },
                 {
@@ -395,27 +416,6 @@
                     "code": "{\n\t// The station has no cycles\n\tall t:Track | some t.succs <=> t not in Exit\n\tall t:Track | some succs.t <=> t not in Entry\n\tall t1, t2: Track | succs.t2 not in t1.succs\n}",
                     "ids": [
                         "6bWxvXb9Xq3agvtLW"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// The station has no cycles\n  \tno t: Track | t -> t in *succs\n\n}",
-                    "ids": [
-                        "Qjw3yaq5ae2TLzeGg"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// The station has no cycles\n\tall t : Track | t.succs not in t.^succs\n}",
-                    "ids": [
-                        "cADYR2jAXAi8CvSii"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// The station has no cycles\n\tall t : Track | t.succs not in t.*succs\n}",
-                    "ids": [
-                        "CPZoovqDv2rBTpfDv"
                     ]
                 }
             ]
@@ -476,16 +476,16 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// The station has no cycles\n\tall t : Track | some t1:Track | (t1 in t.succs => t not in t1.^succs) and t not in t.succs\n}",
+                    "code": "{\n\t// The station has no cycles\n  \tall t : Track | no (t.succs & t)\n\tall t : Track | no (succs.t & t)\n\n\n}",
                     "ids": [
-                        "fFqhJZEwsgeSefYXo"
+                        "xParwXf7FcPp2vgm8"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// The station has no cycles\n  \tall t : Track | no (t.succs & t)\n\tall t : Track | no (succs.t & t)\n\n\n}",
+                    "code": "{\n\t// The station has no cycles\n\tall t : Track | some t1:Track | (t1 in t.succs => t not in t1.^succs) and t not in t.succs\n}",
                     "ids": [
-                        "xParwXf7FcPp2vgm8"
+                        "fFqhJZEwsgeSefYXo"
                     ]
                 }
             ]
@@ -596,13 +596,6 @@
             "elems": [
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// The station has no cycles\n\tall t1, t2: Track | t1 in t2.succs implies (t1.succs.succs & t2.succs) = none\n}",
-                    "ids": [
-                        "eq6dksFtvNnTcMaSQ"
-                    ]
-                },
-                {
-                    "entry_count": 1,
                     "code": "{\n\t// The station has no cycles\n  all t : Track | all t1 : Track | t1 in t.succs implies t not in t1.succs\n\n}",
                     "ids": [
                         "kQkyvvsy3oGwsQd5o"
@@ -614,6 +607,13 @@
                     "ids": [
                         "cA7obtFNNq4fE5qsb"
                     ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The station has no cycles\n\tall t1, t2: Track | t1 in t2.succs implies (t1.succs.succs & t2.succs) = none\n}",
+                    "ids": [
+                        "eq6dksFtvNnTcMaSQ"
+                    ]
                 }
             ]
         },
@@ -624,16 +624,16 @@
             "elems": [
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// The station has no cycles\n  all t1,t2:Track | t1 in Entry and t2 in Exit implies t1 != t2 \n\n}",
+                    "code": "{\n\t// The station has no cycles\n  all t1:Entry, t2:Exit | t1 != t2 \n\n}",
                     "ids": [
-                        "qtaW5QCzSm4jwYyzC"
+                        "wJSzpHgpYW7QSbGQZ"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// The station has no cycles\n  all t1:Entry, t2:Exit | t1 != t2 \n\n}",
+                    "code": "{\n\t// The station has no cycles\n  all t1,t2:Track | t1 in Entry and t2 in Exit implies t1 != t2 \n\n}",
                     "ids": [
-                        "wJSzpHgpYW7QSbGQZ"
+                        "qtaW5QCzSm4jwYyzC"
                     ]
                 },
                 {
@@ -652,6 +652,13 @@
             "elems": [
                 {
                     "entry_count": 1,
+                    "code": "{\n\t// The station has no cycles\n  no Entry & Exit.succs\n}",
+                    "ids": [
+                        "NdKr4w4ghsPC6CYxE"
+                    ]
+                },
+                {
+                    "entry_count": 1,
                     "code": "{\n\t// The station has no cycles\n  \tno (Exit.succs & Entry)\n\tno (succs.Entry & Exit)\n\n}",
                     "ids": [
                         "Go3T7MX5vs3D8Zx9A"
@@ -662,13 +669,6 @@
                     "code": "{\n\t// The station has no cycles\n\tall t: Exit | all t2: Entry | t2 not in t.succs\n}",
                     "ids": [
                         "gEkoNn7tjm3tLTASt"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// The station has no cycles\n  no Entry & Exit.succs\n}",
-                    "ids": [
-                        "NdKr4w4ghsPC6CYxE"
                     ]
                 }
             ]

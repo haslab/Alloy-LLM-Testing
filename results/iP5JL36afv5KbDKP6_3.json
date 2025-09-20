@@ -3,7 +3,7 @@
     "pred": "this/inv4",
     "entry_count": 1167,
     "group_count": 88,
-    "duration": 70,
+    "duration": 82,
     "scope": 3,
     "groups": [
         {
@@ -689,11 +689,11 @@
                 },
                 {
                     "entry_count": 3,
-                    "code": "{\n\t// Projects are proposed by one course\n\tall p : Project | one c : Course | c in Course :> projects.p\n}",
+                    "code": "{\n\tall p : Project | some c : Course | c->p in projects\n  \tall p : Project, c1,c2 : Course | (c1->p in projects and c2->p in projects) implies c1=c2\n\n}",
                     "ids": [
-                        "MkaDWdG6vH3PWENWT",
-                        "LXEG6zPgnFeup2usH",
-                        "wKm9qige7CvacrNfm"
+                        "48B9gAEikTSviWTor",
+                        "BNxDeyfdC99Lt8f9P",
+                        "y4FdYa4e8ofSLNk3D"
                     ]
                 },
                 {
@@ -707,20 +707,20 @@
                 },
                 {
                     "entry_count": 3,
-                    "code": "{\n\tall p : Project | some c : Course | c->p in projects\n  \tall p : Project, c1,c2 : Course | (c1->p in projects and c2->p in projects) implies c1=c2\n\n}",
-                    "ids": [
-                        "48B9gAEikTSviWTor",
-                        "BNxDeyfdC99Lt8f9P",
-                        "y4FdYa4e8ofSLNk3D"
-                    ]
-                },
-                {
-                    "entry_count": 3,
                     "code": "{\n\t// Projects are proposed by one course\n  \tall p : Project | one c : Course | c->p in projects\n\tall p : Project | one (Course <: projects).p\n}",
                     "ids": [
                         "CAfzzxvz65MhLg2Wv",
                         "Y4ud2QuzGTev8tFoh",
                         "P7htKsGmXSA6mRveu"
+                    ]
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Projects are proposed by one course\n\tall p : Project | one c : Course | c in Course :> projects.p\n}",
+                    "ids": [
+                        "MkaDWdG6vH3PWENWT",
+                        "LXEG6zPgnFeup2usH",
+                        "wKm9qige7CvacrNfm"
                     ]
                 },
                 {
@@ -733,26 +733,10 @@
                 },
                 {
                     "entry_count": 2,
-                    "code": "{\n\t// Projects are proposed by one course\n  all p:Project | some c:Course | p in c.projects\n  all c1,c2:Course | all p:Project | p in c1.projects and p in c2.projects implies c1 = c2\n}",
-                    "ids": [
-                        "WxkNC4nK2vFreqgm7",
-                        "68GdgQtg2gy2oHggL"
-                    ]
-                },
-                {
-                    "entry_count": 2,
                     "code": "{\n\t// Projects are proposed by one course\n  \tall p : Project | p in Course.projects\n\tall p : Project,  a,b : Course | p in a.projects and a != b implies p not in b.projects    \n}",
                     "ids": [
                         "bdxCHWjCB9XHZDwXF",
                         "9uvoD9RpZ7WFBdTKZ"
-                    ]
-                },
-                {
-                    "entry_count": 2,
-                    "code": "{\n\t// Projects are proposed by one course\n  \tall p: Project | one p.~(Course <: projects)\n\n}",
-                    "ids": [
-                        "QKRaKHzD7MtYFxu7R",
-                        "mdWYzmhwgJ56vHAWZ"
                     ]
                 },
                 {
@@ -764,31 +748,19 @@
                     ]
                 },
                 {
-                    "entry_count": 1,
-                    "code": "{\n\t// Projects are proposed by one course\n\tall p: Project | one c: Course | c -> p in projects\n  \tall p: Project | one c: Course | p in c.projects\n  \t//projects.p\n}",
+                    "entry_count": 2,
+                    "code": "{\n\t// Projects are proposed by one course\n  all p:Project | some c:Course | p in c.projects\n  all c1,c2:Course | all p:Project | p in c1.projects and p in c2.projects implies c1 = c2\n}",
                     "ids": [
-                        "mJsDYoeqgp6nFRL65"
+                        "WxkNC4nK2vFreqgm7",
+                        "68GdgQtg2gy2oHggL"
                     ]
                 },
                 {
-                    "entry_count": 1,
-                    "code": "{\n\t// Projects are proposed by one course\n\tall p:Project | one projects.p <: Course\n}",
+                    "entry_count": 2,
+                    "code": "{\n\t// Projects are proposed by one course\n  \tall p: Project | one p.~(Course <: projects)\n\n}",
                     "ids": [
-                        "q7e6iHaNMT4WiQfoz"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n  // Projects are proposed by one course\n  Project in (Course <: projects)[univ]\n  all p :Project, c1,c2:Course | (c1+c2) in projects.p => c1=c2   \n  }",
-                    "ids": [
-                        "Cz2v97vBFKnjz6Dtn"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Projects are proposed by one course\n  \tall p : Project | one (p & Course.projects)\n\tall p : Project,  a,b : Course | p in a.projects and a != b implies p not in b.projects    \n}",
-                    "ids": [
-                        "dDuMm6MwrHCpXWAss"
+                        "QKRaKHzD7MtYFxu7R",
+                        "mdWYzmhwgJ56vHAWZ"
                     ]
                 },
                 {
@@ -800,16 +772,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n  // Projects are proposed by one course\t\n  (Course <: projects)[univ] = Project\n  all p :Project, c1,c2:Course | (c1+c2) in projects.p => c1=c2   \n  }",
+                    "code": "{\n\t// Projects are proposed by one course\n\tall c:Course | no (c.projects & (Course-c).projects)\n  \t(Course.projects & Project) = Project\n}",
                     "ids": [
-                        "QF6FrnzG4fTpWccan"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Projects are proposed by one course\n  \tall p:Project | some c:Course | c = projects.p\n\n}",
-                    "ids": [
-                        "4ZW9PjYcufgTYgDnN"
+                        "dDShuBMCpyymP4EH2"
                     ]
                 },
                 {
@@ -821,9 +786,44 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Projects are proposed by one course\n  \tall pr : Project | lone (Course <:projects).pr and pr in Course.projects\n  \t\n\n}",
+                    "code": "{\n\t// Projects are proposed by one course\n  \tall p:Project | some c:Course | c = projects.p\n\n}",
                     "ids": [
-                        "bvRjeFTjaEnH7GkjK"
+                        "4ZW9PjYcufgTYgDnN"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Projects are proposed by one course\n\tall p:Project | one projects.p <: Course\n}",
+                    "ids": [
+                        "q7e6iHaNMT4WiQfoz"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Projects are proposed by one course\n  \tall p : Project | p in Course.projects\n  \tall a,b : Course | a != b implies no a.projects & b.projects\n\t//all p : Project,  a,b : Course | p in a.projects and a != b implies p not in b.projects    \n}",
+                    "ids": [
+                        "yutEqwFBe8RX4bsny"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\tall p : Project | one (Course <: projects).p\n  \tall p : Project | one c : Course | p in c.projects\n\t// Projects are proposed by one course\n\n}",
+                    "ids": [
+                        "EcHpiwr45mK9cSAQb"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n  // Projects are proposed by one course\t\n  (Course <: projects)[univ] = Project\n  all p :Project, c1,c2:Course | (c1+c2) in projects.p => c1=c2   \n  }",
+                    "ids": [
+                        "QF6FrnzG4fTpWccan"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Projects are proposed by one course <>\n  all p:Project | one c:Course | projects.p = c\n\n}",
+                    "ids": [
+                        "gy6ZLepkq2mbpXv2Z"
                     ]
                 },
                 {
@@ -835,9 +835,30 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Projects are proposed by one course <>\n  all p:Project | one c:Course | projects.p = c\n\n}",
+                    "code": "{\n\t// Projects are proposed by one course\n  \tall p : Project | one (p & Course.projects)\n\tall p : Project,  a,b : Course | p in a.projects and a != b implies p not in b.projects    \n}",
                     "ids": [
-                        "gy6ZLepkq2mbpXv2Z"
+                        "dDuMm6MwrHCpXWAss"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Projects are proposed by one course\n\tall p : Project | one c : Course | p in (c.projects :> p)\n}",
+                    "ids": [
+                        "TdAzkSEbDyfwhZmtA"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Projects are proposed by one course\n\tall p: Project | one c: Course | c -> p in projects\n  \tall p: Project | one c: Course | p in c.projects\n  \t//projects.p\n}",
+                    "ids": [
+                        "mJsDYoeqgp6nFRL65"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n  // Projects are proposed by one course\n  Project in (Course <: projects)[univ]\n  all p :Project, c1,c2:Course | (c1+c2) in projects.p => c1=c2   \n  }",
+                    "ids": [
+                        "Cz2v97vBFKnjz6Dtn"
                     ]
                 },
                 {
@@ -856,30 +877,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Projects are proposed by one course\n\tall p : Project | one c : Course | p in (c.projects :> p)\n}",
+                    "code": "{\n\t// Projects are proposed by one course\n  \tall pr : Project | lone (Course <:projects).pr and pr in Course.projects\n  \t\n\n}",
                     "ids": [
-                        "TdAzkSEbDyfwhZmtA"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\tall p : Project | one (Course <: projects).p\n  \tall p : Project | one c : Course | p in c.projects\n\t// Projects are proposed by one course\n\n}",
-                    "ids": [
-                        "EcHpiwr45mK9cSAQb"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Projects are proposed by one course\n\tall c:Course | no (c.projects & (Course-c).projects)\n  \t(Course.projects & Project) = Project\n}",
-                    "ids": [
-                        "dDShuBMCpyymP4EH2"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Projects are proposed by one course\n  \tall p : Project | p in Course.projects\n  \tall a,b : Course | a != b implies no a.projects & b.projects\n\t//all p : Project,  a,b : Course | p in a.projects and a != b implies p not in b.projects    \n}",
-                    "ids": [
-                        "yutEqwFBe8RX4bsny"
+                        "bvRjeFTjaEnH7GkjK"
                     ]
                 }
             ]
@@ -992,12 +992,12 @@
                 },
                 {
                     "entry_count": 4,
-                    "code": "{\n\t// Projects are proposed by one course\n  \tall p:Project | some c:Course | c->p in projects \n\n}",
+                    "code": "{\n\t// Projects are proposed by one course\n\tall p : Project | one (Course.projects :> p)\n}",
                     "ids": [
-                        "sFSy2p4fsNMWcijBR",
-                        "JHmyPnaz8ydtFHTcx",
-                        "JjwB9bqYYkTqPiGbE",
-                        "TgCv96NWBdDDPAWeA"
+                        "QRmH37F5Th9sWcmxb",
+                        "6Lnmz8EnxA3kfiuvv",
+                        "JgfN6EXHj6zPPsNTP",
+                        "mBFyY9YsHJgCeForz"
                     ]
                 },
                 {
@@ -1012,12 +1012,12 @@
                 },
                 {
                     "entry_count": 4,
-                    "code": "{\n\t// Projects are proposed by one course\n\tall p : Project | one (Course.projects :> p)\n}",
+                    "code": "{\n\t// Projects are proposed by one course\n  \tall p:Project | some c:Course | c->p in projects \n\n}",
                     "ids": [
-                        "QRmH37F5Th9sWcmxb",
-                        "6Lnmz8EnxA3kfiuvv",
-                        "JgfN6EXHj6zPPsNTP",
-                        "mBFyY9YsHJgCeForz"
+                        "sFSy2p4fsNMWcijBR",
+                        "JHmyPnaz8ydtFHTcx",
+                        "JjwB9bqYYkTqPiGbE",
+                        "TgCv96NWBdDDPAWeA"
                     ]
                 },
                 {
@@ -1039,14 +1039,6 @@
                 },
                 {
                     "entry_count": 2,
-                    "code": "{\n\t// Projects are proposed by one course\n\tCourse.projects = Project\n}",
-                    "ids": [
-                        "sHatPhyWPHrMcvduM",
-                        "7LubS7bke8vuFdD54"
-                    ]
-                },
-                {
-                    "entry_count": 2,
                     "code": "{\n\t// Projects are proposed by one course\n\t(Course.projects & Project) = Project\n}",
                     "ids": [
                         "Dkyb7hQgDJ9LmMYLJ",
@@ -1062,45 +1054,32 @@
                     ]
                 },
                 {
-                    "entry_count": 1,
-                    "code": "{\n\t// Projects are proposed by one course\n  \t#Course.projects = #Project\n\tall p : Project | one (p & Course.projects)\n}",
+                    "entry_count": 2,
+                    "code": "{\n\t// Projects are proposed by one course\n\tCourse.projects = Project\n}",
                     "ids": [
-                        "qRtAoPJus6FkwWLQh"
+                        "sHatPhyWPHrMcvduM",
+                        "7LubS7bke8vuFdD54"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Projects are proposed by one course\n  \tall p : Project | one pp : Course.projects | p in pp\n\n}",
+                    "code": "{\n\t// Projects are proposed by one course\n  \tall p : Project | one pp : Course.projects | pp in p\n\n}",
                     "ids": [
-                        "jXn8oqc6XfrFEXzeG"
+                        "jF4M66QRGjdzgjeRr"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Projects are proposed by one course\n\tall pr : Project | some projects.pr & Course\n}",
+                    "code": "{\n\t// Projects are proposed by one course\n\t// all p : Project | one c : Course | c in projects.p\n  \tall p : Project | one p <: Course.projects\n}",
                     "ids": [
-                        "eWEQmLmT2kipRmB43"
+                        "oHSCqWp7zJ3vMeNFs"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Projects are proposed by one course\n  all p : Project | some Course<:projects.p\n}",
+                    "code": "{\n\t// Projects are proposed by one course\n\tProject in Course.projects\n}",
                     "ids": [
-                        "kY8pBzTP6gi8sSLAK"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Projects are proposed by one course\n\tall p : Project | some (p & Course.projects)\n}",
-                    "ids": [
-                        "H9i2FjpofPKpEDxhs"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Projects are proposed by one course\n  \tall pr : Project | lone (Course <:projects).pr implies pr in Course.projects\n  \t\n\n}",
-                    "ids": [
-                        "eBJeMFR3tKPmRYHEM"
+                        "otAeWmwZwkWhFoGDA"
                     ]
                 },
                 {
@@ -1119,23 +1098,44 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Projects are proposed by one course\n\tProject in Course.projects\n}",
+                    "code": "{\n\t// Projects are proposed by one course\n  \tall p : Project | one pp : Course.projects | p in pp\n\n}",
                     "ids": [
-                        "otAeWmwZwkWhFoGDA"
+                        "jXn8oqc6XfrFEXzeG"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Projects are proposed by one course\n\t// all p : Project | one c : Course | c in projects.p\n  \tall p : Project | one p <: Course.projects\n}",
+                    "code": "{\n\t// Projects are proposed by one course\n  \t#Course.projects = #Project\n\tall p : Project | one (p & Course.projects)\n}",
                     "ids": [
-                        "oHSCqWp7zJ3vMeNFs"
+                        "qRtAoPJus6FkwWLQh"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Projects are proposed by one course\n  \tall p : Project | one pp : Course.projects | pp in p\n\n}",
+                    "code": "{\n\t// Projects are proposed by one course\n\tall pr : Project | some projects.pr & Course\n}",
                     "ids": [
-                        "jF4M66QRGjdzgjeRr"
+                        "eWEQmLmT2kipRmB43"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Projects are proposed by one course\n  \tall pr : Project | lone (Course <:projects).pr implies pr in Course.projects\n  \t\n\n}",
+                    "ids": [
+                        "eBJeMFR3tKPmRYHEM"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Projects are proposed by one course\n  all p : Project | some Course<:projects.p\n}",
+                    "ids": [
+                        "kY8pBzTP6gi8sSLAK"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Projects are proposed by one course\n\tall p : Project | some (p & Course.projects)\n}",
+                    "ids": [
+                        "H9i2FjpofPKpEDxhs"
                     ]
                 }
             ]
@@ -1218,37 +1218,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Projects are proposed by one course\n  all p:Course.projects | one p\n\n}",
-                    "ids": [
-                        "Ly6j9ajdnXaeoSibg"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Projects are proposed by one course\n  \tall p : Project, c : Course | p in c.projects implies not p in Project - c.projects\n  \t\n\n}",
-                    "ids": [
-                        "zwemhnfDmAzgXFQtf"
-                    ]
-                },
-                {
-                    "entry_count": 1,
                     "code": "{\n\t// Projects are proposed by one course\n  \t//projects in Course one -> Course\n  \t//all c : Course |   (c.^(projects) in Project)\n  \t//all p : Project | projects.p ->   \n  \tall p : Course.projects  | lone p & Project\n  \n\n}",
                     "ids": [
                         "kT3otsjz2iESYLnEa"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Projects are proposed by one course\n  \t//projects in Course one -> Course\n  \tall c : Course |   (c.^(projects) in Project)\n  \n  \n  \n\n}",
-                    "ids": [
-                        "xaHA5WQjhCGq5Z4Q6"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Projects are proposed by one course\n  \tall p : Project, c : Course | p in c.projects implies p not in Project - c.projects\n  \t\n\n}",
-                    "ids": [
-                        "rKE4i93e3zbXKAeCX"
                     ]
                 },
                 {
@@ -1260,6 +1232,27 @@
                 },
                 {
                     "entry_count": 1,
+                    "code": "{\n\t// Projects are proposed by one course\n  \tall pp : Course.projects | one p : Project | pp in p\n\n}",
+                    "ids": [
+                        "WQAFtXsKmoKrTg8Bk"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Projects are proposed by one course\n  \tall p : Project, c : Course | p in c.projects implies p not in Project - c.projects\n  \t\n\n}",
+                    "ids": [
+                        "rKE4i93e3zbXKAeCX"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Projects are proposed by one course\n\tall p : Project | all c : Course | p in c.projects implies no p.projects\n}",
+                    "ids": [
+                        "nn7GtebCgX3RhmCLc"
+                    ]
+                },
+                {
+                    "entry_count": 1,
                     "code": "{\n\t// Projects are proposed by one course\n\tall c:Project | no (c.projects & Course-c.projects)\n}",
                     "ids": [
                         "cD7DL8EdWKgdPtQPH"
@@ -1267,9 +1260,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Projects are proposed by one course\n\tall p : Project,  a,b : (p & Course.projects) |  a = b\n  \n}",
+                    "code": "{\n\t// Projects are proposed by one course\n  all p:Course.projects | one p\n\n}",
                     "ids": [
-                        "NCnXz4wbeKj4TDyMv"
+                        "Ly6j9ajdnXaeoSibg"
                     ]
                 },
                 {
@@ -1281,9 +1274,16 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Projects are proposed by one course\n  \tall pp : Course.projects | one p : Project | pp in p\n\n}",
+                    "code": "{\n\t// Projects are proposed by one course\n  \tall p : Project, c : Course | p in c.projects implies not p in Project - c.projects\n  \t\n\n}",
                     "ids": [
-                        "WQAFtXsKmoKrTg8Bk"
+                        "zwemhnfDmAzgXFQtf"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Projects are proposed by one course\n\tall p : Project,  a,b : (p & Course.projects) |  a = b\n  \n}",
+                    "ids": [
+                        "NCnXz4wbeKj4TDyMv"
                     ]
                 },
                 {
@@ -1295,16 +1295,16 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Projects are proposed by one course\n\tall p : Project, c : (p & Course.projects) | one c\n  \n}",
+                    "code": "{\n\t// Projects are proposed by one course\n  \t//projects in Course one -> Course\n  \tall c : Course |   (c.^(projects) in Project)\n  \n  \n  \n\n}",
                     "ids": [
-                        "vADkquvs26rviFmtQ"
+                        "xaHA5WQjhCGq5Z4Q6"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Projects are proposed by one course\n\tall p : Project | all c : Course | p in c.projects implies no p.projects\n}",
+                    "code": "{\n\t// Projects are proposed by one course\n\tall p : Project, c : (p & Course.projects) | one c\n  \n}",
                     "ids": [
-                        "nn7GtebCgX3RhmCLc"
+                        "vADkquvs26rviFmtQ"
                     ]
                 }
             ]
@@ -1364,10 +1364,10 @@
                 },
                 {
                     "entry_count": 2,
-                    "code": "{\n  \t\n    all x, y : Course | x != y implies no (x.projects & y.projects)\n\t// Projects are proposed by one course\n\n}",
+                    "code": "{\n\t// Projects are proposed by one course\n\tall pj : Project | lone c : Course | c->pj in projects \n}",
                     "ids": [
-                        "ZzsYPLQbv6F6mQsWE",
-                        "FwYd3w6eSvpmfbgfK"
+                        "TF3DxLfgxG5Az4meS",
+                        "spTeWSxuK6PFMiZoW"
                     ]
                 },
                 {
@@ -1380,18 +1380,18 @@
                 },
                 {
                     "entry_count": 2,
-                    "code": "{\n\t// Projects are proposed by one course\n\tall pj : Project | lone c : Course | c->pj in projects \n}",
+                    "code": "{\n\t// Projects are proposed by one course\n\t(Course <: projects). ~(Course <: projects) in iden\n}",
                     "ids": [
-                        "TF3DxLfgxG5Az4meS",
-                        "spTeWSxuK6PFMiZoW"
+                        "CFoRvGerkwPej9ygB",
+                        "ALSRG45JNPZvyAxHe"
                     ]
                 },
                 {
                     "entry_count": 2,
-                    "code": "{\n\t// Projects are proposed by one course\n\tall c:Course | no (c.projects & (Course-c).projects)\n}",
+                    "code": "{\n  \t\n    all x, y : Course | x != y implies no (x.projects & y.projects)\n\t// Projects are proposed by one course\n\n}",
                     "ids": [
-                        "xc43tL78gEJpGqW87",
-                        "Qr9tsiP9XuER7LyME"
+                        "ZzsYPLQbv6F6mQsWE",
+                        "FwYd3w6eSvpmfbgfK"
                     ]
                 },
                 {
@@ -1404,52 +1404,10 @@
                 },
                 {
                     "entry_count": 2,
-                    "code": "{\n\t// Projects are proposed by one course\n\t(Course <: projects). ~(Course <: projects) in iden\n}",
+                    "code": "{\n\t// Projects are proposed by one course\n\tall c:Course | no (c.projects & (Course-c).projects)\n}",
                     "ids": [
-                        "CFoRvGerkwPej9ygB",
-                        "ALSRG45JNPZvyAxHe"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n  // Projects are proposed by one course\t\n  all p :Project, c1,c2:Course | c1+c2 in projects.p => c1=c2   \n}",
-                    "ids": [
-                        "akdAQy9TKcnbkH3x9"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Projects are proposed by one course\n  all c1, c2 : Course | some (c1.projects & c2.projects) implies c1 = c2\n\n}",
-                    "ids": [
-                        "CcAdqE6mhfejaP3wB"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n  all p : Project | all disj c, c1 : Course | p in c1.projects implies p not in c.projects\n\t// Projects are proposed by one course\n\n}",
-                    "ids": [
-                        "QpgQzHQzoFu7uiACq"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Projects are proposed by one course\n\tall p : Course.projects | one c : Course | p in c.projects\n}",
-                    "ids": [
-                        "gKAXP53s5jNb8Q7E3"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Projects are proposed by one course\n\tall p : Project | all c1,c2 : Course | p in Course.projects and p in c1.projects and p in c2.projects implies c1 = c2\n}",
-                    "ids": [
-                        "ox9pfTn88Rx6qjTFu"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Projects are proposed by one course\n\t(all p: Project|all c: Course| p in c.projects implies (no c2: Course| not c2 = c and p in c2.projects))\n}",
-                    "ids": [
-                        "hH3QaF8EZbazhnwsb"
+                        "xc43tL78gEJpGqW87",
+                        "Qr9tsiP9XuER7LyME"
                     ]
                 },
                 {
@@ -1461,30 +1419,16 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Projects are proposed by one course\n  \tall p: Course.projects | one (Course :> projects.p)\n\n}",
+                    "code": "{\n  all p : Project | all disj c, c1 : Course |( p in c1.projects implies p not in c.projects) or (p in c.projects implies p not in c1.projects)\n\t// Projects are proposed by one course\n\n}",
                     "ids": [
-                        "5D3fEa4i3ApiS5pZT"
+                        "GoyDyWEq73wd26Wdy"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Projects are proposed by one course\n  \tCourse.projects in Project\n\tall disj c1,c2 : Course | no (c1.projects&c2.projects)\n}",
+                    "code": "{\n\t// Projects are proposed by one course\n\t(all p: Project|all c: Course| p in c.projects implies (no c2: Course| not c2 = c and p in c2.projects))\n}",
                     "ids": [
-                        "S9ep3668jTrEjv39u"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Projects are proposed by one course\n\tall p : Project | all c : Course | p in c.projects implies p not in (Course - c).projects\n}",
-                    "ids": [
-                        "HJ2PxZKXiG765MiN8"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Projects are proposed by one course\n  \t//all p : Project | one (p & Course.projects)\n\tall p : Project,  a,b : Course | p in a.projects and a != b implies p not in b.projects    \n}",
-                    "ids": [
-                        "ZNxdg6bejgb2j4u7J"
+                        "hH3QaF8EZbazhnwsb"
                     ]
                 },
                 {
@@ -1496,6 +1440,13 @@
                 },
                 {
                     "entry_count": 1,
+                    "code": "{\n\t// Projects are proposed by one course\n  \tall p: Course.projects | one (Course :> projects.p)\n\n}",
+                    "ids": [
+                        "5D3fEa4i3ApiS5pZT"
+                    ]
+                },
+                {
+                    "entry_count": 1,
                     "code": "{\n\t// Projects are proposed by one course\n\tall p : Project, c, d : Course | p in Course.projects implies (p in c.projects and p in d.projects) implies c = d\n}",
                     "ids": [
                         "7ah9a8yQtYB6EAFJF"
@@ -1503,9 +1454,30 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n  all p : Project | all disj c, c1 : Course |( p in c1.projects implies p not in c.projects) or (p in c.projects implies p not in c1.projects)\n\t// Projects are proposed by one course\n\n}",
+                    "code": "{\n\t// Projects are proposed by one course\n  all c1, c2 : Course | some (c1.projects & c2.projects) implies c1 = c2\n\n}",
                     "ids": [
-                        "GoyDyWEq73wd26Wdy"
+                        "CcAdqE6mhfejaP3wB"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Projects are proposed by one course\n  \tCourse.projects in Project\n\tall disj c1,c2 : Course | no (c1.projects&c2.projects)\n}",
+                    "ids": [
+                        "S9ep3668jTrEjv39u"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Projects are proposed by one course\n\tall p : Course.projects | one c : Course | p in c.projects\n}",
+                    "ids": [
+                        "gKAXP53s5jNb8Q7E3"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Projects are proposed by one course\n\tall p : Project | all c : Course | p in c.projects implies p not in (Course - c).projects\n}",
+                    "ids": [
+                        "HJ2PxZKXiG765MiN8"
                     ]
                 },
                 {
@@ -1513,6 +1485,34 @@
                     "code": "{\n\t// Projects are proposed by one course\n\tall p:Project, c1,c2:Course | (c1->p in projects and c2->p in projects) implies c1=c2\n\n}",
                     "ids": [
                         "2dw8aBdzCAgCkA8qv"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n  // Projects are proposed by one course\t\n  all p :Project, c1,c2:Course | c1+c2 in projects.p => c1=c2   \n}",
+                    "ids": [
+                        "akdAQy9TKcnbkH3x9"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n  all p : Project | all disj c, c1 : Course | p in c1.projects implies p not in c.projects\n\t// Projects are proposed by one course\n\n}",
+                    "ids": [
+                        "QpgQzHQzoFu7uiACq"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Projects are proposed by one course\n\tall p : Project | all c1,c2 : Course | p in Course.projects and p in c1.projects and p in c2.projects implies c1 = c2\n}",
+                    "ids": [
+                        "ox9pfTn88Rx6qjTFu"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Projects are proposed by one course\n  \t//all p : Project | one (p & Course.projects)\n\tall p : Project,  a,b : Course | p in a.projects and a != b implies p not in b.projects    \n}",
+                    "ids": [
+                        "ZNxdg6bejgb2j4u7J"
                     ]
                 }
             ]
@@ -1572,18 +1572,18 @@
                 },
                 {
                     "entry_count": 2,
-                    "code": "{\n\t// Projects are proposed by one course\n  \tall p:Project | p in Course\n\n}",
-                    "ids": [
-                        "n2h4HWFFdHQw7cwao",
-                        "vic42pqLZ7mLp9sis"
-                    ]
-                },
-                {
-                    "entry_count": 2,
                     "code": "{\n\t// Projects are proposed by one course\n\tall p : Project | one c : Course | c in projects.p\n  \n  \tall p : Project | one p.projects\n}",
                     "ids": [
                         "xxerdB2iGERJmoWhR",
                         "NLqYaSq2J9FKnwBFn"
+                    ]
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Projects are proposed by one course\n  \tall p:Project | p in Course\n\n}",
+                    "ids": [
+                        "n2h4HWFFdHQw7cwao",
+                        "vic42pqLZ7mLp9sis"
                     ]
                 },
                 {
@@ -1604,9 +1604,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Projects are proposed by one course\n  \tall p : Project | one (p & Course.projects)\n\tall p : Project,  a,b : Course | p in a.projects implies no b.projects & p   \n}",
+                    "code": "{\n\t// Projects are proposed by one course\n\tall p : Project | some c : Course | c in p\n}",
                     "ids": [
-                        "e94t7mDqHy7JBD6Jt"
+                        "ayJ9qXigwAqDahMNb"
                     ]
                 },
                 {
@@ -1614,6 +1614,34 @@
                     "code": "{\n\t// Projects are proposed by one course\n  all pro : Project | some c : Course | pro in c\n\n}",
                     "ids": [
                         "uxnC4rjjgYvmSZ7P3"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Projects are proposed by one course\n  \tall p : Project | one (p & Course.projects)\n\tall p : Project,  a,b : Course |  no a.projects & p & b.projects & p   \n}",
+                    "ids": [
+                        "T4ZHKbpFuePST42RQ"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n  // Projects are proposed by one course\t\n  (Course <: projects.univ) = Project\n  all p :Project, c1,c2:Course | (c1+c2) in projects.p => c1=c2   \n  }",
+                    "ids": [
+                        "r3cXWsxDmi5rfBLH6"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Projects are proposed by one course\n\tall p : Project | one((Course->p).projects)\n}",
+                    "ids": [
+                        "WMgHu7Erd4wW8GKQJ"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Projects are proposed by one course\n  \tall p : Project | one (p & Course.projects)\n\tall p : Project,  a,b : Course | p in a.projects implies no b.projects & p   \n}",
+                    "ids": [
+                        "e94t7mDqHy7JBD6Jt"
                     ]
                 },
                 {
@@ -1632,37 +1660,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Projects are proposed by one course\n\tall p : Project | one((Course->p).projects)\n}",
-                    "ids": [
-                        "WMgHu7Erd4wW8GKQJ"
-                    ]
-                },
-                {
-                    "entry_count": 1,
                     "code": "{\n\t// Projects are proposed by one course\n \t all p : Project | one c : Course | p in c.grades.Grade\n\n        // all p : Project | one c : Course | c->p in projects\n\n\t// all p : Project | one (Course <: projects).p\n}",
                     "ids": [
                         "9DwAd6PfdKw8Fnk2S"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Projects are proposed by one course\n\tall p : Project | some c : Course | c in p\n}",
-                    "ids": [
-                        "ayJ9qXigwAqDahMNb"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n  // Projects are proposed by one course\t\n  (Course <: projects.univ) = Project\n  all p :Project, c1,c2:Course | (c1+c2) in projects.p => c1=c2   \n  }",
-                    "ids": [
-                        "r3cXWsxDmi5rfBLH6"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Projects are proposed by one course\n  \tall p : Project | one (p & Course.projects)\n\tall p : Project,  a,b : Course |  no a.projects & p & b.projects & p   \n}",
-                    "ids": [
-                        "T4ZHKbpFuePST42RQ"
                     ]
                 }
             ]
@@ -1755,9 +1755,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Projects are proposed by one course\n  all p:Course.projects | one p.projects\n\n}",
+                    "code": "{\n\t// Projects are proposed by one course\n\t(Course <: projects).Project = Course.projects\n}",
                     "ids": [
-                        "zpaYwMCraqL2TyP2K"
+                        "HMcpDTwBtmDFD6hDv"
                     ]
                 },
                 {
@@ -1765,27 +1765,6 @@
                     "code": "{\n\t// Projects are proposed by one course\n\tall p : Project | all c : Course | p in c.projects implies one p.projects\n}",
                     "ids": [
                         "CBof4NHR9oPqEQNuL"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Projects are proposed by one course\n\tno Course.projects - Course\n}",
-                    "ids": [
-                        "HryHCRrQhdSTHa5wm"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Projects are proposed by one course\n\tall x:Course | no x.projects\n}",
-                    "ids": [
-                        "wkBuob7PEfgWfK8ey"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Projects are proposed by one course\n\t(Course <: projects).Project = Course.projects\n}",
-                    "ids": [
-                        "HMcpDTwBtmDFD6hDv"
                     ]
                 },
                 {
@@ -1800,6 +1779,27 @@
                     "code": "{\n\t// Projects are proposed by one course\n    all c1,c2 : Course | all p : Project | p in c1.projects implies not p in c2.projects or p in c2.projects implies not p in c1.projects\n\n}",
                     "ids": [
                         "r2E7cPv3ShvnjN8Ym"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Projects are proposed by one course\n  all p:Course.projects | one p.projects\n\n}",
+                    "ids": [
+                        "zpaYwMCraqL2TyP2K"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Projects are proposed by one course\n\tall x:Course | no x.projects\n}",
+                    "ids": [
+                        "wkBuob7PEfgWfK8ey"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Projects are proposed by one course\n\tno Course.projects - Course\n}",
+                    "ids": [
+                        "HryHCRrQhdSTHa5wm"
                     ]
                 }
             ]
@@ -1871,18 +1871,18 @@
                 },
                 {
                     "entry_count": 2,
-                    "code": "{\n\t// Projects are proposed by one course\n\tall p : Project | one c : Course | p.projects in c\n}",
-                    "ids": [
-                        "SYoH7oKytZupeuv4C",
-                        "P4NSo3W74SswhneFd"
-                    ]
-                },
-                {
-                    "entry_count": 2,
                     "code": "{\n\t// Projects are proposed by one course\n\tall p : Project | one((Course->p))\n}",
                     "ids": [
                         "cmYYNcGCYMKHPcZxq",
                         "ZXY6FSABBnMqi5zeR"
+                    ]
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Projects are proposed by one course\n\tall p : Project | one c : Course | p.projects in c\n}",
+                    "ids": [
+                        "SYoH7oKytZupeuv4C",
+                        "P4NSo3W74SswhneFd"
                     ]
                 },
                 {
@@ -1974,16 +1974,16 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Projects are proposed by one course\n\tone c : Course | c in projects.Project\n}",
+                    "code": "{\n\t// Projects are proposed by one course\n\tone c : Course | c in Course :> projects.Project\n}",
                     "ids": [
-                        "Kzi6HBcDiFB9P2kmM"
+                        "ce86vWyYJzrEZRayv"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Projects are proposed by one course\n\tone c : Course | c in Course :> projects.Project\n}",
+                    "code": "{\n\t// Projects are proposed by one course\n\tone c : Course | c in projects.Project\n}",
                     "ids": [
-                        "ce86vWyYJzrEZRayv"
+                        "Kzi6HBcDiFB9P2kmM"
                     ]
                 }
             ]
@@ -2013,16 +2013,16 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Projects are proposed by one course\n  all c : Course | lone c.projects & Course.projects\n\n}",
+                    "code": "{\n\t// Projects are proposed by one course\n  \n  all p : Project,  c : Course | lone c.(Course <: projects) \n\n}",
                     "ids": [
-                        "sWuanw8gk4JZiCAhN"
+                        "oKDs2psKSW2Bn2cx3"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Projects are proposed by one course\n  \n  all p : Project,  c : Course | lone c.(Course <: projects) \n\n}",
+                    "code": "{\n\t// Projects are proposed by one course\n  all c : Course | lone c.projects & Course.projects\n\n}",
                     "ids": [
-                        "oKDs2psKSW2Bn2cx3"
+                        "sWuanw8gk4JZiCAhN"
                     ]
                 },
                 {
@@ -2226,13 +2226,6 @@
             "elems": [
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Projects are proposed by one course\n\tlone (Course <: projects).Project\n}",
-                    "ids": [
-                        "HCuenZY52LLxnQ2Ds"
-                    ]
-                },
-                {
-                    "entry_count": 1,
                     "code": "{\n\t// Projects are proposed by one course\n\tlone c : Course | c in projects.Project\n}",
                     "ids": [
                         "X7RAdQK3jMJevJkoe"
@@ -2240,9 +2233,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Projects are proposed by one course\n\tall p : Project | all c : Course | p in c.projects implies no (Course-c).projects\n}",
+                    "code": "{\n\t// Projects are proposed by one course\n\tlone (Course <: projects).Project\n}",
                     "ids": [
-                        "Ba3PrFKSJ9DjFTNXj"
+                        "HCuenZY52LLxnQ2Ds"
                     ]
                 },
                 {
@@ -2250,6 +2243,13 @@
                     "code": "{\n\t// Projects are proposed by one course\n\tlone Course <: projects.Project\n}",
                     "ids": [
                         "9yFNG9K7vMpQiRFdz"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Projects are proposed by one course\n\tall p : Project | all c : Course | p in c.projects implies no (Course-c).projects\n}",
+                    "ids": [
+                        "Ba3PrFKSJ9DjFTNXj"
                     ]
                 }
             ]
@@ -2363,9 +2363,9 @@
             "elems": [
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Projects are proposed by one course\n\tsome c: Course | c in Project\n}",
+                    "code": "{\n\t// Projects are proposed by one course\n \tsome p : Project | one c : Course | some a: Person | p in teaches.c and c in projects.p\n  \n\n}",
                     "ids": [
-                        "mSviMDqyRtdFnxLn9"
+                        "ojmifiujdTg6s55PQ"
                     ]
                 },
                 {
@@ -2377,9 +2377,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Projects are proposed by one course\n \tsome p : Project | one c : Course | some a: Person | p in teaches.c and c in projects.p\n  \n\n}",
+                    "code": "{\n\t// Projects are proposed by one course\n\tsome c: Course | c in Project\n}",
                     "ids": [
-                        "ojmifiujdTg6s55PQ"
+                        "mSviMDqyRtdFnxLn9"
                     ]
                 }
             ]
@@ -2391,16 +2391,16 @@
             "elems": [
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Projects are proposed by one course\n\tall disj c1, c2: Course | all p: Project | p in c1.projects and p not in c2.projects\n}",
+                    "code": "{\n  all p : Project | all disj c, c1 : Course | p in c1.projects and p not in c.projects\n\t// Projects are proposed by one course\n\n}",
                     "ids": [
-                        "nqTzc2fX7xFnzEX2K"
+                        "nS54imqM4wz5d2Mwq"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n  all p : Project | all disj c, c1 : Course | p in c1.projects and p not in c.projects\n\t// Projects are proposed by one course\n\n}",
+                    "code": "{\n\t// Projects are proposed by one course\n\tall disj c1, c2: Course | all p: Project | p in c1.projects and p not in c2.projects\n}",
                     "ids": [
-                        "nS54imqM4wz5d2Mwq"
+                        "nqTzc2fX7xFnzEX2K"
                     ]
                 },
                 {
@@ -2544,16 +2544,16 @@
             "elems": [
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Projects are proposed by one course\n  all c:Course | some p:Project | p in c.projects\n\tall p:Project | some c1,c2:Course | p in c1.projects and p in c2.projects implies c1 = c2\n}",
+                    "code": "{\n\t// Projects are proposed by one course\n  all c:Course | not (no c.projects)\n\tall p:Project | some c1,c2:Course | p in c1.projects and p in c2.projects implies c1 = c2\n}",
                     "ids": [
-                        "PFGoPsv5xTwD6b8AE"
+                        "NRYDrBMKHxa6rwaLB"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Projects are proposed by one course\n  all c:Course | not (no c.projects)\n\tall p:Project | some c1,c2:Course | p in c1.projects and p in c2.projects implies c1 = c2\n}",
+                    "code": "{\n\t// Projects are proposed by one course\n  all c:Course | some p:Project | p in c.projects\n\tall p:Project | some c1,c2:Course | p in c1.projects and p in c2.projects implies c1 = c2\n}",
                     "ids": [
-                        "NRYDrBMKHxa6rwaLB"
+                        "PFGoPsv5xTwD6b8AE"
                     ]
                 }
             ]
@@ -2616,16 +2616,16 @@
             "elems": [
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Projects are proposed by one course\n  \tall disj c1,c2:Course | c1.projects not in c2.projects\n\n}",
+                    "code": "{\n\t// Projects are proposed by one course\n\tall disj c1, c2: Course | some p: Project | p in c1.projects and p not in c2.projects\n}",
                     "ids": [
-                        "zfksbn7cNdn6gcabR"
+                        "SvgwRNMjw4Zkf6sdp"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Projects are proposed by one course\n\tall disj c1, c2: Course | some p: Project | p in c1.projects and p not in c2.projects\n}",
+                    "code": "{\n\t// Projects are proposed by one course\n  \tall disj c1,c2:Course | c1.projects not in c2.projects\n\n}",
                     "ids": [
-                        "SvgwRNMjw4Zkf6sdp"
+                        "zfksbn7cNdn6gcabR"
                     ]
                 }
             ]
@@ -2637,16 +2637,16 @@
             "elems": [
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Projects are proposed by one course\n\tno Person.projects \n}",
+                    "code": "{\n\t// Projects are proposed by one course\n\tPerson <: projects in iden\n}",
                     "ids": [
-                        "oKMopg7Aqyuncsu8W"
+                        "rJNLaeJS9MPLnpiis"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Projects are proposed by one course\n\tPerson <: projects in iden\n}",
+                    "code": "{\n\t// Projects are proposed by one course\n\tno Person.projects \n}",
                     "ids": [
-                        "rJNLaeJS9MPLnpiis"
+                        "oKMopg7Aqyuncsu8W"
                     ]
                 }
             ]

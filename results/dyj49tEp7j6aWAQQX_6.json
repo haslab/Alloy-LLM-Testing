@@ -3,7 +3,7 @@
     "pred": "this/inv7",
     "entry_count": 908,
     "group_count": 113,
-    "duration": 52,
+    "duration": 67,
     "scope": 3,
     "groups": [
         {
@@ -248,28 +248,6 @@
                 },
                 {
                     "entry_count": 16,
-                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n  \n  all c : Component, p : Product | c->p in parts and p in Dangerous implies c in Dangerous\n\n}",
-                    "ids": [
-                        "ytn3AnHDptJRTJBRR",
-                        "Ky3FaxYS4FiAJ9XLW",
-                        "r4FEM6qC4dnxLN6FE",
-                        "fg7drChgKyYY2dCwH",
-                        "vCR7SPfAbqNZbiymF",
-                        "gmAi4pFjoarAuMDDc",
-                        "WvrQ4s2uspT5A4hRv",
-                        "S6xPj2WHq9wsh7ja3",
-                        "HPkJbkX5iSWc9pnmX",
-                        "Jb3x2krCDq7Ybc4Ab",
-                        "krjGk8JHFJefthoyZ",
-                        "sXHEGMCXcEGZk2Xic",
-                        "Qj9GpyuXeQPnhgvet",
-                        "Zb5PFivvyBMPejjJb",
-                        "ub59QHge66JksS9Z8",
-                        "v73gjsEanyRLEMNEZ"
-                    ]
-                },
-                {
-                    "entry_count": 16,
                     "code": "{\n\t// Components built of dangerous parts are also dangerous\n  \tall c:Component, p:Product|\n  \tp in c.parts and p in Dangerous => c in Dangerous\n\n}",
                     "ids": [
                         "8AMobuwQkz8SGHX9Q",
@@ -291,13 +269,25 @@
                     ]
                 },
                 {
-                    "entry_count": 4,
-                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n    all c: Component | (some d: Dangerous | d in c.parts) => c in Dangerous\n}",
+                    "entry_count": 16,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n  \n  all c : Component, p : Product | c->p in parts and p in Dangerous implies c in Dangerous\n\n}",
                     "ids": [
-                        "aTwLmv6t2EBH2ku5A",
-                        "hpWDBjqji434KLjd6",
-                        "84MGksqPEHXo3hp6Y",
-                        "oZdxgtSuFE8QkFyCu"
+                        "ytn3AnHDptJRTJBRR",
+                        "Ky3FaxYS4FiAJ9XLW",
+                        "r4FEM6qC4dnxLN6FE",
+                        "fg7drChgKyYY2dCwH",
+                        "vCR7SPfAbqNZbiymF",
+                        "gmAi4pFjoarAuMDDc",
+                        "WvrQ4s2uspT5A4hRv",
+                        "S6xPj2WHq9wsh7ja3",
+                        "HPkJbkX5iSWc9pnmX",
+                        "Jb3x2krCDq7Ybc4Ab",
+                        "krjGk8JHFJefthoyZ",
+                        "sXHEGMCXcEGZk2Xic",
+                        "Qj9GpyuXeQPnhgvet",
+                        "Zb5PFivvyBMPejjJb",
+                        "ub59QHge66JksS9Z8",
+                        "v73gjsEanyRLEMNEZ"
                     ]
                 },
                 {
@@ -308,6 +298,16 @@
                         "jiiPPgYrgkup3ijKi",
                         "5zNNosBfTs47CWtE2",
                         "jzEKxfQ3qSNFymbes"
+                    ]
+                },
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n    all c: Component | (some d: Dangerous | d in c.parts) => c in Dangerous\n}",
+                    "ids": [
+                        "aTwLmv6t2EBH2ku5A",
+                        "hpWDBjqji434KLjd6",
+                        "84MGksqPEHXo3hp6Y",
+                        "oZdxgtSuFE8QkFyCu"
                     ]
                 },
                 {
@@ -330,18 +330,18 @@
                 },
                 {
                     "entry_count": 2,
-                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n\tall c: Component | not no (c.parts & Dangerous) implies c in Dangerous\n}",
-                    "ids": [
-                        "BAKWdffvrpBpqCY2D",
-                        "67f8huCAKFiBHudMn"
-                    ]
-                },
-                {
-                    "entry_count": 2,
                     "code": "{\n\t// Components built of dangerous parts are also dangerous\n\tall c : Component | some (c.parts & Dangerous) => some (c & Dangerous)\n}",
                     "ids": [
                         "iFMvKv2SmAMZJG5wi",
                         "n9Ch938JXoSdCZpNi"
+                    ]
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n\tall c: Component | not no (c.parts & Dangerous) implies c in Dangerous\n}",
+                    "ids": [
+                        "BAKWdffvrpBpqCY2D",
+                        "67f8huCAKFiBHudMn"
                     ]
                 },
                 {
@@ -354,9 +354,16 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n  all c: Component | #( c.parts & Dangerous)>0 implies c in Dangerous\n\n}",
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n  all c:Component | not (Dangerous & c.parts = none) implies c in Dangerous \n\n}",
                     "ids": [
-                        "zffMC3iQsgE6Ptbhc"
+                        "y6w7oTPDRNjDLwubF"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n  \tComponent & parts.Dangerous in Dangerous\n}",
+                    "ids": [
+                        "4AQDGebqdXGDpPQ27"
                     ]
                 },
                 {
@@ -368,16 +375,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n  all c:Component | not (Dangerous & c.parts = none) implies c in Dangerous \n\n}",
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n  all c: Component | #( c.parts & Dangerous)>0 implies c in Dangerous\n\n}",
                     "ids": [
-                        "y6w7oTPDRNjDLwubF"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n\tall c: Component | all c_parts: c.parts | some (c_parts & Dangerous) implies c in Dangerous\n}",
-                    "ids": [
-                        "eTRZWFuMSfq36B85A"
+                        "zffMC3iQsgE6Ptbhc"
                     ]
                 },
                 {
@@ -389,9 +389,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n  \tComponent & parts.Dangerous in Dangerous\n}",
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n\tall c: Component | all c_parts: c.parts | some (c_parts & Dangerous) implies c in Dangerous\n}",
                     "ids": [
-                        "4AQDGebqdXGDpPQ27"
+                        "eTRZWFuMSfq36B85A"
                     ]
                 },
                 {
@@ -500,23 +500,6 @@
                 },
                 {
                     "entry_count": 11,
-                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n\tall c : Component | all d : Dangerous | d in c.^parts => c in Dangerous\n}",
-                    "ids": [
-                        "XekjbjfCSmX29AQAS",
-                        "XTTauL4SBSzqhRJ8z",
-                        "t8H5TogBPFEQokFwK",
-                        "ke7hGetWpy6EHS7Hk",
-                        "QWMGwsbqXqCjT7Jwq",
-                        "fro6FyWpbhu88jXfW",
-                        "b4q2pR6X5hnkaJkag",
-                        "Jedq4jx5zibeyGZih",
-                        "u2DsDmgEoE2JCinEq",
-                        "WcFj7AHXvpAD8R6Gd",
-                        "qg5mE2nw7GwfnmFzw"
-                    ]
-                },
-                {
-                    "entry_count": 11,
                     "code": "{\n\t// Components built of dangerous parts are also dangerous\n\tall c : Component | some(Dangerous & c.*parts) implies c in Dangerous\n}",
                     "ids": [
                         "tM8m8S82PvK3j54ay",
@@ -530,6 +513,23 @@
                         "aYj5ANaiPHM7j79Fq",
                         "SdwrMm5WYFqQJ53So",
                         "CTXJ6NBkoQtqyokri"
+                    ]
+                },
+                {
+                    "entry_count": 11,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n\tall c : Component | all d : Dangerous | d in c.^parts => c in Dangerous\n}",
+                    "ids": [
+                        "XekjbjfCSmX29AQAS",
+                        "XTTauL4SBSzqhRJ8z",
+                        "t8H5TogBPFEQokFwK",
+                        "ke7hGetWpy6EHS7Hk",
+                        "QWMGwsbqXqCjT7Jwq",
+                        "fro6FyWpbhu88jXfW",
+                        "b4q2pR6X5hnkaJkag",
+                        "Jedq4jx5zibeyGZih",
+                        "u2DsDmgEoE2JCinEq",
+                        "WcFj7AHXvpAD8R6Gd",
+                        "qg5mE2nw7GwfnmFzw"
                     ]
                 },
                 {
@@ -579,23 +579,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n\tall c : Component | c.*(parts) & Dangerous != none iff c in Dangerous\n}",
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n\tall c : Component |  all cp : Product | cp in (Dangerous & c.^parts) implies c in Dangerous\n}",
                     "ids": [
-                        "YHPHixns8JGygbbzT"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n\tall c: Component, p: Product | (p in Dangerous and p in c.^parts) implies (c in Dangerous)\n}",
-                    "ids": [
-                        "tZ69FrF5nyehcBpeh"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n\tall c: Component | all p:Product| p in  Dangerous and p in c.*(parts) implies c in Dangerous\n}",
-                    "ids": [
-                        "NPFzzQ6astWfBFhzy"
+                        "4kb58eav7Ja2gwCc3"
                     ]
                 },
                 {
@@ -607,9 +593,23 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n\tall c : Component |  all cp : Product | cp in (Dangerous & c.^parts) implies c in Dangerous\n}",
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n\tall c: Component, p: Product | (p in Dangerous and p in c.^parts) implies (c in Dangerous)\n}",
                     "ids": [
-                        "4kb58eav7Ja2gwCc3"
+                        "tZ69FrF5nyehcBpeh"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n\tall c : Component | c.*(parts) & Dangerous != none iff c in Dangerous\n}",
+                    "ids": [
+                        "YHPHixns8JGygbbzT"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n\tall c: Component | all p:Product| p in  Dangerous and p in c.*(parts) implies c in Dangerous\n}",
+                    "ids": [
+                        "NPFzzQ6astWfBFhzy"
                     ]
                 },
                 {
@@ -693,16 +693,16 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n\tall c : Component, p : Product | c.parts in Dangerous implies c in Dangerous\n}",
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n  \n\t// Components built of dangerous parts are also dangerous\n  \tall c : Component | \n\t\t(all p : c.parts | p in Dangerous) implies (c in Dangerous)\n\n\n}",
                     "ids": [
-                        "nmbHGbNJNy3Ygippy"
+                        "dHuaA7g2LLvicGTqt"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n  \n\t// Components built of dangerous parts are also dangerous\n  \tall c : Component | \n\t\t(all p : c.parts | p in Dangerous) implies (c in Dangerous)\n\n\n}",
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n\tall c : Component, p : Product | c.parts in Dangerous implies c in Dangerous\n}",
                     "ids": [
-                        "dHuaA7g2LLvicGTqt"
+                        "nmbHGbNJNy3Ygippy"
                     ]
                 },
                 {
@@ -871,16 +871,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n\tall c : Component | c.parts & Dangerous in Dangerous\n}",
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n\tall c: Component| some y:Component | (c in Dangerous and y in parts.c ) implies (y in Dangerous)\n}",
                     "ids": [
-                        "eRCEXHAwWqv4BtSBK"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n  \tall c : Component | c in Dangerous implies c.parts in Dangerous.parts\n\n}",
-                    "ids": [
-                        "GwhrazLuiCbSp84b9"
+                        "6WW6LG5sFAdqbHyFd"
                     ]
                 },
                 {
@@ -892,23 +885,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n\tall c : Component | (all p : c.parts | p !in Dangerous.parts implies c !in Dangerous)\n  }",
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n\tall c : Component | (some p : c.parts | p in Dangerous.parts implies c in Dangerous) or (all p : c.parts | p !in Dangerous.parts implies c !in Dangerous)\n  }",
                     "ids": [
-                        "Ym5jcXk8KaLePPK65"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n\tall c: Component| some y:Component |(c in Dangerous and y in c.*parts) implies (y in Dangerous)\n}",
-                    "ids": [
-                        "Do62PX4SKg5aABCHy"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n\tall c : Component |  some cp : (Product) | cp in (Dangerous & c.^parts) implies c in Dangerous\n}",
-                    "ids": [
-                        "MfgGH8iEQTPu2AgHL"
+                        "rZmdxixgK4CxvbRvg"
                     ]
                 },
                 {
@@ -916,6 +895,20 @@
                     "code": "{\n\t// Components built of dangerous parts are also dangerous\n\tall c : Component | (some p : c.parts | c in Dangerous) => c in Dangerous\n}",
                     "ids": [
                         "NuJY78DxjgTwXtTde"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n  \tall c : Component | c in Dangerous implies c.parts in Dangerous.parts\n\n}",
+                    "ids": [
+                        "GwhrazLuiCbSp84b9"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n\tall c: Component| some y:Component |(c in Dangerous and y in c.^parts) implies (y in Dangerous)\n}",
+                    "ids": [
+                        "pAcFH5K8GDvBEwq3q"
                     ]
                 },
                 {
@@ -941,16 +934,30 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n\tall c: Component| some y:Component |(c in Dangerous and y in c.^parts) implies (y in Dangerous)\n}",
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n\tall c : Component |  some cp : (Product) | cp in (Dangerous & c.^parts) implies c in Dangerous\n}",
                     "ids": [
-                        "pAcFH5K8GDvBEwq3q"
+                        "MfgGH8iEQTPu2AgHL"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n\tall c: Component| some y:Component | (c in Dangerous and y in parts.c ) implies (y in Dangerous)\n}",
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n\tall c : Component | c.parts & Dangerous in Dangerous\n}",
                     "ids": [
-                        "6WW6LG5sFAdqbHyFd"
+                        "eRCEXHAwWqv4BtSBK"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n\tall c: Component| some y:Component |(c in Dangerous and y in c.*parts) implies (y in Dangerous)\n}",
+                    "ids": [
+                        "Do62PX4SKg5aABCHy"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n\tall c: Component| some y: Component | (c in Dangerous and c in y.^parts) implies y in Dangerous\n}",
+                    "ids": [
+                        "s2JehCqvYkzWojRNT"
                     ]
                 },
                 {
@@ -962,16 +969,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n\tall c : Component | (some p : c.parts | p in Dangerous.parts implies c in Dangerous) or (all p : c.parts | p !in Dangerous.parts implies c !in Dangerous)\n  }",
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n\tall c : Component | (all p : c.parts | p !in Dangerous.parts implies c !in Dangerous)\n  }",
                     "ids": [
-                        "rZmdxixgK4CxvbRvg"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n\tall c: Component| some y: Component | (c in Dangerous and c in y.^parts) implies y in Dangerous\n}",
-                    "ids": [
-                        "s2JehCqvYkzWojRNT"
+                        "Ym5jcXk8KaLePPK65"
                     ]
                 }
             ]
@@ -1103,16 +1103,16 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n\tall c : Component | some d : Dangerous | Dangerous in c.parts implies c in Dangerous\n}",
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n  all c: Component | Dangerous in c.parts implies some (c & Dangerous & Component) \n\n}",
                     "ids": [
-                        "adTGRXWw2D3XidZpZ"
+                        "ozrSFzCAYZMLw8dBE"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n  all c: Component | Dangerous in c.parts implies some (c & Dangerous & Component) \n\n}",
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n\tall c : Component | some d : Dangerous | Dangerous in c.parts implies c in Dangerous\n}",
                     "ids": [
-                        "ozrSFzCAYZMLw8dBE"
+                        "adTGRXWw2D3XidZpZ"
                     ]
                 }
             ]
@@ -1150,10 +1150,10 @@
                 },
                 {
                     "entry_count": 2,
-                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n\t*parts.Dangerous in Dangerous\n}",
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n\tall p1, p2: Product | p2 in p1.parts and p2 in Dangerous implies p1 in Dangerous\n}",
                     "ids": [
-                        "hqMoByDjrxgnsPjPG",
-                        "hYJ7d2kzss6rX7DRt"
+                        "oMAksTbLHhvYsnLaN",
+                        "kdxy3MuGjTDp9kEoA"
                     ]
                 },
                 {
@@ -1166,14 +1166,6 @@
                 },
                 {
                     "entry_count": 2,
-                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n\t//all c : Component, p : Product | c->p in parts and p in Dangerous implies c in Dangerous\n  \tall cd : Dangerous | ^parts.cd in Dangerous\n}",
-                    "ids": [
-                        "ADYvsB3FNihwewp2u",
-                        "whNe8gEGEMWgnwJEN"
-                    ]
-                },
-                {
-                    "entry_count": 2,
                     "code": "{\n\t// Components built of dangerous parts are also dangerous\n\tall d: Dangerous, p:Product |  d in p.^parts implies p in Dangerous\n}",
                     "ids": [
                         "LpSmKjFzyMZJR2DfP",
@@ -1182,10 +1174,18 @@
                 },
                 {
                     "entry_count": 2,
-                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n\tall p1, p2: Product | p2 in p1.parts and p2 in Dangerous implies p1 in Dangerous\n}",
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n\t//all c : Component, p : Product | c->p in parts and p in Dangerous implies c in Dangerous\n  \tall cd : Dangerous | ^parts.cd in Dangerous\n}",
                     "ids": [
-                        "oMAksTbLHhvYsnLaN",
-                        "kdxy3MuGjTDp9kEoA"
+                        "ADYvsB3FNihwewp2u",
+                        "whNe8gEGEMWgnwJEN"
+                    ]
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n\t*parts.Dangerous in Dangerous\n}",
+                    "ids": [
+                        "hqMoByDjrxgnsPjPG",
+                        "hYJ7d2kzss6rX7DRt"
                     ]
                 }
             ]
@@ -1292,14 +1292,6 @@
                 },
                 {
                     "entry_count": 2,
-                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n  \n  all c : Component |   (some (parts.c & Dangerous)) implies c in Dangerous \n\n}",
-                    "ids": [
-                        "pCcKTDZybBv2eYCwS",
-                        "84xgpx5vojwxYtRMG"
-                    ]
-                },
-                {
-                    "entry_count": 2,
                     "code": "{\n\t// Components built of dangerous parts are also dangerous\n\tall disj c: Component, p: Product | (p in Dangerous and p in c.~parts) implies (c in Dangerous)\n}",
                     "ids": [
                         "C8SNeyAG6mKxv5ZuH",
@@ -1307,10 +1299,11 @@
                     ]
                 },
                 {
-                    "entry_count": 1,
-                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n\tall d:Dangerous | d.parts&Component in Dangerous\n}",
+                    "entry_count": 2,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n  \n  all c : Component |   (some (parts.c & Dangerous)) implies c in Dangerous \n\n}",
                     "ids": [
-                        "ZSPXAb7oRp4KTwazM"
+                        "pCcKTDZybBv2eYCwS",
+                        "84xgpx5vojwxYtRMG"
                     ]
                 },
                 {
@@ -1318,6 +1311,13 @@
                     "code": "{\n\t// Components built of dangerous parts are also dangerous\n\tall c : Component | c in Dangerous.parts implies c in Dangerous\n}",
                     "ids": [
                         "pPojeg5kp5RRxKPmA"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n\tall d:Dangerous | d.parts&Component in Dangerous\n}",
+                    "ids": [
+                        "ZSPXAb7oRp4KTwazM"
                     ]
                 }
             ]
@@ -1343,16 +1343,16 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n\tall c: Component | c in Dangerous implies all p: c.parts | p in Dangerous\n}",
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n\t//all c : Component, p : Product | c->p in parts and p in Dangerous implies c in Dangerous\n  all c : Component, p : Product | p in c.parts and c in Dangerous implies p in Dangerous\n}",
                     "ids": [
-                        "w7hukTNEWNfcpaT6P"
+                        "4nipuAtxAFznKY7n5"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n\t//all c : Component, p : Product | c->p in parts and p in Dangerous implies c in Dangerous\n  all c : Component, p : Product | p in c.parts and c in Dangerous implies p in Dangerous\n}",
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n\tall c: Component | c in Dangerous implies all p: c.parts | p in Dangerous\n}",
                     "ids": [
-                        "4nipuAtxAFznKY7n5"
+                        "w7hukTNEWNfcpaT6P"
                     ]
                 }
             ]
@@ -1459,16 +1459,16 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n\tall c : Component | c.*(parts) in Dangerous iff c in Dangerous\n}",
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n\tall c : Component | not (c.^parts in Dangerous) implies c not in Dangerous\n}",
                     "ids": [
-                        "Jo9k2BQSEjFjSsmk5"
+                        "mk9CZkEnbfS7aq6ZK"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n\tall c : Component | not (c.^parts in Dangerous) implies c not in Dangerous\n}",
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n\tall c : Component | c.*(parts) in Dangerous iff c in Dangerous\n}",
                     "ids": [
-                        "mk9CZkEnbfS7aq6ZK"
+                        "Jo9k2BQSEjFjSsmk5"
                     ]
                 }
             ]
@@ -1498,18 +1498,18 @@
             "elems": [
                 {
                     "entry_count": 2,
-                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n\tall c: Component, d: Dangerous | d in c.^parts => c = Dangerous\n}",
-                    "ids": [
-                        "YznzqaPY6AW95ogQW",
-                        "HbciXjtR8fha8MWLN"
-                    ]
-                },
-                {
-                    "entry_count": 2,
                     "code": "{\n\t// Components built of dangerous parts are also dangerous\n\tall c : Component | some c.^parts & Dangerous implies c = Dangerous\n}",
                     "ids": [
                         "JpKThiu5SX4zefNE9",
                         "2rwTee4kBkM9Pc9X7"
+                    ]
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n\tall c: Component, d: Dangerous | d in c.^parts => c = Dangerous\n}",
+                    "ids": [
+                        "YznzqaPY6AW95ogQW",
+                        "HbciXjtR8fha8MWLN"
                     ]
                 },
                 {
@@ -1649,16 +1649,16 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n\tall c : Component | c.parts-(Product-Dangerous) in Dangerous implies c in Dangerous\n}",
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n\tall c : Component | c.^parts-(Product-Dangerous) in Dangerous implies c in Dangerous\n}",
                     "ids": [
-                        "tCerWoTBDyozvMTAM"
+                        "jn5aqhZpyCQcERNwv"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n\tall c : Component | c.^parts-(Product-Dangerous) in Dangerous implies c in Dangerous\n}",
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n\tall c : Component | c.parts-(Product-Dangerous) in Dangerous implies c in Dangerous\n}",
                     "ids": [
-                        "jn5aqhZpyCQcERNwv"
+                        "tCerWoTBDyozvMTAM"
                     ]
                 }
             ]
@@ -1747,13 +1747,6 @@
             "elems": [
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n\tall c:Component, d:Dangerous | d in ^parts.c implies c in Dangerous\n}",
-                    "ids": [
-                        "N79ifk4kPgYsvYs3x"
-                    ]
-                },
-                {
-                    "entry_count": 1,
                     "code": "{\n\t// Components built of dangerous parts are also dangerous\n\tall c : Component | some Dangerous & ^parts.c implies c in Dangerous\n}",
                     "ids": [
                         "poZs49cNvpba9agMH"
@@ -1764,6 +1757,13 @@
                     "code": "{\n\t// Components built of dangerous parts are also dangerous\n\tall c : Component | c in Dangerous.^parts implies c in Dangerous\n}",
                     "ids": [
                         "Tw46PYfxcEuK4dCui"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n\tall c:Component, d:Dangerous | d in ^parts.c implies c in Dangerous\n}",
+                    "ids": [
+                        "N79ifk4kPgYsvYs3x"
                     ]
                 }
             ]
@@ -1942,16 +1942,16 @@
             "elems": [
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n  \t//all c: Component | some c.^parts & Dangerous => c in Dangerous\n  \tDangerous in Component implies Dangerous.parts in Dangerous\n}",
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n  \t//all c: Component | some c.^parts & Dangerous => c in Dangerous\n  \tDangerous in Component implies Dangerous.^parts in Dangerous\n}",
                     "ids": [
-                        "PfF86RuwLLnuaBTxk"
+                        "y4dAjPhrtFjMRhrD8"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n  \t//all c: Component | some c.^parts & Dangerous => c in Dangerous\n  \tDangerous in Component implies Dangerous.^parts in Dangerous\n}",
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n  \t//all c: Component | some c.^parts & Dangerous => c in Dangerous\n  \tDangerous in Component implies Dangerous.parts in Dangerous\n}",
                     "ids": [
-                        "y4dAjPhrtFjMRhrD8"
+                        "PfF86RuwLLnuaBTxk"
                     ]
                 }
             ]
@@ -2008,16 +2008,16 @@
             "elems": [
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n\tall c : Component | c in Dangerous implies c.parts in (Dangerous + Material)\n}",
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n  \tall c1, c2 : Component | (c2 in c1.parts and c1 in Dangerous) implies c2 in Dangerous \n\n}",
                     "ids": [
-                        "Rg7cwpAC6ccoEamKg"
+                        "FAbeevePzTYvqcvqS"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n  \tall c1, c2 : Component | (c2 in c1.parts and c1 in Dangerous) implies c2 in Dangerous \n\n}",
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n\tall c : Component | c in Dangerous implies c.parts in (Dangerous + Material)\n}",
                     "ids": [
-                        "FAbeevePzTYvqcvqS"
+                        "Rg7cwpAC6ccoEamKg"
                     ]
                 }
             ]
@@ -2074,16 +2074,16 @@
             "elems": [
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n  some c : Component.parts | all c1 : Component | c in c1 and c in Dangerous implies c1 in Dangerous\n\n}",
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n  some c : Component.parts | all c1 : Component | c1 in c and c in Dangerous implies c1 in Dangerous\n\n}",
                     "ids": [
-                        "cKNKeKx9q7jw4ex93"
+                        "WZuvXWNB4C2SHRLCP"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n  some c : Component.parts | all c1 : Component | c1 in c and c in Dangerous implies c1 in Dangerous\n\n}",
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n  some c : Component.parts | all c1 : Component | c in c1 and c in Dangerous implies c1 in Dangerous\n\n}",
                     "ids": [
-                        "WZuvXWNB4C2SHRLCP"
+                        "cKNKeKx9q7jw4ex93"
                     ]
                 }
             ]
@@ -2116,16 +2116,16 @@
             "elems": [
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n  all c: Component | some d: Dangerous | d.parts in c.parts implies c in d\n}",
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n  all c: Component | some d: Dangerous | d.parts in c.parts implies d in c \n}",
                     "ids": [
-                        "wx9GpsnEdt2rA38SA"
+                        "NaL4XRYMNc5t9Y2dR"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n  all c: Component | some d: Dangerous | d.parts in c.parts implies d in c \n}",
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n  all c: Component | some d: Dangerous | d.parts in c.parts implies c in d\n}",
                     "ids": [
-                        "NaL4XRYMNc5t9Y2dR"
+                        "wx9GpsnEdt2rA38SA"
                     ]
                 }
             ]

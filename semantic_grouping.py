@@ -50,7 +50,7 @@ def main():
                 print(f"Java failed to parse the following {len(errors)} entries. This shouldn't happen, DB has been filtered for successful executions.")
                 print(errors)
             if warns != []:
-                print(f"The following {len(warns)} entries did not have standalone predicates (usually because code uses helper predicates/functions).")
+                print(f"The following {len(warns)} entries did not have standalone predicates, used helper predicates/functions.")
                 print(warns)
 
             duration = round(time.time() - start)
@@ -137,6 +137,10 @@ def checkEquiv(entry, original, pred, errors, warns, groups, scope):
 
     for f in world.getAllFunc():
         if f.label == pred:
+            if len(f.getBody().findAllFunctions()) != 0:
+                warns.append(entry)
+                continue
+
             normalized = str(ExprNormalizer.normalize(f.getBody()))
             ps = f.getBody().pos()
             ls = code.split("\n")[ps.y-1:ps.y2]
@@ -150,7 +154,7 @@ def checkEquiv(entry, original, pred, errors, warns, groups, scope):
             try:
                 new_world = CompUtil.parseEverything_fromString(None,new_code_standalone)
             except JException as e:
-                warns.append(entry)
+                errors.append(entry)
                 continue
 
             for group in groups:

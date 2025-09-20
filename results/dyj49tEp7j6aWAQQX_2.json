@@ -3,7 +3,7 @@
     "pred": "this/inv3",
     "entry_count": 539,
     "group_count": 29,
-    "duration": 7,
+    "duration": 10,
     "scope": 3,
     "groups": [
         {
@@ -449,18 +449,18 @@
                 },
                 {
                     "entry_count": 2,
-                    "code": "{\n\t// Every component is assembled in one workstation\n  all c : Component | some w : Workstation | c->w in workstation\n  \tall c : Component, w1,w2: Workstation | (c->w1 in workstation and c->w2 in workstation) implies w1=w2\n\n}",
-                    "ids": [
-                        "Yh9AEJyHfmucYvctq",
-                        "8KN8idydSBrLJAdTM"
-                    ]
-                },
-                {
-                    "entry_count": 2,
                     "code": "{\n\t// Every component is assembled in one workstation\n  \tall c: Component | one ws: Workstation | one c.workstation & ws\n\n}",
                     "ids": [
                         "mzRQCr64AmyY2xrH2",
                         "gds8QXjWpRhoL4aTW"
+                    ]
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Every component is assembled in one workstation\n  all c : Component | some w : Workstation | c->w in workstation\n  \tall c : Component, w1,w2: Workstation | (c->w1 in workstation and c->w2 in workstation) implies w1=w2\n\n}",
+                    "ids": [
+                        "Yh9AEJyHfmucYvctq",
+                        "8KN8idydSBrLJAdTM"
                     ]
                 },
                 {
@@ -523,22 +523,22 @@
                 },
                 {
                     "entry_count": 4,
-                    "code": "{\n\t// Every component is assembled in one workstation\n    all c : Component | one x: Workstation | c in x.succ \n\n}",
-                    "ids": [
-                        "HcekjAvFei6Fvqksj",
-                        "2EhJuAsgHkgR6CNYA",
-                        "bNQGGK8fCqzA2JYtQ",
-                        "rbGLzRp57Cm7R6bPe"
-                    ]
-                },
-                {
-                    "entry_count": 4,
                     "code": "{\n\t// Every component is assembled in one workstation\n\tall c: Component | one workstation.c\n}",
                     "ids": [
                         "DvtxLbRf3Fcfnc2FS",
                         "4bXKRgfFhegNbR6hE",
                         "QhKf2nzc4BkYBXCDC",
                         "qukwvcWc4tRQfvAPv"
+                    ]
+                },
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// Every component is assembled in one workstation\n    all c : Component | one x: Workstation | c in x.succ \n\n}",
+                    "ids": [
+                        "HcekjAvFei6Fvqksj",
+                        "2EhJuAsgHkgR6CNYA",
+                        "bNQGGK8fCqzA2JYtQ",
+                        "rbGLzRp57Cm7R6bPe"
                     ]
                 },
                 {
@@ -559,44 +559,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Every component is assembled in one workstation\n\tall c : Component | c in c.workstation\n}",
+                    "code": "{\n\t// Every component is assembled in one workstation\n\tall c: Component | one w1, w2: Workstation | c in w1.workstation and c in w2.workstation and w1 != w2\n}",
                     "ids": [
-                        "rHcDxhkyYrr9yMrfm"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Every component is assembled in one workstation\n  \tall c : Component | c in Workstation\n\n}",
-                    "ids": [
-                        "f6ZXkhSTmLwmudtHS"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Every component is assembled in one workstation\n  \tall c : Component | some s : Workstation | s in c\n\n}",
-                    "ids": [
-                        "hckj8wbEPg3YQG9Cz"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Every component is assembled in one workstation\n  all c : Component | one succ.c\n  \n\n}",
-                    "ids": [
-                        "CxsyuaWsfG9Ptns8t"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Every component is assembled in one workstation\n  all c : Component, w : Workstation | c in w \n\n}",
-                    "ids": [
-                        "NAHh24aWowx3jsELR"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Every component is assembled in one workstation\n    all c: Component | some w: Workstation | c in w.workers\n}",
-                    "ids": [
-                        "iLoyG6cmMBpPZqdeu"
+                        "B49opNSZejDezuRB9"
                     ]
                 },
                 {
@@ -608,6 +573,13 @@
                 },
                 {
                     "entry_count": 1,
+                    "code": "{\n\t// Every component is assembled in one workstation\n    all c: Component | some w: Workstation | c in w.workers\n}",
+                    "ids": [
+                        "iLoyG6cmMBpPZqdeu"
+                    ]
+                },
+                {
+                    "entry_count": 1,
                     "code": "{\n\t// Every component is assembled in one workstation\n  \tall c: Component | one w: c.workstation | c in parts.w\n\n\n}",
                     "ids": [
                         "YMLsP5Xk7T4JpNiML"
@@ -615,9 +587,30 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Every component is assembled in one workstation\n\tall c: Component | one c.workstation & Component \n}",
+                    "code": "{\n\t// Every component is assembled in one workstation\n  \tall c : Component | some s : Workstation | s in c\n\n}",
                     "ids": [
-                        "GAkvissFw4FSHBR9Q"
+                        "hckj8wbEPg3YQG9Cz"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every component is assembled in one workstation\n\tall c : Component | c in c.workstation\n}",
+                    "ids": [
+                        "rHcDxhkyYrr9yMrfm"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every component is assembled in one workstation\n  all c : Component, w : Workstation | c in w \n\n}",
+                    "ids": [
+                        "NAHh24aWowx3jsELR"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every component is assembled in one workstation\n  all c: Component | c.workstation = 1\n\n}",
+                    "ids": [
+                        "MtYd83p6LL5gY8mwb"
                     ]
                 },
                 {
@@ -629,16 +622,23 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Every component is assembled in one workstation\n\tall c: Component | one w1, w2: Workstation | c in w1.workstation and c in w2.workstation and w1 != w2\n}",
+                    "code": "{\n\t// Every component is assembled in one workstation\n\tall c: Component | one c.workstation & Component \n}",
                     "ids": [
-                        "B49opNSZejDezuRB9"
+                        "GAkvissFw4FSHBR9Q"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Every component is assembled in one workstation\n  all c: Component | c.workstation = 1\n\n}",
+                    "code": "{\n\t// Every component is assembled in one workstation\n  all c : Component | one succ.c\n  \n\n}",
                     "ids": [
-                        "MtYd83p6LL5gY8mwb"
+                        "CxsyuaWsfG9Ptns8t"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every component is assembled in one workstation\n  \tall c : Component | c in Workstation\n\n}",
+                    "ids": [
+                        "f6ZXkhSTmLwmudtHS"
                     ]
                 }
             ]
@@ -687,9 +687,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Every component is assembled in one workstation\n\tall p: Product | all c: p.parts | c.workstation in p.parts.workstation\n}",
+                    "code": "{\n\t// Every component is assembled in one workstation\n  \tworkstation.Workstation in Component\n\n}",
                     "ids": [
-                        "tFeqzDtQagWqxrL4S"
+                        "FGpmAtQGc2pEsr2Ra"
                     ]
                 },
                 {
@@ -701,9 +701,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Every component is assembled in one workstation\n  \tworkstation.Workstation in Component\n\n}",
+                    "code": "{\n\t// Every component is assembled in one workstation\n\tall p: Product | all c: p.parts | c.workstation in p.parts.workstation\n}",
                     "ids": [
-                        "FGpmAtQGc2pEsr2Ra"
+                        "tFeqzDtQagWqxrL4S"
                     ]
                 }
             ]
@@ -743,16 +743,16 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Every component is assembled in one workstation\n  all c : Component | some w : Workstation | c->w in workstation\n\n}",
+                    "code": "{\n\t// Every component is assembled in one workstation\n\tall c : Component | some w : Workstation | w in c.workstation\n}",
                     "ids": [
-                        "kXkE66LFE7ku9r2xp"
+                        "P5HZbvREBBR7mJq54"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Every component is assembled in one workstation\n\tall c : Component | some w : Workstation | w in c.workstation\n}",
+                    "code": "{\n\t// Every component is assembled in one workstation\n  all c : Component | some w : Workstation | c->w in workstation\n\n}",
                     "ids": [
-                        "P5HZbvREBBR7mJq54"
+                        "kXkE66LFE7ku9r2xp"
                     ]
                 },
                 {
@@ -811,16 +811,16 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Every component is assembled in one workstation\n  \tall c: Component | lone c.workstation && c.workstation in Workstation\n\n}",
+                    "code": "{\n\t// Every component is assembled in one workstation\n  \tno c: Component, ws1, ws2: Workstation | ws1 in c.workstation and ws2 in \t\t\tc.workstation and ws1 != ws2\n\n}",
                     "ids": [
-                        "HYGofwWyRkT45ide7"
+                        "97Yrsx3wrQRzs2GLB"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Every component is assembled in one workstation\n  \tno c: Component, ws1, ws2: Workstation | ws1 in c.workstation and ws2 in \t\t\tc.workstation and ws1 != ws2\n\n}",
+                    "code": "{\n\t// Every component is assembled in one workstation\n  \tall c: Component | lone c.workstation && c.workstation in Workstation\n\n}",
                     "ids": [
-                        "97Yrsx3wrQRzs2GLB"
+                        "HYGofwWyRkT45ide7"
                     ]
                 },
                 {
@@ -942,6 +942,13 @@
             "elems": [
                 {
                     "entry_count": 1,
+                    "code": "{\n\t// Every component is assembled in one workstation\n\tone x: Workstation|all c:Component | c in workstation.x\n}",
+                    "ids": [
+                        "DQhCEPazBFgvtdRBQ"
+                    ]
+                },
+                {
+                    "entry_count": 1,
                     "code": "{\n\t// Every component is assembled in one workstation\n\tone x: Workstation| Component in workstation.x\n}",
                     "ids": [
                         "T3o38fwYnDCCbfTze"
@@ -953,13 +960,6 @@
                     "ids": [
                         "MurgTPzcyf5FXnACy"
                     ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Every component is assembled in one workstation\n\tone x: Workstation|all c:Component | c in workstation.x\n}",
-                    "ids": [
-                        "DQhCEPazBFgvtdRBQ"
-                    ]
                 }
             ]
         },
@@ -968,19 +968,19 @@
             "group_count": 2,
             "correct": false,
             "elems": [
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Every component is assembled in one workstation\n\tone w: Workstation | all c: Component | c in w\n}",
-                    "ids": [
-                        "co7RM5i6dMtMBRL2J"
-                    ]
-                },
                 {
                     "entry_count": 1,
                     "code": "{\n\t// Every component is assembled in one workstation\n\tone w: Workstation | all c: Component | c in c.workstation\n}",
                     "ids": [
                         "tjXyzgiJxP9FFBPE4"
                     ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every component is assembled in one workstation\n\tone w: Workstation | all c: Component | c in w\n}",
+                    "ids": [
+                        "co7RM5i6dMtMBRL2J"
+                    ]
                 }
             ]
         },
@@ -991,16 +991,16 @@
             "elems": [
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Every component is assembled in one workstation\n\t   all c: Component | one w: Workstation | c in w.workstation\n    all w: Workstation | some c: Component | c in w.workstation\n}",
+                    "code": "{\n\t// Every component is assembled in one workstation\n\tone c : Component | one w : Workstation | w in c\n}",
                     "ids": [
-                        "ui4bebeY7KasqQXoS"
+                        "5WbthpChfmSEDdZoi"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Every component is assembled in one workstation\n\tone c : Component | one w : Workstation | w in c\n}",
+                    "code": "{\n\t// Every component is assembled in one workstation\n\t   all c: Component | one w: Workstation | c in w.workstation\n    all w: Workstation | some c: Component | c in w.workstation\n}",
                     "ids": [
-                        "5WbthpChfmSEDdZoi"
+                        "ui4bebeY7KasqQXoS"
                     ]
                 }
             ]

@@ -3,7 +3,7 @@
     "pred": "this/inv7",
     "entry_count": 1163,
     "group_count": 187,
-    "duration": 226,
+    "duration": 267,
     "scope": 3,
     "groups": [
         {
@@ -286,20 +286,20 @@
                 },
                 {
                     "entry_count": 3,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall c: Course, student: Student, p1, p2: c.projects | p1 in student.projects and p2 in student.projects => p1 = p2\n}",
+                    "ids": [
+                        "FNDMxQZjek6irwAYb",
+                        "c6KiDktpx4Qs8bFrT",
+                        "AhMRFwhfpSuMDMcJ4"
+                    ]
+                },
+                {
+                    "entry_count": 3,
                     "code": "{\n\t// Students work on at most one project per course\n\tall s : Student | all c : Course | lone p : s.projects | p in c.projects\n\n}",
                     "ids": [
                         "pmWf2mtsmHyC3mrub",
                         "ZEsBi3bi2yreLsAnv",
                         "7deb5YdRXdDXkL2y6"
-                    ]
-                },
-                {
-                    "entry_count": 3,
-                    "code": "{\n\t// Students work on at most one project per course\n\tall s : Student, c : Course| lone p : Project | p in s.projects and c in projects.p\n}",
-                    "ids": [
-                        "NqpmLgdfw2osweyzf",
-                        "D9btLJZHGgpfiDaJr",
-                        "EXzaeNTdH6iEnaLMp"
                     ]
                 },
                 {
@@ -313,20 +313,28 @@
                 },
                 {
                     "entry_count": 3,
-                    "code": "{\n\t// Students work on at most one project per course\n\tall c: Course, student: Student, p1, p2: c.projects | p1 in student.projects and p2 in student.projects => p1 = p2\n}",
-                    "ids": [
-                        "FNDMxQZjek6irwAYb",
-                        "c6KiDktpx4Qs8bFrT",
-                        "AhMRFwhfpSuMDMcJ4"
-                    ]
-                },
-                {
-                    "entry_count": 3,
                     "code": "{\n\t// Students work on at most one project per course\n\t all s : Student | all c : Course | lone pr : Project | c in projects.pr and s in projects.pr\n}",
                     "ids": [
                         "PBCwQBbateN2JTRNJ",
                         "CfXroDfJEXSwmMvMG",
                         "SQaLyyszJmjYxqKNS"
+                    ]
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s : Student, c : Course| lone p : Project | p in s.projects and c in projects.p\n}",
+                    "ids": [
+                        "NqpmLgdfw2osweyzf",
+                        "D9btLJZHGgpfiDaJr",
+                        "EXzaeNTdH6iEnaLMp"
+                    ]
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Students work on at most one project per course\n  all s: Student | all p1,p2: s.projects | \n  \t\tall c1 : (Course<:projects).p1, c2: (Course<:projects).p2 | c1=c2 implies p1=p2\n\n}",
+                    "ids": [
+                        "4y4ME39PenHysmyoZ",
+                        "hpP9ozC2kZQdrYGCC"
                     ]
                 },
                 {
@@ -339,14 +347,6 @@
                 },
                 {
                     "entry_count": 2,
-                    "code": "{\n\t// Students work on at most one project per course\n\tall s: Student | all c : Course | all p1,p2 : s.projects | p1 in c.projects and p2 in c.projects => p1=p2\n}",
-                    "ids": [
-                        "kiL3dPo5qvQJjrYsr",
-                        "LJE6ubppuQnAf8jiQ"
-                    ]
-                },
-                {
-                    "entry_count": 2,
                     "code": "{\n\t// Students work on at most one project per course\n\tall s : Student | all c : Course | no (s.projects & c.projects) or one (s.projects & c.projects)\n}",
                     "ids": [
                         "5tFCwNpijBSWgFDiQ",
@@ -355,24 +355,17 @@
                 },
                 {
                     "entry_count": 2,
-                    "code": "{\n\t// Students work on at most one project per course\n  all s: Student | all p1,p2: s.projects | \n  \t\tall c1 : (Course<:projects).p1, c2: (Course<:projects).p2 | c1=c2 implies p1=p2\n\n}",
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s: Student | all c : Course | all p1,p2 : s.projects | p1 in c.projects and p2 in c.projects => p1=p2\n}",
                     "ids": [
-                        "4y4ME39PenHysmyoZ",
-                        "hpP9ozC2kZQdrYGCC"
+                        "kiL3dPo5qvQJjrYsr",
+                        "LJE6ubppuQnAf8jiQ"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Students work on at most one project per course\n\tall s:Student | all c:Course | no disj p1,p2:Project | p1 in s.projects and p2 in s.projects and p1 in c.projects and p2 in c.projects\n}",
+                    "code": "{\n\t// Students work on at most one project per course\n\tno s : Student | some c : Course | #(c.projects & s.projects) > 1\n}",
                     "ids": [
-                        "Coa3GAaqLGrdp5m5K"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Students work on at most one project per course\n\tall s: Student | all p1, p2 : Project | (p1+p2) in s.projects and (some c: Course | p1 in c.projects and p2 in c.projects) implies p1 = p2\n}",
-                    "ids": [
-                        "XDjA3MK3rNWpGi65N"
+                        "wfpAukJggh8poXfpq"
                     ]
                 },
                 {
@@ -384,16 +377,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Students work on at most one project per course\n  all s: Student, c: Course | lone p: Project | p in s.projects & c.projects\n  // ou\n  all s: Student, c: Course| lone p: Project | (p in s.projects) and (p in c.projects)\n\n}",
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s:Student | all c:Course | no disj p1,p2:Project | p1 in s.projects and p2 in s.projects and p1 in c.projects and p2 in c.projects\n}",
                     "ids": [
-                        "EXc8TtviQR6FsimM7"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Students work on at most one project per course\n\tall s: Student |\n  \t\tno disj p1, p2: s.projects |\n  \t\t\tsome c: Course |\n  \t\t\t\tp1 in c.projects and p2 in c.projects\n}",
-                    "ids": [
-                        "4XuyxGC6MPE4DpvzM"
+                        "Coa3GAaqLGrdp5m5K"
                     ]
                 },
                 {
@@ -405,9 +391,23 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Students work on at most one project per course\n\tno s : Student | some c : Course | #(c.projects & s.projects) > 1\n}",
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s: Student |\n  \t\tno disj p1, p2: s.projects |\n  \t\t\tsome c: Course |\n  \t\t\t\tp1 in c.projects and p2 in c.projects\n}",
                     "ids": [
-                        "wfpAukJggh8poXfpq"
+                        "4XuyxGC6MPE4DpvzM"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s: Student | all p1, p2 : Project | (p1+p2) in s.projects and (some c: Course | p1 in c.projects and p2 in c.projects) implies p1 = p2\n}",
+                    "ids": [
+                        "XDjA3MK3rNWpGi65N"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n  all s: Student, c: Course | lone p: Project | p in s.projects & c.projects\n  // ou\n  all s: Student, c: Course| lone p: Project | (p in s.projects) and (p in c.projects)\n\n}",
+                    "ids": [
+                        "EXc8TtviQR6FsimM7"
                     ]
                 },
                 {
@@ -674,12 +674,12 @@
                 },
                 {
                     "entry_count": 4,
-                    "code": "{\n\t// Students work on at most one project per course\n\tall s: Student | all c: s.enrolled | #(s.projects & c.projects) < 2\n}",
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s : Student | all c : s.enrolled | lone p : Project | p in c.projects and s in projects.p\n}",
                     "ids": [
-                        "Lea5ZX9m8FYnb5hxR",
-                        "vakjjHaWiAi92sJmx",
-                        "KctZ4bDBotDqAsJaF",
-                        "EvSWPgpNBYwhHy3Mn"
+                        "HEZhfMuS6vD3LKE6n",
+                        "kPoxZQWSa4YYydTA5",
+                        "eRAMPQKzRycnZGQ5E",
+                        "Wm7e9TPYcEEuySwKY"
                     ]
                 },
                 {
@@ -704,12 +704,12 @@
                 },
                 {
                     "entry_count": 4,
-                    "code": "{\n\t// Students work on at most one project per course\n\tall s : Student | all c : s.enrolled | lone p : Project | p in c.projects and s in projects.p\n}",
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s: Student | all c: s.enrolled | #(s.projects & c.projects) < 2\n}",
                     "ids": [
-                        "HEZhfMuS6vD3LKE6n",
-                        "kPoxZQWSa4YYydTA5",
-                        "eRAMPQKzRycnZGQ5E",
-                        "Wm7e9TPYcEEuySwKY"
+                        "Lea5ZX9m8FYnb5hxR",
+                        "vakjjHaWiAi92sJmx",
+                        "KctZ4bDBotDqAsJaF",
+                        "EvSWPgpNBYwhHy3Mn"
                     ]
                 },
                 {
@@ -738,30 +738,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n  all s: Student, c: Course |\n    // Se o estudante est\u00e1 inscrito no curso\n    s -> c in enrolled implies\n    // Ent\u00e3o o estudante trabalha em no m\u00e1ximo um projeto desse curso\n    lone p: Project | p in c.projects and p in s.projects\n// Students work on at most one project per course\n}",
+                    "code": "{\n\t// Students work on at most one project per course\n    all student: Student, course: Course | lone project: student.projects | project in course.projects and course in student.enrolled\n}",
                     "ids": [
-                        "3HEewFydmKQvR79Kp"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Students work on at most one project per course\n  \tall c : Course, s : Student | c in s.enrolled implies (lone p : Project | p in c.projects & s.projects)\n\n\t\n}",
-                    "ids": [
-                        "YaG2sW4a5xoQbFQEM"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Students work on at most one project per course\n  \tall s: Student | all c: s.enrolled, p1,p2: Project | \n  \t\tp1 in c.projects and p2 in c.projects and p1 in s.projects and p2 in s.projects => p1 = p2\n}",
-                    "ids": [
-                        "qCSxBg73QJDK7N58i"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Students work on at most one project per course\n\tall s: Student | all c: s.enrolled | all p1,p2: s.projects | p1 in c.projects and p2 in c.projects implies p1 = p2\n}",
-                    "ids": [
-                        "ZGmnQsmsSY8R4mQT7"
+                        "6G7gTAg32Yi5XbXw2"
                     ]
                 },
                 {
@@ -773,9 +752,16 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Students work on at most one project per course\n  \tall s : Student, c : s.enrolled | some s.projects&c.projects implies one s.projects&c.projects\n}",
+                    "code": "{\n\t// Students work on at most one project per course\n  \tall s: Student | all c: s.enrolled, p1,p2: Project | \n  \t\tp1 in c.projects and p2 in c.projects and p1 in s.projects and p2 in s.projects => p1 = p2\n}",
                     "ids": [
-                        "fs5HNnPvqcyAZ5ifq"
+                        "qCSxBg73QJDK7N58i"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s: Student |all c: s.enrolled | #({p: Project | p in s.projects and p in c.projects}) <=1 \n}",
+                    "ids": [
+                        "BmGKNdHosJTvkchat"
                     ]
                 },
                 {
@@ -787,16 +773,30 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Students work on at most one project per course\n    all student: Student, course: Course | lone project: student.projects | project in course.projects and course in student.enrolled\n}",
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s: Student | all c: s.enrolled | all p1,p2: s.projects | p1 in c.projects and p2 in c.projects implies p1 = p2\n}",
                     "ids": [
-                        "6G7gTAg32Yi5XbXw2"
+                        "ZGmnQsmsSY8R4mQT7"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Students work on at most one project per course\n\tall s: Student |all c: s.enrolled | #({p: Project | p in s.projects and p in c.projects}) <=1 \n}",
+                    "code": "{\n\t// Students work on at most one project per course\n  \tall c : Course, s : Student | c in s.enrolled implies (lone p : Project | p in c.projects & s.projects)\n\n\t\n}",
                     "ids": [
-                        "BmGKNdHosJTvkchat"
+                        "YaG2sW4a5xoQbFQEM"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n  all s: Student, c: Course |\n    // Se o estudante est\u00e1 inscrito no curso\n    s -> c in enrolled implies\n    // Ent\u00e3o o estudante trabalha em no m\u00e1ximo um projeto desse curso\n    lone p: Project | p in c.projects and p in s.projects\n// Students work on at most one project per course\n}",
+                    "ids": [
+                        "3HEewFydmKQvR79Kp"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n  \tall s : Student, c : s.enrolled | some s.projects&c.projects implies one s.projects&c.projects\n}",
+                    "ids": [
+                        "fs5HNnPvqcyAZ5ifq"
                     ]
                 }
             ]
@@ -869,6 +869,14 @@
                 },
                 {
                     "entry_count": 2,
+                    "code": "{\n\t// Students work on at most one project per course\n  all s:Student | lone s.projects.projects\n\n}",
+                    "ids": [
+                        "4qZQBuzC5hahaaMMs",
+                        "jqspGwgtih8QyN8hW"
+                    ]
+                },
+                {
+                    "entry_count": 2,
                     "code": "{\n\t// Students work on at most one project per course\n\tall s: Student| all p: s.projects | #((p.~enrolled)) <= 1\n}",
                     "ids": [
                         "Q82PqChYvyNFaQvXD",
@@ -884,221 +892,10 @@
                     ]
                 },
                 {
-                    "entry_count": 2,
-                    "code": "{\n\t// Students work on at most one project per course\n  all s:Student | lone s.projects.projects\n\n}",
-                    "ids": [
-                        "4qZQBuzC5hahaaMMs",
-                        "jqspGwgtih8QyN8hW"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Students work on at most one project per course\n\tall s : Student, p,p2 : s.projects, c : s.enrolled |\n  \t\tp in c implies not p2 in c\n}",
-                    "ids": [
-                        "Jq8SxkSE74v54tnQv"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Students work on at most one project per course\n  \n  all s : Student, c : s.projects | one c\n}",
-                    "ids": [
-                        "LJn89vTv4sc5TbyWv"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Students work on at most one project per course\n\tall s: Student, c: Course | lone p: Project | p in c.projects and s in p.projects.^enrolled\n\n}",
-                    "ids": [
-                        "AZi9wFcofNJS4zjzo"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Students work on at most one project per course\n  //all s: Student, pr: Project | lone (Course<:projects).pr and (Person<:projects).pr\n  all s: Student |  lone pr: Project | pr in enrolled[s] and pr in projects[Course]\n\n}",
-                    "ids": [
-                        "rkSiZdPWuKKsSzkAW"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Students work on at most one project per course\n  \n  all s : Student | lone (s.(Person <: projects) & s.enrolled )  \n\n}",
-                    "ids": [
-                        "69P6E3PrXnSyJkAvX"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Students work on at most one project per course\n    all s: Student, c : s.enrolled | lone p: Project | p in c.projects and s in p.projects \n    \n}",
-                    "ids": [
-                        "Q7oFKK96JLiMYR4Ay"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Students work on at most one project per course\n  \n  all s : Student | one  s.enrolled implies ( lone s.(Course <: projects)  ) \n\n}",
-                    "ids": [
-                        "Dp9ucYu4xMR4BpMXL"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Students work on at most one project per course\n\tall s: Student, c : s.enrolled, p : s.projects | lone( c.projects & p)\n}",
-                    "ids": [
-                        "97a26edHRn4twdC5D"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Students work on at most one project per course\n\tall s : Student | all c : s.enrolled | lone p : Project | p in c\n}",
-                    "ids": [
-                        "HDKP5WE96DXPf3aL2"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Students work on at most one project per course\n  \tall s : Student | all p : s.projects | lone c : s.enrolled.projects | p in c.projects\n}",
-                    "ids": [
-                        "7qd887ByEkrGKyPqX"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Students work on at most one project per course\n\tall s: Student, p: s.projects | lone p & (Course <: projects).p\n}",
-                    "ids": [
-                        "XrAzvRhXyrfZvNiKi"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Students work on at most one project per course\n  \t(Course <: projects).~enrolled in Project lone -> set Course\n\n}",
-                    "ids": [
-                        "WQ8DaH2ogQ7d36Zq5"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Students work on at most one project per course\n  \tall s: Student, c: Course |\n  \t\ts in c.enrolled implies \n        \tlone p: Project | p in s.projects && p in c.projects\n\t\n}",
-                    "ids": [
-                        "HJv9yxAcJe6pJ857y"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Students work on at most one project per course\n\tall s: Student | all disj p1, p2: s.enrolled.projects | no (p1&p2&s.projects)\n}",
-                    "ids": [
-                        "2rDxToceLbctbCP9P"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Students work on at most one project per course\n  all p : Student, c : Course | lone p : Project | p in p.projects and p in c .projects\n\n}",
-                    "ids": [
-                        "az2odmk634MESQZeF"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Students work on at most one project per course\n  \tall s : Student | lone p : Project | s.projects = p \n\n}",
-                    "ids": [
-                        "bNKtk5HsiynwzHfJx"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Students work on at most one project per course\n\tall s: Student, c: Course | lone p: Project | p in c.projects and s in p.projects\n\n}",
-                    "ids": [
-                        "oBRTxciL4nvpmA5fW"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Students work on at most one project per course\n  \tall s : Student | all p : s.projects | lone c : s.enrolled.projects | p in c\n}",
-                    "ids": [
-                        "QG2nNR3f4N7NDey4R"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Students work on at most one project per course\n  \tall p:Person |\n  \t\tall c:Course |\n  \t\t\tall proj:p.projects |\n  \t\t\t\tlone c.projects&proj\n}",
-                    "ids": [
-                        "dTSL5PA8AEt4ELbd2"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Students work on at most one project per course\n\tall c: Course , p: c.projects | all s: (Person <: projects).p |\n  s not in (c.projects <: Course  - p)\n}",
-                    "ids": [
-                        "squKqXLQaL4HhpH8N"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Students work on at most one project per course\n  \tall s: Student, c: Course | lone (s.(Person <: projects) & c.(Person <: projects))\n}",
-                    "ids": [
-                        "vY6cfjAmeEnsHgkdk"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Students work on at most one project per course\n\t// all s: Student, c: Course | lone (s.projects & c.projects)\n  \tall c: Course | lone (enrolled.c & c.(Course<:projects))\n}",
-                    "ids": [
-                        "jXMBMCSXwCR6BtTMn"
-                    ]
-                },
-                {
                     "entry_count": 1,
                     "code": "{\n\t// Students work on at most one project per course\n\tall s: Student, c: Course | lone p: Project | p in c.projects and s in p.projects.enrolled\n\n}",
                     "ids": [
                         "AWsPeqfj9wpvBzeqq"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Students work on at most one project per course\n  \tall s : Student | all c : Course | lone p : Project | \n  \t\t(c.projects & s.projects) = p \n\n}",
-                    "ids": [
-                        "mBrdWi4ovuZBvfWmC"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Students work on at most one project per course\n\tall s:Student, c:Course | lone s.projects <: Person & c.projects <: Course\n}",
-                    "ids": [
-                        "g7JtXZyxYLShmyQwL"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Students work on at most one project per course}\n  all s:Student, c:Course, p:Project | c in s.enrolled and p in s.projects and p in c.projects implies lone p\n  \n}",
-                    "ids": [
-                        "uhF9T5AC2okBHzbaB"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Students work on at most one project per course\n\tall s: Student | all p1, p2: Project | ((p1 in s.projects) and (p2 in s.projects)) implies ((p1 = p2) or (no ((p1 & Course) & (p2 & Course))))  \n}",
-                    "ids": [
-                        "MeCRZFpnAcvE9AkW3"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Students work on at most one project per course\n\tall s : Student | lone p : Project | p in s.enrolled\n}",
-                    "ids": [
-                        "9p5voC7yNyyTAp4nm"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Students work on at most one project per course\n  \tall s : Student | all c: s.enrolled.projects | lone(c)\n\n}",
-                    "ids": [
-                        "tGyqE7PTCS7nSKf8m"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Students work on at most one project per course\n  all s : Student | all p : Project | once(p in s.projects) or not(p in s.projects)\n}",
-                    "ids": [
-                        "trD87K2w5LQS23sLa"
                     ]
                 },
                 {
@@ -1110,16 +907,121 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Students work on at most one project per course\n\tall s : Student | lone p : Project | p in p.projects\n}",
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s: Student, p: s.projects | lone p & (Course <: projects).p\n}",
                     "ids": [
-                        "hh4bSW4fKipm4jbmF"
+                        "XrAzvRhXyrfZvNiKi"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Students work on at most one project per course\n  \tall p:Person, c:Course | lone p:c.projects | p in p.projects\n  \t\t\t\n}",
+                    "code": "{\n\t// Students work on at most one project per course\n  \n  all s : Student | lone (s.(Person <: projects) & s.enrolled )  \n\n}",
                     "ids": [
-                        "mG287TzioPHkLAro7"
+                        "69P6E3PrXnSyJkAvX"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s: Student | all p1, p2: Project | ((p1 in s.projects) and (p2 in s.projects)) implies ((p1 = p2) or (no ((p1 & Course) & (p2 & Course))))  \n}",
+                    "ids": [
+                        "MeCRZFpnAcvE9AkW3"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s:Student, c:Course | lone s.projects <: Person & c.projects <: Course\n}",
+                    "ids": [
+                        "g7JtXZyxYLShmyQwL"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n  \tall p:Person |\n  \t\tall c:Course |\n  \t\t\tall proj:p.projects |\n  \t\t\t\tlone c.projects&proj\n}",
+                    "ids": [
+                        "dTSL5PA8AEt4ELbd2"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n  \tall s : Student | lone p : Project | s.projects = p \n\n}",
+                    "ids": [
+                        "bNKtk5HsiynwzHfJx"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s : Student | all c : s.enrolled | lone p : Project | p in c\n}",
+                    "ids": [
+                        "HDKP5WE96DXPf3aL2"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s: Student | all disj p1, p2: s.enrolled.projects | no (p1&p2&s.projects)\n}",
+                    "ids": [
+                        "2rDxToceLbctbCP9P"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s: Student, c : s.enrolled, p : s.projects | lone( c.projects & p)\n}",
+                    "ids": [
+                        "97a26edHRn4twdC5D"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n  \tall s : Student | all c : Course | lone p : Project | \n  \t\t(c.projects & s.projects) = p \n\n}",
+                    "ids": [
+                        "mBrdWi4ovuZBvfWmC"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s: Student, c: Course | lone p: Project | p in c.projects and s in p.projects.^enrolled\n\n}",
+                    "ids": [
+                        "AZi9wFcofNJS4zjzo"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s : Student, p,p2 : s.projects, c : s.enrolled |\n  \t\tp in c implies not p2 in c\n}",
+                    "ids": [
+                        "Jq8SxkSE74v54tnQv"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall c: Course , p: c.projects | all s: (Person <: projects).p |\n  s not in (c.projects <: Course  - p)\n}",
+                    "ids": [
+                        "squKqXLQaL4HhpH8N"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n\t// all s: Student, c: Course | lone (s.projects & c.projects)\n  \tall c: Course | lone (enrolled.c & c.(Course<:projects))\n}",
+                    "ids": [
+                        "jXMBMCSXwCR6BtTMn"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n  \tall s: Student, c: Course | lone (s.(Person <: projects) & c.(Person <: projects))\n}",
+                    "ids": [
+                        "vY6cfjAmeEnsHgkdk"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n  //all s: Student, pr: Project | lone (Course<:projects).pr and (Person<:projects).pr\n  all s: Student |  lone pr: Project | pr in enrolled[s] and pr in projects[Course]\n\n}",
+                    "ids": [
+                        "rkSiZdPWuKKsSzkAW"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s : Student | lone p : Project | p in s.enrolled\n}",
+                    "ids": [
+                        "9p5voC7yNyyTAp4nm"
                     ]
                 },
                 {
@@ -1134,6 +1036,104 @@
                     "code": "{\n\t// Students work on at most one project per course\n  \n  all s : Student | some  s.enrolled implies ( lone s.(Course <: projects)  ) \n\n}",
                     "ids": [
                         "fyyjiiDvTk7Y5ADCm"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n  \n  all s : Student | one  s.enrolled implies ( lone s.(Course <: projects)  ) \n\n}",
+                    "ids": [
+                        "Dp9ucYu4xMR4BpMXL"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n  all s : Student | all p : Project | once(p in s.projects) or not(p in s.projects)\n}",
+                    "ids": [
+                        "trD87K2w5LQS23sLa"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n  \tall s : Student | all p : s.projects | lone c : s.enrolled.projects | p in c\n}",
+                    "ids": [
+                        "QG2nNR3f4N7NDey4R"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n  all p : Student, c : Course | lone p : Project | p in p.projects and p in c .projects\n\n}",
+                    "ids": [
+                        "az2odmk634MESQZeF"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course}\n  all s:Student, c:Course, p:Project | c in s.enrolled and p in s.projects and p in c.projects implies lone p\n  \n}",
+                    "ids": [
+                        "uhF9T5AC2okBHzbaB"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s: Student, c: Course | lone p: Project | p in c.projects and s in p.projects\n\n}",
+                    "ids": [
+                        "oBRTxciL4nvpmA5fW"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n  \tall s : Student | all c: s.enrolled.projects | lone(c)\n\n}",
+                    "ids": [
+                        "tGyqE7PTCS7nSKf8m"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s : Student | lone p : Project | p in p.projects\n}",
+                    "ids": [
+                        "hh4bSW4fKipm4jbmF"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n  \t(Course <: projects).~enrolled in Project lone -> set Course\n\n}",
+                    "ids": [
+                        "WQ8DaH2ogQ7d36Zq5"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n  \tall p:Person, c:Course | lone p:c.projects | p in p.projects\n  \t\t\t\n}",
+                    "ids": [
+                        "mG287TzioPHkLAro7"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n    all s: Student, c : s.enrolled | lone p: Project | p in c.projects and s in p.projects \n    \n}",
+                    "ids": [
+                        "Q7oFKK96JLiMYR4Ay"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n  \tall s: Student, c: Course |\n  \t\ts in c.enrolled implies \n        \tlone p: Project | p in s.projects && p in c.projects\n\t\n}",
+                    "ids": [
+                        "HJv9yxAcJe6pJ857y"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n  \tall s : Student | all p : s.projects | lone c : s.enrolled.projects | p in c.projects\n}",
+                    "ids": [
+                        "7qd887ByEkrGKyPqX"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n  \n  all s : Student, c : s.projects | one c\n}",
+                    "ids": [
+                        "LJn89vTv4sc5TbyWv"
                     ]
                 }
             ]
@@ -1219,14 +1219,6 @@
                 },
                 {
                     "entry_count": 2,
-                    "code": "{\n\t// Students work on at most one project per course\n\tall s: Student | lone p: s.enrolled.projects | p in s.projects\n}",
-                    "ids": [
-                        "kpNtCA88ah8Sk4QJs",
-                        "kMMazDuY6AwjogmWS"
-                    ]
-                },
-                {
-                    "entry_count": 2,
                     "code": "{\n\t// Students work on at most one project per course\n  \tall s : Student | lone p : Project | p in s.projects and p in s.enrolled.projects\n\n}",
                     "ids": [
                         "fHFqAyAhAHWy4HdPn",
@@ -1234,17 +1226,11 @@
                     ]
                 },
                 {
-                    "entry_count": 1,
-                    "code": "{\n\t// Students work on at most one project per course\n\tall s:Student, c:Course | lone s.projects & s.enrolled.projects\n}",
+                    "entry_count": 2,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s: Student | lone p: s.enrolled.projects | p in s.projects\n}",
                     "ids": [
-                        "xno3BzLYxkxsRk2xb"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Students work on at most one project per course\n  \tenrolled.projects & Student <: projects in Student -> lone Project\n\n}",
-                    "ids": [
-                        "SrCcaznhWybzWYvca"
+                        "kpNtCA88ah8Sk4QJs",
+                        "kMMazDuY6AwjogmWS"
                     ]
                 },
                 {
@@ -1263,16 +1249,30 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Students work on at most one project per course\n\tall s: Student |#({p: Project | p in s.projects and p in s.enrolled.projects}) <=1 \n}",
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s : Student, c : Course | lone pr : Project | pr in (s.enrolled.projects & s.projects)\n}",
                     "ids": [
-                        "4Rm3HxWNRvMeyxdrq"
+                        "obRB7KPQbn3EErewE"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Students work on at most one project per course\n\tall s : Student, c : Course | lone pr : Project | pr in (s.enrolled.projects & s.projects)\n}",
+                    "code": "{\n\t// Students work on at most one project per course\n  \tenrolled.projects & Student <: projects in Student -> lone Project\n\n}",
                     "ids": [
-                        "obRB7KPQbn3EErewE"
+                        "SrCcaznhWybzWYvca"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s:Student, c:Course | lone s.projects & s.enrolled.projects\n}",
+                    "ids": [
+                        "xno3BzLYxkxsRk2xb"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s: Student |#({p: Project | p in s.projects and p in s.enrolled.projects}) <=1 \n}",
+                    "ids": [
+                        "4Rm3HxWNRvMeyxdrq"
                     ]
                 }
             ]
@@ -1434,16 +1434,16 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Students work on at most one project per course\n\t all s : Student | all c : Course | lone pr : Project | c in projects.pr and s in enrolled.c\n}",
+                    "code": "{\n  all s : Student, c : Course |c in s.enrolled implies (lone p : Project | p in c.projects)\n\t// Students work on at most one project per course\n\n}",
                     "ids": [
-                        "vmwcHMYdHJxsWLMpA"
+                        "tSuJBexGZD9twQF2g"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n  all s : Student, c : Course |c in s.enrolled implies (lone p : Project | p in c.projects)\n\t// Students work on at most one project per course\n\n}",
+                    "code": "{\n\t// Students work on at most one project per course\n\t all s : Student | all c : Course | lone pr : Project | c in projects.pr and s in enrolled.c\n}",
                     "ids": [
-                        "tSuJBexGZD9twQF2g"
+                        "vmwcHMYdHJxsWLMpA"
                     ]
                 },
                 {
@@ -1626,9 +1626,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Students work on at most one project per course\n    all s : Student | #s.projects<2\n}",
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s:Student | #(s.projects) <=1\n}",
                     "ids": [
-                        "98ejCKdyzALhaXWpu"
+                        "aQ5aK6ESGb5rpg62y"
                     ]
                 },
                 {
@@ -1640,16 +1640,16 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Students work on at most one project per course\n\tall p : Person | all pr1, pr2 : Project | p in Student and pr1 in p.projects and pr2 in p.projects implies pr1 = pr2\n}",
+                    "code": "{\n\t// Students work on at most one project per course\n    all s : Student | #s.projects<2\n}",
                     "ids": [
-                        "293Kt3kpgCQez4Wtp"
+                        "98ejCKdyzALhaXWpu"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Students work on at most one project per course\n\tall s:Student | #(s.projects) <=1\n}",
+                    "code": "{\n\t// Students work on at most one project per course\n\tall p : Person | all pr1, pr2 : Project | p in Student and pr1 in p.projects and pr2 in p.projects implies pr1 = pr2\n}",
                     "ids": [
-                        "aQ5aK6ESGb5rpg62y"
+                        "293Kt3kpgCQez4Wtp"
                     ]
                 }
             ]
@@ -1702,20 +1702,20 @@
                 },
                 {
                     "entry_count": 3,
-                    "code": "{\n\t// Students work on at most one project per course\n\tall s : Student | all c : s.enrolled | one p : Project | p in c.projects\n}",
-                    "ids": [
-                        "kMqXkr8PeTQi6q6DR",
-                        "EgDkrm3JAqndGW3EF",
-                        "ByCPEwjpzPAsoPeY3"
-                    ]
-                },
-                {
-                    "entry_count": 3,
                     "code": "{\n\t// Students work on at most one project per course\n\tall s : Student | all c : s.enrolled | one p : Project | c.projects=p\n}",
                     "ids": [
                         "XxKPbh9FGbBqARRB3",
                         "xz6He3kBEDYk2FzbB",
                         "g5z333F8277uRMZSY"
+                    ]
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s : Student | all c : s.enrolled | one p : Project | p in c.projects\n}",
+                    "ids": [
+                        "kMqXkr8PeTQi6q6DR",
+                        "EgDkrm3JAqndGW3EF",
+                        "ByCPEwjpzPAsoPeY3"
                     ]
                 },
                 {
@@ -1760,9 +1760,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Students work on at most one project per course\n\tall s : Student | one s.projects <: s.enrolled.projects\n}",
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s: Student | one p: s.enrolled.projects | p in s.projects\n}",
                     "ids": [
-                        "m8QPLT7P8qhRG5H3P"
+                        "bNuRHH6Aa6H8Rj5Qt"
                     ]
                 },
                 {
@@ -1774,9 +1774,16 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Students work on at most one project per course\n\tall s: Student | one p: s.enrolled.projects | p in s.projects\n}",
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s: Student | #(s.enrolled.projects & s.projects) = 1\n}",
                     "ids": [
-                        "bNuRHH6Aa6H8Rj5Qt"
+                        "z8tK3NLGXgfe75wYB"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s : Student | one s.projects <: s.enrolled.projects\n}",
+                    "ids": [
+                        "m8QPLT7P8qhRG5H3P"
                     ]
                 },
                 {
@@ -1784,13 +1791,6 @@
                     "code": "{\n\t// Students work on at most one project per course\n\tall s: Student | one p: Project | p in s.projects and p in s.enrolled.projects\n}",
                     "ids": [
                         "SmRcxNuSAqbcvegsw"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Students work on at most one project per course\n\tall s: Student | #(s.enrolled.projects & s.projects) = 1\n}",
-                    "ids": [
-                        "z8tK3NLGXgfe75wYB"
                     ]
                 }
             ]
@@ -1862,9 +1862,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Students work on at most one project per course\n  \t//all s : Student, c : Course | #(s.projects & c.projects) <= 1\n\tall s : Student, p1, p2: Project | p1 in s.projects and p2 in s.projects and p1 != p2 => not Course <: projects.p1 = projects.p2\n  \t//all s : Student, p1, p2: Project | p1 in s.projects and p2 in s.projects and not p1 = p2 => not Course <: projects.p1 = projects.p2\n}",
+                    "code": "{\n\t// Students work on at most one project per course\n  \t//all s : Student, c : Course | #(s.projects & c.projects) <= 1\n\tall s : Student, p1, p2: Project | p1 in s.projects and p2 in s.projects and not p1 = p2 => not Course <: projects.p1 = projects.p2\n}",
                     "ids": [
-                        "sWqMrAG4Cv6DscBeC"
+                        "poyNQLazfCFW9JY9L"
                     ]
                 },
                 {
@@ -1876,9 +1876,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Students work on at most one project per course\n  \t//all s : Student, c : Course | #(s.projects & c.projects) <= 1\n\tall s : Student, p1, p2: Project | p1 in s.projects and p2 in s.projects and not p1 = p2 => not Course <: projects.p1 = projects.p2\n}",
+                    "code": "{\n\t// Students work on at most one project per course\n  \t//all s : Student, c : Course | #(s.projects & c.projects) <= 1\n\tall s : Student, p1, p2: Project | p1 in s.projects and p2 in s.projects and p1 != p2 => not Course <: projects.p1 = projects.p2\n  \t//all s : Student, p1, p2: Project | p1 in s.projects and p2 in s.projects and not p1 = p2 => not Course <: projects.p1 = projects.p2\n}",
                     "ids": [
-                        "poyNQLazfCFW9JY9L"
+                        "sWqMrAG4Cv6DscBeC"
                     ]
                 }
             ]
@@ -1890,20 +1890,20 @@
             "elems": [
                 {
                     "entry_count": 3,
-                    "code": "{\n  all s: Student, c: Course | s -> c in enrolled and one p: Project | s -> p in projects and c -> p in projects\n\t// Students work on at most one project per course\n\n}",
-                    "ids": [
-                        "nc4HAAH5SfWY8p9qk",
-                        "QXwqhF265v3qesbTJ",
-                        "dn8cPjuKXv7rCf6qE"
-                    ]
-                },
-                {
-                    "entry_count": 3,
                     "code": "{\n\t// Students work on at most one project per course\n  \t//all s:Student | all disj pr1, pr2:Project | all c: Course | \n  \t//pr1 in s.projects and pr2 in s.projects and pr1 in c.projects and c in s.enrolled implies pr2 not in c.projects\n  \t\n  \tall s:Student, c:Course | one pr:Project | c in s.enrolled and pr in c.projects and pr in s.projects\n\n}",
                     "ids": [
                         "G7GpXppqBrn8mZjvi",
                         "eqsJHxaaZ8ZWPBseH",
                         "RrehvtF9m7Zcf9gyp"
+                    ]
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n  all s: Student, c: Course | s -> c in enrolled and one p: Project | s -> p in projects and c -> p in projects\n\t// Students work on at most one project per course\n\n}",
+                    "ids": [
+                        "nc4HAAH5SfWY8p9qk",
+                        "QXwqhF265v3qesbTJ",
+                        "dn8cPjuKXv7rCf6qE"
                     ]
                 },
                 {
@@ -2009,9 +2009,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Students work on at most one project per course\n  \tall s:Student | all pr1, pr2:Project | all c: Course | \n  \tpr1 in s.projects and pr2 in s.projects and pr1 in c.projects implies pr2 not in c.projects\n\n}",
+                    "code": "{\n\t// Students work on at most one project per course\n  \t\tall x : Student, p1,p2 : Project, c1,c2 : Course | (x->p1 in projects and x->p2 in projects and c1->p1 in projects and c2->p2 in projects ) implies(not c1=c2)\n\n}",
                     "ids": [
-                        "NyLrP7kiT95nN4h99"
+                        "HJFoJAgDf7oLR87rc"
                     ]
                 },
                 {
@@ -2023,6 +2023,13 @@
                 },
                 {
                     "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course}\nall x:Student | all p1,p2:x.projects, c:Course | p1 in c.projects and p2 in c.projects implies p1!=p2\n  \n}",
+                    "ids": [
+                        "tHKMJ84McBBwn2AMW"
+                    ]
+                },
+                {
+                    "entry_count": 1,
                     "code": "{\n\t// Students work on at most one project per course\n\tall c: Course , p: c.projects, s1,s2: Student |\n  s1 in (Person <: projects).p and s2 in (Person <: projects).p implies s1!=s2\n}",
                     "ids": [
                         "pQwyqKjcDYmc3fNPP"
@@ -2030,16 +2037,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Students work on at most one project per course\n  \t\tall x : Student, p1,p2 : Project, c1,c2 : Course | (x->p1 in projects and x->p2 in projects and c1->p1 in projects and c2->p2 in projects ) implies(not c1=c2)\n\n}",
+                    "code": "{\n\t// Students work on at most one project per course\n  \tall s:Student | all pr1, pr2:Project | all c: Course | \n  \tpr1 in s.projects and pr2 in s.projects and pr1 in c.projects implies pr2 not in c.projects\n\n}",
                     "ids": [
-                        "HJFoJAgDf7oLR87rc"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Students work on at most one project per course}\nall x:Student | all p1,p2:x.projects, c:Course | p1 in c.projects and p2 in c.projects implies p1!=p2\n  \n}",
-                    "ids": [
-                        "tHKMJ84McBBwn2AMW"
+                        "NyLrP7kiT95nN4h99"
                     ]
                 }
             ]
@@ -2051,37 +2051,9 @@
             "elems": [
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Students work on at most one project per course\n\tall disj s : Student , p,p1 : s.projects | p.(~projects).teaches not in p1.(~projects).teaches\n}",
-                    "ids": [
-                        "nMBjK2muMNTQ4P5eM"
-                    ]
-                },
-                {
-                    "entry_count": 1,
                     "code": "{\n\t// Students work on at most one project per course\n  \t//all s : Student, c : Course | #(s.projects & c.projects) <= 1\n\tall s: Student, p1, p2: s.projects | Course <: projects.p1 != projects.p2\n  \t//all s : Student, p1, p2: Project | p1 in s.projects and p2 in s.projects and not p1 = p2 => not Course <: projects.p1 = projects.p2\n}",
                     "ids": [
                         "x395Q3e8aswzbosq3"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Students work on at most one project per course\n  \tall s : Student | s.projects in s.enrolled\n\n}",
-                    "ids": [
-                        "jAsTJK5ZMEJP9Pzve"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Students work on at most one project per course\n  all s : Student, p : s.projects | one c : Course | c in p \n\n}",
-                    "ids": [
-                        "v4vf3GFAZukp5Qc2s"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Students work on at most one project per course\n\tall s : Student , p : Project | s.projects in p.enrolled and lone p.enrolled\n}",
-                    "ids": [
-                        "Bv3LjBuYcdeMTgJLt"
                     ]
                 },
                 {
@@ -2093,9 +2065,37 @@
                 },
                 {
                     "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n  all s : Student, p : s.projects | one c : Course | c in p \n\n}",
+                    "ids": [
+                        "v4vf3GFAZukp5Qc2s"
+                    ]
+                },
+                {
+                    "entry_count": 1,
                     "code": "{\n\t// Students work on at most one project per course\n  \t//all s : Student, c : Course | #(s.projects & c.projects) <= 1\n\tall s : Student, p1, p2: s.projects | not Course <: projects.p1 = projects.p2\n  \t//all s : Student, p1, p2: Project | p1 in s.projects and p2 in s.projects and not p1 = p2 => not Course <: projects.p1 = projects.p2\n}",
                     "ids": [
                         "kwoMPr4gFcJXczWby"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n  \tall s : Student | s.projects in s.enrolled\n\n}",
+                    "ids": [
+                        "jAsTJK5ZMEJP9Pzve"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall disj s : Student , p,p1 : s.projects | p.(~projects).teaches not in p1.(~projects).teaches\n}",
+                    "ids": [
+                        "nMBjK2muMNTQ4P5eM"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s : Student , p : Project | s.projects in p.enrolled and lone p.enrolled\n}",
+                    "ids": [
+                        "Bv3LjBuYcdeMTgJLt"
                     ]
                 }
             ]
@@ -2107,9 +2107,16 @@
             "elems": [
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Students work on at most one project per course\n\tall s : Student | one (s.projects).projects\n}",
+                    "code": "{\n\t// Students work on at most one project per course\n  \tall s : Student | one (Course <: projects).s\n\t\n}",
                     "ids": [
-                        "hGqdKurBvXv4SwiTg"
+                        "tZKjLEvPR9zJXK3kp"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s: Student | one c:s.enrolled | one proj:s.projects | c = proj \n}",
+                    "ids": [
+                        "qj4FAgs7C7xuTXijW"
                     ]
                 },
                 {
@@ -2121,23 +2128,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Students work on at most one project per course\n  \tall s: Student | some s.projects.(Course<:projects)\n}",
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s : Student | one (s.projects).projects\n}",
                     "ids": [
-                        "ScJP5KGNFEhGJywjo"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Students work on at most one project per course\n  \tall s : Student | one (Course <: projects).s\n\t\n}",
-                    "ids": [
-                        "tZKjLEvPR9zJXK3kp"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Students work on at most one project per course\n\tall s: Student | one c:s.enrolled | one proj:s.projects | c = s  \n}",
-                    "ids": [
-                        "pni52XcR9ACzhxzNB"
+                        "hGqdKurBvXv4SwiTg"
                     ]
                 },
                 {
@@ -2149,9 +2142,16 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Students work on at most one project per course\n\tall s: Student | one c:s.enrolled | one proj:s.projects | c = proj \n}",
+                    "code": "{\n\t// Students work on at most one project per course\n  \tall s: Student | some s.projects.(Course<:projects)\n}",
                     "ids": [
-                        "qj4FAgs7C7xuTXijW"
+                        "ScJP5KGNFEhGJywjo"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s: Student | one c:s.enrolled | one proj:s.projects | c = s  \n}",
+                    "ids": [
+                        "pni52XcR9ACzhxzNB"
                     ]
                 }
             ]
@@ -2163,14 +2163,6 @@
             "elems": [
                 {
                     "entry_count": 2,
-                    "code": "{\n\t// Students work on at most one project per course\n\tall s:Student , p:s.projects | lone (Course<:projects).p\n}",
-                    "ids": [
-                        "y9DWokJDToxwfP6FK",
-                        "dnFe8Az2YvpyJLfyA"
-                    ]
-                },
-                {
-                    "entry_count": 2,
                     "code": "{\n\t// Students work on at most one project per course\n\tall s: Student, pj: Project, c1, c2: Course | pj in s.projects and pj in c1.projects and pj in c2.projects => c1 = c2\n}",
                     "ids": [
                         "NJziFF6Gg4tchcyss",
@@ -2178,10 +2170,11 @@
                     ]
                 },
                 {
-                    "entry_count": 1,
-                    "code": "{\n\t// Students work on at most one project per course\n\tall s : Student, p : s.projects | lone c : Course | p in c.projects \n}",
+                    "entry_count": 2,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s:Student , p:s.projects | lone (Course<:projects).p\n}",
                     "ids": [
-                        "PAuwiHDiSwsEQ5iP8"
+                        "y9DWokJDToxwfP6FK",
+                        "dnFe8Az2YvpyJLfyA"
                     ]
                 },
                 {
@@ -2189,6 +2182,13 @@
                     "code": "{\n\t// Students work on at most one project per course\n\tall s : Student , p : Project| p in s.projects implies lone (Course<:projects).p\n}",
                     "ids": [
                         "Dqb45cWyK4JNQhqfW"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s : Student, p : s.projects | lone c : Course | p in c.projects \n}",
+                    "ids": [
+                        "PAuwiHDiSwsEQ5iP8"
                     ]
                 }
             ]
@@ -2204,13 +2204,6 @@
                     "ids": [
                         "D7ykFAH5PftuvdCfN",
                         "HQcHNEsr5QDWykJZ5"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Students work on at most one project per course\n\tall s: Student | all c: s.enrolled | #(s.projects & s.projects) < 2\n}",
-                    "ids": [
-                        "ZRiuGCKFBgMrWwuS3"
                     ]
                 },
                 {
@@ -2232,6 +2225,13 @@
                     "code": "{\n\t// Students work on at most one project per course\n  \t// lone\n  \tall s : Student | all c : s.enrolled |\n  \t\tlone pr : Project |\n  \t\t\tpr in s.projects\n\n}",
                     "ids": [
                         "cGxvLLXrN4SCm9X6h"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s: Student | all c: s.enrolled | #(s.projects & s.projects) < 2\n}",
+                    "ids": [
+                        "ZRiuGCKFBgMrWwuS3"
                     ]
                 }
             ]
@@ -2364,16 +2364,16 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Students work on at most one project per course\n  all c : Course | lone enrolled.c.projects\n\n}",
+                    "code": "{\n\t// Students work on at most one project per course\n  all c : Course |  #(enrolled.c.projects) =< 1\n\n}",
                     "ids": [
-                        "EFTSx2k5EQhwov2we"
+                        "TfN4koi8zedLrwMEe"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Students work on at most one project per course\n  all c : Course |  #(enrolled.c.projects) =< 1\n\n}",
+                    "code": "{\n\t// Students work on at most one project per course\n  all c : Course | lone enrolled.c.projects\n\n}",
                     "ids": [
-                        "TfN4koi8zedLrwMEe"
+                        "EFTSx2k5EQhwov2we"
                     ]
                 }
             ]
@@ -2393,16 +2393,16 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Students work on at most one project per course\n\tall s:Student | all c:Course |  #(s.projects & c.projects) > 0\n}",
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s : Student, c : Course | #(s.projects & c.projects) >= 1\n}",
                     "ids": [
-                        "D6gXxG8WLqMGe8mpT"
+                        "KQX3i64aJyeWBHQ6E"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Students work on at most one project per course\n\tall s : Student, c : Course | #(s.projects & c.projects) >= 1\n}",
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s:Student | all c:Course |  #(s.projects & c.projects) > 0\n}",
                     "ids": [
-                        "KQX3i64aJyeWBHQ6E"
+                        "D6gXxG8WLqMGe8mpT"
                     ]
                 }
             ]
@@ -2412,20 +2412,6 @@
             "group_count": 4,
             "correct": false,
             "elems": [
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Students work on at most one project per course\n  \tall s: Student | all c: s.enrolled | c.projects = 1\n\n}",
-                    "ids": [
-                        "us4RkrXu9LFFtiNxn"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Students work on at most one project per course\n\tall s : Student |all c : s.enrolled | s.projects & c.projects = 1\n}",
-                    "ids": [
-                        "sm5cvWmZMPzq8XBxk"
-                    ]
-                },
                 {
                     "entry_count": 1,
                     "code": "{\n\t// Students work on at most one project per course\n    all s : Student | all c : s.enrolled | one p : s.projects | c in p.projects\n}",
@@ -2438,6 +2424,20 @@
                     "code": "{\n\t// Students work on at most one project per course\n\tall s : Student | all c1 : Course | all c2 : Course | (c1 in s.enrolled and c2 in s.enrolled) implies c1 != c2\n}",
                     "ids": [
                         "uCEHSKZJAprS7Hmfs"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s : Student |all c : s.enrolled | s.projects & c.projects = 1\n}",
+                    "ids": [
+                        "sm5cvWmZMPzq8XBxk"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n  \tall s: Student | all c: s.enrolled | c.projects = 1\n\n}",
+                    "ids": [
+                        "us4RkrXu9LFFtiNxn"
                     ]
                 }
             ]
@@ -2650,16 +2650,16 @@
             "elems": [
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Students work on at most one project per course\n\tall s: Student | all p1, p2: s.enrolled.projects | no (p1&p2&s.projects)\n}",
+                    "code": "{\n\t// Students work on at most one project per course\n\tall x: Student | all c: Course | all p1, p2: Project |\n  \t\tp1 in c.projects and\n  \t\tp2 in c.projects and\n  \t\tc in x.enrolled implies\n  \t\t\tnot (p1 in x.projects and p2 in x.projects)\n}",
                     "ids": [
-                        "m2SyL2skeNFnS2XS8"
+                        "2yCDGS3aoDXoSkYxK"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Students work on at most one project per course\n\tall x: Student | all c: Course | all p1, p2: Project |\n  \t\tp1 in c.projects and\n  \t\tp2 in c.projects and\n  \t\tc in x.enrolled implies\n  \t\t\tnot (p1 in x.projects and p2 in x.projects)\n}",
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s: Student | all p1, p2: s.enrolled.projects | no (p1&p2&s.projects)\n}",
                     "ids": [
-                        "2yCDGS3aoDXoSkYxK"
+                        "m2SyL2skeNFnS2XS8"
                     ]
                 },
                 {
@@ -2760,6 +2760,13 @@
             "elems": [
                 {
                     "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n  all s : Student | all p : Project | once(p in s.projects)\n}",
+                    "ids": [
+                        "NJe8soWigmmgdNgbe"
+                    ]
+                },
+                {
+                    "entry_count": 1,
                     "code": "{\n\t// Students work on at most one project per course\n\tall s : Student , p : Project | p in s.projects and lone enrolled.p\n}",
                     "ids": [
                         "R833iiGP6JudstygZ"
@@ -2770,13 +2777,6 @@
                     "code": "{\n\t// Students work on at most one project per course\n\tall s : Student , p : Project | p in s.projects and lone p.enrolled\n}",
                     "ids": [
                         "hPxXpBh7QDwpNXFAS"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Students work on at most one project per course\n  all s : Student | all p : Project | once(p in s.projects)\n}",
-                    "ids": [
-                        "NJe8soWigmmgdNgbe"
                     ]
                 }
             ]
@@ -2804,6 +2804,13 @@
             "elems": [
                 {
                     "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n  \tall s: Student | all proj:s.projects | one c:s.enrolled | proj in c.projects\n}",
+                    "ids": [
+                        "LY29PjQeuZh8peujJ"
+                    ]
+                },
+                {
+                    "entry_count": 1,
                     "code": "{\n\t// Students work on at most one project per course\n    all student: Student, project: student.projects | one course: Course | project in course.projects and course in student.enrolled\n}",
                     "ids": [
                         "eTXzj8CeXtu7sEt2s"
@@ -2814,13 +2821,6 @@
                     "code": "{\n\t// Students work on at most one project per course\n\tall s : Student, p : Project | (p in s.projects) implies (one c : s.enrolled | p in c.projects)\n}",
                     "ids": [
                         "K3t6FJfo3yJFa4xu8"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Students work on at most one project per course\n  \tall s: Student | all proj:s.projects | one c:s.enrolled | proj in c.projects\n}",
-                    "ids": [
-                        "LY29PjQeuZh8peujJ"
                     ]
                 }
             ]
@@ -2854,16 +2854,16 @@
             "elems": [
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Students work on at most one project per course\n  all p:Person, c : p.enrolled | lone p: Project | p in c.projects\n\n}",
+                    "code": "{\n\t// Students work on at most one project per course\n\tall p : Person | all c : Course | c in p.enrolled implies lone c.projects \n}",
                     "ids": [
-                        "vTXtef37nF7mKzFSb"
+                        "a2J766kLBGpDnT5Cv"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Students work on at most one project per course\n\tall p : Person | all c : Course | c in p.enrolled implies lone c.projects \n}",
+                    "code": "{\n\t// Students work on at most one project per course\n  all p:Person, c : p.enrolled | lone p: Project | p in c.projects\n\n}",
                     "ids": [
-                        "a2J766kLBGpDnT5Cv"
+                        "vTXtef37nF7mKzFSb"
                     ]
                 },
                 {
@@ -2963,16 +2963,16 @@
             "elems": [
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Students work on at most one project per course\n\tall s : Student | all p : s.projects | some c : Course | p in c.projects implies no p2 : c.projects | p != p2 implies not p2 in s.enrolled\n}",
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s : Student | all p : s.projects | some c : Course | p in c.projects implies no p2 : c.projects | p != p2 implies p2 in s.enrolled\n}",
                     "ids": [
-                        "MGiygfwjgWczuWT2W"
+                        "x3LDBiRFeDbYSXCib"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Students work on at most one project per course\n\tall s : Student | all p : s.projects | some c : Course | p in c.projects implies no p2 : c.projects | p != p2 implies p2 in s.enrolled\n}",
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s : Student | all p : s.projects | some c : Course | p in c.projects implies no p2 : c.projects | p != p2 implies not p2 in s.enrolled\n}",
                     "ids": [
-                        "x3LDBiRFeDbYSXCib"
+                        "MGiygfwjgWczuWT2W"
                     ]
                 }
             ]
@@ -3035,16 +3035,16 @@
             "elems": [
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Students work on at most one project per course\n\tall s : Student | some c : s.enrolled | one s.projects & c.projects\n}",
+                    "code": "{\n\t// Students work on at most one project per course\n  \tall s : Student | some c : s.enrolled | one p : s.projects | p in c.projects\n\n}",
                     "ids": [
-                        "fagbHdvv4MaTBfZt5"
+                        "E8Y2qfp8pcZC3rF9e"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Students work on at most one project per course\n  \tall s : Student | some c : s.enrolled | one p : s.projects | p in c.projects\n\n}",
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s : Student | some c : s.enrolled | one s.projects & c.projects\n}",
                     "ids": [
-                        "E8Y2qfp8pcZC3rF9e"
+                        "fagbHdvv4MaTBfZt5"
                     ]
                 }
             ]
@@ -3077,16 +3077,16 @@
             "elems": [
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Students work on at most one project per course\n\tall s : Student | some c : Course | one(s.projects &  c.projects)\n}",
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s : Student | some c : Course | one p : c.projects | p in s.projects\n}",
                     "ids": [
-                        "3XvuPWw8nNKtANgh9"
+                        "zds5EW5HmRr6afxhe"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Students work on at most one project per course\n\tall s : Student | some c : Course | one p : c.projects | p in s.projects\n}",
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s : Student | some c : Course | one(s.projects &  c.projects)\n}",
                     "ids": [
-                        "zds5EW5HmRr6afxhe"
+                        "3XvuPWw8nNKtANgh9"
                     ]
                 }
             ]
@@ -3134,16 +3134,16 @@
             "elems": [
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Students work on at most one project per course\n      lone ((projects & (Person->Project)) & (enrolled.(projects & (Course->Project))))\n\n\n}",
+                    "code": "{\n\t// Students work on at most one project per course\n\tlone (enrolled.projects & (Person <: projects))\n}",
                     "ids": [
-                        "vEsNjh8TcDhWXzpan"
+                        "ZDDjSBGd7m2g7yJMq"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Students work on at most one project per course\n\tlone (enrolled.projects & (Person <: projects))\n}",
+                    "code": "{\n\t// Students work on at most one project per course\n      lone ((projects & (Person->Project)) & (enrolled.(projects & (Course->Project))))\n\n\n}",
                     "ids": [
-                        "ZDDjSBGd7m2g7yJMq"
+                        "vEsNjh8TcDhWXzpan"
                     ]
                 }
             ]
@@ -3176,16 +3176,16 @@
             "elems": [
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Students work on at most one project per course\n\tall s : Student | all c : s.enrolled | one (s.projects)\n}",
+                    "code": "{\n\t// Students work on at most one project per course\n  all s:Student | all c:s.enrolled | #(s.projects) = 1\n\n}",
                     "ids": [
-                        "xzrhvYxtRxrYmn7G3"
+                        "KqLSCWBR3je4LcpaA"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Students work on at most one project per course\n  all s:Student | all c:s.enrolled | #(s.projects) = 1\n\n}",
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s : Student | all c : s.enrolled | one (s.projects)\n}",
                     "ids": [
-                        "KqLSCWBR3je4LcpaA"
+                        "xzrhvYxtRxrYmn7G3"
                     ]
                 }
             ]
@@ -3212,16 +3212,16 @@
             "elems": [
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Students work on at most one project per course\n\tall s:Student | some c:Course |  #(s.projects & c.projects) > 0\n}",
+                    "code": "{\n\t// Students work on at most one project per course\n\t  all s : Student | some Course.projects  & s.projects\n\n  \n  \n}",
                     "ids": [
-                        "MbE2Q7QrJXZQELh3z"
+                        "2pcFBnahi43zyoMcE"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Students work on at most one project per course\n\t  all s : Student | some Course.projects  & s.projects\n\n  \n  \n}",
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s:Student | some c:Course |  #(s.projects & c.projects) > 0\n}",
                     "ids": [
-                        "2pcFBnahi43zyoMcE"
+                        "MbE2Q7QrJXZQELh3z"
                     ]
                 }
             ]

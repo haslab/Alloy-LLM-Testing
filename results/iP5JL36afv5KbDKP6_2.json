@@ -3,7 +3,7 @@
     "pred": "this/inv3",
     "entry_count": 1075,
     "group_count": 86,
-    "duration": 71,
+    "duration": 85,
     "scope": 3,
     "groups": [
         {
@@ -466,6 +466,15 @@
                 },
                 {
                     "entry_count": 3,
+                    "code": "{\n\t// Courses must have teachers\n\tCourse in Person.teaches\n}",
+                    "ids": [
+                        "zsXnCAb3sHaj6Q9js",
+                        "WePGwwxf2X47h8YBh",
+                        "zfNiJh6rXJh5tAZf7"
+                    ]
+                },
+                {
+                    "entry_count": 3,
                     "code": "{\n\t// Courses must have teachers\n\tPerson.teaches = Course\n}",
                     "ids": [
                         "QgogrGg3QcYP8XTsN",
@@ -474,12 +483,11 @@
                     ]
                 },
                 {
-                    "entry_count": 3,
-                    "code": "{\n\t// Courses must have teachers\n\tCourse in Person.teaches\n}",
+                    "entry_count": 2,
+                    "code": "{\n\t// Courses must have teachers\n  \tall c : Course | some( c & Person.teaches )\n}",
                     "ids": [
-                        "zsXnCAb3sHaj6Q9js",
-                        "WePGwwxf2X47h8YBh",
-                        "zfNiJh6rXJh5tAZf7"
+                        "aezMTaiFbEwEjiuTD",
+                        "A4Z8ZA6CYiWqJrhAG"
                     ]
                 },
                 {
@@ -492,14 +500,6 @@
                 },
                 {
                     "entry_count": 2,
-                    "code": "{\n\t// Courses must have teachers\n\tno x : Course | teaches.x in none\n}",
-                    "ids": [
-                        "KHpWr8KpT4cP6kJey",
-                        "M2Age3hb3PZunF657"
-                    ]
-                },
-                {
-                    "entry_count": 2,
                     "code": "{\n\t// Courses must have teachers\n\tall c : Course | some p : Person | p->c in teaches\n}",
                     "ids": [
                         "2PW6b3hvHYptjKYFx",
@@ -508,10 +508,10 @@
                 },
                 {
                     "entry_count": 2,
-                    "code": "{\n\t// Courses must have teachers\n  \tall c : Course | some( c & Person.teaches )\n}",
+                    "code": "{\n\t// Courses must have teachers\n\tno x : Course | teaches.x in none\n}",
                     "ids": [
-                        "aezMTaiFbEwEjiuTD",
-                        "A4Z8ZA6CYiWqJrhAG"
+                        "KHpWr8KpT4cP6kJey",
+                        "M2Age3hb3PZunF657"
                     ]
                 },
                 {
@@ -523,9 +523,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Courses must have teachers\n  \tall c:Course | not no teaches.c\n\n}",
+                    "code": "{\n\t// Courses must have teachers\n  \tall c : Course | some t : teaches.c | t in Person\n\n}",
                     "ids": [
-                        "i35GTNqLyuyriJTz4"
+                        "iWDYJsWbjtQ5tSFyT"
                     ]
                 },
                 {
@@ -537,16 +537,16 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Courses must have teachers\n  \tall c : Course | some t : teaches.c | t in Person\n\n}",
+                    "code": "{\n\t// Courses must have teachers\n\tall x: Course | teaches.x not in none\n}",
                     "ids": [
-                        "iWDYJsWbjtQ5tSFyT"
+                        "pqLtSbno8LYiCJKvo"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Courses must have teachers\n\tall x: Course | teaches.x not in none\n}",
+                    "code": "{\n\t// Courses must have teachers\n  \tall c:Course | not no teaches.c\n\n}",
                     "ids": [
-                        "pqLtSbno8LYiCJKvo"
+                        "i35GTNqLyuyriJTz4"
                     ]
                 }
             ]
@@ -868,10 +868,10 @@
                 },
                 {
                     "entry_count": 2,
-                    "code": "{\n\t// Courses must have teachers\n  \tall c : Course | some p : Person | (p->c in teaches) and (p in Professor) \n}",
+                    "code": "{\n\t// Courses must have teachers\n\tall c : Course | (some p : Professor | p in teaches.c)\n\tall c : Course | some teaches.c\n}",
                     "ids": [
-                        "CBtE9tn9fAHoC6R7n",
-                        "LMqcoB5NqKpYcJrwZ"
+                        "kxsieWTZR6iJqhaKy",
+                        "WGAhyoe37rtF2d6FK"
                     ]
                 },
                 {
@@ -884,10 +884,10 @@
                 },
                 {
                     "entry_count": 2,
-                    "code": "{\n\t// Courses must have teachers\n\tall c : Course | (some p : Professor | p in teaches.c)\n\tall c : Course | some teaches.c\n}",
+                    "code": "{\n\t// Courses must have teachers\n  \tall c : Course | some p : Person | (p->c in teaches) and (p in Professor) \n}",
                     "ids": [
-                        "kxsieWTZR6iJqhaKy",
-                        "WGAhyoe37rtF2d6FK"
+                        "CBtE9tn9fAHoC6R7n",
+                        "LMqcoB5NqKpYcJrwZ"
                     ]
                 },
                 {
@@ -900,16 +900,16 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Courses must have teachers\n  all c : Course | some p : Professor | p in teaches.c\n  all c : Course | some p : Professor | c in p.teaches\n  \n\n}",
+                    "code": "{\n\t// Courses must have teachers\n  \tall c : Course | some( c & Professor.teaches )\n}",
                     "ids": [
-                        "sNqGJ9CLQEwRzzJXi"
+                        "dbA7zmZswbZ9YsJFg"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Courses must have teachers\n  \tall c : Course | some( c & Professor.teaches )\n}",
+                    "code": "{\n\t// Courses must have teachers\n  all c : Course | some p : Professor | p in teaches.c\n  all c : Course | some p : Professor | c in p.teaches\n  \n\n}",
                     "ids": [
-                        "dbA7zmZswbZ9YsJFg"
+                        "sNqGJ9CLQEwRzzJXi"
                     ]
                 }
             ]
@@ -972,14 +972,6 @@
                 },
                 {
                     "entry_count": 2,
-                    "code": "{\n\t// Courses must have teachers\n  all x : Course | x.teaches & Professor != none\n\n}",
-                    "ids": [
-                        "JEpDyYm65bG9peCct",
-                        "2gxtm38fyLvswnxr8"
-                    ]
-                },
-                {
-                    "entry_count": 2,
                     "code": "{\n\t// Courses must have teachers\n\tall c: Course | some p: Professor | p in c\n}",
                     "ids": [
                         "RKNcKDrvjgQZDZBDq",
@@ -995,45 +987,11 @@
                     ]
                 },
                 {
-                    "entry_count": 1,
-                    "code": "{\n\t// Courses must have teachers\n\tall c:Course | some p:Person | p in c.enrolled or p in c.teaches  \n}",
+                    "entry_count": 2,
+                    "code": "{\n\t// Courses must have teachers\n  all x : Course | x.teaches & Professor != none\n\n}",
                     "ids": [
-                        "DmdWC7xPheWmTBRRc"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Courses must have teachers\n  all c : Course | some p : c.projects | some p.teaches\n\n}",
-                    "ids": [
-                        "nM7C8pYXKdsMYrapL"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Courses must have teachers\n  \tall c: Course | some p: Professor | c -> p in teaches\n\n}",
-                    "ids": [
-                        "MNuyRqQWixKdXiPrS"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\tall c: Course | some p: Person | p in c.teaches + c.enrolled\n\n}",
-                    "ids": [
-                        "tBi5DivP3NRWjWsh8"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Courses must have teachers\n\tall x: Course | x.teaches not in none\n}",
-                    "ids": [
-                        "qR7Gfzv3MQZBGqx6D"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Courses must have teachers\n\tall c : Course | some t : Professor\t | c = c & t\n}",
-                    "ids": [
-                        "uQMCwQK7FRGQBCXfi"
+                        "JEpDyYm65bG9peCct",
+                        "2gxtm38fyLvswnxr8"
                     ]
                 },
                 {
@@ -1045,9 +1003,23 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Courses must have teachers\n  all c : Course | some p : Professor | p in teaches.c\n  all c : Course | some p : Professor | c in teaches.p\n  \n\n}",
+                    "code": "{\n\t// Courses must have teachers\n\tall c : Course | some t : Professor\t | c = c & t\n}",
                     "ids": [
-                        "Jn4SWuCzBRTLbsJwk"
+                        "uQMCwQK7FRGQBCXfi"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\tall c: Course | some p: Person | p in c.teaches + c.enrolled\n\n}",
+                    "ids": [
+                        "tBi5DivP3NRWjWsh8"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Courses must have teachers\n  \tall c: Course | some p: Professor | c -> p in teaches\n\n}",
+                    "ids": [
+                        "MNuyRqQWixKdXiPrS"
                     ]
                 },
                 {
@@ -1059,9 +1031,37 @@
                 },
                 {
                     "entry_count": 1,
+                    "code": "{\n\t// Courses must have teachers\n  all c : Course | some p : Professor | p in teaches.c\n  all c : Course | some p : Professor | c in teaches.p\n  \n\n}",
+                    "ids": [
+                        "Jn4SWuCzBRTLbsJwk"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Courses must have teachers\n  all c : Course | some p : c.projects | some p.teaches\n\n}",
+                    "ids": [
+                        "nM7C8pYXKdsMYrapL"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Courses must have teachers\n\tall x: Course | x.teaches not in none\n}",
+                    "ids": [
+                        "qR7Gfzv3MQZBGqx6D"
+                    ]
+                },
+                {
+                    "entry_count": 1,
                     "code": "{\n\t// Courses must have teachers\n  all x : Course | some x.teaches & Professor \n\n}",
                     "ids": [
                         "JWrEz8djJQ5ardoXC"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Courses must have teachers\n\tall c:Course | some p:Person | p in c.enrolled or p in c.teaches  \n}",
+                    "ids": [
+                        "DmdWC7xPheWmTBRRc"
                     ]
                 }
             ]
@@ -1117,14 +1117,6 @@
                 },
                 {
                     "entry_count": 2,
-                    "code": "{\n\t// Courses must have teachers\n\tall p : Professor |  p.teaches in Course\n}",
-                    "ids": [
-                        "hfWBECtFBm7cFrjRY",
-                        "sS5zmJD8AA9XogCzq"
-                    ]
-                },
-                {
-                    "entry_count": 2,
                     "code": "{\n\t// Courses must have teachers\n  \tno Professor.teaches - Course \n\n}",
                     "ids": [
                         "Hce3mZ9tk6x7pN47q",
@@ -1132,73 +1124,11 @@
                     ]
                 },
                 {
-                    "entry_count": 1,
-                    "code": "{\n\t// Courses must have teachers\n\tall c : Course, t : Professor | some t \n}",
+                    "entry_count": 2,
+                    "code": "{\n\t// Courses must have teachers\n\tall p : Professor |  p.teaches in Course\n}",
                     "ids": [
-                        "bCPcMDZM5gZfZiqAH"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Courses must have teachers\n  all x : Course | no x.teaches & Professor \n\n}",
-                    "ids": [
-                        "FK98PQ53jgQWPsL5f"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Courses must have teachers\n\tall p: Person, c:Course | no p.*teaches implies p->c in teaches\n}",
-                    "ids": [
-                        "PiTPxQ25h2CMskX4s"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Courses must have teachers\n\tall p: Professor | no (p.teaches - Course)\n}",
-                    "ids": [
-                        "A5nSSmSuWSsz7xXMR"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Courses must have teachers\n  \tall c : Course | teaches.c in Person\n\n}",
-                    "ids": [
-                        "rfkYn9gGxWnkaFfck"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Courses must have teachers\n  \tall c : Course | lone( c & Person.teaches )\n}",
-                    "ids": [
-                        "uSpFx7pQGnCs8BHZS"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Courses must have teachers\n\tall p: Professor | p.^teaches in Course\n}",
-                    "ids": [
-                        "oknAKPX9XM9JMgsBE"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Courses must have teachers\n  all x : Course | x.teaches & Professor in none\n\n}",
-                    "ids": [
-                        "JuWAz6fQHXGYmHJxo"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Courses must have teachers\n\tall p: Person, c:Course | no p.*teaches implies p->c not in teaches\n}",
-                    "ids": [
-                        "hbTPJxBgyH85dEmPb"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Courses must have teachers\n\tProfessor.teaches in Course\n}",
-                    "ids": [
-                        "hBKYDftepZgH3dcJM"
+                        "hfWBECtFBm7cFrjRY",
+                        "sS5zmJD8AA9XogCzq"
                     ]
                 },
                 {
@@ -1210,9 +1140,58 @@
                 },
                 {
                     "entry_count": 1,
+                    "code": "{\n\t// Courses must have teachers\n\tall p: Professor | no (p.teaches - Course)\n}",
+                    "ids": [
+                        "A5nSSmSuWSsz7xXMR"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Courses must have teachers\n\tall p: Professor | p.^teaches in Course\n}",
+                    "ids": [
+                        "oknAKPX9XM9JMgsBE"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Courses must have teachers\n  \tall c : Course | teaches.c in Person\n\n}",
+                    "ids": [
+                        "rfkYn9gGxWnkaFfck"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Courses must have teachers\n\tall p: Person, c:Course | no p.*teaches implies p->c not in teaches\n}",
+                    "ids": [
+                        "hbTPJxBgyH85dEmPb"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Courses must have teachers\n  \tall c : Course | lone( c & Person.teaches )\n}",
+                    "ids": [
+                        "uSpFx7pQGnCs8BHZS"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Courses must have teachers\n\tall p: Person, c: Course | c->p in teaches  implies p in Professor\n}",
+                    "ids": [
+                        "xXLi44ccT97kdh3zt"
+                    ]
+                },
+                {
+                    "entry_count": 1,
                     "code": "{\n\t// Courses must have teachers\n\t//all c : Course | some p : Person | c in p.teaches \n  \t\n  \t^teaches in Person  -> Course\n}",
                     "ids": [
                         "Saf8pkDSgAA7Hb72D"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Courses must have teachers\n\tall p: Person, c:Course | no p.*teaches implies p->c in teaches\n}",
+                    "ids": [
+                        "PiTPxQ25h2CMskX4s"
                     ]
                 },
                 {
@@ -1224,9 +1203,30 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Courses must have teachers\n\tall p: Person, c: Course | c->p in teaches  implies p in Professor\n}",
+                    "code": "{\n\t// Courses must have teachers\n  all x : Course | x.teaches & Professor in none\n\n}",
                     "ids": [
-                        "xXLi44ccT97kdh3zt"
+                        "JuWAz6fQHXGYmHJxo"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Courses must have teachers\n\tProfessor.teaches in Course\n}",
+                    "ids": [
+                        "hBKYDftepZgH3dcJM"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Courses must have teachers\n  all x : Course | no x.teaches & Professor \n\n}",
+                    "ids": [
+                        "FK98PQ53jgQWPsL5f"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Courses must have teachers\n\tall c : Course, t : Professor | some t \n}",
+                    "ids": [
+                        "bCPcMDZM5gZfZiqAH"
                     ]
                 }
             ]
@@ -1285,9 +1285,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Courses must have teachers\n\tall c : Course, p : Professor | (some c) implies c in p.teaches\n}",
+                    "code": "{\n\t// Courses must have teachers\n\n  \n  all c: Course, p: Professor | p in teaches.c\n}",
                     "ids": [
-                        "5h2CQoji4L25Temy8"
+                        "9eQuh4MLdfKHR6Shr"
                     ]
                 },
                 {
@@ -1299,23 +1299,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Courses must have teachers\n\tall x: Course, y: Professor | some teaches.x & y\n}",
+                    "code": "{\n\t// Courses must have teachers\n  all c: Course | Professor in teaches.c\n\n}",
                     "ids": [
-                        "jGWgFkpq3LuWhzgjK"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Courses must have teachers\n\tall c: Course | all p: Person | p in Professor => c in p.teaches\n}",
-                    "ids": [
-                        "jhp3bhCtdhWZZx4sW"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Courses must have teachers\n\tall p : Professor | all c : Course | c in p.^teaches\n}",
-                    "ids": [
-                        "uyXQByEpZNJNiWrhQ"
+                        "MnRReWNmnkZ34MmLn"
                     ]
                 },
                 {
@@ -1327,9 +1313,30 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Courses must have teachers\n\n  \n  all c: Course, p: Professor | p in teaches.c\n}",
+                    "code": "{\n\t// Courses must have teachers\n\tall c : Course, p : Professor | (some c) implies c in p.teaches\n}",
                     "ids": [
-                        "9eQuh4MLdfKHR6Shr"
+                        "5h2CQoji4L25Temy8"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Courses must have teachers\n\tall p : Professor | all c : Course | c in p.^teaches\n}",
+                    "ids": [
+                        "uyXQByEpZNJNiWrhQ"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Courses must have teachers\n\tall c: Course | all p: Person | p in Professor => c in p.teaches\n}",
+                    "ids": [
+                        "jhp3bhCtdhWZZx4sW"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Courses must have teachers\n\tall x: Course, y: Professor | some teaches.x & y\n}",
+                    "ids": [
+                        "jGWgFkpq3LuWhzgjK"
                     ]
                 },
                 {
@@ -1344,13 +1351,6 @@
                     "code": "{\n\t// Courses must have teachers\n\tProfessor -> Course in teaches\n\n}",
                     "ids": [
                         "aWA9BMksBf2cgA6fS"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Courses must have teachers\n  all c: Course | Professor in teaches.c\n\n}",
-                    "ids": [
-                        "MnRReWNmnkZ34MmLn"
                     ]
                 }
             ]
@@ -1441,6 +1441,14 @@
                 },
                 {
                     "entry_count": 2,
+                    "code": "{\n\t// Courses must have teachers\n\tall p: Person, c: Course | p in teaches.c implies p in Professor  \n}",
+                    "ids": [
+                        "akAg7Ee2HbLwTja6A",
+                        "aE2e9Tm2X59yz9B8f"
+                    ]
+                },
+                {
+                    "entry_count": 2,
                     "code": "{\n\t// Courses must have teachers\n\tteaches.Course in Professor\n}",
                     "ids": [
                         "dyfazoXnJtA6NLAM6",
@@ -1448,11 +1456,17 @@
                     ]
                 },
                 {
-                    "entry_count": 2,
-                    "code": "{\n\t// Courses must have teachers\n\tall p: Person, c: Course | p in teaches.c implies p in Professor  \n}",
+                    "entry_count": 1,
+                    "code": "{\n\t// Courses must have teachers\n  \tall p : Person, c: p.teaches & Course | some c implies p in Professor\n\n}",
                     "ids": [
-                        "akAg7Ee2HbLwTja6A",
-                        "aE2e9Tm2X59yz9B8f"
+                        "Ty23seRkmJfcAF9q8"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Courses must have teachers\n\tall p: Person | teaches in Professor -> Course\n}",
+                    "ids": [
+                        "sLTeaxbo689JiFS4P"
                     ]
                 },
                 {
@@ -1471,13 +1485,6 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Courses must have teachers\n\tall p: Person | teaches in Professor -> Course\n}",
-                    "ids": [
-                        "sLTeaxbo689JiFS4P"
-                    ]
-                },
-                {
-                    "entry_count": 1,
                     "code": "{\n\t// Courses must have teachers\n  \tall p : Person, c: p.teaches & Course | p in Professor\n\n}",
                     "ids": [
                         "dnXqFLkKMqWpjda4X"
@@ -1488,13 +1495,6 @@
                     "code": "{\n\t// Courses must have teachers\n\tall p: Person, c: Course | teaches in Professor -> Course\n}",
                     "ids": [
                         "WTkxHk9J6r3Z9sGCy"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Courses must have teachers\n  \tall p : Person, c: p.teaches & Course | some c implies p in Professor\n\n}",
-                    "ids": [
-                        "Ty23seRkmJfcAF9q8"
                     ]
                 }
             ]
@@ -1523,18 +1523,18 @@
                 },
                 {
                     "entry_count": 2,
-                    "code": "{\n\t// Courses must have teachers\n  \tall c: Course | one p:Person | c in p.teaches\n\n}",
-                    "ids": [
-                        "DF3qXQ9kG9XX2dhkr",
-                        "LWwJuBCQPLgKFx2Jv"
-                    ]
-                },
-                {
-                    "entry_count": 2,
                     "code": "{\n\t// Courses must have teachers\n\n\t// all c : Course | some p : Person | p->c in teaches \n\n\tall c : Course | lone teaches.c\n\n\tteaches in Person some -> Course\n}",
                     "ids": [
                         "A3ryToL3F4hCqSgGe",
                         "6Fa5iETsCRS35Ynxe"
+                    ]
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Courses must have teachers\n  \tall c: Course | one p:Person | c in p.teaches\n\n}",
+                    "ids": [
+                        "DF3qXQ9kG9XX2dhkr",
+                        "LWwJuBCQPLgKFx2Jv"
                     ]
                 },
                 {
@@ -1643,16 +1643,16 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Courses must have teachers\n\tsome t:Professor | t->Course in teaches\n}",
+                    "code": "{\n\t// Courses must have teachers\n  some t : Professor | all c : Course | t in teaches.c\n\n}",
                     "ids": [
-                        "8ZZv2jgkm94Agf6aq"
+                        "pcdfDzcgqfYWhHAGB"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Courses must have teachers\n  some t : Professor | all c : Course | t in teaches.c\n\n}",
+                    "code": "{\n\t// Courses must have teachers\n\tsome t:Professor | t->Course in teaches\n}",
                     "ids": [
-                        "pcdfDzcgqfYWhHAGB"
+                        "8ZZv2jgkm94Agf6aq"
                     ]
                 }
             ]
@@ -1784,16 +1784,16 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Courses must have teachers\n  one Course.teaches\n\n}",
+                    "code": "{\n\t// Courses must have teachers\n  Course  & Professor != none\n\n}",
                     "ids": [
-                        "WqgEZ3BXEWKDb8qen"
+                        "CCr6Mshp35rJxgBdA"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Courses must have teachers\n  Course  & Professor != none\n\n}",
+                    "code": "{\n\t// Courses must have teachers\n  one Course.teaches\n\n}",
                     "ids": [
-                        "CCr6Mshp35rJxgBdA"
+                        "WqgEZ3BXEWKDb8qen"
                     ]
                 },
                 {
@@ -1820,13 +1820,6 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Courses must have teachers\n\tall c: Course | no teaches.c\n}",
-                    "ids": [
-                        "mZtyEq9RThhEgFLzW"
-                    ]
-                },
-                {
-                    "entry_count": 1,
                     "code": "{\n\t// Courses must have teachers\n  all p : Person | (some p.teaches) implies p in Course\n\n}",
                     "ids": [
                         "4k8rHsnJuAchRNiSm"
@@ -1844,6 +1837,13 @@
                     "code": "{\n\t// Courses must have teachers\n  \tall c : Course | all p : Person.teaches & Course | p in Professor\n\n}",
                     "ids": [
                         "9ah2JRJ9azZyQkqsZ"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Courses must have teachers\n\tall c: Course | no teaches.c\n}",
+                    "ids": [
+                        "mZtyEq9RThhEgFLzW"
                     ]
                 },
                 {
@@ -1891,16 +1891,16 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Courses must have teachers\n\tall t: Professor | some (t.teaches & Course)\n}",
+                    "code": "{\n\t// Courses must have teachers\n\tall t: Professor | not (no t.teaches)\n}",
                     "ids": [
-                        "uYdkidDgfsBWSh6Gr"
+                        "fgjqrv8W5n4K9yMHB"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Courses must have teachers\n\tall t: Professor | not (no t.teaches)\n}",
+                    "code": "{\n\t// Courses must have teachers\n\tall t: Professor | some (t.teaches & Course)\n}",
                     "ids": [
-                        "fgjqrv8W5n4K9yMHB"
+                        "uYdkidDgfsBWSh6Gr"
                     ]
                 }
             ]
@@ -1941,16 +1941,16 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Courses must have teachers\n\n\t// all c : Course | some teaches.c\n\n\t// a more succinct way to state this:\n\t// apply a multiplicity modifier to the relation\n\t\n\tteaches in Person lone -> Course\n}",
+                    "code": "{\n\t// Courses must have teachers\n\tteaches.~teaches in iden\n}",
                     "ids": [
-                        "YSzNrYpy2ZCBQnupo"
+                        "7SS7YBityok6S93xh"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Courses must have teachers\n\tteaches.~teaches in iden\n}",
+                    "code": "{\n\t// Courses must have teachers\n\n\t// all c : Course | some teaches.c\n\n\t// a more succinct way to state this:\n\t// apply a multiplicity modifier to the relation\n\t\n\tteaches in Person lone -> Course\n}",
                     "ids": [
-                        "7SS7YBityok6S93xh"
+                        "YSzNrYpy2ZCBQnupo"
                     ]
                 }
             ]
@@ -2029,9 +2029,9 @@
             "elems": [
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Courses must have teachers\n\t//all c: Course, p: Person | c in p.teaches \n\tall c: Course, p: Person | lone c implies p in Professor\n\t//all c: Course, p: Person | p.teaches implies c \n  \n\t//all c: Course, p: Person | iff p in c.teaches then p in Professor\n  \n}",
+                    "code": "{\n\t// Courses must have teachers\n\tall x : Course , y : Person - Professor | some(x.teaches)\n}",
                     "ids": [
-                        "Zp6YZXSPmizjKKD8Y"
+                        "3MF3jeEqRSki3iQKd"
                     ]
                 },
                 {
@@ -2043,23 +2043,23 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Courses must have teachers\n\t//all c: Course, p: Person | c in p.teaches \n\tall c: Course, p: Person | one c implies p in Professor\n\t//all c: Course, p: Person | p.teaches implies c \n  \n\t//all c: Course, p: Person | iff p in c.teaches then p in Professor\n  \n}",
-                    "ids": [
-                        "s2ZFnn2ifbn8JWMp6"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Courses must have teachers\n\tall x : Course , y : Person - Professor | some(x.teaches)\n}",
-                    "ids": [
-                        "3MF3jeEqRSki3iQKd"
-                    ]
-                },
-                {
-                    "entry_count": 1,
                     "code": "{\n\t// Courses must have teachers\n\tall p: Person | some p -> Course implies p in Professor\n}",
                     "ids": [
                         "YeecXvLMbZBhE3KHZ"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Courses must have teachers\n\t//all c: Course, p: Person | c in p.teaches \n\tall c: Course, p: Person | lone c implies p in Professor\n\t//all c: Course, p: Person | p.teaches implies c \n  \n\t//all c: Course, p: Person | iff p in c.teaches then p in Professor\n  \n}",
+                    "ids": [
+                        "Zp6YZXSPmizjKKD8Y"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Courses must have teachers\n\t//all c: Course, p: Person | c in p.teaches \n\tall c: Course, p: Person | one c implies p in Professor\n\t//all c: Course, p: Person | p.teaches implies c \n  \n\t//all c: Course, p: Person | iff p in c.teaches then p in Professor\n  \n}",
+                    "ids": [
+                        "s2ZFnn2ifbn8JWMp6"
                     ]
                 }
             ]
@@ -2096,16 +2096,16 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Courses must have teachers\n  all p: Person | some c : Course | c in p.teaches\n\n}",
+                    "code": "{\n\t// Courses must have teachers\n   all p : Person | p.teaches != none\n\n}",
                     "ids": [
-                        "QoPf3yM3QJRBf6dm6"
+                        "osfhfteABiLs39qfQ"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Courses must have teachers\n   all p : Person | p.teaches != none\n\n}",
+                    "code": "{\n\t// Courses must have teachers\n  all p: Person | some c : Course | c in p.teaches\n\n}",
                     "ids": [
-                        "osfhfteABiLs39qfQ"
+                        "QoPf3yM3QJRBf6dm6"
                     ]
                 }
             ]
@@ -2117,16 +2117,16 @@
             "elems": [
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Courses must have teachers\n  \tall c : Course , p : Professor | c in p \n}",
+                    "code": "{\n\t// Courses must have teachers\n  all c: Course | c.grades[Grade] = Professor \n}",
                     "ids": [
-                        "zzHHNSE3FKAAwyCCP"
+                        "ckzRxQB4ktwTDDXDc"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Courses must have teachers\n  all c: Course | c.grades[Grade] = Professor \n}",
+                    "code": "{\n\t// Courses must have teachers\n  \tall c : Course , p : Professor | c in p \n}",
                     "ids": [
-                        "ckzRxQB4ktwTDDXDc"
+                        "zzHHNSE3FKAAwyCCP"
                     ]
                 },
                 {
@@ -2202,6 +2202,13 @@
             "elems": [
                 {
                     "entry_count": 1,
+                    "code": "{\n\t// Courses must have teachers\n  \t some p: Professor| all c: Course | c -> p in teaches\n\n}",
+                    "ids": [
+                        "TZqcE2kMWc6QtD6Ge"
+                    ]
+                },
+                {
+                    "entry_count": 1,
                     "code": "{\n\t// Courses must have teachers\n  some t : Professor | all c : Course | t in c.teaches\n  \n  //all c: Course | some teaches.c\n\n}",
                     "ids": [
                         "BCmjsX6jQ6RHKDDjN"
@@ -2213,13 +2220,6 @@
                     "ids": [
                         "tts4vMjWBrqh4SrJa"
                     ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Courses must have teachers\n  \t some p: Professor| all c: Course | c -> p in teaches\n\n}",
-                    "ids": [
-                        "TZqcE2kMWc6QtD6Ge"
-                    ]
                 }
             ]
         },
@@ -2230,16 +2230,16 @@
             "elems": [
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Courses must have teachers\n  all x : Course | no teaches.x & Professor \n\n}",
+                    "code": "{\n\t// Courses must have teachers\n  all p : Professor | (some p.teaches) implies p in Course\n\n}",
                     "ids": [
-                        "AiZkhEFw37t6qmHw9"
+                        "oeQZPPN4bKiehQfKi"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Courses must have teachers\n  all p : Professor | (some p.teaches) implies p in Course\n\n}",
+                    "code": "{\n\t// Courses must have teachers\n  all x : Course | no teaches.x & Professor \n\n}",
                     "ids": [
-                        "oeQZPPN4bKiehQfKi"
+                        "AiZkhEFw37t6qmHw9"
                     ]
                 },
                 {

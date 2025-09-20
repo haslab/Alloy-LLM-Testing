@@ -3,7 +3,7 @@
     "pred": "this/inv4",
     "entry_count": 769,
     "group_count": 80,
-    "duration": 29,
+    "duration": 42,
     "scope": 3,
     "groups": [
         {
@@ -410,38 +410,11 @@
                 },
                 {
                     "entry_count": 3,
-                    "code": "{\n\t// Components must have parts and materials have no parts\n\tno c : Component | c.parts = none\n  \n  \tno Material.parts\n}",
+                    "code": "{\n\t// Components must have parts and materials have no parts\n  \tall c:Component | some p: Product | p in c.parts\n  \tall m: Material | m.parts = none\n}",
                     "ids": [
-                        "9gAGz9JSMQaj9YnMD",
-                        "hHQ673x9G3x3teGDv",
-                        "ALqeaqa8KHNECABwr"
-                    ]
-                },
-                {
-                    "entry_count": 3,
-                    "code": "{\n\t// Components must have parts and materials have no parts\n\tall c: Component | some p: Product | p in c.parts\n  \n  \tall m: Material | all p: Product | p not in m.parts\n}",
-                    "ids": [
-                        "k9oojZhs4MkTbHSaW",
-                        "WAeyocFgytSzwcAGB",
-                        "cnTvmt7sPLXHHzHnD"
-                    ]
-                },
-                {
-                    "entry_count": 3,
-                    "code": "{\n\t// Components must have parts and materials have no parts\n\tall p: Product | some p.parts iff p in Component\n  \tall p: Product | no p.parts iff p in Material\n}",
-                    "ids": [
-                        "5jMD5dfZNJrjhRJP4",
-                        "Krk7tWsxGHathkp7t",
-                        "AFYbXRziKQ24Zcs8h"
-                    ]
-                },
-                {
-                    "entry_count": 3,
-                    "code": "{\n\t// Components must have parts and materials have no parts\n\tall m : Material | all p : Product | p not in m.parts\n  \tall c : Component | some p : Product | p in c.parts\n}",
-                    "ids": [
-                        "W5Lf7AWyyRhPgEMEv",
-                        "exmizLpyDqKFBxCh8",
-                        "Kj6x4pairBF3soNZB"
+                        "tp3jpxWbdk4tfR2bi",
+                        "F7AqCMP8LwcgfhXXE",
+                        "BmA8hG63jx3ve3v4g"
                     ]
                 },
                 {
@@ -455,11 +428,38 @@
                 },
                 {
                     "entry_count": 3,
-                    "code": "{\n\t// Components must have parts and materials have no parts\n  \tall c:Component | some p: Product | p in c.parts\n  \tall m: Material | m.parts = none\n}",
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\tall c: Component | some p: Product | p in c.parts\n  \n  \tall m: Material | all p: Product | p not in m.parts\n}",
                     "ids": [
-                        "tp3jpxWbdk4tfR2bi",
-                        "F7AqCMP8LwcgfhXXE",
-                        "BmA8hG63jx3ve3v4g"
+                        "k9oojZhs4MkTbHSaW",
+                        "WAeyocFgytSzwcAGB",
+                        "cnTvmt7sPLXHHzHnD"
+                    ]
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\tall m : Material | all p : Product | p not in m.parts\n  \tall c : Component | some p : Product | p in c.parts\n}",
+                    "ids": [
+                        "W5Lf7AWyyRhPgEMEv",
+                        "exmizLpyDqKFBxCh8",
+                        "Kj6x4pairBF3soNZB"
+                    ]
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\tno c : Component | c.parts = none\n  \n  \tno Material.parts\n}",
+                    "ids": [
+                        "9gAGz9JSMQaj9YnMD",
+                        "hHQ673x9G3x3teGDv",
+                        "ALqeaqa8KHNECABwr"
+                    ]
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\tall p: Product | some p.parts iff p in Component\n  \tall p: Product | no p.parts iff p in Material\n}",
+                    "ids": [
+                        "5jMD5dfZNJrjhRJP4",
+                        "Krk7tWsxGHathkp7t",
+                        "AFYbXRziKQ24Zcs8h"
                     ]
                 },
                 {
@@ -473,18 +473,10 @@
                 },
                 {
                     "entry_count": 2,
-                    "code": "{\n\t// Components must have parts and materials have no parts\n\t(all p: Product|\n  \t(p in Material and no p.parts) or (p in Component and some p.parts))\n}",
+                    "code": "{\n\t// Components must have parts and materials have no parts\n  \tall p:Product | p in Material implies no p.parts\n  \tall p:Product | p in Component implies some p.parts\n\n}",
                     "ids": [
-                        "ZWLETxnm9xw5hR69i",
-                        "WzWgLSLMFiH4QZ7jB"
-                    ]
-                },
-                {
-                    "entry_count": 2,
-                    "code": "{\n\t// Components must have parts and materials have no parts\n  \t(parts in (Component -> some Product))\n\n}",
-                    "ids": [
-                        "PaXLLk3aGvrEGFeD9",
-                        "nXFiDvLioLzkiH6d9"
+                        "2b2GqLe4DNbZPKaZL",
+                        "N6T9BMEKEWjLaC4w4"
                     ]
                 },
                 {
@@ -493,30 +485,6 @@
                     "ids": [
                         "XDf9ZM5gNDfjTeN35",
                         "2sg6DetgjhXTxtDJi"
-                    ]
-                },
-                {
-                    "entry_count": 2,
-                    "code": "{\n\t// Components must have parts and materials have no parts\n\tall c : Component | some p : Product | c->p in parts\n\tall p1,p2 : Product  | p1->p2 in parts implies p1 in Component \n\n}",
-                    "ids": [
-                        "ExkvFKdDFaW6k2KYL",
-                        "8AfAKCKc2voiGk8ob"
-                    ]
-                },
-                {
-                    "entry_count": 2,
-                    "code": "{\n\t// Components must have parts and materials have no parts\n\tall m: Material | #m.parts = 0\n  \tall c: Component | #c.parts > 0\n}",
-                    "ids": [
-                        "DnnvYhT8Mj3qsgHFz",
-                        "pScPN7HcjbRJivTaF"
-                    ]
-                },
-                {
-                    "entry_count": 2,
-                    "code": "{\n\t// Components must have parts and materials have no parts\n  all m: Material | m.parts = none\n  all c: Component | c.parts != none\n  \n\n}",
-                    "ids": [
-                        "5FLy44dXNqkdt97Sh",
-                        "AAfgSDEGsHySxDD5M"
                     ]
                 },
                 {
@@ -537,10 +505,34 @@
                 },
                 {
                     "entry_count": 2,
-                    "code": "{\n\t// Components must have parts and materials have no parts\n  \tall p:Product | p in Material implies no p.parts\n  \tall p:Product | p in Component implies some p.parts\n\n}",
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\tall m: Material | #m.parts = 0\n  \tall c: Component | #c.parts > 0\n}",
                     "ids": [
-                        "2b2GqLe4DNbZPKaZL",
-                        "N6T9BMEKEWjLaC4w4"
+                        "DnnvYhT8Mj3qsgHFz",
+                        "pScPN7HcjbRJivTaF"
+                    ]
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n  \t(parts in (Component -> some Product))\n\n}",
+                    "ids": [
+                        "PaXLLk3aGvrEGFeD9",
+                        "nXFiDvLioLzkiH6d9"
+                    ]
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n  all m: Material | m.parts = none\n  all c: Component | c.parts != none\n  \n\n}",
+                    "ids": [
+                        "5FLy44dXNqkdt97Sh",
+                        "AAfgSDEGsHySxDD5M"
+                    ]
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\tall c : Component | some p : Product | c->p in parts\n\tall p1,p2 : Product  | p1->p2 in parts implies p1 in Component \n\n}",
+                    "ids": [
+                        "ExkvFKdDFaW6k2KYL",
+                        "8AfAKCKc2voiGk8ob"
                     ]
                 },
                 {
@@ -552,108 +544,11 @@
                     ]
                 },
                 {
-                    "entry_count": 1,
-                    "code": "{\n\t// Components must have parts and materials have no parts\n\tall p : Product | #p.parts = 0 iff p in Material \n}",
+                    "entry_count": 2,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\t(all p: Product|\n  \t(p in Material and no p.parts) or (p in Component and some p.parts))\n}",
                     "ids": [
-                        "9cjAz2cqGzRQBP96M"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Components must have parts and materials have no parts\n  \tall c : Component | some(c.parts)\n\tno (Material <: parts)\n}",
-                    "ids": [
-                        "m8Twyc883gGvKjtGM"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Components must have parts and materials have no parts\n\tall c : Component | #(c.parts) >= 1\n  \t#(Material.parts) = 0\n}",
-                    "ids": [
-                        "DnTxDeC3sjj3ot8nZ"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Components must have parts and materials have no parts\n    all c: Component | some c.parts\n    all m: Material | not some m.parts\n}",
-                    "ids": [
-                        "br5dNy6tktoL8CYkj"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Components must have parts and materials have no parts\n  \tMaterial.parts = none\n  \tall x: Component | some x.parts\n\n}",
-                    "ids": [
-                        "z7FYyAwZpaMALdwSX"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Components must have parts and materials have no parts\n\tall c:Component | #c.parts > 0\n  \tall m:Material | no m.parts\n}",
-                    "ids": [
-                        "9ZRwrXJbZGkS52ais"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n  all p : Product | (#(p.parts)>0 implies p in Component) and (#(p.parts)=0 implies p in Material)\n\t// Components must have parts and materials have no parts\n\n}",
-                    "ids": [
-                        "duhuSPSxZ2Ptk4jfo"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Components must have parts and materials have no parts\n  \n\tall p : Product | #(p.parts)>0 implies p in Component else p in Material\n  \n  \tall c : Component | some c.parts\n  \tall m : Material | no m.parts\n}",
-                    "ids": [
-                        "RedDhLGZtqNLbTeRp"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Components must have parts and materials have no parts\n\tall p: Product | p in Component implies some p.parts\n  \tall p: Product | no p.parts iff p in Material\n}",
-                    "ids": [
-                        "LcoXpqBZQ8iTNbz4w"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Components must have parts and materials have no parts\n\tparts in Component -> some Product\n    no Material.parts\n}",
-                    "ids": [
-                        "24xyqMxeiTiYwKds7"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Components must have parts and materials have no parts\n\tall p : Product | p in Component implies some p.parts else no p.parts\n}",
-                    "ids": [
-                        "9tEbhKQDn2rWMn3sw"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Components must have parts and materials have no parts\n  \t//all c : Component | some(c.parts)\n\t//no (Material.parts)\n  \t(parts.Product) = Component\n}",
-                    "ids": [
-                        "fbcQFEcZ2FfTLMsSK"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Components must have parts and materials have no parts\n\tall c: Component, m: Material | no m.parts and some c.parts\n  \tall c : Component | some c.parts\n  \tall m :Material | no m.parts\n}",
-                    "ids": [
-                        "qsdjNcFfpqTjxqkDL"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Components must have parts and materials have no parts\n\tall p: Material |\n  \t\tp.parts = none \n  \n  \tall p: Component |\n  \t\tsome (p.parts)\n  \n  \tProduct = Material + Component\n  \t\t\n}",
-                    "ids": [
-                        "Dz5sKv4qvZf4T4bFp"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Components must have parts and materials have no parts\n\tall p : Product | some p.parts implies p in Component\n  \tall p : Product | no p.parts implies p in Material\n}",
-                    "ids": [
-                        "qN8yZYkFjh2cn6frc"
+                        "ZWLETxnm9xw5hR69i",
+                        "WzWgLSLMFiH4QZ7jB"
                     ]
                 },
                 {
@@ -665,9 +560,86 @@
                 },
                 {
                     "entry_count": 1,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n  \t//all c : Component | some(c.parts)\n\t//no (Material.parts)\n  \t(parts.Product) = Component\n}",
+                    "ids": [
+                        "fbcQFEcZ2FfTLMsSK"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\tall p : Product | p in Component implies some p.parts else no p.parts\n}",
+                    "ids": [
+                        "9tEbhKQDn2rWMn3sw"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\tparts in ( {Product - Material} -> some Product )\n}",
+                    "ids": [
+                        "7FnQaMfv45Tdfsy8A"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\tall p : Product | some p.parts implies p in Component\n  \tall p : Product | no p.parts implies p in Material\n}",
+                    "ids": [
+                        "qN8yZYkFjh2cn6frc"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\tparts in Component -> some Product\n    no Material.parts\n}",
+                    "ids": [
+                        "24xyqMxeiTiYwKds7"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n    all c: Component | some c.parts\n    all m: Material | not some m.parts\n}",
+                    "ids": [
+                        "br5dNy6tktoL8CYkj"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\tall c: Component, m: Material | no m.parts and some c.parts\n  \tall c : Component | some c.parts\n  \tall m :Material | no m.parts\n}",
+                    "ids": [
+                        "qsdjNcFfpqTjxqkDL"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\tall c:Component | #c.parts > 0\n  \tall m:Material | no m.parts\n}",
+                    "ids": [
+                        "9ZRwrXJbZGkS52ais"
+                    ]
+                },
+                {
+                    "entry_count": 1,
                     "code": "{\n\t// Components must have parts and materials have no parts\n    (parts in Component -> some Product) and (all m: Material | no m.parts)\n}",
                     "ids": [
                         "icd2fBDS9pgY3SuTc"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n  \tall c : Component | some(c.parts)\n\tno (Material <: parts)\n}",
+                    "ids": [
+                        "m8Twyc883gGvKjtGM"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n  all p : Product | (#(p.parts)>0 implies p in Component) and (#(p.parts)=0 implies p in Material)\n\t// Components must have parts and materials have no parts\n\n}",
+                    "ids": [
+                        "duhuSPSxZ2Ptk4jfo"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\tall p : Product | #p.parts = 0 iff p in Material \n}",
+                    "ids": [
+                        "9cjAz2cqGzRQBP96M"
                     ]
                 },
                 {
@@ -679,9 +651,37 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Components must have parts and materials have no parts\n\tparts in ( {Product - Material} -> some Product )\n}",
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\tall c : Component | #(c.parts) >= 1\n  \t#(Material.parts) = 0\n}",
                     "ids": [
-                        "7FnQaMfv45Tdfsy8A"
+                        "DnTxDeC3sjj3ot8nZ"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n  \n\tall p : Product | #(p.parts)>0 implies p in Component else p in Material\n  \n  \tall c : Component | some c.parts\n  \tall m : Material | no m.parts\n}",
+                    "ids": [
+                        "RedDhLGZtqNLbTeRp"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n  \tMaterial.parts = none\n  \tall x: Component | some x.parts\n\n}",
+                    "ids": [
+                        "z7FYyAwZpaMALdwSX"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\tall p: Material |\n  \t\tp.parts = none \n  \n  \tall p: Component |\n  \t\tsome (p.parts)\n  \n  \tProduct = Material + Component\n  \t\t\n}",
+                    "ids": [
+                        "Dz5sKv4qvZf4T4bFp"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\tall p: Product | p in Component implies some p.parts\n  \tall p: Product | no p.parts iff p in Material\n}",
+                    "ids": [
+                        "LcoXpqBZQ8iTNbz4w"
                     ]
                 }
             ]
@@ -765,20 +765,6 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Components must have parts and materials have no parts\n\t // Components must have parts\n    all c: Component, m : Material | some p : Product | p in c.parts and no m.parts\n}",
-                    "ids": [
-                        "JqwZbg2pzA9KJ3BCK"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Components must have parts and materials have no parts\n\tall c : Component, m : Material | #(c.parts) >= 1  and #(m.parts) = 0\n}",
-                    "ids": [
-                        "6uL5SSDprsrcHttN2"
-                    ]
-                },
-                {
-                    "entry_count": 1,
                     "code": "{\n\t// Components must have parts and materials have no parts\n\tall c:Component, m:Material | #c.parts > 0 and m.parts = none\n}",
                     "ids": [
                         "KYMjGHo2ZZjzNTNxP"
@@ -796,6 +782,20 @@
                     "code": "{\n\t// Components must have parts and materials have no parts\n\t\tall c : Component , m : Material | some c.^parts and no m.parts \n  \t\n}",
                     "ids": [
                         "JefebSgdxrMsnJPY4"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\tall c : Component, m : Material | #(c.parts) >= 1  and #(m.parts) = 0\n}",
+                    "ids": [
+                        "6uL5SSDprsrcHttN2"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\t // Components must have parts\n    all c: Component, m : Material | some p : Product | p in c.parts and no m.parts\n}",
+                    "ids": [
+                        "JqwZbg2pzA9KJ3BCK"
                     ]
                 }
             ]
@@ -853,6 +853,15 @@
                 },
                 {
                     "entry_count": 3,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\tall c : Component | some p : Product | p in c.parts and all c : Material | no p : Product | p in c.parts\n}",
+                    "ids": [
+                        "3t25XSeBgXyg2bhTP",
+                        "45StjTb6PSvBFkyf2",
+                        "PFqxqhWefJH3oodtG"
+                    ]
+                },
+                {
+                    "entry_count": 3,
                     "code": "{\n\t// Components must have parts and materials have no parts\n  \tall c : Component | some c.parts and no Material.parts\n\n}",
                     "ids": [
                         "Rjt5HRPGjHJAngPrC",
@@ -867,22 +876,6 @@
                         "KgJQaA6KzWCnek2fr",
                         "NKSAjAbzHBCxXkeiS",
                         "LrP9gSfXpCyosoXGn"
-                    ]
-                },
-                {
-                    "entry_count": 3,
-                    "code": "{\n\t// Components must have parts and materials have no parts\n\tall c : Component | some p : Product | p in c.parts and all c : Material | no p : Product | p in c.parts\n}",
-                    "ids": [
-                        "3t25XSeBgXyg2bhTP",
-                        "45StjTb6PSvBFkyf2",
-                        "PFqxqhWefJH3oodtG"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Components must have parts and materials have no parts\n\tall c : Component | some p : Product | p in c.parts and no c : Material | some p : Product | p in c.parts\n}",
-                    "ids": [
-                        "npirpHs4qF7CD3Hat"
                     ]
                 },
                 {
@@ -901,16 +894,23 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Components must have parts and materials have no parts\n  \tall c : Component | some c.parts and all m : Material | none =  m.parts\n\n}",
+                    "code": "{\n\t// Components must have parts and materials have no parts\n  \tall c : Component | some c.parts and none = Material.parts\n\n}",
                     "ids": [
-                        "SxpgAifzsPSj3vujS"
+                        "C36hJfpA9ELAR9MoA"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Components must have parts and materials have no parts\n  \tall c : Component | some c.parts and none = Material.parts\n\n}",
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\tall c : Component | some p : Product | p in c.parts and no c : Material | some p : Product | p in c.parts\n}",
                     "ids": [
-                        "C36hJfpA9ELAR9MoA"
+                        "npirpHs4qF7CD3Hat"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n  \tall c : Component | some c.parts and all m : Material | none =  m.parts\n\n}",
+                    "ids": [
+                        "SxpgAifzsPSj3vujS"
                     ]
                 }
             ]
@@ -955,10 +955,10 @@
                 },
                 {
                     "entry_count": 2,
-                    "code": "{\n\t// Components must have parts and materials have no parts\n  \tall p : Product | p in parts.p implies p in Component and #(p.parts)=0 implies p in Material\n}",
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\tall p: Product |\n  \t\tp in Material implies no p.parts and \n  \t\tp in Component implies some p.parts\n}",
                     "ids": [
-                        "nJNgPJyiXJw2tDMZz",
-                        "dwrqdeurfLA3dPPac"
+                        "bzZzuw5DHDvQLWyyE",
+                        "FTEhFaW3hJT7q3Php"
                     ]
                 },
                 {
@@ -971,14 +971,6 @@
                 },
                 {
                     "entry_count": 2,
-                    "code": "{\n\t// Components must have parts and materials have no parts\n\tall p : Product | #p.parts = 0 implies p in Material and #p.parts != 0 implies p in Component\n}",
-                    "ids": [
-                        "5isP66kZTBazScKPz",
-                        "BWrMZn6aAb8NTQus7"
-                    ]
-                },
-                {
-                    "entry_count": 2,
                     "code": "{\n\t// Components must have parts and materials have no parts\n\tall p: Product |\n  \t\tsome p.parts implies p in Component and\n  \t\t\tno p.parts implies p in Material \n  \t\t\n}",
                     "ids": [
                         "DXYm9udDtXAvbQCf6",
@@ -987,17 +979,18 @@
                 },
                 {
                     "entry_count": 2,
-                    "code": "{\n\t// Components must have parts and materials have no parts\n\tall p: Product |\n  \t\tp in Material implies no p.parts and \n  \t\tp in Component implies some p.parts\n}",
+                    "code": "{\n\t// Components must have parts and materials have no parts\n  \tall p : Product | p in parts.p implies p in Component and #(p.parts)=0 implies p in Material\n}",
                     "ids": [
-                        "bzZzuw5DHDvQLWyyE",
-                        "FTEhFaW3hJT7q3Php"
+                        "nJNgPJyiXJw2tDMZz",
+                        "dwrqdeurfLA3dPPac"
                     ]
                 },
                 {
-                    "entry_count": 1,
-                    "code": "{\n  all p: Product | p in Component implies p.parts != none or p in Material implies p.parts = none\n  \n\t// Components must have parts and materials have no parts\n\n}",
+                    "entry_count": 2,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\tall p : Product | #p.parts = 0 implies p in Material and #p.parts != 0 implies p in Component\n}",
                     "ids": [
-                        "Pdd8TvdWqzhGF4KKC"
+                        "5isP66kZTBazScKPz",
+                        "BWrMZn6aAb8NTQus7"
                     ]
                 },
                 {
@@ -1009,16 +1002,16 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Components must have parts and materials have no parts\n\tall p:Product | p in Material implies not one p.parts and p in Component implies some p.parts\n\n}",
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\tall p, p2 : Product | (p in Material implies p2 not in p.parts) or (p in Component implies p2 in p.parts)\n}",
                     "ids": [
-                        "RJujoXuLXMWy2Rjaq"
+                        "7WTfwEiBZERvkr554"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Components must have parts and materials have no parts\n  all p: Product | p in Component => some p.parts and p in Material => no p.parts \n  \n\n}",
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\tall p: Product |\n  \t\tp in Material implies no p.parts and \n  \t\tp in Component implies some (p.parts - p)\n}",
                     "ids": [
-                        "HoZAvQiK3AspndF8r"
+                        "8p9f9LMQtjDNjCHKv"
                     ]
                 },
                 {
@@ -1037,16 +1030,30 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Components must have parts and materials have no parts\n\tall p, p2 : Product | (p in Material implies p2 not in p.parts) or (p in Component implies p2 in p.parts)\n}",
+                    "code": "{\n  all p: Product | p in Component implies p.parts != none or p in Material implies p.parts = none\n  \n\t// Components must have parts and materials have no parts\n\n}",
                     "ids": [
-                        "7WTfwEiBZERvkr554"
+                        "Pdd8TvdWqzhGF4KKC"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Components must have parts and materials have no parts\n  all p: Product | p in Component => some p.parts or p in Material => no p.parts \n  \n\n}",
+                    "code": "{\n\t// Components must have parts and materials have no parts\n \t//all p:Product | p not in p.^parts\n  \tall c: Component | c.*parts in Product\n  \t//all m: Material  | m.parts not in (Product)  \t\n}",
                     "ids": [
-                        "xKsv4h6425BdAdpmL"
+                        "CKczxNzjEcK5M7GYY"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n  all p: Product | p in Component => some p.parts and p in Material => no p.parts \n  \n\n}",
+                    "ids": [
+                        "HoZAvQiK3AspndF8r"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\tall p:Product | p in Material implies not one p.parts and p in Component implies some p.parts\n\n}",
+                    "ids": [
+                        "RJujoXuLXMWy2Rjaq"
                     ]
                 },
                 {
@@ -1065,13 +1072,6 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Components must have parts and materials have no parts\n \t//all p:Product | p not in p.^parts\n  \tall c: Component | c.*parts in Product\n  \t//all m: Material  | m.parts not in (Product)  \t\n}",
-                    "ids": [
-                        "CKczxNzjEcK5M7GYY"
-                    ]
-                },
-                {
-                    "entry_count": 1,
                     "code": "{\n\t// Components must have parts and materials have no parts\n\tall disj p, p2 : Product | (p in Material implies p2 not in p.parts) or (p in Component implies p2 in p.parts)\n}",
                     "ids": [
                         "QZrxPNoupqQfvsdFF"
@@ -1079,9 +1079,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Components must have parts and materials have no parts\n\tall p: Product |\n  \t\tp in Material implies no p.parts and \n  \t\tp in Component implies some (p.parts - p)\n}",
+                    "code": "{\n\t// Components must have parts and materials have no parts\n  all p: Product | p in Component => some p.parts or p in Material => no p.parts \n  \n\n}",
                     "ids": [
-                        "8p9f9LMQtjDNjCHKv"
+                        "xKsv4h6425BdAdpmL"
                     ]
                 }
             ]
@@ -1129,16 +1129,16 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Components must have parts and materials have no parts\n\t//all c:Component | some p:c.parts | p in Product\n  \tall m:Material | all p:m.parts | p not in Product\n}",
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\t(Product.parts = Component.parts) and no (Material.parts)\n}",
                     "ids": [
-                        "JBPsHmN5CJ228P3id"
+                        "SAWCC8vRY9shfBALj"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Components must have parts and materials have no parts\n  \tMaterial.parts = none\n  \tProduct.parts = Component.parts\n\n}",
+                    "code": "{\n\t// Components must have parts and materials have no parts\n  \tparts in Component -> set Product\n\n}",
                     "ids": [
-                        "onp7Ypzz3qoHoHCZJ"
+                        "h85jT9buGHF6SMgXR"
                     ]
                 },
                 {
@@ -1150,16 +1150,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Components must have parts and materials have no parts\n\tno (Product.parts - Component.parts) and no (Material.parts)\n}",
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\tall m : Material | m.parts = none\n \t\n\n}",
                     "ids": [
-                        "4E84RkeqMAG3cPqAq"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Components must have parts and materials have no parts\n\tall p:Product | p.^parts not in Product implies p in Material\n  \tall p:Product | all pt:p.parts | pt in Product implies p in Component\n}",
-                    "ids": [
-                        "pC2u9WEEfQfaAPG6J"
+                        "q2ELMzzzMeLiRTasj"
                     ]
                 },
                 {
@@ -1178,23 +1171,23 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Components must have parts and materials have no parts\n\t(Product.parts = Component.parts) and no (Material.parts)\n}",
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\t//all c:Component | some p:c.parts | p in Product\n  \tall m:Material | all p:m.parts | p not in Product\n}",
                     "ids": [
-                        "SAWCC8vRY9shfBALj"
+                        "JBPsHmN5CJ228P3id"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Components must have parts and materials have no parts\n\tall m : Material | m.parts = none\n \t\n\n}",
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\tall p:Product | p.^parts not in Product implies p in Material\n  \tall p:Product | all pt:p.parts | pt in Product implies p in Component\n}",
                     "ids": [
-                        "q2ELMzzzMeLiRTasj"
+                        "pC2u9WEEfQfaAPG6J"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Components must have parts and materials have no parts\n  \tparts in Component -> set Product\n\n}",
+                    "code": "{\n\t// Components must have parts and materials have no parts\n  \tMaterial.parts = none\n  \tProduct.parts = Component.parts\n\n}",
                     "ids": [
-                        "h85jT9buGHF6SMgXR"
+                        "onp7Ypzz3qoHoHCZJ"
                     ]
                 },
                 {
@@ -1202,6 +1195,13 @@
                     "code": "{\n\t// Components must have parts and materials have no parts\n\tall p:Product | all pt:p.parts | pt not in Product implies p in Material\n  \tall p:Product | all pt:p.parts | pt in Product implies p in Component\n}",
                     "ids": [
                         "8xDGWW8YwziBXhkXf"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\tno (Product.parts - Component.parts) and no (Material.parts)\n}",
+                    "ids": [
+                        "4E84RkeqMAG3cPqAq"
                     ]
                 }
             ]
@@ -1296,6 +1296,13 @@
                 },
                 {
                     "entry_count": 1,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\tMaterial.parts = none\n  \tComponent.parts != none\n}",
+                    "ids": [
+                        "HfHDSSn8SpGjMogfS"
+                    ]
+                },
+                {
+                    "entry_count": 1,
                     "code": "{\n\t// Components must have parts and materials have no parts\n\tsome (Product & Component).parts and no (Product & Material).parts \n}",
                     "ids": [
                         "aocdYZoC62nykBJmc"
@@ -1310,13 +1317,6 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Components must have parts and materials have no parts\n\tsome(Component <: parts) and no (Material <: parts)\n}",
-                    "ids": [
-                        "J2FMB2vgWiQsG3MAA"
-                    ]
-                },
-                {
-                    "entry_count": 1,
                     "code": "{\n\t// Components must have parts and materials have no parts\n\tComponent.parts not = none\n  \n  \tno Material.parts\n}",
                     "ids": [
                         "diYpDr9pvGCyqs6ck"
@@ -1324,9 +1324,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Components must have parts and materials have no parts\n\tMaterial.parts = none\n  \tComponent.parts != none\n}",
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\tsome(Component <: parts) and no (Material <: parts)\n}",
                     "ids": [
-                        "HfHDSSn8SpGjMogfS"
+                        "J2FMB2vgWiQsG3MAA"
                     ]
                 }
             ]
@@ -1347,14 +1347,6 @@
                 },
                 {
                     "entry_count": 2,
-                    "code": "{\n\t// Components must have parts and materials have no parts\n  \t(all c: Component | some c.*(parts )) and (all m: Material | no m.*(parts))\n\n}",
-                    "ids": [
-                        "KjQpqKyH5xfYyhFWN",
-                        "xjZRnatcEWDniRsMQ"
-                    ]
-                },
-                {
-                    "entry_count": 2,
                     "code": "{\n\t// Components must have parts and materials have no parts\n\tall c:Component | c.parts in Product\n  \tall m:Material | m.parts not in Product\n}",
                     "ids": [
                         "87G9zkFBtu7SLJBQw",
@@ -1362,10 +1354,11 @@
                     ]
                 },
                 {
-                    "entry_count": 1,
-                    "code": "{\n\t// Components must have parts and materials have no parts\n  \tall c : Product | c.^parts in Product implies c in Component\n  \tall prod:Product | prod.^parts not in Product implies prod in Material\n}",
+                    "entry_count": 2,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n  \t(all c: Component | some c.*(parts )) and (all m: Material | no m.*(parts))\n\n}",
                     "ids": [
-                        "nhoM26hcvxsr9xeJK"
+                        "KjQpqKyH5xfYyhFWN",
+                        "xjZRnatcEWDniRsMQ"
                     ]
                 },
                 {
@@ -1373,6 +1366,13 @@
                     "code": "{\n\t// Components must have parts and materials have no parts\n\tall m:Material |\n  \t\tm.parts not in Product.parts\n  \n\n}",
                     "ids": [
                         "icKm8fz4vzX2Xt9TH"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n  \tall c : Product | c.^parts in Product implies c in Component\n  \tall prod:Product | prod.^parts not in Product implies prod in Material\n}",
+                    "ids": [
+                        "nhoM26hcvxsr9xeJK"
                     ]
                 },
                 {
@@ -1400,23 +1400,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Components must have parts and materials have no parts\n\tall p : Product | (p in Component and p not in Dangerous) and some p.parts\n  \tall m : Product | m in Material and no m.parts\n}",
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\tall p : Product |\n    ((p in Component iff #(p.parts)>0) and (p in Component iff #(p.parts)=0))\n  \t//all m : Material | #(m.parts)=0\n  \t//all c : Component | #(c.parts)>0\n}",
                     "ids": [
-                        "eQ7eyv3RDppGYxF8F"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Components must have parts and materials have no parts\n \tall p:Product | p not in p.*parts\n  \tall c: Component | c.^parts in (Product - c)\n  \tall m: Material  | m.parts not in (Product)  \t\n}",
-                    "ids": [
-                        "GrBZfnxApxraQQeTy"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Components must have parts and materials have no parts\n\tall p, p2 : Product | (p in Material implies p2 not in p.parts) and p != p2\n}",
-                    "ids": [
-                        "uFYJ9uEizy8e5Hjcb"
+                        "Rt3PPTPn4ZkELpNek"
                     ]
                 },
                 {
@@ -1428,9 +1414,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Components must have parts and materials have no parts\n\tall p : Product |\n    ((p in Component iff #(p.parts)>0) and (p in Component iff #(p.parts)=0))\n  \t//all m : Material | #(m.parts)=0\n  \t//all c : Component | #(c.parts)>0\n}",
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\tall p, p2 : Product | (p in Material implies p2 not in p.parts) and p != p2\n}",
                     "ids": [
-                        "Rt3PPTPn4ZkELpNek"
+                        "uFYJ9uEizy8e5Hjcb"
                     ]
                 },
                 {
@@ -1438,6 +1424,20 @@
                     "code": "{\n\t// Components must have parts and materials have no parts\n\tall p : Product | (p in Component or p in Dangerous) and some p.parts\n  \tall m : Product | m in Material and no m.parts\n}",
                     "ids": [
                         "yKbyQhHDbn9nMBtZD"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n \tall p:Product | p not in p.*parts\n  \tall c: Component | c.^parts in (Product - c)\n  \tall m: Material  | m.parts not in (Product)  \t\n}",
+                    "ids": [
+                        "GrBZfnxApxraQQeTy"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\tall p : Product | (p in Component and p not in Dangerous) and some p.parts\n  \tall m : Product | m in Material and no m.parts\n}",
+                    "ids": [
+                        "eQ7eyv3RDppGYxF8F"
                     ]
                 }
             ]
@@ -1449,14 +1449,6 @@
             "elems": [
                 {
                     "entry_count": 2,
-                    "code": "{\n\t// Components must have parts and materials have no parts\n\tall m:Material |\n  \t\tm.parts not in Product.parts\n  \n  \tall c:Component |\n  \t\tsome p:Product.parts |\n  \t\t\tp in c.parts\n}",
-                    "ids": [
-                        "nZrgWzwLuywqmXqMT",
-                        "NCFA77gFyF6d6RBLz"
-                    ]
-                },
-                {
-                    "entry_count": 2,
                     "code": "{\n\t// Components must have parts and materials have no parts\n\tall c:Component | some p:c.parts | p in Product\n  \tall m:Material | one p:m.parts |p not in Product\n}",
                     "ids": [
                         "w67D4diFEt3fqyjkZ",
@@ -1464,10 +1456,18 @@
                     ]
                 },
                 {
-                    "entry_count": 1,
-                    "code": "{\n\t// Components must have parts and materials have no parts\n\tall p:Product | all pt:p.parts | pt not in Product implies p in Material\n  \tall p:Product | some pt:p.parts | pt in Product implies p in Component\n}",
+                    "entry_count": 2,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\tall m:Material |\n  \t\tm.parts not in Product.parts\n  \n  \tall c:Component |\n  \t\tsome p:Product.parts |\n  \t\t\tp in c.parts\n}",
                     "ids": [
-                        "um4PYSK27LBEhfKfa"
+                        "nZrgWzwLuywqmXqMT",
+                        "NCFA77gFyF6d6RBLz"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n  \tall c : Product | some p: c.parts | p in Product implies c in Component\n  \tall prod:Product | prod.parts not in Product implies prod in Material\n}",
+                    "ids": [
+                        "AybyhYGJ4W3o5Qwuj"
                     ]
                 },
                 {
@@ -1486,9 +1486,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Components must have parts and materials have no parts\n  \tall c : Product | some p: c.parts | p in Product implies c in Component\n  \tall prod:Product | prod.parts not in Product implies prod in Material\n}",
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\tall p:Product | all pt:p.parts | pt not in Product implies p in Material\n  \tall p:Product | some pt:p.parts | pt in Product implies p in Component\n}",
                     "ids": [
-                        "AybyhYGJ4W3o5Qwuj"
+                        "um4PYSK27LBEhfKfa"
                     ]
                 }
             ]
@@ -1516,13 +1516,6 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Components must have parts and materials have no parts\n  all c : Component | c.parts in Product and all m : Material | m.parts not in Product\n\n}",
-                    "ids": [
-                        "PczwohZjCWC4vikAT"
-                    ]
-                },
-                {
-                    "entry_count": 1,
                     "code": "{\n\t// Components must have parts and materials have no parts\n\tall c:Component | all m:Material | c.parts in Product and m.parts not in Product\n}",
                     "ids": [
                         "DmeYp9dzX5QPZizTY"
@@ -1540,6 +1533,13 @@
                     "code": "{\n\t// Components must have parts and materials have no parts\n  all c : Component , m : Material | #(c.parts) > 0 && #(m.parts) < 0\n\n}",
                     "ids": [
                         "3dK9Nhn5FBjycgjqW"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n  all c : Component | c.parts in Product and all m : Material | m.parts not in Product\n\n}",
+                    "ids": [
+                        "PczwohZjCWC4vikAT"
                     ]
                 }
             ]
@@ -1595,6 +1595,13 @@
             "elems": [
                 {
                     "entry_count": 1,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\tall c: Component | c.parts != none and all m: Material | m in Product - Product.parts\n}",
+                    "ids": [
+                        "qH6rsZbaqarKncipS"
+                    ]
+                },
+                {
+                    "entry_count": 1,
                     "code": "{\n\t// Components must have parts and materials have no parts\n  \tall c : Component | some c.parts and all m : Material | no parts.m\n\n}",
                     "ids": [
                         "86PwXvnfy9D8D9e5u"
@@ -1602,9 +1609,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Components must have parts and materials have no parts\n\tall c: Component | c.parts != none and all m: Material | m in Product - Product.parts\n}",
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\tall c: Component | c.parts != none and all m: Material | no parts.m\n}",
                     "ids": [
-                        "qH6rsZbaqarKncipS"
+                        "CmWt2M3eLKsmBg7Xi"
                     ]
                 },
                 {
@@ -1619,13 +1626,6 @@
                     "code": "{\n\t// Components must have parts and materials have no parts\n\tall c: Component | c.parts != none and all m: Material | m not in Product.parts\n}",
                     "ids": [
                         "fdQzkAFSdhK9HcXzM"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Components must have parts and materials have no parts\n\tall c: Component | c.parts != none and all m: Material | no parts.m\n}",
-                    "ids": [
-                        "CmWt2M3eLKsmBg7Xi"
                     ]
                 }
             ]
@@ -1645,9 +1645,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Components must have parts and materials have no parts\n\tall p:Product | p.parts in Component \n\n}",
+                    "code": "{\n\t// Components must have parts and materials have no parts\n  \tall c : Component, p : Product | p.parts in Component\n  \tall m : Material, p : Product | m not in p.parts\n\n}",
                     "ids": [
-                        "Frosc6RfzB3RXh86a"
+                        "BS9xYANsR2wfNDyCN"
                     ]
                 },
                 {
@@ -1659,9 +1659,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Components must have parts and materials have no parts\n  \tall c : Component, p : Product | p.parts in Component\n  \tall m : Material, p : Product | m not in p.parts\n\n}",
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\tall p:Product | p.parts in Component \n\n}",
                     "ids": [
-                        "BS9xYANsR2wfNDyCN"
+                        "Frosc6RfzB3RXh86a"
                     ]
                 }
             ]
@@ -1712,16 +1712,16 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Components must have parts and materials have no parts\n  \tall c : Component | c in Product.parts\n  \tall m : Material | m !in Product.parts\n\n}",
+                    "code": "{\n\t// Components must have parts and materials have no parts\n  \tall c: Component | #(c & Product.parts) != 0\n  \tall m:Material | #(m & Product.parts) = 0\n  \t\n\n}",
                     "ids": [
-                        "gqSLw8Ab8BbjgQgXa"
+                        "zYSZuw7rhHSHJK4yN"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Components must have parts and materials have no parts\n  \tall c: Component | #(c & Product.parts) != 0\n  \tall m:Material | #(m & Product.parts) = 0\n  \t\n\n}",
+                    "code": "{\n\t// Components must have parts and materials have no parts\n  \tall c : Component | c in Product.parts\n  \tall m : Material | m !in Product.parts\n\n}",
                     "ids": [
-                        "zYSZuw7rhHSHJK4yN"
+                        "gqSLw8Ab8BbjgQgXa"
                     ]
                 }
             ]
@@ -1740,16 +1740,16 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Components must have parts and materials have no parts\n\tall c : Component, m : Material | #(c.parts) >= 0  and no m.parts\n}",
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\t\tall c : Component , m : Material | some c implies  some c.*parts and some  m implies no m.parts \n  \t\n}",
                     "ids": [
-                        "r2sacRopgYJqJ88Y3"
+                        "dhMnPkosmDKat8y3k"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Components must have parts and materials have no parts\n\t\tall c : Component , m : Material | some c implies  some c.*parts and some  m implies no m.parts \n  \t\n}",
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\tall c : Component, m : Material | #(c.parts) >= 0  and no m.parts\n}",
                     "ids": [
-                        "dhMnPkosmDKat8y3k"
+                        "r2sacRopgYJqJ88Y3"
                     ]
                 },
                 {
@@ -1863,9 +1863,9 @@
             "elems": [
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Components must have parts and materials have no parts\n\tall p : Product | parts.p = Component\n}",
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\tall p, p2 : Product | (p in Material implies p2 not in p.parts) and (p in Component implies p2 in p.parts)\n}",
                     "ids": [
-                        "ongnTK3vWajtYyFMf"
+                        "N55pqtpSj4G344fJh"
                     ]
                 },
                 {
@@ -1877,9 +1877,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Components must have parts and materials have no parts\n\tall p, p2 : Product | (p in Material implies p2 not in p.parts) and (p in Component implies p2 in p.parts)\n}",
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\tall p : Product | parts.p = Component\n}",
                     "ids": [
-                        "N55pqtpSj4G344fJh"
+                        "ongnTK3vWajtYyFMf"
                     ]
                 }
             ]
@@ -1920,16 +1920,16 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Components must have parts and materials have no parts\n\t//all c: Component | some c.parts\n  \t //all m: Material | no m.parts\n  \n  \tall c: Component, p: Product | c in p implies c in p.parts\n  \t all m: Material, p: Product | m in p implies m not in p.parts\n}",
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\t//all c: Component | some c.parts\n  \t //all m: Material | no m.parts\n  \n  \tall c: Component | c in c.parts\n  \t all m: Material | m not in m.parts\n}",
                     "ids": [
-                        "2FTirqrgiWgAobALt"
+                        "NXWjn8y7ovpPbrLDp"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Components must have parts and materials have no parts\n\t//all c: Component | some c.parts\n  \t //all m: Material | no m.parts\n  \n  \tall c: Component | c in c.parts\n  \t all m: Material | m not in m.parts\n}",
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\t//all c: Component | some c.parts\n  \t //all m: Material | no m.parts\n  \n  \tall c: Component, p: Product | c in p implies c in p.parts\n  \t all m: Material, p: Product | m in p implies m not in p.parts\n}",
                     "ids": [
-                        "NXWjn8y7ovpPbrLDp"
+                        "2FTirqrgiWgAobALt"
                     ]
                 }
             ]
@@ -1941,16 +1941,16 @@
             "elems": [
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Components must have parts and materials have no parts\n\tsome (Product & Component - Product & Dangerous).parts and no (Product & Material - Product & Dangerous).parts \n}",
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\tsome (Product & Component - Dangerous).parts and no (Product & Material - Dangerous).parts \n}",
                     "ids": [
-                        "s86SjWi9iwfRTNLzM"
+                        "JAp4jt4XbG4oYAcoP"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Components must have parts and materials have no parts\n\tsome (Product & Component - Dangerous).parts and no (Product & Material - Dangerous).parts \n}",
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\tsome (Product & Component - Product & Dangerous).parts and no (Product & Material - Product & Dangerous).parts \n}",
                     "ids": [
-                        "JAp4jt4XbG4oYAcoP"
+                        "s86SjWi9iwfRTNLzM"
                     ]
                 }
             ]
@@ -1983,16 +1983,16 @@
             "elems": [
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Components must have parts and materials have no parts\n\tall c: Component, m: Material | c in c.parts and m not in m.parts\n}",
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\tall c: Component, m: Material | c in parts.c and m not in parts.m\n}",
                     "ids": [
-                        "wNqTuzXbRtpcZv59Y"
+                        "SXubZy9fJBFMChyqM"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Components must have parts and materials have no parts\n\tall c: Component, m: Material | c in parts.c and m not in parts.m\n}",
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\tall c: Component, m: Material | c in c.parts and m not in m.parts\n}",
                     "ids": [
-                        "SXubZy9fJBFMChyqM"
+                        "wNqTuzXbRtpcZv59Y"
                     ]
                 }
             ]
@@ -2004,16 +2004,16 @@
             "elems": [
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Components must have parts and materials have no parts\n  \n\tall c : Component, m : Material, p : Product | one p2 : Product | c not in c.parts and c not in parts.c and p not in m.parts and p2 in c.parts\n}",
+                    "code": "{\n\t// Components must have parts and materials have no parts\n  \n\tall c : Component, m : Material, p : Product | one p2 : Product | c not in c.parts and p not in m.parts and p2 in c.parts\n}",
                     "ids": [
-                        "rRznzwkw5RSxjwB9M"
+                        "jz4oumuioyzBeAyXS"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Components must have parts and materials have no parts\n  \n\tall c : Component, m : Material, p : Product | one p2 : Product | c not in c.parts and p not in m.parts and p2 in c.parts\n}",
+                    "code": "{\n\t// Components must have parts and materials have no parts\n  \n\tall c : Component, m : Material, p : Product | one p2 : Product | c not in c.parts and c not in parts.c and p not in m.parts and p2 in c.parts\n}",
                     "ids": [
-                        "jz4oumuioyzBeAyXS"
+                        "rRznzwkw5RSxjwB9M"
                     ]
                 }
             ]
@@ -2046,16 +2046,16 @@
             "elems": [
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Components must have parts and materials have no parts\n  \tno (iden & parts) and parts in (Component -> set Product)\n\n}",
+                    "code": "{\n\t// Components must have parts and materials have no parts\n  \tparts in (Component -> set Product -iden)\n\n}",
                     "ids": [
-                        "PT2fcj2soXvFACMpd"
+                        "xnxWZdevh7mHyjgei"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Components must have parts and materials have no parts\n  \tparts in (Component -> set Product -iden)\n\n}",
+                    "code": "{\n\t// Components must have parts and materials have no parts\n  \tno (iden & parts) and parts in (Component -> set Product)\n\n}",
                     "ids": [
-                        "xnxWZdevh7mHyjgei"
+                        "PT2fcj2soXvFACMpd"
                     ]
                 }
             ]
@@ -2067,16 +2067,16 @@
             "elems": [
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Components must have parts and materials have no parts\n  all c: Component |\n\t\tsome c.parts and\n\t\tno c.parts\n\n\tall m: Material |\n\t\tno m.parts\n\n}",
+                    "code": "{\n\t// Components must have parts and materials have no parts\n  \t(all c:Component | some c.parts ) and (all p:Product | no p.parts )\n\n}",
                     "ids": [
-                        "JkMxiynDnuKXgToeg"
+                        "WgqBAJmeQc8NqrqHT"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Components must have parts and materials have no parts\n  \t(all c:Component | some c.parts ) and (all p:Product | no p.parts )\n\n}",
+                    "code": "{\n\t// Components must have parts and materials have no parts\n  all c: Component |\n\t\tsome c.parts and\n\t\tno c.parts\n\n\tall m: Material |\n\t\tno m.parts\n\n}",
                     "ids": [
-                        "WgqBAJmeQc8NqrqHT"
+                        "JkMxiynDnuKXgToeg"
                     ]
                 }
             ]
@@ -2124,16 +2124,16 @@
             "elems": [
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Components must have parts and materials have no parts\n\tall p: Product| (p = Component implies p.parts != none and p not in p.parts) and\n  \t(p = Material implies p.parts = none)\n}",
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\tall p: Product| (p = Component implies #(p.parts)>0 and p not in p.parts) and\n  \t(p = Material implies p.parts = none)\n}",
                     "ids": [
-                        "abPiqaYe4pKfv3KNz"
+                        "MAHhFzFoDiHgaKZx4"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Components must have parts and materials have no parts\n\tall p: Product| (p = Component implies #(p.parts)>0 and p not in p.parts) and\n  \t(p = Material implies p.parts = none)\n}",
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\tall p: Product| (p = Component implies p.parts != none and p not in p.parts) and\n  \t(p = Material implies p.parts = none)\n}",
                     "ids": [
-                        "MAHhFzFoDiHgaKZx4"
+                        "abPiqaYe4pKfv3KNz"
                     ]
                 }
             ]
@@ -2175,16 +2175,16 @@
             "elems": [
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Components must have parts and materials have no parts\n  no parts.Material\n  some parts.Component\n\n}",
+                    "code": "{\n\t// Components must have parts and materials have no parts\n  \t#(Component & Product.parts) != 0\n  \t#(Material & Product.parts) = 0\n\n}",
                     "ids": [
-                        "FwhTfHTdRG5NLPLHe"
+                        "6sjsro2XJtCbmQQrS"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Components must have parts and materials have no parts\n  \t#(Component & Product.parts) != 0\n  \t#(Material & Product.parts) = 0\n\n}",
+                    "code": "{\n\t// Components must have parts and materials have no parts\n  no parts.Material\n  some parts.Component\n\n}",
                     "ids": [
-                        "6sjsro2XJtCbmQQrS"
+                        "FwhTfHTdRG5NLPLHe"
                     ]
                 }
             ]
@@ -2217,16 +2217,16 @@
             "elems": [
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Components must have parts and materials have no parts\n  \tall p : Product | p.parts in Component\n  \tall p : Product | not p.parts in Material\n  \t\n\n}",
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\tall p:Product | p.parts in Component and p.parts not in Material\n\n}",
                     "ids": [
-                        "kyfBv5XRRn7XNR7bf"
+                        "GjXyB38WsKECY8LNi"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Components must have parts and materials have no parts\n\tall p:Product | p.parts in Component and p.parts not in Material\n\n}",
+                    "code": "{\n\t// Components must have parts and materials have no parts\n  \tall p : Product | p.parts in Component\n  \tall p : Product | not p.parts in Material\n  \t\n\n}",
                     "ids": [
-                        "GjXyB38WsKECY8LNi"
+                        "kyfBv5XRRn7XNR7bf"
                     ]
                 }
             ]

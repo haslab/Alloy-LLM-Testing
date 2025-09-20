@@ -3,7 +3,7 @@
     "pred": "this/inv8",
     "entry_count": 601,
     "group_count": 108,
-    "duration": 40,
+    "duration": 48,
     "scope": 3,
     "groups": [
         {
@@ -206,17 +206,6 @@
                 },
                 {
                     "entry_count": 5,
-                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n    all  d : Dangerous, h : Human | h not in d.workstation.workers \n\n}",
-                    "ids": [
-                        "DYSwCEufeFZ4AeZoH",
-                        "yYM37SX7Fd8npjyX3",
-                        "K7hzsWJg9aKe4Yu2W",
-                        "JAX5g4TMw8sfN9H2t",
-                        "CWjbDdrzQKzfMzygZ"
-                    ]
-                },
-                {
-                    "entry_count": 5,
                     "code": "{\n\t// Dangerous components cannot be assembled by humans\n\tno Dangerous.workstation & workers.Human\n}",
                     "ids": [
                         "76TaFrz6XiTArknBk",
@@ -227,33 +216,14 @@
                     ]
                 },
                 {
-                    "entry_count": 4,
-                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n\tno (Component & Dangerous).workstation & workers.Human\n}",
+                    "entry_count": 5,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n    all  d : Dangerous, h : Human | h not in d.workstation.workers \n\n}",
                     "ids": [
-                        "CzZyFnban5P4zDXLr",
-                        "9yfHziphQ8Zcesr95",
-                        "KquWrpCb3SeTsZMF3",
-                        "bsJcF7x3FknHoYX43"
-                    ]
-                },
-                {
-                    "entry_count": 4,
-                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n     all d : Dangerous, wo : Workstation, h : Human | \n        d in workstation.wo implies h not in wo.workers\n\n}",
-                    "ids": [
-                        "QmGCA69HZCWB8kR8v",
-                        "SBc2vRMdMMLg2J5ph",
-                        "cyr4Px4GBamnq4tqo",
-                        "BctLJRtqxxcytQ7Sm"
-                    ]
-                },
-                {
-                    "entry_count": 4,
-                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n\tall c:Component | c in Dangerous implies (c.workstation.workers & Human = none)\n}",
-                    "ids": [
-                        "YwJ9dJxqwj4r2J4fW",
-                        "Kk3afyAdsZc2p6Bhg",
-                        "FtumRXGdiJgTzRHGw",
-                        "QX8H7QiyT8xekpjPm"
+                        "DYSwCEufeFZ4AeZoH",
+                        "yYM37SX7Fd8npjyX3",
+                        "K7hzsWJg9aKe4Yu2W",
+                        "JAX5g4TMw8sfN9H2t",
+                        "CWjbDdrzQKzfMzygZ"
                     ]
                 },
                 {
@@ -268,12 +238,32 @@
                 },
                 {
                     "entry_count": 4,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n     all d : Dangerous, wo : Workstation, h : Human | \n        d in workstation.wo implies h not in wo.workers\n\n}",
+                    "ids": [
+                        "QmGCA69HZCWB8kR8v",
+                        "SBc2vRMdMMLg2J5ph",
+                        "cyr4Px4GBamnq4tqo",
+                        "BctLJRtqxxcytQ7Sm"
+                    ]
+                },
+                {
+                    "entry_count": 4,
                     "code": "{\n\t// Dangerous components cannot be assembled by humans\n\tall h : Human , ws : Workstation, c : Component | c in Dangerous and ws in c.workstation implies h not in ws.workers\n}",
                     "ids": [
                         "vouwz75cgfA7nbAgS",
                         "G7tqFur9KoRLL2La7",
                         "rdFYntGana4fu6ShF",
                         "LDh2KqRxXMJhjCDAZ"
+                    ]
+                },
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n\tall c:Component | c in Dangerous implies (c.workstation.workers & Human = none)\n}",
+                    "ids": [
+                        "YwJ9dJxqwj4r2J4fW",
+                        "Kk3afyAdsZc2p6Bhg",
+                        "FtumRXGdiJgTzRHGw",
+                        "QX8H7QiyT8xekpjPm"
                     ]
                 },
                 {
@@ -307,68 +297,22 @@
                     ]
                 },
                 {
+                    "entry_count": 4,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n\tno (Component & Dangerous).workstation & workers.Human\n}",
+                    "ids": [
+                        "CzZyFnban5P4zDXLr",
+                        "9yfHziphQ8Zcesr95",
+                        "KquWrpCb3SeTsZMF3",
+                        "bsJcF7x3FknHoYX43"
+                    ]
+                },
+                {
                     "entry_count": 3,
                     "code": "{\n\t// Dangerous components cannot be assembled by humans\n\tall ws: Workstation, h: Human, c: Component|\n  \t\t(h in ws.workers) and (c in Dangerous) implies\n\t\t\tws not in c.workstation\n}",
                     "ids": [
                         "ASrvnbih833sxeD96",
                         "FcSXe7XWSrtHhA9sT",
                         "7jmXFJEfg7mMGpi7r"
-                    ]
-                },
-                {
-                    "entry_count": 2,
-                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n\tall c : Component | all wst : c.workstation | c in Dangerous implies wst.workers = wst.workers-Human\n  \n}",
-                    "ids": [
-                        "dRu93iC8fM6sjrKqs",
-                        "SZgHuF6fzXP7myKiP"
-                    ]
-                },
-                {
-                    "entry_count": 2,
-                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n\tall w : Workstation | (some d : Dangerous | d in workstation.w) implies no w.workers & Human\n}",
-                    "ids": [
-                        "cuP2Ypecyos7Lgzto",
-                        "qfoNkbHFfLKfMi5yN"
-                    ]
-                },
-                {
-                    "entry_count": 2,
-                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n    all d: Dangerous, ws: Workstation | \n        ws in d.workstation implies no ws.workers & Human\n}",
-                    "ids": [
-                        "b6Nwmwn3bepN3BazR",
-                        "b3Qr8WCyTrG7bJSqZ"
-                    ]
-                },
-                {
-                    "entry_count": 2,
-                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n  \tall h: Human | all c: Component | all cWorkers: c.workstation.workers | c in Dangerous implies h not in cWorkers\n\n}",
-                    "ids": [
-                        "uxKWQfYMBeA6tr9rj",
-                        "CmC5yvDhE4ZrsEaF6"
-                    ]
-                },
-                {
-                    "entry_count": 2,
-                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n\tall d:Dangerous| all w:Workstation | w in d.workstation => no h:Human | h in w.workers\n}",
-                    "ids": [
-                        "KM93ZosxFZXFM5sN3",
-                        "XnNHRZFLLL2e7DhPc"
-                    ]
-                },
-                {
-                    "entry_count": 2,
-                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n\tall c : Component | all wo : c.workstation | all w : wo.workers | c in Dangerous implies w !in Human\n}",
-                    "ids": [
-                        "vEwFbMnXpTEeeuyiF",
-                        "EEYK2m4TFjzn5xXZu"
-                    ]
-                },
-                {
-                    "entry_count": 2,
-                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n\tall c : Component, h : Human, wo : Workstation | c in workstation.wo and c in Dangerous implies h not in wo.workers\n  \n}",
-                    "ids": [
-                        "jjWfwYsXW89z9HkiE",
-                        "PoDdgsipBaLozenLd"
                     ]
                 },
                 {
@@ -381,10 +325,26 @@
                 },
                 {
                     "entry_count": 2,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n\tall c : Component, h : Human, wo : Workstation | c in workstation.wo and c in Dangerous implies h not in wo.workers\n  \n}",
+                    "ids": [
+                        "jjWfwYsXW89z9HkiE",
+                        "PoDdgsipBaLozenLd"
+                    ]
+                },
+                {
+                    "entry_count": 2,
                     "code": "{\n\t// Dangerous components cannot be assembled by humans\n\tall c: Component | c in Dangerous implies #(c.workstation.workers & Human) = 0 \n}",
                     "ids": [
                         "Fwyrzj633yuG97Wzk",
                         "EhCocQnHoJjypPSG5"
+                    ]
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n\tall c : Component | all wo : c.workstation | all w : wo.workers | c in Dangerous implies w !in Human\n}",
+                    "ids": [
+                        "vEwFbMnXpTEeeuyiF",
+                        "EEYK2m4TFjzn5xXZu"
                     ]
                 },
                 {
@@ -397,6 +357,22 @@
                 },
                 {
                     "entry_count": 2,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n\tall w : Workstation | (some d : Dangerous | d in workstation.w) implies no w.workers & Human\n}",
+                    "ids": [
+                        "cuP2Ypecyos7Lgzto",
+                        "qfoNkbHFfLKfMi5yN"
+                    ]
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n\tall d:Dangerous| all w:Workstation | w in d.workstation => no h:Human | h in w.workers\n}",
+                    "ids": [
+                        "KM93ZosxFZXFM5sN3",
+                        "XnNHRZFLLL2e7DhPc"
+                    ]
+                },
+                {
+                    "entry_count": 2,
                     "code": "{\n\t// Dangerous components cannot be assembled by humans\n\tall c : Component | c in Dangerous => all worker : c.workstation.workers | worker not in Human\n}",
                     "ids": [
                         "RAoanLxsnvxzKoo2m",
@@ -404,31 +380,27 @@
                     ]
                 },
                 {
-                    "entry_count": 1,
-                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n\tall d: Dangerous | all ws: d.workstation | no h:Human | h in ws.workers\n}",
+                    "entry_count": 2,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n  \tall h: Human | all c: Component | all cWorkers: c.workstation.workers | c in Dangerous implies h not in cWorkers\n\n}",
                     "ids": [
-                        "kT2fAvE4SXiCPBnpP"
+                        "uxKWQfYMBeA6tr9rj",
+                        "CmC5yvDhE4ZrsEaF6"
                     ]
                 },
                 {
-                    "entry_count": 1,
-                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n\tall ws : Workstation, h : Human, d : Dangerous | ws in d.workstation implies h not \t   in ws.workers\n}",
+                    "entry_count": 2,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n    all d: Dangerous, ws: Workstation | \n        ws in d.workstation implies no ws.workers & Human\n}",
                     "ids": [
-                        "mwddiAzyQk3ziBbMN"
+                        "b6Nwmwn3bepN3BazR",
+                        "b3Qr8WCyTrG7bJSqZ"
                     ]
                 },
                 {
-                    "entry_count": 1,
-                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n  all c: Dangerous | all ws: c.workstation | no w: ws.workers | w in Human\n}",
+                    "entry_count": 2,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n\tall c : Component | all wst : c.workstation | c in Dangerous implies wst.workers = wst.workers-Human\n  \n}",
                     "ids": [
-                        "ukdudKFLwvyo8TmX4"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n  \n  all h : Human | all d : Dangerous  |  no (d.workstation & workers.h)\n\n}",
-                    "ids": [
-                        "J2cHrewPstdtDdZW7"
+                        "dRu93iC8fM6sjrKqs",
+                        "SZgHuF6fzXP7myKiP"
                     ]
                 },
                 {
@@ -440,6 +412,34 @@
                 },
                 {
                     "entry_count": 1,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n\tall c: Dangerous | no w: c.workstation.workers | w in Human\n}",
+                    "ids": [
+                        "53eosu5zc22L9G9aJ"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n\tall d: Dangerous | all ws: d.workstation | no h:Human | h in ws.workers\n}",
+                    "ids": [
+                        "kT2fAvE4SXiCPBnpP"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n  // Dangerous components cannot be assembled by humans\n  all c: Dangerous, ws: c.workstation, w: ws.workers | w not in Human\n}",
+                    "ids": [
+                        "Mf8CdckK7rpZSqBSk"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n  all c:Component & Dangerous, h:Human | no ((c.workstation).workers & h)  \n\n}",
+                    "ids": [
+                        "Bj3uJ3r8Dn2KxR5uX"
+                    ]
+                },
+                {
+                    "entry_count": 1,
                     "code": "{\n\t// Dangerous components cannot be assembled by humans\n  \tall c: Component | all wk: Workstation |  \n  \t( c in Dangerous and wk in c.workstation ) implies no ( wk.workers & Human ) \n\n}",
                     "ids": [
                         "h4yfbMRY583smCKeB"
@@ -447,9 +447,51 @@
                 },
                 {
                     "entry_count": 1,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans \n\tall c : Dangerous , h : Human | not h in c.workstation.workers \n}",
+                    "ids": [
+                        "8xYdQ5xRKWDThCTWT"
+                    ]
+                },
+                {
+                    "entry_count": 1,
                     "code": "{\n\t// Dangerous components cannot be assembled by humans\n  all c: Component, wst: Workstation, h: Human | c in Dangerous implies h not in c.workstation.workers\n}",
                     "ids": [
                         "2MdwS9PSGmfYtR4XF"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n  all d : Dangerous, w : Workstation, h : Human | some (w & d.workstation) => no (w.workers & h)  \n\n}",
+                    "ids": [
+                        "XtGAHRjp7T8WwqeuK"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n    // Dangerous components cannot be assembled by humans.\n    all c : Component, ws : Workstation| c in Dangerous => no c.workstation.workers & Human\n  \t// all c: Component & Dangerous | all x : c.workstation | no (x.workers & Human)\n  \t// all d : Dangerous | d in Component => d.workstation.workers in Robot\n}",
+                    "ids": [
+                        "ySznhgLoinso7z3n3"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n\tall d : Dangerous, w : d.workstation.workers | no(w & Human)\n}",
+                    "ids": [
+                        "M6SFHrFNKdd43wXqr"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n  all c: Dangerous | all ws: c.workstation | no w: ws.workers | w in Human\n}",
+                    "ids": [
+                        "ukdudKFLwvyo8TmX4"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n\tall c : Component, h : Human, ws : c.workstation | c in Dangerous implies h not in ws.workers\n}",
+                    "ids": [
+                        "bqjc6k5DdbtLaxugk"
                     ]
                 },
                 {
@@ -468,23 +510,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n\tall c: Dangerous | no w: c.workstation.workers | w in Human\n}",
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n\tall ws : Workstation, h : Human, d : Dangerous | ws in d.workstation implies h not \t   in ws.workers\n}",
                     "ids": [
-                        "53eosu5zc22L9G9aJ"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n  // Dangerous components cannot be assembled by humans\n  all c: Dangerous, ws: c.workstation, w: ws.workers | w not in Human\n}",
-                    "ids": [
-                        "Mf8CdckK7rpZSqBSk"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n\tall d : Dangerous, w : d.workstation.workers | no(w & Human)\n}",
-                    "ids": [
-                        "M6SFHrFNKdd43wXqr"
+                        "mwddiAzyQk3ziBbMN"
                     ]
                 },
                 {
@@ -496,30 +524,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Dangerous components cannot be assembled by humans \n\tall c : Dangerous , h : Human | not h in c.workstation.workers \n}",
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n  \n  all h : Human | all d : Dangerous  |  no (d.workstation & workers.h)\n\n}",
                     "ids": [
-                        "8xYdQ5xRKWDThCTWT"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n    // Dangerous components cannot be assembled by humans.\n    all c : Component, ws : Workstation| c in Dangerous => no c.workstation.workers & Human\n  \t// all c: Component & Dangerous | all x : c.workstation | no (x.workers & Human)\n  \t// all d : Dangerous | d in Component => d.workstation.workers in Robot\n}",
-                    "ids": [
-                        "ySznhgLoinso7z3n3"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n  all d : Dangerous, w : Workstation, h : Human | some (w & d.workstation) => no (w.workers & h)  \n\n}",
-                    "ids": [
-                        "XtGAHRjp7T8WwqeuK"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n  all c:Component & Dangerous, h:Human | no ((c.workstation).workers & h)  \n\n}",
-                    "ids": [
-                        "Bj3uJ3r8Dn2KxR5uX"
+                        "J2cHrewPstdtDdZW7"
                     ]
                 },
                 {
@@ -527,13 +534,6 @@
                     "code": "{\n\t// Dangerous components cannot be assembled by humans\n\tno c: Dangerous, ws: c.workstation | some w: ws.workers | w in Human\n}",
                     "ids": [
                         "Zaxjy76b4Mq8QofMt"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n\tall c : Component, h : Human, ws : c.workstation | c in Dangerous implies h not in ws.workers\n}",
-                    "ids": [
-                        "bqjc6k5DdbtLaxugk"
                     ]
                 }
             ]
@@ -618,15 +618,6 @@
                 },
                 {
                     "entry_count": 3,
-                    "code": "{\n  all c : Component | all ws: Workstation, w : Worker| c in Dangerous  and (w in ws.workers and ws in c.workstation) implies w in Robot\n\t// Dangerous components cannot be assembled by humans\n\n}",
-                    "ids": [
-                        "naK6qYH26DfZ3BNxM",
-                        "vW3y4haxQdCnePffF",
-                        "NK5KNNmiGhDc8DRNS"
-                    ]
-                },
-                {
-                    "entry_count": 3,
                     "code": "{\n\t// Dangerous components cannot be assembled by humans\n  \tall c: Component | all ws: c.workstation | c in Dangerous implies ws.workers in Robot\n\n}",
                     "ids": [
                         "7N97rktZQHBrL5QHE",
@@ -635,11 +626,12 @@
                     ]
                 },
                 {
-                    "entry_count": 2,
-                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n\nall c : Component | c in Dangerous implies all w : c.workstation | w.workers in Robot\n}",
+                    "entry_count": 3,
+                    "code": "{\n  all c : Component | all ws: Workstation, w : Worker| c in Dangerous  and (w in ws.workers and ws in c.workstation) implies w in Robot\n\t// Dangerous components cannot be assembled by humans\n\n}",
                     "ids": [
-                        "E8Ys6Na3KrgjsXryw",
-                        "WbabMtctSvpxm9MWC"
+                        "naK6qYH26DfZ3BNxM",
+                        "vW3y4haxQdCnePffF",
+                        "NK5KNNmiGhDc8DRNS"
                     ]
                 },
                 {
@@ -652,6 +644,14 @@
                 },
                 {
                     "entry_count": 2,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n\nall c : Component | c in Dangerous implies all w : c.workstation | w.workers in Robot\n}",
+                    "ids": [
+                        "E8Ys6Na3KrgjsXryw",
+                        "WbabMtctSvpxm9MWC"
+                    ]
+                },
+                {
+                    "entry_count": 2,
                     "code": "{\n\t// Dangerous components cannot be assembled by humans\n\tall d : Dangerous | d in Component implies d.workstation.workers in Robot\n}",
                     "ids": [
                         "D8j2v5xbWGQ8CWhnB",
@@ -660,30 +660,16 @@
                 },
                 {
                     "entry_count": 1,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n\tall d : Component , w : d.workstation.workers| d in Dangerous implies w in Robot\n}",
+                    "ids": [
+                        "zyTfaWhucpXGWGQCz"
+                    ]
+                },
+                {
+                    "entry_count": 1,
                     "code": "{\n\t// Dangerous components cannot be assembled by humans\n\tall d : Dangerous & Component, w : d.workstation |\n  \t\tw.workers in Robot\n  \t\t\n}",
                     "ids": [
                         "LhPmXtqDDpCnYa9Dw"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n\tall c : Component | c in Dangerous implies no c.workstation.workers - Robot\n}",
-                    "ids": [
-                        "PmvhFiDDaSyBuTpLm"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n\tall c: Component, wk: Worker | c in Dangerous and wk in c.workstation.workers implies wk in Robot\n}",
-                    "ids": [
-                        "kNp5eC3c27mrt9pFE"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n\tall c : Component | some c & Dangerous implies ( (c.workstation).workers in Robot)\n}",
-                    "ids": [
-                        "fCAedDbc8i6KwE4JM"
                     ]
                 },
                 {
@@ -702,9 +688,23 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n\tall d : Component , w : d.workstation.workers| d in Dangerous implies w in Robot\n}",
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n\tall c: Component, wk: Worker | c in Dangerous and wk in c.workstation.workers implies wk in Robot\n}",
                     "ids": [
-                        "zyTfaWhucpXGWGQCz"
+                        "kNp5eC3c27mrt9pFE"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n\tall c : Component | some c & Dangerous implies ( (c.workstation).workers in Robot)\n}",
+                    "ids": [
+                        "fCAedDbc8i6KwE4JM"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n\tall c : Component | c in Dangerous implies no c.workstation.workers - Robot\n}",
+                    "ids": [
+                        "PmvhFiDDaSyBuTpLm"
                     ]
                 },
                 {
@@ -779,23 +779,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n\tno workstation.(Component & Dangerous) & workers.Human\n}",
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n    all  d : Dangerous, h : Human | h not in d.workstation \n\n}",
                     "ids": [
-                        "4KxCAcAfqg4dhzcm8"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n    // Dangerous components cannot be assembled by humans.\n    all c : Component, ws : Workstation| c in Dangerous & c.workstation.workers => no ws.workers & Human\n  \t// all c: Component & Dangerous | all x : c.workstation | no (x.workers & Human)\n  \t// all d : Dangerous | d in Component => d.workstation.workers in Robot\n}",
-                    "ids": [
-                        "cC9aRqGcRwb6wCMnY"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n  all c: Component| c in Dangerous implies c.workers in Human\n  //all c:Component| c.workers in Human implies c in Dangerous\n}",
-                    "ids": [
-                        "TnPyH8uPP3S3p6chC"
+                        "PfsZnPKdZYomCgezQ"
                     ]
                 },
                 {
@@ -807,9 +793,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n    // Dangerous components cannot be assembled by humans.\n    all c : Component, ws : Workstation | c in Dangerous and c in ws.workstation => no ws.workers & Human\n  \t// all d : Dangerous | d in Component => d.workstation.workers in Robot\n}",
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n\tall d : Dangerous, w : d.workstation | no(d.workers & Human)\n}",
                     "ids": [
-                        "mBkAXE5BGqEDKhEfT"
+                        "oybq4keFFiZwWAZ9W"
                     ]
                 },
                 {
@@ -821,100 +807,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n  all c: Component, wst: Workstation, h: Human | c in Dangerous implies h not in c.workstation \n}",
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n\tall c:Component | c in Dangerous implies no Human & c.workstation \n}",
                     "ids": [
-                        "QLaWKPm7gYzdrfqGi"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n\tall c:Component, h:Human | c in Dangerous implies not h in c.workstation\n}",
-                    "ids": [
-                        "Y7QmzNpa3W6vo2qK4"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n    all d : Dangerous | no workers.workstation.d & Human\n}",
-                    "ids": [
-                        "KC3ii5aS8awGRiin2"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n  \tall c:Component, h:Human|\n  \tc in Dangerous  => h not in c.workstation\n  \t\n\n}",
-                    "ids": [
-                        "9mkuWZFKgRqFzAoXE"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n\tall c : Component, h : Human, wo : Workstation | c in workstation.wo and c in Dangerous implies h not in workers.wo\n  \n}",
-                    "ids": [
-                        "kGvRg6HqERN2EfycY"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n\tall c : Component & Dangerous | c in Component\n}",
-                    "ids": [
-                        "P6toBoT8RAgfnw73j"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n\tall d : Dangerous, w : d.workstation | no(d.workers & Human)\n}",
-                    "ids": [
-                        "oybq4keFFiZwWAZ9W"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n \tall d:Dangerous | no d.workstation & Human\n}",
-                    "ids": [
-                        "SndTFw77Fn8qhfrnw"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n\tall x: workstation.parts.Dangerous | x.workers not in Human\n}",
-                    "ids": [
-                        "ho7F4ZEvPtbx3c7pt"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n  //all c: Component| all w: Worker| w in Human implies c in Dangerous\n  //all c:Component| c.workers in Human implies c in Dangerous\n  all c:Component | all work: c.workers | c in Dangerous implies Human not in work\n  \n}",
-                    "ids": [
-                        "2Rtrf4Yp8L6XHzbSk"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n  all c : Component | c in Dangerous implies no Human & workers.c\n\n}",
-                    "ids": [
-                        "g9cAXJZRYgJ9hk9Nz"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n\tall c: Component & Dangerous | (no h: Human | h in (workstation.c).workers)\n}",
-                    "ids": [
-                        "gXd7yip6cj7Qt6fxE"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n\tno (Human & Dangerous)\n}",
-                    "ids": [
-                        "MfvCREpaF3GxjwvTL"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n    all  d : Dangerous, h : Human | h not in d.workstation \n\n}",
-                    "ids": [
-                        "PfsZnPKdZYomCgezQ"
+                        "43ZyT2neikW9Pu8TN"
                     ]
                 },
                 {
@@ -926,27 +821,6 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n\tall d: Dangerous, h: Human | h not in Dangerous.parts\n}",
-                    "ids": [
-                        "YEwcr6P5ezCtAxSSo"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n\tall d: Dangerous, h: Human | h not in d.parts\n}",
-                    "ids": [
-                        "NKEAaeNvcqPBrhZdK"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Dangerous components cannot be assembled by humans\nall h: Human | no h.~workers.workstation & Component & Dangerous\n}",
-                    "ids": [
-                        "Nes3urPKdxTxkmdmp"
-                    ]
-                },
-                {
-                    "entry_count": 1,
                     "code": "{\n\t// Dangerous components cannot be assembled by humans\n  all c: Component, p: Product, h: Human | p in Dangerous implies (not h in c.workstation) \n\n}",
                     "ids": [
                         "ME8WaCarpRGu7p3qx"
@@ -954,9 +828,23 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n\tall c:Component | c in Dangerous implies no Human & c.workstation \n}",
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n\tall c : Component & Dangerous | c in Component\n}",
                     "ids": [
-                        "43ZyT2neikW9Pu8TN"
+                        "P6toBoT8RAgfnw73j"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n  all c: Component, wst: Workstation, h: Human | c in Dangerous implies h not in c.workstation \n}",
+                    "ids": [
+                        "QLaWKPm7gYzdrfqGi"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n\tall c: Component & Dangerous | (no h: Human | h in (workstation.c).workers)\n}",
+                    "ids": [
+                        "gXd7yip6cj7Qt6fxE"
                     ]
                 },
                 {
@@ -968,9 +856,121 @@
                 },
                 {
                     "entry_count": 1,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n \tall d:Dangerous | no d.workstation & Human\n}",
+                    "ids": [
+                        "SndTFw77Fn8qhfrnw"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n  all c : Component | c in Dangerous implies no Human & workers.c\n\n}",
+                    "ids": [
+                        "g9cAXJZRYgJ9hk9Nz"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n\tall c:Component, h:Human | c in Dangerous implies not h in c.workstation\n}",
+                    "ids": [
+                        "Y7QmzNpa3W6vo2qK4"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n  //all c: Component| all w: Worker| w in Human implies c in Dangerous\n  //all c:Component| c.workers in Human implies c in Dangerous\n  all c:Component | all work: c.workers | c in Dangerous implies Human not in work\n  \n}",
+                    "ids": [
+                        "2Rtrf4Yp8L6XHzbSk"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n    // Dangerous components cannot be assembled by humans.\n    all c : Component, ws : Workstation | c in Dangerous and c in ws.workstation => no ws.workers & Human\n  \t// all d : Dangerous | d in Component => d.workstation.workers in Robot\n}",
+                    "ids": [
+                        "mBkAXE5BGqEDKhEfT"
+                    ]
+                },
+                {
+                    "entry_count": 1,
                     "code": "{\n    // Dangerous components cannot be assembled by humans.\n    all c : Component, ws : Workstation | c in Dangerous and c in ws => no ws.workers & Human\n  \t// all d : Dangerous | d in Component => d.workstation.workers in Robot\n}",
                     "ids": [
                         "jfKG7Pjx94K4q4RnC"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n\tall d: Dangerous, h: Human | h not in d.parts\n}",
+                    "ids": [
+                        "NKEAaeNvcqPBrhZdK"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n  \tall c:Component, h:Human|\n  \tc in Dangerous  => h not in c.workstation\n  \t\n\n}",
+                    "ids": [
+                        "9mkuWZFKgRqFzAoXE"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n\tall x: workstation.parts.Dangerous | x.workers not in Human\n}",
+                    "ids": [
+                        "ho7F4ZEvPtbx3c7pt"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\nall h: Human | no h.~workers.workstation & Component & Dangerous\n}",
+                    "ids": [
+                        "Nes3urPKdxTxkmdmp"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n    // Dangerous components cannot be assembled by humans.\n    all c : Component, ws : Workstation| c in Dangerous & c.workstation.workers => no ws.workers & Human\n  \t// all c: Component & Dangerous | all x : c.workstation | no (x.workers & Human)\n  \t// all d : Dangerous | d in Component => d.workstation.workers in Robot\n}",
+                    "ids": [
+                        "cC9aRqGcRwb6wCMnY"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n\tall c : Component, h : Human, wo : Workstation | c in workstation.wo and c in Dangerous implies h not in workers.wo\n  \n}",
+                    "ids": [
+                        "kGvRg6HqERN2EfycY"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n\tall d: Dangerous, h: Human | h not in Dangerous.parts\n}",
+                    "ids": [
+                        "YEwcr6P5ezCtAxSSo"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n    all d : Dangerous | no workers.workstation.d & Human\n}",
+                    "ids": [
+                        "KC3ii5aS8awGRiin2"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n  all c: Component| c in Dangerous implies c.workers in Human\n  //all c:Component| c.workers in Human implies c in Dangerous\n}",
+                    "ids": [
+                        "TnPyH8uPP3S3p6chC"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n\tno workstation.(Component & Dangerous) & workers.Human\n}",
+                    "ids": [
+                        "4KxCAcAfqg4dhzcm8"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n\tno (Human & Dangerous)\n}",
+                    "ids": [
+                        "MfvCREpaF3GxjwvTL"
                     ]
                 }
             ]
@@ -1121,16 +1121,16 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n  \tall d : Dangerous, w : Workstation | w in d.workstation implies w.workers not in Human\n\n}",
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n  \tall ws: Workstation, c: Component | ws.workers in Human and c in Dangerous => ws not in c.workstation\n\n}",
                     "ids": [
-                        "B8iNvn7YbidyvYrTP"
+                        "abjqf9n9SYuWAEbk4"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n  \tall ws: Workstation, c: Component | ws.workers in Human and c in Dangerous => ws not in c.workstation\n\n}",
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n  \tall d : Dangerous, w : Workstation | w in d.workstation implies w.workers not in Human\n\n}",
                     "ids": [
-                        "abjqf9n9SYuWAEbk4"
+                        "B8iNvn7YbidyvYrTP"
                     ]
                 }
             ]
@@ -1155,16 +1155,16 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n  \tall d : Dangerous | d.^workstation.workers not in Human\n\n}",
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n\tall d : Dangerous | d in Component and d.workstation.workers not in Human\n}",
                     "ids": [
-                        "uggHrDBd8q5T5fYTe"
+                        "GHQ9gBxqBcrrAdBpg"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n\tall d : Dangerous | d in Component and d.workstation.workers not in Human\n}",
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n  \tall d : Dangerous | d.^workstation.workers not in Human\n\n}",
                     "ids": [
-                        "GHQ9gBxqBcrrAdBpg"
+                        "uggHrDBd8q5T5fYTe"
                     ]
                 }
             ]
@@ -1267,16 +1267,16 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n\tall c : Component | c in Dangerous \n}",
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n  all c: Component| c in Dangerous implies c.workers in Human\n  all c:Component| c.workers in Human implies c in Dangerous\n}",
                     "ids": [
-                        "SKppraaZCy97RddEe"
+                        "e6WdyoH2LEoQAWbMP"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n  all c: Component| c in Dangerous implies c.workers in Human\n  all c:Component| c.workers in Human implies c in Dangerous\n}",
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n\tall c : Component | c in Dangerous \n}",
                     "ids": [
-                        "e6WdyoH2LEoQAWbMP"
+                        "SKppraaZCy97RddEe"
                     ]
                 },
                 {
@@ -1303,9 +1303,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n        all w : Workstation, c : Component | c in Dangerous implies w.workers not in Human\n\n\n}",
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n        all w : Workstation, c : (Component & Dangerous) | w.workers not in Human\n\n\n}",
                     "ids": [
-                        "jfhCHdm9YJyfSveZr"
+                        "kmBMtQMiQzmY3GY4h"
                     ]
                 },
                 {
@@ -1317,9 +1317,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n        all w : Workstation, c : (Component & Dangerous) | w.workers not in Human\n\n\n}",
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n        all w : Workstation, c : Component | c in Dangerous implies w.workers not in Human\n\n\n}",
                     "ids": [
-                        "kmBMtQMiQzmY3GY4h"
+                        "jfhCHdm9YJyfSveZr"
                     ]
                 }
             ]
@@ -1369,9 +1369,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n  all c: Component, h: Human, ws: Workstation | c in Dangerous implies (not h in ws.workers) \n\n}",
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n  all c: Component, p: Product, h: Human, ws: Workstation | c in Dangerous implies (not h in ws.workers) \n\n}",
                     "ids": [
-                        "RLcKgTNhh2B4H533Q"
+                        "762Ge5N2X4oE6YQDb"
                     ]
                 },
                 {
@@ -1383,9 +1383,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n  all c: Component, p: Product, h: Human, ws: Workstation | c in Dangerous implies (not h in ws.workers) \n\n}",
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n  all c: Component, h: Human, ws: Workstation | c in Dangerous implies (not h in ws.workers) \n\n}",
                     "ids": [
-                        "762Ge5N2X4oE6YQDb"
+                        "RLcKgTNhh2B4H533Q"
                     ]
                 }
             ]
@@ -1428,16 +1428,16 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n  all h : Human, wo: Workstation, p : Product | p in Dangerous implies no workers.h\n\n}",
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n\tall d:Dangerous, ws:Workstation | no ws.workers & Human\n}",
                     "ids": [
-                        "DxEMKF8DzLKxksC5h"
+                        "ddQSFmsYeoGYjNSKS"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n\tall d:Dangerous, ws:Workstation | no ws.workers & Human\n}",
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n  all h : Human, wo: Workstation, p : Product | p in Dangerous implies no workers.h\n\n}",
                     "ids": [
-                        "ddQSFmsYeoGYjNSKS"
+                        "DxEMKF8DzLKxksC5h"
                     ]
                 }
             ]
@@ -1531,9 +1531,9 @@
             "elems": [
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n\tall c: Component |\n  \t\t(c in Dangerous) implies (all h: Human | some p: h.workstation | p not in c.workstation)\n}",
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n\tall c: Component, h: Human|\n  \t\t(c in Dangerous) implies (some p: h.workstation | p not in c.workstation)\n}",
                     "ids": [
-                        "zCszFHp92Ja93kYpW"
+                        "zcfufLvhy5ptJWkJB"
                     ]
                 },
                 {
@@ -1545,9 +1545,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n\tall c: Component, h: Human|\n  \t\t(c in Dangerous) implies (some p: h.workstation | p not in c.workstation)\n}",
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n\tall c: Component |\n  \t\t(c in Dangerous) implies (all h: Human | some p: h.workstation | p not in c.workstation)\n}",
                     "ids": [
-                        "zcfufLvhy5ptJWkJB"
+                        "zCszFHp92Ja93kYpW"
                     ]
                 }
             ]
@@ -1641,16 +1641,16 @@
             "elems": [
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n\tall o: Component | (o in Dangerous) implies (Human not in workstation.o)\n}",
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n\tall o: Component | (o in Dangerous) implies (Human not in o.workstation)\n}",
                     "ids": [
-                        "7xCGEDqh5E6j8D8CH"
+                        "QDJJtqT8RK56NQ36m"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n\tall o: Component | (o in Dangerous) implies (Human not in o.workstation)\n}",
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n\tall o: Component | (o in Dangerous) implies (Human not in workstation.o)\n}",
                     "ids": [
-                        "QDJJtqT8RK56NQ36m"
+                        "7xCGEDqh5E6j8D8CH"
                     ]
                 }
             ]
@@ -1692,16 +1692,16 @@
             "elems": [
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n        all w : Workstation, c : (Component & Dangerous) | w.workers in Robot\n\n\n}",
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n    all w : Workstation, c : Component | c in Dangerous implies w.workers in Robot\n\n}",
                     "ids": [
-                        "CJ8FXXceK2zAuaFpN"
+                        "Jb8sMxfc8qXp8QKh6"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n    all w : Workstation, c : Component | c in Dangerous implies w.workers in Robot\n\n}",
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n        all w : Workstation, c : (Component & Dangerous) | w.workers in Robot\n\n\n}",
                     "ids": [
-                        "Jb8sMxfc8qXp8QKh6"
+                        "CJ8FXXceK2zAuaFpN"
                     ]
                 }
             ]
@@ -1764,16 +1764,16 @@
             "elems": [
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n  all c: Component| all w: Worker| w in Human implies c in Dangerous\n  //all c:Component| c.workers in Human implies c in Dangerous\n}",
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n  \tall c : Component | no h : Human | c in Dangerous => h in c.workstation\n\n}",
                     "ids": [
-                        "CRdjJyiAe7s5ofkaR"
+                        "WxfGwkfz4gREZYBsh"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n  \tall c : Component | no h : Human | c in Dangerous => h in c.workstation\n\n}",
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n  all c: Component| all w: Worker| w in Human implies c in Dangerous\n  //all c:Component| c.workers in Human implies c in Dangerous\n}",
                     "ids": [
-                        "WxfGwkfz4gREZYBsh"
+                        "CRdjJyiAe7s5ofkaR"
                     ]
                 }
             ]
