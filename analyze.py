@@ -63,11 +63,11 @@ with open(dataset, 'r') as f:
 
                 parsed_instances.append(instance)
 
-                # Check if instances are well formed (can generate exactly one instance without facts)
+                # Check if instances are well formed (can generate exactly at least one instance without facts)
                 command = world.getAllCommands()[0]
                 options = A4Options()
                 try:
-                    solution = TranslateAlloyToKodkod.execute_command(None, world.getAllSigs(), command, options)
+                    solution = TranslateAlloyToKodkod.execute_command(None, world.getAllReachableSigs(), command, options)
                 except Exception as e:
                     print("Failed to generate instance for command")
                     print(instance)
@@ -91,7 +91,7 @@ with open(dataset, 'r') as f:
                 world = CompUtil.parseEverything_fromString(None,alloy_model)
                 command = world.getAllCommands()[0]
                 options = A4Options()
-                solution = TranslateAlloyToKodkod.execute_command(A4Reporter(), world.getAllSigs(), command, options)
+                solution = TranslateAlloyToKodkod.execute_command(A4Reporter(), world.getAllReachableSigs(), command, options)
                 if not solution.satisfiable():
                     print("Instance failed to satisfy previous requirements")
                     print(instance)
@@ -104,7 +104,7 @@ with open(dataset, 'r') as f:
                 world = CompUtil.parseEverything_fromString(None,alloy_model_oracle)
                 command = world.getAllCommands()[0]
                 options = A4Options()
-                solution = TranslateAlloyToKodkod.execute_command(A4Reporter(), world.getAllSigs(), command, options)
+                solution = TranslateAlloyToKodkod.execute_command(A4Reporter(), world.getAllReachableSigs(), command, options)
                 if command.expects == 1 and not solution.satisfiable():
                     print("Unexpectedly failed to generate instance for positive instance")
                     print(instance)
@@ -133,11 +133,15 @@ with open(dataset, 'r') as f:
                 except:
                     continue
                 total += 1
+                # fix for empty instance set otherwise default command
+                if len(oracle_instances) == 0:
+                    count += 1
+                    continue
                 commands = world.getAllCommands()
                 detected_erroneous = False
                 for command in commands:
                     options = A4Options()
-                    solution = TranslateAlloyToKodkod.execute_command(A4Reporter(), world.getAllSigs(), command, options)
+                    solution = TranslateAlloyToKodkod.execute_command(A4Reporter(), world.getAllReachableSigs(), command, options)
                     if command.expects == 1 and not solution.satisfiable():
                         detected_erroneous = True
                     elif command.expects == 0 and solution.satisfiable():

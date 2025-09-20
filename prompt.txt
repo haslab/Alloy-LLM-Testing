@@ -41,13 +41,13 @@ run Instance2 {
     }
 } for 2 Person, 2 Car expect 0
 
-To express that a set or relation is empty we can use keyword no followed by the set or relation that should be empty. For example, the following is another example of a trivial positive instance for the requirement "Every person owns a car", since there are no persons.
+To express that a set or relation is empty you can specify that it equal to the empty set (none) or empty relation of appropriate arity (for example, none->none if the relation is binary). For example, the following is another example of a trivial positive instance for the requirement "Every person owns a car", since there are no persons.
 
 run Instance3 {
 	some disj Car1, Car2 : Car {
-		no Person
+		Person = none
 		Car = Car1 + Car2
-		no owns
+		owns = none->none
 	}
 } for 0 Person, 2 Car expect 1
 
@@ -65,7 +65,7 @@ In this model we have two disjoint extensions of abstract set Car, meaning all c
 run Instance1 {
     some disj Person1,Person2,Person3 : Person | some disj Car1, Car2 : Car {
         Person = Person1 + Person2 + Person3
-		no Adult
+		Adult = none
         Car = Car1 + Car2
 		Sedan = Car1
 		SUV = Car2
@@ -103,13 +103,13 @@ Here are some instructions:
 - I will clearly state how many positive and negative instances you should output. 
 - All instances should be truly different (be aware that the names of the elements are actually irrelevant).
 - Try to produce minimal instances with few elements.
-- All instances must include a comment (comments are specified after //) explaining in natural language why it is positive or negative.
+- All instances must include a comment explaining in natural language why it is positive or negative.
 - All instances must define the scopes for all top-level signatures in the model. 
-- In every instance you must specify the values for all declared sets and relations.
+- In every instance you must specify the values for all declared sets and relations with an equality restriction.
 - To declare the elements of each signature use a some quantifier with the disj keyword to ensure that all elements are different.
-- The value of a relation should take into account its arity. For example, if it is a ternary relation its value must be a set of triples.
-- If a model uses module ordering you must also specify the value of the next total order relation.
-- If a set or relation is empty you must explicitly state it with the no keyword followed by the name of the set or relation. Do not specify its value with = none.
-- If there are two relations with the same name you must disambiguate using the <: operator. The same applies to the next relation when ordering is used.
-- If the value of some sets and relations is irrelevant for a given requirement you can just state that they are empty with the no keyword or assign them random values.
-- Generate only Alloy code, do not include any explanations outside the code, do not use markdown syntax.
+- The value of a relation should take into account its arity. For example, if it is a ternary relation its value must be a set of triples.empty.
+- If a set or relation is empty you must explicitly state that it is equal to the empty set (none) or empty relation (of the correct arity).
+- If there are two relations with the same name you must disambiguate using the <: operator with the domain signature on the left.
+- If a model uses ordering on a signature you must also specify the value of the next binary relation using the <: operator to disambiguate. Signatures with ordering cannot be empty so next is never empty.
+- If the value of some sets and relations is irrelevant for a given requirement you can just state that they are empty or assign them random values.
+- Generate only Alloy code, do not include any explanations outside the code.

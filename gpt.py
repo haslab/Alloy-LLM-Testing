@@ -49,10 +49,10 @@ with open(sys.argv[2], 'r') as f, open(llm+'_'+sys.argv[2], 'w') as g:
                 else:
                     break
             if response.output_text.startswith("```alloy"):
-                instances = response.output_text[8:-3]
+                result = response.output_text[8:-3]
             else:
-                instances = response.output_text
-            req['instances'] = instances
+                result = response.output_text
+            req['instances'] = result
             req['input tokens'] = response.usage.input_tokens
             req['output tokens'] = response.usage.output_tokens
     json.dump(dataset, g, indent = 4)
