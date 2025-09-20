@@ -70,11 +70,11 @@ with open(dataset, 'r') as f:
                     solution = TranslateAlloyToKodkod.execute_command(None, world.getAllSigs(), command, options)
                 except Exception as e:
                     print("Failed to generate instance for command")
-                    print(command)
+                    print(instance)
                     continue
                 if not solution.satisfiable():
                     print("Failed to generate instance for command")
-                    print(command)
+                    print(instance)
                     continue
                 """ non determinism checking is not working as expected because of bad symmetry breaking
                 solution = solution.next()
@@ -94,7 +94,7 @@ with open(dataset, 'r') as f:
                 solution = TranslateAlloyToKodkod.execute_command(A4Reporter(), world.getAllSigs(), command, options)
                 if not solution.satisfiable():
                     print("Instance failed to satisfy previous requirements")
-                    print(command)
+                    print(instance)
                     continue
 
                 previous_instances.append(instance)
@@ -107,11 +107,11 @@ with open(dataset, 'r') as f:
                 solution = TranslateAlloyToKodkod.execute_command(A4Reporter(), world.getAllSigs(), command, options)
                 if command.expects == 1 and not solution.satisfiable():
                     print("Unexpectedly failed to generate instance for positive instance")
-                    print(command)
+                    print(instance)
                     continue
                 elif command.expects == 0 and solution.satisfiable():
                     print("Unexpectedly generated instance for negative instance")
-                    print(command)
+                    print(instance)
                     continue
 
                 oracle_instances.append(instance)
@@ -147,6 +147,7 @@ with open(dataset, 'r') as f:
                     count += 1
             print(f'Failed to detect {count} erroneous specifications out of {total}')
             req_results["misses"] = count
+            req_results["total"] = total
 
 
             # save requirement oracle to check next instances
@@ -157,4 +158,4 @@ with open(dataset, 'r') as f:
     for example in result:
         for req in result[example]:
             current = result[example][req]
-            print(f'{current["desc"]}\t{total}\t{current["input"]}\t{current["output"]}\t{current["parse"]}\t{current["scope"]}\t{current["previous"]}\t{current["oracle"]}\t{current["misses"]}')
+            print(f'{current["desc"]}\t{current["total"]}\t{current["input"]}\t{current["output"]}\t{current["parse"]}\t{current["scope"]}\t{current["previous"]}\t{current["oracle"]}\t{current["misses"]}')
