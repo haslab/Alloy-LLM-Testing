@@ -3,7 +3,7 @@
     "pred": "this/inv6",
     "entry_count": 461,
     "group_count": 70,
-    "duration": 14,
+    "duration": 13,
     "scope": 3,
     "groups": [
         {
@@ -282,14 +282,6 @@
                 },
                 {
                     "entry_count": 2,
-                    "code": "{\n\t// Entry tracks must have a speed signal\n\tall t:Track | t in Entry implies not no (Speed & t.signals)\n}",
-                    "ids": [
-                        "XDGKG6bNfnzZus8hm",
-                        "bA9LDXewbFQDWGLYu"
-                    ]
-                },
-                {
-                    "entry_count": 2,
                     "code": "{\n\t// Entry tracks must have a speed signal\n\tall e : Entry | e.signals & Speed not = none\n}",
                     "ids": [
                         "NMAYNTunxF5iXKpbt",
@@ -302,6 +294,14 @@
                     "ids": [
                         "HXY5KJiKCDvdcKqSL",
                         "KN7ikqCMZHC4q7kxF"
+                    ]
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Entry tracks must have a speed signal\n\tall t:Track | t in Entry implies not no (Speed & t.signals)\n}",
+                    "ids": [
+                        "XDGKG6bNfnzZus8hm",
+                        "bA9LDXewbFQDWGLYu"
                     ]
                 },
                 {
@@ -321,20 +321,6 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Entry tracks must have a speed signal\n\t//all e: Entry | some (e.signals & Speed)\n  \t Entry in signals.Speed\n}",
-                    "ids": [
-                        "fTcLxJ6rrcsbP5wtg"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Entry tracks must have a speed signal\n\tall t:Track | t in Entry implies #(t.signals & Speed)>=1\n}",
-                    "ids": [
-                        "yhDmMt9saM8rENdnH"
-                    ]
-                },
-                {
-                    "entry_count": 1,
                     "code": "{\n\t// Entry tracks must have a speed signal\n\tEntry & signals.Speed = Entry\n}",
                     "ids": [
                         "cEaR5pHpCSueQeyjz"
@@ -342,9 +328,23 @@
                 },
                 {
                     "entry_count": 1,
+                    "code": "{\n\t// Entry tracks must have a speed signal\n\t//all e: Entry | some (e.signals & Speed)\n  \t Entry in signals.Speed\n}",
+                    "ids": [
+                        "fTcLxJ6rrcsbP5wtg"
+                    ]
+                },
+                {
+                    "entry_count": 1,
                     "code": "{\n\t// Entry tracks must have a speed signal\n\tall e: Entry | some s: Signal | s in e.signals and s in Speed\n}",
                     "ids": [
                         "6KMHYyNXHPLXrnvZb"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Entry tracks must have a speed signal\n\tall t:Track | t in Entry implies #(t.signals & Speed)>=1\n}",
+                    "ids": [
+                        "yhDmMt9saM8rENdnH"
                     ]
                 }
             ]
@@ -435,16 +435,16 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Entry tracks must have a speed signal\n\tall t : Track |t in Entry implies t -> Speed in signals\n}",
+                    "code": "{\n\t// Entry tracks must have a speed signal\n//  all s:Speed, t:Track |  s in t.signals  implies t in Entry\n//  all s:Speed, e: Entry, t:Track | s in e.signals implies t in Entry \n  all s:Speed, e: Entry, t:Track | t in Entry implies s in t.signals \n\n}",
                     "ids": [
-                        "d7DyM36X9itBuhQZs"
+                        "7C9pg5hnJmL3fTeBd"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Entry tracks must have a speed signal\n//  all s:Speed, t:Track |  s in t.signals  implies t in Entry\n//  all s:Speed, e: Entry, t:Track | s in e.signals implies t in Entry \n  all s:Speed, e: Entry, t:Track | t in Entry implies s in t.signals \n\n}",
+                    "code": "{\n\t// Entry tracks must have a speed signal\n\tall t : Track |t in Entry implies t -> Speed in signals\n}",
                     "ids": [
-                        "7C9pg5hnJmL3fTeBd"
+                        "d7DyM36X9itBuhQZs"
                     ]
                 },
                 {
@@ -514,16 +514,16 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Entry tracks must have a speed signal\n\tall t : Track | t in Entry => one t.signals & Speed\n}",
+                    "code": "{\n\t// Entry tracks must have a speed signal\n  all e : Entry | (one s : Signal | e->s in signals and s in Speed)\n\n}",
                     "ids": [
-                        "ptSMGJCkGg76LXEQv"
+                        "SwYrW4dvnxd8WQzPs"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Entry tracks must have a speed signal\n  all e : Entry | (one s : Signal | e->s in signals and s in Speed)\n\n}",
+                    "code": "{\n\t// Entry tracks must have a speed signal\n  all e:Entry | one s:e.signals | s in Speed\n\n}",
                     "ids": [
-                        "SwYrW4dvnxd8WQzPs"
+                        "xXEzSW7vuNvg6Fws5"
                     ]
                 },
                 {
@@ -535,9 +535,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Entry tracks must have a speed signal\n  all e:Entry | one s:e.signals | s in Speed\n\n}",
+                    "code": "{\n\t// Entry tracks must have a speed signal\n\tall t : Track | t in Entry => one t.signals & Speed\n}",
                     "ids": [
-                        "xXEzSW7vuNvg6Fws5"
+                        "ptSMGJCkGg76LXEQv"
                     ]
                 }
             ]
@@ -564,14 +564,6 @@
                 },
                 {
                     "entry_count": 2,
-                    "code": "{\n\t// Entry tracks must have a speed signal\n\tall e : Entry | some s:Signal | s in e.signals\n}",
-                    "ids": [
-                        "W3p5JACuTnvwvMXxY",
-                        "qtcWcbLphK3F4bZ5v"
-                    ]
-                },
-                {
-                    "entry_count": 2,
                     "code": "{\n\t// Entry tracks must have a speed signal\n\tall x: Track | x in Entry implies some x.signals\n}",
                     "ids": [
                         "3kYbbZrCE7PaGSP2v",
@@ -579,10 +571,11 @@
                     ]
                 },
                 {
-                    "entry_count": 1,
-                    "code": "{\n\t// Entry tracks must have a speed signal\n\tEntry & signals.Signal = Entry\n}",
+                    "entry_count": 2,
+                    "code": "{\n\t// Entry tracks must have a speed signal\n\tall e : Entry | some s:Signal | s in e.signals\n}",
                     "ids": [
-                        "FxiydnGZjecGuc9NB"
+                        "W3p5JACuTnvwvMXxY",
+                        "qtcWcbLphK3F4bZ5v"
                     ]
                 },
                 {
@@ -590,6 +583,13 @@
                     "code": "{\n\t// Entry tracks must have a speed signal\n  \tall e: Entry |\n  \t\t#e.signals>0\n\n}",
                     "ids": [
                         "nKxLo7t3eYEMgC9KC"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Entry tracks must have a speed signal\n\tEntry & signals.Signal = Entry\n}",
+                    "ids": [
+                        "FxiydnGZjecGuc9NB"
                     ]
                 }
             ]
@@ -631,16 +631,16 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Entry tracks must have a speed signal\n\tall e : Entry | all s : e.signals | s in Speed \n}",
+                    "code": "{\n\t// Entry tracks must have a speed signal\n  \tEntry = {x: Entry | x.signals in Speed}\n}",
                     "ids": [
-                        "anNpqcLf9m3N2sGPT"
+                        "dF2N6yM83kBMzDiZj"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Entry tracks must have a speed signal\n  \tEntry = {x: Entry | x.signals in Speed}\n}",
+                    "code": "{\n\t// Entry tracks must have a speed signal\n\tall e : Entry | all s : e.signals | s in Speed \n}",
                     "ids": [
-                        "dF2N6yM83kBMzDiZj"
+                        "anNpqcLf9m3N2sGPT"
                     ]
                 }
             ]
@@ -674,16 +674,16 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Entry tracks must have a speed signal\n\tall t:Track | some s:Speed | t->s in signals\n}",
+                    "code": "{\n\t// Entry tracks must have a speed signal\n\tall t : Track | some t.*signals & Speed\n}",
                     "ids": [
-                        "sqeygRr7mk8Wsm4t5"
+                        "S5NoNuBMt5uQiHcZ5"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Entry tracks must have a speed signal\n\tall t : Track | some t.*signals & Speed\n}",
+                    "code": "{\n\t// Entry tracks must have a speed signal\n\tall t:Track | some s:Speed | t->s in signals\n}",
                     "ids": [
-                        "S5NoNuBMt5uQiHcZ5"
+                        "sqeygRr7mk8Wsm4t5"
                     ]
                 },
                 {
@@ -710,16 +710,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Entry tracks must have a speed signal\n//  all s:Speed, t:Track |  s in t.signals  implies t in Entry\n//  all s:Speed, e: Entry, t:Track | s in e.signals implies t in Entry \n  //all s:Speed, t:Track | t in Entry implies s in t.*succs\n  all t:Track | t in Entry implies Speed in signals.t\n\n}",
+                    "code": "{\n\t// Entry tracks must have a speed signal\n//  all s:Speed, t:Track |  s in t.signals  implies t in Entry\n//  all s:Speed, e: Entry, t:Track | s in e.signals implies t in Entry \n  //all s:Speed, t:Track | t in Entry implies s in t.*succs\n  all t:Track, s: Speed | t in Entry implies (s-> t in signals)\n\n}",
                     "ids": [
-                        "eCMkNSvQJGFSaAwrW"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Entry tracks must have a speed signal\n//  all s:Speed, t:Track |  s in t.signals  implies t in Entry\n//  all s:Speed, e: Entry, t:Track | s in e.signals implies t in Entry \n  all s:Speed, t:Track | t in Entry implies s in t.*succs\n  all s: Signal, t:Track | (t in Entry and s in Speed) implies some signals.s\n\n}",
-                    "ids": [
-                        "WNKBHikru8qR5pX7e"
+                        "GevDeWL6NsEFsC4rS"
                     ]
                 },
                 {
@@ -731,13 +724,6 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Entry tracks must have a speed signal\n//  all s:Speed, t:Track |  s in t.signals  implies t in Entry\n//  all s:Speed, e: Entry, t:Track | s in e.signals implies t in Entry \n  //all s:Speed, t:Track | t in Entry implies s in t.*succs\n  all t:Track, s: Speed | t in Entry implies (s-> t in signals)\n\n}",
-                    "ids": [
-                        "GevDeWL6NsEFsC4rS"
-                    ]
-                },
-                {
-                    "entry_count": 1,
                     "code": "{\n\t// Entry tracks must have a speed signal\n//  all s:Speed, t:Track |  s in t.signals  implies t in Entry\n//  all s:Speed, e: Entry, t:Track | s in e.signals implies t in Entry \n  //all s:Speed, t:Track | t in Entry implies s in t.*succs\n  all t:Track, s: Speed | t in Entry implies s in signals.t\n\n}",
                     "ids": [
                         "QRvrLpKpnvHm3aLbB"
@@ -745,9 +731,23 @@
                 },
                 {
                     "entry_count": 1,
+                    "code": "{\n\t// Entry tracks must have a speed signal\n//  all s:Speed, t:Track |  s in t.signals  implies t in Entry\n//  all s:Speed, e: Entry, t:Track | s in e.signals implies t in Entry \n  all s:Speed, t:Track | t in Entry implies s in t.*succs\n  all s: Signal, t:Track | (t in Entry and s in Speed) implies some signals.s\n\n}",
+                    "ids": [
+                        "WNKBHikru8qR5pX7e"
+                    ]
+                },
+                {
+                    "entry_count": 1,
                     "code": "{\n\t// Entry tracks must have a speed signal\n//  all s:Speed, t:Track |  s in t.signals  implies t in Entry\n//  all s:Speed, e: Entry, t:Track | s in e.signals implies t in Entry \n  //all s:Speed, t:Track | t in Entry implies s in t.*succs\n  all t:Track, s: Speed | t in Entry iff (s-> t in signals)\n\n}",
                     "ids": [
                         "sX4ogowW3yatkgTi4"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Entry tracks must have a speed signal\n//  all s:Speed, t:Track |  s in t.signals  implies t in Entry\n//  all s:Speed, e: Entry, t:Track | s in e.signals implies t in Entry \n  //all s:Speed, t:Track | t in Entry implies s in t.*succs\n  all t:Track | t in Entry implies Speed in signals.t\n\n}",
+                    "ids": [
+                        "eCMkNSvQJGFSaAwrW"
                     ]
                 }
             ]
@@ -759,6 +759,14 @@
             "elems": [
                 {
                     "entry_count": 2,
+                    "code": "{\n\t// Entry tracks must have a speed signal\n}",
+                    "ids": [
+                        "FciLA6cPxc7fioFBr",
+                        "AycFmzcE4wjoFN2vK"
+                    ]
+                },
+                {
+                    "entry_count": 2,
                     "code": "{\n\t// Entry tracks must have a speed signal\n//  all s:Speed, t:Track |  s in t.signals  implies t in Entry\n//  all s:Speed, e: Entry, t:Track | s in e.signals implies t in Entry \n  //all s:Speed, t:Track | t in Entry implies s in t.*succs\n  all t:Track, s: Signal| t in Entry implies t.signals in Signal\n}",
                     "ids": [
                         "XKHsSi6w5d6nH39Fh",
@@ -766,11 +774,10 @@
                     ]
                 },
                 {
-                    "entry_count": 2,
-                    "code": "{\n\t// Entry tracks must have a speed signal\n}",
+                    "entry_count": 1,
+                    "code": "{\n\t// Entry tracks must have a speed signal\n\tall e: Entry, s: Speed | s in e.signals implies all t: Track - Entry | s not in t\n}",
                     "ids": [
-                        "FciLA6cPxc7fioFBr",
-                        "AycFmzcE4wjoFN2vK"
+                        "7Dwdj6waGaLGuHPhZ"
                     ]
                 },
                 {
@@ -785,13 +792,6 @@
                     "code": "{\n\t// Entry tracks must have a speed signal\n//  all s:Speed, t:Track |  s in t.signals  implies t in Entry\n//  all s:Speed, e: Entry, t:Track | s in e.signals implies t in Entry \n  //all s:Speed, t:Track | t in Entry implies s in t.*succs\n  all t:Track| t in Entry implies t.signals in Signal\n}",
                     "ids": [
                         "QpbTuidw3qkurJaEN"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Entry tracks must have a speed signal\n\tall e: Entry, s: Speed | s in e.signals implies all t: Track - Entry | s not in t\n}",
-                    "ids": [
-                        "7Dwdj6waGaLGuHPhZ"
                     ]
                 }
             ]
@@ -830,16 +830,16 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Entry tracks must have a speed signal\n\n  all e : Entry | #e.signals > 0 iff e.signals in Speed\n}",
+                    "code": "{\n\t// Entry tracks must have a speed signal\n    all en: Entry | some en.signals and all s: en.signals | s in Speed\n\n\n}",
                     "ids": [
-                        "saTmDLCkZLigbsfTd"
+                        "riuauNn47JvbCe6Sr"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Entry tracks must have a speed signal\n    all en: Entry | some en.signals and all s: en.signals | s in Speed\n\n\n}",
+                    "code": "{\n\t// Entry tracks must have a speed signal\n\n  all e : Entry | #e.signals > 0 iff e.signals in Speed\n}",
                     "ids": [
-                        "riuauNn47JvbCe6Sr"
+                        "saTmDLCkZLigbsfTd"
                     ]
                 }
             ]
@@ -1103,16 +1103,16 @@
             "elems": [
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Entry tracks must have a speed signal\n\tall t : Entry | some t.*succs.signals & Speed\n}",
+                    "code": "{\n\t// Entry tracks must have a speed signal\n  \tall e : Entry | some s : Speed | s in e.signals or s in e.^succs.signals\n\n}",
                     "ids": [
-                        "wZv5fFZSf58a2fi3L"
+                        "aSEbPjX9xWusoAvMs"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Entry tracks must have a speed signal\n  \tall e : Entry | some s : Speed | s in e.signals or s in e.^succs.signals\n\n}",
+                    "code": "{\n\t// Entry tracks must have a speed signal\n\tall t : Entry | some t.*succs.signals & Speed\n}",
                     "ids": [
-                        "aSEbPjX9xWusoAvMs"
+                        "wZv5fFZSf58a2fi3L"
                     ]
                 }
             ]
@@ -1124,16 +1124,16 @@
             "elems": [
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Entry tracks must have a speed signal\n\n  all t : Track | #t.signals > 0 iff t.signals in Speed\n}",
+                    "code": "{\n\t// Entry tracks must have a speed signal\n  \tall t : Track | (some t.signals and t.signals in Speed)\n\n}",
                     "ids": [
-                        "poWyQb52xptxqGJPY"
+                        "eSNjietrCFHceMhnP"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Entry tracks must have a speed signal\n  \tall t : Track | (some t.signals and t.signals in Speed)\n\n}",
+                    "code": "{\n\t// Entry tracks must have a speed signal\n\n  all t : Track | #t.signals > 0 iff t.signals in Speed\n}",
                     "ids": [
-                        "eSNjietrCFHceMhnP"
+                        "poWyQb52xptxqGJPY"
                     ]
                 }
             ]
@@ -1181,16 +1181,16 @@
             "elems": [
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Entry tracks must have a speed signal\n//  all s:Speed, t:Track |  s in t.signals  implies t in Entry\n//  all s:Speed, e: Entry, t:Track | s in e.signals implies t in Entry \n  //all s:Speed, t:Track | t in Entry implies s in t.*succs\n  all t:Track, s: Speed | t in Entry iff signals.s in Signal\n\n}",
+                    "code": "{\n\t// Entry tracks must have a speed signal\n//  all s:Speed, t:Track |  s in t.signals  implies t in Entry\n//  all s:Speed, e: Entry, t:Track | s in e.signals implies t in Entry \n  //all s:Speed, t:Track | t in Entry implies s in t.*succs\n  all t:Track, s: Speed | t in Entry iff (signals.s->t in signals)\n\n}",
                     "ids": [
-                        "4vE4AJRZAxRGA3yHo"
+                        "W9BL9wibZx6iD2Rg2"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Entry tracks must have a speed signal\n//  all s:Speed, t:Track |  s in t.signals  implies t in Entry\n//  all s:Speed, e: Entry, t:Track | s in e.signals implies t in Entry \n  //all s:Speed, t:Track | t in Entry implies s in t.*succs\n  all t:Track, s: Speed | t in Entry iff (signals.s->t in signals)\n\n}",
+                    "code": "{\n\t// Entry tracks must have a speed signal\n//  all s:Speed, t:Track |  s in t.signals  implies t in Entry\n//  all s:Speed, e: Entry, t:Track | s in e.signals implies t in Entry \n  //all s:Speed, t:Track | t in Entry implies s in t.*succs\n  all t:Track, s: Speed | t in Entry iff signals.s in Signal\n\n}",
                     "ids": [
-                        "W9BL9wibZx6iD2Rg2"
+                        "4vE4AJRZAxRGA3yHo"
                     ]
                 }
             ]

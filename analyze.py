@@ -130,7 +130,7 @@ with open(dataset, 'r') as f:
                 alloy_model_erroneous = alloy_model + f'\nfact {{{spec}}}'
                 try:
                     world = CompUtil.parseEverything_fromString(None,alloy_model_erroneous)
-                except:
+                except Exception as e:
                     continue
                 total += 1
                 commands = world.getAllCommands()

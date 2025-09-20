@@ -3,7 +3,7 @@
     "pred": "this/inv8",
     "entry_count": 1254,
     "group_count": 268,
-    "duration": 192,
+    "duration": 165,
     "scope": 3,
     "groups": [
         {
@@ -197,27 +197,6 @@
                 },
                 {
                     "entry_count": 15,
-                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u: User | all us: u.sees | us in Ad implies us in u.follows.posts + u.suggested.posts\n}",
-                    "ids": [
-                        "Ge769HbmXQFECbqq2",
-                        "fqqE7Gc4hAKRqHsZE",
-                        "6N4apuPLyfxG467Zi",
-                        "8A9hWyGKfu4RCenFQ",
-                        "vBpZ5RcChgpLrwWWB",
-                        "aKYggvn2cnRE3PeNg",
-                        "4aZ7BNiz2mwgCdFyE",
-                        "L3yXb5vDCkcvA9ebC",
-                        "gg7FRNvWk3mhFynR2",
-                        "ZQnLGcxSQiJFARsQX",
-                        "9HXKjDjdn4Jfb6ErM",
-                        "Zt3KhDZhpwxNK9fYm",
-                        "YirLupSTQwoCaAb9i",
-                        "npDL3jKcc8HWrPuX6",
-                        "Kq7YEGzpMv7EpKC5f"
-                    ]
-                },
-                {
-                    "entry_count": 15,
                     "code": "{\n\t// A user only sees ads from followed or suggested users.\n  \n// all x:User, y:Photo | x->y in sees and y in Ad implies \n// (all z:User | z->y in posts => x->z in follows or x->z in suggested)\n\n// all x:User, y:Photo | y in x.sees & Ad implies \n//  (all z:User | z in posts.y => z in x.follows + x.suggested)\n\n// all x:User, y: x.sees & Ad | posts.y in (x.follows + x.suggested)\n\n// all x:User, y: x.sees & Ad | posts.y in x.(follows+suggested)\n\n    all x : User | x.sees & Ad in x.(follows+suggested).posts\n}",
                     "ids": [
                         "4BtGTRmTH9tQd8c4o",
@@ -235,6 +214,27 @@
                         "PBNrWi8DiXqsTuJoZ",
                         "4PmSfLAtR4hRsMnmc",
                         "dapvzB2o854zyWAcr"
+                    ]
+                },
+                {
+                    "entry_count": 15,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u: User | all us: u.sees | us in Ad implies us in u.follows.posts + u.suggested.posts\n}",
+                    "ids": [
+                        "Ge769HbmXQFECbqq2",
+                        "fqqE7Gc4hAKRqHsZE",
+                        "6N4apuPLyfxG467Zi",
+                        "8A9hWyGKfu4RCenFQ",
+                        "vBpZ5RcChgpLrwWWB",
+                        "aKYggvn2cnRE3PeNg",
+                        "4aZ7BNiz2mwgCdFyE",
+                        "L3yXb5vDCkcvA9ebC",
+                        "gg7FRNvWk3mhFynR2",
+                        "ZQnLGcxSQiJFARsQX",
+                        "9HXKjDjdn4Jfb6ErM",
+                        "Zt3KhDZhpwxNK9fYm",
+                        "YirLupSTQwoCaAb9i",
+                        "npDL3jKcc8HWrPuX6",
+                        "Kq7YEGzpMv7EpKC5f"
                     ]
                 },
                 {
@@ -295,18 +295,18 @@
                 },
                 {
                     "entry_count": 10,
-                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u:User | u.sees-(Photo-Ad) in u.follows.posts+u.suggested.posts\n}",
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n//\tall u : User | u.sees = Ad & ( u.follows.posts + u.suggested.posts)\n  \tall u: User | all a: u.sees & Ad | a in ( u.follows.posts + u.suggested.posts)\n}",
                     "ids": [
-                        "QWvSrpBhCJ55q8Qn3",
-                        "ab8GY97JNMCAG6NeH",
-                        "ig2cEQRGMGCNzPWp3",
-                        "qaMamEsK6KvmsKcRT",
-                        "uFHpk847M6WR4Hjcm",
-                        "7oM3t92ZaDnS25nYv",
-                        "QWqFWfWKBHXRL7zC6",
-                        "BH6hjv3aHPacyjpFJ",
-                        "CsJnGYfAnyqcT7jNA",
-                        "iJXZeww8tWsSBoxG3"
+                        "cuMZWDBagah4RHCgh",
+                        "FCaBpCvwXa4wahsYx",
+                        "q5zWP8Lnm5JzL5mQp",
+                        "fzadFSfuKmPdHeBGM",
+                        "cA66hMvF3ADyqvxDW",
+                        "CXbcXHP2RpZhGvnay",
+                        "yGxqP9FD5Qo368F7A",
+                        "dZDZRvQC2a4dAFSt9",
+                        "NFx4Y4TsozL97pQjR",
+                        "gZDLh6NpjrJRSYeyW"
                     ]
                 },
                 {
@@ -343,18 +343,18 @@
                 },
                 {
                     "entry_count": 10,
-                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n//\tall u : User | u.sees = Ad & ( u.follows.posts + u.suggested.posts)\n  \tall u: User | all a: u.sees & Ad | a in ( u.follows.posts + u.suggested.posts)\n}",
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u:User | u.sees-(Photo-Ad) in u.follows.posts+u.suggested.posts\n}",
                     "ids": [
-                        "cuMZWDBagah4RHCgh",
-                        "FCaBpCvwXa4wahsYx",
-                        "q5zWP8Lnm5JzL5mQp",
-                        "fzadFSfuKmPdHeBGM",
-                        "cA66hMvF3ADyqvxDW",
-                        "CXbcXHP2RpZhGvnay",
-                        "yGxqP9FD5Qo368F7A",
-                        "dZDZRvQC2a4dAFSt9",
-                        "NFx4Y4TsozL97pQjR",
-                        "gZDLh6NpjrJRSYeyW"
+                        "QWvSrpBhCJ55q8Qn3",
+                        "ab8GY97JNMCAG6NeH",
+                        "ig2cEQRGMGCNzPWp3",
+                        "qaMamEsK6KvmsKcRT",
+                        "uFHpk847M6WR4Hjcm",
+                        "7oM3t92ZaDnS25nYv",
+                        "QWqFWfWKBHXRL7zC6",
+                        "BH6hjv3aHPacyjpFJ",
+                        "CsJnGYfAnyqcT7jNA",
+                        "iJXZeww8tWsSBoxG3"
                     ]
                 },
                 {
@@ -374,20 +374,6 @@
                 },
                 {
                     "entry_count": 8,
-                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  \tall x: User, y: Ad | y in x.sees implies (some z: x.follows + x.suggested | y in z.posts)\n}",
-                    "ids": [
-                        "FHCKJvGrb8bz3kdi7",
-                        "5KCGsYaZs7Tfm6CF9",
-                        "MFLuzE6hCrwv9uxRZ",
-                        "mnTrfNGF74f3QrriF",
-                        "NoMvYoHyj4tDDSAvr",
-                        "yGQhzr3heusKofiQD",
-                        "WsMefhEJncNkMR35S",
-                        "bzTc2wyeHN5GqRcqP"
-                    ]
-                },
-                {
-                    "entry_count": 8,
                     "code": "{\n\t// A user only sees ads from followed or suggested users.\n  all u : User | all p : u.sees | p in Ad implies p in (u.follows + u.suggested).posts\n\n}",
                     "ids": [
                         "6ZKdDBnAjM3NZspgw",
@@ -398,6 +384,20 @@
                         "84Kgojx6HjRd2fBbh",
                         "yfrpckwYfBTQAE8u7",
                         "eCqoPEeGyi58nqPSY"
+                    ]
+                },
+                {
+                    "entry_count": 8,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  \tall x: User, y: Ad | y in x.sees implies (some z: x.follows + x.suggested | y in z.posts)\n}",
+                    "ids": [
+                        "FHCKJvGrb8bz3kdi7",
+                        "5KCGsYaZs7Tfm6CF9",
+                        "MFLuzE6hCrwv9uxRZ",
+                        "mnTrfNGF74f3QrriF",
+                        "NoMvYoHyj4tDDSAvr",
+                        "yGQhzr3heusKofiQD",
+                        "WsMefhEJncNkMR35S",
+                        "bzTc2wyeHN5GqRcqP"
                     ]
                 },
                 {
@@ -477,12 +477,12 @@
                 },
                 {
                     "entry_count": 4,
-                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  all a: Ad | all u1: User | (a in u1.sees) implies some u2 : User | a in u2.posts and u2 in {u1.suggested + u1.follows}\n\n}",
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u : User, p : u.sees & Ad | p in u.(follows+suggested).posts\n}",
                     "ids": [
-                        "f4pcE2XwssJ4ZWyj4",
-                        "5EdT93ZwJCRW4A7ZH",
-                        "iJrcLMbLeLYcfL7fm",
-                        "ZFYSHtz4jPbYY4XCP"
+                        "gHxpeHPanWcnLrSAr",
+                        "WavQekCbTD5nj3tB5",
+                        "NoAqgnYCaGW9HGw5f",
+                        "H2Cw7o34Wp3m8kMQk"
                     ]
                 },
                 {
@@ -497,12 +497,30 @@
                 },
                 {
                     "entry_count": 4,
-                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u : User, p : u.sees & Ad | p in u.(follows+suggested).posts\n}",
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  all a: Ad | all u1: User | (a in u1.sees) implies some u2 : User | a in u2.posts and u2 in {u1.suggested + u1.follows}\n\n}",
                     "ids": [
-                        "gHxpeHPanWcnLrSAr",
-                        "WavQekCbTD5nj3tB5",
-                        "NoAqgnYCaGW9HGw5f",
-                        "H2Cw7o34Wp3m8kMQk"
+                        "f4pcE2XwssJ4ZWyj4",
+                        "5EdT93ZwJCRW4A7ZH",
+                        "iJrcLMbLeLYcfL7fm",
+                        "ZFYSHtz4jPbYY4XCP"
+                    ]
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u : User | Ad & u.sees in Ad & (u.follows + u.suggested).posts\n}",
+                    "ids": [
+                        "oxSjLyPmDXvmGtxBy",
+                        "zp83zJRcFfczsamrE",
+                        "h2cNdTTBwrDsfG6hf"
+                    ]
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n  // A user only sees ads from followed or suggested users.\n\n  //all x : User, y : Photo | x->y in sees and y in Ad implies \n  //  (some z : User | z->y in posts and (x->z in follows or x->z in suggested))\n\n  all x : User, y : Photo | x->y in sees and y in Ad implies \n    (some z : User | z in posts.y and (z in x.follows or z in x.suggested))\n\n\n\n\n\n\n\n\n}",
+                    "ids": [
+                        "JaegdqNvL84gbo7Jx",
+                        "ze7kqPmYccHmQc4GL",
+                        "96YPdQkysK9YX9To4"
                     ]
                 },
                 {
@@ -516,11 +534,20 @@
                 },
                 {
                     "entry_count": 3,
-                    "code": "{\n  // A user only sees ads from followed or suggested users.\n\n  //all x : User, y : Photo | x->y in sees and y in Ad implies \n  //  (some z : User | z->y in posts and (x->z in follows or x->z in suggested))\n\n  all x : User, y : Photo | x->y in sees and y in Ad implies \n    (some z : User | z in posts.y and (z in x.follows or z in x.suggested))\n\n\n\n\n\n\n\n\n}",
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\nall u:User, a:Ad | u->a in sees implies a in u.follows.posts or a in u.suggested.posts\n}",
                     "ids": [
-                        "JaegdqNvL84gbo7Jx",
-                        "ze7kqPmYccHmQc4GL",
-                        "96YPdQkysK9YX9To4"
+                        "MaoNQZbi7vwf3yhdj",
+                        "J8wbSbknTnjKmFk6J",
+                        "ej3cbCDA2HPWFXPxF"
+                    ]
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u : User | all a : Ad | a in u.sees implies some (u.follows + u.suggested).posts & a\n}",
+                    "ids": [
+                        "2RArervzePPAjYybJ",
+                        "cJf62aq8qZcAtHNZT",
+                        "xfTWEkSf6DJMxyov9"
                     ]
                 },
                 {
@@ -542,30 +569,11 @@
                     ]
                 },
                 {
-                    "entry_count": 3,
-                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u : User | all a : Ad | a in u.sees implies some (u.follows + u.suggested).posts & a\n}",
+                    "entry_count": 2,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  \tall u: User, p: u.sees |\n\tp in Ad implies (some f: u.follows | p in f.posts) or (some s: u.suggested | p in s.posts)\n}",
                     "ids": [
-                        "2RArervzePPAjYybJ",
-                        "cJf62aq8qZcAtHNZT",
-                        "xfTWEkSf6DJMxyov9"
-                    ]
-                },
-                {
-                    "entry_count": 3,
-                    "code": "{\n\t// A user only sees ads from followed or suggested users.\nall u:User, a:Ad | u->a in sees implies a in u.follows.posts or a in u.suggested.posts\n}",
-                    "ids": [
-                        "MaoNQZbi7vwf3yhdj",
-                        "J8wbSbknTnjKmFk6J",
-                        "ej3cbCDA2HPWFXPxF"
-                    ]
-                },
-                {
-                    "entry_count": 3,
-                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u : User | Ad & u.sees in Ad & (u.follows + u.suggested).posts\n}",
-                    "ids": [
-                        "oxSjLyPmDXvmGtxBy",
-                        "zp83zJRcFfczsamrE",
-                        "h2cNdTTBwrDsfG6hf"
+                        "5cMdyCCa9kjvctXKh",
+                        "59CtpjCkqTsSZKnRt"
                     ]
                 },
                 {
@@ -578,50 +586,10 @@
                 },
                 {
                     "entry_count": 2,
-                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  \tall u : User | all p : Photo | p in Ad and p in u.sees implies p in u.follows.posts or p in u.suggested.posts\n\n}",
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u: User | no (u.sees & (Ad - (u.follows.posts + u.suggested.posts)))\n}",
                     "ids": [
-                        "tSAyATKJSXyuzA7Gt",
-                        "hYZZtu2evqEjN6HoP"
-                    ]
-                },
-                {
-                    "entry_count": 2,
-                    "code": "{\n  // A user only sees ads from followed or suggested users.\n  all x : User, y : Photo | \n    x->y in sees and y in Ad implies \n    (some z : User | y in z.posts and (x->z in follows or x->z in suggested))\n}",
-                    "ids": [
-                        "3kBcRC7e2Ju45HPHq",
-                        "LDgLh9Dpz8k2QePkJ"
-                    ]
-                },
-                {
-                    "entry_count": 2,
-                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  \n//all u:User | u.sees = ((Photo-Ad) + (Ad & (u.follows.posts + u.suggested.posts)))\n\n  all u:User | no u.sees & (Ad - u.follows.posts - u.suggested.posts)\n  \n}",
-                    "ids": [
-                        "6smXb5NzMghAoHNae",
-                        "Q5iikhzeZZvn3PxjR"
-                    ]
-                },
-                {
-                    "entry_count": 2,
-                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  all u : User | no (Ad - (u.follows + u.suggested).posts) & u.sees\n}",
-                    "ids": [
-                        "x82QFXw479jkh3NyJ",
-                        "zJT8zrXMLp3jJmGTe"
-                    ]
-                },
-                {
-                    "entry_count": 2,
-                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  \tall u: User, p: u.sees |\n\tp in Ad implies (some f: u.follows | p in f.posts) or (some s: u.suggested | p in s.posts)\n}",
-                    "ids": [
-                        "5cMdyCCa9kjvctXKh",
-                        "59CtpjCkqTsSZKnRt"
-                    ]
-                },
-                {
-                    "entry_count": 2,
-                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u : User, a : Ad | \n    a in u.sees implies (some f : User | f in u.follows and a in f.posts) \n                       or (some s : User | s in u.suggested and a in s.posts)\n}",
-                    "ids": [
-                        "kgBYDfrZqGCc4aL68",
-                        "chJRLgDQkG7NAx3eQ"
+                        "umxjESFwhunTE3whL",
+                        "eHn96SSZq7icdsKGp"
                     ]
                 },
                 {
@@ -634,18 +602,34 @@
                 },
                 {
                     "entry_count": 2,
-                    "code": "{\n  // A user only sees ads from followed or suggested users.\n\n\n\n  all x : User, y : Photo | x->y in sees and y in Ad implies \n    (some z : User | z->y in posts and (x->z in follows or x->z in suggested))\n\n\n}",
+                    "code": "{\n  // A user only sees ads from followed or suggested users.\n  all x : User, y : Photo | \n    x->y in sees and y in Ad implies \n    (some z : User | y in z.posts and (x->z in follows or x->z in suggested))\n}",
                     "ids": [
-                        "rbsB4fGhZPnYeRkCx",
-                        "6QpY9J2YvowrX7Kkf"
+                        "3kBcRC7e2Ju45HPHq",
+                        "LDgLh9Dpz8k2QePkJ"
                     ]
                 },
                 {
                     "entry_count": 2,
-                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u: User | no (u.sees & (Ad - (u.follows.posts + u.suggested.posts)))\n}",
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u: User | all p: u.sees | p not in ((Ad) - (u.follows.posts + u.suggested.posts))\n }",
                     "ids": [
-                        "umxjESFwhunTE3whL",
-                        "eHn96SSZq7icdsKGp"
+                        "xg2avxhfeYpQuzo8x",
+                        "ThHMauKdW2ERCrNSy"
+                    ]
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  \n//all u:User | u.sees = ((Photo-Ad) + (Ad & (u.follows.posts + u.suggested.posts)))\n\n  all u:User | no u.sees & (Ad - u.follows.posts - u.suggested.posts)\n  \n}",
+                    "ids": [
+                        "6smXb5NzMghAoHNae",
+                        "Q5iikhzeZZvn3PxjR"
+                    ]
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n  // A user only sees ads from followed or suggested users.\n\n\n\n  all x : User, y : Photo | x->y in sees and y in Ad implies \n    (some z : User | z->y in posts and (x->z in follows or x->z in suggested))\n\n\n}",
+                    "ids": [
+                        "rbsB4fGhZPnYeRkCx",
+                        "6QpY9J2YvowrX7Kkf"
                     ]
                 },
                 {
@@ -658,66 +642,26 @@
                 },
                 {
                     "entry_count": 2,
-                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u: User | all p: u.sees | p not in ((Ad) - (u.follows.posts + u.suggested.posts))\n }",
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  all u : User | no (Ad - (u.follows + u.suggested).posts) & u.sees\n}",
                     "ids": [
-                        "xg2avxhfeYpQuzo8x",
-                        "ThHMauKdW2ERCrNSy"
+                        "x82QFXw479jkh3NyJ",
+                        "zJT8zrXMLp3jJmGTe"
                     ]
                 },
                 {
-                    "entry_count": 1,
-                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u : User | u.sees :> Ad in u.follows.posts+u.suggested.posts :> Ad\n}",
+                    "entry_count": 2,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u : User, a : Ad | \n    a in u.sees implies (some f : User | f in u.follows and a in f.posts) \n                       or (some s : User | s in u.suggested and a in s.posts)\n}",
                     "ids": [
-                        "bTSyqqxd9qpxWgCTT"
+                        "kgBYDfrZqGCc4aL68",
+                        "chJRLgDQkG7NAx3eQ"
                     ]
                 },
                 {
-                    "entry_count": 1,
-                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u : User, a : Ad | u in sees.a implies some u2 : User | u2 in posts.a and (u2 in u.follows or u2 in u.suggested)\n}",
+                    "entry_count": 2,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  \tall u : User | all p : Photo | p in Ad and p in u.sees implies p in u.follows.posts or p in u.suggested.posts\n\n}",
                     "ids": [
-                        "AZJ4zeNbYYqNeFwTQ"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  \tsees :> Ad in follows.posts + suggested.posts\n\n}",
-                    "ids": [
-                        "zggDyxY25SF8fx3Ta"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// A user only sees ads from followed or suggested users.\nall user:User |\nall postseen:user.sees|\npostseen in Ad =>\n(\npostseen in user.(follows+suggested).posts\n  \n  \n  \n  \n  \n)\n}",
-                    "ids": [
-                        "R3enELNS4veSHJZQC"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall a: Ad, u: sees.a | some u2 : u.(follows+suggested) | a in u2.posts \n}",
-                    "ids": [
-                        "w6S2XDxuSWbB4Trch"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  \tall x: User, p: Ad | p in x.sees implies (some y: User | (y in x.follows or y in x.suggested) and p in y.posts)\n\tall u : User | (u.sees & Ad) in u.follows.posts + u.suggested.posts\n}",
-                    "ids": [
-                        "rRL3aBkHW7W3EKxun"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u : User | u.sees :> Ad in u.(follows+suggested).posts :> Ad\n}",
-                    "ids": [
-                        "Er7pc5gx8zo5oTjvQ"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u : User, p : Ad |\n  \t\t(u.sees & Ad) in (u.follows.posts + u.suggested.posts)\n}",
-                    "ids": [
-                        "jwDCstscre2AMbopu"
+                        "tSAyATKJSXyuzA7Gt",
+                        "hYZZtu2evqEjN6HoP"
                     ]
                 },
                 {
@@ -729,72 +673,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  \n  \tall u : User | all p : u.sees | p not in Ad or p in u.follows.posts or p in u.suggested.posts\n\n}",
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall a: Ad, u: sees.a | some u2 : u.(follows+suggested) | a in u2.posts \n}",
                     "ids": [
-                        "ot4n7jnmZ7uu2ExqF"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// A user only sees ads from followed or suggested users.  \n  all u : User |\n    all p : u.sees | \n      p in Ad implies some x : User | p in x.posts and (x in u.follows or x in u.suggested)\n}",
-                    "ids": [
-                        "PED8rY3Z3Bgw3EyqZ"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u : User | u.sees&Ad in u.(follows+suggested).posts&Ad\n}",
-                    "ids": [
-                        "GTnj8Cy83Yta7sb5A"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n  all u : User, a : Photo | \n    a in Ad and a in u.sees implies \n    (some u1 : User | u1 in u.follows and a in u1.posts) or \n    (some u2 : User | u2 in u.suggested and a in u2.posts)\n\t// A user only sees ads from followed or suggested users.\n\n}",
-                    "ids": [
-                        "JAGD4fCTp4x58mjvj"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  \tall u:User|\n  \t\tall p:Photo|\n  \t\t\tp in Ad and p in u.sees implies (some f:u.follows |\n  \t\t\t\tp in f.posts) ||( some s:u.suggested | p in s.posts)\n\n}",
-                    "ids": [
-                        "CWtnZmxXuL7zWAEFs"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\t//all u1:User, p:Photo | u1.sees in Ad implies (posts.p in u1.follows) or (posts.p in u1.suggested)\n\n  all u: User, p: Photo |\n  p in u.sees and p in Ad implies\n    some poster: User | p in poster.posts and (poster in u.follows or poster in u.suggested)\n\n}",
-                    "ids": [
-                        "yrP95dC462pcvhCRD"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  \tall u: User, a: Ad | a in u.sees implies some ((u.follows + u.suggested) & posts.a)\n}",
-                    "ids": [
-                        "pmnkC4TN4YfSv5JM8"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Um usu\u00e1rio s\u00f3 v\u00ea an\u00fancios de usu\u00e1rios que segue ou sugeridos.\n\tall u: User | \n\t\tall p: Ad | p in u.sees implies ( some u.follows & p.(~posts) or some u.suggested & p.(~posts) )\n}",
-                    "ids": [
-                        "pRfyTZf862Tbaz3ci"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall x: User, y: Photo | y in x.sees and y in Ad implies y in (x.follows + x. suggested).posts\n  \t//all x: User | x.sees & Ad in x.(follows+suggested).posts\n}",
-                    "ids": [
-                        "KtCECdNe47tc7mzZu"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  \n  all u:User | u.sees in ((Photo-Ad) + (Ad & u.(follows+suggested).posts))\n\n  //all u:User | no u.sees & (Ad - u.(follows+suggested).posts)\n  \n}",
-                    "ids": [
-                        "aiMhziYYcrGX2DnRN"
+                        "w6S2XDxuSWbB4Trch"
                     ]
                 },
                 {
@@ -806,16 +687,30 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n  // A user only sees ads from followed or suggested users.\n  all u : User | \n    all ad : u.sees & Ad | some poster : User | ad in poster.posts and (poster in u.follows or poster in u.suggested)\n}",
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u : User | u.sees :> Ad in u.follows.posts+u.suggested.posts :> Ad\n}",
                     "ids": [
-                        "QNEL7THQepmDPaY9q"
+                        "bTSyqqxd9qpxWgCTT"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n     all a : Ad, x : sees.a | x in (follows+suggested).posts.a\n\n}",
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  \tsees :> Ad in follows.posts + suggested.posts\n\n}",
                     "ids": [
-                        "b24oCF5du86xT7Nu8"
+                        "zggDyxY25SF8fx3Ta"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u : User, p : Ad |\n  \t\t(u.sees & Ad) in (u.follows.posts + u.suggested.posts)\n}",
+                    "ids": [
+                        "jwDCstscre2AMbopu"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  \tall u: User, a: Ad | a in u.sees implies some ((u.follows + u.suggested) & posts.a)\n}",
+                    "ids": [
+                        "pmnkC4TN4YfSv5JM8"
                     ]
                 },
                 {
@@ -827,9 +722,114 @@
                 },
                 {
                     "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\t//all u1:User, p:Photo | u1.sees in Ad implies (posts.p in u1.follows) or (posts.p in u1.suggested)\n\n  all u: User, p: Photo |\n  p in u.sees and p in Ad implies\n    some poster: User | p in poster.posts and (poster in u.follows or poster in u.suggested)\n\n}",
+                    "ids": [
+                        "yrP95dC462pcvhCRD"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\nall user:User |\nall postseen:user.sees|\npostseen in Ad =>\n(\npostseen in user.(follows+suggested).posts\n  \n  \n  \n  \n  \n)\n}",
+                    "ids": [
+                        "R3enELNS4veSHJZQC"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n     all a : Ad, x : sees.a | x in (follows+suggested).posts.a\n\n}",
+                    "ids": [
+                        "b24oCF5du86xT7Nu8"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n  // A user only sees ads from followed or suggested users.\n  all u : User | \n    all ad : u.sees & Ad | some poster : User | ad in poster.posts and (poster in u.follows or poster in u.suggested)\n}",
+                    "ids": [
+                        "QNEL7THQepmDPaY9q"
+                    ]
+                },
+                {
+                    "entry_count": 1,
                     "code": "{\n\t// A user only sees ads from followed or suggested users.\n\t\n  \tall u : User, a : Ad | u in sees.a implies a in (u.follows.posts + u.suggested.posts)\n}",
                     "ids": [
                         "HTCL5kK5Zh8T43jbv"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u : User, a : Ad | u in sees.a implies some u2 : User | u2 in posts.a and (u2 in u.follows or u2 in u.suggested)\n}",
+                    "ids": [
+                        "AZJ4zeNbYYqNeFwTQ"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.  \n  all u : User |\n    all p : u.sees | \n      p in Ad implies some x : User | p in x.posts and (x in u.follows or x in u.suggested)\n}",
+                    "ids": [
+                        "PED8rY3Z3Bgw3EyqZ"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Um usu\u00e1rio s\u00f3 v\u00ea an\u00fancios de usu\u00e1rios que segue ou sugeridos.\n\tall u: User | \n\t\tall p: Ad | p in u.sees implies ( some u.follows & p.(~posts) or some u.suggested & p.(~posts) )\n}",
+                    "ids": [
+                        "pRfyTZf862Tbaz3ci"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  \n  all u:User | u.sees in ((Photo-Ad) + (Ad & u.(follows+suggested).posts))\n\n  //all u:User | no u.sees & (Ad - u.(follows+suggested).posts)\n  \n}",
+                    "ids": [
+                        "aiMhziYYcrGX2DnRN"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u : User | u.sees&Ad in u.(follows+suggested).posts&Ad\n}",
+                    "ids": [
+                        "GTnj8Cy83Yta7sb5A"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  \n  \tall u : User | all p : u.sees | p not in Ad or p in u.follows.posts or p in u.suggested.posts\n\n}",
+                    "ids": [
+                        "ot4n7jnmZ7uu2ExqF"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  \tall x: User, p: Ad | p in x.sees implies (some y: User | (y in x.follows or y in x.suggested) and p in y.posts)\n\tall u : User | (u.sees & Ad) in u.follows.posts + u.suggested.posts\n}",
+                    "ids": [
+                        "rRL3aBkHW7W3EKxun"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n  all u : User, a : Photo | \n    a in Ad and a in u.sees implies \n    (some u1 : User | u1 in u.follows and a in u1.posts) or \n    (some u2 : User | u2 in u.suggested and a in u2.posts)\n\t// A user only sees ads from followed or suggested users.\n\n}",
+                    "ids": [
+                        "JAGD4fCTp4x58mjvj"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u : User | u.sees :> Ad in u.(follows+suggested).posts :> Ad\n}",
+                    "ids": [
+                        "Er7pc5gx8zo5oTjvQ"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  \tall u:User|\n  \t\tall p:Photo|\n  \t\t\tp in Ad and p in u.sees implies (some f:u.follows |\n  \t\t\t\tp in f.posts) ||( some s:u.suggested | p in s.posts)\n\n}",
+                    "ids": [
+                        "CWtnZmxXuL7zWAEFs"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall x: User, y: Photo | y in x.sees and y in Ad implies y in (x.follows + x. suggested).posts\n  \t//all x: User | x.sees & Ad in x.(follows+suggested).posts\n}",
+                    "ids": [
+                        "KtCECdNe47tc7mzZu"
                     ]
                 }
             ]
@@ -839,27 +839,6 @@
             "group_count": 30,
             "correct": true,
             "elems": [
-                {
-                    "entry_count": 15,
-                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u : User, a : u.sees & Ad | posts.a in u.follows + u.suggested \n}",
-                    "ids": [
-                        "zMArXrJSZG7CexYii",
-                        "3BnHfNEmBcN4Lf9Qb",
-                        "7NFF39WFrNgZTdJ67",
-                        "yP92Jfj9cvriWG8Mt",
-                        "oP83enp7FR5229j4a",
-                        "ZWMNMfmoZS4iQEZHB",
-                        "KELsdbKxpDfiboqH5",
-                        "wdBnmzgZYG4kQbQu2",
-                        "DNRZ5akGd8SSEfJ8Y",
-                        "h8oMGDuJPYEQ2pay3",
-                        "kAhkRLsEpZEPfgBeQ",
-                        "d6WJpLKZnAvGTGMSt",
-                        "wXQZZrwPuWbEoPpJM",
-                        "wGyYMCa7cfFTiXQP2",
-                        "7LJMiq5HLSoAkyFkc"
-                    ]
-                },
                 {
                     "entry_count": 15,
                     "code": "{\n\t// A user only sees ads from followed or suggested users.\n  all u : User | posts.(u.sees & Ad) in (u.follows + u.suggested)\n}",
@@ -879,6 +858,27 @@
                         "zJYDhRjJsTbFFoZgT",
                         "2TwuTH5ej2mgE3Lbe",
                         "LpdwXRqLtpcymbYw9"
+                    ]
+                },
+                {
+                    "entry_count": 15,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u : User, a : u.sees & Ad | posts.a in u.follows + u.suggested \n}",
+                    "ids": [
+                        "zMArXrJSZG7CexYii",
+                        "3BnHfNEmBcN4Lf9Qb",
+                        "7NFF39WFrNgZTdJ67",
+                        "yP92Jfj9cvriWG8Mt",
+                        "oP83enp7FR5229j4a",
+                        "ZWMNMfmoZS4iQEZHB",
+                        "KELsdbKxpDfiboqH5",
+                        "wdBnmzgZYG4kQbQu2",
+                        "DNRZ5akGd8SSEfJ8Y",
+                        "h8oMGDuJPYEQ2pay3",
+                        "kAhkRLsEpZEPfgBeQ",
+                        "d6WJpLKZnAvGTGMSt",
+                        "wXQZZrwPuWbEoPpJM",
+                        "wGyYMCa7cfFTiXQP2",
+                        "7LJMiq5HLSoAkyFkc"
                     ]
                 },
                 {
@@ -949,6 +949,14 @@
                 },
                 {
                     "entry_count": 2,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  \t(all u: User, ad: Ad| ad in u.sees implies ad.~posts in (u.follows + u.suggested))\n\n}",
+                    "ids": [
+                        "pZ29nHRifaSi5YCkm",
+                        "QzhBqbbN6FgF5m5bj"
+                    ]
+                },
+                {
+                    "entry_count": 2,
                     "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u1,u2: User | all p : u1.sees | p in u2.posts and p in Ad implies u2 in u1.follows + u1.suggested\n}",
                     "ids": [
                         "XtgqrJDRE8RNjvpBS",
@@ -957,18 +965,10 @@
                 },
                 {
                     "entry_count": 2,
-                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u:User, p:Ad | p in u.sees implies (all u2:User | p in u2.posts implies u2 in u.follows or u2 in u.suggested)\n}",
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u1, u2 : User, p : Ad | (p in u1.sees and p in u2.posts) implies (u2 in u1.follows or u2 in u1.suggested)\n}",
                     "ids": [
-                        "5oFyrLRfbwfXTJLFM",
-                        "3nxonBkwnQQP9N9Ed"
-                    ]
-                },
-                {
-                    "entry_count": 2,
-                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  \t(all u: User, ad: Ad| ad in u.sees implies ad.~posts in (u.follows + u.suggested))\n\n}",
-                    "ids": [
-                        "pZ29nHRifaSi5YCkm",
-                        "QzhBqbbN6FgF5m5bj"
+                        "Xfv46azYraWwCxk36",
+                        "vW5PEoPwTnXazHqrr"
                     ]
                 },
                 {
@@ -981,10 +981,45 @@
                 },
                 {
                     "entry_count": 2,
-                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u1, u2 : User, p : Ad | (p in u1.sees and p in u2.posts) implies (u2 in u1.follows or u2 in u1.suggested)\n}",
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u:User, p:Ad | p in u.sees implies (all u2:User | p in u2.posts implies u2 in u.follows or u2 in u.suggested)\n}",
                     "ids": [
-                        "Xfv46azYraWwCxk36",
-                        "vW5PEoPwTnXazHqrr"
+                        "5oFyrLRfbwfXTJLFM",
+                        "3nxonBkwnQQP9N9Ed"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  \tall u : User | all s : u.sees | s in Ad implies posts.s in (u.follows + u.suggested)\n}",
+                    "ids": [
+                        "aBkysp4oPrHsyQcJn"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  \tall u1, u2 : User, a : Ad |\n  \t(u2 in posts.a and u1 in sees.a) implies (u1 in follows.u2 or u1 in suggested.u2)\n\n}",
+                    "ids": [
+                        "HCAiPn7EGd6pMohKx"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  \n    // all x:User, y:Photo | x->y in sees and y in Ad implies \n    //       (all z:User | z->y in posts => x->z in follows or x->z in suggested)\n\n\n    // all x:User, y:Photo | y in x.sees & Ad implies \n    //       (all z:User | z in posts.y => z in x.follows + x.suggested)\n\n\n    // all x:User, y: x.sees & Ad | posts.y in (x.follows + x.suggested)\n\n  \n    all x:User, y: x.sees & Ad | posts.y in x.(follows+suggested)\n\n \n  \n  \n  //all u : User, p : u.sees & Ad | p in u.(follows+suggested).posts\n\n}",
+                    "ids": [
+                        "6Fiv9gfpdKyBudJ3p"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u1,u2: User | all p : u1.sees | p in u2.posts and p in Ad implies u2 in u1.follows or u2 in u1.suggested\n}",
+                    "ids": [
+                        "ezdWSgbBZhwAKsBWu"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  all u, u2: User, a: Ad |\n  \ta in u.sees && a in u2.posts => u2 in u.follows + u.suggested\n\n}",
+                    "ids": [
+                        "yENTe3DCKq9uyb8oZ"
                     ]
                 },
                 {
@@ -996,16 +1031,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  \t\n  \tall a : Ad, u : posts.a | sees.a in follows.u + suggested.u \n}",
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  all u: User | posts.(u.sees & Ad) in u.(follows + suggested)\n\n}",
                     "ids": [
-                        "98TER5atT5xNKBT43"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  \n// all x:User, y:Photo | x->y in sees and y in Ad implies \n// (all z:User | z->y in posts => x->z in follows or x->z in suggested)\n\n// all x:User, y:Photo | y in x.sees & Ad implies \n//  (all z:User | z in posts.y => z in x.follows + x.suggested)\n\n// all x:User, y: x.sees & Ad | posts.y in (x.follows + x.suggested)\n\n// all x:User, y: x.sees & Ad | posts.y in x.(follows+suggested)\n\n     all a : Ad | no x : User | x in sees.a and not (posts.a in x.(follows+suggested))\n}",
-                    "ids": [
-                        "B9JoaXF7fbtrLCxi4"
+                        "yCHWNt5BrNyezgKDk"
                     ]
                 },
                 {
@@ -1013,6 +1041,48 @@
                     "code": "{\n\t// A user only sees ads from followed or suggested users.\n  \n// all x:User, y:Photo | x->y in sees and y in Ad implies \n// (all z:User | z->y in posts => x->z in follows or x->z in suggested)\n\n// all x:User, y:Photo | y in x.sees & Ad implies \n//  (all z:User | z in posts.y => z in x.follows + x.suggested)\n\n// all x:User, y: x.sees & Ad | posts.y in (x.follows + x.suggested)\n\n// all x:User, y: x.sees & Ad | posts.y in x.(follows+suggested)\n\n     all a : Ad | no x : sees.a | not (posts.a in x.(follows+suggested))\n}",
                     "ids": [
                         "iWc4yRm52dEcrAYZN"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  \t\n  \tall a : Ad, u : posts.a | sees.a in follows.u + suggested.u \n}",
+                    "ids": [
+                        "98TER5atT5xNKBT43"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\t// all users, see ads if z in u.follows + u.suggested\n  \tall u,y : User, a : (Ad & y.posts) |\n  \t\t(a in u.sees) implies (y in u.suggested + u.follows)\n  \t\n\n}",
+                    "ids": [
+                        "z8RHg3Rf57knGiNaq"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  all u , y: User, a : Ad | a in y.posts implies not (a in u.sees) or (y in u.follows or y in u.suggested)\n\n}",
+                    "ids": [
+                        "DjkcmKkHdtAqaidtC"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall a : Ad, u : User | u -> a in sees implies all u2 : posts.a | u -> u2 in follows or u -> u2 in suggested\n}",
+                    "ids": [
+                        "9J4gZnft4FGPifGxm"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  all u : User, p : User, a : Ad | a in p.posts and a in u.sees implies p in u.suggested or p in u.follows\n}",
+                    "ids": [
+                        "Jfn68SwAT99jqorTp"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u : User, a : Ad | a in u.sees implies (all u2 : User | a in u2.posts implies (u2 in u.follows or u2 in u.suggested))\n}",
+                    "ids": [
+                        "rXhqYRipXRucxKiXB"
                     ]
                 },
                 {
@@ -1031,79 +1101,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  \tall u : User | all s : u.sees | s in Ad implies posts.s in (u.follows + u.suggested)\n}",
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  \n// all x:User, y:Photo | x->y in sees and y in Ad implies \n// (all z:User | z->y in posts => x->z in follows or x->z in suggested)\n\n// all x:User, y:Photo | y in x.sees & Ad implies \n//  (all z:User | z in posts.y => z in x.follows + x.suggested)\n\n// all x:User, y: x.sees & Ad | posts.y in (x.follows + x.suggested)\n\n// all x:User, y: x.sees & Ad | posts.y in x.(follows+suggested)\n\n     all a : Ad | no x : User | x in sees.a and not (posts.a in x.(follows+suggested))\n}",
                     "ids": [
-                        "aBkysp4oPrHsyQcJn"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall a : Ad, u : User | u -> a in sees implies all u2 : posts.a | u -> u2 in follows or u -> u2 in suggested\n}",
-                    "ids": [
-                        "9J4gZnft4FGPifGxm"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  all u, u2: User, a: Ad |\n  \ta in u.sees && a in u2.posts => u2 in u.follows + u.suggested\n\n}",
-                    "ids": [
-                        "yENTe3DCKq9uyb8oZ"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u1,u2: User | all p : u1.sees | p in u2.posts and p in Ad implies u2 in u1.follows or u2 in u1.suggested\n}",
-                    "ids": [
-                        "ezdWSgbBZhwAKsBWu"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  all u : User, p : User, a : Ad | a in p.posts and a in u.sees implies p in u.suggested or p in u.follows\n}",
-                    "ids": [
-                        "Jfn68SwAT99jqorTp"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  all u: User | posts.(u.sees & Ad) in u.(follows + suggested)\n\n}",
-                    "ids": [
-                        "yCHWNt5BrNyezgKDk"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  \tall u1, u2 : User, a : Ad |\n  \t(u2 in posts.a and u1 in sees.a) implies (u1 in follows.u2 or u1 in suggested.u2)\n\n}",
-                    "ids": [
-                        "HCAiPn7EGd6pMohKx"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\t// all users, see ads if z in u.follows + u.suggested\n  \tall u,y : User, a : (Ad & y.posts) |\n  \t\t(a in u.sees) implies (y in u.suggested + u.follows)\n  \t\n\n}",
-                    "ids": [
-                        "z8RHg3Rf57knGiNaq"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  \n    // all x:User, y:Photo | x->y in sees and y in Ad implies \n    //       (all z:User | z->y in posts => x->z in follows or x->z in suggested)\n\n\n    // all x:User, y:Photo | y in x.sees & Ad implies \n    //       (all z:User | z in posts.y => z in x.follows + x.suggested)\n\n\n    // all x:User, y: x.sees & Ad | posts.y in (x.follows + x.suggested)\n\n  \n    all x:User, y: x.sees & Ad | posts.y in x.(follows+suggested)\n\n \n  \n  \n  //all u : User, p : u.sees & Ad | p in u.(follows+suggested).posts\n\n}",
-                    "ids": [
-                        "6Fiv9gfpdKyBudJ3p"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  all u , y: User, a : Ad | a in y.posts implies not (a in u.sees) or (y in u.follows or y in u.suggested)\n\n}",
-                    "ids": [
-                        "DjkcmKkHdtAqaidtC"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u : User, a : Ad | a in u.sees implies (all u2 : User | a in u2.posts implies (u2 in u.follows or u2 in u.suggested))\n}",
-                    "ids": [
-                        "rXhqYRipXRucxKiXB"
+                        "B9JoaXF7fbtrLCxi4"
                     ]
                 }
             ]
@@ -1164,18 +1164,18 @@
                 },
                 {
                     "entry_count": 2,
-                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\t//all u : User, ads : u.sees&Ad | posts.ads in u.follows+u.suggested\n  \tall u:User, u2:u.sees&Ad.posts | u2 in u.follows+u.suggested\n}",
-                    "ids": [
-                        "fBqzss7rSgai6xBeq",
-                        "NmaSY84jsLQCeZrWw"
-                    ]
-                },
-                {
-                    "entry_count": 2,
                     "code": "{\n\t// A user only sees ads from followed or suggested users.\n  \tall u : User | u.sees.posts & Ad in (u.follows.posts & Ad) + (u.suggested.posts & Ad)\n\n}",
                     "ids": [
                         "EvZj2WuRM4oCZWj8n",
                         "MrvNMRnSYhfvq8CwY"
+                    ]
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  all u: User, a: Ad |\n  \ta in u.sees => a.posts in u.follows + u.suggested\n\n}",
+                    "ids": [
+                        "xABeWCJnBgGevDasG",
+                        "ezBc9seJfEM6JPmPs"
                     ]
                 },
                 {
@@ -1188,10 +1188,24 @@
                 },
                 {
                     "entry_count": 2,
-                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  all u: User, a: Ad |\n  \ta in u.sees => a.posts in u.follows + u.suggested\n\n}",
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\t//all u : User, ads : u.sees&Ad | posts.ads in u.follows+u.suggested\n  \tall u:User, u2:u.sees&Ad.posts | u2 in u.follows+u.suggested\n}",
                     "ids": [
-                        "xABeWCJnBgGevDasG",
-                        "ezBc9seJfEM6JPmPs"
+                        "fBqzss7rSgai6xBeq",
+                        "NmaSY84jsLQCeZrWw"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  \tall u1, u2 : User |\n  \tall a : Ad |\n  \t(a in posts.u2 and u1 in sees.a) implies (u2 in follows.u1 or u2 in suggested.u1)\n\n}",
+                    "ids": [
+                        "2Zxxi3gxs9dzQH2mq"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  \tall u : User | u.sees.posts & Ad in u.follows.posts + u.suggested.posts\n\n}",
+                    "ids": [
+                        "tPPBirNMrHRZYWf2i"
                     ]
                 },
                 {
@@ -1199,13 +1213,6 @@
                     "code": "{\n\t// A user only sees ads from followed or suggested users.\n  \tall u:User, a:Ad| a in u.sees implies ((posts.u in u.follows) or (posts.u in u.suggested))\n\n}",
                     "ids": [
                         "kSNY7fjtMr3AbgaTy"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  \tall u1, u2 : User |\n  \tall a : Ad |\n  \ta in posts.u2 and u1 in sees.a implies u2 in follows.u1 or u2 in suggested.u1\n\n}",
-                    "ids": [
-                        "SRHyzstWEpPDNhFBm"
                     ]
                 },
                 {
@@ -1231,16 +1238,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  \tall u : User | u.sees.posts & Ad in u.follows.posts + u.suggested.posts\n\n}",
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  \tall u1, u2 : User |\n  \tall a : Ad |\n  \ta in posts.u2 and u1 in sees.a implies u2 in follows.u1 or u2 in suggested.u1\n\n}",
                     "ids": [
-                        "tPPBirNMrHRZYWf2i"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  \tall u1, u2 : User |\n  \tall a : Ad |\n  \t(a in posts.u2 and u1 in sees.a) implies (u2 in follows.u1 or u2 in suggested.u1)\n\n}",
-                    "ids": [
-                        "2Zxxi3gxs9dzQH2mq"
+                        "SRHyzstWEpPDNhFBm"
                     ]
                 }
             ]
@@ -1307,14 +1307,6 @@
                 },
                 {
                     "entry_count": 2,
-                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  \tall u : User | all s : u.sees | some poster : u.follows + u.suggested | s in poster.posts\n}",
-                    "ids": [
-                        "drZEbNfA4p8NXq9FN",
-                        "javKSxTbWxGY9FSKJ"
-                    ]
-                },
-                {
-                    "entry_count": 2,
                     "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u : User | all p : u.sees | p in u.follows.posts + u.suggested.posts\n}",
                     "ids": [
                         "qkyBAudKEgEHY5ciL",
@@ -1323,10 +1315,10 @@
                 },
                 {
                     "entry_count": 2,
-                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u : User, a : u.sees | some posts.a&(u.follows + u.suggested)\n}",
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  \tall u : User | all s : u.sees | some poster : u.follows + u.suggested | s in poster.posts\n}",
                     "ids": [
-                        "iRQunQHPeh7Nihh5B",
-                        "ptGjzBLzaWfGZtu7F"
+                        "drZEbNfA4p8NXq9FN",
+                        "javKSxTbWxGY9FSKJ"
                     ]
                 },
                 {
@@ -1338,17 +1330,18 @@
                     ]
                 },
                 {
-                    "entry_count": 1,
-                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u : User | u.sees in u.(follows + suggested).posts\n}",
+                    "entry_count": 2,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u : User, a : u.sees | some posts.a&(u.follows + u.suggested)\n}",
                     "ids": [
-                        "WskGTTAGhWaXdHDda"
+                        "iRQunQHPeh7Nihh5B",
+                        "ptGjzBLzaWfGZtu7F"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u : User, a : u.sees | some u2 : posts.a | u2 in (u.follows + u.suggested)\n}",
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u:User | all p:Photo | p in u.sees implies p in u.suggested.posts or p in u.follows.posts\n}",
                     "ids": [
-                        "NMMS8LMAakTmgfR6a"
+                        "rFboZPWNtB9xXg2AE"
                     ]
                 },
                 {
@@ -1367,9 +1360,16 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u:User | all p:Photo | p in u.sees implies p in u.suggested.posts or p in u.follows.posts\n}",
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u : User, a : u.sees | some u2 : posts.a | u2 in (u.follows + u.suggested)\n}",
                     "ids": [
-                        "rFboZPWNtB9xXg2AE"
+                        "NMMS8LMAakTmgfR6a"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u : User | u.sees in u.(follows + suggested).posts\n}",
+                    "ids": [
+                        "WskGTTAGhWaXdHDda"
                     ]
                 }
             ]
@@ -1437,13 +1437,6 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  //all u : User | (u.sees & Ad) = (u.follows.posts & Ad) + (u.suggested.posts & Ad)\n  all a : Ad | sees.a = follows.posts.a + suggested.posts.a\n\n}",
-                    "ids": [
-                        "5sgHYp32gCqTnHqbD"
-                    ]
-                },
-                {
-                    "entry_count": 1,
                     "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u : User | (u.sees & Ad) = ((u.follows + u.suggested).posts & Ad)\n}",
                     "ids": [
                         "wyZ8RyKRZjjrA2BZy"
@@ -1454,6 +1447,13 @@
                     "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u: User | all a: Ad | a in u.sees iff a in (u.follows + u.suggested).posts\n}",
                     "ids": [
                         "9KYPJjTCgR7s8RjMz"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  //all u : User | (u.sees & Ad) = (u.follows.posts & Ad) + (u.suggested.posts & Ad)\n  all a : Ad | sees.a = follows.posts.a + suggested.posts.a\n\n}",
+                    "ids": [
+                        "5sgHYp32gCqTnHqbD"
                     ]
                 },
                 {
@@ -1543,6 +1543,15 @@
             "elems": [
                 {
                     "entry_count": 3,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u : User, a : Ad | a in u.sees implies a in u.follows+u.suggested\n}",
+                    "ids": [
+                        "y5LDr9GKfZgwWdSmw",
+                        "2Zgmued9iE6g8f5HZ",
+                        "JhFns9DXYQ8jzbhwE"
+                    ]
+                },
+                {
+                    "entry_count": 3,
                     "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall x: User | x.sees & Ad in x.follows + x. suggested\n}",
                     "ids": [
                         "tj2m3KXvD7ME5J8Nu",
@@ -1557,15 +1566,6 @@
                         "ZFZRoefvtWKL5c9FB",
                         "vkAgZDzgrpxh3Y37y",
                         "pDTEcbScbPGSbY46A"
-                    ]
-                },
-                {
-                    "entry_count": 3,
-                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u : User, a : Ad | a in u.sees implies a in u.follows+u.suggested\n}",
-                    "ids": [
-                        "y5LDr9GKfZgwWdSmw",
-                        "2Zgmued9iE6g8f5HZ",
-                        "JhFns9DXYQ8jzbhwE"
                     ]
                 },
                 {
@@ -1586,37 +1586,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall x: User | x.sees & Ad in x.(follows + suggested)\n}",
-                    "ids": [
-                        "3dkv7Yt4phTZppsC4"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u : User | u.sees & Ad in (u.follows.posts + u.suggested.posts).sees & Ad\n}",
-                    "ids": [
-                        "iXJ5XtdNXAv5qvoqC"
-                    ]
-                },
-                {
-                    "entry_count": 1,
                     "code": "{\n\t// A user only sees ads from followed or suggested users.\n  \tall u: User | u.sees & Ad in (u.suggested & u.follows)\n\n}",
                     "ids": [
                         "dfubcq6pnKBEBscHH"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n   all u: User | u.sees & Ad in posts.(u.follows + u.suggested)\n}",
-                    "ids": [
-                        "rS5rAkaz2JnAEBikJ"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  all u : User.sees & Ad | u = follows.u.posts & Ad + follows.u.sees & Ad\n\n}",
-                    "ids": [
-                        "dMRtxYuakaqqhPCa8"
                     ]
                 },
                 {
@@ -1628,6 +1600,13 @@
                 },
                 {
                     "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u : User | (u.sees & Ad) = ((u.follows+u.suggested) & Ad)\n}",
+                    "ids": [
+                        "8EXn8C9jTg6TMFNm5"
+                    ]
+                },
+                {
+                    "entry_count": 1,
                     "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u:User|all a : Ad| a in u.sees iff a in u.follows or a in u.suggested \n}",
                     "ids": [
                         "nc6z2HYbpisvuLz9r"
@@ -1635,16 +1614,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  \n// all x:User, y:Photo | x->y in sees and y in Ad implies \n// (all z:User | z->y in posts => x->z in follows or x->z in suggested)\n\n// all x:User, y:Photo | y in x.sees & Ad implies \n//  (all z:User | z in posts.y => z in x.follows + x.suggested)\n\n// all x:User, y: x.sees & Ad | posts.y in (x.follows + x.suggested)\n\n// all x:User, y: x.sees & Ad | posts.y in x.(follows+suggested)\n\n     all a : Ad | no x : User | x in sees.a\n}",
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u : User | u.sees & Ad in (u.follows.posts + u.suggested.posts).sees & Ad\n}",
                     "ids": [
-                        "qJbsefkb6qwgmLW42"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u : User | (u.sees & Ad) = ((u.follows+u.suggested) & Ad)\n}",
-                    "ids": [
-                        "8EXn8C9jTg6TMFNm5"
+                        "iXJ5XtdNXAv5qvoqC"
                     ]
                 },
                 {
@@ -1656,9 +1628,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  all u : User.sees & Ad | u = u.follows.posts & Ad + u.sees & Ad\n\n}",
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  all u : User.sees & Ad | u = follows.u.posts & Ad + follows.u.sees & Ad\n\n}",
                     "ids": [
-                        "L3tSknxnfPX6Esvr5"
+                        "dMRtxYuakaqqhPCa8"
                     ]
                 },
                 {
@@ -1670,9 +1642,30 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u : User | u.sees & Ad = (follows.u + u.suggested) & Ad\n}",
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n   all u: User | u.sees & Ad in posts.(u.follows + u.suggested)\n}",
                     "ids": [
-                        "9afFsQWt2XRJs2cZR"
+                        "rS5rAkaz2JnAEBikJ"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall x: User | x.sees & Ad in x.(follows + suggested)\n}",
+                    "ids": [
+                        "3dkv7Yt4phTZppsC4"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  all u : User.sees & Ad | u = u.follows.posts & Ad + u.sees & Ad\n\n}",
+                    "ids": [
+                        "L3tSknxnfPX6Esvr5"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  \n// all x:User, y:Photo | x->y in sees and y in Ad implies \n// (all z:User | z->y in posts => x->z in follows or x->z in suggested)\n\n// all x:User, y:Photo | y in x.sees & Ad implies \n//  (all z:User | z in posts.y => z in x.follows + x.suggested)\n\n// all x:User, y: x.sees & Ad | posts.y in (x.follows + x.suggested)\n\n// all x:User, y: x.sees & Ad | posts.y in x.(follows+suggested)\n\n     all a : Ad | no x : User | x in sees.a\n}",
+                    "ids": [
+                        "qJbsefkb6qwgmLW42"
                     ]
                 },
                 {
@@ -1680,6 +1673,13 @@
                     "code": "{\n\t// A user only sees ads from followed or suggested users.\n    all u : User | all p : u.sees | p in Ad implies p in u.suggested or p in u.follows\n\n}",
                     "ids": [
                         "AAkXuJL89CKytQQyf"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u : User | u.sees & Ad = (follows.u + u.suggested) & Ad\n}",
+                    "ids": [
+                        "9afFsQWt2XRJs2cZR"
                     ]
                 }
             ]
@@ -1726,20 +1726,20 @@
                 },
                 {
                     "entry_count": 3,
-                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  \tall u:User | u.sees in (u.follows.posts & Ad + u.suggested.posts & Ad) \n\n}",
-                    "ids": [
-                        "YTxEQdqbXk5u2SxLf",
-                        "P3D9xmdHv9Eaqs6gK",
-                        "T8C6ej4TiZKWfEDAP"
-                    ]
-                },
-                {
-                    "entry_count": 3,
                     "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u: User, p: Photo | (p in u.sees) implies \n\t\t(p in Ad and (p in u.follows.posts or p in u.suggested.posts))\n}",
                     "ids": [
                         "ajPEZ7vuao39LjXsY",
                         "5QWsED23k47QutwFu",
                         "6NGzRcrK9JdCccAgS"
+                    ]
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  \tall u:User | u.sees in (u.follows.posts & Ad + u.suggested.posts & Ad) \n\n}",
+                    "ids": [
+                        "YTxEQdqbXk5u2SxLf",
+                        "P3D9xmdHv9Eaqs6gK",
+                        "T8C6ej4TiZKWfEDAP"
                     ]
                 },
                 {
@@ -1804,6 +1804,14 @@
                 },
                 {
                     "entry_count": 2,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\nall u: User, p: Photo |\n        p in u.sees implies (\n            p in Ad or (some f: u.follows | p in f.posts) or (some s: u.suggested | p in s.posts)\n        )\n\n}",
+                    "ids": [
+                        "wWLfYza8XRBLRQk25",
+                        "fii7CTiYwWyCboBB7"
+                    ]
+                },
+                {
+                    "entry_count": 2,
                     "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u : User, p : Photo | \n        p in u.sees implies (p in Ad or (some f: u.follows | p in f.posts) or (p in u.suggested.posts))\n}",
                     "ids": [
                         "3me7ihTT4AbQDmpsa",
@@ -1819,18 +1827,10 @@
                     ]
                 },
                 {
-                    "entry_count": 2,
-                    "code": "{\n\t// A user only sees ads from followed or suggested users.\nall u: User, p: Photo |\n        p in u.sees implies (\n            p in Ad or (some f: u.follows | p in f.posts) or (some s: u.suggested | p in s.posts)\n        )\n\n}",
-                    "ids": [
-                        "wWLfYza8XRBLRQk25",
-                        "fii7CTiYwWyCboBB7"
-                    ]
-                },
-                {
                     "entry_count": 1,
-                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u: User | u.sees in (u.follows.posts + u.suggested.posts + Ad)\n\n}",
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u : User | u.sees in Ad + u.follows.posts + u.suggested.posts\n}",
                     "ids": [
-                        "nahhdQqFLSAAzbi55"
+                        "YxDhXRmMZSvQkQtvM"
                     ]
                 },
                 {
@@ -1842,13 +1842,6 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u : User | u.sees in Ad + u.follows.posts + u.suggested.posts\n}",
-                    "ids": [
-                        "YxDhXRmMZSvQkQtvM"
-                    ]
-                },
-                {
-                    "entry_count": 1,
                     "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u : User | u.sees-Ad in u.(suggested+follows).posts\n}",
                     "ids": [
                         "Y75kjGmmsoBWxAkGh"
@@ -1856,9 +1849,16 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n  // A user only sees ads from followed or suggested users.\n  all u: User | all p: u.sees | (p in Ad) or (p in u.follows.posts) or (p in u.suggested.posts)\n}",
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  all u : User, p : Photo | p in u.sees implies (p in Ad or some f: u.follows | p in f.posts) or some s: u.suggested | p in s.posts\n\n}",
                     "ids": [
-                        "2a4JRHi7XGbfKr3hS"
+                        "naQMowyv5jageS5Rg"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u: User | u.sees in (u.follows.posts + u.suggested.posts + Ad)\n\n}",
+                    "ids": [
+                        "nahhdQqFLSAAzbi55"
                     ]
                 },
                 {
@@ -1870,9 +1870,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  all u : User, p : Photo | p in u.sees implies (p in Ad or some f: u.follows | p in f.posts) or some s: u.suggested | p in s.posts\n\n}",
+                    "code": "{\n  // A user only sees ads from followed or suggested users.\n  all u: User | all p: u.sees | (p in Ad) or (p in u.follows.posts) or (p in u.suggested.posts)\n}",
                     "ids": [
-                        "naQMowyv5jageS5Rg"
+                        "2a4JRHi7XGbfKr3hS"
                     ]
                 }
             ]
@@ -1905,20 +1905,20 @@
                 },
                 {
                     "entry_count": 3,
-                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  all u : User | (u.follows.posts + u.suggested.posts)  <: Ad = u.sees\n\n}",
-                    "ids": [
-                        "jcQSxjoA5gomCkZhQ",
-                        "rLHCZQnDgv6eDfxrt",
-                        "KtbGeWv4RGBy4aNjN"
-                    ]
-                },
-                {
-                    "entry_count": 3,
                     "code": "{\n\t// A user only sees ads from followed or suggested users.  \n  all u : User |\n    u.sees = { p : Ad | some x : User | p in x.posts and (x in u.follows or x in u.suggested) }\n\n}",
                     "ids": [
                         "3jXtgAZB3uaksxrrr",
                         "yA58JTpTfyapjXnYr",
                         "hEjbs4bGjEKsyy4Dq"
+                    ]
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  all u : User | (u.follows.posts + u.suggested.posts)  <: Ad = u.sees\n\n}",
+                    "ids": [
+                        "jcQSxjoA5gomCkZhQ",
+                        "rLHCZQnDgv6eDfxrt",
+                        "KtbGeWv4RGBy4aNjN"
                     ]
                 },
                 {
@@ -1991,9 +1991,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  all a: Ad, x, y: User | (y->a in posts and (y in x.follows or y in x.suggested)) implies x->a in sees\n}",
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  all u : User | (u.follows.posts + u.suggested.posts) <: Ad in u.sees <: Ad\n\n}",
                     "ids": [
-                        "DRNYYxWaXQQENdy2N"
+                        "nkiTjbcy6277Zrp4c"
                     ]
                 },
                 {
@@ -2005,9 +2005,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u: User, p: u.follows.posts + u.suggested.posts, a: p & Ad | a in u.sees\n}",
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  all a: Ad, x, y: User | (y->a in posts and (y in x.follows or y in x.suggested)) implies x->a in sees\n}",
                     "ids": [
-                        "m9z4X4wcjJ8nqf6Kh"
+                        "DRNYYxWaXQQENdy2N"
                     ]
                 },
                 {
@@ -2019,9 +2019,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  all u : User | (u.follows.posts + u.suggested.posts) <: Ad in u.sees <: Ad\n\n}",
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u: User, p: u.follows.posts + u.suggested.posts, a: p & Ad | a in u.sees\n}",
                     "ids": [
-                        "nkiTjbcy6277Zrp4c"
+                        "m9z4X4wcjJ8nqf6Kh"
                     ]
                 }
             ]
@@ -2042,10 +2042,10 @@
                 },
                 {
                     "entry_count": 2,
-                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall a : Ad, u : User | a in u.follows.posts + u.suggested.posts\n}",
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\t  all u: User, p: Photo |\n    (p in Ad) =>\n      (p in u.follows.posts) or (p in u.suggested.posts)\n}",
                     "ids": [
-                        "EfmYWenC7BQxL77me",
-                        "nfRrBLcAnanGzf6dp"
+                        "K4RhDz88adEYeZqnJ",
+                        "YAqyxXPPS5o2eE82a"
                     ]
                 },
                 {
@@ -2058,10 +2058,17 @@
                 },
                 {
                     "entry_count": 2,
-                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\t  all u: User, p: Photo |\n    (p in Ad) =>\n      (p in u.follows.posts) or (p in u.suggested.posts)\n}",
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall a : Ad, u : User | a in u.follows.posts + u.suggested.posts\n}",
                     "ids": [
-                        "K4RhDz88adEYeZqnJ",
-                        "YAqyxXPPS5o2eE82a"
+                        "EfmYWenC7BQxL77me",
+                        "nfRrBLcAnanGzf6dp"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u: User | no (Ad - u.follows.posts - u.suggested.posts)\n}",
+                    "ids": [
+                        "X9ydcuCcg68LaSofY"
                     ]
                 },
                 {
@@ -2076,13 +2083,6 @@
                     "code": "{\n\t// A user only sees ads from followed or suggested users.\n    all u: User, p: Photo | p in Ad implies p in u.follows.posts + u.suggested.posts\n}",
                     "ids": [
                         "XdTLgLQ6TFpx28Tps"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u: User | no (Ad - u.follows.posts - u.suggested.posts)\n}",
-                    "ids": [
-                        "X9ydcuCcg68LaSofY"
                     ]
                 }
             ]
@@ -2111,9 +2111,16 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  all u : User, p : Ad | p in u.sees implies p in u.follows.posts & u.suggested.posts\n}",
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n    all u : User | u . sees & Ad in (u . follows . posts & u . suggested . posts) & Ad \n\n}",
                     "ids": [
-                        "Se8aBCLnSj5ztyQpT"
+                        "8tACpNdR8NmESFjvd"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  all u : User | all s : u.sees | s in Ad implies (s in u.follows.posts and s in u.suggested.posts)\n}",
+                    "ids": [
+                        "R6vkMuDcCntcTT4DX"
                     ]
                 },
                 {
@@ -2132,16 +2139,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  all u : User | all s : u.sees | s in Ad implies (s in u.follows.posts and s in u.suggested.posts)\n}",
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  all u : User, p : Ad | p in u.sees implies p in u.follows.posts & u.suggested.posts\n}",
                     "ids": [
-                        "R6vkMuDcCntcTT4DX"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n    all u : User | u . sees & Ad in (u . follows . posts & u . suggested . posts) & Ad \n\n}",
-                    "ids": [
-                        "8tACpNdR8NmESFjvd"
+                        "Se8aBCLnSj5ztyQpT"
                     ]
                 }
             ]
@@ -2276,13 +2276,6 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n    all u: User, a : u.sees-Ad | a in u.follows + u.suggested\n\n}",
-                    "ids": [
-                        "qcBpi64XNMjG2kgfu"
-                    ]
-                },
-                {
-                    "entry_count": 1,
                     "code": "{\n\t// A user only sees ads from followed or suggested users.\n  \tall u: User | u.sees in Ad + (u.suggested & u.follows)\n\n}",
                     "ids": [
                         "c4zMjxwungxKwHzrN"
@@ -2290,16 +2283,23 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u : User | u.sees in Ad + u.follows + u.suggested\n}",
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  all u : User | u.sees in Ad \n}",
                     "ids": [
-                        "gTWFgxdJxssxy6i7j"
+                        "a6wPvAcow3TiWs4tt"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  all u : User | u.sees in Ad \n}",
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n    all u: User, a : u.sees-Ad | a in u.follows + u.suggested\n\n}",
                     "ids": [
-                        "a6wPvAcow3TiWs4tt"
+                        "qcBpi64XNMjG2kgfu"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u : User | u.sees in Ad + u.follows + u.suggested\n}",
+                    "ids": [
+                        "gTWFgxdJxssxy6i7j"
                     ]
                 }
             ]
@@ -2346,13 +2346,6 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  all u : User | (u.posts & u.sees = none) and (u.follows.posts <: Ad in u.sees) and (u.suggested.posts <: Ad in u.sees)\n\n}",
-                    "ids": [
-                        "zzaYKN4ZMi2RJBnvM"
-                    ]
-                },
-                {
-                    "entry_count": 1,
                     "code": "{\n\t// A user only sees ads from followed or suggested users.\n  all u : User | (u.posts & u.sees = none) and ((u.follows.posts + u.suggested.posts) <: Ad ) in u.sees\n\n}",
                     "ids": [
                         "BG9YGJcv8Y54fRTS9"
@@ -2363,6 +2356,13 @@
                     "code": "{\n\t// A user only sees ads from followed or suggested users.\n  \tall u: User | all p: u.posts | p not in u.sees\n  \tall u: User | all a: ((u.suggested + u.follows).posts & Ad) | a in u.sees\n\n}",
                     "ids": [
                         "MvnNmSKrZcTpE6Yma"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  all u : User | (u.posts & u.sees = none) and (u.follows.posts <: Ad in u.sees) and (u.suggested.posts <: Ad in u.sees)\n\n}",
+                    "ids": [
+                        "zzaYKN4ZMi2RJBnvM"
                     ]
                 }
             ]
@@ -2402,13 +2402,6 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  all u:User, a:Ad, f:u.follows, s:u.suggested |a in u.sees \n  \t\timplies \na in f.posts or a in s.posts \n}",
-                    "ids": [
-                        "oNFngdsmCk3kEopCZ"
-                    ]
-                },
-                {
-                    "entry_count": 1,
                     "code": "{\n\t// A user only sees ads from followed or suggested users.\n  \tall u: User, s: u.sees, f: u.follows, ss: u.suggested |\n    s in Ad implies s in f.posts or s in ss.posts\n\n}",
                     "ids": [
                         "GKw9gAN8oSNWSek3Y"
@@ -2419,6 +2412,13 @@
                     "code": "{\n\t// A user only sees ads from followed or suggested users.\n  all u: User | all f,s: User | all ad: Ad | f in u.follows and s in u.suggested and (ad in u.sees) implies (ad in f.posts or ad in s.posts)\n\n}",
                     "ids": [
                         "2FGepaS2fQ7eGrbcJ"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  all u:User, a:Ad, f:u.follows, s:u.suggested |a in u.sees \n  \t\timplies \na in f.posts or a in s.posts \n}",
+                    "ids": [
+                        "oNFngdsmCk3kEopCZ"
                     ]
                 }
             ]
@@ -2523,16 +2523,16 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u: User, seg: u.follows | u != seg implies Ad in seg.sees or Ad in seg.suggested\n}",
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u: User, seg: u.follows, ad: Ad | u != seg implies ad in seg.sees or ad in u.suggested\n}",
                     "ids": [
-                        "7abZXXd9KPLPnRKmq"
+                        "izMgvtQv9dfYtgqop"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u: User, seg: u.follows, ad: Ad | u != seg implies ad in seg.sees or ad in u.suggested\n}",
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u: User, seg: u.follows | u != seg implies Ad in seg.sees or Ad in seg.suggested\n}",
                     "ids": [
-                        "izMgvtQv9dfYtgqop"
+                        "7abZXXd9KPLPnRKmq"
                     ]
                 }
             ]
@@ -2574,18 +2574,18 @@
             "elems": [
                 {
                     "entry_count": 2,
-                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n    all u: User, su: User |\n        su in u.suggested =>\n            su not in u.follows and\n            some f: User | f in u.follows && su in f.follows\n\n}",
-                    "ids": [
-                        "JQHKnfRw9YTzGWbsT",
-                        "KvxDFoHRKiwXZ3Kgh"
-                    ]
-                },
-                {
-                    "entry_count": 2,
                     "code": "{\n\t// A user only sees ads from followed or suggested users.\n    all u: User, su: User |\n        su in u.suggested =>\n            su not in u.follows and\n            some f: u.follows | su in f.follows\n\n\n}",
                     "ids": [
                         "HfLEt7CKRkzKALbJX",
                         "3EbPBaaf7YRpc3hEi"
+                    ]
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n    all u: User, su: User |\n        su in u.suggested =>\n            su not in u.follows and\n            some f: User | f in u.follows && su in f.follows\n\n}",
+                    "ids": [
+                        "JQHKnfRw9YTzGWbsT",
+                        "KvxDFoHRKiwXZ3Kgh"
                     ]
                 },
                 {
@@ -2723,16 +2723,16 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\tall x: User, a: Ad | some y: User | y -> a in posts and ( x -> y in follows or x -> y in suggested ) and x -> a in sees \n \n\t// A user only sees ads from followed or suggested users.\n\n}",
+                    "code": "{\n\tall x: User, a: Ad | x -> a in sees and some y: User | y -> a in posts and (x -> y in follows or x -> y in suggested)\n\t// A user only sees ads from followed or suggested users.\n\n}",
                     "ids": [
-                        "pu6PGBvLauWLivGfM"
+                        "6FGNCGRQsLuYb9qmr"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\tall x: User, a: Ad | x -> a in sees and some y: User | y -> a in posts and (x -> y in follows or x -> y in suggested)\n\t// A user only sees ads from followed or suggested users.\n\n}",
+                    "code": "{\n\tall x: User, a: Ad | some y: User | y -> a in posts and ( x -> y in follows or x -> y in suggested ) and x -> a in sees \n \n\t// A user only sees ads from followed or suggested users.\n\n}",
                     "ids": [
-                        "6FGNCGRQsLuYb9qmr"
+                        "pu6PGBvLauWLivGfM"
                     ]
                 }
             ]
@@ -2813,20 +2813,6 @@
             "elems": [
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u : User, a : Ad | a in u.sees => a in u.follows.sees or a in u.suggested.sees\n\n}",
-                    "ids": [
-                        "sr4jZv8FshncovQDj"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u : User | u.sees & Ad in (u.follows + u.suggested).sees & Ad\n}",
-                    "ids": [
-                        "hmnYE64FYYNDCuCZY"
-                    ]
-                },
-                {
-                    "entry_count": 1,
                     "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u : User, p : Ad | \n\tp in u.sees implies (p in u.follows.sees or p in u.suggested.sees)\n}",
                     "ids": [
                         "ago7EniyLSHHFTkHo"
@@ -2834,9 +2820,23 @@
                 },
                 {
                     "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u : User, a : Ad | a in u.sees => a in u.follows.sees or a in u.suggested.sees\n\n}",
+                    "ids": [
+                        "sr4jZv8FshncovQDj"
+                    ]
+                },
+                {
+                    "entry_count": 1,
                     "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u : User, p : Photo | \n        p in u.sees and p in Ad implies (some f: u.follows | p in f.sees) or (p in u.suggested.sees)\n}",
                     "ids": [
                         "oEqfuuY3nAq3xbPi2"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u : User | u.sees & Ad in (u.follows + u.suggested).sees & Ad\n}",
+                    "ids": [
+                        "hmnYE64FYYNDCuCZY"
                     ]
                 }
             ]
@@ -2856,16 +2856,16 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  all u : User | some a : Ad | a in u.sees implies some f : u.follows + u.suggested | a in f.posts\n \n}",
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u : User |some a : Ad |a in u.sees implies a in u.follows.posts+ u.suggested.posts\n}",
                     "ids": [
-                        "dYPxHSJxmkrD7fdgp"
+                        "vfJuAf3dNMSuF7gCP"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u : User |some a : Ad |a in u.sees implies a in u.follows.posts+ u.suggested.posts\n}",
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  all u : User | some a : Ad | a in u.sees implies some f : u.follows + u.suggested | a in f.posts\n \n}",
                     "ids": [
-                        "vfJuAf3dNMSuF7gCP"
+                        "dYPxHSJxmkrD7fdgp"
                     ]
                 }
             ]
@@ -3325,16 +3325,16 @@
             "elems": [
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  all u:User | u.sees in Ad implies (u.sees in u.suggested.posts or u.sees in u.follows.posts)\n\n}",
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  all u:User | u.sees in Ad implies u.sees in u.suggested.posts or u.sees in u.follows.posts\n\n}",
                     "ids": [
-                        "MSgL7XWpKTPpKFJgG"
+                        "pNxLeCba7sQBZH6t5"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  all u:User | u.sees in Ad implies u.sees in u.suggested.posts or u.sees in u.follows.posts\n\n}",
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  all u:User | u.sees in Ad implies (u.sees in u.suggested.posts or u.sees in u.follows.posts)\n\n}",
                     "ids": [
-                        "pNxLeCba7sQBZH6t5"
+                        "MSgL7XWpKTPpKFJgG"
                     ]
                 }
             ]
@@ -3544,16 +3544,16 @@
             "elems": [
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  //all u : User | (u.sees & Ad) = (u.follows.posts & Ad) + (u.suggested.posts & Ad)\n  all a : Ad | sees.a in (follows.posts.a + suggested.posts.a - posts.a)\n\n}",
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u : User, a : Ad \n  \t|a in u.sees implies a in u.follows.posts+u.suggested.posts-u.posts\n}",
                     "ids": [
-                        "3KY2PQ8dQurDHW8kw"
+                        "x2YifGYQfAFZytpdM"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u : User, a : Ad \n  \t|a in u.sees implies a in u.follows.posts+u.suggested.posts-u.posts\n}",
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  //all u : User | (u.sees & Ad) = (u.follows.posts & Ad) + (u.suggested.posts & Ad)\n  all a : Ad | sees.a in (follows.posts.a + suggested.posts.a - posts.a)\n\n}",
                     "ids": [
-                        "x2YifGYQfAFZytpdM"
+                        "3KY2PQ8dQurDHW8kw"
                     ]
                 }
             ]
@@ -3565,16 +3565,16 @@
             "elems": [
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n    all x: Photo-Ad, u:User | u in sees.x implies x in u.follows.posts\n}",
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u : User | u.sees in Ad + u.follows.posts \n}",
                     "ids": [
-                        "CYno3oYX92tBvtYim"
+                        "PM7goEtTWEPkFhNmo"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u : User | u.sees in Ad + u.follows.posts \n}",
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n    all x: Photo-Ad, u:User | u in sees.x implies x in u.follows.posts\n}",
                     "ids": [
-                        "PM7goEtTWEPkFhNmo"
+                        "CYno3oYX92tBvtYim"
                     ]
                 }
             ]
@@ -3724,16 +3724,16 @@
             "elems": [
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  all u: User | some f,s: User | all ad: Ad | f in u.follows and s in u.suggested and (ad in u.sees) implies (ad in u.follows.posts or ad in s.follows.posts)\n\n}",
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  all u: User | some f,s: User | all ad: Ad | f in u.follows and s in u.suggested and (ad in u.sees) implies (ad in u.follows.posts or ad in u.follows.posts)\n\n}",
                     "ids": [
-                        "cwcHSfNpRAjTWMTvd"
+                        "uYJ3pJ2uHaMAoATt7"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  all u: User | some f,s: User | all ad: Ad | f in u.follows and s in u.suggested and (ad in u.sees) implies (ad in u.follows.posts or ad in u.follows.posts)\n\n}",
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  all u: User | some f,s: User | all ad: Ad | f in u.follows and s in u.suggested and (ad in u.sees) implies (ad in u.follows.posts or ad in s.follows.posts)\n\n}",
                     "ids": [
-                        "uYJ3pJ2uHaMAoATt7"
+                        "cwcHSfNpRAjTWMTvd"
                     ]
                 }
             ]
@@ -3811,16 +3811,16 @@
             "elems": [
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u : User | u.sees = (Ad & u.follows.posts & u.suggested.posts)\n}",
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u : User | u.sees = (u.follows.posts & u.suggested.posts <: Ad)\n}",
                     "ids": [
-                        "wWMiCNJpSH7rjLnbR"
+                        "rQgX6BvQ2rmvA2Rnw"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u : User | u.sees = (u.follows.posts & u.suggested.posts <: Ad)\n}",
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u : User | u.sees = (Ad & u.follows.posts & u.suggested.posts)\n}",
                     "ids": [
-                        "rQgX6BvQ2rmvA2Rnw"
+                        "wWMiCNJpSH7rjLnbR"
                     ]
                 }
             ]

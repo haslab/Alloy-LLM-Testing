@@ -3,7 +3,7 @@
     "pred": "this/inv12",
     "entry_count": 751,
     "group_count": 92,
-    "duration": 59,
+    "duration": 60,
     "scope": 3,
     "groups": [
         {
@@ -300,19 +300,6 @@
                 },
                 {
                     "entry_count": 7,
-                    "code": "{\n\t// Students have at most one grade per course\n\tall c: Course, s: Student, g1,g2: Grade | s->g1 in c.grades and s->g2 in c.grades => g1 = g2 \n}",
-                    "ids": [
-                        "oTnj3wjLEo9mBHRWx",
-                        "YYRPnt6pEzC6NxZ4y",
-                        "j6MHhZQ3iERpewrjn",
-                        "4K9c5FfuHRJZGsCQk",
-                        "mjjKK8DwW3EJm3PED",
-                        "68JdsP66jvTHFtRRH",
-                        "ejK9tnCyeN7obntMQ"
-                    ]
-                },
-                {
-                    "entry_count": 7,
                     "code": "{\n\t// Students have at most one grade per course\n\tall s: Student | all c: Course | #c.grades[s] < 2\n}",
                     "ids": [
                         "zNykPwsKGcXpoeu4g",
@@ -322,6 +309,19 @@
                         "22soyYzkNoc5a3kWu",
                         "dLK583JRLdYNh3bNx",
                         "Q58YAnR9PT32yeSnB"
+                    ]
+                },
+                {
+                    "entry_count": 7,
+                    "code": "{\n\t// Students have at most one grade per course\n\tall c: Course, s: Student, g1,g2: Grade | s->g1 in c.grades and s->g2 in c.grades => g1 = g2 \n}",
+                    "ids": [
+                        "oTnj3wjLEo9mBHRWx",
+                        "YYRPnt6pEzC6NxZ4y",
+                        "j6MHhZQ3iERpewrjn",
+                        "4K9c5FfuHRJZGsCQk",
+                        "mjjKK8DwW3EJm3PED",
+                        "68JdsP66jvTHFtRRH",
+                        "ejK9tnCyeN7obntMQ"
                     ]
                 },
                 {
@@ -355,18 +355,10 @@
                 },
                 {
                     "entry_count": 2,
-                    "code": "{\n\t// Students have at most one grade per course\n\tall s: Student, c: Course |\n  \t\tlone (s->Grade) & c.grades\n}",
+                    "code": "{\n\t// Students have at most one grade per course\n\tall c:Course | all s:Student | lone g:c.grades[s] | g != none\n}",
                     "ids": [
-                        "oeT9BveW65hbpPxeA",
-                        "BD8g96oSQvx9QtyGW"
-                    ]
-                },
-                {
-                    "entry_count": 2,
-                    "code": "{\n\t// Students have at most one grade per course\n\tall s : Student , c : Course | lone (c->s->Grade) & grades \n}",
-                    "ids": [
-                        "83G5tEhiWFa8MFAxB",
-                        "nb2ieqw7db2EQmNi5"
+                        "KTFY9BsMBYo2jmc8A",
+                        "jSZBE6hBgHspKN9QR"
                     ]
                 },
                 {
@@ -379,10 +371,18 @@
                 },
                 {
                     "entry_count": 2,
-                    "code": "{\n\t// Students have at most one grade per course\n\tall c:Course | all s:Student | lone g:c.grades[s] | g != none\n}",
+                    "code": "{\n\t// Students have at most one grade per course\n\tall s : Student , c : Course | lone (c->s->Grade) & grades \n}",
                     "ids": [
-                        "KTFY9BsMBYo2jmc8A",
-                        "jSZBE6hBgHspKN9QR"
+                        "83G5tEhiWFa8MFAxB",
+                        "nb2ieqw7db2EQmNi5"
+                    ]
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Students have at most one grade per course\n\tall s: Student, c: Course |\n  \t\tlone (s->Grade) & c.grades\n}",
+                    "ids": [
+                        "oeT9BveW65hbpPxeA",
+                        "BD8g96oSQvx9QtyGW"
                     ]
                 },
                 {
@@ -462,17 +462,6 @@
                 },
                 {
                     "entry_count": 5,
-                    "code": "{\n\t// Students have at most one grade per course\n\t// all p : Student, c : p.enrolled | one mid[c.grade] & p \n    all p : Student, c : Course | lone c.grades.Grade & p\n  \n}",
-                    "ids": [
-                        "CnkQe6whoxGaLzRYG",
-                        "kMnogYEQKhK9wnTtL",
-                        "BqvmQ3okrf4nZ996u",
-                        "XZxBNJ4D7sN3NApsP",
-                        "TnNxZdZymuBpctQx9"
-                    ]
-                },
-                {
-                    "entry_count": 5,
                     "code": "{\n\t// Students have at most one grade per course\n\tall s:Student, c:Course | lone g : Grade | g in c.grades.s\n\n}",
                     "ids": [
                         "rNQNDESrM3uLbbGbF",
@@ -483,13 +472,14 @@
                     ]
                 },
                 {
-                    "entry_count": 4,
-                    "code": "{\n\t// Students have at most one grade per course\n\t(all s: Student| lone Course.grades.s)\n}",
+                    "entry_count": 5,
+                    "code": "{\n\t// Students have at most one grade per course\n\t// all p : Student, c : p.enrolled | one mid[c.grade] & p \n    all p : Student, c : Course | lone c.grades.Grade & p\n  \n}",
                     "ids": [
-                        "BC7JBRTHu3D7iJySL",
-                        "h8BMBmcFGFzjoMmpu",
-                        "PS2JqNiT9WrMHmaGF",
-                        "T4qfzuYyDuiCNBbXc"
+                        "CnkQe6whoxGaLzRYG",
+                        "kMnogYEQKhK9wnTtL",
+                        "BqvmQ3okrf4nZ996u",
+                        "XZxBNJ4D7sN3NApsP",
+                        "TnNxZdZymuBpctQx9"
                     ]
                 },
                 {
@@ -504,6 +494,16 @@
                 },
                 {
                     "entry_count": 4,
+                    "code": "{\n\t// Students have at most one grade per course\n\t(all s: Student| lone Course.grades.s)\n}",
+                    "ids": [
+                        "BC7JBRTHu3D7iJySL",
+                        "h8BMBmcFGFzjoMmpu",
+                        "PS2JqNiT9WrMHmaGF",
+                        "T4qfzuYyDuiCNBbXc"
+                    ]
+                },
+                {
+                    "entry_count": 4,
                     "code": "{\n    // Students have at most one grade per course\n    all s: Student, c: Course | lone s.grades[c]\n}",
                     "ids": [
                         "aHHG3nfzKKbC7RZ2v",
@@ -514,11 +514,11 @@
                 },
                 {
                     "entry_count": 3,
-                    "code": "{\n\t// Students have at most one grade per course\n  \tall s: Student | all c: Course | c in s.enrolled implies\n\t\t#(c.grades.Grade & s) <=1\n}",
+                    "code": "{\n\t// Students have at most one grade per course\n\tall s : Student, c : Course | lone g : Grade | c.grades[s] = g\n}",
                     "ids": [
-                        "KqYGqJ8Gdp9HeA7uD",
-                        "J2rkv3cG2Ls4DrHgo",
-                        "2Ti59spox4obZuwBA"
+                        "kPe2SF7eL3himYCkL",
+                        "RmqWX9hkSuXXJg7pE",
+                        "rJbwnBK9TTRoM8r8e"
                     ]
                 },
                 {
@@ -532,19 +532,27 @@
                 },
                 {
                     "entry_count": 3,
-                    "code": "{\n\t// Students have at most one grade per course\n\tall s : Student, c : Course | lone g : Grade | c.grades[s] = g\n}",
+                    "code": "{\n\t// Students have at most one grade per course\n  \tall s: Student | all c: Course | c in s.enrolled implies\n\t\t#(c.grades.Grade & s) <=1\n}",
                     "ids": [
-                        "kPe2SF7eL3himYCkL",
-                        "RmqWX9hkSuXXJg7pE",
-                        "rJbwnBK9TTRoM8r8e"
+                        "KqYGqJ8Gdp9HeA7uD",
+                        "J2rkv3cG2Ls4DrHgo",
+                        "2Ti59spox4obZuwBA"
                     ]
                 },
                 {
                     "entry_count": 2,
-                    "code": "{\n\t// Students have at most one grade per course\n\tall s : Student | all c : Course | some (s.enrolled & c) implies one (c.grades.Grade & s) or no (c.grades.Grade & s)\n}",
+                    "code": "{\n\t// Students have at most one grade per course\n\tlone Course.grades.Person\n}",
                     "ids": [
-                        "y6teNDTg7sBWcFEPR",
-                        "sWmv7ojGEaph5gpDo"
+                        "8euMd5tF7YRn9vfCN",
+                        "CWpzgZFf46iyMG5Kd"
+                    ]
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Students have at most one grade per course\n\tall p1 : Person | all c1 : Course | all g1 : Grade|\n  \t#(c1->p1->g1 & grades) <= 1\n}",
+                    "ids": [
+                        "oyn9AEW25G9cTx6JA",
+                        "HbozNvLkKcZ5DAoBZ"
                     ]
                 },
                 {
@@ -565,26 +573,18 @@
                 },
                 {
                     "entry_count": 2,
-                    "code": "{\n\t// Students have at most one grade per course\n\tlone Course.grades.Person\n}",
-                    "ids": [
-                        "8euMd5tF7YRn9vfCN",
-                        "CWpzgZFf46iyMG5Kd"
-                    ]
-                },
-                {
-                    "entry_count": 2,
-                    "code": "{\n\t// Students have at most one grade per course\n\tall s : Student , c : Course | lone (c->s)->Grade.grades \n}",
-                    "ids": [
-                        "QJJf7L5DAee554MBc",
-                        "9C58KQ5bvpDJbNMdx"
-                    ]
-                },
-                {
-                    "entry_count": 2,
                     "code": "{\n\t// Students have at most one grade per course\n\tall s:Student, c:s.enrolled | #(s & c.grades.Grade) < 2\n}",
                     "ids": [
                         "aLokKYNXDmrfuqhGL",
                         "z78Fvevt3PLZFQ3RJ"
+                    ]
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Students have at most one grade per course\n\tall s : Student | all c : Course | some (s.enrolled & c) implies one (c.grades.Grade & s) or no (c.grades.Grade & s)\n}",
+                    "ids": [
+                        "y6teNDTg7sBWcFEPR",
+                        "sWmv7ojGEaph5gpDo"
                     ]
                 },
                 {
@@ -597,66 +597,10 @@
                 },
                 {
                     "entry_count": 2,
-                    "code": "{\n\t// Students have at most one grade per course\n\tall p1 : Person | all c1 : Course | all g1 : Grade|\n  \t#(c1->p1->g1 & grades) <= 1\n}",
+                    "code": "{\n\t// Students have at most one grade per course\n\tall s : Student , c : Course | lone (c->s)->Grade.grades \n}",
                     "ids": [
-                        "oyn9AEW25G9cTx6JA",
-                        "HbozNvLkKcZ5DAoBZ"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Students have at most one grade per course\n\tall s: Student, c: Course | lone c.grades.Student\n}",
-                    "ids": [
-                        "HMpA4LJNwmQvCBCqv"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Students have at most one grade per course\n\tall s:Student, c:Course | lone g : Grade | g in c.grades.Grade \n\n}",
-                    "ids": [
-                        "Pozo92xxdgFiTgKb5"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Students have at most one grade per course\n  \tall s: Student | all c: Course | c in s.enrolled implies\n\t\t#(c.grades.Person & s) <=1\n}",
-                    "ids": [
-                        "EXJtQBNnLSnTm486e"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Students have at most one grade per course\n\tall s: Student, c: s.enrolled | #(c.grades.Grade & s) <= 1\n}",
-                    "ids": [
-                        "xRFE3kmSJRpQTSSNu"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Students have at most one grade per course\n\tall s : Student, g : Grade, c : Course | lone (s->g & c.grades)\n}",
-                    "ids": [
-                        "XwivrsigRb2dy2kiw"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Students have at most one grade per course\n\tall c: Course | lone c.grades.Person\n}",
-                    "ids": [
-                        "hbN4Hd55zbM6nWhDJ"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Students have at most one grade per course\n\tall s : Student | lone(s.enrolled.grades.Grade & s) \n}",
-                    "ids": [
-                        "u64jsWiZ2wKb2zX2h"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Students have at most one grade per course\n\tall s: Student | all c: Course | all g: Grade | lone s & c.grades.g\n}",
-                    "ids": [
-                        "LBBLjF5gKoSMATiWA"
+                        "QJJf7L5DAee554MBc",
+                        "9C58KQ5bvpDJbNMdx"
                     ]
                 },
                 {
@@ -668,44 +612,23 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Students have at most one grade per course\n  \tall p : Person, g : Grade, c : Course | lone p.(g.grades)\n\n}",
+                    "code": "{\n\t// Students have at most one grade per course\n\tall s:Student | lone grades[s]\n}",
                     "ids": [
-                        "hSaJjsXRWRbhgKhq4"
+                        "2DvwhYhwhJcFRXfso"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Students have at most one grade per course\n\t// all x: Student, g1, g2: Grade, c: Course | c->x->g1 in grades and c->x->g2 in grades implies g1 = g2\n  \tall x: Student | lone (Course->x).grades\n}",
+                    "code": "{\n\t// Students have at most one grade per course\n\tall x: Student | all c: Course | all g: Grade | \n  \t\tlone c->x->g\n}",
                     "ids": [
-                        "6dt5jQWXhuh8C5z4B"
+                        "sbRTXqn2vhhL7XKGk"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Students have at most one grade per course\n\tall s : Student , c : Course | lone (c->s).grades \n}",
+                    "code": "{\n\t// Students have at most one grade per course\n\tall s: Student, c: s.enrolled | #(c.grades.Grade & s) <= 1\n}",
                     "ids": [
-                        "dwCx3HivbZM39DirC"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Students have at most one grade per course\n\t/*all p1 : Student, c1 : Course |\n  \t(p1->c1 in enrolled) implies (lone g1 : Grade | c1->p1->g1 in grades) */\n   \tall s :Student, c : Course | #(s & c.grades.Person) <= 1\n}",
-                    "ids": [
-                        "9fHHNQ5niJxD4vdhy"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Students have at most one grade per course\n  \tall c: Course, s: Student, g1,g2: Grade | some Student\n\n}",
-                    "ids": [
-                        "HcqEnej5Snia9wzfS"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Students have at most one grade per course\n\tall s : Student | all c : s.enrolled | lone g : Grade | \n\t\tg in c.grades.s \n}",
-                    "ids": [
-                        "5qfWnWvbCwsXWhxYB"
+                        "xRFE3kmSJRpQTSSNu"
                     ]
                 },
                 {
@@ -717,6 +640,34 @@
                 },
                 {
                     "entry_count": 1,
+                    "code": "{\n\t// Students have at most one grade per course\n\tall s : Student | all c : s.enrolled | lone g : Grade | \n\t\tg in c.grades.s \n}",
+                    "ids": [
+                        "5qfWnWvbCwsXWhxYB"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students have at most one grade per course\n\tall c : Course | all p : c.grades.Grade | lone p\n}",
+                    "ids": [
+                        "Xjj4LjSyBWiXC3nr6"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students have at most one grade per course\n  \tall s : Student, c : s.enrolled | lone Course.grades.s\n\n}",
+                    "ids": [
+                        "JjkQ3vWtSBSqAg9Dt"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students have at most one grade per course\n\tall s : Student , c : Course | lone (c->s).grades \n}",
+                    "ids": [
+                        "dwCx3HivbZM39DirC"
+                    ]
+                },
+                {
+                    "entry_count": 1,
                     "code": "{\n\t// Students have at most one grade per course\n\tall s: Student, c: Course | c in s.enrolled implies lone c.grades.Person\n}",
                     "ids": [
                         "GuEPH8CWFa6RJx4jE"
@@ -724,16 +675,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Students have at most one grade per course\n\tall s: Student | all c: Course | #c->s.grades <= 1\n}",
+                    "code": "{\n\t// Students have at most one grade per course\n\t/*all p1 : Student, c1 : Course |\n  \t(p1->c1 in enrolled) implies (lone g1 : Grade | c1->p1->g1 in grades) */\n   \tall s :Student, c : Course | #(s & c.grades.Person) <= 1\n}",
                     "ids": [
-                        "7FGyhDtfDpyvGfrtd"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Students have at most one grade per course\n\tall s: Student |\n  \t\t#grades.s <= 1\n}",
-                    "ids": [
-                        "MTbMTiWXqytX89FcQ"
+                        "9fHHNQ5niJxD4vdhy"
                     ]
                 },
                 {
@@ -745,16 +689,37 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Students have at most one grade per course\n\tall s: Student, c: Course | lone s.grades\n\n}",
+                    "code": "{\n\t// Students have at most one grade per course\n\tall s:Student, c:Course | lone g : Grade | g in c.grades.Grade \n\n}",
                     "ids": [
-                        "S5qYzqZDtE4KoAtQs"
+                        "Pozo92xxdgFiTgKb5"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Students have at most one grade per course\n\tall c : Course, ps:c.grades.Grade| lone enrolled.c&ps\n}",
+                    "code": "{\n\t// Students have at most one grade per course\n\tall s: Student | all c: Course | #c->s.grades <= 1\n}",
                     "ids": [
-                        "272zzdyEitaRHoppX"
+                        "7FGyhDtfDpyvGfrtd"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students have at most one grade per course\n\tall s: Student | all c: Course | all g: Grade | lone s & c.grades.g\n}",
+                    "ids": [
+                        "LBBLjF5gKoSMATiWA"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n    all s: Student, c: Course | c.enrolled = s => lone g: Grade | g = c.grades[s]\n}",
+                    "ids": [
+                        "xZ2d3BWqFWFmhXzza"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students have at most one grade per course\n\tall s : Student, g : Grade, c : Course | lone (s->g & c.grades)\n}",
+                    "ids": [
+                        "XwivrsigRb2dy2kiw"
                     ]
                 },
                 {
@@ -773,9 +738,72 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Students have at most one grade per course\n  \tall s : Student, c : s.enrolled | lone Course.grades.s\n\n}",
+                    "code": "{\n\t// Students have at most one grade per course\n\tall s: Student, c: Course | lone c.grades.Student\n}",
                     "ids": [
-                        "JjkQ3vWtSBSqAg9Dt"
+                        "HMpA4LJNwmQvCBCqv"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students have at most one grade per course\n   all s : Student | all c : s.enrolled | all p : c.enrolled | p in Student\n\n}",
+                    "ids": [
+                        "N83567FPZBZPTjgit"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students have at most one grade per course\n\tall s: Student |\n  \t\t#grades.s <= 1\n}",
+                    "ids": [
+                        "MTbMTiWXqytX89FcQ"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students have at most one grade per course\n\tall s: Student | all g: Grade | all c: Course | \n  \t\t#grades.c->s <= 1\n}",
+                    "ids": [
+                        "Wet52Ep9hW3HRwvKx"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students have at most one grade per course\n\tall s : Student | lone(s.enrolled.grades.Grade & s) \n}",
+                    "ids": [
+                        "u64jsWiZ2wKb2zX2h"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students have at most one grade per course\n\tall p1 : Person | all c1 : Course | all g1 : Grade|\n  \t#(c1->p1->g1) <= 1\n}",
+                    "ids": [
+                        "TJAEHSN6rex89iLeD"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n  \tall s: Student, c: Course | lone s.(c.grades) implies lone g: Grade | c -> s -> g in grades \n\t// Students have at most one grade per course\n\n}",
+                    "ids": [
+                        "tLsng25jypzLytX87"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students have at most one grade per course\n  \tall s: Student | all c: Course | c in s.enrolled implies\n\t\t#(c.grades.s) <=1\n}",
+                    "ids": [
+                        "rhnjekAkE7R94H9h2"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students have at most one grade per course\n\tall s: Student, c: s.enrolled | #(c.grades.s) <= 1\n}",
+                    "ids": [
+                        "6fDcGHE2hqF74ob7v"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students have at most one grade per course\n  \tall p : Person, g : Grade, c : Course | lone p.(g.grades)\n\n}",
+                    "ids": [
+                        "hSaJjsXRWRbhgKhq4"
                     ]
                 },
                 {
@@ -794,44 +822,30 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Students have at most one grade per course\n\tall s: Student, c: Course, g1, g2: Grade | g1 = c.grades[s] and g2 = c.grades[2] => g1 = g2\n}",
+                    "code": "{\n\t// Students have at most one grade per course\n  \tall s: Student | all c: Course | c in s.enrolled implies\n\t\t#(c.grades.Person & s) <=1\n}",
                     "ids": [
-                        "t583jS33iDx3XpSQi"
+                        "EXJtQBNnLSnTm486e"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n    all s: Student, c: Course | c.enrolled = s => lone g: Grade | g = c.grades[s]\n}",
+                    "code": "{\n\t// Students have at most one grade per course\n\tall c : Course, ps:c.grades.Grade| lone enrolled.c&ps\n}",
                     "ids": [
-                        "xZ2d3BWqFWFmhXzza"
+                        "272zzdyEitaRHoppX"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Students have at most one grade per course\n\tall s: Student, c: Course, g1, g2: Grade | g1 = c.grades[s] and g2 = c.grades[s] => g1 = g2\n}",
+                    "code": "{\n\t// Students have at most one grade per course\n  \tall c: Course, s: Student, g1,g2: Grade | some Student\n\n}",
                     "ids": [
-                        "7nNkgoxQpGEBfsJ9Z"
+                        "HcqEnej5Snia9wzfS"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Students have at most one grade per course\n  \tall s: Student | all c: Course | c in s.enrolled implies\n\t\t#(c.grades.s) <=1\n}",
+                    "code": "{\n\t// Students have at most one grade per course\n\tall s: Student, c: Course | lone s.grades\n\n}",
                     "ids": [
-                        "rhnjekAkE7R94H9h2"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Students have at most one grade per course\n  \tall s: Student | all c: Course | c in s.enrolled implies\n\t\t#(c.grades.Grade & s) <2\n}",
-                    "ids": [
-                        "tT5RTJai8baPZTfD5"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Students have at most one grade per course\n\tall c : Course | all p : c.grades.Grade | lone p\n}",
-                    "ids": [
-                        "Xjj4LjSyBWiXC3nr6"
+                        "S5qYzqZDtE4KoAtQs"
                     ]
                 },
                 {
@@ -843,6 +857,34 @@
                 },
                 {
                     "entry_count": 1,
+                    "code": "{\n\t// Students have at most one grade per course\n\t// all x: Student, g1, g2: Grade, c: Course | c->x->g1 in grades and c->x->g2 in grades implies g1 = g2\n  \tall x: Student | lone (Course->x).grades\n}",
+                    "ids": [
+                        "6dt5jQWXhuh8C5z4B"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students have at most one grade per course\n\tall c: Course | lone c.grades.Person\n}",
+                    "ids": [
+                        "hbN4Hd55zbM6nWhDJ"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students have at most one grade per course\n\tall s: Student, c: Course, g1, g2: Grade | g1 = c.grades[s] and g2 = c.grades[2] => g1 = g2\n}",
+                    "ids": [
+                        "t583jS33iDx3XpSQi"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students have at most one grade per course\n  \tall s: Student | all c: Course | c in s.enrolled implies\n\t\t#(c.grades.Grade & s) <2\n}",
+                    "ids": [
+                        "tT5RTJai8baPZTfD5"
+                    ]
+                },
+                {
+                    "entry_count": 1,
                     "code": "{\n\t// Students have at most one grade per course\n  \tall s : Student, c : s.enrolled | lone s.grades.Grade\n\n}",
                     "ids": [
                         "vp9Av9NadQKiaEQwv"
@@ -850,51 +892,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Students have at most one grade per course\n\tall x: Student | all c: Course | all g: Grade | \n  \t\tlone c->x->g\n}",
+                    "code": "{\n\t// Students have at most one grade per course\n\tall s: Student, c: Course, g1, g2: Grade | g1 = c.grades[s] and g2 = c.grades[s] => g1 = g2\n}",
                     "ids": [
-                        "sbRTXqn2vhhL7XKGk"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n  \tall s: Student, c: Course | lone s.(c.grades) implies lone g: Grade | c -> s -> g in grades \n\t// Students have at most one grade per course\n\n}",
-                    "ids": [
-                        "tLsng25jypzLytX87"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Students have at most one grade per course\n\tall s: Student | all g: Grade | all c: Course | \n  \t\t#grades.c->s <= 1\n}",
-                    "ids": [
-                        "Wet52Ep9hW3HRwvKx"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Students have at most one grade per course\n\tall p1 : Person | all c1 : Course | all g1 : Grade|\n  \t#(c1->p1->g1) <= 1\n}",
-                    "ids": [
-                        "TJAEHSN6rex89iLeD"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Students have at most one grade per course\n\tall s:Student | lone grades[s]\n}",
-                    "ids": [
-                        "2DvwhYhwhJcFRXfso"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Students have at most one grade per course\n\tall s: Student, c: s.enrolled | #(c.grades.s) <= 1\n}",
-                    "ids": [
-                        "6fDcGHE2hqF74ob7v"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Students have at most one grade per course\n   all s : Student | all c : s.enrolled | all p : c.enrolled | p in Student\n\n}",
-                    "ids": [
-                        "N83567FPZBZPTjgit"
+                        "7nNkgoxQpGEBfsJ9Z"
                     ]
                 }
             ]
@@ -995,20 +995,6 @@
                 },
                 {
                     "entry_count": 8,
-                    "code": "{\n\t// Students have at most one grade per course\n\tall c : Course, s : Student | c in s.enrolled => lone c.grades[s]\n}",
-                    "ids": [
-                        "b3PNSdnkP39DhEAcp",
-                        "Lzhecpj6oq557QpPQ",
-                        "bZZ4zdvCcmkHvHcho",
-                        "t6Js533tJgpPDFuSY",
-                        "6n73nyLbGysfj6NtL",
-                        "m95dnqdYbgR7ZxRRq",
-                        "QAjxPNEaszJthRCf4",
-                        "2zQPJyqsAwbx7nnzq"
-                    ]
-                },
-                {
-                    "entry_count": 8,
                     "code": "{\n\t// Students have at most one grade per course\n  \t//all c : Course | all p : Student | lone g : Grade | c in p.enrolled implies p->g in c.grades\n  \n  \tall s : Student | all c : s.enrolled | lone g : Grade | s->g in c.grades\n\n}",
                     "ids": [
                         "QAZXFPeNf6kX2SbDe",
@@ -1022,12 +1008,17 @@
                     ]
                 },
                 {
-                    "entry_count": 3,
-                    "code": "{\n\t// Students have at most one grade per course\n\tall p1 : Student | all c1 : Course |\n  \t(p1->c1 in enrolled) implies (lone g1 : Grade | c1->p1->g1 in grades) \n}",
+                    "entry_count": 8,
+                    "code": "{\n\t// Students have at most one grade per course\n\tall c : Course, s : Student | c in s.enrolled => lone c.grades[s]\n}",
                     "ids": [
-                        "onXhB9rn8nX7bzmSW",
-                        "FgecCDukyhuoNnmwH",
-                        "vd6eAkpXEaQ6zTxFR"
+                        "b3PNSdnkP39DhEAcp",
+                        "Lzhecpj6oq557QpPQ",
+                        "bZZ4zdvCcmkHvHcho",
+                        "t6Js533tJgpPDFuSY",
+                        "6n73nyLbGysfj6NtL",
+                        "m95dnqdYbgR7ZxRRq",
+                        "QAjxPNEaszJthRCf4",
+                        "2zQPJyqsAwbx7nnzq"
                     ]
                 },
                 {
@@ -1040,19 +1031,20 @@
                     ]
                 },
                 {
+                    "entry_count": 3,
+                    "code": "{\n\t// Students have at most one grade per course\n\tall p1 : Student | all c1 : Course |\n  \t(p1->c1 in enrolled) implies (lone g1 : Grade | c1->p1->g1 in grades) \n}",
+                    "ids": [
+                        "onXhB9rn8nX7bzmSW",
+                        "FgecCDukyhuoNnmwH",
+                        "vd6eAkpXEaQ6zTxFR"
+                    ]
+                },
+                {
                     "entry_count": 2,
                     "code": "{\n\t// Students have at most one grade per course\n\tall s:Student, c:Course | c in s.enrolled implies \n  \t\t\t\tno disj g1,g2:Grade | g1 in s.(c.grades) and g2 in s.(c.grades)\n}",
                     "ids": [
                         "DNKQnokrwPSwQ4rzP",
                         "pnudPnt6oHpswPgmj"
-                    ]
-                },
-                {
-                    "entry_count": 2,
-                    "code": "{\n\t// Students have at most one grade per course\n\tall s:Student, c:s.enrolled |  #(c.grades[s]) < 2\n  //all s: Student, c: Course |\n  //      c in s.enrolled implies #(c.grades[s]) <= 1\n}",
-                    "ids": [
-                        "ybzcYY7KTrFoyMSRn",
-                        "gPJ3d5heA5jC5em8G"
                     ]
                 },
                 {
@@ -1064,17 +1056,11 @@
                     ]
                 },
                 {
-                    "entry_count": 1,
-                    "code": "{\n\t// Students have at most one grade per course\n  \tall s: Student, c: Course, g1, g2: Grade | c in s.enrolled and c->s->g1 in grades and c->s->g2 in grades implies g1=g2\n\n}",
+                    "entry_count": 2,
+                    "code": "{\n\t// Students have at most one grade per course\n\tall s:Student, c:s.enrolled |  #(c.grades[s]) < 2\n  //all s: Student, c: Course |\n  //      c in s.enrolled implies #(c.grades[s]) <= 1\n}",
                     "ids": [
-                        "t3td5upFhr2gBpeKA"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Students have at most one grade per course\n\tall s:Student | all c:Course |\n  \t\tc in s.enrolled implies lone g:Grade | g in s.(c.grades)\n}",
-                    "ids": [
-                        "8H3JhNaQLWHExwumd"
+                        "ybzcYY7KTrFoyMSRn",
+                        "gPJ3d5heA5jC5em8G"
                     ]
                 },
                 {
@@ -1086,9 +1072,16 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Students have at most one grade per course\n\t//all s:Student, c:s.enrolled | #(s & c.grades.Grade) < 2\n  all s: Student, c: Course |\n        c in s.enrolled implies #(c.grades[s]) <= 1\n}",
+                    "code": "{\n\t// Students have at most one grade per course\n\tall s:Student | all c:Course |\n  \t\tc in s.enrolled implies lone g:Grade | g in s.(c.grades)\n}",
                     "ids": [
-                        "QNNa4psyftJW4g6kA"
+                        "8H3JhNaQLWHExwumd"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students have at most one grade per course\n  \tall s: Student, c: Course, g1, g2: Grade | c in s.enrolled and c->s->g1 in grades and c->s->g2 in grades implies g1=g2\n\n}",
+                    "ids": [
+                        "t3td5upFhr2gBpeKA"
                     ]
                 },
                 {
@@ -1096,6 +1089,13 @@
                     "code": "{\n\t// Students have at most one grade per course\n  \tall c: Course, g: Grade, s:Student | \n  \t\tc in s.enrolled implies lone (s.(c.grades))\n\t\t\n}",
                     "ids": [
                         "R894Womp5DKhXoMSn"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students have at most one grade per course\n\t//all s:Student, c:s.enrolled | #(s & c.grades.Grade) < 2\n  all s: Student, c: Course |\n        c in s.enrolled implies #(c.grades[s]) <= 1\n}",
+                    "ids": [
+                        "QNNa4psyftJW4g6kA"
                     ]
                 }
             ]
@@ -1135,6 +1135,13 @@
                 },
                 {
                     "entry_count": 1,
+                    "code": "{\n\t// Students have at most one grade per course\n  \tall p : Person, g : Grade, c : Course | lone p.(c.grades)\n\n}",
+                    "ids": [
+                        "FwGBmLWvWxz725baB"
+                    ]
+                },
+                {
+                    "entry_count": 1,
                     "code": "{\n\t// Students have at most one grade per course\n\tall c : Course | c.grades in Person -> lone Grade\n}",
                     "ids": [
                         "hF5p3Fr4e5773d82J"
@@ -1145,13 +1152,6 @@
                     "code": "{\n\t// Students have at most one grade per course\n  all c: Course | all s: c.grades.Grade | one g: Grade | s->g in c.grades\n\n}",
                     "ids": [
                         "WQJFNSi8tPtb7h6wQ"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Students have at most one grade per course\n  \tall p : Person, g : Grade, c : Course | lone p.(c.grades)\n\n}",
-                    "ids": [
-                        "FwGBmLWvWxz725baB"
                     ]
                 }
             ]
@@ -1233,9 +1233,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Students have at most one grade per course\n  all s: Student , c: Course | one c.grades.Student\n\n}",
+                    "code": "{\n\t// Students have at most one grade per course\n\tall c: Course | all s: Student | one (s.enrolled.grades.s) \n}",
                     "ids": [
-                        "5ksuDeSJwHjngbsBy"
+                        "cSmw4qNkyDkSncWbY"
                     ]
                 },
                 {
@@ -1247,30 +1247,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Students have at most one grade per course\n  all s: Student, c: Course | one g: Grade | s in enrolled.c implies (one c.grades)\n}",
-                    "ids": [
-                        "9CZ8NSzvvc5EznffN"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Students have at most one grade per course\n    all s : Student | all c : Course | one (s.enrolled.grades.Person & ( c.grades.Person))\n}",
-                    "ids": [
-                        "gNnTk8bxCb98eddT2"
-                    ]
-                },
-                {
-                    "entry_count": 1,
                     "code": "{\n\t// Students have at most one grade per course\n\tall s : Student, c : Course | one(grades.Course.s)\n}",
                     "ids": [
                         "bQBHcpAP7m5x6dg7m"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Students have at most one grade per course\n\tall s : Student, c : Course | one(grades.c.s)\n}",
-                    "ids": [
-                        "pdqmTKXdB8w3XH4Za"
                     ]
                 },
                 {
@@ -1282,9 +1261,30 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Students have at most one grade per course\n\tall c: Course | all s: Student | one (s.enrolled.grades.s) \n}",
+                    "code": "{\n\t// Students have at most one grade per course\n    all s : Student | all c : Course | one (s.enrolled.grades.Person & ( c.grades.Person))\n}",
                     "ids": [
-                        "cSmw4qNkyDkSncWbY"
+                        "gNnTk8bxCb98eddT2"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students have at most one grade per course\n  all s: Student, c: Course | one g: Grade | s in enrolled.c implies (one c.grades)\n}",
+                    "ids": [
+                        "9CZ8NSzvvc5EznffN"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students have at most one grade per course\n  all s: Student , c: Course | one c.grades.Student\n\n}",
+                    "ids": [
+                        "5ksuDeSJwHjngbsBy"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students have at most one grade per course\n\tall s : Student, c : Course | one(grades.c.s)\n}",
+                    "ids": [
+                        "pdqmTKXdB8w3XH4Za"
                     ]
                 }
             ]
@@ -1444,9 +1444,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Students have at most one grade per course\n\tall s1,s2 : Student | all c : Course | s1 in c.grades.Grade and s2 in c.grades.Grade implies s1 != s2 \n}",
+                    "code": "{\n\t// Students have at most one grade per course\n\tall p:Person | all c:Course | all g1,g2:Grade | p in Student and p->g2 in c.grades and p->g2 in c.grades implies g1=g2\n}",
                     "ids": [
-                        "24pWApCjPytqyaz7b"
+                        "HH6dCiBEmuPYdF27n"
                     ]
                 },
                 {
@@ -1458,9 +1458,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Students have at most one grade per course\n\tall p:Person | all c:Course | all g1,g2:Grade | p in Student and p->g2 in c.grades and p->g2 in c.grades implies g1=g2\n}",
+                    "code": "{\n\t// Students have at most one grade per course\n\tall s1,s2 : Student | all c : Course | s1 in c.grades.Grade and s2 in c.grades.Grade implies s1 != s2 \n}",
                     "ids": [
-                        "HH6dCiBEmuPYdF27n"
+                        "24pWApCjPytqyaz7b"
                     ]
                 }
             ]
@@ -1524,6 +1524,13 @@
                 },
                 {
                     "entry_count": 1,
+                    "code": "{\n\t// Students have at most one grade per course\n  \tall s : Student, c : s.enrolled | one p1 : c.grades.Grade | p1 = s\n\n}",
+                    "ids": [
+                        "xGaHknovT3neGuqj7"
+                    ]
+                },
+                {
+                    "entry_count": 1,
                     "code": "{\n\t// Students have at most one grade per course\n\t// all p : Student, c : p.enrolled | one mid[c.grade] & p \n  all p : Student, c : p.enrolled | one c.grades.Grade & p\n}",
                     "ids": [
                         "pGDcg58KeBrx9JDW8"
@@ -1534,13 +1541,6 @@
                     "code": "{\n\t// Students have at most one grade per course\n\tall s:Student, c:s.enrolled | #(s & c.grades.Grade) = 1\n}",
                     "ids": [
                         "eWfnsApG9bigucJyw"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Students have at most one grade per course\n  \tall s : Student, c : s.enrolled | one p1 : c.grades.Grade | p1 = s\n\n}",
-                    "ids": [
-                        "xGaHknovT3neGuqj7"
                     ]
                 }
             ]
@@ -1778,16 +1778,16 @@
             "elems": [
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Students have at most one grade per course\n\tall s : Student, c : Course |\n  \t\tsome s.(c.grades)\n}",
+                    "code": "{\n\t// Students have at most one grade per course\n\tall c: Course | all s: Student | \n  \t\tone (c.grades.Grade & s) \n}",
                     "ids": [
-                        "dqjSkqgMkuKJtp97d"
+                        "Ku2KKq9c5eNXzrHpJ"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Students have at most one grade per course\n\tall c: Course | all s: Student | \n  \t\tone (c.grades.Grade & s) \n}",
+                    "code": "{\n\t// Students have at most one grade per course\n\tall s : Student, c : Course |\n  \t\tsome s.(c.grades)\n}",
                     "ids": [
-                        "Ku2KKq9c5eNXzrHpJ"
+                        "dqjSkqgMkuKJtp97d"
                     ]
                 }
             ]
@@ -1835,16 +1835,16 @@
             "elems": [
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Students have at most one grade per course\n\tall p : Person, c : Course | p->c in enrolled implies one g : Grade | p->g in c.grades\n}",
+                    "code": "{\n\t// Students have at most one grade per course\n\tall p : Person, c : Course | p->c in enrolled implies one p.(c.grades)\n}",
                     "ids": [
-                        "NZHWf52Yus6JfReAN"
+                        "ab48ZoqbBtzthTeTj"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Students have at most one grade per course\n\tall p : Person, c : Course | p->c in enrolled implies one p.(c.grades)\n}",
+                    "code": "{\n\t// Students have at most one grade per course\n\tall p : Person, c : Course | p->c in enrolled implies one g : Grade | p->g in c.grades\n}",
                     "ids": [
-                        "ab48ZoqbBtzthTeTj"
+                        "NZHWf52Yus6JfReAN"
                     ]
                 }
             ]

@@ -2,8 +2,8 @@
     "label": "inv13",
     "pred": "this/inv13",
     "entry_count": 934,
-    "group_count": 338,
-    "duration": 820,
+    "group_count": 302,
+    "duration": 555,
     "scope": 3,
     "groups": [
         {
@@ -110,22 +110,22 @@
                 },
                 {
                     "entry_count": 4,
-                    "code": "{\n\t// A student with the highest mark in a course must have worked on a project on that course\n\tall s: Student | all c: Course | (s in c.grades.(max[Grade])) implies \n        some p: Project | p in s.projects and p in c.projects\n}",
-                    "ids": [
-                        "huy68kG8QtKFzGxDb",
-                        "aoNht7z4dxiGAjKRs",
-                        "DKodWonBLxbAXiwTh",
-                        "RampMcGz5sCunHLTY"
-                    ]
-                },
-                {
-                    "entry_count": 4,
                     "code": "{\n\t// A student with the highest mark in a course must have worked on a project on that course\n\tall s : Student, c : Course | last in s.(c.grades) implies s.projects & c.projects != none \n}",
                     "ids": [
                         "F3YLxSLBKjWvLtx7x",
                         "bubTzwamWdieSak5t",
                         "LEYnLDK9BPGM9m6xb",
                         "ZMtfN93zx6x8Ty6Wg"
+                    ]
+                },
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// A student with the highest mark in a course must have worked on a project on that course\n\tall s: Student | all c: Course | (s in c.grades.(max[Grade])) implies \n        some p: Project | p in s.projects and p in c.projects\n}",
+                    "ids": [
+                        "huy68kG8QtKFzGxDb",
+                        "aoNht7z4dxiGAjKRs",
+                        "DKodWonBLxbAXiwTh",
+                        "RampMcGz5sCunHLTY"
                     ]
                 },
                 {
@@ -156,34 +156,10 @@
                 },
                 {
                     "entry_count": 2,
-                    "code": "{\n\t// A student with the highest mark in a course must have worked on a project on that course\n  \n  \tall s : Student | all c : Course |\n  \ts in c.grades.last implies (some p : Project | p in c.projects and p in s.projects)\n\n}",
-                    "ids": [
-                        "n2yeMWp64YKRe7vyx",
-                        "xZscWoukxgABL7SRT"
-                    ]
-                },
-                {
-                    "entry_count": 2,
                     "code": "{\n\t// A student with the highest mark in a course must have worked on a project on that course\n\t\n  \tall c : Course, s : Student, g : Grade | \n  \t\ts->g in c.grades and g = Grade.max implies\n  \t\tsome p : Project | s->p in projects and c->p in projects\n}",
                     "ids": [
                         "h5zjvMJX6KQhXL7WQ",
                         "RGDdk8vprYCLmYwc2"
-                    ]
-                },
-                {
-                    "entry_count": 2,
-                    "code": "{\n\t// A student with the highest mark in a course must have worked on a project on that course\n  all c: Course | \n        all s: Student |  s in c.grades.(max[Grade]) implies #(s.projects & c.projects) > 0\n}",
-                    "ids": [
-                        "gMWzQZNo2h9yGNLq4",
-                        "nXnWFBmpZRovfkbQh"
-                    ]
-                },
-                {
-                    "entry_count": 2,
-                    "code": "{\n\t// A student with the highest mark in a course must have worked on a project on that course\n\tall s: Student | all c: Course | max[Grade] in s.(c.grades) implies some p: Project | p in s.projects and p in c.projects\n}",
-                    "ids": [
-                        "fJ4s8D2XtxP4Zg2Yz",
-                        "q6jEBtSHXgFdb47Ev"
                     ]
                 },
                 {
@@ -196,10 +172,34 @@
                 },
                 {
                     "entry_count": 2,
+                    "code": "{\n\t// A student with the highest mark in a course must have worked on a project on that course\n  \n  \tall s : Student | all c : Course |\n  \ts in c.grades.last implies (some p : Project | p in c.projects and p in s.projects)\n\n}",
+                    "ids": [
+                        "n2yeMWp64YKRe7vyx",
+                        "xZscWoukxgABL7SRT"
+                    ]
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// A student with the highest mark in a course must have worked on a project on that course\n\tall s: Student | all c: Course | max[Grade] in s.(c.grades) implies some p: Project | p in s.projects and p in c.projects\n}",
+                    "ids": [
+                        "fJ4s8D2XtxP4Zg2Yz",
+                        "q6jEBtSHXgFdb47Ev"
+                    ]
+                },
+                {
+                    "entry_count": 2,
                     "code": "{\n\t// A student with the highest mark in a course must have worked on a project on that course\n  \tall s : Student | all c : Course | some ((s.(c.grades) & last)) => some(s.projects & c.projects)\n\n}",
                     "ids": [
                         "WKfevDTC2cWNCocw2",
                         "HtjwMn5xmczxF6uup"
+                    ]
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// A student with the highest mark in a course must have worked on a project on that course\n  all c: Course | \n        all s: Student |  s in c.grades.(max[Grade]) implies #(s.projects & c.projects) > 0\n}",
+                    "ids": [
+                        "gMWzQZNo2h9yGNLq4",
+                        "nXnWFBmpZRovfkbQh"
                     ]
                 },
                 {
@@ -285,20 +285,20 @@
                 },
                 {
                     "entry_count": 3,
-                    "code": "{\n\t// A student with the highest mark in a course must have worked on a project on that course\n\tall c: Course | (c.grades).(c.grades.Student.max).projects in c.projects \n}",
-                    "ids": [
-                        "rxqBc7jxHKCzJtCaM",
-                        "38WLQdBSmK3iChQhk",
-                        "5WmBz5NHNbR9eNJcW"
-                    ]
-                },
-                {
-                    "entry_count": 3,
                     "code": "{\n\t// A student with the highest mark in a course must have worked on a project on that course\n\tall c: Course, s: Student |\n  \t\tc.grades.s = c.grades.Student.ordering/max\n}",
                     "ids": [
                         "ACh6Jr3wAPNFrEwfE",
                         "ktqsmsWCQYxM9o6D3",
                         "rnpGsrkBr4wWisoq3"
+                    ]
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// A student with the highest mark in a course must have worked on a project on that course\n\tall c: Course | (c.grades).(c.grades.Student.max).projects in c.projects \n}",
+                    "ids": [
+                        "rxqBc7jxHKCzJtCaM",
+                        "38WLQdBSmK3iChQhk",
+                        "5WmBz5NHNbR9eNJcW"
                     ]
                 },
                 {
@@ -335,69 +335,6 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// A student with the highest mark in a course must have worked on a project on that course\n\t\n  \tall c : Course, s : Student, g : Grade | \n  \t\tg = max implies\n  \t\tsome p : Project | s->p in projects and c->p in projects\n}",
-                    "ids": [
-                        "3D33qiDd3rkJcnvYa"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// A student with the highest mark in a course must have worked on a project on that course\n\tall c : Course, s : Student\n  \t\t| max[c.grades] = s implies some pr : s.projects | pr in c.projects\n}",
-                    "ids": [
-                        "xCgLRHkXLf2yYXdxs"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// A student with the highest mark in a course must have worked on a project on that course\n\tall s : Student, c : s.enrolled |\n  \t\tmax[Grade] in c.(s.grades) implies\n  \t\t\tsome s.projects & s.projects\n}",
-                    "ids": [
-                        "CQyBB6T4RwLLFZAEf"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// A student with the highest mark in a course must have worked on a project on that course\n\tall c : Course, s : Student\n  \t\t| s in max[Student.(c.grades)] implies some pr : s.projects | pr in c.projects\n}",
-                    "ids": [
-                        "kqERFruZNWD4LqBZk"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// A student with the highest mark in a course must have worked on a project on that course\n\tall c : Course | max[Grade] in Grade\n}",
-                    "ids": [
-                        "tJBZh3TgQaNzmgBtt"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// A student with the highest mark in a course must have worked on a project on that course\n\tall s: Student | all c: Course | one c\n}",
-                    "ids": [
-                        "RzsuLXLpM9eqFJikd"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// A student with the highest mark in a course must have worked on a project on that course\n\tall s:Student,c:Course,g:Grade | (c->s->g in grades and not(some s2:Student,g2:Grade| c->s2->g2 in grades and gte[g2,g])) implies (some p:Project| s->p in projects and c->p in projects )\n}",
-                    "ids": [
-                        "jWh3RtvaYM4r7zZqw"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// A student with the highest mark in a course must have worked on a project on that course\n  all s : Student | all c : Course | max[Grade] = c.grades.s implies s.projects in c.projects\n\n}",
-                    "ids": [
-                        "nKScJcY6RiiQvh2pt"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// A student with the highest mark in a course must have worked on a project on that course\n\tall c : Course, s : Student\n  \t\t| max[Student.(c.grades)] = s implies some pr : s.projects | pr in c.projects\n}",
-                    "ids": [
-                        "MG5m38v8y8fzZJFLr"
-                    ]
-                },
-                {
-                    "entry_count": 1,
                     "code": "{\n\t// A student with the highest mark in a course must have worked on a project on that course\n\tall c : Course | max[c.grades] in Student\n}",
                     "ids": [
                         "dBjzLyKYNY6sXoifN"
@@ -412,30 +349,16 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// A student with the highest mark in a course must have worked on a project on that course\n\tall s : Student, c : s.enrolled , g : Person.(c.grades) | s != s implies some s.projects\n}",
+                    "code": "{\n\t// A student with the highest mark in a course must have worked on a project on that course\n\t\n  \tall c : Course, s : Student, g : Grade | \n  \t\ts->g in c.grades and g = max implies\n  \t\tsome p : Project | s->p in projects and c->p in projects\n}",
                     "ids": [
-                        "RZCoSYSyyhoGaobc4"
+                        "oPYqcCYZfwvwASxL6"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// A student with the highest mark in a course must have worked on a project on that course\n    // max[x] gets the maximum value inside x (in this case the highest value in Grade)\n\n    all s : Student, c : Course | max[Grade] in c.grades.s implies some s.projects & c.projects\n   \n}",
+                    "code": "{\n\t// A student with the highest mark in a course must have worked on a project on that course\n\tall s:Student,c:Course,g:Grade | (c->s->g in grades and not(some s2:Student,g2:Grade| c->s2->g2 in grades and gte[g2,g])) implies (some p:Project| s->p in projects and c->p in projects )\n}",
                     "ids": [
-                        "o29BvnQ4Z5pta3HPq"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// A student with the highest mark in a course must have worked on a project on that course\n  \t// max[x] gets the maximum value inside x (in this case the highest value in Grade)\n\tall c : Course, s : enrolled.c | s in max[Student.(c.grades)] implies some s.projects & c.projects\n}",
-                    "ids": [
-                        "Edg2vXvEoNdYohxBb"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// A student with the highest mark in a course must have worked on a project on that course\n  all c: Course |\n        all s: Student | let map = Grade -> Int | \n            // Lo studente s ha il voto massimo se nessuno ha un voto maggiore\n            (#c.grades[s] > 0 and \n             no s2: Student | #c.grades[s2] > 0 and \n              c.grades[s2].map >= c.grades[s].map) =>\n            // Deve aver lavorato su almeno un progetto nel corso c\n            some c.projects & s.projects\n  \t\t\t\n}",
-                    "ids": [
-                        "G3ckTbYnZMpAHvK2n"
+                        "jWh3RtvaYM4r7zZqw"
                     ]
                 },
                 {
@@ -447,16 +370,23 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// A student with the highest mark in a course must have worked on a project on that course\n\t\n  \tsome max\n}",
+                    "code": "{\n\t// A student with the highest mark in a course must have worked on a project on that course\n  \t// max[x] gets the maximum value inside x (in this case the highest value in Grade)\n\tall c : Course, s : enrolled.c | s in max[Student.(c.grades)] implies some s.projects & c.projects\n}",
                     "ids": [
-                        "kF3N2gqDXc6ha8H4o"
+                        "Edg2vXvEoNdYohxBb"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// A student with the highest mark in a course must have worked on a project on that course\n\tall s: Student | all c: Course | some c\n}",
+                    "code": "{\n\t// A student with the highest mark in a course must have worked on a project on that course\n\tall c : Course | max[Grade] in Grade\n}",
                     "ids": [
-                        "nwZGSX3DTQxAN5g3E"
+                        "tJBZh3TgQaNzmgBtt"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A student with the highest mark in a course must have worked on a project on that course\n  all c: Course |\n        all s: Student | let map = Grade -> Int | \n            // Lo studente s ha il voto massimo se nessuno ha un voto maggiore\n            (#c.grades[s] > 0 and \n             no s2: Student | #c.grades[s2] > 0 and \n              c.grades[s2].map >= c.grades[s].map) =>\n            // Deve aver lavorato su almeno un progetto nel corso c\n            some c.projects & s.projects\n  \t\t\t\n}",
+                    "ids": [
+                        "G3ckTbYnZMpAHvK2n"
                     ]
                 },
                 {
@@ -468,30 +398,30 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// A student with the highest mark in a course must have worked on a project on that course\n\t\n  \tall c : Course, s : Student, g : Grade | \n  \t\ts->g in c.grades and g = max implies\n  \t\tsome p : Project | s->p in projects and c->p in projects\n}",
+                    "code": "{\n\t// A student with the highest mark in a course must have worked on a project on that course\n  all s : Student | all c : Course | max[Grade] = c.(s.grades) implies s.projects in c.projects\n\n}",
                     "ids": [
-                        "oPYqcCYZfwvwASxL6"
+                        "Wmztjh5cMQQDHZ3yu"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// A student with the highest mark in a course must have worked on a project on that course\n  \tlet map = Grade -> Int |\n\tall c: Course |\n        all s: c.~enrolled |\n            // Se lo studente ha il voto massimo\n            ((all s2: c.~enrolled | c.grades[s].map > c.grades[s2].map) =>\n            // Deve aver lavorato su almeno un progetto del corso\n            some c.projects & s.projects)\n}",
+                    "code": "{\n\t// A student with the highest mark in a course must have worked on a project on that course\n\tall c : Course, s : Student\n  \t\t| max[Student.(c.grades)] = s implies some pr : s.projects | pr in c.projects\n}",
                     "ids": [
-                        "mToEppspRnpm9CWdH"
+                        "MG5m38v8y8fzZJFLr"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// A student with the highest mark in a course must have worked on a project on that course\n\tall c : Course | (c.projects & (c.grades).Grade.projects) in Project \n}",
+                    "code": "{\n\t// A student with the highest mark in a course must have worked on a project on that course\n\tall s: Student | all c: Course | one c\n}",
                     "ids": [
-                        "LK6rcPtEitfEP5Pou"
+                        "RzsuLXLpM9eqFJikd"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// A student with the highest mark in a course must have worked on a project on that course\n\tall c: Course |\n  \t\t\tone max[Grade]\n}",
+                    "code": "{\n\t// A student with the highest mark in a course must have worked on a project on that course\n\tall s : Student, c : s.enrolled , g : Person.(c.grades) | s != s implies some s.projects\n}",
                     "ids": [
-                        "Zkqavag29qLikX5JY"
+                        "RZCoSYSyyhoGaobc4"
                     ]
                 },
                 {
@@ -503,9 +433,79 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// A student with the highest mark in a course must have worked on a project on that course\n  all s : Student | all c : Course | max[Grade] = c.(s.grades) implies s.projects in c.projects\n\n}",
+                    "code": "{\n\t// A student with the highest mark in a course must have worked on a project on that course\n\tall c : Course, s : Student\n  \t\t| max[c.grades] = s implies some pr : s.projects | pr in c.projects\n}",
                     "ids": [
-                        "Wmztjh5cMQQDHZ3yu"
+                        "xCgLRHkXLf2yYXdxs"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A student with the highest mark in a course must have worked on a project on that course\n\tall c: Course |\n  \t\t\tone max[Grade]\n}",
+                    "ids": [
+                        "Zkqavag29qLikX5JY"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A student with the highest mark in a course must have worked on a project on that course\n\tall c : Course | (c.projects & (c.grades).Grade.projects) in Project \n}",
+                    "ids": [
+                        "LK6rcPtEitfEP5Pou"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A student with the highest mark in a course must have worked on a project on that course\n\tall s: Student | all c: Course | some c\n}",
+                    "ids": [
+                        "nwZGSX3DTQxAN5g3E"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A student with the highest mark in a course must have worked on a project on that course\n\tall s : Student, c : s.enrolled |\n  \t\tmax[Grade] in c.(s.grades) implies\n  \t\t\tsome s.projects & s.projects\n}",
+                    "ids": [
+                        "CQyBB6T4RwLLFZAEf"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A student with the highest mark in a course must have worked on a project on that course\n  all s : Student | all c : Course | max[Grade] = c.grades.s implies s.projects in c.projects\n\n}",
+                    "ids": [
+                        "nKScJcY6RiiQvh2pt"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A student with the highest mark in a course must have worked on a project on that course\n\t\n  \tall c : Course, s : Student, g : Grade | \n  \t\tg = max implies\n  \t\tsome p : Project | s->p in projects and c->p in projects\n}",
+                    "ids": [
+                        "3D33qiDd3rkJcnvYa"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A student with the highest mark in a course must have worked on a project on that course\n  \tlet map = Grade -> Int |\n\tall c: Course |\n        all s: c.~enrolled |\n            // Se lo studente ha il voto massimo\n            ((all s2: c.~enrolled | c.grades[s].map > c.grades[s2].map) =>\n            // Deve aver lavorato su almeno un progetto del corso\n            some c.projects & s.projects)\n}",
+                    "ids": [
+                        "mToEppspRnpm9CWdH"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A student with the highest mark in a course must have worked on a project on that course\n    // max[x] gets the maximum value inside x (in this case the highest value in Grade)\n\n    all s : Student, c : Course | max[Grade] in c.grades.s implies some s.projects & c.projects\n   \n}",
+                    "ids": [
+                        "o29BvnQ4Z5pta3HPq"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A student with the highest mark in a course must have worked on a project on that course\n\t\n  \tsome max\n}",
+                    "ids": [
+                        "kF3N2gqDXc6ha8H4o"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A student with the highest mark in a course must have worked on a project on that course\n\tall c : Course, s : Student\n  \t\t| s in max[Student.(c.grades)] implies some pr : s.projects | pr in c.projects\n}",
+                    "ids": [
+                        "kqERFruZNWD4LqBZk"
                     ]
                 }
             ]
@@ -586,13 +586,6 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// A student with the highest mark in a course must have worked on a project on that course\n  all p:Person | all c:Course | last in p.(c.grades) implies not (p.projects & c.projects = none)\n\n}",
-                    "ids": [
-                        "QusJ7MFtgpDATx4im"
-                    ]
-                },
-                {
-                    "entry_count": 1,
                     "code": "{\n\t// A student with the highest mark in a course must have worked on a project on that course\n\n\tall c : Course, p : Person | last in p.(c.grades) implies\n\t  some pr :Project | p->pr in projects and c->pr in projects\n\n\n}",
                     "ids": [
                         "cEXN7aD8a4kiJv4wi"
@@ -603,6 +596,13 @@
                     "code": "{\n\t// A student with the highest mark in a course must have worked on a project on that course\n\tall c : Course, p : Person | last in p.(c.grades) implies\n\t   some pr :Project | pr in p.projects and pr in c.projects\n}",
                     "ids": [
                         "5FoGQdzaKGxrWkdeB"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A student with the highest mark in a course must have worked on a project on that course\n  all p:Person | all c:Course | last in p.(c.grades) implies not (p.projects & c.projects = none)\n\n}",
+                    "ids": [
+                        "QusJ7MFtgpDATx4im"
                     ]
                 }
             ]
@@ -638,18 +638,18 @@
                 },
                 {
                     "entry_count": 2,
-                    "code": "{\n\t// A student with the highest mark in a course must have worked on a project on that course\n  all s: Student |all c: s.enrolled| some (s.(c.grades) & last) implies (c in Course :> projects.(s.projects) ) \n\n}",
-                    "ids": [
-                        "j8dw2RMcwQocEkc2E",
-                        "GPgNMZgL6dixciHa2"
-                    ]
-                },
-                {
-                    "entry_count": 2,
                     "code": "{\n\t// A student with the highest mark in a course must have worked on a project on that course\n  \tall s : Student , c : s.enrolled |\n  \t\tlast in s.(c.grades) implies\n  \t\tsome s.projects & c.projects\n\n}",
                     "ids": [
                         "9QnJGSDXsuBueKrsJ",
                         "KaXnXy89Yr8XHbk75"
+                    ]
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// A student with the highest mark in a course must have worked on a project on that course\n  all s: Student |all c: s.enrolled| some (s.(c.grades) & last) implies (c in Course :> projects.(s.projects) ) \n\n}",
+                    "ids": [
+                        "j8dw2RMcwQocEkc2E",
+                        "GPgNMZgL6dixciHa2"
                     ]
                 },
                 {
@@ -661,16 +661,16 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// A student with the highest mark in a course must have worked on a project on that course\n\tall s : Student | (all c : s.enrolled | s in c.grades.last implies some (c.projects & s.projects) )\n}",
+                    "code": "{\n\t// A student with the highest mark in a course must have worked on a project on that course\n\tall s : Student, c : s.enrolled | some ((s.(c.grades) & last)) implies some(s.projects & c.projects)\n}",
                     "ids": [
-                        "isG6JgfvJEKi7zFTv"
+                        "6zK86oyPCETdxf5ZG"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// A student with the highest mark in a course must have worked on a project on that course\n\tall s : Student, c : s.enrolled | some ((s.(c.grades) & last)) implies some(s.projects & c.projects)\n}",
+                    "code": "{\n\t// A student with the highest mark in a course must have worked on a project on that course\n\tall s : Student | (all c : s.enrolled | s in c.grades.last implies some (c.projects & s.projects) )\n}",
                     "ids": [
-                        "6zK86oyPCETdxf5ZG"
+                        "isG6JgfvJEKi7zFTv"
                     ]
                 }
             ]
@@ -692,15 +692,6 @@
                 },
                 {
                     "entry_count": 3,
-                    "code": "{\n\t// A student with the highest mark in a course must have worked on a project on that course\n\tall c: Course | some max[(c.grades)] & Person\n}",
-                    "ids": [
-                        "JfBuSqYR4Jvcv5cyr",
-                        "tdMKq67aT227mQmDj",
-                        "cdNNXu6FumXZzi3dh"
-                    ]
-                },
-                {
-                    "entry_count": 3,
                     "code": "{\n\t// A student with the highest mark in a course must have worked on a project on that course\n\tall c: Course | some max[Person.(c.grades)] & Person\n}",
                     "ids": [
                         "BhcpNMAWqhhoRe4jT",
@@ -709,11 +700,12 @@
                     ]
                 },
                 {
-                    "entry_count": 2,
-                    "code": "{\n\t// A student with the highest mark in a course must have worked on a project on that course\n\tall c : Course | one p : Grade.max[c.grades] | some pr : p.projects | c=pr\n  \n}",
+                    "entry_count": 3,
+                    "code": "{\n\t// A student with the highest mark in a course must have worked on a project on that course\n\tall c: Course | some max[(c.grades)] & Person\n}",
                     "ids": [
-                        "TSKEoKAmAGuphZ5Kj",
-                        "hNoWwdrkQ9zZ2EJJC"
+                        "JfBuSqYR4Jvcv5cyr",
+                        "tdMKq67aT227mQmDj",
+                        "cdNNXu6FumXZzi3dh"
                     ]
                 },
                 {
@@ -726,10 +718,10 @@
                 },
                 {
                     "entry_count": 2,
-                    "code": "{\n\t// A student with the highest mark in a course must have worked on a project on that course\n\tall c: Course | some max[(c.grades)] \n}",
+                    "code": "{\n\t// A student with the highest mark in a course must have worked on a project on that course\n\tall c : Course | one p : Grade.max[c.grades] | some pr : p.projects | c=pr\n  \n}",
                     "ids": [
-                        "sXBJXgtR9wbAHmnK7",
-                        "GtuNLv3e9miBecDSf"
+                        "TSKEoKAmAGuphZ5Kj",
+                        "hNoWwdrkQ9zZ2EJJC"
                     ]
                 },
                 {
@@ -741,24 +733,18 @@
                     ]
                 },
                 {
-                    "entry_count": 1,
-                    "code": "{\n\t// A student with the highest mark in a course must have worked on a project on that course\n\tall c: Course |\n  \t\t\tone max[c.grades]\n}",
+                    "entry_count": 2,
+                    "code": "{\n\t// A student with the highest mark in a course must have worked on a project on that course\n\tall c: Course | some max[(c.grades)] \n}",
                     "ids": [
-                        "YDD5jKXcbXygZgTHh"
+                        "sXBJXgtR9wbAHmnK7",
+                        "GtuNLv3e9miBecDSf"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// A student with the highest mark in a course must have worked on a project on that course\n\tall c : Course | one st : Grade.max[c.grades] | c in (Person <: st.projects)\n  \n}",
+                    "code": "{\n\t// A student with the highest mark in a course must have worked on a project on that course\n \n  all c: Course | c in last\n  //all c:Course | c in Course:> projects.(((c.grades).(Person.(c.grades).last))    .projects)\n\n}",
                     "ids": [
-                        "RGnn4fybHwZtqDdwn"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// A student with the highest mark in a course must have worked on a project on that course\n\tall c : Course | one st : Grade.max[c.grades] | c in (st.projects <: Person)\n  \n}",
-                    "ids": [
-                        "NYp4FiHAK3Wrs9ua5"
+                        "RJkJiCoqkGEZThefE"
                     ]
                 },
                 {
@@ -770,9 +756,23 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// A student with the highest mark in a course must have worked on a project on that course\n \n  all c: Course | c in last\n  //all c:Course | c in Course:> projects.(((c.grades).(Person.(c.grades).last))    .projects)\n\n}",
+                    "code": "{\n\t// A student with the highest mark in a course must have worked on a project on that course\n\tall c : Course | one st : Grade.max[c.grades] | c in (st.projects <: Person)\n  \n}",
                     "ids": [
-                        "RJkJiCoqkGEZThefE"
+                        "NYp4FiHAK3Wrs9ua5"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A student with the highest mark in a course must have worked on a project on that course\n\tall c : Course | one st : Grade.max[c.grades] | c in (Person <: st.projects)\n  \n}",
+                    "ids": [
+                        "RGnn4fybHwZtqDdwn"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A student with the highest mark in a course must have worked on a project on that course\n\tall c: Course |\n  \t\t\tone max[c.grades]\n}",
+                    "ids": [
+                        "YDD5jKXcbXygZgTHh"
                     ]
                 }
             ]
@@ -808,15 +808,6 @@
                 },
                 {
                     "entry_count": 3,
-                    "code": "{\n\t// A student with the highest mark in a course must have worked on a project on that course\n  \tall s : Student, c : Course | grades[c][s] = Grade.max\n        implies some s.projects & c.projects or no c.grades\n}",
-                    "ids": [
-                        "TJTqY4GTWtgNaHpbc",
-                        "s9ZSD53MdinTAtSjy",
-                        "p4vqS7aNS9WB5oR5n"
-                    ]
-                },
-                {
-                    "entry_count": 3,
                     "code": "{\n\t// A student with the highest mark in a course must have worked on a project on that course\n\tall s : Student, c : Course | (all g : Grade | some s.(c.grades) and gte[s.(c.grades),g]) implies some s.projects & c.projects\n}",
                     "ids": [
                         "T7kxsQ6ZN4ExbZeCq",
@@ -825,10 +816,12 @@
                     ]
                 },
                 {
-                    "entry_count": 1,
-                    "code": "{\n\t// A student with the highest mark in a course must have worked on a project on that course\n  \tall s : Student, c : Course | s.(c.grades) = last implies some p : Project | p in s.projects and p in c.projects\n}",
+                    "entry_count": 3,
+                    "code": "{\n\t// A student with the highest mark in a course must have worked on a project on that course\n  \tall s : Student, c : Course | grades[c][s] = Grade.max\n        implies some s.projects & c.projects or no c.grades\n}",
                     "ids": [
-                        "fuLHrJkwAY4WJLonD"
+                        "TJTqY4GTWtgNaHpbc",
+                        "s9ZSD53MdinTAtSjy",
+                        "p4vqS7aNS9WB5oR5n"
                     ]
                 },
                 {
@@ -843,6 +836,13 @@
                     "code": "{\n\t// A student with the highest mark in a course must have worked on a project on that course\n  all c: Course |\n  \t\tall s: Student |\n  \t\t\tc.grades[s] = last => (s.projects & c.projects != none)\n\n}",
                     "ids": [
                         "e8Wp9uBCLtRXpfxcH"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A student with the highest mark in a course must have worked on a project on that course\n  \tall s : Student, c : Course | s.(c.grades) = last implies some p : Project | p in s.projects and p in c.projects\n}",
+                    "ids": [
+                        "fuLHrJkwAY4WJLonD"
                     ]
                 }
             ]
@@ -974,16 +974,16 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// A student with the highest mark in a course must have worked on a project on that course\n\tall s: Student, c: Course {\n  \t\t{\n          \tc.grades[s] = max[c.grades[Student]]\n      \t} implies {\n          \ts in c.projects.~(Student <: projects)\n      \t}\n  \t}\n}",
+                    "code": "{\n\t// A student with the highest mark in a course must have worked on a project on that course\n\tall s: Student, c: Course {\n  \t\t{\n          \tc.grades[s] = max[c.grades[Student]]\n      \t} implies {\n          \ts in c.projects.~(Person <: projects)\n      \t}\n  \t}\n}",
                     "ids": [
-                        "mWoCTvAqK83sqaTvn"
+                        "gNgJfi6NcsazfWAvJ"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// A student with the highest mark in a course must have worked on a project on that course\n\tall s: Student, c: Course {\n  \t\t{\n          \tc.grades[s] = max[c.grades[Student]]\n      \t} implies {\n          \ts in c.projects.~(Person <: projects)\n      \t}\n  \t}\n}",
+                    "code": "{\n\t// A student with the highest mark in a course must have worked on a project on that course\n\tall s: Student, c: Course {\n  \t\t{\n          \tc.grades[s] = max[c.grades[Student]]\n      \t} implies {\n          \ts in c.projects.~(Student <: projects)\n      \t}\n  \t}\n}",
                     "ids": [
-                        "gNgJfi6NcsazfWAvJ"
+                        "mWoCTvAqK83sqaTvn"
                     ]
                 }
             ]
@@ -1036,6 +1036,13 @@
                 },
                 {
                     "entry_count": 1,
+                    "code": "{\n\t// A student with the highest mark in a course must have worked on a project on that course\n\t\n  \tall c : Course, s,s1 : Student, g,g1 : Grade | \n  \t\t(s->g in c.grades and s1->g1 in c.grades and g1.lte[g]) implies\n  \t\tsome p : Project | s->p in projects and c->p in projects\n}",
+                    "ids": [
+                        "xqvu7SHjRAuxtYEGR"
+                    ]
+                },
+                {
+                    "entry_count": 1,
                     "code": "{\n\t// A student with the highest mark in a course must have worked on a project on that course\n  \tall s: Student, c: Course, g: Grade | s->g in c.grades => some s.projects & c.projects\n}",
                     "ids": [
                         "8vg4FWY8gd2xqmryD"
@@ -1046,13 +1053,6 @@
                     "code": "{\n\t// A student with the highest mark in a course must have worked on a project on that course\n\tall s: Student, c: Course | s.(c.grades)!= none implies \n  \t\ts.projects & c.projects != none\n}",
                     "ids": [
                         "ziKhcxapBH9SChvot"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// A student with the highest mark in a course must have worked on a project on that course\n\t\n  \tall c : Course, s,s1 : Student, g,g1 : Grade | \n  \t\t(s->g in c.grades and s1->g1 in c.grades and g1.lte[g]) implies\n  \t\tsome p : Project | s->p in projects and c->p in projects\n}",
-                    "ids": [
-                        "xqvu7SHjRAuxtYEGR"
                     ]
                 }
             ]
@@ -1080,13 +1080,6 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// A student with the highest mark in a course must have worked on a project on that course\n\tall s1, s2: Student, c: Course |\n\t\tno g2: c.grades[s2] | g2 = c.grades[s1].next => some (s1.projects & c.projects)\n}",
-                    "ids": [
-                        "EkeDM5r86Kbx2AsL2"
-                    ]
-                },
-                {
-                    "entry_count": 1,
                     "code": "{\n\t// A student with the highest mark in a course must have worked on a project on that course\n\tall c: Course, s: Student |\n  \t\ts.(c.grades) = ordering/max[c.grades.Student]\n}",
                     "ids": [
                         "YEwcTMTow7JsSkvK7"
@@ -1105,6 +1098,13 @@
                     "ids": [
                         "BuAFT2oDGgnXMkKbN"
                     ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A student with the highest mark in a course must have worked on a project on that course\n\tall s1, s2: Student, c: Course |\n\t\tno g2: c.grades[s2] | g2 = c.grades[s1].next => some (s1.projects & c.projects)\n}",
+                    "ids": [
+                        "EkeDM5r86Kbx2AsL2"
+                    ]
                 }
             ]
         },
@@ -1115,18 +1115,18 @@
             "elems": [
                 {
                     "entry_count": 2,
-                    "code": "{ \n  all c : Course | all p : Student | one (p.enrolled & c) and p.(c.grades) = max[Person.(c.grades)] implies some (p.projects & c.projects) }",
-                    "ids": [
-                        "ZS92KeZ7vfmuuiyuz",
-                        "d5HxuyMoQpLaTpGNF"
-                    ]
-                },
-                {
-                    "entry_count": 2,
                     "code": "{ \n  all p : Student | all c : Course | c in p.enrolled and p.(c.grades) = max[Person.(c.grades)] implies some (p.projects & c.projects) }",
                     "ids": [
                         "m89eXaGrLiwrMzyDw",
                         "LgncMkvnzCbWD7DgS"
+                    ]
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{ \n  all c : Course | all p : Student | one (p.enrolled & c) and p.(c.grades) = max[Person.(c.grades)] implies some (p.projects & c.projects) }",
+                    "ids": [
+                        "ZS92KeZ7vfmuuiyuz",
+                        "d5HxuyMoQpLaTpGNF"
                     ]
                 },
                 {
@@ -1480,16 +1480,16 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// A student with the highest mark in a course must have worked on a project on that course\n\tall s: Student | all c: Course | s in c.grades.(max[Grade]) implies \n        s.projects in c.projects\n}",
+                    "code": "{\n\t// A student with the highest mark in a course must have worked on a project on that course\n  all s : Student | all c : Course | max[Grade] in s.(c.grades) implies s.projects in c.projects\n\n}",
                     "ids": [
-                        "LCcavEebZpRZ5fsxM"
+                        "JTPJ4nSScZ7CMpmCg"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// A student with the highest mark in a course must have worked on a project on that course\n  all s : Student | all c : Course | max[Grade] in s.(c.grades) implies s.projects in c.projects\n\n}",
+                    "code": "{\n\t// A student with the highest mark in a course must have worked on a project on that course\n\tall s: Student | all c: Course | s in c.grades.(max[Grade]) implies \n        s.projects in c.projects\n}",
                     "ids": [
-                        "JTPJ4nSScZ7CMpmCg"
+                        "LCcavEebZpRZ5fsxM"
                     ]
                 }
             ]
@@ -1557,16 +1557,16 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// A student with the highest mark in a course must have worked on a project on that course\n \n  all c:Course | some(c.grades) implies(c in Course:>  projects.( ( (c.grades).(max[Person.(c.grades)]) ).projects))\n  \n\n}",
+                    "code": "{\n\t// A student with the highest mark in a course must have worked on a project on that course\n \n  all c:Course | some(c.grades) implies(c in projects.( ( (c.grades).(max[Person.(c.grades)]) ).projects))\n  \n\n}",
                     "ids": [
-                        "baoJatJoovHp5hTJL"
+                        "unPvXFP3acQi2uY6p"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// A student with the highest mark in a course must have worked on a project on that course\n \n  all c:Course | some(c.grades) implies(c in projects.( ( (c.grades).(max[Person.(c.grades)]) ).projects))\n  \n\n}",
+                    "code": "{\n\t// A student with the highest mark in a course must have worked on a project on that course\n \n  all c:Course | some(c.grades) implies(c in Course:>  projects.( ( (c.grades).(max[Person.(c.grades)]) ).projects))\n  \n\n}",
                     "ids": [
-                        "unPvXFP3acQi2uY6p"
+                        "baoJatJoovHp5hTJL"
                     ]
                 }
             ]
@@ -1637,16 +1637,16 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// A student with the highest mark in a course must have worked on a project on that course\n  \tall c: Course | some c.projects implies some c.grades implies some s: Student {\n      \tc.grades[s] = max[c.grades[Student]]\n      \tsome s.projects & c.projects\n  \t}\n\n}",
+                    "code": "{\n\t// A student with the highest mark in a course must have worked on a project on that course\n  \tall c: Project.~(Course <: projects) | some c.grades implies some s: Student {\n      \tc.grades[s] = max[c.grades[Student]]\n      \tsome s.projects & c.projects\n  \t}\n\n}",
                     "ids": [
-                        "9Dz7Kpo2dhdEMJNv2"
+                        "sgABf7a2au8xsBsvL"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// A student with the highest mark in a course must have worked on a project on that course\n  \tall c: Project.~(Course <: projects) | some c.grades implies some s: Student {\n      \tc.grades[s] = max[c.grades[Student]]\n      \tsome s.projects & c.projects\n  \t}\n\n}",
+                    "code": "{\n\t// A student with the highest mark in a course must have worked on a project on that course\n  \tall c: Course | some c.projects implies some c.grades implies some s: Student {\n      \tc.grades[s] = max[c.grades[Student]]\n      \tsome s.projects & c.projects\n  \t}\n\n}",
                     "ids": [
-                        "sgABf7a2au8xsBsvL"
+                        "9Dz7Kpo2dhdEMJNv2"
                     ]
                 }
             ]
@@ -1683,16 +1683,16 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// A student with the highest mark in a course must have worked on a project on that course\n\tall s: Student, c: Course {\n  \t\t{\n          \tsome c.grades[Student]\n          \tsome c.projects\n          \tc.grades[s] = max[c.grades[Student]]\n      \t} implies {\n          \tsome s.projects & c.projects\n      \t}\n  \t}\n}",
+                    "code": "{\n\t// A student with the highest mark in a course must have worked on a project on that course\n\tall s: Student, c: Course {\n      \tsome c.projects implies {\n          \tsome c.grades[Student]\n          \tc.grades[s] = max[c.grades[Student]]\n      \t} implies {\n          \tsome s.projects & c.projects\n      \t}\n  \t}\n}",
                     "ids": [
-                        "TBu8QjsCXdkBweeqi"
+                        "T5Z7P3fo2EAgRk3Ww"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// A student with the highest mark in a course must have worked on a project on that course\n\tall s: Student, c: Course {\n      \tsome c.projects implies {\n          \tsome c.grades[Student]\n          \tc.grades[s] = max[c.grades[Student]]\n      \t} implies {\n          \tsome s.projects & c.projects\n      \t}\n  \t}\n}",
+                    "code": "{\n\t// A student with the highest mark in a course must have worked on a project on that course\n\tall s: Student, c: Course {\n  \t\t{\n          \tsome c.grades[Student]\n          \tsome c.projects\n          \tc.grades[s] = max[c.grades[Student]]\n      \t} implies {\n          \tsome s.projects & c.projects\n      \t}\n  \t}\n}",
                     "ids": [
-                        "T5Z7P3fo2EAgRk3Ww"
+                        "TBu8QjsCXdkBweeqi"
                     ]
                 }
             ]
@@ -1804,16 +1804,16 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// A student with the highest mark in a course must have worked on a project on that course\n\tall s : Student, c : Course |\n  \t\tmax[c.grades] in s.(c.grades) implies some c.projects & s.projects \n}",
+                    "code": "{\n\t// A student with the highest mark in a course must have worked on a project on that course\n  let map = Grade -> Int |\n  all c: Course |\n        // Trova tutti gli studenti con il voto pi\u00f9 alto\n        all s: Student |\n            // Lo studente s ha il voto massimo nel corso c\n            (all s2: Student | s2 in c.grades.Person => c.grades[s].map >= c.grades[s2].map) =>\n            // Deve aver lavorato su almeno un progetto del corso\n            some c.projects & s.projects\n  \t\t\t\n}",
                     "ids": [
-                        "REejmZ9WdQEqqhKdR"
+                        "sHi4z8CBQgwGgqij4"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// A student with the highest mark in a course must have worked on a project on that course\n  let map = Grade -> Int |\n  all c: Course |\n        // Trova tutti gli studenti con il voto pi\u00f9 alto\n        all s: Student |\n            // Lo studente s ha il voto massimo nel corso c\n            (all s2: Student | s2 in c.grades.Person => c.grades[s].map >= c.grades[s2].map) =>\n            // Deve aver lavorato su almeno un progetto del corso\n            some c.projects & s.projects\n  \t\t\t\n}",
+                    "code": "{\n\t// A student with the highest mark in a course must have worked on a project on that course\n\tall s : Student, c : Course |\n  \t\tmax[c.grades] in s.(c.grades) implies some c.projects & s.projects \n}",
                     "ids": [
-                        "sHi4z8CBQgwGgqij4"
+                        "REejmZ9WdQEqqhKdR"
                     ]
                 }
             ]
@@ -1823,6 +1823,13 @@
             "group_count": 4,
             "correct": false,
             "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A student with the highest mark in a course must have worked on a project on that course\n\tall c: Course |\n        some s: Student | \n            (s in c.grades.Person and c.grades[s] = last) implies\n                (some p: Project | p in s.projects and p in c.projects)\n}",
+                    "ids": [
+                        "YZcdGwvxWefrZcE4S"
+                    ]
+                },
                 {
                     "entry_count": 1,
                     "code": "{\n\t// A student with the highest mark in a course must have worked on a project on that course\n  \tall c: Course | some s: Student, g: Grade | \n  (s->g in c.grades and g = max[Grade]) => \n  some p: Project | p in c.projects and p in s.projects\n\n}",
@@ -1835,13 +1842,6 @@
                     "code": "{\n\t// A student with the highest mark in a course must have worked on a project on that course\n\tall c: Course |\n        some s: Student | \n            (s in Person.(c.grades) and c.grades[s] = last) implies\n                (some p: Project | p in s.projects and p in c.projects)\n}",
                     "ids": [
                         "2yNXKkyNHQWuRDiGY"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// A student with the highest mark in a course must have worked on a project on that course\n\tall c: Course |\n        some s: Student | \n            (s in c.grades.Person and c.grades[s] = last) implies\n                (some p: Project | p in s.projects and p in c.projects)\n}",
-                    "ids": [
-                        "YZcdGwvxWefrZcE4S"
                     ]
                 },
                 {
@@ -2064,6 +2064,13 @@
             "elems": [
                 {
                     "entry_count": 1,
+                    "code": "{\n\t// A student with the highest mark in a course must have worked on a project on that course\n\tall s : Student, c : s.enrolled | ( max[grades.c] in s.(c.grades)  ) implies some(s.projects & c.projects)\n}",
+                    "ids": [
+                        "ZNHLjqYgNFTH379FM"
+                    ]
+                },
+                {
+                    "entry_count": 1,
                     "code": "{\n\t// A student with the highest mark in a course must have worked on a project on that course\n\tall s : Student, c : s.enrolled | ( max[c.grades] in s.(c.grades)  ) implies some(s.projects & c.projects)\n}",
                     "ids": [
                         "JfZa5mqZAAgms6q6r"
@@ -2074,13 +2081,6 @@
                     "code": "{\n\t// A student with the highest mark in a course must have worked on a project on that course\n\tall s : Student | ( all c : s.enrolled | some ( s.projects & c.projects))\n}",
                     "ids": [
                         "xwqzp79CgTPkqgCrm"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// A student with the highest mark in a course must have worked on a project on that course\n\tall s : Student, c : s.enrolled | ( max[grades.c] in s.(c.grades)  ) implies some(s.projects & c.projects)\n}",
-                    "ids": [
-                        "ZNHLjqYgNFTH379FM"
                     ]
                 }
             ]
@@ -2342,9 +2342,9 @@
             "elems": [
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// A student with the highest mark in a course must have worked on a project on that course\n\tall s: Student, c: Course | s.(c.grades) = max[c.grades] implies \n  \t\ts.projects & c.projects != none\n}",
+                    "code": "{\n\t// A student with the highest mark in a course must have worked on a project on that course\n\tall s1:Student,  c:Course | ((all s2:Student | gt [s1.(c.grades),  s2.(c.grades)] )\n\t\t\t\t\t\timplies\n\t\t\t\t\t\tsome (s1.projects & c.projects))\n\n}",
                     "ids": [
-                        "AidkoZ5yM3ZHATYnY"
+                        "6oipvyPjtD2jotLiX"
                     ]
                 },
                 {
@@ -2356,9 +2356,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// A student with the highest mark in a course must have worked on a project on that course\n\tall s1:Student,  c:Course | ((all s2:Student | gt [s1.(c.grades),  s2.(c.grades)] )\n\t\t\t\t\t\timplies\n\t\t\t\t\t\tsome (s1.projects & c.projects))\n\n}",
+                    "code": "{\n\t// A student with the highest mark in a course must have worked on a project on that course\n\tall s: Student, c: Course | s.(c.grades) = max[c.grades] implies \n  \t\ts.projects & c.projects != none\n}",
                     "ids": [
-                        "6oipvyPjtD2jotLiX"
+                        "AidkoZ5yM3ZHATYnY"
                     ]
                 }
             ]
@@ -2370,9 +2370,9 @@
             "elems": [
                 {
                     "entry_count": 1,
-                    "code": "{ \n  all c : Course | all s : Student | c in s.enrolled and s.(c.grades) = max[Person.(c.grades)] implies one (s.projects & c.projects) }",
+                    "code": "{\n\t// A student with the highest mark in a course must have worked on a project on that course\n\tall s:Student, c:Course | (s->c in enrolled and (max [Person.(c.grades)] =  s.(c.grades) ) ) \n\t\t\t\t\t\timplies\n\t\t\t\t\t\tone (s.projects & c.projects)\n\n}",
                     "ids": [
-                        "w4BbpXGgDhxbGcZQS"
+                        "QTCQ7ig8mJBXuASHZ"
                     ]
                 },
                 {
@@ -2384,9 +2384,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// A student with the highest mark in a course must have worked on a project on that course\n\tall s:Student, c:Course | (s->c in enrolled and (max [Person.(c.grades)] =  s.(c.grades) ) ) \n\t\t\t\t\t\timplies\n\t\t\t\t\t\tone (s.projects & c.projects)\n\n}",
+                    "code": "{ \n  all c : Course | all s : Student | c in s.enrolled and s.(c.grades) = max[Person.(c.grades)] implies one (s.projects & c.projects) }",
                     "ids": [
-                        "QTCQ7ig8mJBXuASHZ"
+                        "w4BbpXGgDhxbGcZQS"
                     ]
                 }
             ]
@@ -2523,16 +2523,16 @@
             "elems": [
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// A student with the highest mark in a course must have worked on a project on that course\n  \tall a : Student, c : Course, p: Project | one b : Student | gte[b.(c.grades),a.(c.grades)] implies p in c.projects&b.projects  \n\n}",
+                    "code": "{\n\t// A student with the highest mark in a course must have worked on a project on that course\n  \tall a : Student, c : Course, p: Project | one b : Student | gte[b.(c.grades),a.(c.grades)] implies p in c.projects and p in b.projects  \n\n}",
                     "ids": [
-                        "LcxDTJohg3xadJNDb"
+                        "R6Ngn5GEftBubnf77"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// A student with the highest mark in a course must have worked on a project on that course\n  \tall a : Student, c : Course, p: Project | one b : Student | gte[b.(c.grades),a.(c.grades)] implies p in c.projects and p in b.projects  \n\n}",
+                    "code": "{\n\t// A student with the highest mark in a course must have worked on a project on that course\n  \tall a : Student, c : Course, p: Project | one b : Student | gte[b.(c.grades),a.(c.grades)] implies p in c.projects&b.projects  \n\n}",
                     "ids": [
-                        "R6Ngn5GEftBubnf77"
+                        "LcxDTJohg3xadJNDb"
                     ]
                 }
             ]
@@ -2892,16 +2892,16 @@
             "elems": [
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// A student with the highest mark in a course must have worked on a project on that course\n\n   all s : Student, c : Course, g : Grade, g2 : Grade-g, p : Project | (c->s->g in grades and gt[g,g2]) implies (c->p in projects and s->p in projects)\n}",
+                    "code": "{\n\t// A student with the highest mark in a course must have worked on a project on that course\n\n   all s : Student, c : Course, g : Grade, g2 : Grade, p : Project | (c->s->g in grades and gt[g,g2]) implies (c->p in projects and s->p in projects)\n}",
                     "ids": [
-                        "JmkxTGPhY8MpKEzue"
+                        "ABSGPjYRkioyobCXg"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// A student with the highest mark in a course must have worked on a project on that course\n\n   all s : Student, c : Course, g : Grade, g2 : Grade, p : Project | (c->s->g in grades and gt[g,g2]) implies (c->p in projects and s->p in projects)\n}",
+                    "code": "{\n\t// A student with the highest mark in a course must have worked on a project on that course\n\n   all s : Student, c : Course, g : Grade, g2 : Grade-g, p : Project | (c->s->g in grades and gt[g,g2]) implies (c->p in projects and s->p in projects)\n}",
                     "ids": [
-                        "ABSGPjYRkioyobCXg"
+                        "JmkxTGPhY8MpKEzue"
                     ]
                 }
             ]
@@ -3030,16 +3030,16 @@
             "elems": [
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// A student with the highest mark in a course must have worked on a project on that course\n\tall s : Student, c : Course | max[Grade] in s.(c.grades) implies some p : Project | p in s.projects\n}",
+                    "code": "{\n  // nota mais alta -> last \n  all c: Course , s: Student | last in s.(c.grades) implies some s.projects\n\n}",
                     "ids": [
-                        "LvLiCgdDQnMgXSHxP"
+                        "zZY7398Ph9bsTby8Y"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n  // nota mais alta -> last \n  all c: Course , s: Student | last in s.(c.grades) implies some s.projects\n\n}",
+                    "code": "{\n\t// A student with the highest mark in a course must have worked on a project on that course\n\tall s : Student, c : Course | max[Grade] in s.(c.grades) implies some p : Project | p in s.projects\n}",
                     "ids": [
-                        "zZY7398Ph9bsTby8Y"
+                        "LvLiCgdDQnMgXSHxP"
                     ]
                 }
             ]
@@ -3081,16 +3081,16 @@
             "elems": [
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// A student with the highest mark in a course must have worked on a project on that course\n  all c: Course |\n  \tlet map = Grade -> Int |\n        // Trova tutti gli studenti con il voto pi\u00f9 alto\n        all s: c.~enrolled |\n            // Lo studente s ha il voto massimo nel corso c\n            (all s2: Student | #c.grades[s2] > 0 => c.grades[s].map >= \t\t\t\t\t\tc.grades[s2].map) =>\n            // Deve aver lavorato su almeno un progetto del corso\n            some c.projects & s.projects\n  \t\t\t\n}",
+                    "code": "{\n\t// A student with the highest mark in a course must have worked on a project on that course\n  all c: Course |\n        // Trova tutti gli studenti con il voto pi\u00f9 alto\n     all s: c.~enrolled | \n  \t\tlet map = Grade -> Int |\n  \t\t\t// Lo studente s ha il voto massimo nel corso c\n            (all s2: Student | #c.grades[s2] > 0 => c.grades[s].map >= \t\t\t\t\t\tc.grades[s2].map) =>\n            // Deve aver lavorato su almeno un progetto del corso\n            some c.projects & s.projects\n  \t\t\t\n}",
                     "ids": [
-                        "QT65eD7i4XAm4Jt48"
+                        "FM3m3fDAXd9XvruEZ"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// A student with the highest mark in a course must have worked on a project on that course\n  all c: Course |\n        // Trova tutti gli studenti con il voto pi\u00f9 alto\n     all s: c.~enrolled | \n  \t\tlet map = Grade -> Int |\n  \t\t\t// Lo studente s ha il voto massimo nel corso c\n            (all s2: Student | #c.grades[s2] > 0 => c.grades[s].map >= \t\t\t\t\t\tc.grades[s2].map) =>\n            // Deve aver lavorato su almeno un progetto del corso\n            some c.projects & s.projects\n  \t\t\t\n}",
+                    "code": "{\n\t// A student with the highest mark in a course must have worked on a project on that course\n  all c: Course |\n  \tlet map = Grade -> Int |\n        // Trova tutti gli studenti con il voto pi\u00f9 alto\n        all s: c.~enrolled |\n            // Lo studente s ha il voto massimo nel corso c\n            (all s2: Student | #c.grades[s2] > 0 => c.grades[s].map >= \t\t\t\t\t\tc.grades[s2].map) =>\n            // Deve aver lavorato su almeno un progetto del corso\n            some c.projects & s.projects\n  \t\t\t\n}",
                     "ids": [
-                        "FM3m3fDAXd9XvruEZ"
+                        "QT65eD7i4XAm4Jt48"
                     ]
                 }
             ]
@@ -3183,16 +3183,16 @@
             "elems": [
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// A student with the highest mark in a course must have worked on a project on that course\n  all s : Student | all c : Course | all p :Project | some c.grades and first[c.grades] = c.grades[s] implies p in c.projects and p in s.projects\n\n}",
+                    "code": "{\n\t// A student with the highest mark in a course must have worked on a project on that course\n  all s : Student | all c : Course | some c.grades and first[c.grades] = c.grades[s] implies all p:Project | p in c.projects and p in s.projects\n\n}",
                     "ids": [
-                        "Ldp5vCMN5ruxsi76k"
+                        "yYta54Gy7WMorzRdT"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// A student with the highest mark in a course must have worked on a project on that course\n  all s : Student | all c : Course | some c.grades and first[c.grades] = c.grades[s] implies all p:Project | p in c.projects and p in s.projects\n\n}",
+                    "code": "{\n\t// A student with the highest mark in a course must have worked on a project on that course\n  all s : Student | all c : Course | all p :Project | some c.grades and first[c.grades] = c.grades[s] implies p in c.projects and p in s.projects\n\n}",
                     "ids": [
-                        "yYta54Gy7WMorzRdT"
+                        "Ldp5vCMN5ruxsi76k"
                     ]
                 }
             ]
@@ -4317,20 +4317,6 @@
             "elems": [
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// A student with the highest mark in a course must have worked on a project on that course\n    let highest_mark = grades[Course][Student].max |\n    let s = highest_mark[Course.grades] |\n    let c = dom[grades :> highest_mark] |\n    some (s.projects & c.projects)\n    or no c.grades or no c.projects\n}",
-                    "ids": [
-                        "szB5qGjB83gxTHfZH"
-                    ]
-                }
-            ]
-        },
-        {
-            "entry_count": 1,
-            "group_count": 1,
-            "correct": false,
-            "elems": [
-                {
-                    "entry_count": 1,
                     "code": "{\n\t// A student with the highest mark in a course must have worked on a project on that course\n    let highest_mark = Grade.max |\n    let s = highest_mark[Course.grades] |\n    let c = { c : Course | c.grades[s] = highest_mark } |\n    some (s.projects & c.projects)\n  \tor no c.grades or no c.projects\n}",
                     "ids": [
                         "KyMrECueaBbCCgrSu"
@@ -4639,34 +4625,6 @@
             "elems": [
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// A student with the highest mark in a course must have worked on a project on that course\n  \tall c: Course {\n        let maxGrade = max[c.grades[Student]] | let s = select23[grades].maxGrade | lone p: s.projects | p in c.projects\n    }\n\n}",
-                    "ids": [
-                        "6knF6QY5og6js4f3K"
-                    ]
-                }
-            ]
-        },
-        {
-            "entry_count": 1,
-            "group_count": 1,
-            "correct": false,
-            "elems": [
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// A student with the highest mark in a course must have worked on a project on that course\n  \tall c: Course {\n        let maxGrade = max[c.grades[Student]] | let s = select23[grades].maxGrade | lone p: s.projects | p in c.projects\n    }\n\n}",
-                    "ids": [
-                        "QF3sTAJSH9YtbeRoh"
-                    ]
-                }
-            ]
-        },
-        {
-            "entry_count": 1,
-            "group_count": 1,
-            "correct": false,
-            "elems": [
-                {
-                    "entry_count": 1,
                     "code": "{\n\t// A student with the highest mark in a course must have worked on a project on that course\n  \tall c: Course | some c.projects\n}",
                     "ids": [
                         "BkgKFjcoSQSb3mxfW"
@@ -4726,34 +4684,6 @@
                     "code": "{\n\t// A student with the highest mark in a course must have worked on a project on that course\n\tall c: Course | some c.grades.(Student.(c.grades).min).projects & c.projects\n}",
                     "ids": [
                         "gs6jTQGhka5dZWGHg"
-                    ]
-                }
-            ]
-        },
-        {
-            "entry_count": 1,
-            "group_count": 1,
-            "correct": false,
-            "elems": [
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// A student with the highest mark in a course must have worked on a project on that course\n\tall c: Course | c.grades.(Student.(c.grades).max) in HighestMark\n}",
-                    "ids": [
-                        "dHbjELCkvNYTbWvP4"
-                    ]
-                }
-            ]
-        },
-        {
-            "entry_count": 1,
-            "group_count": 1,
-            "correct": false,
-            "elems": [
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// A student with the highest mark in a course must have worked on a project on that course\n\tCourse.{c: Course, s: Student | c.grades.(Student.(c.grades).max) = s} = HighestMark\n}",
-                    "ids": [
-                        "oWB7uJvDwYYJow4oM"
                     ]
                 }
             ]
@@ -5293,20 +5223,6 @@
         {
             "entry_count": 1,
             "group_count": 1,
-            "correct": true,
-            "elems": [
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// A student with the highest mark in a course must have worked on a project on that course\n\tall s : Student, c : Course | highestGrade[s, c] implies some s.projects & c.projects\n}",
-                    "ids": [
-                        "WYo72Bw6ujYS4w5aB"
-                    ]
-                }
-            ]
-        },
-        {
-            "entry_count": 1,
-            "group_count": 1,
             "correct": false,
             "elems": [
                 {
@@ -5451,415 +5367,9 @@
             "elems": [
                 {
                     "entry_count": 1,
-                    "code": "{\n  all c:Course | some highest[c].projects & c.projects\n\t// A student with the highest mark in a course must have worked on a project on that course\n\t\n}",
-                    "ids": [
-                        "iTetz5zZBHAhNeE6K"
-                    ]
-                }
-            ]
-        },
-        {
-            "entry_count": 1,
-            "group_count": 1,
-            "correct": false,
-            "elems": [
-                {
-                    "entry_count": 1,
-                    "code": "{\n  all c:Course | no highest[c].projects & c.projects\n\t// A student with the highest mark in a course must have worked on a project on that course\n\t\n}",
-                    "ids": [
-                        "NJxBgPB4ECqDuknxu"
-                    ]
-                }
-            ]
-        },
-        {
-            "entry_count": 1,
-            "group_count": 1,
-            "correct": false,
-            "elems": [
-                {
-                    "entry_count": 1,
-                    "code": "{\n  all c:Course | one highest[c].projects & c.projects\n\t// A student with the highest mark in a course must have worked on a project on that course\n\t\n}",
-                    "ids": [
-                        "kMBrb5MzbFKmMJYmP"
-                    ]
-                }
-            ]
-        },
-        {
-            "entry_count": 1,
-            "group_count": 1,
-            "correct": false,
-            "elems": [
-                {
-                    "entry_count": 1,
-                    "code": "{\n  all c:Course | some highest[c].projects & c.projects\n\t// A student with the highest mark in a course must have worked on a project on that course\n\t\n}",
-                    "ids": [
-                        "dhFiYdF3R8pzYwaaJ"
-                    ]
-                }
-            ]
-        },
-        {
-            "entry_count": 1,
-            "group_count": 1,
-            "correct": false,
-            "elems": [
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// A student with the highest mark in a course must have worked on a project on that course\n  all c:Course | some highest[c].projects & c.projects\n}",
-                    "ids": [
-                        "7MWpc8vfC3hLfYFtn"
-                    ]
-                }
-            ]
-        },
-        {
-            "entry_count": 1,
-            "group_count": 1,
-            "correct": false,
-            "elems": [
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// A student with the highest mark in a course must have worked on a project on that course\n  all c:Course | some highest[c].projects & c.projects\n}",
-                    "ids": [
-                        "4FfTjY5mEDyiiQyFC"
-                    ]
-                }
-            ]
-        },
-        {
-            "entry_count": 1,
-            "group_count": 1,
-            "correct": false,
-            "elems": [
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// A student with the highest mark in a course must have worked on a project on that course\n  all c:Course | some highest[c].projects & c.projects\n}",
-                    "ids": [
-                        "L2aa9Kkkuc8YedtaD"
-                    ]
-                }
-            ]
-        },
-        {
-            "entry_count": 1,
-            "group_count": 1,
-            "correct": false,
-            "elems": [
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// A student with the highest mark in a course must have worked on a project on that course\n  all c:Course | some highest[c].projects & c.projects\n}",
-                    "ids": [
-                        "LFeLzjaeQMyT6gyYp"
-                    ]
-                }
-            ]
-        },
-        {
-            "entry_count": 1,
-            "group_count": 1,
-            "correct": false,
-            "elems": [
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// A student with the highest mark in a course must have worked on a project on that course\n  all c:Course | some highest[c].projects & c.projects\n}",
-                    "ids": [
-                        "TcrefSMsTGF5PGYRT"
-                    ]
-                }
-            ]
-        },
-        {
-            "entry_count": 1,
-            "group_count": 1,
-            "correct": false,
-            "elems": [
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// A student with the highest mark in a course must have worked on a project on that course\n  all c:Course | some (highest[c].projects & c.projects)\n}",
-                    "ids": [
-                        "FBPtFdNnpQdoxnjtQ"
-                    ]
-                }
-            ]
-        },
-        {
-            "entry_count": 1,
-            "group_count": 1,
-            "correct": false,
-            "elems": [
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// A student with the highest mark in a course must have worked on a project on that course\n  all c:Course | some c.projects  => some (highest[c].projects & c.projects)\n}",
-                    "ids": [
-                        "bRHPbrKjJccEEymSP"
-                    ]
-                }
-            ]
-        },
-        {
-            "entry_count": 1,
-            "group_count": 1,
-            "correct": false,
-            "elems": [
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// A student with the highest mark in a course must have worked on a project on that course\n  all c:Course | (some c.projects )=> some (highest[c].projects & c.projects)\n}",
-                    "ids": [
-                        "JBp2R3pdbkcMtNi6S"
-                    ]
-                }
-            ]
-        },
-        {
-            "entry_count": 1,
-            "group_count": 1,
-            "correct": false,
-            "elems": [
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// A student with the highest mark in a course must have worked on a project on that course\n  all c:Course | (some c.projects) => some (highest[c].projects & c.projects)\n}",
-                    "ids": [
-                        "994adrxgS2aKdtiLD"
-                    ]
-                }
-            ]
-        },
-        {
-            "entry_count": 1,
-            "group_count": 1,
-            "correct": false,
-            "elems": [
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// A student with the highest mark in a course must have worked on a project on that course\n  all c:Course | (some c.projects) => some (highest[c].projects & c.projects)\n}",
-                    "ids": [
-                        "RR3kn8cfpHEP9pESt"
-                    ]
-                }
-            ]
-        },
-        {
-            "entry_count": 1,
-            "group_count": 1,
-            "correct": false,
-            "elems": [
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// A student with the highest mark in a course must have worked on a project on that course\n  all c:Course | some (highest[c].projects & c.projects)\n}",
-                    "ids": [
-                        "rAKz5cznQQFWyB74w"
-                    ]
-                }
-            ]
-        },
-        {
-            "entry_count": 1,
-            "group_count": 1,
-            "correct": false,
-            "elems": [
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// A student with the highest mark in a course must have worked on a project on that course\n  all s:Student, c:Course | s in highest[c]  => some p: Project | p in s.projects & c.projects\n}",
-                    "ids": [
-                        "TR7joyfj5eXzY8fkw"
-                    ]
-                }
-            ]
-        },
-        {
-            "entry_count": 1,
-            "group_count": 1,
-            "correct": false,
-            "elems": [
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// A student with the highest mark in a course must have worked on a project on that course\n  all c:Course | some (highest[c].projects & c.projects)\n}",
-                    "ids": [
-                        "CWbWfnTE6C5rz4j9T"
-                    ]
-                }
-            ]
-        },
-        {
-            "entry_count": 1,
-            "group_count": 1,
-            "correct": false,
-            "elems": [
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// A student with the highest mark in a course must have worked on a project on that course\n  // all c:Course | some (highest[c].projects & c.projects)\n\tall c:Course | some p:Project | p in best[].projects => p in c.projects\n}",
-                    "ids": [
-                        "XmCpEaTzcwFky9Ept"
-                    ]
-                }
-            ]
-        },
-        {
-            "entry_count": 1,
-            "group_count": 1,
-            "correct": false,
-            "elems": [
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// A student with the highest mark in a course must have worked on a project on that course\n  all c:Course | some (highest[c].projects & c.projects)\n}",
-                    "ids": [
-                        "87uKC7BshcNREAX5M"
-                    ]
-                }
-            ]
-        },
-        {
-            "entry_count": 1,
-            "group_count": 1,
-            "correct": false,
-            "elems": [
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// A student with the highest mark in a course must have worked on a project on that course\n  all c:Course | some (best[].projects & c.projects)\n}",
-                    "ids": [
-                        "htoYYD4bg6z2ZCRsg"
-                    ]
-                }
-            ]
-        },
-        {
-            "entry_count": 1,
-            "group_count": 1,
-            "correct": false,
-            "elems": [
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// A student with the highest mark in a course must have worked on a project on that course\n  all c:Course | some (highest[c].projects & c.projects)\n}",
-                    "ids": [
-                        "AugAqpNEnSguQJE7t"
-                    ]
-                }
-            ]
-        },
-        {
-            "entry_count": 1,
-            "group_count": 1,
-            "correct": false,
-            "elems": [
-                {
-                    "entry_count": 1,
                     "code": "{\n\t// A student with the highest mark in a course must have worked on a project on that course\n\tall c: Course, s: Student, sg: s.(c.grades) | all cg: Person.(c.grades) - sg | all p: c.projects | gte[sg, cg] implies p in s.projects\n}",
                     "ids": [
                         "KE5Q3uR3w42DCwbQ6"
-                    ]
-                }
-            ]
-        },
-        {
-            "entry_count": 1,
-            "group_count": 1,
-            "correct": false,
-            "elems": [
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// A student with the highest mark in a course must have worked on a project on that course\n  all c:Course | some (highest[c].projects & c.projects)\n}",
-                    "ids": [
-                        "ZuJ8zsaNzbN5xptDP"
-                    ]
-                }
-            ]
-        },
-        {
-            "entry_count": 1,
-            "group_count": 1,
-            "correct": false,
-            "elems": [
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// A student with the highest mark in a course must have worked on a project on that course\n  one c:Course | some (highest[c].projects & c.projects)\n}",
-                    "ids": [
-                        "X4uLsav4QzcgxgKeb"
-                    ]
-                }
-            ]
-        },
-        {
-            "entry_count": 1,
-            "group_count": 1,
-            "correct": false,
-            "elems": [
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// A student with the highest mark in a course must have worked on a project on that course\n  one c:Course | some (highest[c].projects & c.projects)\n}",
-                    "ids": [
-                        "WsFqG6dCYy2HXw2Bq"
-                    ]
-                }
-            ]
-        },
-        {
-            "entry_count": 1,
-            "group_count": 1,
-            "correct": false,
-            "elems": [
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// A student with the highest mark in a course must have worked on a project on that course\n  best[] in sProjects.univ\n  one c:Course | some (highest[c].projects & c.projects)\n}",
-                    "ids": [
-                        "zF2zvYFqku5XQkrP7"
-                    ]
-                }
-            ]
-        },
-        {
-            "entry_count": 1,
-            "group_count": 1,
-            "correct": false,
-            "elems": [
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// A student with the highest mark in a course must have worked on a project on that course\n  best[] in sProjects.univ}",
-                    "ids": [
-                        "McDkSLL6zTsBYXMs9"
-                    ]
-                }
-            ]
-        },
-        {
-            "entry_count": 1,
-            "group_count": 1,
-            "correct": false,
-            "elems": [
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// A student with the highest mark in a course must have worked on a project on \t   that course\n  best[] in sProjects.univ\nall s : Student, c : Course | s = highest[c] => some (c.projects & s.projects)\n}",
-                    "ids": [
-                        "ikqddQ6Q8oPsn4G5W"
-                    ]
-                }
-            ]
-        },
-        {
-            "entry_count": 1,
-            "group_count": 1,
-            "correct": false,
-            "elems": [
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// A student with the highest mark in a course must have worked on a project on \t   that course\n  best[] in sProjects.univ\nall s : Student, c : Course | s = best[] => some (c.projects & s.projects)\n}",
-                    "ids": [
-                        "LSB56bfL3pxk4h2fk"
-                    ]
-                }
-            ]
-        },
-        {
-            "entry_count": 1,
-            "group_count": 1,
-            "correct": false,
-            "elems": [
-                {
-                    "entry_count": 1,
-                    "code": "{\n    // A student with the highest mark in a course must have worked on a project on that course\n  all c:Course | some (highest[c].projects & c.projects)\n}",
-                    "ids": [
-                        "DKyyaMbYgEuxC9RHK"
                     ]
                 }
             ]
@@ -6014,20 +5524,6 @@
                     "code": "{\n\t// A student with the highest mark in a course must have worked on a project on that course\n  let map = Grade -> Int |\n  \tall c: Course |\n        all s: Student |\n            // Se lo studente ha il voto massimo\n            (all s2: Student | c.grades[s].map >= c.grades[s2].map) =>\n            // Deve aver lavorato su almeno un progetto del corso\n             #(c.projects & s.projects) = 1\n}",
                     "ids": [
                         "FC7M7Bp3DZJTZLfC7"
-                    ]
-                }
-            ]
-        },
-        {
-            "entry_count": 1,
-            "group_count": 1,
-            "correct": false,
-            "elems": [
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// A student with the highest mark in a course must have worked on a project on that course\n\tall s: Student |\n  \t\tall c: s.enrolled|\n  \t\t\t(s.(c.grades.vote) >= Student.(c.grades.vote)) implies\n  \t\t\t\t(some p: Project | p in s.projects and p in c.projects)\n}",
-                    "ids": [
-                        "zaoA5EdgAhFRoTRWD"
                     ]
                 }
             ]

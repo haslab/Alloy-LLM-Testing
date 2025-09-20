@@ -3,7 +3,7 @@
     "pred": "this/inv2",
     "entry_count": 1599,
     "group_count": 45,
-    "duration": 13,
+    "duration": 14,
     "scope": 3,
     "groups": [
         {
@@ -1246,20 +1246,6 @@
                 },
                 {
                     "entry_count": 8,
-                    "code": "{\n\t// Users cannot follow themselves.\n    all x,y : User | x->y in follows implies x!=y\n\n}",
-                    "ids": [
-                        "3aPaGy2XEbvkdcKfY",
-                        "yHwHFfhJTDWNQLJpT",
-                        "es6JQNCc2hYBtRiCG",
-                        "Jh2FPrvHWjMYtM4jt",
-                        "rZ4fZi4aHYagDyGB7",
-                        "vrtpMJNWtFMvW3sdL",
-                        "5P6RphuJxWoXDkRuH",
-                        "sBBqkBrF4KNbQjZpa"
-                    ]
-                },
-                {
-                    "entry_count": 8,
                     "code": "{\n\t// Users cannot follow themselves.\n\tall p : User | not p -> p in follows\n  \n\tno p : User | p -> p in follows\n  \n  \tno p : User | p in p.follows\n}",
                     "ids": [
                         "yaaQjdKdH36i98Xn7",
@@ -1270,6 +1256,20 @@
                         "HWxPkSyx5Ni6yi5GQ",
                         "TS9WZERB7KdXhq5Tq",
                         "horKe6RMmfADu29vj"
+                    ]
+                },
+                {
+                    "entry_count": 8,
+                    "code": "{\n\t// Users cannot follow themselves.\n    all x,y : User | x->y in follows implies x!=y\n\n}",
+                    "ids": [
+                        "3aPaGy2XEbvkdcKfY",
+                        "yHwHFfhJTDWNQLJpT",
+                        "es6JQNCc2hYBtRiCG",
+                        "Jh2FPrvHWjMYtM4jt",
+                        "rZ4fZi4aHYagDyGB7",
+                        "vrtpMJNWtFMvW3sdL",
+                        "5P6RphuJxWoXDkRuH",
+                        "sBBqkBrF4KNbQjZpa"
                     ]
                 },
                 {
@@ -1309,16 +1309,6 @@
                 },
                 {
                     "entry_count": 4,
-                    "code": "{\n\t// Users cannot follow themselves.\n  \tall self : User, follows : self.follows | self not in follows\n\n}",
-                    "ids": [
-                        "Qz38vhmoBiydi7Jwh",
-                        "sjudBia4ZmQhtfFrk",
-                        "Yho2Z6gfAsFwWSgbz",
-                        "EyQ868gd3AWnixnpz"
-                    ]
-                },
-                {
-                    "entry_count": 4,
                     "code": "{\n\t// Users cannot follow themselves.\n    \n  \t// all p : User | not p -> p in follows\n  \n\t// all p : User | p -> p not in follows\n  \n  \tno p : User | p -> p in follows\n}",
                     "ids": [
                         "wCuZ95uFheTcgnZvo",
@@ -1328,48 +1318,22 @@
                     ]
                 },
                 {
+                    "entry_count": 4,
+                    "code": "{\n\t// Users cannot follow themselves.\n  \tall self : User, follows : self.follows | self not in follows\n\n}",
+                    "ids": [
+                        "Qz38vhmoBiydi7Jwh",
+                        "sjudBia4ZmQhtfFrk",
+                        "Yho2Z6gfAsFwWSgbz",
+                        "EyQ868gd3AWnixnpz"
+                    ]
+                },
+                {
                     "entry_count": 3,
                     "code": "{\n\t// Users cannot follow themselves.\n    all x,y : User | x in follows.y implies x!=y\n\n}",
                     "ids": [
                         "9gTtEkQPsDPqA9nir",
                         "XGrw3SWpRajTyscrT",
                         "bsPXXZ4zauiWWseq7"
-                    ]
-                },
-                {
-                    "entry_count": 3,
-                    "code": "{\n\t// Users cannot follow themselves.\n  all u, z: User |  u = z implies u not in follows.z\n\n}",
-                    "ids": [
-                        "kuNpJjsXfGHXb4qBp",
-                        "H5AKgnp7L42eGS6ST",
-                        "v4iW2vGYsuwwiPhXK"
-                    ]
-                },
-                {
-                    "entry_count": 3,
-                    "code": "{\n\t// Users cannot follow themselves.\n\n  \t //all p : User | not p -> p in follows\n\n\t// ou, usando quantificador 'no' (\"nenhum...\") \n\t// \n  \t// no p : User | p -> p in follows\n\n\t// N\u00e3o \u00e9 poss\u00edvel eliminar a vari\u00e1vel p e\n\t// substituir quantificador 'no' por operador 'no' sobre conjuntos\n\t//\n  \t//no p : User | p in p.follows\n  \n    all x, y: User | not(x->y in follows and x = y)\n}",
-                    "ids": [
-                        "c477wKdmg6gPxN4kq",
-                        "RtzzJeDC6z5Nh7umY",
-                        "fGsB56WxNo8nMh5Cy"
-                    ]
-                },
-                {
-                    "entry_count": 3,
-                    "code": "{\n\t// Users cannot follow themselves.\n\tall u : User | no(follows.u & u.iden)\n}",
-                    "ids": [
-                        "ycMaNg83JXjg2nK7p",
-                        "zCHvX8TTWrPS2eQfp",
-                        "kwofkbc83z5cJPmJX"
-                    ]
-                },
-                {
-                    "entry_count": 3,
-                    "code": "{\n\t// Users cannot follow themselves.\n  \n\tall u : User | no (u & follows.u)\n\n}",
-                    "ids": [
-                        "aJyJ9YmDhkF3pNCLM",
-                        "HSpCeM4DdfX4PwTNG",
-                        "yvecvJvGMDuMzFex4"
                     ]
                 },
                 {
@@ -1391,43 +1355,39 @@
                     ]
                 },
                 {
-                    "entry_count": 2,
-                    "code": "{\n\t// Users cannot follow themselves.\n\tall x : User, y : x.follows | ! x = y \n}",
+                    "entry_count": 3,
+                    "code": "{\n\t// Users cannot follow themselves.\n\n  \t //all p : User | not p -> p in follows\n\n\t// ou, usando quantificador 'no' (\"nenhum...\") \n\t// \n  \t// no p : User | p -> p in follows\n\n\t// N\u00e3o \u00e9 poss\u00edvel eliminar a vari\u00e1vel p e\n\t// substituir quantificador 'no' por operador 'no' sobre conjuntos\n\t//\n  \t//no p : User | p in p.follows\n  \n    all x, y: User | not(x->y in follows and x = y)\n}",
                     "ids": [
-                        "zExoNNQQvAcGQMDeX",
-                        "EixziDBydup4aWAbM"
+                        "c477wKdmg6gPxN4kq",
+                        "RtzzJeDC6z5Nh7umY",
+                        "fGsB56WxNo8nMh5Cy"
                     ]
                 },
                 {
-                    "entry_count": 2,
-                    "code": "{\n\t// Users cannot follow themselves.\n\tall x : User, y : x.follows | ! x in y\n}",
+                    "entry_count": 3,
+                    "code": "{\n\t// Users cannot follow themselves.\n  all u, z: User |  u = z implies u not in follows.z\n\n}",
                     "ids": [
-                        "mnwsfhyZXmrxdd5qf",
-                        "qbWrkyKKg283y8umE"
+                        "kuNpJjsXfGHXb4qBp",
+                        "H5AKgnp7L42eGS6ST",
+                        "v4iW2vGYsuwwiPhXK"
                     ]
                 },
                 {
-                    "entry_count": 2,
-                    "code": "{\n\t// Users cannot follow themselves.\n\tall u : User | (follows.u & u.iden) in none \n}",
+                    "entry_count": 3,
+                    "code": "{\n\t// Users cannot follow themselves.\n\tall u : User | no(follows.u & u.iden)\n}",
                     "ids": [
-                        "MtR9pZugH24k7sodh",
-                        "cEN6pGt4GPXoyYHTo"
+                        "ycMaNg83JXjg2nK7p",
+                        "zCHvX8TTWrPS2eQfp",
+                        "kwofkbc83z5cJPmJX"
                     ]
                 },
                 {
-                    "entry_count": 2,
-                    "code": "{\n\t// Users cannot follow themselves.\n  \talways(all u: User| u not in u.follows)\n\n}",
+                    "entry_count": 3,
+                    "code": "{\n\t// Users cannot follow themselves.\n  \n\tall u : User | no (u & follows.u)\n\n}",
                     "ids": [
-                        "KCiZa4YAajPgaD6Au",
-                        "mfFeHTFZejmTLyY6e"
-                    ]
-                },
-                {
-                    "entry_count": 2,
-                    "code": "{\n\t// Users cannot follow themselves.\n\t\n  \tall u : User | not u in follows.u\n  \n  \tno u : User | u in follows.u\n  \n  \tno u : User | u in u.follows\n  \n  \tall u, u1 : User | not(u in follows.u1 and u = u1)\n}",
-                    "ids": [
-                        "TwH9ZY57N4RiST9ji",
-                        "vekM6iucrfnnmTeHb"
+                        "aJyJ9YmDhkF3pNCLM",
+                        "HSpCeM4DdfX4PwTNG",
+                        "yvecvJvGMDuMzFex4"
                     ]
                 },
                 {
@@ -1440,18 +1400,26 @@
                 },
                 {
                     "entry_count": 2,
-                    "code": "{\n\t// Users cannot follow themselves.\n  //all u:User | u not in u.follows\n  all u:User | u & u.follows = none\n}",
+                    "code": "{\n\t// Users cannot follow themselves.\n  all u1,u2 : User | u2 in follows.u1 implies u1 != u2\n\n}",
                     "ids": [
-                        "8hMEjGtuSFqckFF4k",
-                        "waZp5pufDYwvkpgPd"
+                        "cH3EweBy9svAqeeGP",
+                        "yG6eeAyWdmK4yACSj"
                     ]
                 },
                 {
                     "entry_count": 2,
-                    "code": "{\n\t// Users cannot follow themselves.\n\tall x:User, y:User | x = y implies y not in x.follows\n}",
+                    "code": "{\n\t// Users cannot follow themselves.\n\t\n  \tall u : User | not u in follows.u\n  \n  \tno u : User | u in follows.u\n  \n  \tno u : User | u in u.follows\n  \n  \tall u, u1 : User | not(u in follows.u1 and u = u1)\n}",
                     "ids": [
-                        "cj5RWRyEFQouawFfE",
-                        "mcmmF2DQ9xxN7SH5N"
+                        "TwH9ZY57N4RiST9ji",
+                        "vekM6iucrfnnmTeHb"
+                    ]
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Users cannot follow themselves.\n\tall x : User, y : x.follows | ! x in y\n}",
+                    "ids": [
+                        "mnwsfhyZXmrxdd5qf",
+                        "qbWrkyKKg283y8umE"
                     ]
                 },
                 {
@@ -1464,18 +1432,18 @@
                 },
                 {
                     "entry_count": 2,
-                    "code": "{\n\t// Users cannot follow themselves.\n  all u: User | one u1 : User | u not in u1.follows and u=u1\n\n}",
+                    "code": "{\n\t// Users cannot follow themselves.\n  \talways(all u: User| u not in u.follows)\n\n}",
                     "ids": [
-                        "QmvHiBXwKX8oKbBLo",
-                        "dqCgBzEbQzFJw3svN"
+                        "KCiZa4YAajPgaD6Au",
+                        "mfFeHTFZejmTLyY6e"
                     ]
                 },
                 {
                     "entry_count": 2,
-                    "code": "{\n\t// Users cannot follow themselves.\n  all u1,u2 : User | u2 in follows.u1 implies u1 != u2\n\n}",
+                    "code": "{\n\t// Users cannot follow themselves.\n\tall u : User | (follows.u & u.iden) in none \n}",
                     "ids": [
-                        "cH3EweBy9svAqeeGP",
-                        "yG6eeAyWdmK4yACSj"
+                        "MtR9pZugH24k7sodh",
+                        "cEN6pGt4GPXoyYHTo"
                     ]
                 },
                 {
@@ -1487,10 +1455,63 @@
                     ]
                 },
                 {
-                    "entry_count": 1,
-                    "code": "{\n\t// Users cannot follow themselves.\n  \t//all x: User | not x->x in follows\n  \tfollows&iden = none->none\n}",
+                    "entry_count": 2,
+                    "code": "{\n\t// Users cannot follow themselves.\n\tall x:User, y:User | x = y implies y not in x.follows\n}",
                     "ids": [
-                        "dYu49pAQahCHTvNph"
+                        "cj5RWRyEFQouawFfE",
+                        "mcmmF2DQ9xxN7SH5N"
+                    ]
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Users cannot follow themselves.\n  //all u:User | u not in u.follows\n  all u:User | u & u.follows = none\n}",
+                    "ids": [
+                        "8hMEjGtuSFqckFF4k",
+                        "waZp5pufDYwvkpgPd"
+                    ]
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Users cannot follow themselves.\n\tall x : User, y : x.follows | ! x = y \n}",
+                    "ids": [
+                        "zExoNNQQvAcGQMDeX",
+                        "EixziDBydup4aWAbM"
+                    ]
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Users cannot follow themselves.\n  all u: User | one u1 : User | u not in u1.follows and u=u1\n\n}",
+                    "ids": [
+                        "QmvHiBXwKX8oKbBLo",
+                        "dqCgBzEbQzFJw3svN"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Users cannot follow themselves.\n\t\n  \t//all u : User | not u in follows.u\n  \n  \t//no u : User | u in follows.u\n  \n  \t//no u : User | u in u.follows\n  \n  \tall u, u1 : User | not(u in follows.u1 and u = u1)\n}",
+                    "ids": [
+                        "j8uuwToAj28k8fuzy"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Users cannot follow themselves.\n\n  all x, y : User | x->y in follows and y -> x in follows implies not(x=y)\n  \n}",
+                    "ids": [
+                        "PrcoCzrkuYsGQeZsv"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Users cannot follow themselves.\n\tno user: User | user.follows & user != none\n}",
+                    "ids": [
+                        "EyyB8AuNbZdyAznDv"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Users cannot follow themselves.\n  \n  \tall p: User | not p in p.follows\n  \n  \tno p: User | p in p.follows\n}",
+                    "ids": [
+                        "pQuLJCev8zneYocFp"
                     ]
                 },
                 {
@@ -1502,16 +1523,23 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Users cannot follow themselves.\n  no u1,u2: User | u1 = u2 and u2 in u1.follows\n\n}",
+                    "code": "{\n\t// Users cannot follow themselves.\n  \tall x : User | all y : User | x = y implies x -> y not in follows\t\n}",
                     "ids": [
-                        "qaNCvCnmE293BPetJ"
+                        "xLZEbzQm7RQ7NmMzD"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Users cannot follow themselves.\n  \tall x : User | all y : User | x = y implies x -> y not in follows\t\n}",
+                    "code": "{\n\t// Users cannot follow themselves.\n  \t//all x: User | not x->x in follows\n  \tfollows&iden = none->none\n}",
                     "ids": [
-                        "xLZEbzQm7RQ7NmMzD"
+                        "dYu49pAQahCHTvNph"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Users cannot follow themselves.\n  //all u: User | u not in u.follows\n  all u1,u2:User | u1 in u2.follows  && u2 in u1.follows implies u1 != u2\n\n}",
+                    "ids": [
+                        "jeaqq4jvXWynpf3Nh"
                     ]
                 },
                 {
@@ -1530,9 +1558,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Users cannot follow themselves.\n\t\n  \t//all u : User | not u in follows.u\n  \n  \t//no u : User | u in follows.u\n  \n  \t//no u : User | u in u.follows\n  \n  \tall u, u1 : User | not(u in follows.u1 and u = u1)\n}",
+                    "code": "{\n\t// Users cannot follow themselves.\n  not some u : User | u->u in follows\n}",
                     "ids": [
-                        "j8uuwToAj28k8fuzy"
+                        "SBpNp8r39yJqsX5mb"
                     ]
                 },
                 {
@@ -1544,16 +1572,16 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Users cannot follow themselves.\n  \n  \tall p: User | not p in p.follows\n  \n  \tno p: User | p in p.follows\n}",
+                    "code": "{\n\t// Users cannot follow themselves.\n  no u1,u2: User | u1 = u2 and u2 in u1.follows\n\n}",
                     "ids": [
-                        "pQuLJCev8zneYocFp"
+                        "qaNCvCnmE293BPetJ"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Users cannot follow themselves.\n\n  all x, y : User | x->y in follows and y -> x in follows implies not(x=y)\n  \n}",
+                    "code": "{\n\t// Users cannot follow themselves.\n\tall u1,u2:User | u1 -> u2 in follows && u2-> u1 in follows implies u1 != u2\n}",
                     "ids": [
-                        "PrcoCzrkuYsGQeZsv"
+                        "daiWNCNKC2pusrRz9"
                     ]
                 },
                 {
@@ -1568,34 +1596,6 @@
                     "code": "{\n\t// Users cannot follow themselves.\n\tall u : User | (follows.u & iden.u) in none \n}",
                     "ids": [
                         "fNRHPk6SJxzqSQHka"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Users cannot follow themselves.\n  not some u : User | u->u in follows\n}",
-                    "ids": [
-                        "SBpNp8r39yJqsX5mb"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Users cannot follow themselves.\n\tno user: User | user.follows & user != none\n}",
-                    "ids": [
-                        "EyyB8AuNbZdyAznDv"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Users cannot follow themselves.\n\tall u1,u2:User | u1 -> u2 in follows && u2-> u1 in follows implies u1 != u2\n}",
-                    "ids": [
-                        "daiWNCNKC2pusrRz9"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Users cannot follow themselves.\n  //all u: User | u not in u.follows\n  all u1,u2:User | u1 in u2.follows  && u2 in u1.follows implies u1 != u2\n\n}",
-                    "ids": [
-                        "jeaqq4jvXWynpf3Nh"
                     ]
                 }
             ]
@@ -1707,14 +1707,6 @@
                 },
                 {
                     "entry_count": 2,
-                    "code": "{\n\t// Users cannot follow themselves.\n    \n  \t// (all p : User | not p -> p in follows)\n \t//  implies\n  \n  \t(no p : User | p -> p in follows) \n\t\timplies\n\n  \t(all p : User | not p -> p in follows)\n\n  \t// no p : User | p in p.follows\n}",
-                    "ids": [
-                        "9Qddh8mmjKwWK3s2P",
-                        "xaAFCWLc8dHFSbzdZ"
-                    ]
-                },
-                {
-                    "entry_count": 2,
                     "code": "{\n\t// Users cannot follow themselves.\n\tall u1,u2 : User | u1->u2 in follows or u2->u1 in follows implies u1 != u2\n}",
                     "ids": [
                         "b6CvkcZtzozdYdRwy",
@@ -1722,10 +1714,11 @@
                     ]
                 },
                 {
-                    "entry_count": 1,
-                    "code": "{\n\t// Users cannot follow themselves.\n\tUser.follows in User\n  \t//all u0,u1: User | some (u0.follows + u1.follows)\n}",
+                    "entry_count": 2,
+                    "code": "{\n\t// Users cannot follow themselves.\n    \n  \t// (all p : User | not p -> p in follows)\n \t//  implies\n  \n  \t(no p : User | p -> p in follows) \n\t\timplies\n\n  \t(all p : User | not p -> p in follows)\n\n  \t// no p : User | p in p.follows\n}",
                     "ids": [
-                        "PRQSL2294iYw7QxmQ"
+                        "9Qddh8mmjKwWK3s2P",
+                        "xaAFCWLc8dHFSbzdZ"
                     ]
                 },
                 {
@@ -1737,9 +1730,23 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Users cannot follow themselves.\n    \n  \t(all p : User | not p -> p in follows)\n \t  iff\n  \n  \t(no p : User | p -> p in follows) \n  \n  \t// no p : User | p in p.follows\n}",
+                    "code": "{\n\t// Users cannot follow themselves.\n\tUser.follows in User\n  \t//all u0,u1: User | some (u0.follows + u1.follows)\n}",
                     "ids": [
-                        "EzRgP9BGhLmRF6zd3"
+                        "PRQSL2294iYw7QxmQ"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Users cannot follow themselves.\n  \tnot iden in follows\n\n}",
+                    "ids": [
+                        "8P2uHQ6n9ZqaC5x9F"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Users cannot follow themselves.\n    \n  \t(all p : User | not p -> p in follows)\n \t  implies\n  \n  \t(no p : User | p -> p in follows) \n  \n  \t// no p : User | p in p.follows\n}",
+                    "ids": [
+                        "2okt3rp58bTiPymcY"
                     ]
                 },
                 {
@@ -1765,16 +1772,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Users cannot follow themselves.\n  \tnot iden in follows\n\n}",
+                    "code": "{\n\t// Users cannot follow themselves.\n    \n  \t(all p : User | not p -> p in follows)\n \t  iff\n  \n  \t(no p : User | p -> p in follows) \n  \n  \t// no p : User | p in p.follows\n}",
                     "ids": [
-                        "8P2uHQ6n9ZqaC5x9F"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Users cannot follow themselves.\n    \n  \t(all p : User | not p -> p in follows)\n \t  implies\n  \n  \t(no p : User | p -> p in follows) \n  \n  \t// no p : User | p in p.follows\n}",
-                    "ids": [
-                        "2okt3rp58bTiPymcY"
+                        "EzRgP9BGhLmRF6zd3"
                     ]
                 }
             ]
@@ -1860,14 +1860,6 @@
                 },
                 {
                     "entry_count": 2,
-                    "code": "{\n\t// Users cannot follow themselves.\n\tall u: User | u not in follows.User\n}",
-                    "ids": [
-                        "3GP4EA5hmH6pSMQ7Z",
-                        "krLBEaNKXMr4GFdeR"
-                    ]
-                },
-                {
-                    "entry_count": 2,
                     "code": "{\n\t// Users cannot follow themselves.\n  \tall x: User |  not x in (User.follows)\n\n}",
                     "ids": [
                         "MQX9rJ8jRFe54pn5M",
@@ -1876,10 +1868,10 @@
                 },
                 {
                     "entry_count": 2,
-                    "code": "{\n\t// Users cannot follow themselves.\n\tall disj u : User | no (u.follows + u.follows) \n \t//some (u0.follows & u1.follows)\n}",
+                    "code": "{\n\t// Users cannot follow themselves.\n\tall u: User | u not in follows.User\n}",
                     "ids": [
-                        "a9qoDL5QHtpuynDBm",
-                        "Af32oLcyTEfmeTNEp"
+                        "3GP4EA5hmH6pSMQ7Z",
+                        "krLBEaNKXMr4GFdeR"
                     ]
                 },
                 {
@@ -1891,10 +1883,11 @@
                     ]
                 },
                 {
-                    "entry_count": 1,
-                    "code": "{\n\t// Users cannot follow themselves.\n\tall u1, u2: User | u1 not in u2.follows\n}",
+                    "entry_count": 2,
+                    "code": "{\n\t// Users cannot follow themselves.\n\tall disj u : User | no (u.follows + u.follows) \n \t//some (u0.follows & u1.follows)\n}",
                     "ids": [
-                        "v2PLNwpa8ZqtaMeiZ"
+                        "a9qoDL5QHtpuynDBm",
+                        "Af32oLcyTEfmeTNEp"
                     ]
                 },
                 {
@@ -1906,9 +1899,16 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Users cannot follow themselves.\n  \tall x,y: User | not x->y in follows\n  \t//follows & iden in no follows\n}",
+                    "code": "{\n\t// Users cannot follow themselves.\n    \n  \t// all p : User | not p -> p in follows\n  \n\t// all p : User | p -> p not in follows\n  \n\tno follows\n}",
                     "ids": [
-                        "96LEaoKs3k5iLScAx"
+                        "hfzhtAgLzFgGtyb2x"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Users cannot follow themselves.\n  //all u:User | u not in u.follows\n  //all u:User | u & u.follows = none\n  User & User.follows = none\n}",
+                    "ids": [
+                        "xrpHp2CrBEueAur3x"
                     ]
                 },
                 {
@@ -1916,6 +1916,20 @@
                     "code": "{\n\t// Users cannot follow themselves.\n  \tall u1,u2 : User | not u1 in u2.follows \n\n}",
                     "ids": [
                         "6LyzvGMTXu346p295"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Users cannot follow themselves.\n\tall u1, u2: User | u1 not in u2.follows\n}",
+                    "ids": [
+                        "v2PLNwpa8ZqtaMeiZ"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Users cannot follow themselves.\n\tall disj u0 : User | no u0.^follows\n}",
+                    "ids": [
+                        "DiXLMhFWkQiTaf7xQ"
                     ]
                 },
                 {
@@ -1934,23 +1948,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Users cannot follow themselves.\n\tall disj u0 : User | no u0.^follows\n}",
+                    "code": "{\n\t// Users cannot follow themselves.\n  \tall x,y: User | not x->y in follows\n  \t//follows & iden in no follows\n}",
                     "ids": [
-                        "DiXLMhFWkQiTaf7xQ"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Users cannot follow themselves.\n    \n  \t// all p : User | not p -> p in follows\n  \n\t// all p : User | p -> p not in follows\n  \n\tno follows\n}",
-                    "ids": [
-                        "hfzhtAgLzFgGtyb2x"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Users cannot follow themselves.\n  //all u:User | u not in u.follows\n  //all u:User | u & u.follows = none\n  User & User.follows = none\n}",
-                    "ids": [
-                        "xrpHp2CrBEueAur3x"
+                        "96LEaoKs3k5iLScAx"
                     ]
                 },
                 {
@@ -1978,10 +1978,10 @@
                 },
                 {
                     "entry_count": 2,
-                    "code": "{\n\t// Users cannot follow themselves.\n\tall x : User | User & User.iden in none\n}",
+                    "code": "{\n\t// Users cannot follow themselves.\n  \tno u: User | u in u.*follows\n\n}",
                     "ids": [
-                        "FQ7EQdp9XnxXt6iAr",
-                        "FDJxkRHcwxfu2A9Jf"
+                        "mj9zt8npkZLZCbWNW",
+                        "ACsoKZw6KXPYtc29h"
                     ]
                 },
                 {
@@ -1994,24 +1994,24 @@
                 },
                 {
                     "entry_count": 2,
-                    "code": "{\n\t// Users cannot follow themselves.\n  \tno u: User | u in u.*follows\n\n}",
+                    "code": "{\n\t// Users cannot follow themselves.\n\tall x : User | User & User.iden in none\n}",
                     "ids": [
-                        "mj9zt8npkZLZCbWNW",
-                        "ACsoKZw6KXPYtc29h"
+                        "FQ7EQdp9XnxXt6iAr",
+                        "FDJxkRHcwxfu2A9Jf"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Users cannot follow themselves.\n\tall x : User | User & iden.x in none\n}",
+                    "code": "{\n\t// Users cannot follow themselves.\n  all x:User | User & x = none\n\n}",
                     "ids": [
-                        "ZpfkvTXAb7nhcCLrZ"
+                        "c3JtjJaEQasQhAj5S"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Users cannot follow themselves.\n\tall x : User | x & x.iden in none\n}",
+                    "code": "{\n\t// Users cannot follow themselves.\n\tall x : User | User & iden.User in none\n}",
                     "ids": [
-                        "8KeErkH8nuzk2sEyP"
+                        "RJG5vtZQRoXeCyceu"
                     ]
                 },
                 {
@@ -2023,9 +2023,30 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Users cannot follow themselves.\n\tno iden.User\n}",
+                    "code": "{\n\t// Users cannot follow themselves.\n  all u : User | u -> u in posts\n}",
                     "ids": [
-                        "iGXSnZucCvLiewyT5"
+                        "euceG4k7ac52AwgAT"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Users cannot follow themselves.\n\tall x : User | x & x.iden in none\n}",
+                    "ids": [
+                        "8KeErkH8nuzk2sEyP"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Users cannot follow themselves.\n\tall u0,u1: User | u0.follows != u1.follows\n  \t//all u0,u1: User | some (u0.follows + u1.follows)\n}",
+                    "ids": [
+                        "33d5GdG64Rb9dJmC7"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Users cannot follow themselves.\n  all u : User | not u in u.*follows \n}",
+                    "ids": [
+                        "rj4uwH4zAmbS4r8ME"
                     ]
                 },
                 {
@@ -2044,9 +2065,16 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Users cannot follow themselves.\n  all u : User | not u in u.*follows \n}",
+                    "code": "{\n\t// Users cannot follow themselves.\n  all u : User | u not in u.*(follows)\n\n}",
                     "ids": [
-                        "rj4uwH4zAmbS4r8ME"
+                        "GLtTdE9tahCQhC8Xj"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Users cannot follow themselves.\n\tno iden.User\n}",
+                    "ids": [
+                        "iGXSnZucCvLiewyT5"
                     ]
                 },
                 {
@@ -2065,13 +2093,6 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Users cannot follow themselves.\n  all u : User | u -> u in posts\n}",
-                    "ids": [
-                        "euceG4k7ac52AwgAT"
-                    ]
-                },
-                {
-                    "entry_count": 1,
                     "code": "{\n\t// Users cannot follow themselves.\n\tall x : User | all y : User | (univ -> univ) - iden in follows\n}",
                     "ids": [
                         "YJ98WHR7AEWmSrTnn"
@@ -2079,30 +2100,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Users cannot follow themselves.\n  all u : User | u not in u.*(follows)\n\n}",
+                    "code": "{\n\t// Users cannot follow themselves.\n\tall x : User | User & iden.x in none\n}",
                     "ids": [
-                        "GLtTdE9tahCQhC8Xj"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Users cannot follow themselves.\n\tall x : User | User & iden.User in none\n}",
-                    "ids": [
-                        "RJG5vtZQRoXeCyceu"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Users cannot follow themselves.\n  all x:User | User & x = none\n\n}",
-                    "ids": [
-                        "c3JtjJaEQasQhAj5S"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Users cannot follow themselves.\n\tall u0,u1: User | u0.follows != u1.follows\n  \t//all u0,u1: User | some (u0.follows + u1.follows)\n}",
-                    "ids": [
-                        "33d5GdG64Rb9dJmC7"
+                        "ZpfkvTXAb7nhcCLrZ"
                     ]
                 }
             ]
@@ -2147,16 +2147,16 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Users cannot follow themselves.\n\tall u : User | no u - u.follows \n}",
+                    "code": "{\n\t// Users cannot follow themselves.\n\tno user: User | user not in user.follows\n}",
                     "ids": [
-                        "eXoxLP8MQ7qbcemkH"
+                        "RtZ6937t5GoWheZgj"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Users cannot follow themselves.\n\tno user: User | user not in user.follows\n}",
+                    "code": "{\n\t// Users cannot follow themselves.\n\tall u : User | no u - u.follows \n}",
                     "ids": [
-                        "RtZ6937t5GoWheZgj"
+                        "eXoxLP8MQ7qbcemkH"
                     ]
                 }
             ]
@@ -2186,18 +2186,18 @@
                 },
                 {
                     "entry_count": 2,
-                    "code": "{\n\t// Users cannot follow themselves.\n\tall u : User | not u in u.^follows\n}",
-                    "ids": [
-                        "bcAwavY3WNGceHDnb",
-                        "5TCeZQsLRHqb9LosE"
-                    ]
-                },
-                {
-                    "entry_count": 2,
                     "code": "{\n\t// Users cannot follow themselves.\n  \tno u: User | u in u.^follows\n\n}",
                     "ids": [
                         "JMpKvzPWYu7E4T5bc",
                         "dpZJKKNSaiY9B2fco"
+                    ]
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Users cannot follow themselves.\n\tall u : User | not u in u.^follows\n}",
+                    "ids": [
+                        "bcAwavY3WNGceHDnb",
+                        "5TCeZQsLRHqb9LosE"
                     ]
                 },
                 {
@@ -2247,16 +2247,16 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Users cannot follow themselves.\n  \n  all p1, p2 : User | (p1.follows = p2 implies p1 != p2) && (p2.follows =p1 implies p2 != p1)\n\n}",
+                    "code": "{\n\t// Users cannot follow themselves.\n  \n  all p1, p2 : User | p1.follows = p2 implies p1 != p2 \n\n}",
                     "ids": [
-                        "WNvr4nRjR8gjwxEb6"
+                        "R9dBXi5gegYRZY5gb"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Users cannot follow themselves.\n  \n  all p1, p2 : User | p1.follows = p2 implies p1 != p2 \n\n}",
+                    "code": "{\n\t// Users cannot follow themselves.\n  \n  all p1, p2 : User | (p1.follows = p2 implies p1 != p2) && (p2.follows =p1 implies p2 != p1)\n\n}",
                     "ids": [
-                        "R9dBXi5gegYRZY5gb"
+                        "WNvr4nRjR8gjwxEb6"
                     ]
                 }
             ]
@@ -2355,20 +2355,6 @@
             "elems": [
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Users cannot follow themselves.\n\tall disj u0,u1 : User | no (u0.^follows + u1.^follows) \n \t//some (u0.follows & u1.follows)\n}",
-                    "ids": [
-                        "cEpk9PGtZhg2oQQCv"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Users cannot follow themselves.\n\tall disj u0,u1 : User | no (u0.follows + u1.follows) \n \t//some (u0.follows & u1.follows)\n}",
-                    "ids": [
-                        "pTFf9xr4bbdm6PK9N"
-                    ]
-                },
-                {
-                    "entry_count": 1,
                     "code": "{\n\t// Users cannot follow themselves.\n\tall disj u0,u1 : User | no (u0.follows & u0.follows) \n \t//some (u0.follows & u1.follows)\n}",
                     "ids": [
                         "K3RC57wLyBaWXDjRd"
@@ -2380,6 +2366,20 @@
                     "ids": [
                         "JgAjqP9gXPgbCcAKM"
                     ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Users cannot follow themselves.\n\tall disj u0,u1 : User | no (u0.follows + u1.follows) \n \t//some (u0.follows & u1.follows)\n}",
+                    "ids": [
+                        "pTFf9xr4bbdm6PK9N"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Users cannot follow themselves.\n\tall disj u0,u1 : User | no (u0.^follows + u1.^follows) \n \t//some (u0.follows & u1.follows)\n}",
+                    "ids": [
+                        "cEpk9PGtZhg2oQQCv"
+                    ]
                 }
             ]
         },
@@ -2390,18 +2390,18 @@
             "elems": [
                 {
                     "entry_count": 2,
-                    "code": "{\n\t// Users cannot follow themselves.\n  \tfollows.~follows in iden\n}",
-                    "ids": [
-                        "rot8Me4NYo93EYEta",
-                        "vqykHuXJM7ZfDt9QH"
-                    ]
-                },
-                {
-                    "entry_count": 2,
                     "code": "{\n\t// Users cannot follow themselves.\n\tall disj u0,u1 : User | no (u0.follows & u1.follows)\n}",
                     "ids": [
                         "beDCYspznTNwRLBhB",
                         "EnKXZsQPZm8LEWTMB"
+                    ]
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Users cannot follow themselves.\n  \tfollows.~follows in iden\n}",
+                    "ids": [
+                        "rot8Me4NYo93EYEta",
+                        "vqykHuXJM7ZfDt9QH"
                     ]
                 }
             ]
@@ -2516,16 +2516,16 @@
             "elems": [
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Users cannot follow themselves.\n\tall u: User | not ( u in u.suggested)\n}",
+                    "code": "{\n\t// Users cannot follow themselves.\n    all user : User | user not in user.suggested\n}",
                     "ids": [
-                        "2tLuPc9dvKtaMxrtZ"
+                        "m8bKjuYWj9DDa9wzD"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Users cannot follow themselves.\n    all user : User | user not in user.suggested\n}",
+                    "code": "{\n\t// Users cannot follow themselves.\n\tall u: User | not ( u in u.suggested)\n}",
                     "ids": [
-                        "m8bKjuYWj9DDa9wzD"
+                        "2tLuPc9dvKtaMxrtZ"
                     ]
                 }
             ]
@@ -2558,16 +2558,16 @@
             "elems": [
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Users cannot follow themselves.\n  \tall u : User | u not in u.follows.follows\n}",
+                    "code": "{\n\t// Users cannot follow themselves.\n  \tall x,y : User | x->y in follows implies y->x not in follows\n}",
                     "ids": [
-                        "kYPCSitfrHMMM78WZ"
+                        "vX9P4n4Nwv2wZ8Ma3"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Users cannot follow themselves.\n  \tall x,y : User | x->y in follows implies y->x not in follows\n}",
+                    "code": "{\n\t// Users cannot follow themselves.\n  \tall u : User | u not in u.follows.follows\n}",
                     "ids": [
-                        "vX9P4n4Nwv2wZ8Ma3"
+                        "kYPCSitfrHMMM78WZ"
                     ]
                 }
             ]
@@ -2600,16 +2600,16 @@
             "elems": [
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Users cannot follow themselves.\n    \n  \t// all p : User | not p -> p in follows\n  \n\t// all p : User | p -> p not in follows\n  \n\tno User.follows & follows.User\n}",
+                    "code": "{\n\t// Users cannot follow themselves.\n   all a:User,b:User | no (a.follows & follows.b)\n}",
                     "ids": [
-                        "XeGkXYbZeTDGA9TbC"
+                        "WckrYBQMdBsRSra35"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Users cannot follow themselves.\n   all a:User,b:User | no (a.follows & follows.b)\n}",
+                    "code": "{\n\t// Users cannot follow themselves.\n    \n  \t// all p : User | not p -> p in follows\n  \n\t// all p : User | p -> p not in follows\n  \n\tno User.follows & follows.User\n}",
                     "ids": [
-                        "WckrYBQMdBsRSra35"
+                        "XeGkXYbZeTDGA9TbC"
                     ]
                 }
             ]

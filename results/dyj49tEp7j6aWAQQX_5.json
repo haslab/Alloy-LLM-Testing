@@ -3,7 +3,7 @@
     "pred": "this/inv6",
     "entry_count": 1056,
     "group_count": 61,
-    "duration": 56,
+    "duration": 23,
     "scope": 3,
     "groups": [
         {
@@ -415,15 +415,6 @@
                 },
                 {
                     "entry_count": 3,
-                    "code": "{\n\t// Components cannot be their own parts\n  all c:Component | all p: c.parts | c not in p\n\t//all c1, c2:Component | c1=c2 implies c1 not in c2.parts\n  //no Component.parts\n //Component not in Component.parts\n}",
-                    "ids": [
-                        "jMTJDBQE8obguNcNu",
-                        "rHMzxS3GufdYPn4tR",
-                        "FmsL6fBNiRYTX6M5r"
-                    ]
-                },
-                {
-                    "entry_count": 3,
                     "code": "{\n  all c1,c2 : Component | c1 in c2.parts implies c1!=c2\n\t// Components cannot be their own parts\n\n}",
                     "ids": [
                         "64fc2soWH6havkHC5",
@@ -441,19 +432,12 @@
                     ]
                 },
                 {
-                    "entry_count": 2,
-                    "code": "{\n\t// Components cannot be their own parts\n\tall c,c2 : Component | c2 in c.parts implies c != c2\n}",
+                    "entry_count": 3,
+                    "code": "{\n\t// Components cannot be their own parts\n  all c:Component | all p: c.parts | c not in p\n\t//all c1, c2:Component | c1=c2 implies c1 not in c2.parts\n  //no Component.parts\n //Component not in Component.parts\n}",
                     "ids": [
-                        "7eirZjXJdawFtozGq",
-                        "5rryfzchfWGHQJhYT"
-                    ]
-                },
-                {
-                    "entry_count": 2,
-                    "code": "{\n\t// Components cannot be their own parts\n\tall c : Component | not c in parts.c\n}",
-                    "ids": [
-                        "2qYzyJvxC9nF3Et9g",
-                        "BkryD8PRQBp2ynT5H"
+                        "jMTJDBQE8obguNcNu",
+                        "rHMzxS3GufdYPn4tR",
+                        "FmsL6fBNiRYTX6M5r"
                     ]
                 },
                 {
@@ -474,10 +458,10 @@
                 },
                 {
                     "entry_count": 2,
-                    "code": "{\n\t// Components cannot be their own parts\n  \tall c: Component | no(c & c.parts & parts.c)\n\n}",
+                    "code": "{\n\t// Components cannot be their own parts\n\tall c : Component | not c in parts.c\n}",
                     "ids": [
-                        "To66Sicc9Jup8qsJ8",
-                        "BExLjpN9cHm2kqbks"
+                        "2qYzyJvxC9nF3Et9g",
+                        "BkryD8PRQBp2ynT5H"
                     ]
                 },
                 {
@@ -498,10 +482,10 @@
                 },
                 {
                     "entry_count": 2,
-                    "code": "{\n\t// Components cannot be their own parts\n\tall c: Component | all c2: c.parts | c not in c.parts \n}",
+                    "code": "{\n\t// Components cannot be their own parts\n\tall c,c2 : Component | c2 in c.parts implies c != c2\n}",
                     "ids": [
-                        "kM9XtsQ659dvA9JFs",
-                        "ec4TZRAyWAvjTyRMG"
+                        "7eirZjXJdawFtozGq",
+                        "5rryfzchfWGHQJhYT"
                     ]
                 },
                 {
@@ -521,24 +505,19 @@
                     ]
                 },
                 {
-                    "entry_count": 1,
-                    "code": "{\n\t// Components cannot be their own parts\n\tall p: Product |\n  \t\tall c: Component | p=c implies p not in c.parts\n}",
+                    "entry_count": 2,
+                    "code": "{\n\t// Components cannot be their own parts\n\tall c: Component | all c2: c.parts | c not in c.parts \n}",
                     "ids": [
-                        "igAnWacCjTYbkaKBr"
+                        "kM9XtsQ659dvA9JFs",
+                        "ec4TZRAyWAvjTyRMG"
                     ]
                 },
                 {
-                    "entry_count": 1,
-                    "code": "{\n\t// Components cannot be their own parts\n  \tno c: Component | #(c.parts & c) > 0 \n\n}",
+                    "entry_count": 2,
+                    "code": "{\n\t// Components cannot be their own parts\n  \tall c: Component | no(c & c.parts & parts.c)\n\n}",
                     "ids": [
-                        "pMiGHQ6o2YcebqhcQ"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Components cannot be their own parts\n  \talways all c : Component | c not in c.parts\n}",
-                    "ids": [
-                        "LQEbqeskRPMCu6D4j"
+                        "To66Sicc9Jup8qsJ8",
+                        "BExLjpN9cHm2kqbks"
                     ]
                 },
                 {
@@ -550,9 +529,30 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n  all c1,c2 : Component | ((c1 in c2.parts or c1 in parts.c2) implies c1!=c2) and ((c2 in c1.parts or c2 in parts.c1) implies c1!=c2)\n  \n\t// Components cannot be their own parts\n\n}",
+                    "code": "{\n\t// Components cannot be their own parts\n  all c: Component | c not in c.parts and all cp : c.parts | c not in cp\n\n}",
                     "ids": [
-                        "HCAxcvhvkS4AgFH7z"
+                        "uowym6SvkxSmWjQmr"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components cannot be their own parts\n\tall c : Component |\n        no p : Product | p in c.parts and p = c\n}",
+                    "ids": [
+                        "Bht4W7sLf2YnfL3vm"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components cannot be their own parts\n  \n  all c : Component | c->c not in parts\n\n}",
+                    "ids": [
+                        "WCDjPvJAz8mqCAQTT"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components cannot be their own parts\n  \n  all p : Product, c : Component  | p->c in parts implies p != c\n\n}",
+                    "ids": [
+                        "XZWoBg5A4iZhM2Q3g"
                     ]
                 },
                 {
@@ -560,6 +560,55 @@
                     "code": "{\n\t// Components cannot be their own parts\n\tall p: Product, c: Component | p in c implies p not in c.parts\n}",
                     "ids": [
                         "iGvfRct5jeWkhAE9h"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n  all c1,c2 : Component | ((c1 in c2.parts or c1 in parts.c2) implies c1!=c2) and ((c2 in c1.parts or c2 in parts.c1) implies c1!=c2)\n  \n\t// Components cannot be their own parts\n\n}",
+                    "ids": [
+                        "HCAxcvhvkS4AgFH7z"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components cannot be their own parts\n  \tno c: Component | #(c.parts & c) > 0 \n\n}",
+                    "ids": [
+                        "pMiGHQ6o2YcebqhcQ"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components cannot be their own parts\n\tall p: Product |\n  \t\tall c: Component | p=c implies p not in c.parts\n}",
+                    "ids": [
+                        "igAnWacCjTYbkaKBr"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components cannot be their own parts\n  all c:Component | all p: c.parts | c not in p and p not in c\n\t//all c1, c2:Component | c1=c2 implies c1 not in c2.parts\n  //no Component.parts\n //Component not in Component.parts\n}",
+                    "ids": [
+                        "dGhMJguzEXXiJacqf"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components cannot be their own parts\n  //all c:Component | all p: c.parts | c not in p and p not in parts.c\n\tall c1, c2:Component | c1=c2 implies no (c1 & c2.parts)\n  //no Component.parts\n //Component not in Component.parts\n  //all c:Component | no (c & c.parts)\n}",
+                    "ids": [
+                        "MwDXGTMaT3MPZKTdu"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n    // Components cannot be their own parts through Workstations\n    all c: Component | c not in c.parts and \n    all ws: Workstation | (some c: ws.workstation | c in ws.workers) implies (no c.parts \t& ws.workstation)\n\n}",
+                    "ids": [
+                        "cozsE7wpT2Lx2mDTx"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components cannot be their own parts\n  not ( some c : Component | some(c & c.parts) )\n \n\n}",
+                    "ids": [
+                        "3EqJAwv4YqwFFi69h"
                     ]
                 },
                 {
@@ -578,93 +627,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Components cannot be their own parts\n  all c:Component | all p: c.parts | c not in p and p not in c\n\t//all c1, c2:Component | c1=c2 implies c1 not in c2.parts\n  //no Component.parts\n //Component not in Component.parts\n}",
+                    "code": "{\n\t// Components cannot be their own parts\n\tall c,c2 : Component | c2 in parts.c implies c != c2\n}",
                     "ids": [
-                        "dGhMJguzEXXiJacqf"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Components cannot be their own parts\n  \tno c: Component | c -> c in parts\n\n}",
-                    "ids": [
-                        "jcPQGD6crWHBG2PTx"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Components cannot be their own parts\n  \tall c : Component | all p : c.parts | no(c & p)\n\n}",
-                    "ids": [
-                        "PyckxQautTX5bmQjn"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Components cannot be their own parts\n  \n  all p : Product, c : Component  | p->c in parts implies p != c\n\n}",
-                    "ids": [
-                        "XZWoBg5A4iZhM2Q3g"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Components cannot be their own parts\n\tno (Component <: parts :> Component) & iden\n}",
-                    "ids": [
-                        "v9qXrrQfP7u7RkHtL"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n    // Components cannot be their own parts through Workstations\n    all c: Component | c not in c.parts and \n    all ws: Workstation | (some c: ws.workstation | c in ws.workers) implies (no c.parts \t& ws.workstation)\n\n}",
-                    "ids": [
-                        "cozsE7wpT2Lx2mDTx"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Components cannot be their own parts\n  //all c:Component | all p: c.parts | c not in p and p not in parts.c\n\tall c1, c2:Component | c1=c2 implies no (c1 & c2.parts)\n  //no Component.parts\n //Component not in Component.parts\n  //all c:Component | no (c & c.parts)\n}",
-                    "ids": [
-                        "MwDXGTMaT3MPZKTdu"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Components cannot be their own parts\n\tall c : Component |\n        no p : Product | p in c.parts and p = c\n}",
-                    "ids": [
-                        "Bht4W7sLf2YnfL3vm"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Components cannot be their own parts\n\tall c: Component | c not in c.parts or c not in c.parts.parts\n}",
-                    "ids": [
-                        "RwFD9HKZEvW7tCmrt"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Components cannot be their own parts\n  all c: Component | c not in c.parts and all cp : c.parts | c not in cp\n\n}",
-                    "ids": [
-                        "uowym6SvkxSmWjQmr"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Components cannot be their own parts\n  \tno c: Component | some (c & c.parts)\n\n}",
-                    "ids": [
-                        "CgPgBqd95ByrgivDB"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Components cannot be their own parts\n  \n  all c : Component | c->c not in parts\n\n}",
-                    "ids": [
-                        "WCDjPvJAz8mqCAQTT"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Components cannot be their own parts\n  not ( some c : Component | some(c & c.parts) )\n \n\n}",
-                    "ids": [
-                        "3EqJAwv4YqwFFi69h"
+                        "Zpbn2oRMjzuQfAZ7J"
                     ]
                 },
                 {
@@ -676,9 +641,44 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Components cannot be their own parts\n\tall c,c2 : Component | c2 in parts.c implies c != c2\n}",
+                    "code": "{\n\t// Components cannot be their own parts\n  \tno c: Component | c -> c in parts\n\n}",
                     "ids": [
-                        "Zpbn2oRMjzuQfAZ7J"
+                        "jcPQGD6crWHBG2PTx"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components cannot be their own parts\n\tall c: Component | c not in c.parts or c not in c.parts.parts\n}",
+                    "ids": [
+                        "RwFD9HKZEvW7tCmrt"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components cannot be their own parts\n  \tall c : Component | all p : c.parts | no(c & p)\n\n}",
+                    "ids": [
+                        "PyckxQautTX5bmQjn"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components cannot be their own parts\n  \tno c: Component | some (c & c.parts)\n\n}",
+                    "ids": [
+                        "CgPgBqd95ByrgivDB"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components cannot be their own parts\n  \talways all c : Component | c not in c.parts\n}",
+                    "ids": [
+                        "LQEbqeskRPMCu6D4j"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components cannot be their own parts\n\tno (Component <: parts :> Component) & iden\n}",
+                    "ids": [
+                        "v9qXrrQfP7u7RkHtL"
                     ]
                 }
             ]
@@ -1062,14 +1062,6 @@
                 },
                 {
                     "entry_count": 2,
-                    "code": "{\n\t// Components cannot be their own parts\n  all c:Component | c.^(parts) & c = none \n  \n\n}",
-                    "ids": [
-                        "MkJkH7MbShBuC4Qd4",
-                        "KzqbrFvx5HQMCN9kb"
-                    ]
-                },
-                {
-                    "entry_count": 2,
                     "code": "{\n\t// Components cannot be their own parts\n  \tall c:Component | not c in ^parts.c\n\n}",
                     "ids": [
                         "W4MgFSNqt8KJ7Pu6e",
@@ -1077,10 +1069,25 @@
                     ]
                 },
                 {
+                    "entry_count": 2,
+                    "code": "{\n\t// Components cannot be their own parts\n  all c:Component | c.^(parts) & c = none \n  \n\n}",
+                    "ids": [
+                        "MkJkH7MbShBuC4Qd4",
+                        "KzqbrFvx5HQMCN9kb"
+                    ]
+                },
+                {
                     "entry_count": 1,
                     "code": "{\n\t// Components cannot be their own parts\n  \tall c : Component |  c not in c.^(parts.parts)\n\n}",
                     "ids": [
                         "r9DncuPfoyeiPuFXR"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components cannot be their own parts\n\tall c :  Component , p: c.^parts | c not in p \n}",
+                    "ids": [
+                        "Z4wehXQEekfWen2bY"
                     ]
                 },
                 {
@@ -1095,13 +1102,6 @@
                     "code": "{\n\t// Components cannot be their own parts\n  \tall c : Component | c.^parts = c.^parts - c\n}",
                     "ids": [
                         "R5yGnQ6xvsT4ea9Cd"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Components cannot be their own parts\n\tall c :  Component , p: c.^parts | c not in p \n}",
-                    "ids": [
-                        "Z4wehXQEekfWen2bY"
                     ]
                 }
             ]
@@ -1196,9 +1196,44 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Components cannot be their own parts\n\tall c1,c2 : Component | c1.parts != c2.parts \n}",
+                    "code": "{\n\t// Components cannot be their own parts\n  \tno c: Component | c.parts & c != 0\n\n}",
                     "ids": [
-                        "MebpogKKabnyMS2ro"
+                        "4GzZraer5popeNJLp"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components cannot be their own parts\n  all x: Component | x.*parts = none\n  \n\n}",
+                    "ids": [
+                        "2dgcCqEgPF8qox3Eq"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components cannot be their own parts\n\tall c: Component, p: Product | c not in *parts.p  \n}",
+                    "ids": [
+                        "cvQ4WwB7AGAo37u4D"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components cannot be their own parts\n  \tall c : Component | not c in c.*parts\n\t\t\n}",
+                    "ids": [
+                        "e9WK4koAkS5mkc3eX"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components cannot be their own parts\n\tno c: Component | c in Component\n}",
+                    "ids": [
+                        "kkkfLryfZGgj6zpF9"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components cannot be their own parts\n\tall c: Component | c not in *parts.c\n  \n  all c : Component | c not in c.^(parts)\n}",
+                    "ids": [
+                        "ZfG9bbkygjtuButac"
                     ]
                 },
                 {
@@ -1217,44 +1252,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Components cannot be their own parts\n  \tall c : Component | not c in c.*parts\n\t\t\n}",
+                    "code": "{\n\t// Components cannot be their own parts\n\tall c1,c2 : Component | c1.parts != c2.parts \n}",
                     "ids": [
-                        "e9WK4koAkS5mkc3eX"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Components cannot be their own parts\n\tall c: Component, p: Product | c not in *parts.p  \n}",
-                    "ids": [
-                        "cvQ4WwB7AGAo37u4D"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Components cannot be their own parts\n\tall c: Component | c not in *parts.c\n  \n  all c : Component | c not in c.^(parts)\n}",
-                    "ids": [
-                        "ZfG9bbkygjtuButac"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Components cannot be their own parts\n  \tno c: Component | c.parts & c != 0\n\n}",
-                    "ids": [
-                        "4GzZraer5popeNJLp"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Components cannot be their own parts\n\tno c: Component | c in Component\n}",
-                    "ids": [
-                        "kkkfLryfZGgj6zpF9"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Components cannot be their own parts\n  all x: Component | x.*parts = none\n  \n\n}",
-                    "ids": [
-                        "2dgcCqEgPF8qox3Eq"
+                        "MebpogKKabnyMS2ro"
                     ]
                 }
             ]
@@ -1300,22 +1300,22 @@
                 },
                 {
                     "entry_count": 4,
-                    "code": "{\n\t// Components cannot be their own parts\n  //all c:Component | some c.parts\n\t//all c:Component | c not in c.parts\n  no (Component.parts & Component)\n}",
-                    "ids": [
-                        "Dwjz37t7b84HRLuKy",
-                        "aGSxP4Kb68dTvo94T",
-                        "YqoaLQi7cj9iuYFhC",
-                        "A5eHYKpYqXNK5GyMH"
-                    ]
-                },
-                {
-                    "entry_count": 4,
                     "code": "{\n\t// Components cannot be their own parts\n\tall o: Component | o not in o.parts\n  \tall disj o1: Component, o2: Component | (o1 not in o2.parts) and (o2 not in o1.parts)\n}",
                     "ids": [
                         "4oBGgv5g3d34R5cq5",
                         "eRuKfYoamwrkva5Rp",
                         "PHGhcqTiTxXxAQnGk",
                         "oa6LD2hv9zJnJBLtQ"
+                    ]
+                },
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// Components cannot be their own parts\n  //all c:Component | some c.parts\n\t//all c:Component | c not in c.parts\n  no (Component.parts & Component)\n}",
+                    "ids": [
+                        "Dwjz37t7b84HRLuKy",
+                        "aGSxP4Kb68dTvo94T",
+                        "YqoaLQi7cj9iuYFhC",
+                        "A5eHYKpYqXNK5GyMH"
                     ]
                 },
                 {
@@ -1338,14 +1338,6 @@
                 },
                 {
                     "entry_count": 2,
-                    "code": "{\n\t// Components cannot be their own parts\n\tall c: Component | \n  \t\tall c2: Component |  c not in c2.parts\n}",
-                    "ids": [
-                        "wH3YBvSkPrmCW5Cx5",
-                        "TQjXe97iGAnbsQBMb"
-                    ]
-                },
-                {
-                    "entry_count": 2,
                     "code": "{\n\t// Components cannot be their own parts\n  \tall c1,c2: Component | c2 not in c1.parts and c1 not in c2.parts \n  \t\n\n}",
                     "ids": [
                         "K9Ac2ae58i963kuKX",
@@ -1353,24 +1345,25 @@
                     ]
                 },
                 {
-                    "entry_count": 1,
-                    "code": "{\n\t// Components cannot be their own parts\n\tno c,c2 : Component | c in parts.c2\n}",
+                    "entry_count": 2,
+                    "code": "{\n\t// Components cannot be their own parts\n\tall c: Component | \n  \t\tall c2: Component |  c not in c2.parts\n}",
                     "ids": [
-                        "5q4beWS7Kq9b2Bhfg"
+                        "wH3YBvSkPrmCW5Cx5",
+                        "TQjXe97iGAnbsQBMb"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Components cannot be their own parts\n  \tall c : Component | no Component.parts & c \n}",
+                    "code": "{\n\t// Components cannot be their own parts\n  \tall c: Component | c not in c.parts\n\tall disj c, p: Component | c not in p.parts && p not in c.parts\n}",
                     "ids": [
-                        "8wy6PJSEXccfHvcFK"
+                        "zTr2DamPsCM4jgHNr"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Components cannot be their own parts\n\tno c : Component | c in parts.Component\n}",
+                    "code": "{\n\t// Components cannot be their own parts\n\tComponent = Component-Component.parts\n}",
                     "ids": [
-                        "iJRYvop8Qkfr3KaPN"
+                        "jpmpxoi5LB5cntNt9"
                     ]
                 },
                 {
@@ -1389,16 +1382,16 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Components cannot be their own parts\n\tno c : Component | c in Component.parts\n}",
+                    "code": "{\n\t// Components cannot be their own parts\n\tall p: Product | p in Component implies p not in Component.parts\n}",
                     "ids": [
-                        "rspztWmLT7Gzirj8Y"
+                        "Lv48fuWRxs5x4WXKu"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Components cannot be their own parts\n\tall p: Product | p in Component implies p not in Component.parts\n}",
+                    "code": "{\n\t// Components cannot be their own parts\n\tno c : Component | c in Component.parts\n}",
                     "ids": [
-                        "Lv48fuWRxs5x4WXKu"
+                        "rspztWmLT7Gzirj8Y"
                     ]
                 },
                 {
@@ -1410,16 +1403,23 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Components cannot be their own parts\n\tComponent = Component-Component.parts\n}",
+                    "code": "{\n\t// Components cannot be their own parts\n  \tall c : Component | no Component.parts & c \n}",
                     "ids": [
-                        "jpmpxoi5LB5cntNt9"
+                        "8wy6PJSEXccfHvcFK"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Components cannot be their own parts\n  \tall c: Component | c not in c.parts\n\tall disj c, p: Component | c not in p.parts && p not in c.parts\n}",
+                    "code": "{\n\t// Components cannot be their own parts\n\tno c,c2 : Component | c in parts.c2\n}",
                     "ids": [
-                        "zTr2DamPsCM4jgHNr"
+                        "5q4beWS7Kq9b2Bhfg"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components cannot be their own parts\n\tno c : Component | c in parts.Component\n}",
+                    "ids": [
+                        "iJRYvop8Qkfr3KaPN"
                     ]
                 }
             ]
@@ -1449,37 +1449,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n  all c1,c2 : Component | c1 in c2.parts implies c1!=c2 and c2 in c1.parts implies c1!=c2\n\t// Components cannot be their own parts\n\n}",
-                    "ids": [
-                        "vfpu7cpC6d4Dt5RcB"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Components cannot be their own parts\n\tall p : Product | (no p.*parts & p) implies (p in Component and p in Dangerous)\n}",
-                    "ids": [
-                        "dj2p7XvknHfQsHXHt"
-                    ]
-                },
-                {
-                    "entry_count": 1,
                     "code": "{\n\t// Components cannot be their own parts\n  \tno c: Component | c in c.parts and parts.c = none\n}",
                     "ids": [
                         "g2D3xHgEwRzjvLRKB"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Components cannot be their own parts\n  no c: Component | c in c.parts and all cp : c.parts | c not in cp\n\n}",
-                    "ids": [
-                        "XLKkF8bB2mduQ95ph"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Components cannot be their own parts\n\tall c : Component | c not in c.parts-c\n}",
-                    "ids": [
-                        "ffz8z2yRk76TTianQ"
                     ]
                 },
                 {
@@ -1491,6 +1463,20 @@
                 },
                 {
                     "entry_count": 1,
+                    "code": "{\n\t// Components cannot be their own parts\n\tno c: Component, d: Dangerous | c not in Component\n}",
+                    "ids": [
+                        "Ltt4pfun3v6jCjxGC"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components cannot be their own parts\n  no c: Component | c in c.parts and all cp : c.parts | c not in cp\n\n}",
+                    "ids": [
+                        "XLKkF8bB2mduQ95ph"
+                    ]
+                },
+                {
+                    "entry_count": 1,
                     "code": "{\n\t// Components cannot be their own parts\n\tno c: Component, d: Dangerous | c not in Component and d not in Dangerous\n}",
                     "ids": [
                         "J3zcyoz9swZqJG8s3"
@@ -1498,9 +1484,23 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Components cannot be their own parts\n\tno c: Component, d: Dangerous | c not in Component\n}",
+                    "code": "{\n\t// Components cannot be their own parts\n\tall p : Product | (no p.*parts & p) implies (p in Component and p in Dangerous)\n}",
                     "ids": [
-                        "Ltt4pfun3v6jCjxGC"
+                        "dj2p7XvknHfQsHXHt"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components cannot be their own parts\n\tall c : Component | c not in c.parts-c\n}",
+                    "ids": [
+                        "ffz8z2yRk76TTianQ"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n  all c1,c2 : Component | c1 in c2.parts implies c1!=c2 and c2 in c1.parts implies c1!=c2\n\t// Components cannot be their own parts\n\n}",
+                    "ids": [
+                        "vfpu7cpC6d4Dt5RcB"
                     ]
                 }
             ]
@@ -1541,16 +1541,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Components cannot be their own parts\n  all c : Component| no (c & c.parts) and no(c& c.parts.parts)\n\n}",
+                    "code": "{\n\t// Components cannot be their own parts\n\tall c: Component | c not in (c.parts + c.parts.parts) \n}",
                     "ids": [
-                        "qWbaZd6ERpeEnwGYL"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Components cannot be their own parts\n\tall c: Component | all c2: c.parts | c not in c.parts and c not in c2.parts\n}",
-                    "ids": [
-                        "GerthNEfHzwaYudHK"
+                        "rrPkSjTC9adRLDYfu"
                     ]
                 },
                 {
@@ -1562,6 +1555,13 @@
                 },
                 {
                     "entry_count": 1,
+                    "code": "{\n\t// Components cannot be their own parts\n\tall c: Component | all c2: c.parts | c not in c.parts and c not in c2.parts\n}",
+                    "ids": [
+                        "GerthNEfHzwaYudHK"
+                    ]
+                },
+                {
+                    "entry_count": 1,
                     "code": "{\n\t// Components cannot be their own parts\n  \tall c: Component | c not in c.parts.parts\n\n}",
                     "ids": [
                         "e5CKRzeT8x5J2SQMd"
@@ -1569,23 +1569,23 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Components cannot be their own parts\n  no c: Component | c in c.parts or c in (c.parts).parts\n\n}",
-                    "ids": [
-                        "HQZREECuaT6ps9AYy"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Components cannot be their own parts\n\tall c: Component | c not in (c.parts + c.parts.parts) \n}",
-                    "ids": [
-                        "rrPkSjTC9adRLDYfu"
-                    ]
-                },
-                {
-                    "entry_count": 1,
                     "code": "{\n\t// Components cannot be their own parts\n  \tall c: Component | no (c.parts & parts.c) \n}",
                     "ids": [
                         "BA7rZrsCLERBdBR9Q"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components cannot be their own parts\n  all c : Component| no (c & c.parts) and no(c& c.parts.parts)\n\n}",
+                    "ids": [
+                        "qWbaZd6ERpeEnwGYL"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components cannot be their own parts\n  no c: Component | c in c.parts or c in (c.parts).parts\n\n}",
+                    "ids": [
+                        "HQZREECuaT6ps9AYy"
                     ]
                 }
             ]
@@ -1643,27 +1643,6 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Components cannot be their own parts\n  //all c:Component | some c.parts\n\t//all c:Component | c not in c.parts\n  no Component.parts\n //Component not in Component.parts\n}",
-                    "ids": [
-                        "BbtEavnyw6gcgJRP3"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Components cannot be their own parts\n\tall c: Component | no c.^(parts)\n}",
-                    "ids": [
-                        "D3rgrdybmKMLtnrmd"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Components cannot be their own parts\n  //all c:Component | some c.parts\n\tno c:Component | c in c.parts\n  no Component.parts\n //Component not in Component.parts\n}",
-                    "ids": [
-                        "i89ZhPENyNFGKnMyy"
-                    ]
-                },
-                {
-                    "entry_count": 1,
                     "code": "{\n\t// Components cannot be their own parts\n  //all c:Component | some c.parts\n\tall c:Component | c not in c.parts\n  no Component.parts\n //Component not in Component.parts\n}",
                     "ids": [
                         "eoWHgToPBj6t4Fi3p"
@@ -1671,9 +1650,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Components cannot be their own parts\n\tall c : Component | all p : c.parts | c not in Component\n}",
+                    "code": "{\n\t// Components cannot be their own parts\n\tall c : Component | no c -> c.parts\n\n}",
                     "ids": [
-                        "urqMHRD7fbJdq9mMi"
+                        "8AhgL5CxE9uixYbpM"
                     ]
                 },
                 {
@@ -1685,9 +1664,30 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Components cannot be their own parts\n\tall c : Component | no c -> c.parts\n\n}",
+                    "code": "{\n\t// Components cannot be their own parts\n  //all c:Component | some c.parts\n\tno c:Component | c in c.parts\n  no Component.parts\n //Component not in Component.parts\n}",
                     "ids": [
-                        "8AhgL5CxE9uixYbpM"
+                        "i89ZhPENyNFGKnMyy"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components cannot be their own parts\n\tall c : Component | all p : c.parts | c not in Component\n}",
+                    "ids": [
+                        "urqMHRD7fbJdq9mMi"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components cannot be their own parts\n  //all c:Component | some c.parts\n\t//all c:Component | c not in c.parts\n  no Component.parts\n //Component not in Component.parts\n}",
+                    "ids": [
+                        "BbtEavnyw6gcgJRP3"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components cannot be their own parts\n\tall c: Component | no c.^(parts)\n}",
+                    "ids": [
+                        "D3rgrdybmKMLtnrmd"
                     ]
                 }
             ]
@@ -1708,18 +1708,18 @@
                 },
                 {
                     "entry_count": 2,
-                    "code": "{\n\t// Components cannot be their own parts\n\tall p : Product | no p.parts & p\n}",
-                    "ids": [
-                        "XFrWj8xSxrN2kFh8w",
-                        "wN7Kux8G9QoyR8q3i"
-                    ]
-                },
-                {
-                    "entry_count": 2,
                     "code": "{\n\t// Components cannot be their own parts\n  \tno iden & parts\n\n}",
                     "ids": [
                         "DGCsvnncQJmt8DHys",
                         "bMXyg3rRYNNARHvu4"
+                    ]
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Components cannot be their own parts\n\tall p : Product | no p.parts & p\n}",
+                    "ids": [
+                        "XFrWj8xSxrN2kFh8w",
+                        "wN7Kux8G9QoyR8q3i"
                     ]
                 },
                 {
@@ -1856,13 +1856,6 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Components cannot be their own parts\n  all c : Component | some p : Product | (p in c.parts) and (c != p )\n\n}",
-                    "ids": [
-                        "cGsAdu4ji8b8Xxsm2"
-                    ]
-                },
-                {
-                    "entry_count": 1,
                     "code": "{\n\t// Components cannot be their own parts\n\tall c: Component | c.^parts not in c\n}",
                     "ids": [
                         "BkEbmFZ8ZmWuJFYgc"
@@ -1873,6 +1866,13 @@
                     "code": "{\n\t// Components cannot be their own parts\n\tall c : Component | not c.parts in c\n  }",
                     "ids": [
                         "2y32TnMaJXXJWwXrH"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components cannot be their own parts\n  all c : Component | some p : Product | (p in c.parts) and (c != p )\n\n}",
+                    "ids": [
+                        "cGsAdu4ji8b8Xxsm2"
                     ]
                 }
             ]
@@ -1924,9 +1924,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Components cannot be their own parts\nall c1,c2 : Component | (c1!=c2 and c1->c2 in parts) implies not c2->c1 in parts\nall c : Component | not c->c in parts\n}",
+                    "code": "{\n  all c1,c2 : Component | (c1 in c2.parts implies (c1!=c2 and c2 not in c1.parts ))\n\t// Components cannot be their own parts\n\n}",
                     "ids": [
-                        "nRWGYweFGL6ky83yj"
+                        "y7tEKnmFhAuMAy4Xm"
                     ]
                 },
                 {
@@ -1938,9 +1938,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n  all c1,c2 : Component | (c1 in c2.parts implies (c1!=c2 and c2 not in c1.parts ))\n\t// Components cannot be their own parts\n\n}",
+                    "code": "{\n\t// Components cannot be their own parts\nall c1,c2 : Component | (c1!=c2 and c1->c2 in parts) implies not c2->c1 in parts\nall c : Component | not c->c in parts\n}",
                     "ids": [
-                        "y7tEKnmFhAuMAy4Xm"
+                        "nRWGYweFGL6ky83yj"
                     ]
                 }
             ]
@@ -1977,9 +1977,9 @@
             "elems": [
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Components cannot be their own parts\n  \tno c: Component | no p: Product | p in c.parts and p = c\n\n}",
+                    "code": "{\n\t// Components cannot be their own parts\n  //all c:Component | some c.parts\n\tno c:Component | c.parts & c = none\n}",
                     "ids": [
-                        "fFpar7koWnkSn5PDg"
+                        "aSCCBBpFr5WLrhmfu"
                     ]
                 },
                 {
@@ -1987,6 +1987,13 @@
                     "code": "{\n\t// Components cannot be their own parts\n\tall c : Component | c in c.parts\n}",
                     "ids": [
                         "L6xAQnL9uN9kW8yEL"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components cannot be their own parts\n  \tno c: Component | no p: Product | p in c.parts and p = c\n\n}",
+                    "ids": [
+                        "fFpar7koWnkSn5PDg"
                     ]
                 },
                 {
@@ -2001,13 +2008,6 @@
                     "code": "{\n\t// Components cannot be their own parts\n  all c:Component | some c.parts\n\tno c:Component | c.parts & c = none\n}",
                     "ids": [
                         "PqxjLsvqCNbCfFerg"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Components cannot be their own parts\n  //all c:Component | some c.parts\n\tno c:Component | c.parts & c = none\n}",
-                    "ids": [
-                        "aSCCBBpFr5WLrhmfu"
                     ]
                 }
             ]
@@ -2064,6 +2064,13 @@
             "elems": [
                 {
                     "entry_count": 1,
+                    "code": "{\n\t// Components cannot be their own parts\n\tall p : Product | p.parts = p.parts - Component\n  }",
+                    "ids": [
+                        "2rn46jwqpMhd5LTtd"
+                    ]
+                },
+                {
+                    "entry_count": 1,
                     "code": "{\n\t// Components cannot be their own parts\n  \tall c : Component | c not in Product.parts\n\n}",
                     "ids": [
                         "58BWdBntC56pf4Bpc"
@@ -2074,13 +2081,6 @@
                     "code": "{\n\t// Components cannot be their own parts\n  \tall c: Component | parts.c = none and not c in c.parts\n}",
                     "ids": [
                         "snBba3N7zP4FoHQMA"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Components cannot be their own parts\n\tall p : Product | p.parts = p.parts - Component\n  }",
-                    "ids": [
-                        "2rn46jwqpMhd5LTtd"
                     ]
                 }
             ]
@@ -2129,16 +2129,16 @@
             "elems": [
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Components cannot be their own parts\n\tall c: Component, d: Dangerous | c not in Component and d not in Dangerous\n}",
+                    "code": "{\n\t// Components cannot be their own parts\n\tno c: Component, d: Dangerous | c in Component\n}",
                     "ids": [
-                        "NyDHdavMEtvP6zMFi"
+                        "uci7YPwdz9C8Zs4g2"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Components cannot be their own parts\n\tno c: Component, d: Dangerous | c in Component\n}",
+                    "code": "{\n\t// Components cannot be their own parts\n\tall c: Component, d: Dangerous | c not in Component and d not in Dangerous\n}",
                     "ids": [
-                        "uci7YPwdz9C8Zs4g2"
+                        "NyDHdavMEtvP6zMFi"
                     ]
                 }
             ]
@@ -2150,16 +2150,16 @@
             "elems": [
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Components cannot be their own parts\n  \tall p : Product | not p in p.parts implies p in Component\n}",
+                    "code": "{\n\t// Components cannot be their own parts\n\tall p : Product | (no p.parts & p) implies p in Component \n}",
                     "ids": [
-                        "EoQwrvhrNKYWafLR9"
+                        "WnarLRpeoqqiGtyKz"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Components cannot be their own parts\n\tall p : Product | (no p.parts & p) implies p in Component \n}",
+                    "code": "{\n\t// Components cannot be their own parts\n  \tall p : Product | not p in p.parts implies p in Component\n}",
                     "ids": [
-                        "WnarLRpeoqqiGtyKz"
+                        "EoQwrvhrNKYWafLR9"
                     ]
                 }
             ]
@@ -2222,16 +2222,16 @@
             "elems": [
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Components cannot be their own parts\n\tall p: Product | \n  \t\t(p in Component) implies (some c: Component |  p not in c.parts)\n}",
+                    "code": "{\n\t// Components cannot be their own parts\n\tall c: Component | \n  \t\tsome c2: Component |  c not in c2.parts\n}",
                     "ids": [
-                        "6iv97peZt2bDcTQA2"
+                        "sc3RYvRuo8HHvhX62"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Components cannot be their own parts\n\tall c: Component | \n  \t\tsome c2: Component |  c not in c2.parts\n}",
+                    "code": "{\n\t// Components cannot be their own parts\n\tall p: Product | \n  \t\t(p in Component) implies (some c: Component |  p not in c.parts)\n}",
                     "ids": [
-                        "sc3RYvRuo8HHvhX62"
+                        "6iv97peZt2bDcTQA2"
                     ]
                 }
             ]
@@ -2243,16 +2243,16 @@
             "elems": [
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Components cannot be their own parts\n  all c: Component | c not in c.parts\n  all c1, c2: Component | c1 in c2.parts implies c2 not in c1.*(parts)\n\n}",
+                    "code": "{\n\t// Components cannot be their own parts\n  all c: Component | c not in c.parts\n  all c1, c2: Component | c1 in c2.parts implies c2 not in c1.^(parts)\n\n}",
                     "ids": [
-                        "8AMByBwnr8DaPs43G"
+                        "4Xs5paiQsLJQKkjLd"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Components cannot be their own parts\n  all c: Component | c not in c.parts\n  all c1, c2: Component | c1 in c2.parts implies c2 not in c1.^(parts)\n\n}",
+                    "code": "{\n\t// Components cannot be their own parts\n  all c: Component | c not in c.parts\n  all c1, c2: Component | c1 in c2.parts implies c2 not in c1.*(parts)\n\n}",
                     "ids": [
-                        "4Xs5paiQsLJQKkjLd"
+                        "8AMByBwnr8DaPs43G"
                     ]
                 }
             ]

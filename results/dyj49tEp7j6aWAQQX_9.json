@@ -2,8 +2,8 @@
     "label": "inv10",
     "pred": "this/inv10",
     "entry_count": 834,
-    "group_count": 292,
-    "duration": 715,
+    "group_count": 288,
+    "duration": 263,
     "scope": 3,
     "groups": [
         {
@@ -182,20 +182,6 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c: Component | all p: c.parts | c in Component \n}",
-                    "ids": [
-                        "Hxdus4ix5sXuCmGwt"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c : Component | c in Component.parts implies c not in end\n}",
-                    "ids": [
-                        "iqjEQ6mtngECEX5vS"
-                    ]
-                },
-                {
-                    "entry_count": 1,
                     "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c : Component | all p : c.parts| c in Workstation implies p.workstation in Workstation\n}",
                     "ids": [
                         "nomGTLyqrkYYSGBzx"
@@ -203,58 +189,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c:Component, ws:Workstation | c in ws implies once #(c.parts) >0\n}",
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c : Component | all p : c.parts| c.workstation in Workstation implies p.workstation in Workstation\n}",
                     "ids": [
-                        "vnNJiASRf3P2rjjwe"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n    all c: Component | some c.workstation implies (all p: Product | p in c implies some p.workstation)\n}",
-                    "ids": [
-                        "RCA4PX94WiTPqTt5N"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n  all c: Component | (\n    let prevWs = c.workstation.^(~succ) | c = c\n  )\n}",
-                    "ids": [
-                        "9CjGShg6MEbPYmTqq"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\t\tall c:Component | no (c.workstation.*(succ) & c.^parts)\n  }",
-                    "ids": [
-                        "9DtsWKu2uoyd283Jd"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c : Component, w : c.workstation, p : c.parts | workstation.p in ^succ.w\n}",
-                    "ids": [
-                        "urLzcbzmB6e53rRYA"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n  // The parts of a component must be assembled before it in the production line\n  all c:Component | some (c.workstation.parts & Component) => c.workstation.*succ in c.parts.workstation.*succ\n\n}",
-                    "ids": [
-                        "FahSjiNPTeebxN8o3"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c : Component | all p : c.parts| p.workstation in Workstation implies c.workstation in Workstation\n}",
-                    "ids": [
-                        "W9fEwNeRG34zYsuTP"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c : Component, w : Workstation| c in workstation.w implies c.^(parts) in (workstation.(*(succ).w)).^(parts)\n \n}",
-                    "ids": [
-                        "Lfm9QunZR7TGkmQ3Y"
+                        "7xZthYkdw4BgkKa6e"
                     ]
                 },
                 {
@@ -266,9 +203,30 @@
                 },
                 {
                     "entry_count": 1,
+                    "code": "{\n  // The parts of a component must be assembled before it in the production line\n  all c:Component | some (c.workstation.parts & Component) => c.workstation.*succ in c.parts.workstation.*succ\n\n}",
+                    "ids": [
+                        "FahSjiNPTeebxN8o3"
+                    ]
+                },
+                {
+                    "entry_count": 1,
                     "code": "{\n\t// The parts of a component must be assembled before it in the production line\n    all c: Component | some c.workstation implies (all p: Product | p in c implies some p.workstation or p in Material)\n}",
                     "ids": [
                         "wZfYcZah4MnKXrnNG"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c:Component, ws:Workstation | c in ws implies once #(c.parts) >0\n}",
+                    "ids": [
+                        "vnNJiASRf3P2rjjwe"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c: Component | all p: c.parts | c in Component \n}",
+                    "ids": [
+                        "Hxdus4ix5sXuCmGwt"
                     ]
                 },
                 {
@@ -280,6 +238,41 @@
                 },
                 {
                     "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c : Component | c in Component.parts implies c not in end\n}",
+                    "ids": [
+                        "iqjEQ6mtngECEX5vS"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\t\tall c:Component | no (c.workstation.*(succ) & c.^parts)\n  }",
+                    "ids": [
+                        "9DtsWKu2uoyd283Jd"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n  all c: Component | (\n    let prevWs = c.workstation.^(~succ) | c = c\n  )\n}",
+                    "ids": [
+                        "9CjGShg6MEbPYmTqq"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c : Component, w : Workstation| c in workstation.w implies c.^(parts) in (workstation.(*(succ).w)).^(parts)\n \n}",
+                    "ids": [
+                        "Lfm9QunZR7TGkmQ3Y"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n    all c: Component | some c.workstation implies (all p: Product | p in c implies some p.workstation)\n}",
+                    "ids": [
+                        "RCA4PX94WiTPqTt5N"
+                    ]
+                },
+                {
+                    "entry_count": 1,
                     "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c: Component | c.workstation in (c.*parts).workstation.*succ\n}",
                     "ids": [
                         "Znj4PDp5EmgAzkPaD"
@@ -287,9 +280,16 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c : Component | all p : c.parts| c.workstation in Workstation implies p.workstation in Workstation\n}",
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c : Component | all p : c.parts| p.workstation in Workstation implies c.workstation in Workstation\n}",
                     "ids": [
-                        "7xZthYkdw4BgkKa6e"
+                        "W9fEwNeRG34zYsuTP"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c : Component, w : c.workstation, p : c.parts | workstation.p in ^succ.w\n}",
+                    "ids": [
+                        "urLzcbzmB6e53rRYA"
                     ]
                 }
             ]
@@ -311,15 +311,6 @@
                 },
                 {
                     "entry_count": 3,
-                    "code": "{\n    // Para cada componente c, todas as partes de c devem ser montadas\n    // em esta\u00e7\u00f5es que precedem a esta\u00e7\u00e3o onde c \u00e9 montado\n    all c : Component | \n        all p : c.parts | \n            some wsPart, wsComponent : Workstation | \n                p in wsPart.(workstation) and \n                c in wsComponent.(workstation) and\n                wsPart in wsComponent.^succ\n}",
-                    "ids": [
-                        "3AsyMiJ6pBrjjfTgn",
-                        "t7cfKnYkn9xFZfdwf",
-                        "oRzhT7BFQixHesx6o"
-                    ]
-                },
-                {
-                    "entry_count": 3,
                     "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c : Component| (c.parts) in ( ^(succ).(c.workstation) )\n}",
                     "ids": [
                         "qZZgDxf3BFzSvWgNK",
@@ -337,11 +328,12 @@
                     ]
                 },
                 {
-                    "entry_count": 2,
-                    "code": "{\n      // The parts of a component must be assembled before it in the production line\n  all c: Component | \n    all p: c.parts | \n      (some c.parts implies p in c.^succ)\n}",
+                    "entry_count": 3,
+                    "code": "{\n    // Para cada componente c, todas as partes de c devem ser montadas\n    // em esta\u00e7\u00f5es que precedem a esta\u00e7\u00e3o onde c \u00e9 montado\n    all c : Component | \n        all p : c.parts | \n            some wsPart, wsComponent : Workstation | \n                p in wsPart.(workstation) and \n                c in wsComponent.(workstation) and\n                wsPart in wsComponent.^succ\n}",
                     "ids": [
-                        "Pp4tn4cvjCufvhK65",
-                        "ay7MkXQfXpZRnX64S"
+                        "3AsyMiJ6pBrjjfTgn",
+                        "t7cfKnYkn9xFZfdwf",
+                        "oRzhT7BFQixHesx6o"
                     ]
                 },
                 {
@@ -353,38 +345,11 @@
                     ]
                 },
                 {
-                    "entry_count": 1,
-                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c: Component | \n\t\t// For each part of the component\n\t\tall p: c.parts |\n\t\t\t// The workstation where the part is assembled is before the workstation of the component\n\t\t\tone ws1: Workstation, ws2: Workstation |\n\t\t\t\tp in ws1.workers and c in ws2.workers and ws1 in ws2.^succ\n}",
+                    "entry_count": 2,
+                    "code": "{\n      // The parts of a component must be assembled before it in the production line\n  all c: Component | \n    all p: c.parts | \n      (some c.parts implies p in c.^succ)\n}",
                     "ids": [
-                        "Q2wnHKQZ7bQk9xqRr"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n    // Para cada componente c, todas as suas partes p devem ser montadas\n    // em esta\u00e7\u00f5es que precedem a esta\u00e7\u00e3o onde c \u00e9 montado\n    all c : Component, p : c.parts | \n        one w : Workstation | \n            p in w.workstation and \n            c in w.workstation\n}",
-                    "ids": [
-                        "Thtg2fdX9NpdTdaqN"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n    all c: Component, p: Product | p in c.parts implies p in begin.*succ and c in p.^succ\n}",
-                    "ids": [
-                        "fTfMt5wd3MWtSw43Y"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c: Component | \n    all p: c.parts | p in c.^succ\n}",
-                    "ids": [
-                        "TkoppjwSrkPWFCa6u"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n  all c : Component | all p : c.parts | c in p.^succ\n}",
-                    "ids": [
-                        "kxixYJa3utPBbjNp9"
+                        "Pp4tn4cvjCufvhK65",
+                        "ay7MkXQfXpZRnX64S"
                     ]
                 },
                 {
@@ -396,65 +361,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c: Component | \n    all p: c.parts | p in succ.c\n}",
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c: Component | \n    all p: c.parts | p in c.^succ\n}",
                     "ids": [
-                        "cmneKx5WTzDADKzRe"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c: Component | \n        all p: c.parts | \n            p in c.(parts & ^(workstation.~succ).parts) \n}",
-                    "ids": [
-                        "oDzAew7w22bu8wSch"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n    // Para cada componente c, todas as suas partes p devem ser montadas\n    // em esta\u00e7\u00f5es que precedem a esta\u00e7\u00e3o onde c \u00e9 montado\n    all c : Component, p : c.parts | \n        some wsPart, wsComponent : Workstation | \n            p in wsPart.workstation and \n            c in wsComponent.workstation and \n            wsComponent in wsPart.^succ\n \n}",
-                    "ids": [
-                        "kjuRsrDJJQaH3ZoWg"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c : Component | all p : c.parts| p.workstation in Workstation and c in Workstation\n}",
-                    "ids": [
-                        "nHY5DNdhEdvQHva6A"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c:Component | all p: c.parts | p in ^succ.(c.workstation)\n  \t\n}",
-                    "ids": [
-                        "HtauXgfD4XkFxp9ht"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n  all c : Component | all p : c.parts | one c.workstation & p.^succ\n}",
-                    "ids": [
-                        "3n86v69hCtWJ5sSkj"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n    // Para cada componente c, todas as suas partes p devem ser montadas\n    // em esta\u00e7\u00f5es que precedem a esta\u00e7\u00e3o onde c \u00e9 montado\n    all c : Component, p : c.parts | \n        one w: Workstation | \n            p in workstation.w and \n            c in workstation.w and \n            c in (p.workstation).^succ\n}",
-                    "ids": [
-                        "wocxQH3oLj7jksWWp"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n  // For each component, all of its parts must be assembled in workstations that precede the workstation where the component is assembled\n  all c: Component, p: c.parts |\n    one ws: c.workstation |  // The workstation where the component is assembled\n    p in ws.^succ  // The workstation where the part is assembled must be before the workstation of the component\n}",
-                    "ids": [
-                        "BfvkyKbRygnM2ZTTG"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n    // Para cada componente c, todas as suas partes p devem ser montadas\n    // em esta\u00e7\u00f5es que precedem a esta\u00e7\u00e3o onde c \u00e9 montado\n    all c : Component, p : c.parts | (one w : Workstation |  p in workstation.w and c in workstation.w ) \n\n\tall c : Component, p : c.parts | c in p.succ \n}",
-                    "ids": [
-                        "whrTY9ExtNn9ZEk22"
+                        "TkoppjwSrkPWFCa6u"
                     ]
                 },
                 {
@@ -466,20 +375,6 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c: Component | \n    all p: c.parts | p in c.succ\n}",
-                    "ids": [
-                        "Ty3Fda5nfpQy7P2gf"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c:Component | c.parts in (^workstation.c)\n  \t\n}",
-                    "ids": [
-                        "WgbFm8aBvADkYrRMq"
-                    ]
-                },
-                {
-                    "entry_count": 1,
                     "code": "{\n\t// The parts of a component must be assembled before it in the production line\n      all c: Component |\n        all p: c.parts |\n            // For each part p, it must be assembled in a workstation that comes before the workstation of the component c\n            some w1: Workstation, w2: Workstation |\n                p in w1.workers and c.workstation = w2.workers and w1.succ = w2\n}",
                     "ids": [
                         "PNduXxmXQp5HLYRj3"
@@ -487,9 +382,37 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c:Component | all p: c.parts | p in (^workstation.c)\n  \t\n}",
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c: Component | \n        all p: c.parts | \n            p in c.(parts & ^(workstation.~succ).parts) \n}",
                     "ids": [
-                        "TJ2nBL394NAsCDvvk"
+                        "oDzAew7w22bu8wSch"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n  all c : Component | all p : c.parts | one c.workstation & p.^succ\n}",
+                    "ids": [
+                        "3n86v69hCtWJ5sSkj"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n  all c: Component, p: c.parts | p in Workstation.^succ\n}",
+                    "ids": [
+                        "jFSeWtssNumSjxoZn"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n  all c : Component | all p : c.parts | c in p.^succ\n}",
+                    "ids": [
+                        "kxixYJa3utPBbjNp9"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c: Component | \n    all p: c.parts | p in c.succ\n}",
+                    "ids": [
+                        "Ty3Fda5nfpQy7P2gf"
                     ]
                 },
                 {
@@ -501,9 +424,86 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n  all c: Component, p: c.parts | p in Workstation.^succ\n}",
+                    "code": "{\n    // Para cada componente c, todas as suas partes p devem ser montadas\n    // em esta\u00e7\u00f5es que precedem a esta\u00e7\u00e3o onde c \u00e9 montado\n    all c : Component, p : c.parts | \n        one w: Workstation | \n            p in workstation.w and \n            c in workstation.w and \n            c in (p.workstation).^succ\n}",
                     "ids": [
-                        "jFSeWtssNumSjxoZn"
+                        "wocxQH3oLj7jksWWp"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n    // Para cada componente c, todas as suas partes p devem ser montadas\n    // em esta\u00e7\u00f5es que precedem a esta\u00e7\u00e3o onde c \u00e9 montado\n    all c : Component, p : c.parts | \n        some wsPart, wsComponent : Workstation | \n            p in wsPart.workstation and \n            c in wsComponent.workstation and \n            wsComponent in wsPart.^succ\n \n}",
+                    "ids": [
+                        "kjuRsrDJJQaH3ZoWg"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n    all c: Component, p: Product | p in c.parts implies p in begin.*succ and c in p.^succ\n}",
+                    "ids": [
+                        "fTfMt5wd3MWtSw43Y"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c:Component | all p: c.parts | p in (^workstation.c)\n  \t\n}",
+                    "ids": [
+                        "TJ2nBL394NAsCDvvk"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c: Component | \n    all p: c.parts | p in succ.c\n}",
+                    "ids": [
+                        "cmneKx5WTzDADKzRe"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c:Component | all p: c.parts | p in ^succ.(c.workstation)\n  \t\n}",
+                    "ids": [
+                        "HtauXgfD4XkFxp9ht"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c : Component | all p : c.parts| p.workstation in Workstation and c in Workstation\n}",
+                    "ids": [
+                        "nHY5DNdhEdvQHva6A"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c:Component | c.parts in (^workstation.c)\n  \t\n}",
+                    "ids": [
+                        "WgbFm8aBvADkYrRMq"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n    // Para cada componente c, todas as suas partes p devem ser montadas\n    // em esta\u00e7\u00f5es que precedem a esta\u00e7\u00e3o onde c \u00e9 montado\n    all c : Component, p : c.parts | \n        one w : Workstation | \n            p in w.workstation and \n            c in w.workstation\n}",
+                    "ids": [
+                        "Thtg2fdX9NpdTdaqN"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c: Component | \n\t\t// For each part of the component\n\t\tall p: c.parts |\n\t\t\t// The workstation where the part is assembled is before the workstation of the component\n\t\t\tone ws1: Workstation, ws2: Workstation |\n\t\t\t\tp in ws1.workers and c in ws2.workers and ws1 in ws2.^succ\n}",
+                    "ids": [
+                        "Q2wnHKQZ7bQk9xqRr"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n    // Para cada componente c, todas as suas partes p devem ser montadas\n    // em esta\u00e7\u00f5es que precedem a esta\u00e7\u00e3o onde c \u00e9 montado\n    all c : Component, p : c.parts | (one w : Workstation |  p in workstation.w and c in workstation.w ) \n\n\tall c : Component, p : c.parts | c in p.succ \n}",
+                    "ids": [
+                        "whrTY9ExtNn9ZEk22"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n  // For each component, all of its parts must be assembled in workstations that precede the workstation where the component is assembled\n  all c: Component, p: c.parts |\n    one ws: c.workstation |  // The workstation where the component is assembled\n    p in ws.^succ  // The workstation where the part is assembled must be before the workstation of the component\n}",
+                    "ids": [
+                        "BfvkyKbRygnM2ZTTG"
                     ]
                 }
             ]
@@ -555,18 +555,18 @@
                 },
                 {
                     "entry_count": 2,
-                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c : Component | c.^(parts.workstation) in ^succ.(c.workstation) \n}",
-                    "ids": [
-                        "3D8KKpi9MNxToTDMu",
-                        "JeFMRtHBGzfNeNtG5"
-                    ]
-                },
-                {
-                    "entry_count": 2,
                     "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c: Component, p: c.parts |\n  \t\tp.workstation in c.workstation.^(~succ)\n}",
                     "ids": [
                         "aCWpnwHxRicq7j6Mq",
                         "vq5Pf5KiTEAf23QSS"
+                    ]
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c : Component | c.^(parts.workstation) in ^succ.(c.workstation) \n}",
+                    "ids": [
+                        "3D8KKpi9MNxToTDMu",
+                        "JeFMRtHBGzfNeNtG5"
                     ]
                 },
                 {
@@ -624,14 +624,6 @@
                 },
                 {
                     "entry_count": 2,
-                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n  all c: Component, p: Product |\n    p in c.parts implies c.workstation in p.workstation.^succ\n}",
-                    "ids": [
-                        "2EnMLMoee687Qir7w",
-                        "b8sCS2x2RNHRETHWn"
-                    ]
-                },
-                {
-                    "entry_count": 2,
                     "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c : Component , w : c.workstation |\n  \t\tc.parts in workstation.(^succ.w)\n  \t\t\n}",
                     "ids": [
                         "K7HWT67gj3RWSY88s",
@@ -639,10 +631,11 @@
                     ]
                 },
                 {
-                    "entry_count": 1,
-                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c: Component, w: c.workstation | all p: c.parts | w in p.workstation.^succ\n }",
+                    "entry_count": 2,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n  all c: Component, p: Product |\n    p in c.parts implies c.workstation in p.workstation.^succ\n}",
                     "ids": [
-                        "MypXNBSrhW29WebZv"
+                        "2EnMLMoee687Qir7w",
+                        "b8sCS2x2RNHRETHWn"
                     ]
                 },
                 {
@@ -650,6 +643,13 @@
                     "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c: Component | all c_parts: c.parts |\n  \t\tsome c.workstation implies\n  \t\t\tc.workstation in c_parts.workstation.^succ\n}",
                     "ids": [
                         "CWy4Pz9wo3HpNpc6M"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c: Component, w: c.workstation | all p: c.parts | w in p.workstation.^succ\n }",
+                    "ids": [
+                        "MypXNBSrhW29WebZv"
                     ]
                 }
             ]
@@ -743,16 +743,16 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c: Component, p: c.parts |\n\t\tp in Component implies p.workstation in c.workstation.~succ\n}",
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c : Component | c.^((parts :> Component).workstation) in succ.(c.workstation) \n}",
                     "ids": [
-                        "ezjk2FtcvW7Jo3xvp"
+                        "MSZJfJsztMAfzurTZ"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c : Component | c.^((parts :> Component).workstation) in succ.(c.workstation) \n}",
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c: Component, p: c.parts |\n\t\tp in Component implies p.workstation in c.workstation.~succ\n}",
                     "ids": [
-                        "MSZJfJsztMAfzurTZ"
+                        "ezjk2FtcvW7Jo3xvp"
                     ]
                 },
                 {
@@ -801,6 +801,20 @@
                 },
                 {
                     "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c : Component | some(c.parts&Component) implies c.workstation in (c.parts&Component).workstation.^succ\n}",
+                    "ids": [
+                        "X4jDv42fve8wQjSrR"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n  // The parts of a component must be assembled before it in the production line\n  all c:Component | no c.parts or some (c.parts & Component) => c.workstation.*succ in c.parts.workstation.^succ\n\n}",
+                    "ids": [
+                        "BQjGYFuYn9hyapa9u"
+                    ]
+                },
+                {
+                    "entry_count": 1,
                     "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c : Component, p : c.parts & Component | c.workstation in c.parts.workstation.^succ\n}",
                     "ids": [
                         "96etzyBe4gR6kiTMb"
@@ -818,20 +832,6 @@
                     "code": "{\n  // The parts of a component must be assembled before it in the production line\n  all c:Component | some (c.parts & Component) => c.workstation.*succ in c.parts.^workstation.^succ\n\n}",
                     "ids": [
                         "B54N6CWrPpa7B6MZi"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c : Component | some(c.parts&Component) implies c.workstation in (c.parts&Component).workstation.^succ\n}",
-                    "ids": [
-                        "X4jDv42fve8wQjSrR"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n  // The parts of a component must be assembled before it in the production line\n  all c:Component | no c.parts or some (c.parts & Component) => c.workstation.*succ in c.parts.workstation.^succ\n\n}",
-                    "ids": [
-                        "BQjGYFuYn9hyapa9u"
                     ]
                 }
             ]
@@ -866,18 +866,18 @@
                 },
                 {
                     "entry_count": 2,
-                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n  \tall c: Component | \n \tall p: c.parts | \n    all wsC: c.workstation |\n  \tall wsP: p.workstation |\n          wsC in wsP.^succ \n  }",
-                    "ids": [
-                        "W8CYxKEp8mJ4JJsgc",
-                        "PEkdaefqvmtseaRFY"
-                    ]
-                },
-                {
-                    "entry_count": 2,
                     "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall x: Component, w : x.workstation, y: x.parts & Component | y.workstation in ^succ.w\n}",
                     "ids": [
                         "oyLM4Kf6XTDiZSz99",
                         "yCEALkbZKm4TAkdDt"
+                    ]
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n  \tall c: Component | \n \tall p: c.parts | \n    all wsC: c.workstation |\n  \tall wsP: p.workstation |\n          wsC in wsP.^succ \n  }",
+                    "ids": [
+                        "W8CYxKEp8mJ4JJsgc",
+                        "PEkdaefqvmtseaRFY"
                     ]
                 },
                 {
@@ -955,16 +955,16 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c : Component | no(c.^parts.workstation & (c.workstation + c.workstation.^succ))\n}",
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\t// nenhum succ de uma workstation que esteja a trabalhar num component pode estar a trabalhar nas partes desse component\n  \tall w : Workstation, s : w.*succ, c : workstation.w, p : c.^parts | p in Component implies p not in workstation.s\n}",
                     "ids": [
-                        "kFpWKdX3YWCzvkQR4"
+                        "qGpjnrXeaW6MGMa3W"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\t// nenhum succ de uma workstation que esteja a trabalhar num component pode estar a trabalhar nas partes desse component\n  \tall w : Workstation, s : w.*succ, c : workstation.w, p : c.^parts | p in Component implies p not in workstation.s\n}",
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c : Component | no(c.^parts.workstation & (c.workstation + c.workstation.^succ))\n}",
                     "ids": [
-                        "qGpjnrXeaW6MGMa3W"
+                        "kFpWKdX3YWCzvkQR4"
                     ]
                 }
             ]
@@ -1039,6 +1039,13 @@
                 },
                 {
                     "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall x: Component, w : x.workstation, y: x.parts & Component | y.workstation in (w.^succ)\n}",
+                    "ids": [
+                        "sNtSaow5NvWAHKGta"
+                    ]
+                },
+                {
+                    "entry_count": 1,
                     "code": "{\n\t// The parts of a component must be assembled before it in the production line\n  all c1, c2 : Component | all w1, w2 : Workstation | w1 in c1.workstation and w2 in c2.workstation and c2 in c1.parts implies w2 in w1.^succ\n\n}",
                     "ids": [
                         "ooBAevAP3PbBQqzLm"
@@ -1049,13 +1056,6 @@
                     "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\t  all c: Component, ws_part, ws_comp: Workstation |\n        ws_comp in c.workstation and ws_part in (c.parts).workstation implies ws_part in ws_comp.^succ\n}",
                     "ids": [
                         "2aXM7daKJS59YdS8s"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall x: Component, w : x.workstation, y: x.parts & Component | y.workstation in (w.^succ)\n}",
-                    "ids": [
-                        "sNtSaow5NvWAHKGta"
                     ]
                 }
             ]
@@ -1121,20 +1121,6 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c : Component | c.parts.workstation in c.~(*succ) \n}",
-                    "ids": [
-                        "GzX75QBWyimrfZBef"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\n\tall disj c : Component, p : Product | p in c.parts implies (p in Material or p.workstation in (c.workstation.*succ - c.workstation.^succ - c.workstation))\n}",
-                    "ids": [
-                        "C5F7kLTBB8XKXFdLp"
-                    ]
-                },
-                {
-                    "entry_count": 1,
                     "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c:Component | all p:c.parts | all w:p.workstation | c in w.^succ\n}",
                     "ids": [
                         "ax7SFRHrge2p6rmLt"
@@ -1149,9 +1135,16 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c: Component, p: c.parts | p.workstation in (p.^succ & c.workstation)\n\n}",
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\n\tall disj c : Component, p : Product | p in c.parts implies (p in Material or p.workstation in (c.workstation.*succ - c.workstation.^succ - c.workstation))\n}",
                     "ids": [
-                        "eX6x7Ha49tG7tFNkc"
+                        "C5F7kLTBB8XKXFdLp"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c : Component | c.parts.workstation in c.~(*succ) \n}",
+                    "ids": [
+                        "GzX75QBWyimrfZBef"
                     ]
                 },
                 {
@@ -1166,6 +1159,13 @@
                     "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c:Component, ws:Workstation | ws in (c.parts).workstation implies before ws in (c.workstation & c.workstation.^succ)\n}",
                     "ids": [
                         "RhyLvXhTaZeGrR62z"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c: Component, p: c.parts | p.workstation in (p.^succ & c.workstation)\n\n}",
+                    "ids": [
+                        "eX6x7Ha49tG7tFNkc"
                     ]
                 }
             ]
@@ -1213,14 +1213,6 @@
                 },
                 {
                     "entry_count": 2,
-                    "code": "{\n    // Para cada componente c, todas as partes de c devem ser montadas\n    // em esta\u00e7\u00f5es que precedem a esta\u00e7\u00e3o onde c \u00e9 montado\n    all c : Component | \n        all p : c.parts | \n            some wsPart, wsComponent : Workstation | \n                p in (workstation).wsPart and \n                c in (workstation).wsComponent and\n                wsPart in wsComponent.^succ\n}",
-                    "ids": [
-                        "3n6vWT2RS3KXFyL2b",
-                        "HpZXhoNexhHaxFMLB"
-                    ]
-                },
-                {
-                    "entry_count": 2,
                     "code": "{\n\t// The parts of a component must be assembled before it in the production line\n  all c: Component | all p: c.parts |\n        some pc, pp: Workstation |\n            pc in c.workstation and \n            pp in p.workstation and\n            pp in pc.^succ\n\n}",
                     "ids": [
                         "5wr9Da5whto9eQ5qF",
@@ -1228,10 +1220,11 @@
                     ]
                 },
                 {
-                    "entry_count": 1,
-                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n  all c: Component, p: Product |\n        p in c.parts implies some p.workstation & c.workstation.^succ\n}",
+                    "entry_count": 2,
+                    "code": "{\n    // Para cada componente c, todas as partes de c devem ser montadas\n    // em esta\u00e7\u00f5es que precedem a esta\u00e7\u00e3o onde c \u00e9 montado\n    all c : Component | \n        all p : c.parts | \n            some wsPart, wsComponent : Workstation | \n                p in (workstation).wsPart and \n                c in (workstation).wsComponent and\n                wsPart in wsComponent.^succ\n}",
                     "ids": [
-                        "ca9pePGKfbaKaohJw"
+                        "3n6vWT2RS3KXFyL2b",
+                        "HpZXhoNexhHaxFMLB"
                     ]
                 },
                 {
@@ -1239,6 +1232,13 @@
                     "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall p: Product, c: Component | p in c.parts implies some ws1, ws2: Workstation |\n      ws1 in p.workstation and ws2 in c.workstation and ws1 in ws2.^succ\n}",
                     "ids": [
                         "YXjBFuAiksWvtx7Lb"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n  all c: Component, p: Product |\n        p in c.parts implies some p.workstation & c.workstation.^succ\n}",
+                    "ids": [
+                        "ca9pePGKfbaKaohJw"
                     ]
                 }
             ]
@@ -1258,16 +1258,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c1, c2: Component | c2 in c1.parts => c2 in c1.workstation.^~succ\n}",
+                    "code": "{\n  // The parts of a component must be assembled before it in the production line\n  all c:Component | some (c.parts & Component) => c.parts.workstation.*succ not in c.workstation.*succ\n  no (Component.workstation & Component.parts.workstation)\n\n}",
                     "ids": [
-                        "PEMzaqXPaDj7zfiHf"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c : Component | c in Component.parts implies c in begin\n}",
-                    "ids": [
-                        "FvufYhBA67rKLAnjQ"
+                        "79dLTcMJNaAREywZJ"
                     ]
                 },
                 {
@@ -1286,9 +1279,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n  // The parts of a component must be assembled before it in the production line\n  all c:Component | some (c.parts & Component) => c.parts.workstation.*succ not in c.workstation.*succ\n  no (Component.workstation & Component.parts.workstation)\n\n}",
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c1, c2: Component | c2 in c1.parts => c2 in c1.workstation.^~succ\n}",
                     "ids": [
-                        "79dLTcMJNaAREywZJ"
+                        "PEMzaqXPaDj7zfiHf"
                     ]
                 },
                 {
@@ -1296,6 +1289,13 @@
                     "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall x: Component, y: x.parts & Component | y in succ.(x.workstation)\n}",
                     "ids": [
                         "wTr7SQREawWajMygQ"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c : Component | c in Component.parts implies c in begin\n}",
+                    "ids": [
+                        "FvufYhBA67rKLAnjQ"
                     ]
                 }
             ]
@@ -1315,9 +1315,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n  all c1 : Component, c2 : Component  | (c1.parts in c2.^parts implies c1.workstation not in c2.workstation.^succ) and (c1.workstation != c2.workstation)\n\n}",
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c: Component | c in (c.^parts - Material).workstation.^succ\n}",
                     "ids": [
-                        "q3v36rHgvQsncFYRD"
+                        "tofTFQgAjM8huLYtF"
                     ]
                 },
                 {
@@ -1329,20 +1329,6 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c: Component | c in (c.^parts - Material).workstation.^succ\n}",
-                    "ids": [
-                        "tofTFQgAjM8huLYtF"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c: Component | c in c.^parts.workstation.^succ\n}",
-                    "ids": [
-                        "nAf8ArpJA5gXX7QZX"
-                    ]
-                },
-                {
-                    "entry_count": 1,
                     "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c1, c2: Component | c2 in c1.*parts => c2 in c1.workstation.^~succ\n}",
                     "ids": [
                         "NgzWDuDfEP2hbj9CR"
@@ -1350,9 +1336,23 @@
                 },
                 {
                     "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n  all c1 : Component, c2 : Component  | (c1.parts in c2.^parts implies c1.workstation not in c2.workstation.^succ) and (c1.workstation != c2.workstation)\n\n}",
+                    "ids": [
+                        "q3v36rHgvQsncFYRD"
+                    ]
+                },
+                {
+                    "entry_count": 1,
                     "code": "{\n\t// The parts of a component must be assembled before it in the production line\n  all c1 : Component, c2 : Component  | c1.parts in c2.^parts implies c1.workstation not in c2.workstation.^succ and c1.workstation != c2.workstation\n\n}",
                     "ids": [
                         "dhsWKHSCEiWanLQhh"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c: Component | c in c.^parts.workstation.^succ\n}",
+                    "ids": [
+                        "nAf8ArpJA5gXX7QZX"
                     ]
                 }
             ]
@@ -1382,16 +1382,16 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c: Component | (all p: c.parts | p in workstation.(^succ.(c.workstation)))\n}",
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c:Component | c.parts in c.workstation.^(~succ).~workstation\n}",
                     "ids": [
-                        "tGFrj7eY7vB2rTNgc"
+                        "mh8tyW5DqqMNWvzzF"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c:Component | c.parts in c.workstation.^(~succ).~workstation\n}",
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c: Component | (all p: c.parts | p in workstation.(^succ.(c.workstation)))\n}",
                     "ids": [
-                        "mh8tyW5DqqMNWvzzF"
+                        "tGFrj7eY7vB2rTNgc"
                     ]
                 }
             ]
@@ -1401,6 +1401,14 @@
             "group_count": 4,
             "correct": false,
             "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c : Component | some(c.parts)\n}",
+                    "ids": [
+                        "rdxfQo2NXqLaZbChy",
+                        "7g9sgLtQjNM36FoPZ"
+                    ]
+                },
                 {
                     "entry_count": 2,
                     "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c:Component, ws:Workstation | c.parts in ws implies before c in ws\n}",
@@ -1415,14 +1423,6 @@
                     "ids": [
                         "gdeiaMpfk9xd4yNdb",
                         "9hNj6unYTLsoxwEJY"
-                    ]
-                },
-                {
-                    "entry_count": 2,
-                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c : Component | some(c.parts)\n}",
-                    "ids": [
-                        "rdxfQo2NXqLaZbChy",
-                        "7g9sgLtQjNM36FoPZ"
                     ]
                 },
                 {
@@ -1458,16 +1458,16 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c: Component | c.workstation in c.parts.workstation.*succ or c.parts in Material\n}",
+                    "code": "{\n  // The parts of a component must be assembled before it in the production line\n  all c:Component | some (c.parts & Component) => c.workstation.*succ in c.parts.workstation.*succ\n\n}",
                     "ids": [
-                        "oZcaefErRB7nrxqm8"
+                        "L28PnnsuYJXYNmXiq"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n  // The parts of a component must be assembled before it in the production line\n  all c:Component | some (c.parts & Component) => c.workstation.*succ in c.parts.workstation.*succ\n\n}",
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c: Component | c.workstation in c.parts.workstation.*succ or c.parts in Material\n}",
                     "ids": [
-                        "L28PnnsuYJXYNmXiq"
+                        "oZcaefErRB7nrxqm8"
                     ]
                 }
             ]
@@ -1511,14 +1511,6 @@
             "elems": [
                 {
                     "entry_count": 2,
-                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n    all c: Component | some c.workstation implies before(all p: Product | p in c.^parts implies some p.workstation or p in Material)\n}",
-                    "ids": [
-                        "dTGBRqp9S4i2CZCWs",
-                        "t4ML3MhZppHgP4Hqe"
-                    ]
-                },
-                {
-                    "entry_count": 2,
                     "code": "{\n\t// The parts of a component must be assembled before it in the production line\n    all c: Component | some c.workstation implies before(all p: Product | p in c.^parts implies p.workstation = end and p.workstation != begin or p in Material)\n}",
                     "ids": [
                         "XwsGDJsP6EDPDpRcg",
@@ -1526,10 +1518,18 @@
                     ]
                 },
                 {
-                    "entry_count": 1,
-                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c:Component, ws:Workstation | ws in c.workstation implies before ws in ((c.parts).workstation  & c.workstation.^succ)\n}",
+                    "entry_count": 2,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n    all c: Component | some c.workstation implies before(all p: Product | p in c.^parts implies some p.workstation or p in Material)\n}",
                     "ids": [
-                        "bBSPwByy6Ln7tu7cg"
+                        "dTGBRqp9S4i2CZCWs",
+                        "t4ML3MhZppHgP4Hqe"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n    all c: Component | some c.workstation implies before(all p: Product | p in c.^parts implies (some p.workstation and no p.workstation.workers) or p in Material)\n}",
+                    "ids": [
+                        "ndNpTZtufsE5tRS4M"
                     ]
                 },
                 {
@@ -1541,9 +1541,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n    all c: Component | some c.workstation implies before(all p: Product | p in c.^parts implies (some p.workstation and no p.workstation.workers) or p in Material)\n}",
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c:Component, ws:Workstation | ws in c.workstation implies before ws in ((c.parts).workstation  & c.workstation.^succ)\n}",
                     "ids": [
-                        "ndNpTZtufsE5tRS4M"
+                        "bBSPwByy6Ln7tu7cg"
                     ]
                 }
             ]
@@ -1611,18 +1611,18 @@
             "elems": [
                 {
                     "entry_count": 2,
-                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n  \n\tall c:Component | no (workstation.(c.workstation.^succ) & c.^parts)\n}",
-                    "ids": [
-                        "Cgd3iWEu26PnpKKQ7",
-                        "pxDbq26hHPcg5E2NF"
-                    ]
-                },
-                {
-                    "entry_count": 2,
                     "code": "{\n\t// The parts of a component must be assembled before it in the production line\n  \n\tall c:Component | no (workstation.(c.workstation.^succ + c) & c.^parts)\n}",
                     "ids": [
                         "wGnuJrEKu2bKsbNKP",
                         "GjkvchSduLTTPdTws"
+                    ]
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n  \n\tall c:Component | no (workstation.(c.workstation.^succ) & c.^parts)\n}",
+                    "ids": [
+                        "Cgd3iWEu26PnpKKQ7",
+                        "pxDbq26hHPcg5E2NF"
                     ]
                 },
                 {
@@ -1752,16 +1752,16 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c: Component | all p: c.parts & Component | c.workstation.*succ in p.workstation.*succ\n}",
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n  all p: Component, c: Component | p in c.parts => c.workstation in p.workstation.*succ\n\n}",
                     "ids": [
-                        "3Gb2awNvcSxfaX5mT"
+                        "2dXNjkFfhtAPbe86x"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n  all p: Component, c: Component | p in c.parts => c.workstation in p.workstation.*succ\n\n}",
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c: Component | all p: c.parts & Component | c.workstation.*succ in p.workstation.*succ\n}",
                     "ids": [
-                        "2dXNjkFfhtAPbe86x"
+                        "3Gb2awNvcSxfaX5mT"
                     ]
                 }
             ]
@@ -1773,16 +1773,16 @@
             "elems": [
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c: Component |\n\t\tall p: c.parts |\n\t\t\tlet ws1 = p.workstation, ws2 = c.workstation |\n\t\t\t\tp not in Material implies (\n\t\t\t\t\tsome w1: ws1, w2: ws2 | w1 in w2.^succ\n\t\t\t\t)\n}",
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c: Component | \n\t\tall p: c.parts |\n\t\t\tp in Component implies \n\t\t\t\tlet ws1 = p.workstation, ws2 = c.workstation |\n\t\t\t\tsome w1: ws1, w2: ws2 | w1 in w2.^succ\n}",
                     "ids": [
-                        "PHWK6NfPAcpoPjy2m"
+                        "rigAHzAmi7eivHgNF"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c: Component | \n\t\tall p: c.parts |\n\t\t\tp in Component implies \n\t\t\t\tlet ws1 = p.workstation, ws2 = c.workstation |\n\t\t\t\tsome w1: ws1, w2: ws2 | w1 in w2.^succ\n}",
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\t\n    all c : Component, p : c.parts & Component | \n        some ws : c.workstation, wp : p.workstation |\n            wp in ws.^succ\n  \n  \n}",
                     "ids": [
-                        "rigAHzAmi7eivHgNF"
+                        "d2Q4vEhHv9z7z2f5B"
                     ]
                 },
                 {
@@ -1794,16 +1794,16 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n  all c: Component, p: Component |\n        p in c.parts implies some p.workstation & c.workstation.^succ\n}",
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c: Component |\n\t\tall p: c.parts |\n\t\t\tlet ws1 = p.workstation, ws2 = c.workstation |\n\t\t\t\tp not in Material implies (\n\t\t\t\t\tsome w1: ws1, w2: ws2 | w1 in w2.^succ\n\t\t\t\t)\n}",
                     "ids": [
-                        "M8tWCHKtxraeqKQS7"
+                        "PHWK6NfPAcpoPjy2m"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\t\n    all c : Component, p : c.parts & Component | \n        some ws : c.workstation, wp : p.workstation |\n            wp in ws.^succ\n  \n  \n}",
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n  all c: Component, p: Component |\n        p in c.parts implies some p.workstation & c.workstation.^succ\n}",
                     "ids": [
-                        "d2Q4vEhHv9z7z2f5B"
+                        "M8tWCHKtxraeqKQS7"
                     ]
                 }
             ]
@@ -2028,16 +2028,16 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c: Component, p: c.parts |\n\t\tp in Component implies p.workstation in c.workstation.*~succ\n}",
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c : Component | c.parts.workstation in *succ.(c.workstation) \n}",
                     "ids": [
-                        "SEeCyh8oxBgkTASk8"
+                        "5chrKXReGPYnNEhri"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c : Component | c.parts.workstation in *succ.(c.workstation) \n}",
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c: Component, p: c.parts |\n\t\tp in Component implies p.workstation in c.workstation.*~succ\n}",
                     "ids": [
-                        "5chrKXReGPYnNEhri"
+                        "SEeCyh8oxBgkTASk8"
                     ]
                 }
             ]
@@ -2081,13 +2081,6 @@
             "elems": [
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\t// all c : Component | one (c.workstation).succ => \n  // all c : Component | one c.workstation implies (all c1 : (^parts).c & Component | c1.workstation != c.workstation)\n  all c : Component | c.workstation != begin => all p : c.parts & Component | p.workstation = end\n}",
-                    "ids": [
-                        "ho7mQv46dTmixyA5L"
-                    ]
-                },
-                {
-                    "entry_count": 1,
                     "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\t// all c : Component | one (c.workstation).succ => \n  all c : Component | c.workstation != end => all c1 : parts.c & Component | c1.workstation = begin\n}",
                     "ids": [
                         "gT48ex45QXJokbrpQ"
@@ -2099,6 +2092,13 @@
                     "ids": [
                         "qbFaZ9JQzrfMzJHhm"
                     ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\t// all c : Component | one (c.workstation).succ => \n  // all c : Component | one c.workstation implies (all c1 : (^parts).c & Component | c1.workstation != c.workstation)\n  all c : Component | c.workstation != begin => all p : c.parts & Component | p.workstation = end\n}",
+                    "ids": [
+                        "ho7mQv46dTmixyA5L"
+                    ]
                 }
             ]
         },
@@ -2109,9 +2109,9 @@
             "elems": [
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n//all c1,c2 : Component | c1 in c2.parts implies c2.workstation in c1.workstation.^succ\n  all c : Component | parts.c in c.workstation.^succ.parts\n  \n}",
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n//all c1,c2 : Component | c1 in c2.parts implies c2.workstation in c1.workstation.^succ\n  all c : Component | parts.c in c.^workstation\n  \n}",
                     "ids": [
-                        "sLP8wfmFAkRTWHusy"
+                        "im4TEQ7oSyupEKDs5"
                     ]
                 },
                 {
@@ -2123,9 +2123,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n//all c1,c2 : Component | c1 in c2.parts implies c2.workstation in c1.workstation.^succ\n  all c : Component | parts.c in c.^workstation\n  \n}",
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n//all c1,c2 : Component | c1 in c2.parts implies c2.workstation in c1.workstation.^succ\n  all c : Component | parts.c in c.workstation.^succ.parts\n  \n}",
                     "ids": [
-                        "im4TEQ7oSyupEKDs5"
+                        "sLP8wfmFAkRTWHusy"
                     ]
                 }
             ]
@@ -2137,9 +2137,9 @@
             "elems": [
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c : Component | all comp : c.parts | comp in Component => comp.workstation in c.parts.workstation.^succ\n}",
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c : Component | all comp : c.parts | comp.workstation in c.parts.workstation.^succ\n}",
                     "ids": [
-                        "qDdqzxAPPmAazJGc9"
+                        "9djSGguBYTxso6sY3"
                     ]
                 },
                 {
@@ -2151,9 +2151,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c : Component | all comp : c.parts | comp.workstation in c.parts.workstation.^succ\n}",
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c : Component | all comp : c.parts | comp in Component => comp.workstation in c.parts.workstation.^succ\n}",
                     "ids": [
-                        "9djSGguBYTxso6sY3"
+                        "qDdqzxAPPmAazJGc9"
                     ]
                 }
             ]
@@ -2301,13 +2301,6 @@
             "elems": [
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\t// all c : Component | one (c.workstation).succ => \n  all c : Component | no c.parts => no c.workstation\n}",
-                    "ids": [
-                        "B6jMRZNrefBYXXXFN"
-                    ]
-                },
-                {
-                    "entry_count": 1,
                     "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c:Component | c.workstation != none implies c.parts != none\n}",
                     "ids": [
                         "NKbwF2NgZZGAacLC7"
@@ -2318,6 +2311,13 @@
                     "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c:Component, ws:Workstation | ws in c.workstation implies once #(c.parts) >0\n}",
                     "ids": [
                         "Qb55RWbAsqrnmcjHX"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\t// all c : Component | one (c.workstation).succ => \n  all c : Component | no c.parts => no c.workstation\n}",
+                    "ids": [
+                        "B6jMRZNrefBYXXXFN"
                     ]
                 }
             ]
@@ -2449,16 +2449,16 @@
             "elems": [
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\t// all c : Component | one (c.workstation).succ => \n  all c : Component | some c.workstation => all c1 : parts.c & Component | c1.workstation = begin or no c1.workstation\n}",
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n    all c : Component | c.workstation not in begin implies no c.parts.workstation\n\n}",
                     "ids": [
-                        "6C5AMuCTFCPHyRJiD"
+                        "J3xkypqmatLezNyr3"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n    all c : Component | c.workstation not in begin implies no c.parts.workstation\n\n}",
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\t// all c : Component | one (c.workstation).succ => \n  all c : Component | some c.workstation => all c1 : parts.c & Component | c1.workstation = begin or no c1.workstation\n}",
                     "ids": [
-                        "J3xkypqmatLezNyr3"
+                        "6C5AMuCTFCPHyRJiD"
                     ]
                 }
             ]
@@ -2485,16 +2485,16 @@
             "elems": [
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n    all c: Component | (c.parts.workstation & c.workstation.*succ) = none\n}",
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c: Component, p: c.parts | p not in workstation.(c.workstation.*succ)\n}",
                     "ids": [
-                        "zJRPyj9D67eLmCm2x"
+                        "3b9qasMMwyYswq3Mf"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c: Component, p: c.parts | p not in workstation.(c.workstation.*succ)\n}",
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n    all c: Component | (c.parts.workstation & c.workstation.*succ) = none\n}",
                     "ids": [
-                        "3b9qasMMwyYswq3Mf"
+                        "zJRPyj9D67eLmCm2x"
                     ]
                 }
             ]
@@ -2506,16 +2506,16 @@
             "elems": [
                 {
                     "entry_count": 1,
-                    "code": "{\n  // The parts of a component must be assembled before it in the production line\n  all c:Component | some (c.parts & Component) => c.workstation.*succ in c.parts.workstation\n\n}",
+                    "code": "{\n  // The parts of a component must be assembled before it in the production line\n  all c:Component | some (c.parts & Component) => c.workstation.*succ in c.parts.^workstation\n\n}",
                     "ids": [
-                        "jjyMikBQcGBu6BAPC"
+                        "B9Zd8dCMKbFtK7MTR"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n  // The parts of a component must be assembled before it in the production line\n  all c:Component | some (c.parts & Component) => c.workstation.*succ in c.parts.^workstation\n\n}",
+                    "code": "{\n  // The parts of a component must be assembled before it in the production line\n  all c:Component | some (c.parts & Component) => c.workstation.*succ in c.parts.workstation\n\n}",
                     "ids": [
-                        "B9Zd8dCMKbFtK7MTR"
+                        "jjyMikBQcGBu6BAPC"
                     ]
                 }
             ]
@@ -2542,16 +2542,16 @@
             "elems": [
                 {
                     "entry_count": 1,
-                    "code": "{\n  // The parts of a component must be assembled before it in the production line\n  all c:Component | no c.parts or some (c.parts & Component) => c.parts.^workstation not in c.workstation\n\n}",
+                    "code": "{\n  // The parts of a component must be assembled before it in the production line\n  all c:Component | no c.parts or some (c.parts & Component) => c.parts.workstation not in c.workstation\n\n}",
                     "ids": [
-                        "voFoEwWAwANoB2GAr"
+                        "jeXH8h3WT63m7Py6B"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n  // The parts of a component must be assembled before it in the production line\n  all c:Component | no c.parts or some (c.parts & Component) => c.parts.workstation not in c.workstation\n\n}",
+                    "code": "{\n  // The parts of a component must be assembled before it in the production line\n  all c:Component | no c.parts or some (c.parts & Component) => c.parts.^workstation not in c.workstation\n\n}",
                     "ids": [
-                        "jeXH8h3WT63m7Py6B"
+                        "voFoEwWAwANoB2GAr"
                     ]
                 }
             ]
@@ -2584,16 +2584,16 @@
             "elems": [
                 {
                     "entry_count": 1,
-                    "code": "{\n  // The parts of a component must be assembled before it in the production line\n  all c:Component | some (c.parts & Component) => c.parts.workstation.*succ not in c.workstation.*succ\n  Component.workstation != Component.parts.workstation\n\n}",
+                    "code": "{\n  // The parts of a component must be assembled before it in the production line\n  all c:Component | some (c.parts & Component) => c.parts.workstation.*succ not in c.workstation.*succ\n  Component.workstation not in Component.parts.workstation\n\n}",
                     "ids": [
-                        "itETzLGe8N5NKsWxg"
+                        "tcsKkvbpmBM2uC8mW"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n  // The parts of a component must be assembled before it in the production line\n  all c:Component | some (c.parts & Component) => c.parts.workstation.*succ not in c.workstation.*succ\n  Component.workstation not in Component.parts.workstation\n\n}",
+                    "code": "{\n  // The parts of a component must be assembled before it in the production line\n  all c:Component | some (c.parts & Component) => c.parts.workstation.*succ not in c.workstation.*succ\n  Component.workstation != Component.parts.workstation\n\n}",
                     "ids": [
-                        "tcsKkvbpmBM2uC8mW"
+                        "itETzLGe8N5NKsWxg"
                     ]
                 }
             ]
@@ -2620,16 +2620,16 @@
             "elems": [
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n  \tall a,b : Component | b in a.parts implies a.workstation in ^succ.workstation.b\n\n}",
+                    "code": "{\n  // The parts of a component must be assembled before it in the production line\n  all c1,c2:Component | c1 in c2.parts => c2.workstation in c1.workstation.^parts\n\n}",
                     "ids": [
-                        "nEX6DMQDCbRimjCWR"
+                        "kTmKoY43Xrbwjjgvm"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n  // The parts of a component must be assembled before it in the production line\n  all c1,c2:Component | c1 in c2.parts => c2.workstation in c1.workstation.^parts\n\n}",
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n  \tall a,b : Component | b in a.parts implies a.workstation in ^succ.workstation.b\n\n}",
                     "ids": [
-                        "kTmKoY43Xrbwjjgvm"
+                        "nEX6DMQDCbRimjCWR"
                     ]
                 }
             ]
@@ -2788,16 +2788,16 @@
             "elems": [
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c: Component | (all p: c.parts | p in workstation.(*succ.(c.workstation)))\n}",
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c : Component |\n  \t\tc.parts in workstation.(*succ.(c.workstation))\n  \t\t\n}",
                     "ids": [
-                        "D2krAG4yRpmrj6mTz"
+                        "QZKThBRnFHAz4cGdh"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c : Component |\n  \t\tc.parts in workstation.(*succ.(c.workstation))\n  \t\t\n}",
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c: Component | (all p: c.parts | p in workstation.(*succ.(c.workstation)))\n}",
                     "ids": [
-                        "QZKThBRnFHAz4cGdh"
+                        "D2krAG4yRpmrj6mTz"
                     ]
                 }
             ]
@@ -2860,16 +2860,16 @@
             "elems": [
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n  \tall p : Product | all main : Product | p in main.^(parts.parts) implies  \t\t\tmain.workstation in p.^(succ.succ)\n  \n\n}",
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n  \tall p : Product | all main : Product | p in main.^(parts.parts) implies  \t\t\tmain.workstation in p.*(succ)\n  \n\n}",
                     "ids": [
-                        "5uEuHHRBzGjv4eNz2"
+                        "ZG9h33QkmZdN5j9PG"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n  \tall p : Product | all main : Product | p in main.^(parts.parts) implies  \t\t\tmain.workstation in p.*(succ)\n  \n\n}",
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n  \tall p : Product | all main : Product | p in main.^(parts.parts) implies  \t\t\tmain.workstation in p.^(succ.succ)\n  \n\n}",
                     "ids": [
-                        "ZG9h33QkmZdN5j9PG"
+                        "5uEuHHRBzGjv4eNz2"
                     ]
                 }
             ]
@@ -3037,16 +3037,16 @@
             "elems": [
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n    all c: Component | some c.workstation implies (all p: Product | p in c.^parts implies no p.workstation)\n}",
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n    all c: Component | some c.workstation implies (all p: Product | p in c.^parts implies no p.workstation or p in Material)\n}",
                     "ids": [
-                        "tk4yQgKF6z5y6Ex2L"
+                        "aNDXKXFBcXXyScBhF"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n    all c: Component | some c.workstation implies (all p: Product | p in c.^parts implies no p.workstation or p in Material)\n}",
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n    all c: Component | some c.workstation implies (all p: Product | p in c.^parts implies no p.workstation)\n}",
                     "ids": [
-                        "aNDXKXFBcXXyScBhF"
+                        "tk4yQgKF6z5y6Ex2L"
                     ]
                 }
             ]
@@ -3094,44 +3094,16 @@
             "elems": [
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\t\tall c: Component | all p: c.parts & Component | some (c.workstation & p.workstation.^succ)\n\n}",
-                    "ids": [
-                        "8c7TC4CzZRGboAxMD"
-                    ]
-                },
-                {
-                    "entry_count": 1,
                     "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c: Component | (all p: c.parts & Component | p in workstation.(^succ.(c.workstation)))\n}",
                     "ids": [
                         "82P7bxA7BMFcdbv2b"
                     ]
-                }
-            ]
-        },
-        {
-            "entry_count": 1,
-            "group_count": 1,
-            "correct": false,
-            "elems": [
+                },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c: Component, p: c.parts | before_[p.workstation, c.workstation]\n}",
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\t\tall c: Component | all p: c.parts & Component | some (c.workstation & p.workstation.^succ)\n\n}",
                     "ids": [
-                        "eRXmeH8DSt2tvEEEB"
-                    ]
-                }
-            ]
-        },
-        {
-            "entry_count": 1,
-            "group_count": 1,
-            "correct": true,
-            "elems": [
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c: Component, p: c.parts - Material | before_[p.workstation, c.workstation]\n}",
-                    "ids": [
-                        "q9GD46THSsHdBhDT5"
+                        "8c7TC4CzZRGboAxMD"
                     ]
                 }
             ]
@@ -4238,34 +4210,6 @@
                     "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c : Component | parts.c in Component implies c.~parts.workstation in c.workstation.~succ \n}",
                     "ids": [
                         "f6td8E2e3CxwGc4Gj"
-                    ]
-                }
-            ]
-        },
-        {
-            "entry_count": 1,
-            "group_count": 1,
-            "correct": false,
-            "elems": [
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c: Component | all p: c.parts & Component {\n      \tearlierStation[p.workstation, c.workstation]\n    \tc.workstation.*succ in p.workstation.*succ\n      \tp.workstation.*succ not in c.workstation.*succ\n    }\n}",
-                    "ids": [
-                        "ePbEY4mhsESrD5WTL"
-                    ]
-                }
-            ]
-        },
-        {
-            "entry_count": 1,
-            "group_count": 1,
-            "correct": false,
-            "elems": [
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c: Component | all p: c.parts & Component {\n      \tearlierStation[p.workstation, c.workstation]\n    \t//c.workstation.*succ in p.workstation.*succ\n      \t//p.workstation.*succ not in c.workstation.*succ\n    }\n}",
-                    "ids": [
-                        "XiS3i54zphDm76La4"
                     ]
                 }
             ]

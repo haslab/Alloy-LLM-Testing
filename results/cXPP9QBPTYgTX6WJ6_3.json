@@ -3,7 +3,7 @@
     "pred": "this/inv4",
     "entry_count": 685,
     "group_count": 111,
-    "duration": 35,
+    "duration": 34,
     "scope": 3,
     "groups": [
         {
@@ -148,22 +148,6 @@
                 },
                 {
                     "entry_count": 10,
-                    "code": "{\n\t// Entry tracks are those without predecessors\n  Entry = Track - Track.succs\n\n}",
-                    "ids": [
-                        "CYjG8NKQ6Hx3N78J6",
-                        "C3tPyzdsANN2qsnif",
-                        "eMMhNmZDLEgNYaZaz",
-                        "FkBpwrZTjb3XFyGNg",
-                        "ZHWvAfz42482dLKxz",
-                        "smHn7v5RGyv5qDiPM",
-                        "Gbv7EyqFp3guuSZvy",
-                        "CrYPLRQaKqzArAwcj",
-                        "BbDNS6XWYDCLQe9dK",
-                        "vjoLFyoSekxcmfTPC"
-                    ]
-                },
-                {
-                    "entry_count": 10,
                     "code": "{\n\t// Entry tracks are those without predecessors\n\tall t:Track | t in Entry <=> t not in Track.^(succs)\n}",
                     "ids": [
                         "T4eKZBDzDZyPW23Tw",
@@ -176,6 +160,22 @@
                         "mLB7pmBEZ5GWr2Lrf",
                         "krX6foFxd7zuaakpd",
                         "qZtKkP9qJLtc7XByC"
+                    ]
+                },
+                {
+                    "entry_count": 10,
+                    "code": "{\n\t// Entry tracks are those without predecessors\n  Entry = Track - Track.succs\n\n}",
+                    "ids": [
+                        "CYjG8NKQ6Hx3N78J6",
+                        "C3tPyzdsANN2qsnif",
+                        "eMMhNmZDLEgNYaZaz",
+                        "FkBpwrZTjb3XFyGNg",
+                        "ZHWvAfz42482dLKxz",
+                        "smHn7v5RGyv5qDiPM",
+                        "Gbv7EyqFp3guuSZvy",
+                        "CrYPLRQaKqzArAwcj",
+                        "BbDNS6XWYDCLQe9dK",
+                        "vjoLFyoSekxcmfTPC"
                     ]
                 },
                 {
@@ -217,6 +217,17 @@
                 },
                 {
                     "entry_count": 5,
+                    "code": "{\n\t// Entry tracks are those without predecessors\n\tno (succs.Entry)\n \tall t: Track | no succs.t implies t in Entry\n  \n  \n  \n}",
+                    "ids": [
+                        "vNdvfhr9izZeLpWdK",
+                        "to2SGxdfBffGHAmfQ",
+                        "R2qjSkBqu3JaPaKhj",
+                        "wpyb93wopEiJm25s3",
+                        "yvRDKkdnQKZ5dxcBc"
+                    ]
+                },
+                {
+                    "entry_count": 5,
                     "code": "{\n\t// Entry tracks are those without predecessors\n\tEntry = {t: Track | no succs.t}\n}",
                     "ids": [
                         "4duwCCQg4y8BBAPcb",
@@ -224,17 +235,6 @@
                         "CSq7r2SPYMmmm69sk",
                         "huQiRFKwXqhCCQTbA",
                         "dcppNctfgghJD3exo"
-                    ]
-                },
-                {
-                    "entry_count": 5,
-                    "code": "{\n\t// Entry tracks are those without predecessors\n\tall t: Entry | no succs.t\n  \tall t: (Track - Entry) | some succs.t\n}",
-                    "ids": [
-                        "xFpbiZa78Gj9G4SvE",
-                        "BTZf4SF9iYmhXfAML",
-                        "AhMzEmYTkbdKxnJCh",
-                        "mzd3FxrdY6cvq8pys",
-                        "Eau4ftzSLyzERErrS"
                     ]
                 },
                 {
@@ -250,23 +250,13 @@
                 },
                 {
                     "entry_count": 5,
-                    "code": "{\n\t// Entry tracks are those without predecessors\n\tno (succs.Entry)\n \tall t: Track | no succs.t implies t in Entry\n  \n  \n  \n}",
+                    "code": "{\n\t// Entry tracks are those without predecessors\n\tall t: Entry | no succs.t\n  \tall t: (Track - Entry) | some succs.t\n}",
                     "ids": [
-                        "vNdvfhr9izZeLpWdK",
-                        "to2SGxdfBffGHAmfQ",
-                        "R2qjSkBqu3JaPaKhj",
-                        "wpyb93wopEiJm25s3",
-                        "yvRDKkdnQKZ5dxcBc"
-                    ]
-                },
-                {
-                    "entry_count": 4,
-                    "code": "{\n\t// Entry tracks are those without predecessors\n\t(all t : Track - Entry | some succs.t) and (all e : Entry | no succs.e)\n}",
-                    "ids": [
-                        "rTxijSN5MaA9YX8AW",
-                        "fpmJ7jEYbN7PoSSBX",
-                        "aqEfGySGxW8D2qpLd",
-                        "aKeGcaMNHTRT3Z8Lf"
+                        "xFpbiZa78Gj9G4SvE",
+                        "BTZf4SF9iYmhXfAML",
+                        "AhMzEmYTkbdKxnJCh",
+                        "mzd3FxrdY6cvq8pys",
+                        "Eau4ftzSLyzERErrS"
                     ]
                 },
                 {
@@ -280,48 +270,13 @@
                     ]
                 },
                 {
-                    "entry_count": 3,
-                    "code": "{\n\t// Entry tracks are those without predecessors\n\tall t : Track - Entry | some (t & Track.succs)\n\tall e : Entry | no (e & Track.succs)\n}",
+                    "entry_count": 4,
+                    "code": "{\n\t// Entry tracks are those without predecessors\n\t(all t : Track - Entry | some succs.t) and (all e : Entry | no succs.e)\n}",
                     "ids": [
-                        "24Zv68Qnr2DoHAQGk",
-                        "PhhyAwg5eRw3xXzAe",
-                        "F2cM6A9zAZDfZbqGt"
-                    ]
-                },
-                {
-                    "entry_count": 3,
-                    "code": "{\n\t// Entry tracks are those without predecessors\n    all t: Track | t.~succs = none <=> t in Entry\n}",
-                    "ids": [
-                        "Msm84D57ZLDvtQnW5",
-                        "gD4AZK5vXqxJa5mWY",
-                        "t2w668uSwYzu9vWAk"
-                    ]
-                },
-                {
-                    "entry_count": 3,
-                    "code": "{\n\t// Entry tracks are those without predecessors\n\tno Track.^succs & Entry\n  \n  \tall t : Track | t not in Track.^succs implies t in Entry\n}",
-                    "ids": [
-                        "sbN2vRgzETJGK6kLp",
-                        "ifRB4GNhR3ovxrS3g",
-                        "MB8nBPMi4DAXRGXJY"
-                    ]
-                },
-                {
-                    "entry_count": 3,
-                    "code": "{\n\t// Entry tracks are those without predecessors\n  \tall t:Track | t in Entry iff #(succs.t) = 0\n\n}",
-                    "ids": [
-                        "Eq3hLMr9HST9WrkBx",
-                        "ix2p29qWkbynjSe5i",
-                        "tFwmCoQPLX2yokRJ2"
-                    ]
-                },
-                {
-                    "entry_count": 3,
-                    "code": "{\n\t// Entry tracks are those without predecessors\n\tall t : Track | no(succs.t) => t in Entry\n  \tall t : Track | some(succs.t) => t  not in Entry\n  \t\n}",
-                    "ids": [
-                        "7BNbr8F2btWnySN4Y",
-                        "pm6HzManmzsgsQ6Gd",
-                        "muRjdPXvDiE6abuwc"
+                        "rTxijSN5MaA9YX8AW",
+                        "fpmJ7jEYbN7PoSSBX",
+                        "aqEfGySGxW8D2qpLd",
+                        "aKeGcaMNHTRT3Z8Lf"
                     ]
                 },
                 {
@@ -335,11 +290,80 @@
                 },
                 {
                     "entry_count": 3,
+                    "code": "{\n\t// Entry tracks are those without predecessors\n\tno Track.^succs & Entry\n  \n  \tall t : Track | t not in Track.^succs implies t in Entry\n}",
+                    "ids": [
+                        "sbN2vRgzETJGK6kLp",
+                        "ifRB4GNhR3ovxrS3g",
+                        "MB8nBPMi4DAXRGXJY"
+                    ]
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Entry tracks are those without predecessors\n\tall t : Track - Entry | some (t & Track.succs)\n\tall e : Entry | no (e & Track.succs)\n}",
+                    "ids": [
+                        "24Zv68Qnr2DoHAQGk",
+                        "PhhyAwg5eRw3xXzAe",
+                        "F2cM6A9zAZDfZbqGt"
+                    ]
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Entry tracks are those without predecessors\n\tall t : Track | no(succs.t) => t in Entry\n  \tall t : Track | some(succs.t) => t  not in Entry\n  \t\n}",
+                    "ids": [
+                        "7BNbr8F2btWnySN4Y",
+                        "pm6HzManmzsgsQ6Gd",
+                        "muRjdPXvDiE6abuwc"
+                    ]
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Entry tracks are those without predecessors\n    all t: Track | t.~succs = none <=> t in Entry\n}",
+                    "ids": [
+                        "Msm84D57ZLDvtQnW5",
+                        "gD4AZK5vXqxJa5mWY",
+                        "t2w668uSwYzu9vWAk"
+                    ]
+                },
+                {
+                    "entry_count": 3,
                     "code": "{\n\t// Entry tracks are those without predecessors\n  \tEntry = { t: Track | no t.~succs }\n\n}",
                     "ids": [
                         "6DdPWqGNug9SXsfEo",
                         "sYKPNi3W2ScW6vPGh",
                         "wKLm4htTtCTmbet3W"
+                    ]
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Entry tracks are those without predecessors\n  \tall t:Track | t in Entry iff #(succs.t) = 0\n\n}",
+                    "ids": [
+                        "Eq3hLMr9HST9WrkBx",
+                        "ix2p29qWkbynjSe5i",
+                        "tFwmCoQPLX2yokRJ2"
+                    ]
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\tall e : Track | (e in Entry) implies not(some t:Track | t->e in succs)\t\n\tall x : Track | not(x in Entry) implies (some t:Track | t->x in succs)\n\n}",
+                    "ids": [
+                        "RPAnxaX9Xqn5AACfA",
+                        "TGAXwRrtmm5BBKxMb"
+                    ]
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Entry tracks are those without predecessors\n\tall t1:Track | t1 in Entry iff all t2:Track | t1 not in t2.^succs\n}",
+                    "ids": [
+                        "ou44ynzrSoBFKucam",
+                        "hXfbnG3gxx64Ahvkn"
+                    ]
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Entry tracks are those without predecessors\n\tall t: Track | (no(succs.t) implies t in Entry) and (t in Entry implies no(succs.t))\n  \t\n\n}",
+                    "ids": [
+                        "pMHfp7Ch2Y3pzMp92",
+                        "zbAWBJqi6WXpvyock"
                     ]
                 },
                 {
@@ -352,10 +376,18 @@
                 },
                 {
                     "entry_count": 2,
-                    "code": "{\n\t// Entry tracks are those without predecessors\n\tall t1:Track | t1 in Entry iff all t2:Track | t1 not in t2.^succs\n}",
+                    "code": "{\n\t// Entry tracks are those without predecessors\n  \tall e : Entry | no e.~succs\n  \tall t : Track - Entry | some t.~succs\n}",
                     "ids": [
-                        "ou44ynzrSoBFKucam",
-                        "hXfbnG3gxx64Ahvkn"
+                        "knKhkqeziR6X9P7XE",
+                        "f82v9wwyxmZ3n7v26"
+                    ]
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Entry tracks are those without predecessors\n  all e : Track| e in Entry iff (not(some t : Track |e in t.succs))\n\n}",
+                    "ids": [
+                        "nwnjd3me2DqaNvkDa",
+                        "ZzTrXkqDD9bPPas8j"
                     ]
                 },
                 {
@@ -375,126 +407,10 @@
                     ]
                 },
                 {
-                    "entry_count": 2,
-                    "code": "{\n\t// Entry tracks are those without predecessors\n\tall t: Track | (no(succs.t) implies t in Entry) and (t in Entry implies no(succs.t))\n  \t\n\n}",
-                    "ids": [
-                        "pMHfp7Ch2Y3pzMp92",
-                        "zbAWBJqi6WXpvyock"
-                    ]
-                },
-                {
-                    "entry_count": 2,
-                    "code": "{\n\t// Entry tracks are those without predecessors\n  all e : Track| e in Entry iff (not(some t : Track |e in t.succs))\n\n}",
-                    "ids": [
-                        "nwnjd3me2DqaNvkDa",
-                        "ZzTrXkqDD9bPPas8j"
-                    ]
-                },
-                {
-                    "entry_count": 2,
-                    "code": "{\n\tall e : Track | (e in Entry) implies not(some t:Track | t->e in succs)\t\n\tall x : Track | not(x in Entry) implies (some t:Track | t->x in succs)\n\n}",
-                    "ids": [
-                        "RPAnxaX9Xqn5AACfA",
-                        "TGAXwRrtmm5BBKxMb"
-                    ]
-                },
-                {
-                    "entry_count": 2,
-                    "code": "{\n\t// Entry tracks are those without predecessors\n  \tall e : Entry | no e.~succs\n  \tall t : Track - Entry | some t.~succs\n}",
-                    "ids": [
-                        "knKhkqeziR6X9P7XE",
-                        "f82v9wwyxmZ3n7v26"
-                    ]
-                },
-                {
                     "entry_count": 1,
-                    "code": "{\n\t// Entry tracks are those without predecessors\n\tall e: Track | e in Entry <=> no succs.e\n  \tEntry = {t: Track | no succs.t}\n}",
+                    "code": "{\n\t// Entry tracks are those without predecessors\n\tno e : Entry | some succs.e\n  \tall t : Track | no succs.t implies t in Entry\n}",
                     "ids": [
-                        "DjeZpckKnR62xMJd6"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Entry tracks are those without predecessors\n\tno succs.Entry\n  Track-Entry in Track.succs\n}",
-                    "ids": [
-                        "9pXLZ7tSdguG8Z6FY"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Entry tracks are those without predecessors\n  all e: Entry | no succs.e\n  all t: Track | no succs.t implies t in Entry\n}",
-                    "ids": [
-                        "mJ4jS3DFeDxZQkfji"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Entry tracks are those without predecessors\n\tall x: Track | x in Entry iff (all y: Track | y not in ^succs.x)\n}",
-                    "ids": [
-                        "Rb8mCD2Csowi2DuqS"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Entry tracks are those without predecessors\n\tall t:Track | some succs.t <=> t not in Entry\n}",
-                    "ids": [
-                        "iTtQGpyMRnuT5kkxW"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Entry tracks are those without predecessors\n\tall t: Track | no t.~succs => t in Entry else t not in Entry\n}",
-                    "ids": [
-                        "kv7uyeCorfhdhHQxs"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Entry tracks are those without predecessors\n\tall t1,t2 :Track | t1 in Entry iff t1 not in Track.succs \n}",
-                    "ids": [
-                        "6ChAeHP5XQbpbHxKQ"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Entry tracks are those without predecessors\n\tall t : Track | no t & Track.succs implies t in Entry\n   \tall e : Entry | no e & Track.succs\n}",
-                    "ids": [
-                        "Hjhz3tboPa4xo42zG"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Entry tracks are those without predecessors\n\tall t1: Track | some t2: Track | t1 not in Entry implies t1 in t2.succs\n  \tall t1: Track | all t2: Track | t1 in Entry implies t1 not in t2.succs\n}",
-                    "ids": [
-                        "dvidubEDyqw8bv3Xq"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Entry tracks are those without predecessors\n\tEntry = {x: Track | x not in univ.succs}\n}",
-                    "ids": [
-                        "eL8nsqj53nXSRFQ85"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Entry tracks are those without predecessors\n  all t:Track | t not in Track.succs implies t in Entry else t not in Entry\n\n}",
-                    "ids": [
-                        "q6wDKEeAn7G5uwg6Z"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Entry tracks are those without predecessors\n\tall p:Entry | all t:Track | p not in t.succs \n  \tall p:Track - Entry | some t:Track | p in t.succs\n}",
-                    "ids": [
-                        "B3iDvAQZbXw5vRP7m"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Entry tracks are those without predecessors\n\tall t : Track - Entry | some (t & Track.succs)\n\tno (Entry & Track.succs)\n}",
-                    "ids": [
-                        "Sq5ypfv7TBzRep4TZ"
+                        "wErcPjfjSCHMu7o5k"
                     ]
                 },
                 {
@@ -506,9 +422,30 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Entry tracks are those without predecessors\n\tall x: Track | x in Entry iff (all y: Track | y not in succs.x)\n}",
+                    "code": "{\n\t// Entry tracks are those without predecessors\n\tall t : Track | (no(succs.t) and t in Entry) or (some(succs.t) and t not in Entry)\n}",
                     "ids": [
-                        "MzQYTB7RrHnYTr3Gv"
+                        "hPisocs2u6zXFQ98Q"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Entry tracks are those without predecessors\n\tall p:Entry | all t:Track | p not in t.succs \n  \tall p:Track - Entry | some t:Track | p in t.succs\n}",
+                    "ids": [
+                        "B3iDvAQZbXw5vRP7m"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Entry tracks are those without predecessors\n\tEntry = {x: Track | x not in univ.succs}\n}",
+                    "ids": [
+                        "eL8nsqj53nXSRFQ85"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Entry tracks are those without predecessors\n\tno succs.Entry\n  Track-Entry in Track.succs\n}",
+                    "ids": [
+                        "9pXLZ7tSdguG8Z6FY"
                     ]
                 },
                 {
@@ -520,16 +457,23 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Entry tracks are those without predecessors\n    all t: Entry | no t2: Track | t in t2.succs\n    all t: Track | t !in Entry implies some t2: Track | t in t2.succs\n}",
+                    "code": "{\n\t// Entry tracks are those without predecessors\n\tall t1,t2 :Track | t1 in Entry iff t1 not in Track.succs \n}",
                     "ids": [
-                        "S78QwqpD65SkdfvXK"
+                        "6ChAeHP5XQbpbHxKQ"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Entry tracks are those without predecessors\n\tall t : Track | (no(succs.t) and t in Entry) or (some(succs.t) and t not in Entry)\n}",
+                    "code": "{\n\t// Entry tracks are those without predecessors\n  \tall t: Track | t in Entry iff ^succs.t = none\n\n}",
                     "ids": [
-                        "hPisocs2u6zXFQ98Q"
+                        "3oWKx7RtL5WmcNyc6"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Entry tracks are those without predecessors\n  all t:Track | t not in Track.succs implies t in Entry else t not in Entry\n\n}",
+                    "ids": [
+                        "q6wDKEeAn7G5uwg6Z"
                     ]
                 },
                 {
@@ -541,16 +485,72 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Entry tracks are those without predecessors\n\tno e : Entry | some succs.e\n  \tall t : Track | no succs.t implies t in Entry\n}",
+                    "code": "{\n\t// Entry tracks are those without predecessors\n\tall t: Track | no t.~succs => t in Entry else t not in Entry\n}",
                     "ids": [
-                        "wErcPjfjSCHMu7o5k"
+                        "kv7uyeCorfhdhHQxs"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Entry tracks are those without predecessors\n  \tall t: Track | t in Entry iff ^succs.t = none\n\n}",
+                    "code": "{\n\t// Entry tracks are those without predecessors\n\tall e: Track | e in Entry <=> no succs.e\n  \tEntry = {t: Track | no succs.t}\n}",
                     "ids": [
-                        "3oWKx7RtL5WmcNyc6"
+                        "DjeZpckKnR62xMJd6"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Entry tracks are those without predecessors\n\tall x: Track | x in Entry iff (all y: Track | y not in ^succs.x)\n}",
+                    "ids": [
+                        "Rb8mCD2Csowi2DuqS"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Entry tracks are those without predecessors\n\tall t1: Track | some t2: Track | t1 not in Entry implies t1 in t2.succs\n  \tall t1: Track | all t2: Track | t1 in Entry implies t1 not in t2.succs\n}",
+                    "ids": [
+                        "dvidubEDyqw8bv3Xq"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Entry tracks are those without predecessors\n    all t: Entry | no t2: Track | t in t2.succs\n    all t: Track | t !in Entry implies some t2: Track | t in t2.succs\n}",
+                    "ids": [
+                        "S78QwqpD65SkdfvXK"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Entry tracks are those without predecessors\n\tall t:Track | some succs.t <=> t not in Entry\n}",
+                    "ids": [
+                        "iTtQGpyMRnuT5kkxW"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Entry tracks are those without predecessors\n\tall t : Track - Entry | some (t & Track.succs)\n\tno (Entry & Track.succs)\n}",
+                    "ids": [
+                        "Sq5ypfv7TBzRep4TZ"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Entry tracks are those without predecessors\n\tall t : Track | no t & Track.succs implies t in Entry\n   \tall e : Entry | no e & Track.succs\n}",
+                    "ids": [
+                        "Hjhz3tboPa4xo42zG"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Entry tracks are those without predecessors\n  all e: Entry | no succs.e\n  all t: Track | no succs.t implies t in Entry\n}",
+                    "ids": [
+                        "mJ4jS3DFeDxZQkfji"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Entry tracks are those without predecessors\n\tall x: Track | x in Entry iff (all y: Track | y not in succs.x)\n}",
+                    "ids": [
+                        "MzQYTB7RrHnYTr3Gv"
                     ]
                 }
             ]
@@ -671,6 +671,16 @@
                 },
                 {
                     "entry_count": 4,
+                    "code": "{\n\t// Entry tracks are those without predecessors\n\tall e: Entry | e not in Track.succs\n}",
+                    "ids": [
+                        "7DcqFEA4CES7fhF8Y",
+                        "KfDcnTMhxhtmaC82Y",
+                        "MePuixaGkLezQCTJS",
+                        "hdyyAfdWT52FSuDHy"
+                    ]
+                },
+                {
+                    "entry_count": 4,
                     "code": "{\n\t// Entry tracks are those without predecessors\n\tno t: Entry | t in Track.succs\n}",
                     "ids": [
                         "kvEHS8JvaAaf6rbAD",
@@ -687,25 +697,6 @@
                         "MqfHtZShpTWgXZmc2",
                         "JwJkmsugqcZkMzGux",
                         "cYD9hMFuSmcgfbYNz"
-                    ]
-                },
-                {
-                    "entry_count": 4,
-                    "code": "{\n\t// Entry tracks are those without predecessors\n\tall e: Entry | e not in Track.succs\n}",
-                    "ids": [
-                        "7DcqFEA4CES7fhF8Y",
-                        "KfDcnTMhxhtmaC82Y",
-                        "MePuixaGkLezQCTJS",
-                        "hdyyAfdWT52FSuDHy"
-                    ]
-                },
-                {
-                    "entry_count": 3,
-                    "code": "{\n    // Entry tracks are those without predecessors\n    all e: Entry | no (e.~succs & Track)\n}",
-                    "ids": [
-                        "dRDNwEb9WgE7Jm7Bt",
-                        "Cjdni6rJ75Zor5fqE",
-                        "YBhwQBzRKNBDt2d5A"
                     ]
                 },
                 {
@@ -727,43 +718,12 @@
                     ]
                 },
                 {
-                    "entry_count": 2,
-                    "code": "{\n\t// Entry tracks are those without predecessors\n\tall e:Entry | no ^(succs).e \n}",
+                    "entry_count": 3,
+                    "code": "{\n    // Entry tracks are those without predecessors\n    all e: Entry | no (e.~succs & Track)\n}",
                     "ids": [
-                        "XJnXG3gZkAaZtjMgS",
-                        "73jedPeBjstbZK8Mk"
-                    ]
-                },
-                {
-                    "entry_count": 2,
-                    "code": "{\n\t// Entry tracks are those without predecessors\n  all t : Track | t in Entry implies t not in Track.succs\n\n}",
-                    "ids": [
-                        "6AqKCN3rpu4GyxicD",
-                        "rdKtiohfHoMKfJAEf"
-                    ]
-                },
-                {
-                    "entry_count": 2,
-                    "code": "{\n\t// Entry tracks are those without predecessors\n  all t:Track | no t.succs & Entry\n\n}",
-                    "ids": [
-                        "w2NQMJSccsYsoAnBW",
-                        "aLJhf9bdm7HLtNtLG"
-                    ]
-                },
-                {
-                    "entry_count": 2,
-                    "code": "{\n\t// Entry tracks are those without predecessors\n\tno (Entry & Track.succs)\n}",
-                    "ids": [
-                        "25XTjehdAM6MSMm6G",
-                        "DvwbhoFyA9hWd5vxZ"
-                    ]
-                },
-                {
-                    "entry_count": 2,
-                    "code": "{\n\t// Entry tracks are those without predecessors\n  all t: Track | t in Entry implies succs.t = none\n\n}",
-                    "ids": [
-                        "gjQDF2oEGR3tC69dh",
-                        "ReoLSBnzeX5b2XXT2"
+                        "dRDNwEb9WgE7Jm7Bt",
+                        "Cjdni6rJ75Zor5fqE",
+                        "YBhwQBzRKNBDt2d5A"
                     ]
                 },
                 {
@@ -784,6 +744,38 @@
                 },
                 {
                     "entry_count": 2,
+                    "code": "{\n\t// Entry tracks are those without predecessors\n\tall e:Entry | no ^(succs).e \n}",
+                    "ids": [
+                        "XJnXG3gZkAaZtjMgS",
+                        "73jedPeBjstbZK8Mk"
+                    ]
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Entry tracks are those without predecessors\n\tno (Entry & Track.succs)\n}",
+                    "ids": [
+                        "25XTjehdAM6MSMm6G",
+                        "DvwbhoFyA9hWd5vxZ"
+                    ]
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Entry tracks are those without predecessors\n  all t : Track | t in Entry implies t not in Track.succs\n\n}",
+                    "ids": [
+                        "6AqKCN3rpu4GyxicD",
+                        "rdKtiohfHoMKfJAEf"
+                    ]
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Entry tracks are those without predecessors\n  all t: Track | t in Entry implies succs.t = none\n\n}",
+                    "ids": [
+                        "gjQDF2oEGR3tC69dh",
+                        "ReoLSBnzeX5b2XXT2"
+                    ]
+                },
+                {
+                    "entry_count": 2,
                     "code": "{\n\t// Entry tracks are those without predecessors\n\tall t: Track | no e: Entry | e in t.succs\n}",
                     "ids": [
                         "BrDiPghSdynuSjkTJ",
@@ -791,66 +783,11 @@
                     ]
                 },
                 {
-                    "entry_count": 1,
-                    "code": "{\n\t// Entry tracks are those without predecessors\nall t : Entry | (no succs.t) iff (t in Entry)\n\n}",
+                    "entry_count": 2,
+                    "code": "{\n\t// Entry tracks are those without predecessors\n  all t:Track | no t.succs & Entry\n\n}",
                     "ids": [
-                        "JiKjyefbH2EEMtLPv"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Entry tracks are those without predecessors\n\tall t: Track | t in Entry implies all a: Track | t not in a.succs\n}",
-                    "ids": [
-                        "WaZfJH7Jptxtw4L4T"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Entry tracks are those without predecessors\n\tall e : Entry | no (e & Track.succs)\n}",
-                    "ids": [
-                        "Xtreif7t2PApyf7Q9"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Entry tracks are those without predecessors\n  all t: Track | t in Entry implies #succs.t = 0\n\n}",
-                    "ids": [
-                        "at9DX2ev4dgwegA7T"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Entry tracks are those without predecessors\n\tno e: Entry | some e.~succs\n}",
-                    "ids": [
-                        "YnB8Zr5WjhwkszAeS"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Entry tracks are those without predecessors\n\tno (^(succs).Entry)\n}",
-                    "ids": [
-                        "ry72Cbj8zXqqs2HrR"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Entry tracks are those without predecessors\n  \t//all t: Track, t2: Track | t in Entry iff t != t2 and t not in t2.^succs\n  \n  \tall t: Track | t in Entry implies t not in Track.^succs\n}",
-                    "ids": [
-                        "2GRinLpMix4q65oQa"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Entry tracks are those without predecessors\n\tall ex:Entry | succs.ex = none\n\n}",
-                    "ids": [
-                        "kZkuNuipfaCid4R59"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Entry tracks are those without predecessors\n  \tnot some t:Track | t in succs.Entry\n\n}",
-                    "ids": [
-                        "6jMvW76hRfqLDAjaG"
+                        "w2NQMJSccsYsoAnBW",
+                        "aLJhf9bdm7HLtNtLG"
                     ]
                 },
                 {
@@ -862,9 +799,44 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Entry tracks are those without predecessors\n\tno Track.^succs & Entry\n}",
+                    "code": "{\n\t// Entry tracks are those without predecessors\n\tall t : Track | all e : Entry | e in t implies e not in Track.succs\n}",
                     "ids": [
-                        "oty3QjyjQaHPhwpT9"
+                        "N3AQytcFptvLN7fEQ"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Entry tracks are those without predecessors\n\tall t : Track | t in Entry implies not t in Track.succs\n}",
+                    "ids": [
+                        "5WMKKJR8KT4ZWm4dr"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Entry tracks are those without predecessors\n\tall e : Entry | no (e & Track.succs)\n}",
+                    "ids": [
+                        "Xtreif7t2PApyf7Q9"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Entry tracks are those without predecessors\n  \t//all t: Track, t2: Track | t in Entry iff t != t2 and t not in t2.^succs\n  \n  \tall t: Track | t in Entry implies t not in Track.^succs\n}",
+                    "ids": [
+                        "2GRinLpMix4q65oQa"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Entry tracks are those without predecessors\n  \tnot some t:Track | t in succs.Entry\n\n}",
+                    "ids": [
+                        "6jMvW76hRfqLDAjaG"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Entry tracks are those without predecessors\n\tno (^(succs).Entry)\n}",
+                    "ids": [
+                        "ry72Cbj8zXqqs2HrR"
                     ]
                 },
                 {
@@ -883,16 +855,16 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Entry tracks are those without predecessors\n  \t//all t: Track, t2: Track | t in Entry iff t not in t.^succs and t not in t2.^succs\n\tall e: Entry, t: Track | e not in e.^succs and e not in t.^succs\n}",
+                    "code": "{\n\t// Entry tracks are those without predecessors\n  \tall t : Track | all e : Entry | e not in t.succs and e in Track\n\n}",
                     "ids": [
-                        "pBFsZP3GHugJDosKm"
+                        "diYKJ8z3hmipdmtFx"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Entry tracks are those without predecessors\n\tall t1: Track | all t2: Track | t2 in Entry implies t2 not in t1.succs\n}",
+                    "code": "{\n\tall e : Track | (e in Entry) implies not(some t:Track | t->e in succs)\t\n\n\n}",
                     "ids": [
-                        "xtGHhmDBmaBJkQqmX"
+                        "eXgWs8ciSaxPor3rg"
                     ]
                 },
                 {
@@ -904,30 +876,44 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Entry tracks are those without predecessors\n\tall t : Track | t in Entry implies not t in Track.succs\n}",
+                    "code": "{\n\t// Entry tracks are those without predecessors\n\tall t1: Track | all t2: Track | t2 in Entry implies t2 not in t1.succs\n}",
                     "ids": [
-                        "5WMKKJR8KT4ZWm4dr"
+                        "xtGHhmDBmaBJkQqmX"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Entry tracks are those without predecessors\n\tall t : Track | all e : Entry | t in e implies e not in Track.succs\n}",
+                    "code": "{\n\t// Entry tracks are those without predecessors\n  \tall e: Entry, t:Track | t not in e.~succs\n}",
                     "ids": [
-                        "xuW2G9bDZBoaPD3bN"
+                        "zKEyunQdw5os2MRZH"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Entry tracks are those without predecessors\n  \tall t : Track | all e : Entry | e not in t.succs and e in Track\n\n}",
+                    "code": "{\n\t// Entry tracks are those without predecessors\n\tno e: Entry | some e.~succs\n}",
                     "ids": [
-                        "diYKJ8z3hmipdmtFx"
+                        "YnB8Zr5WjhwkszAeS"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Entry tracks are those without predecessors\n\tall t : Track | all e : Entry | e in t implies e not in Track.succs\n}",
+                    "code": "{\n\t// Entry tracks are those without predecessors\n  all t: Track | t in Entry implies #succs.t = 0\n\n}",
                     "ids": [
-                        "N3AQytcFptvLN7fEQ"
+                        "at9DX2ev4dgwegA7T"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Entry tracks are those without predecessors\n\tall t: Track | t in Entry implies all a: Track | t not in a.succs\n}",
+                    "ids": [
+                        "WaZfJH7Jptxtw4L4T"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Entry tracks are those without predecessors\n\tno Track.^succs & Entry\n}",
+                    "ids": [
+                        "oty3QjyjQaHPhwpT9"
                     ]
                 },
                 {
@@ -953,23 +939,37 @@
                 },
                 {
                     "entry_count": 1,
+                    "code": "{\n\t// Entry tracks are those without predecessors\n\tall t : Track | all e : Entry | t in e implies e not in Track.succs\n}",
+                    "ids": [
+                        "xuW2G9bDZBoaPD3bN"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Entry tracks are those without predecessors\nall t : Entry | (no succs.t) iff (t in Entry)\n\n}",
+                    "ids": [
+                        "JiKjyefbH2EEMtLPv"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Entry tracks are those without predecessors\n\tall ex:Entry | succs.ex = none\n\n}",
+                    "ids": [
+                        "kZkuNuipfaCid4R59"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Entry tracks are those without predecessors\n  \t//all t: Track, t2: Track | t in Entry iff t not in t.^succs and t not in t2.^succs\n\tall e: Entry, t: Track | e not in e.^succs and e not in t.^succs\n}",
+                    "ids": [
+                        "pBFsZP3GHugJDosKm"
+                    ]
+                },
+                {
+                    "entry_count": 1,
                     "code": "{\n\t// Entry tracks are those without predecessors\nall t: Entry | no pre: Track | pre.succs & t != none\n\n}",
                     "ids": [
                         "e3Cj4XF9EqCD6k2GK"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Entry tracks are those without predecessors\n  \tall e: Entry, t:Track | t not in e.~succs\n}",
-                    "ids": [
-                        "zKEyunQdw5os2MRZH"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\tall e : Track | (e in Entry) implies not(some t:Track | t->e in succs)\t\n\n\n}",
-                    "ids": [
-                        "eXgWs8ciSaxPor3rg"
                     ]
                 }
             ]
@@ -1026,37 +1026,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Entry tracks are those without predecessors\n  //all t: Track | t in Entry iff t.succs\n  all t: Track| all e: Entry| t in Entry implies no e.succs\n\n}",
-                    "ids": [
-                        "2XdxYCFBtdQgGsi2B"
-                    ]
-                },
-                {
-                    "entry_count": 1,
                     "code": "{\n\t// Entry tracks are those without predecessors\n  no t: Entry | some t.succs \n  \n}",
                     "ids": [
                         "dWWKmCR5c2TaFmZnJ"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Entry tracks are those without predecessors\n\t//all t1 : Track | t1 in Entry iff no t2 : Track | t1 in t2.succs\n  all e : Entry | no t2 : Track | t2 in e.succs\n}",
-                    "ids": [
-                        "YQP7wiNbxP4gQdP9p"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Entry tracks are those without predecessors\n  no t: Entry | some t.^succs\n  \n  \n}",
-                    "ids": [
-                        "Xx2F5h3rqLNum4zgs"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Entry tracks are those without predecessors\n  //all t: Track | t in Entry iff (t in t.succs or no t.succs)\n  all t: Track| t in Entry implies lone t.succs\n  no Entry.succs\n  //all t: Track| all e: Entry| t in Entry implies no e.succs\n  //all t: Track| all e: Entry| no e.succs implies t in Entry\n\n}",
-                    "ids": [
-                        "QBHMztpLoNxysAn24"
                     ]
                 },
                 {
@@ -1068,9 +1040,37 @@
                 },
                 {
                     "entry_count": 1,
+                    "code": "{\n\t// Entry tracks are those without predecessors\n  //all t: Track | t in Entry iff (t in t.succs or no t.succs)\n  all t: Track| t in Entry implies lone t.succs\n  no Entry.succs\n  //all t: Track| all e: Entry| t in Entry implies no e.succs\n  //all t: Track| all e: Entry| no e.succs implies t in Entry\n\n}",
+                    "ids": [
+                        "QBHMztpLoNxysAn24"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Entry tracks are those without predecessors\n  no t: Entry | some t.^succs\n  \n  \n}",
+                    "ids": [
+                        "Xx2F5h3rqLNum4zgs"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Entry tracks are those without predecessors\n  //all t: Track | t in Entry iff t.succs\n  all t: Track| all e: Entry| t in Entry implies no e.succs\n\n}",
+                    "ids": [
+                        "2XdxYCFBtdQgGsi2B"
+                    ]
+                },
+                {
+                    "entry_count": 1,
                     "code": "{\n\t// Entry tracks are those without predecessors\n\tno (Entry & succs.Track)\n}",
                     "ids": [
                         "qnvij3buvZwTDnBGB"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Entry tracks are those without predecessors\n\t//all t1 : Track | t1 in Entry iff no t2 : Track | t1 in t2.succs\n  all e : Entry | no t2 : Track | t2 in e.succs\n}",
+                    "ids": [
+                        "YQP7wiNbxP4gQdP9p"
                     ]
                 }
             ]
@@ -1117,30 +1117,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Entry tracks are those without predecessors\n  \tall t1, t2: Track | t1 not in Track.succs => t1 in Entry\n}",
-                    "ids": [
-                        "PH9Cz5NXi24k8yHfq"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Entry tracks are those without predecessors\n\tall t1: Track | some t2: Track | t1 not in Entry implies t1 in t2.succs\n}",
-                    "ids": [
-                        "hgq6FXZtEGQ5B2hFd"
-                    ]
-                },
-                {
-                    "entry_count": 1,
                     "code": "{\n\t// Entry tracks are those without predecessors\n  all t: Track | (all t1 : Track | t not in t1.succs) implies t in Entry\n\n}",
                     "ids": [
                         "gMpJNENMcg4yaAnDJ"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Entry tracks are those without predecessors\n\tall t : Track | no t & Track.succs implies t in Entry\n}",
-                    "ids": [
-                        "zDBZ3ch55bHtSrM5a"
                     ]
                 },
                 {
@@ -1159,9 +1138,30 @@
                 },
                 {
                     "entry_count": 1,
+                    "code": "{\n\t// Entry tracks are those without predecessors\n\tall t1: Track | some t2: Track | t1 not in Entry implies t1 in t2.succs\n}",
+                    "ids": [
+                        "hgq6FXZtEGQ5B2hFd"
+                    ]
+                },
+                {
+                    "entry_count": 1,
                     "code": "{\n    // Entry tracks are those without predecessors\n    all t: Track | t in Entry or t in Track.succs\n\n}",
                     "ids": [
                         "ibxaSbFi2EGG74e3W"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Entry tracks are those without predecessors\n  \tall t1, t2: Track | t1 not in Track.succs => t1 in Entry\n}",
+                    "ids": [
+                        "PH9Cz5NXi24k8yHfq"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Entry tracks are those without predecessors\n\tall t : Track | no t & Track.succs implies t in Entry\n}",
+                    "ids": [
+                        "zDBZ3ch55bHtSrM5a"
                     ]
                 }
             ]
@@ -1220,20 +1220,20 @@
             "elems": [
                 {
                     "entry_count": 3,
-                    "code": "{\n\t// Entry tracks are those without predecessors\n\tall e : Entry |all t :Track|e not in t.*succs \n}",
-                    "ids": [
-                        "Q7CneEzAAsgajCe8D",
-                        "mjGbgYRrcik42GqmH",
-                        "SGeqnQTWn3CxXDddT"
-                    ]
-                },
-                {
-                    "entry_count": 3,
                     "code": "{\n\t// Entry tracks are those without predecessors\nall t: Entry | no t.*succs\n}",
                     "ids": [
                         "aybhDxNi7APxXFzsx",
                         "mrbDoorBDGjXaExaf",
                         "TXrGyPo9iGMGPXioR"
+                    ]
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Entry tracks are those without predecessors\n\tall e : Entry |all t :Track|e not in t.*succs \n}",
+                    "ids": [
+                        "Q7CneEzAAsgajCe8D",
+                        "mjGbgYRrcik42GqmH",
+                        "SGeqnQTWn3CxXDddT"
                     ]
                 },
                 {
@@ -1254,16 +1254,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Entry tracks are those without predecessors\n\tall e: Entry | no e.**succs\n}",
+                    "code": "{\n\t// Entry tracks are those without predecessors\n\tall t : Track | before no t.succs implies t in Entry\n  \tall t : Entry | before no t.succs\n\n}",
                     "ids": [
-                        "MYZpEqkA3dkzLepSE"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Entry tracks are those without predecessors\n  all t: Track | t in Entry implies (succs.t = none and t not in Entry)\n\n}",
-                    "ids": [
-                        "zTpWdECeN8wePFLRF"
+                        "9upzj4mKKi22qB6Ny"
                     ]
                 },
                 {
@@ -1275,16 +1268,23 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Entry tracks are those without predecessors\n\tall t : Track | before no t.succs implies t in Entry\n  \tall t : Entry | before no t.succs\n\n}",
+                    "code": "{\n\t// Entry tracks are those without predecessors\n\tall t : Track | all e : Entry | e in t implies t not in Track.*succs\n}",
                     "ids": [
-                        "9upzj4mKKi22qB6Ny"
+                        "uu8DNhQwW5t7Aq2Q7"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Entry tracks are those without predecessors\n\tall t : Track | all e : Entry | e in t implies t not in Track.*succs\n}",
+                    "code": "{\n\t// Entry tracks are those without predecessors\n\tall e: Entry | no e.**succs\n}",
                     "ids": [
-                        "uu8DNhQwW5t7Aq2Q7"
+                        "MYZpEqkA3dkzLepSE"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Entry tracks are those without predecessors\n  all t: Track | t in Entry implies (succs.t = none and t not in Entry)\n\n}",
+                    "ids": [
+                        "zTpWdECeN8wePFLRF"
                     ]
                 }
             ]
@@ -1313,16 +1313,16 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Entry tracks are those without predecessors\n\tall t : Track | before no t.succs implies t in Entry\n\n}",
+                    "code": "{\n\t// Entry tracks are those without predecessors\n\tall t: Track | no t.~*succs implies t in Entry\n}",
                     "ids": [
-                        "oDLnKrY5kumaryad8"
+                        "uvG2WjX7ZzyLKHkK2"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Entry tracks are those without predecessors\n\tall t: Track | no t.~*succs implies t in Entry\n}",
+                    "code": "{\n\t// Entry tracks are those without predecessors\n\tall t : Track | before no t.succs implies t in Entry\n\n}",
                     "ids": [
-                        "uvG2WjX7ZzyLKHkK2"
+                        "oDLnKrY5kumaryad8"
                     ]
                 },
                 {
@@ -1402,9 +1402,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Entry tracks are those without predecessors\n   all t: Track | t in Entry iff no e: Track | e in t.succs\n\n}",
+                    "code": "{\n\t// Entry tracks are those without predecessors\n  Entry = Track - Track.~succs\n\n}",
                     "ids": [
-                        "RvCtj7aFssGqMcqcq"
+                        "jrfZXT9yeQdotwyap"
                     ]
                 },
                 {
@@ -1416,16 +1416,16 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Entry tracks are those without predecessors\n  Entry = Track - Track.~succs\n\n}",
+                    "code": "{\n\t// Entry tracks are those without predecessors\n\tall t:Track | some t.succs <=> t not in Entry\n}",
                     "ids": [
-                        "jrfZXT9yeQdotwyap"
+                        "SKvE6tPD8fpbCbkzs"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Entry tracks are those without predecessors\n\tall t:Track | some t.succs <=> t not in Entry\n}",
+                    "code": "{\n\t// Entry tracks are those without predecessors\n   all t: Track | t in Entry iff no e: Track | e in t.succs\n\n}",
                     "ids": [
-                        "SKvE6tPD8fpbCbkzs"
+                        "RvCtj7aFssGqMcqcq"
                     ]
                 }
             ]
@@ -1489,14 +1489,6 @@
             "elems": [
                 {
                     "entry_count": 2,
-                    "code": "{\n\t// Entry tracks are those without predecessors\n  all t1,t2: Track | t1 != t2 and t1 in Entry implies t1 not in t2.succs\n\n}",
-                    "ids": [
-                        "d2Cq8RWRG7QDLmnAj",
-                        "oQLswPsScQgaE5Ppt"
-                    ]
-                },
-                {
-                    "entry_count": 2,
                     "code": "{\n\t// Entry tracks are those without predecessors\n\tall e : Entry , t:Track - e| e not in t.*succs\n}",
                     "ids": [
                         "W8Bi3BMkD6iSyr6Le",
@@ -1504,10 +1496,11 @@
                     ]
                 },
                 {
-                    "entry_count": 1,
-                    "code": "{\n\t// Entry tracks are those without predecessors\nall disj t,e:Track | e in Entry implies e not in t.succs\n}",
+                    "entry_count": 2,
+                    "code": "{\n\t// Entry tracks are those without predecessors\n  all t1,t2: Track | t1 != t2 and t1 in Entry implies t1 not in t2.succs\n\n}",
                     "ids": [
-                        "QjAGzTdK6c53HGzrn"
+                        "d2Cq8RWRG7QDLmnAj",
+                        "oQLswPsScQgaE5Ppt"
                     ]
                 },
                 {
@@ -1515,6 +1508,13 @@
                     "code": "{\n\t// Entry tracks are those without predecessors\n\tall disj t1, t2 : Track | t1 in Entry implies t1 not in t2.^succs\n}",
                     "ids": [
                         "pcJY8FuRRT2LuketH"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Entry tracks are those without predecessors\nall disj t,e:Track | e in Entry implies e not in t.succs\n}",
+                    "ids": [
+                        "QjAGzTdK6c53HGzrn"
                     ]
                 },
                 {
@@ -1541,16 +1541,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Entry tracks are those without predecessors\n\tall disj t,e : Track | e in Entry iff (e not in t.succs)\n}",
+                    "code": "{\n\t// Entry tracks are those without predecessors\n\tall disj t,t1 : Track | t in t1.succs => t not in Entry\n  \tall disj t,t1 : Track | t not in t1.succs => t in Entry\n}",
                     "ids": [
-                        "4msLcYeNHvgDXrNwK"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Entry tracks are those without predecessors\n\tall disj t1, t2 : Track | t1 in Entry iff no t1 & t2.succs\n  \t// all t : Track | t in Entry iff t not in Track.succs\n}",
-                    "ids": [
-                        "XGxz64xzjqokJtfdH"
+                        "XwCSDBpxeEhRGkqwE"
                     ]
                 },
                 {
@@ -1562,9 +1555,16 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Entry tracks are those without predecessors\n\tall disj t,t1 : Track | t in t1.succs => t not in Entry\n  \tall disj t,t1 : Track | t not in t1.succs => t in Entry\n}",
+                    "code": "{\n\t// Entry tracks are those without predecessors\n\tall disj t,e : Track | e in Entry iff (e not in t.succs)\n}",
                     "ids": [
-                        "XwCSDBpxeEhRGkqwE"
+                        "4msLcYeNHvgDXrNwK"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Entry tracks are those without predecessors\n\tall disj t1, t2 : Track | t1 in Entry iff no t1 & t2.succs\n  \t// all t : Track | t in Entry iff t not in Track.succs\n}",
+                    "ids": [
+                        "XGxz64xzjqokJtfdH"
                     ]
                 }
             ]
@@ -1860,13 +1860,6 @@
             "elems": [
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Entry tracks are those without predecessors\n\tall e : Entry, t : Track | e not in t.succs\n  \tall e : Entry, ex : Exit | e != ex\n}",
-                    "ids": [
-                        "ZK25zHkfXcCrfmGdq"
-                    ]
-                },
-                {
-                    "entry_count": 1,
                     "code": "{\n\t// Entry tracks are those without predecessors\n\tno Exit & Entry\n  \tall e: Entry | all t: Track | e not in t.succs\n\n}",
                     "ids": [
                         "s5yteY6fW7z7izvjw"
@@ -1877,6 +1870,13 @@
                     "code": "{\n\t// Entry tracks are those without predecessors\n  \t//all t: Track, t2: Track | t in Entry iff t not in t.^succs and t not in t2.^succs\n\tall e: Entry, t: Track | e not in Exit and e not in t.^succs\n}",
                     "ids": [
                         "263iGXJmTGhgnMgGR"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Entry tracks are those without predecessors\n\tall e : Entry, t : Track | e not in t.succs\n  \tall e : Entry, ex : Exit | e != ex\n}",
+                    "ids": [
+                        "ZK25zHkfXcCrfmGdq"
                     ]
                 }
             ]
@@ -1910,16 +1910,16 @@
             "elems": [
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Entry tracks are those without predecessors\n  //all t: Track | t in Entry iff t.succs\n  all t: Track| all e: Entry| t in Entry iff no e.succs\n\n}",
+                    "code": "{\n\t// Entry tracks are those without predecessors\n  //all t: Track | t in Entry iff t.succs\n  all t: Track| all e: Entry| t in Entry implies no e.succs\n  all t: Track| all e: Entry| no e.succs implies t in Entry\n\n}",
                     "ids": [
-                        "kmutX4p3qd5pSKdTN"
+                        "4CiS9Nq3ojaRyFHWg"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Entry tracks are those without predecessors\n  //all t: Track | t in Entry iff t.succs\n  all t: Track| all e: Entry| t in Entry implies no e.succs\n  all t: Track| all e: Entry| no e.succs implies t in Entry\n\n}",
+                    "code": "{\n\t// Entry tracks are those without predecessors\n  //all t: Track | t in Entry iff t.succs\n  all t: Track| all e: Entry| t in Entry iff no e.succs\n\n}",
                     "ids": [
-                        "4CiS9Nq3ojaRyFHWg"
+                        "kmutX4p3qd5pSKdTN"
                     ]
                 }
             ]
@@ -1991,16 +1991,16 @@
             "elems": [
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Entry tracks are those without predecessors\n\t//all t : Track | t in Entry iff t not in Track.succs\n  \tall t1, t2 : Track | t1 != t2 implies t1 in Entry iff t1 not in t2.succs and t1 not in t1.succs\n}",
+                    "code": "{\n\t// Entry tracks are those without predecessors\n\t//all t : Track | t in Entry iff t not in Track.succs\n  \tall t1, t2 : Track | t1 != t2 implies t1 in Entry iff t1 not in t2.succs\n}",
                     "ids": [
-                        "gaKrfwcvFEr9HYdur"
+                        "FcHtpFdEGwr36bGSH"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Entry tracks are those without predecessors\n\t//all t : Track | t in Entry iff t not in Track.succs\n  \tall t1, t2 : Track | t1 != t2 implies t1 in Entry iff t1 not in t2.succs\n}",
+                    "code": "{\n\t// Entry tracks are those without predecessors\n\t//all t : Track | t in Entry iff t not in Track.succs\n  \tall t1, t2 : Track | t1 != t2 implies t1 in Entry iff t1 not in t2.succs and t1 not in t1.succs\n}",
                     "ids": [
-                        "FcHtpFdEGwr36bGSH"
+                        "gaKrfwcvFEr9HYdur"
                     ]
                 }
             ]
@@ -2027,16 +2027,16 @@
             "elems": [
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Entry tracks are those without predecessors\n    all t: Entry | some succs.t\n\n}",
+                    "code": "{\n\t// Entry tracks are those without predecessors\n    all t: Entry | some p: Track | t in p.succs\n\n}",
                     "ids": [
-                        "BwNw95wnQ5MeBnYPS"
+                        "b7DtY4YXgBWhbLgNp"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Entry tracks are those without predecessors\n    all t: Entry | some p: Track | t in p.succs\n\n}",
+                    "code": "{\n\t// Entry tracks are those without predecessors\n    all t: Entry | some succs.t\n\n}",
                     "ids": [
-                        "b7DtY4YXgBWhbLgNp"
+                        "BwNw95wnQ5MeBnYPS"
                     ]
                 }
             ]
@@ -2048,16 +2048,16 @@
             "elems": [
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Entry tracks are those without predecessors\n  \tall t1, t2: Track | (t1 not in t2.succs or (t1 in t2.succs and t1 = t2)) => t1 in Entry\n}",
+                    "code": "{\n\t// Entry tracks are those without predecessors\n\tall t: Track | lone(t&succs.t) iff t in Entry\n}",
                     "ids": [
-                        "EnHhLCGH5zrSyp9or"
+                        "GTRkwZ4mv9PehBBnJ"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Entry tracks are those without predecessors\n\tall t: Track | lone(t&succs.t) iff t in Entry\n}",
+                    "code": "{\n\t// Entry tracks are those without predecessors\n  \tall t1, t2: Track | (t1 not in t2.succs or (t1 in t2.succs and t1 = t2)) => t1 in Entry\n}",
                     "ids": [
-                        "GTRkwZ4mv9PehBBnJ"
+                        "EnHhLCGH5zrSyp9or"
                     ]
                 }
             ]
@@ -2162,16 +2162,16 @@
             "elems": [
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Entry tracks are those without predecessors  \n  \t//all t: Track | t in Entry iff t not in Track.succs\n  \t\n  \tall t1: Track, t2: Track | t1 in Entry iff t1 not in t2.succs+t1.succs\n  \t\n\t//all t1: Track | t1 in Entry iff all t2: Track | t1 not in t2.succs\n}",
+                    "code": "{\n\t// Entry tracks are those without predecessors\n\t//t' in t.~succs\n\tall t : Track |  t' not in t.~succs implies t in Entry\n  all t : Entry | no t.~succs\n}",
                     "ids": [
-                        "abcNmAj6NWtTswRdJ"
+                        "Qu7itu2jYHicnYx7u"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Entry tracks are those without predecessors\n\t//t' in t.~succs\n\tall t : Track |  t' not in t.~succs implies t in Entry\n  all t : Entry | no t.~succs\n}",
+                    "code": "{\n\t// Entry tracks are those without predecessors  \n  \t//all t: Track | t in Entry iff t not in Track.succs\n  \t\n  \tall t1: Track, t2: Track | t1 in Entry iff t1 not in t2.succs+t1.succs\n  \t\n\t//all t1: Track | t1 in Entry iff all t2: Track | t1 not in t2.succs\n}",
                     "ids": [
-                        "Qu7itu2jYHicnYx7u"
+                        "abcNmAj6NWtTswRdJ"
                     ]
                 }
             ]

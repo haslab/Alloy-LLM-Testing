@@ -2,8 +2,8 @@
     "label": "inv15",
     "pred": "this/inv15",
     "entry_count": 466,
-    "group_count": 135,
-    "duration": 414,
+    "group_count": 133,
+    "duration": 123,
     "scope": 3,
     "groups": [
         {
@@ -106,30 +106,6 @@
                 },
                 {
                     "entry_count": 2,
-                    "code": "{\n\t// Students working on the same project in a course cannot have marks differing by more than one unit\n\tall c : Course, pr : Project, disj x,y : Student, g1, g2 : Grade |\n\t  c->pr in projects and x->pr in projects and y->pr in projects and\n\t  c->x->g1 in grades and c->y->g2 in grades implies g1 in g2.(prev+iden+next)\n}",
-                    "ids": [
-                        "H9arRqez3heWtRNQw",
-                        "9tFynso5PWDZnwoMv"
-                    ]
-                },
-                {
-                    "entry_count": 2,
-                    "code": "{\n\t// Students working on the same project in a course cannot have marks differing by more than one unit\n  \n  \tall p : Project | all s1,s2 : Student | all c : Course |\n  \t(s1!=s2 and p in s1.projects and p in s2.projects and p in c.projects) implies\n  \t(all g1,g2 : Grade | g1 in s1.(c.grades) and g2 in s2.(c.grades) \n  \timplies (g1=prev[g2] or g2=prev[g1] or g1=g2))\n\n}",
-                    "ids": [
-                        "HRPwuLxhmJvcdHGeM",
-                        "o5B99KtKuyFFFeZKa"
-                    ]
-                },
-                {
-                    "entry_count": 2,
-                    "code": "{\n\t// Students working on the same project in a course cannot have marks differing by more than one unit\n\tall disj s1, s2: Student, c: Course | \n  \t\ts1.projects & s2.projects & c.projects != none implies\n  \t\tall g1: s1.(c.grades) | all g2: s2.(c.grades) |\n  \t\t\tg1 = g2 or\n  \t\t\tg1 = next[g2] or\n  \t\t\tg1 = prev[g2]\n}",
-                    "ids": [
-                        "pJTPAQQarq5tQGATy",
-                        "fzcjSJq4A9cKktrdZ"
-                    ]
-                },
-                {
-                    "entry_count": 2,
                     "code": "{\n\t// Students working on the same project in a course cannot have marks differing by more than one unit\n\tall c : Course, disj x,y : Student, g1, g2 : Grade |\n\t  (some c.projects & x.projects & y.projects) and\n\t  c->x->g1 in grades and c->y->g2 in grades implies g1 in g2.(prev+iden+next)\n}",
                     "ids": [
                         "ivNQJFGiYR3ck2MLJ",
@@ -142,6 +118,37 @@
                     "ids": [
                         "Phdz88oeuaMFFFJNK",
                         "C6NEYxveoQci7AmaW"
+                    ]
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Students working on the same project in a course cannot have marks differing by more than one unit\n\tall disj s1, s2: Student, c: Course | \n  \t\ts1.projects & s2.projects & c.projects != none implies\n  \t\tall g1: s1.(c.grades) | all g2: s2.(c.grades) |\n  \t\t\tg1 = g2 or\n  \t\t\tg1 = next[g2] or\n  \t\t\tg1 = prev[g2]\n}",
+                    "ids": [
+                        "pJTPAQQarq5tQGATy",
+                        "fzcjSJq4A9cKktrdZ"
+                    ]
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Students working on the same project in a course cannot have marks differing by more than one unit\n  \n  \tall p : Project | all s1,s2 : Student | all c : Course |\n  \t(s1!=s2 and p in s1.projects and p in s2.projects and p in c.projects) implies\n  \t(all g1,g2 : Grade | g1 in s1.(c.grades) and g2 in s2.(c.grades) \n  \timplies (g1=prev[g2] or g2=prev[g1] or g1=g2))\n\n}",
+                    "ids": [
+                        "HRPwuLxhmJvcdHGeM",
+                        "o5B99KtKuyFFFeZKa"
+                    ]
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Students working on the same project in a course cannot have marks differing by more than one unit\n\tall c : Course, pr : Project, disj x,y : Student, g1, g2 : Grade |\n\t  c->pr in projects and x->pr in projects and y->pr in projects and\n\t  c->x->g1 in grades and c->y->g2 in grades implies g1 in g2.(prev+iden+next)\n}",
+                    "ids": [
+                        "H9arRqez3heWtRNQw",
+                        "9tFynso5PWDZnwoMv"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students working on the same project in a course cannot have marks differing by more than one unit\n\tall c : Course, disj x,y : Student, g1, g2 : Grade |\n\t  (some pr : Project | c->pr in projects and pr in (x.projects & y.projects)) and\n\t  c->x->g1 in grades and c->y->g2 in grades implies g1 in g2.(prev+iden+next)\n}",
+                    "ids": [
+                        "Y8BdRfGoMaGdKxZ7X"
                     ]
                 },
                 {
@@ -174,9 +181,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Students working on the same project in a course cannot have marks differing by more than one unit\n\tall c : Course, disj x,y : Student, g1, g2 : Grade |\n\t  (some pr : Project | c->pr in projects and pr in (x.projects & y.projects)) and\n\t  c->x->g1 in grades and c->y->g2 in grades implies g1 in g2.(prev+iden+next)\n}",
+                    "code": "{\n\t// Students working on the same project in a course cannot have marks differing by more than one unit\n  all c: Course, disj s1,s2: Student , g1: s1.(c.grades) , g2 : s2.(c.grades) | some (s1.projects & s2.projects & c.projects) \n  implies g1 in g2.next + g2.prev or g1 in g2\n\n}",
                     "ids": [
-                        "Y8BdRfGoMaGdKxZ7X"
+                        "b5KkQEN7Tns99uvyW"
                     ]
                 },
                 {
@@ -184,13 +191,6 @@
                     "code": "{\n\t// Students working on the same project in a course cannot have marks differing by more than one unit\n  all c: Course, disj s1,s2: Student , g1: s1.(c.grades) , g2 : s2.(c.grades) | some (s1.projects & s2.projects & c.projects) \n  implies g1 in g2.next + g2.prev +g2\n\n}",
                     "ids": [
                         "M8XXnkBXsq2DkCYmX"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Students working on the same project in a course cannot have marks differing by more than one unit\n  all c: Course, disj s1,s2: Student , g1: s1.(c.grades) , g2 : s2.(c.grades) | some (s1.projects & s2.projects & c.projects) \n  implies g1 in g2.next + g2.prev or g1 in g2\n\n}",
-                    "ids": [
-                        "b5KkQEN7Tns99uvyW"
                     ]
                 }
             ]
@@ -229,11 +229,11 @@
                 },
                 {
                     "entry_count": 3,
-                    "code": "{\n\t// Students working on the same project in a course cannot have marks differing by more than one unit\n  \tall disj s1,s2 : Student | all p :s1.projects & s2.projects | Course <: s1.(grades.p) = s2.(grades.p) or s1.(grades.p).next = s2.(grades.p)}",
+                    "code": "{\n    // Students working on the same project in a course cannot have marks differing by more than one unit\n    all c: Course, p: Project, s, t: Person | p in s.projects and p in t.projects implies s.grades[c] = t.grades[c] or s.grades[c] = t.grades[c] + 1 or s.grades[c] + 1 = t.grades[c]\n}",
                     "ids": [
-                        "TNCgvtpontTawmx85",
-                        "jwmvE8CxATXwMTaqy",
-                        "3Lr3geuQPh7yLD3BN"
+                        "nSunu3m5wtowPZFh4",
+                        "Eiwt9XfR3fuuHa9jR",
+                        "bQMCy4B4RRYw9cnmx"
                     ]
                 },
                 {
@@ -247,19 +247,11 @@
                 },
                 {
                     "entry_count": 3,
-                    "code": "{\n    // Students working on the same project in a course cannot have marks differing by more than one unit\n    all c: Course, p: Project, s, t: Person | p in s.projects and p in t.projects implies s.grades[c] = t.grades[c] or s.grades[c] = t.grades[c] + 1 or s.grades[c] + 1 = t.grades[c]\n}",
+                    "code": "{\n\t// Students working on the same project in a course cannot have marks differing by more than one unit\n  \tall disj s1,s2 : Student | all p :s1.projects & s2.projects | Course <: s1.(grades.p) = s2.(grades.p) or s1.(grades.p).next = s2.(grades.p)}",
                     "ids": [
-                        "nSunu3m5wtowPZFh4",
-                        "Eiwt9XfR3fuuHa9jR",
-                        "bQMCy4B4RRYw9cnmx"
-                    ]
-                },
-                {
-                    "entry_count": 2,
-                    "code": "{\n\t// Students working on the same project in a course cannot have marks differing by more than one unit\n    all c: Course | all p: Project | \n            p in c.projects implies all disj s1, s2: Student | \n                (s1 in p.projects and s2 in p.projects) implies (\n                c.grades[s1] = c.grades[s2].next or  c.grades[s2] = c.grades[s1].next)\n}",
-                    "ids": [
-                        "6pjE9B8ekchhMRPFb",
-                        "BoijwgEmLjc9WsRJv"
+                        "TNCgvtpontTawmx85",
+                        "jwmvE8CxATXwMTaqy",
+                        "3Lr3geuQPh7yLD3BN"
                     ]
                 },
                 {
@@ -272,31 +264,18 @@
                 },
                 {
                     "entry_count": 2,
+                    "code": "{\n\t// Students working on the same project in a course cannot have marks differing by more than one unit\n    all c: Course | all p: Project | \n            p in c.projects implies all disj s1, s2: Student | \n                (s1 in p.projects and s2 in p.projects) implies (\n                c.grades[s1] = c.grades[s2].next or  c.grades[s2] = c.grades[s1].next)\n}",
+                    "ids": [
+                        "6pjE9B8ekchhMRPFb",
+                        "BoijwgEmLjc9WsRJv"
+                    ]
+                },
+                {
+                    "entry_count": 2,
                     "code": "{\n\t// Students working on the same project in a course cannot have marks differing by more than one unit\n\tall c: Course, p: Project | let students = c.grades.p |\n        all disj s1, s2: students | (s1 - s2 = 1 or s2 - s1 = 1 or s1 = s2)\n}",
                     "ids": [
                         "a8yKEs46y29QdnGBv",
                         "4oxE756xE8KZYXxDw"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Students working on the same project in a course cannot have marks differing by more than one unit\n  \t//all s:Student,s1:Student | s1!=s implies all p :(s.projects & s1.projects) | some g:Grade |   \n\tall c:Course | all s:Student,s1:Student | s1 != s and some (c.projects & s.projects & s1.projects) implies some g:Grade | g in c.grades[s] implies all g1:c.grades[s1]| smaller[g1,g]=g1\n}",
-                    "ids": [
-                        "HXKR2yL79cTMPtHBt"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Students working on the same project in a course cannot have marks differing by more than one unit\n\tall c : Course, disj x,y : Student, g1, g2 : Grade |\n\t  (some pr : Project | c->pr in projects and pr in (x.projects & y.projects)) and\n\t  c in (grades.x.g1 & grades.y.g2) implies g1 in g2.(prev+iden+next)\n}",
-                    "ids": [
-                        "DTvz5veScaB7qrnYC"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Students working on the same project in a course cannot have marks differing by more than one unit\n  all c:Course | all p: c.projects | all disj s1,s2 : Student | (p in s1.projects and p in s2.projects) implies (sub[c.grades.s1,c.grades.s2] <=1 and sub[c.grades.s2,c.grades.s1] >=-1)\n\n}",
-                    "ids": [
-                        "WDnGBhNGvj7keXqc2"
                     ]
                 },
                 {
@@ -308,44 +287,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Students working on the same project in a course cannot have marks differing by more than one unit\n    all c: Course | all p: Project | \n            p in c.projects implies all disj s1, s2: Student | \n                (s1 in p.projects and s2 in p.projects) implies \n                c.grades[s1] = c.grades[s2].next\n}",
-                    "ids": [
-                        "DscFnjEEhRgqcTrmn"
-                    ]
-                },
-                {
-                    "entry_count": 1,
                     "code": "{\n\t// Students working on the same project in a course cannot have marks differing by more than one unit\n\tall s, s1: Student | all p: Project | all c: Course | s != s1 and  p in s.projects and p in s1.projects and p in c.projects implies ( next[s1.(c.grades)] = s.(c.grades) or not next[s1.(c.grades)] = s.(c.grades) )\n}",
                     "ids": [
                         "C4h3p7aYmnCy7FAn3"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Students working on the same project in a course cannot have marks differing by more than one unit\n\t\n  \tall s1,s2 : Student, p : Project, c : Course | (s1->p + s2->p in projects and c->p in projects) implies (c.grades).s1 in (c.grades).s2.prev + (c.grades).s2 + (c.grades).s2.next\n}",
-                    "ids": [
-                        "r7cqtx6zJXiuYeZyN"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Students working on the same project in a course cannot have marks differing by more than one unit\n  all disj s1,s2:Student | all c: Course :> projects.(s1.projects & s2.projects) | s1.(c.grades)=s1.(c.grades) or s1.(c.grades)=s1.(c.grades).next or s1.(c.grades).next=s1.(c.grades)\n  \n\n\n}",
-                    "ids": [
-                        "kXRymWByrPsXv2MNK"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Students working on the same project in a course cannot have marks differing by more than one unit\n\tall c: Course |\n        all disj s1, s2: c.projects |\n            (c.grades[s1] = c.grades[s2]) or (c.grades[s1] = c.grades[s2] + 1) or (c.grades[s1] = c.grades[s2] - 1)\n}",
-                    "ids": [
-                        "4SrPa6Ec7XLK9cgQ6"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Students working on the same project in a course cannot have marks differing by more than one unit\n    all s1, s2: Student, p: Project, c: Course | \n    (s1 != s2 and p in s1.projects.enrolled and p in s2.projects.enrolled) implies \n    (c.grades[s1] = c.grades[s2])\n\n}",
-                    "ids": [
-                        "cnkHW2YN8T6Ccp8oh"
                     ]
                 },
                 {
@@ -357,9 +301,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Students working on the same project in a course cannot have marks differing by more than one unit\n\tall p : Project | all m : (((Course <: projects).p).enrolled).(((Course <: projects).p).grades) | some m2 : (((Course <: projects).p).enrolled).(((Course <: projects).p).grades) | next[m] = m2 or prev[m] = m2\n}",
+                    "code": "{\n\t// Students working on the same project in a course cannot have marks differing by more than one unit\n  \t//all s:Student,s1:Student | s1!=s implies all p :(s.projects & s1.projects) | some g:Grade |   \n\tall c:Course | all s:Student,s1:Student | s1 != s and some (c.projects & s.projects & s1.projects) implies some g:Grade | g in c.grades[s] implies all g1:c.grades[s1]| smaller[g1,g]=g\n}",
                     "ids": [
-                        "Xvfz4Rd4Yp4yEjGrL"
+                        "PnCibDDPdPFqwncFY"
                     ]
                 },
                 {
@@ -371,23 +315,30 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Students working on the same project in a course cannot have marks differing by more than one unit\n  \t//all s:Student,s1:Student | s1!=s implies all p :(s.projects & s1.projects) | some g:Grade |   \n\tall c:Course | all s:Student,s1:Student | s1 != s and some (c.projects & s.projects & s1.projects) implies some g:Grade | g in c.grades[s] implies all g1:c.grades[s1]| smaller[g1,g]=g\n}",
+                    "code": "{\n\t// Students working on the same project in a course cannot have marks differing by more than one unit\n    all s1, s2: Student, p: Project, c: Course | \n    (s1 != s2 and p in s1.projects.enrolled and p in s2.projects.enrolled) implies \n    (c.grades[s1] = c.grades[s2])\n\n}",
                     "ids": [
-                        "PnCibDDPdPFqwncFY"
+                        "cnkHW2YN8T6Ccp8oh"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Students working on the same project in a course cannot have marks differing by more than one unit\n\tall c : Course, pr : Project, disj x,y : Student, g1, g2 : Grade |\n\t  c->pr in projects and pr in (x.projects & y.projects) and\n\t  c in (grades.x.g1 & grades.y.g2) implies g1 in g2.(prev+iden+next)\n}",
+                    "code": "{\n\t// Students working on the same project in a course cannot have marks differing by more than one unit\n  \t//all s:Student,s1:Student | s1!=s implies all p :(s.projects & s1.projects) | some g:Grade |   \n\tall c:Course | all s:Student,s1:Student | s1 != s and some (c.projects & s.projects & s1.projects) implies some g:Grade | g in c.grades[s] implies all g1:c.grades[s1]| smaller[g1,g]=g1\n}",
                     "ids": [
-                        "NyCSvbRsHNvxJK8ov"
+                        "HXKR2yL79cTMPtHBt"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Students working on the same project in a course cannot have marks differing by more than one unit\n\tall p : Project | all m : (enrolled.((Course <: projects).p)).(((Course <: projects).p).grades) | some m2 : (enrolled.((Course <: projects).p)).(((Course <: projects).p).grades) | m != m2 implies next[m] = m2 or prev[m] = m2 or m = m2\n  //all p : Project | let c = (Course <: projects).p, s = (Person <: projects).p | all disj g1, g2 : s.(c.grades) | next[g1] = g2 or prev[g1] = g2 or g1 = g2\n}",
+                    "code": "{\n\t// Students working on the same project in a course cannot have marks differing by more than one unit\n    all c: Course | all p: Project | \n            p in c.projects implies all disj s1, s2: Student | \n                (s1 in p.projects and s2 in p.projects) implies \n                c.grades[s1] = c.grades[s2].next\n}",
                     "ids": [
-                        "GmFefv6WRRK7fRYyt"
+                        "DscFnjEEhRgqcTrmn"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students working on the same project in a course cannot have marks differing by more than one unit\n\tall c : Course, disj x,y : Student, g1, g2 : Grade |\n\t  (some pr : Project | c->pr in projects and pr in (x.projects & y.projects)) and\n\t  c in (grades.x.g1 & grades.y.g2) implies g1 in g2.(prev+iden+next)\n}",
+                    "ids": [
+                        "DTvz5veScaB7qrnYC"
                     ]
                 },
                 {
@@ -399,6 +350,20 @@
                 },
                 {
                     "entry_count": 1,
+                    "code": "{\n\t// Students working on the same project in a course cannot have marks differing by more than one unit\n\tall p : Project | all m : (enrolled.((Course <: projects).p)).(((Course <: projects).p).grades) | some m2 : (enrolled.((Course <: projects).p)).(((Course <: projects).p).grades) | m != m2 implies next[m] = m2 or prev[m] = m2 or m = m2\n  //all p : Project | let c = (Course <: projects).p, s = (Person <: projects).p | all disj g1, g2 : s.(c.grades) | next[g1] = g2 or prev[g1] = g2 or g1 = g2\n}",
+                    "ids": [
+                        "GmFefv6WRRK7fRYyt"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students working on the same project in a course cannot have marks differing by more than one unit\n  all c:Course | all p: c.projects | all disj s1,s2 : Student | (p in s1.projects and p in s2.projects) implies (sub[c.grades.s1,c.grades.s2] <=1 and sub[c.grades.s2,c.grades.s1] >=-1)\n\n}",
+                    "ids": [
+                        "WDnGBhNGvj7keXqc2"
+                    ]
+                },
+                {
+                    "entry_count": 1,
                     "code": "{\n\t// Students working on the same project in a course cannot have marks differing by more than one unit\n\tall p : Project | all m : (enrolled.((Course <: projects).p)).(((Course <: projects).p).grades) | some m2 : (enrolled.((Course <: projects).p)).(((Course <: projects).p).grades) | m != m2 implies next[m] = m2 or prev[m] = m2\n}",
                     "ids": [
                         "DRfiHwi7JZPXZMnBX"
@@ -406,9 +371,44 @@
                 },
                 {
                     "entry_count": 1,
+                    "code": "{\n\t// Students working on the same project in a course cannot have marks differing by more than one unit\n\tall c: Course |\n        all disj s1, s2: c.projects |\n            (c.grades[s1] = c.grades[s2]) or (c.grades[s1] = c.grades[s2] + 1) or (c.grades[s1] = c.grades[s2] - 1)\n}",
+                    "ids": [
+                        "4SrPa6Ec7XLK9cgQ6"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students working on the same project in a course cannot have marks differing by more than one unit\n\tall p : Project | all m : (((Course <: projects).p).enrolled).(((Course <: projects).p).grades) | some m2 : (((Course <: projects).p).enrolled).(((Course <: projects).p).grades) | next[m] = m2 or prev[m] = m2\n}",
+                    "ids": [
+                        "Xvfz4Rd4Yp4yEjGrL"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students working on the same project in a course cannot have marks differing by more than one unit\n\tall c : Course, pr : Project, disj x,y : Student, g1, g2 : Grade |\n\t  c->pr in projects and pr in (x.projects & y.projects) and\n\t  c in (grades.x.g1 & grades.y.g2) implies g1 in g2.(prev+iden+next)\n}",
+                    "ids": [
+                        "NyCSvbRsHNvxJK8ov"
+                    ]
+                },
+                {
+                    "entry_count": 1,
                     "code": "{\n\t// Students working on the same project in a course cannot have marks differing by more than one unit\n  all s1, s2 : Student, p : Project, c: Course | s1 != s2 and p in s1.projects and p in s2.projects and p in c.projects implies (all g1, g2 : Grade | g1 in s1.(c.grades) and g2 in s2.(c.grades) implies (g1 = g2 or g1 != prev[g2] or g2 != prev[g1]))\n\n}",
                     "ids": [
                         "23XKvG8RJrtfp8bDb"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students working on the same project in a course cannot have marks differing by more than one unit\n  all disj s1,s2:Student | all c: Course :> projects.(s1.projects & s2.projects) | s1.(c.grades)=s1.(c.grades) or s1.(c.grades)=s1.(c.grades).next or s1.(c.grades).next=s1.(c.grades)\n  \n\n\n}",
+                    "ids": [
+                        "kXRymWByrPsXv2MNK"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students working on the same project in a course cannot have marks differing by more than one unit\n\t\n  \tall s1,s2 : Student, p : Project, c : Course | (s1->p + s2->p in projects and c->p in projects) implies (c.grades).s1 in (c.grades).s2.prev + (c.grades).s2 + (c.grades).s2.next\n}",
+                    "ids": [
+                        "r7cqtx6zJXiuYeZyN"
                     ]
                 }
             ]
@@ -458,11 +458,11 @@
                 },
                 {
                     "entry_count": 3,
-                    "code": "{\n\t// Students working on the same project in a course cannot have marks differing by more than one unit\n\tall c: Course | all p: Project | all disj s1, s2: Student | \n  \t\tp in s1.projects and\n  \t\tp in s2.projects and\n  \t\tp in c.projects implies\n  \t\t(\n          c.grades[s1] = c.grades[s2].next or\n          c.grades[s2] = c.grades[s1].next or\n          c.grades[s1] = c.grades[s2] or\n          c.grades[s1] = none or\n          c.grades[s2] = none\n        )\n  \n  \n//    all c: Course | all p: Project | \n//            p in c.projects implies all disj s1, s2: Student | \n//                (s1 in p.projects and s2 in p.projects) implies (\n//                c.grades[s1] = c.grades[s2].next or c.grades[s2] = c.grades[s1].next)\n}",
+                    "code": "{\n\t// Students working on the same project in a course cannot have marks differing by more than one unit\n  all s,s2: Student | all p : Project |all c : Course | p in s.projects and p in s2.projects and p in c.projects and some s.(c.grades) and some s2.(c.grades) implies \n  \t(next[s.(c.grades)]  = s2.(c.grades) or next[s2.(c.grades)] = s.(c.grades) \n   \tor s.(c.grades) = s2.(c.grades))\n}",
                     "ids": [
-                        "7TXHxcJy2mnJvbFLn",
-                        "KtRXzTXRseGt7Bz3H",
-                        "yvf94tkBAvJYbME6j"
+                        "T5FasPehepmMWvpRK",
+                        "EekSzrHZGr2YxgL7W",
+                        "CALtj2zYP5eAR6y7e"
                     ]
                 },
                 {
@@ -476,25 +476,11 @@
                 },
                 {
                     "entry_count": 3,
-                    "code": "{\n\t// Students working on the same project in a course cannot have marks differing by more than one unit\n  all s,s2: Student | all p : Project |all c : Course | p in s.projects and p in s2.projects and p in c.projects and some s.(c.grades) and some s2.(c.grades) implies \n  \t(next[s.(c.grades)]  = s2.(c.grades) or next[s2.(c.grades)] = s.(c.grades) \n   \tor s.(c.grades) = s2.(c.grades))\n}",
+                    "code": "{\n\t// Students working on the same project in a course cannot have marks differing by more than one unit\n\tall c: Course | all p: Project | all disj s1, s2: Student | \n  \t\tp in s1.projects and\n  \t\tp in s2.projects and\n  \t\tp in c.projects implies\n  \t\t(\n          c.grades[s1] = c.grades[s2].next or\n          c.grades[s2] = c.grades[s1].next or\n          c.grades[s1] = c.grades[s2] or\n          c.grades[s1] = none or\n          c.grades[s2] = none\n        )\n  \n  \n//    all c: Course | all p: Project | \n//            p in c.projects implies all disj s1, s2: Student | \n//                (s1 in p.projects and s2 in p.projects) implies (\n//                c.grades[s1] = c.grades[s2].next or c.grades[s2] = c.grades[s1].next)\n}",
                     "ids": [
-                        "T5FasPehepmMWvpRK",
-                        "EekSzrHZGr2YxgL7W",
-                        "CALtj2zYP5eAR6y7e"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Students working on the same project in a course cannot have marks differing by more than one unit\n  all disj s1,s2:Student | all c: Course :> projects.(s1.projects & s2.projects) | (s1 + s2) in c.grades.Grade implies (s1.(c.grades)=s2.(c.grades) or s1.(c.grades)=s2.(c.grades).next or s1.(c.grades).next=s2.(c.grades))\n  \n\n\n}",
-                    "ids": [
-                        "L8asMLDWMGsHJBF5N"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Students working on the same project in a course cannot have marks differing by more than one unit  \n\t\tall disj s, s1 : Student | all c : Course | all p : c.projects | (p in (s.projects & s1.projects) ) and (some(s.(c.grades))) and (some(s1.(c.grades)) ) => ((s.(c.grades)).next = s1.(c.grades) || (s1.(c.grades)).next = s.(c.grades) || s1.(c.grades) = s.(c.grades))\n\n\t}",
-                    "ids": [
-                        "3AZzHNFZzWvRTQo94"
+                        "7TXHxcJy2mnJvbFLn",
+                        "KtRXzTXRseGt7Bz3H",
+                        "yvf94tkBAvJYbME6j"
                     ]
                 },
                 {
@@ -506,6 +492,20 @@
                 },
                 {
                     "entry_count": 1,
+                    "code": "{\n\t// Students working on the same project in a course cannot have marks differing by more than one unit\n  \t//next[x] function finds the next item (in this case Grade) in the set (in line 1 Grade is defined as having the Ordering property, which means each item has an order so you can find the next one)\n  \tall s,s2 : Student, p : s.projects&s2.projects, c : Course | s!=s2 and p in c.projects and some s.(c.grades) and some s2.(c.grades) implies (s.(c.grades) = s2.(c.grades) or s.(c.grades) = next[s2.(c.grades)] or next[s.(c.grades)] = s2.(c.grades))\n}",
+                    "ids": [
+                        "DD6QsFE4XoDdsnLtw"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students working on the same project in a course cannot have marks differing by more than one unit\n  all disj s1,s2:Student | all c: Course :> projects.(s1.projects & s2.projects) | (s1 + s2) in c.grades.Grade implies (s1.(c.grades)=s2.(c.grades) or s1.(c.grades)=s2.(c.grades).next or s1.(c.grades).next=s2.(c.grades))\n  \n\n\n}",
+                    "ids": [
+                        "L8asMLDWMGsHJBF5N"
+                    ]
+                },
+                {
+                    "entry_count": 1,
                     "code": "{\n\t// Students working on the same project in a course cannot have marks differing by more than one unit\n  \n  all s1,s2 : Student | all p : s1.projects & s2.projects | all c : Course | p in c.projects and some s1.(c.grades) and some s2.(c.grades) implies\n  (s1.(c.grades) = s2.(c.grades)) or (s1.(c.grades) = next[s2.(c.grades)] or s2.(c.grades) = next[s1.(c.grades)])\n\n}",
                     "ids": [
                         "TTnQs866DsRJRvLnL"
@@ -513,9 +513,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Students working on the same project in a course cannot have marks differing by more than one unit\n  \t//next[x] function finds the next item (in this case Grade) in the set (in line 1 Grade is defined as having the Ordering property, which means each item has an order so you can find the next one)\n  \tall s,s2 : Student, p : s.projects&s2.projects, c : Course | s!=s2 and p in c.projects and some s.(c.grades) and some s2.(c.grades) implies (s.(c.grades) = s2.(c.grades) or s.(c.grades) = next[s2.(c.grades)] or next[s.(c.grades)] = s2.(c.grades))\n}",
+                    "code": "{\n\t// Students working on the same project in a course cannot have marks differing by more than one unit  \n\t\tall disj s, s1 : Student | all c : Course | all p : c.projects | (p in (s.projects & s1.projects) ) and (some(s.(c.grades))) and (some(s1.(c.grades)) ) => ((s.(c.grades)).next = s1.(c.grades) || (s1.(c.grades)).next = s.(c.grades) || s1.(c.grades) = s.(c.grades))\n\n\t}",
                     "ids": [
-                        "DD6QsFE4XoDdsnLtw"
+                        "3AZzHNFZzWvRTQo94"
                     ]
                 }
             ]
@@ -540,6 +540,16 @@
                 },
                 {
                     "entry_count": 4,
+                    "code": "{\n\t// Students working on the same project in a course cannot have marks differing by more than one unit\n  \tall disj s1, s2 : Student , c : Course | \n  \t\tsome s1.projects & s2.projects & c.projects and\n  \t\tsome s1.(c.grades) and some s2.(c.grades) implies\n  \t\ts1.(c.grades) in s2.(c.grades).(prev+iden+next)\n}",
+                    "ids": [
+                        "zfHPMqBpLkMCJvajT",
+                        "JCXR8zNSTr2n5ro8N",
+                        "7KCHqj893jgEjRxcx",
+                        "f4tgjBnRumCh2HePs"
+                    ]
+                },
+                {
+                    "entry_count": 4,
                     "code": "{\n\t// Students working on the same project in a course cannot have marks differing by more than one unit\n  \tall c : Course, disj x,y : Student, g2 : c.grades[y] |\n\t  (some c.projects & x.projects & y.projects) implies c.grades[x] in c.grades[y].(prev+iden+next)\n\n}",
                     "ids": [
                         "RER2oEHTa2BTrqwf7",
@@ -559,21 +569,25 @@
                     ]
                 },
                 {
-                    "entry_count": 4,
-                    "code": "{\n\t// Students working on the same project in a course cannot have marks differing by more than one unit\n  \tall disj s1, s2 : Student , c : Course | \n  \t\tsome s1.projects & s2.projects & c.projects and\n  \t\tsome s1.(c.grades) and some s2.(c.grades) implies\n  \t\ts1.(c.grades) in s2.(c.grades).(prev+iden+next)\n}",
-                    "ids": [
-                        "zfHPMqBpLkMCJvajT",
-                        "JCXR8zNSTr2n5ro8N",
-                        "7KCHqj893jgEjRxcx",
-                        "f4tgjBnRumCh2HePs"
-                    ]
-                },
-                {
                     "entry_count": 2,
                     "code": "{\n\t// Students working on the same project in a course cannot have marks differing by more than one unit\n\t\n  \tall s1: Student, s2 : Student-s1, p : Project, c : Course | (s1+s2 in projects.p and p in c.projects and s1+s2 in (c.grades).Grade) implies (s1.(c.grades) in (s2.(c.grades)).prev + s2.(c.grades) + (s2.(c.grades)).next)\n}",
                     "ids": [
                         "shtLQbckNc2DBuep9",
                         "q4uXLdGjrquPAzbh4"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students working on the same project in a course cannot have marks differing by more than one unit\n\tall c : Course,\n  \tdisj s1, s2 : Student,\n\tp : c.projects & s1.projects & s2.projects |\n  \t\tsome s1.(c.grades) and some s2.(c.grades) implies\n  \t\t\ts1.(c.grades) in s2.(c.grades).(prev+iden+next)\n  \t\t\n  \t\n  \t\t\n}",
+                    "ids": [
+                        "T8s4vJPAz6mnb72Ke"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students working on the same project in a course cannot have marks differing by more than one unit\n  all p: Project | all disj s1,s2 : Student | all c : Course | p  in s1.projects and p in s2.projects and p in c.projects and some s2.(c.grades) implies s1.(c.grades) in s2.(c.grades).(prev+iden+next)\n\n}",
+                    "ids": [
+                        "NPm9jiz4WqKM7zMgx"
                     ]
                 },
                 {
@@ -592,9 +606,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Students working on the same project in a course cannot have marks differing by more than one unit\n  all p: Project | all disj s1,s2 : Student | all c : Course | p  in s1.projects and p in s2.projects and p in c.projects and some s2.(c.grades) implies s1.(c.grades) in s2.(c.grades).(prev+iden+next)\n\n}",
+                    "code": "{\n\t// Students working on the same project in a course cannot have marks differing by more than one unit\n  \t/*all c : Course, disj x,y : Student, g1 : c.grades[x], g2 : c.grades[y] |\n\t  (some c.projects & x.projects & y.projects) implies g1 in g2.(prev+iden+next)*/\n  \tall disj x,y:Student, c: Course, p:x.projects&y.projects | p in c.projects and x in c.grades.Grade and y in c.grades.Grade implies c.grades[x] in c.grades[y].(prev+iden+next)\n\n}",
                     "ids": [
-                        "NPm9jiz4WqKM7zMgx"
+                        "JKNkAAFp7hHgAsYn7"
                     ]
                 },
                 {
@@ -602,20 +616,6 @@
                     "code": "{\n\t// Students working on the same project in a course cannot have marks differing by more than one unit\n  \t/*all c : Course, disj x,y : Student, g1 : c.grades[x], g2 : c.grades[y] |\n\t  (some c.projects & x.projects & y.projects) implies g1 in g2.(prev+iden+next)*/\n  \tall disj x,y:Student, c: Course, p:x.projects&y.projects | p in c.projects and x+y in c.grades.Grade  implies c.grades[x] in c.grades[y].(prev+iden+next)\n\n}",
                     "ids": [
                         "wuBEyy349MeBnzmMC"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Students working on the same project in a course cannot have marks differing by more than one unit\n\tall c : Course,\n  \tdisj s1, s2 : Student,\n\tp : c.projects & s1.projects & s2.projects |\n  \t\tsome s1.(c.grades) and some s2.(c.grades) implies\n  \t\t\ts1.(c.grades) in s2.(c.grades).(prev+iden+next)\n  \t\t\n  \t\n  \t\t\n}",
-                    "ids": [
-                        "T8s4vJPAz6mnb72Ke"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Students working on the same project in a course cannot have marks differing by more than one unit\n  \t/*all c : Course, disj x,y : Student, g1 : c.grades[x], g2 : c.grades[y] |\n\t  (some c.projects & x.projects & y.projects) implies g1 in g2.(prev+iden+next)*/\n  \tall disj x,y:Student, c: Course, p:x.projects&y.projects | p in c.projects and x in c.grades.Grade and y in c.grades.Grade implies c.grades[x] in c.grades[y].(prev+iden+next)\n\n}",
-                    "ids": [
-                        "JKNkAAFp7hHgAsYn7"
                     ]
                 }
             ]
@@ -660,10 +660,10 @@
                 },
                 {
                     "entry_count": 2,
-                    "code": "{\n\t// Students working on the same project in a course cannot have marks differing by more than one unit\n\tall disj s1, s2 : Student ,\n  \t\tp : s1.projects & s2.projects ,\n  \t\tc : Course <: projects.p  |\n\t\t\ts1.(c.grades) in (s2.(c.grades).(prev+iden+next))\n  \t\t\n}",
+                    "code": "{\n\t// Students working on the same project in a course cannot have marks differing by more than one unit\n\tall disj s1, s2 : Student, c : Course, p : Project | \n  \t\tp in (s1.projects & s2.projects & c.projects) implies\n  \t\t\ts1.(c.grades) in (s2.(c.grades).(prev + iden + next))\n}",
                     "ids": [
-                        "FoDfLwzvQPhk5TiNm",
-                        "YW5XJfR92oj9YSYRp"
+                        "xnHdi4DWbHoRLTJaF",
+                        "SuQh3w2rHTAZ7CxA8"
                     ]
                 },
                 {
@@ -676,18 +676,18 @@
                 },
                 {
                     "entry_count": 2,
-                    "code": "{\n\t// Students working on the same project in a course cannot have marks differing by more than one unit\n\t\n  \tall s1: Student, s2 : Student-s1, p : Project, c : Course | (s1 + s2 in projects.p and p in c.projects) implies s1.(c.grades) in (s2.(c.grades)).prev + s2.(c.grades) + (s2.(c.grades)).next\n}",
+                    "code": "{\n\t// Students working on the same project in a course cannot have marks differing by more than one unit\n\tall disj s1, s2 : Student ,\n  \t\tp : s1.projects & s2.projects ,\n  \t\tc : Course <: projects.p  |\n\t\t\ts1.(c.grades) in (s2.(c.grades).(prev+iden+next))\n  \t\t\n}",
                     "ids": [
-                        "w2y3c7xEkoxSvfh5D",
-                        "AyzzhpBHKGastgK5v"
+                        "FoDfLwzvQPhk5TiNm",
+                        "YW5XJfR92oj9YSYRp"
                     ]
                 },
                 {
                     "entry_count": 2,
-                    "code": "{\n\t// Students working on the same project in a course cannot have marks differing by more than one unit\n\tall disj s1, s2 : Student, c : Course, p : Project | \n  \t\tp in (s1.projects & s2.projects & c.projects) implies\n  \t\t\ts1.(c.grades) in (s2.(c.grades).(prev + iden + next))\n}",
+                    "code": "{\n\t// Students working on the same project in a course cannot have marks differing by more than one unit\n\t\n  \tall s1: Student, s2 : Student-s1, p : Project, c : Course | (s1 + s2 in projects.p and p in c.projects) implies s1.(c.grades) in (s2.(c.grades)).prev + s2.(c.grades) + (s2.(c.grades)).next\n}",
                     "ids": [
-                        "xnHdi4DWbHoRLTJaF",
-                        "SuQh3w2rHTAZ7CxA8"
+                        "w2y3c7xEkoxSvfh5D",
+                        "AyzzhpBHKGastgK5v"
                     ]
                 },
                 {
@@ -715,20 +715,20 @@
                 },
                 {
                     "entry_count": 3,
-                    "code": "{\n\t// Students working on the same project in a course cannot have marks differing by more than one unit\n\t\tall s1, s2: Student, p: (s1.projects & s2.projects), c: (s1.enrolled & s2.enrolled) | p in c.projects and some s1.(c.grades) and some s2.(c.grades) implies s1.(c.grades) = s2.(c.grades) or next[s1.(c.grades)] = s2.(c.grades) or s1.(c.grades) = next[s2.(c.grades)]\n}",
-                    "ids": [
-                        "qDhcGGvNPNqETFnvy",
-                        "CwrGHnZaoM2BQKNdE",
-                        "hkWcexqvk73syucWu"
-                    ]
-                },
-                {
-                    "entry_count": 3,
                     "code": "{\n\t// Students working on the same project in a course cannot have marks differing by more than one unit\n  \t//next[x] function finds the next item (in this case Grade) in the set (in line 1 Grade is defined as having the Ordering property, which means each item has an order so you can find the next one)\n\tall disj s,s2: Student,\n  \t\tp : s.projects & s2.projects, c : s.enrolled & s2.enrolled | \n  \tp in c.projects and some s.(c.grades) and some s2.(c.grades) implies \n  \t(next[s.(c.grades)]  = s2.(c.grades) or next[s2.(c.grades)] = s.(c.grades) \n   \tor s.(c.grades) = s2.(c.grades))\n}",
                     "ids": [
                         "okhDG5vWMrzrYsCkw",
                         "wyRAjSDpMrzBMkdcv",
                         "SJYqDCSzWjMKCr9PM"
+                    ]
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Students working on the same project in a course cannot have marks differing by more than one unit\n\t\tall s1, s2: Student, p: (s1.projects & s2.projects), c: (s1.enrolled & s2.enrolled) | p in c.projects and some s1.(c.grades) and some s2.(c.grades) implies s1.(c.grades) = s2.(c.grades) or next[s1.(c.grades)] = s2.(c.grades) or s1.(c.grades) = next[s2.(c.grades)]\n}",
+                    "ids": [
+                        "qDhcGGvNPNqETFnvy",
+                        "CwrGHnZaoM2BQKNdE",
+                        "hkWcexqvk73syucWu"
                     ]
                 },
                 {
@@ -765,20 +765,6 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Students working on the same project in a course cannot have marks differing by more than one unit  \n\tall disj s, s1 : Student | all c : Course | all p : c.projects | p in (s.projects & s1.projects) => ((s.(c.grades)).next = s1.(c.grades) || (s1.(c.grades)).next = s.(c.grades) || s1.(c.grades) = s.(c.grades))\n}",
-                    "ids": [
-                        "ftN2Lop3xrYj2xakW"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Students working on the same project in a course cannot have marks differing by more than one unit\n    // Students working on the same project in a course cannot have marks differing by more than one unit\n    all s1, s2: Student | \n        s1 != s2 => \n            all p: Project | \n                (p in s1.projects and p in s2.projects) implies \n                    all c: Course | \n                        p in c.projects implies \n                            (c.grades[s1] = c.grades[s2] or\n                             c.grades[s1] = next[c.grades[s2]] or\n                             c.grades[s2] = next[c.grades[s1]])\n}",
-                    "ids": [
-                        "hBix8fASqaLp4t2dh"
-                    ]
-                },
-                {
-                    "entry_count": 1,
                     "code": "{\n\t// Students working on the same project in a course cannot have marks differing by more than one unit\n\tall s, s1: Student | all p: Project | all c: Course | s != s1 and  p in s.projects and p in s1.projects and p in c.projects and some s.(c.grades) and some s.(c.grades) implies (next[s.(c.grades)]  = s1.(c.grades) or next[s1.(c.grades)] = s.(c.grades) or  s.(c.grades) = s1.(c.grades) )\n  \n  \n}",
                     "ids": [
                         "tC2ifPjHAFbpfkZCy"
@@ -793,9 +779,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Students working on the same project in a course cannot have marks differing by more than one unit\n\tall c: Course | all p: Project | all disj s1, s2: Student | \n  \t\tp in s1.projects and\n  \t\tp in s2.projects and\n  \t\tp in c.projects implies\n  \t\t(\n          c.grades[s1] = c.grades[s2].next or\n          c.grades[s2] = c.grades[s1].next or\n          c.grades[s1] = c.grades[s2]\n        )\n  \n  \n//    all c: Course | all p: Project | \n//            p in c.projects implies all disj s1, s2: Student | \n//                (s1 in p.projects and s2 in p.projects) implies (\n//                c.grades[s1] = c.grades[s2].next or c.grades[s2] = c.grades[s1].next)\n}",
+                    "code": "{\n\t// Students working on the same project in a course cannot have marks differing by more than one unit\n    // Students working on the same project in a course cannot have marks differing by more than one unit\n    all s1, s2: Student | \n        s1 != s2 => \n            all p: Project | \n                (p in s1.projects and p in s2.projects) implies \n                    all c: Course | \n                        p in c.projects implies \n                            (c.grades[s1] = c.grades[s2] or\n                             c.grades[s1] = next[c.grades[s2]] or\n                             c.grades[s2] = next[c.grades[s1]])\n}",
                     "ids": [
-                        "rRycXX585EjAkFsEa"
+                        "hBix8fASqaLp4t2dh"
                     ]
                 },
                 {
@@ -803,6 +789,20 @@
                     "code": "{\n\t// Students working on the same project in a course cannot have marks differing by more than one unit\n  all disj s1,s2:Student | all c: Course :> projects.(s1.projects & s2.projects) | s1.(c.grades)=s2.(c.grades) or s1.(c.grades)=s2.(c.grades).next or s1.(c.grades).next=s2.(c.grades)\n  \n\n\n}",
                     "ids": [
                         "HqpGCFffkjfdutdFx"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students working on the same project in a course cannot have marks differing by more than one unit  \n\tall disj s, s1 : Student | all c : Course | all p : c.projects | p in (s.projects & s1.projects) => ((s.(c.grades)).next = s1.(c.grades) || (s1.(c.grades)).next = s.(c.grades) || s1.(c.grades) = s.(c.grades))\n}",
+                    "ids": [
+                        "ftN2Lop3xrYj2xakW"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students working on the same project in a course cannot have marks differing by more than one unit\n\tall c: Course | all p: Project | all disj s1, s2: Student | \n  \t\tp in s1.projects and\n  \t\tp in s2.projects and\n  \t\tp in c.projects implies\n  \t\t(\n          c.grades[s1] = c.grades[s2].next or\n          c.grades[s2] = c.grades[s1].next or\n          c.grades[s1] = c.grades[s2]\n        )\n  \n  \n//    all c: Course | all p: Project | \n//            p in c.projects implies all disj s1, s2: Student | \n//                (s1 in p.projects and s2 in p.projects) implies (\n//                c.grades[s1] = c.grades[s2].next or c.grades[s2] = c.grades[s1].next)\n}",
+                    "ids": [
+                        "rRycXX585EjAkFsEa"
                     ]
                 }
             ]
@@ -823,10 +823,10 @@
                 },
                 {
                     "entry_count": 2,
-                    "code": "{\n\t// Students working on the same project in a course cannot have marks differing by more than one unit\n  \tall disj s1, s2 : Student ,\n  \t\tc : s1.enrolled & s2.enrolled,\n  \t\tp : s1.projects & s2.projects & c.projects |\n  \t\tsome s1.(c.grades) and some s2.(c.grades) implies\n  \t\ts1.(c.grades) in s2.(c.grades).(prev+iden+next)\n  \t\t\n  \n  \n  \t\t\n\n}",
+                    "code": "{\n\t// Students working on the same project in a course cannot have marks differing by more than one unit\n\tall s1, s2: Student, p: s1.projects & s2.projects, c: s1.enrolled & s2.enrolled | \n\tp in c.projects and some s1.(c.grades) and some s2.(c.grades) implies \n\ts1.(c.grades) in (s2.(c.grades) + next[s2.(c.grades)] + prev[s2.(c.grades)])\n}",
                     "ids": [
-                        "Txz5XgEYKyWdqsRNa",
-                        "RFQje5RqtxKmQXFKy"
+                        "RyWX2bcK62Sjdxbgt",
+                        "7zr9jka8RtLZij22y"
                     ]
                 },
                 {
@@ -839,10 +839,10 @@
                 },
                 {
                     "entry_count": 2,
-                    "code": "{\n\t// Students working on the same project in a course cannot have marks differing by more than one unit\n\tall s1, s2: Student, p: s1.projects & s2.projects, c: s1.enrolled & s2.enrolled | \n\tp in c.projects and some s1.(c.grades) and some s2.(c.grades) implies \n\ts1.(c.grades) in (s2.(c.grades) + next[s2.(c.grades)] + prev[s2.(c.grades)])\n}",
+                    "code": "{\n\t// Students working on the same project in a course cannot have marks differing by more than one unit\n  \tall disj s1, s2 : Student ,\n  \t\tc : s1.enrolled & s2.enrolled,\n  \t\tp : s1.projects & s2.projects & c.projects |\n  \t\tsome s1.(c.grades) and some s2.(c.grades) implies\n  \t\ts1.(c.grades) in s2.(c.grades).(prev+iden+next)\n  \t\t\n  \n  \n  \t\t\n\n}",
                     "ids": [
-                        "RyWX2bcK62Sjdxbgt",
-                        "7zr9jka8RtLZij22y"
+                        "Txz5XgEYKyWdqsRNa",
+                        "RFQje5RqtxKmQXFKy"
                     ]
                 }
             ]
@@ -854,9 +854,9 @@
             "elems": [
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Students working on the same project in a course cannot have marks differing by more than one unit\n  all s1, s2 : Student, p : Project, c: Course | s1 != s2 and p in s1.projects and p in s2.projects and p in c.projects implies (all g1, g2 : Grade | g1 in s1.(c.grades) and g2 in s2.(c.grades) implies (g1 = g2 or g1 = prev[g2] or g1 + 1 = g2))\n\n}",
+                    "code": "{\n\t// Students working on the same project in a course cannot have marks differing by more than one unit\n  all s1, s2 : Student, p : Project, c: Course | s1 != s2 and p in s1.projects and p in s2.projects and p in c.projects implies (all g1, g2 : Grade | g1 in s1.(c.grades) and g2 in s2.(c.grades) implies g1 = g2)\n\n}",
                     "ids": [
-                        "XdLcDwgFK3wno53ix"
+                        "s9YWvJgrjZbodSTob"
                     ]
                 },
                 {
@@ -868,13 +868,6 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Students working on the same project in a course cannot have marks differing by more than one unit\n  all s1, s2 : Student, p : Project, c: Course | s1 != s2 and p in s1.projects and p in s2.projects and p in c.projects implies (all g1, g2 : Grade | g1 in s1.(c.grades) and g2 in s2.(c.grades) implies g1 = g2)\n\n}",
-                    "ids": [
-                        "s9YWvJgrjZbodSTob"
-                    ]
-                },
-                {
-                    "entry_count": 1,
                     "code": "{\n\t// Students working on the same project in a course cannot have marks differing by more than one unit\n  all s1, s2 : Student, p : Project, c: Course | s1 != s2 and p in s1.projects and p in s2.projects and p in c.projects implies (all g1, g2 : Grade | g1 in s1.(c.grades) and g2 in s2.(c.grades) implies (g1 = g2 or g1 =  prev[g2] + 1 or g1 + 1 = g2))\n\n}",
                     "ids": [
                         "bLoqf5qDJExJgyXrz"
@@ -882,16 +875,23 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Students working on the same project in a course cannot have marks differing by more than one unit\n  all s1, s2 : Student, p : Project, c: Course | s1 != s2 and p in s1.projects and p in s2.projects and p in c.projects implies (all g1, g2 : Grade | g1 in s1.(c.grades) and g2 in s2.(c.grades) implies (g1 = g2 or g1 = g2 + 1 or g1 + 1 = g2))\n\n}",
+                    "code": "{\n\t// Students working on the same project in a course cannot have marks differing by more than one unit\n\tall disj s1, s2 : Student, c: Course, g1: s1.(c.grades),g2: s2.(c.grades) | \t\tsome (s1.projects & s2.projects & c.projects) implies \n  \t\t\tg1 in g2\n}",
                     "ids": [
-                        "zWnSQ9qjgGrh7HM4S"
+                        "r3cmyYXEsHyE3xt37"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Students working on the same project in a course cannot have marks differing by more than one unit\n\tall disj s1, s2 : Student, c: Course, g1: s1.(c.grades),g2: s2.(c.grades) | \t\tsome (s1.projects & s2.projects & c.projects) implies \n  \t\t\tg1 in g2\n}",
+                    "code": "{\n\t// Students working on the same project in a course cannot have marks differing by more than one unit\n  all s1, s2 : Student, p : Project, c: Course | s1 != s2 and p in s1.projects and p in s2.projects and p in c.projects implies (all g1, g2 : Grade | g1 in s1.(c.grades) and g2 in s2.(c.grades) implies (g1 = g2 or g1 = prev[g2] or g1 + 1 = g2))\n\n}",
                     "ids": [
-                        "r3cmyYXEsHyE3xt37"
+                        "XdLcDwgFK3wno53ix"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students working on the same project in a course cannot have marks differing by more than one unit\n  all s1, s2 : Student, p : Project, c: Course | s1 != s2 and p in s1.projects and p in s2.projects and p in c.projects implies (all g1, g2 : Grade | g1 in s1.(c.grades) and g2 in s2.(c.grades) implies (g1 = g2 or g1 = g2 + 1 or g1 + 1 = g2))\n\n}",
+                    "ids": [
+                        "zWnSQ9qjgGrh7HM4S"
                     ]
                 }
             ]
@@ -936,16 +936,16 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Students working on the same project in a course cannot have marks differing by more than one unit\n    all s1, s2: Student, c: Course, p: Project | \n      p in s1.projects and p in s2.projects and p in c.projects implies\n        c.grades[s1] = c.grades[s2] or \n        c.grades[s1] = c.grades[s2] + 1 or\n        c.grades[s2] = c.grades[s1] + 1\n}",
+                    "code": "{\n\t// Students working on the same project in a course cannot have marks differing by more than one unit\n\tall s1, s2 : Student, c : Course, p : Project | \n  \t\tp in (s1.projects & s2.projects & c.projects) implies\n  \t\t\ts1.(c.grades) = s2.(c.grades) or\n            s1.(c.grades) = s2.(c.grades) + 1 or\n            s1.(c.grades) = s2.(c.grades) - 1\n}",
                     "ids": [
-                        "2uc8AFSQQ9Tq3vLH3"
+                        "9R5yjhQr5e8yeY6Fr"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Students working on the same project in a course cannot have marks differing by more than one unit\n\tall s1, s2 : Student, c : Course, p : Project | \n  \t\tp in (s1.projects & s2.projects & c.projects) implies\n  \t\t\ts1.(c.grades) = s2.(c.grades) or\n            s1.(c.grades) = s2.(c.grades) + 1 or\n            s1.(c.grades) = s2.(c.grades) - 1\n}",
+                    "code": "{\n\t// Students working on the same project in a course cannot have marks differing by more than one unit\n    all s1, s2: Student, c: Course, p: Project | \n      p in s1.projects and p in s2.projects and p in c.projects implies\n        c.grades[s1] = c.grades[s2] or \n        c.grades[s1] = c.grades[s2] + 1 or\n        c.grades[s2] = c.grades[s1] + 1\n}",
                     "ids": [
-                        "9R5yjhQr5e8yeY6Fr"
+                        "2uc8AFSQQ9Tq3vLH3"
                     ]
                 },
                 {
@@ -1039,16 +1039,9 @@
             "elems": [
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Students working on the same project in a course cannot have marks differing by more than one unit\n\tall disj s1, s2: Student, c: Course | \n  \t\ts1.projects & s2.projects in c.projects\n  \t\timplies (\n  \t\ts1.(c.grades) = s2.(c.grades)+1 or\n  \t\ts1.(c.grades) = s2.(c.grades) or\n  \t\ts1.(c.grades) = prev[s2.(c.grades)])\n}",
+                    "code": "{\n\t// Students working on the same project in a course cannot have marks differing by more than one unit\n  \tall disj s1,s2:Student, c : Course | s1.projects&s2.projects in c.projects implies c.grades[s1] in c.grades[s2]\n\n}",
                     "ids": [
-                        "65ExJuqDPWiq6kGss"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Students working on the same project in a course cannot have marks differing by more than one unit\n\tall s1, s2: Student, c: Course | \n  \t\ts1.projects & s2.projects in c.projects\n  \t\timplies (\n  \t\ts1.(c.grades) = s2.(c.grades)+1 or\n  \t\ts1.(c.grades) = s2.(c.grades) or\n  \t\ts1.(c.grades) = s2.(c.grades)-1)\n}",
-                    "ids": [
-                        "fM7kz2jZwdrBRqfC3"
+                        "KTFY3atgvyB7fDu3S"
                     ]
                 },
                 {
@@ -1060,9 +1053,16 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Students working on the same project in a course cannot have marks differing by more than one unit\n  \tall disj s1,s2:Student, c : Course | s1.projects&s2.projects in c.projects implies c.grades[s1] in c.grades[s2]\n\n}",
+                    "code": "{\n\t// Students working on the same project in a course cannot have marks differing by more than one unit\n\tall disj s1, s2: Student, c: Course | \n  \t\ts1.projects & s2.projects in c.projects\n  \t\timplies (\n  \t\ts1.(c.grades) = s2.(c.grades)+1 or\n  \t\ts1.(c.grades) = s2.(c.grades) or\n  \t\ts1.(c.grades) = prev[s2.(c.grades)])\n}",
                     "ids": [
-                        "KTFY3atgvyB7fDu3S"
+                        "65ExJuqDPWiq6kGss"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students working on the same project in a course cannot have marks differing by more than one unit\n\tall s1, s2: Student, c: Course | \n  \t\ts1.projects & s2.projects in c.projects\n  \t\timplies (\n  \t\ts1.(c.grades) = s2.(c.grades)+1 or\n  \t\ts1.(c.grades) = s2.(c.grades) or\n  \t\ts1.(c.grades) = s2.(c.grades)-1)\n}",
+                    "ids": [
+                        "fM7kz2jZwdrBRqfC3"
                     ]
                 }
             ]
@@ -1082,16 +1082,16 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Students working on the same project in a course cannot have marks differing by more than one unit\n\tall disj s1, s2: Student | \n  \t\ts1.projects & s2.projects != none implies\n  \t\tall g1: s1.(Course.grades), g2: s2.(Course.grades) |\n  \t\t\tg1 = g2 or\n  \t\t\tg1 = g2 + 1 or\n  \t\t\tg1 = g2 - 1\n}",
+                    "code": "{\n\t// Students working on the same project in a course cannot have marks differing by more than one unit\n\tall disj s1, s2: Student | \n  \t\ts1.projects & s2.projects != none implies\n  \t\tall g1: s1.(Course.grades) | all g2: s2.(Course.grades) |\n  \t\t\tg1 = g2 \n}",
                     "ids": [
-                        "ecwwHNrcdQkLoXR4w"
+                        "WPRmouoQHFkmuTXG6"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Students working on the same project in a course cannot have marks differing by more than one unit\n\tall disj s1, s2: Student | \n  \t\ts1.projects & s2.projects != none implies\n  \t\tall g1: s1.(Course.grades) | all g2: s2.(Course.grades) |\n  \t\t\tg1 = g2 \n}",
+                    "code": "{\n\t// Students working on the same project in a course cannot have marks differing by more than one unit\n\tall disj s1, s2: Student | \n  \t\ts1.projects & s2.projects != none implies\n  \t\tall g1: s1.(Course.grades), g2: s2.(Course.grades) |\n  \t\t\tg1 = g2 or\n  \t\t\tg1 = g2 + 1 or\n  \t\t\tg1 = g2 - 1\n}",
                     "ids": [
-                        "WPRmouoQHFkmuTXG6"
+                        "ecwwHNrcdQkLoXR4w"
                     ]
                 }
             ]
@@ -1125,6 +1125,13 @@
             "elems": [
                 {
                     "entry_count": 1,
+                    "code": "{\n\t// Students working on the same project in a course cannot have marks differing by more than one unit\n  \tall disj s1,s2 : Student | all c : Course | \n  \t\t(c in s1.enrolled&s2.enrolled and \n          (some c.projects&(s1.projects&s2.projects))) implies \n\t\t(c.grades[s1].next = c.grades[s2] or c.grades[s1].prev = c.grades[s2] )\n\n}",
+                    "ids": [
+                        "DvqgiGHpc37aeRzTG"
+                    ]
+                },
+                {
+                    "entry_count": 1,
                     "code": "{\n\t// Students working on the same project in a course cannot have marks differing by more than one unit\n  \tall disj s1,s2 : Student | all c : Course, p : c.projects | \n  \t\t(c in s1.enrolled&s2.enrolled \n          and (some p&(s1.projects&s2.projects))) implies \n\t\t(c.grades[s1].next = c.grades[s2] or c.grades[s1].prev = c.grades[s2] )\n\n}",
                     "ids": [
                         "7FcqnXyAtRkzcZTG3"
@@ -1136,13 +1143,6 @@
                     "ids": [
                         "thjTLPig9bcYQd7ji"
                     ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Students working on the same project in a course cannot have marks differing by more than one unit\n  \tall disj s1,s2 : Student | all c : Course | \n  \t\t(c in s1.enrolled&s2.enrolled and \n          (some c.projects&(s1.projects&s2.projects))) implies \n\t\t(c.grades[s1].next = c.grades[s2] or c.grades[s1].prev = c.grades[s2] )\n\n}",
-                    "ids": [
-                        "DvqgiGHpc37aeRzTG"
-                    ]
                 }
             ]
         },
@@ -1151,13 +1151,6 @@
             "group_count": 3,
             "correct": false,
             "elems": [
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Students working on the same project in a course cannot have marks differing by more than one unit\n  all c: Course, disj s1,s2: Student , g1: s1.(c.grades) , g2 : s2.(c.grades) | some (s1.projects & s2.projects & c.projects) \n  implies g1 in g2.next or g1 in g2.prev\n\n}",
-                    "ids": [
-                        "iS9gzGERzRkvhxxom"
-                    ]
-                },
                 {
                     "entry_count": 1,
                     "code": "{\n\t// Students working on the same project in a course cannot have marks differing by more than one unit\n  all c: Course, disj s1,s2: Student , g1: s1.(c.grades) , g2 : s2.(c.grades) | some (s1.projects & s2.projects & c.projects) \n  implies g1 in g2.next + g2.prev\n\n}",
@@ -1170,6 +1163,13 @@
                     "code": "{\n\t// Students working on the same project in a course cannot have marks differing by more than one unit\n  \t//all s:Student,s1:Student | s1!=s implies all p :(s.projects & s1.projects) | some g:Grade |   \n\tall c : Course, disj x,y : Student, g1 : x.(c.grades), g2 : y.(c.grades) |\n\t  (some c.projects & x.projects & y.projects) implies g1 in g2.(prev+next)\n     \n}",
                     "ids": [
                         "bd2npQRcmgPM2eqXj"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students working on the same project in a course cannot have marks differing by more than one unit\n  all c: Course, disj s1,s2: Student , g1: s1.(c.grades) , g2 : s2.(c.grades) | some (s1.projects & s2.projects & c.projects) \n  implies g1 in g2.next or g1 in g2.prev\n\n}",
+                    "ids": [
+                        "iS9gzGERzRkvhxxom"
                     ]
                 }
             ]
@@ -1344,16 +1344,16 @@
             "elems": [
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Students working on the same project in a course cannot have marks differing by more than one unit\n\tall c: Course | all p: c.projects |\n\t\t all disj x, y: (Person <: projects).p | \n\t\t \tsome x.(c.grades) and some y.(c.grades) => \n\t\t \tnot lt[x.(c.grades), y.(c.grades).next] and not lt[x.(c.grades).prev, y.(c.grades)]\n}",
+                    "code": "{\n\t// Students working on the same project in a course cannot have marks differing by more than one unit\n\tall c: Course | all p: c.projects |\n\t\t all disj x, y: (Person <: projects).p | \n\t\t \tsome x.(c.grades) and some y.(c.grades) => \n\t\t \tnot lt[x.(c.grades), y.(c.grades).prev] and not lt[x.(c.grades).prev, y.(c.grades)]\n}",
                     "ids": [
-                        "JFsNppbhwmTzKkpSG"
+                        "GfPGqhqRmZDGm8c6J"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Students working on the same project in a course cannot have marks differing by more than one unit\n\tall c: Course | all p: c.projects |\n\t\t all disj x, y: (Person <: projects).p | \n\t\t \tsome x.(c.grades) and some y.(c.grades) => \n\t\t \tnot lt[x.(c.grades), y.(c.grades).prev] and not lt[x.(c.grades).prev, y.(c.grades)]\n}",
+                    "code": "{\n\t// Students working on the same project in a course cannot have marks differing by more than one unit\n\tall c: Course | all p: c.projects |\n\t\t all disj x, y: (Person <: projects).p | \n\t\t \tsome x.(c.grades) and some y.(c.grades) => \n\t\t \tnot lt[x.(c.grades), y.(c.grades).next] and not lt[x.(c.grades).prev, y.(c.grades)]\n}",
                     "ids": [
-                        "GfPGqhqRmZDGm8c6J"
+                        "JFsNppbhwmTzKkpSG"
                     ]
                 }
             ]
@@ -1563,16 +1563,16 @@
             "elems": [
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Students working on the same project in a course cannot have marks differing by more than one unit\n  all p:Project, disj s1,s2: Person <: projects.p | \n  (s1.(Course.grades)) in s2.(Course.grades).(prev + iden + next) \n}",
+                    "code": "{\n\t// Students working on the same project in a course cannot have marks differing by more than one unit\n  all p:Project, disj s1,s2: Person <: projects.p | \n  (s1.(Course.grades)) in \n  ( (s2.(Course.grades).prev) + s2.(Course.grades) + (s2.(Course.grades).next) )\n}",
                     "ids": [
-                        "GBrXPWFZgJJbRmabx"
+                        "LdXG3CoBy5QzNu4Hn"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Students working on the same project in a course cannot have marks differing by more than one unit\n  all p:Project, disj s1,s2: Person <: projects.p | \n  (s1.(Course.grades)) in \n  ( (s2.(Course.grades).prev) + s2.(Course.grades) + (s2.(Course.grades).next) )\n}",
+                    "code": "{\n\t// Students working on the same project in a course cannot have marks differing by more than one unit\n  all p:Project, disj s1,s2: Person <: projects.p | \n  (s1.(Course.grades)) in s2.(Course.grades).(prev + iden + next) \n}",
                     "ids": [
-                        "LdXG3CoBy5QzNu4Hn"
+                        "GBrXPWFZgJJbRmabx"
                     ]
                 }
             ]
@@ -1584,16 +1584,16 @@
             "elems": [
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Students working on the same project in a course cannot have marks differing by more than one unit\n\tall disj s1, s2: Student, p: Project | p in s1.projects and p in s2.projects implies lte[s1.((Course <: projects).p.grades), s2.((Course <: projects).p.grades)]\n}",
+                    "code": "{\n\t// Students working on the same project in a course cannot have marks differing by more than one unit\n  \tall disj s1,s2 : Student | all p :s1.projects & s2.projects | s1.((Course <: projects.p).grades) = s2.((Course <: projects.p).grades)\n\n/*\nsig Person {\n\tteaches : set Course,\n\tenrolled : set Course,\n\tprojects : set Project\n}\n\nsig Professor,Student in Person {}\n\nsig Course {\n\tprojects : set Project,\n\tgrades : Person -> Grade\n}\n\nsig Project {}\n\nsig Grade {}\n*/\n  }",
                     "ids": [
-                        "sTReWDHxQLTBncqip"
+                        "hnA3TnkTFrkcQ4LPW"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Students working on the same project in a course cannot have marks differing by more than one unit\n  \tall disj s1,s2 : Student | all p :s1.projects & s2.projects | s1.((Course <: projects.p).grades) = s2.((Course <: projects.p).grades)\n\n/*\nsig Person {\n\tteaches : set Course,\n\tenrolled : set Course,\n\tprojects : set Project\n}\n\nsig Professor,Student in Person {}\n\nsig Course {\n\tprojects : set Project,\n\tgrades : Person -> Grade\n}\n\nsig Project {}\n\nsig Grade {}\n*/\n  }",
+                    "code": "{\n\t// Students working on the same project in a course cannot have marks differing by more than one unit\n\tall disj s1, s2: Student, p: Project | p in s1.projects and p in s2.projects implies lte[s1.((Course <: projects).p.grades), s2.((Course <: projects).p.grades)]\n}",
                     "ids": [
-                        "hnA3TnkTFrkcQ4LPW"
+                        "sTReWDHxQLTBncqip"
                     ]
                 }
             ]
@@ -2739,34 +2739,6 @@
                     "code": "{\n\t    all c: Course |\n        all p: Project |\n            (p in c.projects and \n             some disj s1, s2: Student | \n                (p in s1.projects and p in s2.projects and \n                 ((c.grades[s1] = next[c.grades[s2]]) or \n                  (c.grades[s2] = next[c.grades[s1]]) or \n                  (c.grades[s1] = c.grades[s2]))))\n}",
                     "ids": [
                         "Lc7cP3DvyAnX4oo8T"
-                    ]
-                }
-            ]
-        },
-        {
-            "entry_count": 1,
-            "group_count": 1,
-            "correct": false,
-            "elems": [
-                {
-                    "entry_count": 1,
-                    "code": "{\n    // Students working on the same project in a course cannot have marks differing by more than one unit\n\tall c: Course |\n  \t\tall p: c.projects |\n  \t\t\tall s1, s2: Student |\n  \t\t\t\t(s1 != s2 and\n                  p in s1.projects and\n                  p in s2.projects ) implies \n  \t\t\t\t\tdiffer[c.grades[s1], c.grades[s2]]\n  \n}",
-                    "ids": [
-                        "fLyQTJ9puXWo9LTjm"
-                    ]
-                }
-            ]
-        },
-        {
-            "entry_count": 1,
-            "group_count": 1,
-            "correct": true,
-            "elems": [
-                {
-                    "entry_count": 1,
-                    "code": "{\n    // Students working on the same project in a course cannot have marks differing by more than one unit\n\tall c: Course |\n  \t\tall p: c.projects |\n  \t\t\tall s1, s2: Student |\n  \t\t\t\t(s1 != s2 and\n                  p in s1.projects and\n                  p in s2.projects ) implies \n  \t\t\t\t\t(differ[c.grades[s1], c.grades[s2]]) or \n  \t\t\t\t\tc.grades[s1] = none or\n  \t\t\t\t\tc.grades[s2] = none\n  \n}",
-                    "ids": [
-                        "jgjRbJiY5x9WhEGQZ"
                     ]
                 }
             ]

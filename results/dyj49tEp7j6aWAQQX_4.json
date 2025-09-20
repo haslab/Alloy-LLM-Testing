@@ -3,7 +3,7 @@
     "pred": "this/inv5",
     "entry_count": 856,
     "group_count": 128,
-    "duration": 146,
+    "duration": 58,
     "scope": 3,
     "groups": [
         {
@@ -152,21 +152,6 @@
                 },
                 {
                     "entry_count": 9,
-                    "code": "{\n\t// Humans and robots cannot work together\n\tall w : Workstation | some (w.workers&Robot) implies no(w.workers&Human)\n}",
-                    "ids": [
-                        "EwmEJkbAPRC37AL79",
-                        "6gPa4zCbMYCdPnZHQ",
-                        "oHXKP8qprbqssr949",
-                        "jN3hXyLkFXt5LDjcp",
-                        "QaG6P4yxDSB3wY9z5",
-                        "jkkgrvz9xZHna5h9Q",
-                        "BfMmQAmgezymmpMas",
-                        "K8KLmdJ9SpRheRAyS",
-                        "WvNYBTcQKoZSTbdP3"
-                    ]
-                },
-                {
-                    "entry_count": 9,
                     "code": "{\n\t// Humans and robots cannot work together\n  \n  all r:Robot, h:Human, w:Workstation | w -> r in workers implies w->h not in workers\n\n}",
                     "ids": [
                         "edp9ANM8cZEft95Cb",
@@ -181,16 +166,18 @@
                     ]
                 },
                 {
-                    "entry_count": 7,
-                    "code": "{\n\t// Humans and robots cannot work together\n\tall w : Workstation | none = w.workers & Human or none = w.workers & Robot\n}",
+                    "entry_count": 9,
+                    "code": "{\n\t// Humans and robots cannot work together\n\tall w : Workstation | some (w.workers&Robot) implies no(w.workers&Human)\n}",
                     "ids": [
-                        "m2Joh3emSpC8swW5F",
-                        "v35CaaKNS3JiESa89",
-                        "MGPh9YoHMzibGXYEr",
-                        "JKpG5wFikYgP9RnJ8",
-                        "pjZdL5rEXtfG9xsiu",
-                        "PjuAq3Sh6dQ7QD53D",
-                        "FpZfvazx3Jx7yhANM"
+                        "EwmEJkbAPRC37AL79",
+                        "6gPa4zCbMYCdPnZHQ",
+                        "oHXKP8qprbqssr949",
+                        "jN3hXyLkFXt5LDjcp",
+                        "QaG6P4yxDSB3wY9z5",
+                        "jkkgrvz9xZHna5h9Q",
+                        "BfMmQAmgezymmpMas",
+                        "K8KLmdJ9SpRheRAyS",
+                        "WvNYBTcQKoZSTbdP3"
                     ]
                 },
                 {
@@ -204,6 +191,19 @@
                         "MPmamig6QaoiSByC7",
                         "Dv7tettjGjh2GcNnv",
                         "5jHyWydJra3hbHgfW"
+                    ]
+                },
+                {
+                    "entry_count": 7,
+                    "code": "{\n\t// Humans and robots cannot work together\n\tall w : Workstation | none = w.workers & Human or none = w.workers & Robot\n}",
+                    "ids": [
+                        "m2Joh3emSpC8swW5F",
+                        "v35CaaKNS3JiESa89",
+                        "MGPh9YoHMzibGXYEr",
+                        "JKpG5wFikYgP9RnJ8",
+                        "pjZdL5rEXtfG9xsiu",
+                        "PjuAq3Sh6dQ7QD53D",
+                        "FpZfvazx3Jx7yhANM"
                     ]
                 },
                 {
@@ -253,16 +253,6 @@
                 },
                 {
                     "entry_count": 4,
-                    "code": "{\n\t// Humans and robots cannot work together\n\tno h : Human, r : Robot | some (workers.h & workers.r)\n}",
-                    "ids": [
-                        "3vFnLMg83dzryzB54",
-                        "8X279vNYgax7r7HgY",
-                        "3AyWyrb7vcFbkszwJ",
-                        "mhswJ2uDazYdPmyqN"
-                    ]
-                },
-                {
-                    "entry_count": 4,
                     "code": "{\n\t// Humans and robots cannot work together\n\tall ws: Workstation |\n  \t\t(some h: ws.workers | h in Human) implies (all r: ws.workers | r not in Robot)\n}",
                     "ids": [
                         "eiydeAFezEqcK3qnS",
@@ -272,12 +262,22 @@
                     ]
                 },
                 {
-                    "entry_count": 3,
-                    "code": "{\n\t// Humans and robots cannot work together\n\tall ws : Workstation | some(Robot & ws.workers) implies no(Human & ws.workers)\n  \tall ws : Workstation | some(Human & ws.workers) implies no(Robot & ws.workers)\n}",
+                    "entry_count": 4,
+                    "code": "{\n\t// Humans and robots cannot work together\n\tno h : Human, r : Robot | some (workers.h & workers.r)\n}",
                     "ids": [
-                        "nQP5Ty9MAXKF4u6KR",
-                        "8bB9roBBN4TmCdzLH",
-                        "uajYQsM9xEjZGWDNw"
+                        "3vFnLMg83dzryzB54",
+                        "8X279vNYgax7r7HgY",
+                        "3AyWyrb7vcFbkszwJ",
+                        "mhswJ2uDazYdPmyqN"
+                    ]
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Humans and robots cannot work together\n  \tall w : Workstation, r : Robot, h : Human | not (r in w.workers && h in w.workers)\n\n}",
+                    "ids": [
+                        "ARCuRotZ2Maq6nPHx",
+                        "6s9QkhLzccHCATrdq",
+                        "bqDDhpoPYGTLQkNXS"
                     ]
                 },
                 {
@@ -291,67 +291,11 @@
                 },
                 {
                     "entry_count": 3,
-                    "code": "{\n\t// Humans and robots cannot work together\n  \tall w : Workstation, r : Robot, h : Human | not (r in w.workers && h in w.workers)\n\n}",
+                    "code": "{\n\t// Humans and robots cannot work together\n\tall ws : Workstation | some(Robot & ws.workers) implies no(Human & ws.workers)\n  \tall ws : Workstation | some(Human & ws.workers) implies no(Robot & ws.workers)\n}",
                     "ids": [
-                        "ARCuRotZ2Maq6nPHx",
-                        "6s9QkhLzccHCATrdq",
-                        "bqDDhpoPYGTLQkNXS"
-                    ]
-                },
-                {
-                    "entry_count": 2,
-                    "code": "{\n\t// Humans and robots cannot work together\n\tall ws : Workstation | not (ws.workers & Human != none and ws.workers & Robot != none)\n}",
-                    "ids": [
-                        "MvCbMSmNbaWBJNAxW",
-                        "XMcERAnifAqxJxecW"
-                    ]
-                },
-                {
-                    "entry_count": 2,
-                    "code": "{\n\t// Humans and robots cannot work together\n\tall h:Human, r: Robot, w : Workstation |  w->h in workers implies (not w->r in workers)\n}",
-                    "ids": [
-                        "ZEqFmeD3z63RSq3b6",
-                        "sqCatmhe6mjLGZdz2"
-                    ]
-                },
-                {
-                    "entry_count": 2,
-                    "code": "{\n\t// Humans and robots cannot work together\n  \tall wo : Workstation | all r : Robot | r in wo.workers implies no (Human & wo.workers)\n\n}",
-                    "ids": [
-                        "4WtwLQWpcn49Bhb5k",
-                        "qFbyYRgFYRz5PQhPo"
-                    ]
-                },
-                {
-                    "entry_count": 2,
-                    "code": "{\n\t// Humans and robots cannot work together\n\tno h: Human, r: Robot | some ws: Workstation | h in ws.workers and r in ws.workers\n}",
-                    "ids": [
-                        "vG8k7YTXQRCGk4R2T",
-                        "Zy8hdGCR5hfaTaMKo"
-                    ]
-                },
-                {
-                    "entry_count": 2,
-                    "code": "{\n\t// Humans and robots cannot work together\n  \tall ws : Workstation | ws.workers & Human != none implies no r : Robot | r in ws.workers\n\n}",
-                    "ids": [
-                        "WgdSs7Wyq2DvRRmCP",
-                        "5MfvBJ9mruS55HSe2"
-                    ]
-                },
-                {
-                    "entry_count": 2,
-                    "code": "{\n\t// Humans and robots cannot work together\n    all w: Workstation | \n        (some w.workers & Human implies no w.workers & Robot) and\n        (some w.workers & Robot implies no w.workers & Human)\n}",
-                    "ids": [
-                        "ci5cw7NMCmXhYcRj4",
-                        "zBfLzcs9eYgq4fLEQ"
-                    ]
-                },
-                {
-                    "entry_count": 2,
-                    "code": "{\n\t// Humans and robots cannot work together\n  all h: Human, r: Robot, ws: Workstation | h in ws.workers implies (r not in ws.workers)\n  all h: Human, r: Robot, ws: Workstation | r in ws.workers implies (h not in ws.workers)\n}",
-                    "ids": [
-                        "YMSD9ta2PpnA64CDd",
-                        "sYPycB3NHmusQacsB"
+                        "nQP5Ty9MAXKF4u6KR",
+                        "8bB9roBBN4TmCdzLH",
+                        "uajYQsM9xEjZGWDNw"
                     ]
                 },
                 {
@@ -364,26 +308,18 @@
                 },
                 {
                     "entry_count": 2,
-                    "code": "{\n\t// Humans and robots cannot work together\n  all w : Workstation , r : Robot, h : Human | r in w.workers implies h not in w.workers\n\n}",
+                    "code": "{\n\t// Humans and robots cannot work together\n    all w: Workstation | \n        (some w.workers & Human implies no w.workers & Robot) and\n        (some w.workers & Robot implies no w.workers & Human)\n}",
                     "ids": [
-                        "uc5n38bMmGaTapLki",
-                        "o2ZhwZXPjYWvjXsdQ"
+                        "ci5cw7NMCmXhYcRj4",
+                        "zBfLzcs9eYgq4fLEQ"
                     ]
                 },
                 {
                     "entry_count": 2,
-                    "code": "{\n\t// Humans and robots cannot work together\n  \tall h:Human, r:Robot, work:Workstation | work->h in workers implies work->r not in workers\n\n}",
+                    "code": "{\n\t// Humans and robots cannot work together\n  \tall wo : Workstation | all r : Robot | r in wo.workers implies no (Human & wo.workers)\n\n}",
                     "ids": [
-                        "WZ9Z5qLoNvnTbWqsz",
-                        "NLH4fSnrhRG65CwWd"
-                    ]
-                },
-                {
-                    "entry_count": 2,
-                    "code": "{\n\t// Humans and robots cannot work together\n  all w : Workstation | no h : Human, r : Robot | h in w.workers and r in w.workers\n\n}",
-                    "ids": [
-                        "F8bqDH9WSbMrjKB9K",
-                        "v47X4hEzavCCSvDtj"
+                        "4WtwLQWpcn49Bhb5k",
+                        "qFbyYRgFYRz5PQhPo"
                     ]
                 },
                 {
@@ -396,10 +332,42 @@
                 },
                 {
                     "entry_count": 2,
+                    "code": "{\n\t// Humans and robots cannot work together\n  \tall ws : Workstation | ws.workers & Human != none implies no r : Robot | r in ws.workers\n\n}",
+                    "ids": [
+                        "WgdSs7Wyq2DvRRmCP",
+                        "5MfvBJ9mruS55HSe2"
+                    ]
+                },
+                {
+                    "entry_count": 2,
                     "code": "{\n\t// Humans and robots cannot work together\n\tall w: Workstation, w1, w2 : Worker | (w1 in w.workers & Human) implies (w2 not in (w.workers & Robot))\n}",
                     "ids": [
                         "FHJ6WmakT3BkSGw9A",
                         "W7xA8mWZCCnqnegAD"
+                    ]
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Humans and robots cannot work together\n\tall h:Human, r: Robot, w : Workstation |  w->h in workers implies (not w->r in workers)\n}",
+                    "ids": [
+                        "ZEqFmeD3z63RSq3b6",
+                        "sqCatmhe6mjLGZdz2"
+                    ]
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Humans and robots cannot work together\n\tno h: Human, r: Robot | some ws: Workstation | h in ws.workers and r in ws.workers\n}",
+                    "ids": [
+                        "vG8k7YTXQRCGk4R2T",
+                        "Zy8hdGCR5hfaTaMKo"
+                    ]
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Humans and robots cannot work together\n  all h: Human, r: Robot, ws: Workstation | h in ws.workers implies (r not in ws.workers)\n  all h: Human, r: Robot, ws: Workstation | r in ws.workers implies (h not in ws.workers)\n}",
+                    "ids": [
+                        "YMSD9ta2PpnA64CDd",
+                        "sYPycB3NHmusQacsB"
                     ]
                 },
                 {
@@ -411,122 +379,35 @@
                     ]
                 },
                 {
-                    "entry_count": 1,
-                    "code": "{\n\t// Humans and robots cannot work together\n  all h: Human, r: Robot, w : Workstation | w -> r in workers implies not w -> h in workers \n\n}",
+                    "entry_count": 2,
+                    "code": "{\n\t// Humans and robots cannot work together\n\tall ws : Workstation | not (ws.workers & Human != none and ws.workers & Robot != none)\n}",
                     "ids": [
-                        "MoD6F2NcJ58Ft8zRw"
+                        "MvCbMSmNbaWBJNAxW",
+                        "XMcERAnifAqxJxecW"
                     ]
                 },
                 {
-                    "entry_count": 1,
-                    "code": "{\n\t// Humans and robots cannot work together\n\tall ws: Workstation | no (workers.Human & workers.Robot)\n}",
+                    "entry_count": 2,
+                    "code": "{\n\t// Humans and robots cannot work together\n  all w : Workstation | no h : Human, r : Robot | h in w.workers and r in w.workers\n\n}",
                     "ids": [
-                        "cseQK3iSBbrsfSgvR"
+                        "F8bqDH9WSbMrjKB9K",
+                        "v47X4hEzavCCSvDtj"
                     ]
                 },
                 {
-                    "entry_count": 1,
-                    "code": "{\n\t// Humans and robots cannot work together\n\tall s: Workstation | all h: Human | all r: Robot | h not in s.workers or r not in s.workers \n}",
+                    "entry_count": 2,
+                    "code": "{\n\t// Humans and robots cannot work together\n  \tall h:Human, r:Robot, work:Workstation | work->h in workers implies work->r not in workers\n\n}",
                     "ids": [
-                        "maAiDpETr3MLavTPM"
+                        "WZ9Z5qLoNvnTbWqsz",
+                        "NLH4fSnrhRG65CwWd"
                     ]
                 },
                 {
-                    "entry_count": 1,
-                    "code": "{\n\t// Humans and robots cannot work together\n\tno (Human & Robot & Worker) and\n    all w: Workstation | \n        (some w.workers & Human implies no w.workers & Robot) and\n        (some w.workers & Robot implies no w.workers & Human)\n}",
+                    "entry_count": 2,
+                    "code": "{\n\t// Humans and robots cannot work together\n  all w : Workstation , r : Robot, h : Human | r in w.workers implies h not in w.workers\n\n}",
                     "ids": [
-                        "XyhvSmKqF963DHD7k"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Humans and robots cannot work together\n  all h: Human, r: Robot, w : Workstation | w in workers.r implies not w -> h in workers \n\n}",
-                    "ids": [
-                        "LFLP7v3X5Hr5JMRb5"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Humans and robots cannot work together\n  all wo: Workstation | not (some h: Human, r: Robot | h in wo.workers and r in                             wo.workers)\n}",
-                    "ids": [
-                        "DymnFYWoxC7AHN6fi"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Humans and robots cannot work together\n\t// all ws: Workstation | ws.workers in Human or ws.workers in Robot\n  \tall ws: Workstation | all disj w1, w2: ws.workers | w1 in Human implies w2 not in Robot\n}",
-                    "ids": [
-                        "dF2FgiknkHK8FXpCm"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Humans and robots cannot work together\n\tall wo : Workstation | all w : Human, r : Robot | (wo in workers.w implies wo not in workers.r) or (wo in workers.r implies wo not in workers.w)\n  \n}",
-                    "ids": [
-                        "S4HeqeGWyyfrJtRfp"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Humans and robots cannot work together\n  all w : Workstation, h : Human, r : Robot | (h in w.workers implies r not in w.workers) or r in w.workers implies h not in w.workers \n\n}",
-                    "ids": [
-                        "WhqpzHfqxZe9G4ubG"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Humans and robots cannot work together\n\tall h: Human, w: Workstation | h in w.workers => no w.workers & Robot\n}",
-                    "ids": [
-                        "GJbrhd6P3gk6Averx"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Humans and robots cannot work together\n  \tno w:Workstation | #(w.workers & Human) > 0 and  #(w.workers & Robot) > 0 \n\n}",
-                    "ids": [
-                        "ZEvoWuWTvzJZLHayb"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Humans and robots cannot work together\n  all w : Worker, ws : Workstation | ws.workers = ws.workers - Human or ws.workers = ws.workers - Robot\n\n}",
-                    "ids": [
-                        "PXgbrYbPSqgc5Tdws"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Humans and robots cannot work together\n  \t//all w : Workstation | some w.workers & Human implies no w.workers & Robot\n  \n  \tall h : Human | all ws : workers.h | no ws.workers & Robot\n}",
-                    "ids": [
-                        "QsqmqrB5SPmxyd7FD"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Humans and robots cannot work together\n  all h: Human, r: Robot, w : Workstation | w in workers.r implies not w in workers.h\n\n}",
-                    "ids": [
-                        "pGoHyK5bLxAtMBgAG"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Humans and robots cannot work together\n\t//all y1,y2: Worker, x: Workstation | (y1 in x.workers) and(y1 in Human) implies (y2 not in x.workers) and (y2 not in Robot)  \n\n  //all r:Robot, h:Human, w:Workstation | w -> r in workers implies w->h not in workers\n\n  all r: Robot, h:Human, x:Workstation | x in workers.r implies x not in workers.h\n}",
-                    "ids": [
-                        "fedDPhhgRNSMmasq3"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Humans and robots cannot work together\n\tall h : Human, ws : Workstation |\n        ws -> h in workers implies no r : Robot | ws -> r in workers\n}",
-                    "ids": [
-                        "CgyyBfvFJFDhL8DKF"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Humans and robots cannot work together\n  all  ws : Workstation, r : Robot, h : Human | r in ws.workers implies h not in ws.workers\n  all  ws : Workstation, r : Robot, h : Human | h in ws.workers implies r not in ws.workers\n\n}",
-                    "ids": [
-                        "85W8pZc7KyNBbNAoZ"
+                        "uc5n38bMmGaTapLki",
+                        "o2ZhwZXPjYWvjXsdQ"
                     ]
                 },
                 {
@@ -538,9 +419,23 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Humans and robots cannot work together\n\tall ws : Workstation | all w1 : Worker | all w2 : Worker | w1 in Human and w2 in Robot and w1 in ws.workers implies w2 not in ws.workers\n}",
+                    "code": "{\n\t// Humans and robots cannot work together\n\tall h : Human, ws : Workstation |\n        ws -> h in workers implies no r : Robot | ws -> r in workers\n}",
                     "ids": [
-                        "S5G6DQXH8rWd4C8Yw"
+                        "CgyyBfvFJFDhL8DKF"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Humans and robots cannot work together\n  all w : Workstation, h : Human, r : Robot | (h in w.workers implies r not in w.workers) or r in w.workers implies h not in w.workers \n\n}",
+                    "ids": [
+                        "WhqpzHfqxZe9G4ubG"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Humans and robots cannot work together\n\t//all y1,y2: Worker, x: Workstation | (y1 in x.workers) and(y1 in Human) implies (y2 not in x.workers) and (y2 not in Robot)  \n\n  //all r:Robot, h:Human, w:Workstation | w -> r in workers implies w->h not in workers\n\n  all r: Robot, h:Human, x:Workstation | x in workers.r implies x not in workers.h\n}",
+                    "ids": [
+                        "fedDPhhgRNSMmasq3"
                     ]
                 },
                 {
@@ -559,13 +454,6 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Humans and robots cannot work together\n\tno ws:Workstation | some disj w1, w2:Worker | \n  \t\tw1 in ws.workers and w2 in ws.workers and w1 in Human and w2 in Robot\n}",
-                    "ids": [
-                        "abMaxgd3MhiXEager"
-                    ]
-                },
-                {
-                    "entry_count": 1,
                     "code": "{\n\t// Humans and robots cannot work together\n\t//all ws : Workstation | ws.workers in Robot or ws.workers in Human\n  \tno ( (workers.Human).workers & Robot)\n}",
                     "ids": [
                         "oqPQkRExhLYxghbKZ"
@@ -573,9 +461,121 @@
                 },
                 {
                     "entry_count": 1,
+                    "code": "{\n\t// Humans and robots cannot work together\n\tall h: Human, w: Workstation | h in w.workers => no w.workers & Robot\n}",
+                    "ids": [
+                        "GJbrhd6P3gk6Averx"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Humans and robots cannot work together\n\tall ws: Workstation | no (workers.Human & workers.Robot)\n}",
+                    "ids": [
+                        "cseQK3iSBbrsfSgvR"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Humans and robots cannot work together\n  all h: Human, r: Robot, w : Workstation | w in workers.r implies not w -> h in workers \n\n}",
+                    "ids": [
+                        "LFLP7v3X5Hr5JMRb5"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Humans and robots cannot work together\n  all w : Worker, ws : Workstation | ws.workers = ws.workers - Human or ws.workers = ws.workers - Robot\n\n}",
+                    "ids": [
+                        "PXgbrYbPSqgc5Tdws"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Humans and robots cannot work together\n  \t//all w : Workstation | some w.workers & Human implies no w.workers & Robot\n  \n  \tall h : Human | all ws : workers.h | no ws.workers & Robot\n}",
+                    "ids": [
+                        "QsqmqrB5SPmxyd7FD"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Humans and robots cannot work together\n  all wo: Workstation | not (some h: Human, r: Robot | h in wo.workers and r in                             wo.workers)\n}",
+                    "ids": [
+                        "DymnFYWoxC7AHN6fi"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Humans and robots cannot work together\n\t// all ws: Workstation | ws.workers in Human or ws.workers in Robot\n  \tall ws: Workstation | all disj w1, w2: ws.workers | w1 in Human implies w2 not in Robot\n}",
+                    "ids": [
+                        "dF2FgiknkHK8FXpCm"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Humans and robots cannot work together\n\tno (Human & Robot & Worker) and\n    all w: Workstation | \n        (some w.workers & Human implies no w.workers & Robot) and\n        (some w.workers & Robot implies no w.workers & Human)\n}",
+                    "ids": [
+                        "XyhvSmKqF963DHD7k"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Humans and robots cannot work together\n  \tno w:Workstation | #(w.workers & Human) > 0 and  #(w.workers & Robot) > 0 \n\n}",
+                    "ids": [
+                        "ZEvoWuWTvzJZLHayb"
+                    ]
+                },
+                {
+                    "entry_count": 1,
                     "code": "{\n\t// Humans and robots cannot work together\n\tall h : Human, r : Robot | workers.h & workers.r = none\n}",
                     "ids": [
                         "gdSTDKQWvvpLjC6ym"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Humans and robots cannot work together\n\tall ws : Workstation | all w1 : Worker | all w2 : Worker | w1 in Human and w2 in Robot and w1 in ws.workers implies w2 not in ws.workers\n}",
+                    "ids": [
+                        "S5G6DQXH8rWd4C8Yw"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Humans and robots cannot work together\n  all  ws : Workstation, r : Robot, h : Human | r in ws.workers implies h not in ws.workers\n  all  ws : Workstation, r : Robot, h : Human | h in ws.workers implies r not in ws.workers\n\n}",
+                    "ids": [
+                        "85W8pZc7KyNBbNAoZ"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Humans and robots cannot work together\n\tno ws:Workstation | some disj w1, w2:Worker | \n  \t\tw1 in ws.workers and w2 in ws.workers and w1 in Human and w2 in Robot\n}",
+                    "ids": [
+                        "abMaxgd3MhiXEager"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Humans and robots cannot work together\n\tall wo : Workstation | all w : Human, r : Robot | (wo in workers.w implies wo not in workers.r) or (wo in workers.r implies wo not in workers.w)\n  \n}",
+                    "ids": [
+                        "S4HeqeGWyyfrJtRfp"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Humans and robots cannot work together\n  all h: Human, r: Robot, w : Workstation | w in workers.r implies not w in workers.h\n\n}",
+                    "ids": [
+                        "pGoHyK5bLxAtMBgAG"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Humans and robots cannot work together\n  all h: Human, r: Robot, w : Workstation | w -> r in workers implies not w -> h in workers \n\n}",
+                    "ids": [
+                        "MoD6F2NcJ58Ft8zRw"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Humans and robots cannot work together\n\tall s: Workstation | all h: Human | all r: Robot | h not in s.workers or r not in s.workers \n}",
+                    "ids": [
+                        "maAiDpETr3MLavTPM"
                     ]
                 }
             ]
@@ -706,22 +706,22 @@
                 },
                 {
                     "entry_count": 4,
-                    "code": "{\n  // Humans and robots cannot work together\n  all w: Workstation | w.workers & Human = w.workers or w.workers & Robot = w.workers\n}",
-                    "ids": [
-                        "G38ybmviG6a7ic2h7",
-                        "HEDee5SnG6vpSEW8A",
-                        "SqZWHsWFEoTFHxqiF",
-                        "JsRTuGSiMYkS2oMQd"
-                    ]
-                },
-                {
-                    "entry_count": 4,
                     "code": "{\n\t// Humans and robots cannot work together\n  all wo: Workstation | wo.workers - Human = none or wo.workers - Robot = none\n\n}",
                     "ids": [
                         "qbn4LygdAezT4yWd7",
                         "DQtmv3eT7swY3dKPr",
                         "6W5ayhJcpWdYiXGKu",
                         "eG9B4DmgNs9zKdLQk"
+                    ]
+                },
+                {
+                    "entry_count": 4,
+                    "code": "{\n  // Humans and robots cannot work together\n  all w: Workstation | w.workers & Human = w.workers or w.workers & Robot = w.workers\n}",
+                    "ids": [
+                        "G38ybmviG6a7ic2h7",
+                        "HEDee5SnG6vpSEW8A",
+                        "SqZWHsWFEoTFHxqiF",
+                        "JsRTuGSiMYkS2oMQd"
                     ]
                 },
                 {
@@ -768,16 +768,23 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Humans and robots cannot work together\n\tall ws: Workstation |\n  \t\t(#ws.workers & Human = #ws.workers) or (#ws.workers & Robot = #ws.workers)\n}",
+                    "code": "{\n\t// Humans and robots cannot work together\n\tall ws: Workstation | all h, r: ws.workers | h in Human implies r in Human else r in Robot\n}",
                     "ids": [
-                        "9bdpfdaH5ntNDZHC7"
+                        "9B3S9wKiCwSGmjp8z"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Humans and robots cannot work together\n\tall ws: Workstation | all h, r: ws.workers | h in Human implies r in Human else r in Robot\n}",
+                    "code": "{\n\t// Humans and robots cannot work together\n  all w:Workstation, x,y: Worker| w->x in workers and w->y in workers implies \n  x in Human and y in Human or x in Robot and y in Robot\n}",
                     "ids": [
-                        "9B3S9wKiCwSGmjp8z"
+                        "7B5hgGsf4zKHJJrxh"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Humans and robots cannot work together\n\tall ws: Workstation |\n  \t\t(#ws.workers & Human = #ws.workers) or (#ws.workers & Robot = #ws.workers)\n}",
+                    "ids": [
+                        "9bdpfdaH5ntNDZHC7"
                     ]
                 },
                 {
@@ -796,23 +803,16 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Humans and robots cannot work together\n\tall ws: Workstation | \n  \t(ws.workers in Human and no (ws.workers & Robot)) or \n  \t(ws.workers in Robot and no (ws.workers & Human))\n}",
-                    "ids": [
-                        "mXpS2HSDDPRHaNEmF"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Humans and robots cannot work together\n  all w:Workstation, x,y: Worker| w->x in workers and w->y in workers implies \n  x in Human and y in Human or x in Robot and y in Robot\n}",
-                    "ids": [
-                        "7B5hgGsf4zKHJJrxh"
-                    ]
-                },
-                {
-                    "entry_count": 1,
                     "code": "{\n\t// Humans and robots cannot work together\n  \tall w : Workstation | some w.workers - Human implies no w.workers - Robot\n}",
                     "ids": [
                         "PkLqYm2PSwyzydBsp"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Humans and robots cannot work together\n\tall ws: Workstation | \n  \t(ws.workers in Human and no (ws.workers & Robot)) or \n  \t(ws.workers in Robot and no (ws.workers & Human))\n}",
+                    "ids": [
+                        "mXpS2HSDDPRHaNEmF"
                     ]
                 }
             ]
@@ -822,26 +822,6 @@
             "group_count": 66,
             "correct": false,
             "elems": [
-                {
-                    "entry_count": 14,
-                    "code": "{\n\t// Humans and robots cannot work together\n  \tall w:Workstation | no (w.workers & Human & Robot)\n}",
-                    "ids": [
-                        "YgnyDZiSzoyB7jMN5",
-                        "pjuqbqsCvSiHdkvuC",
-                        "n79xMkidfhSGaKLRz",
-                        "vLwr6EMWfSbTqzHec",
-                        "m9Nzs5SKR8bXhqxbd",
-                        "Z9L8vwQSBxGWCS6ZH",
-                        "JGvXwyEiv7uiC6uyj",
-                        "Xa5LrtMyHCvWddNB4",
-                        "inq2f47hCiwiZrH2T",
-                        "4sXf7Edugqz96QGE2",
-                        "CYyfKTaJxcF9F3huu",
-                        "tcas9fMyAdr9iWAmj",
-                        "CiwAinPZQB66hiR8i",
-                        "oy6rJQrNC7yw4iMiu"
-                    ]
-                },
                 {
                     "entry_count": 14,
                     "code": "{\n\t// Humans and robots cannot work together\n\n}",
@@ -863,6 +843,26 @@
                     ]
                 },
                 {
+                    "entry_count": 14,
+                    "code": "{\n\t// Humans and robots cannot work together\n  \tall w:Workstation | no (w.workers & Human & Robot)\n}",
+                    "ids": [
+                        "YgnyDZiSzoyB7jMN5",
+                        "pjuqbqsCvSiHdkvuC",
+                        "n79xMkidfhSGaKLRz",
+                        "vLwr6EMWfSbTqzHec",
+                        "m9Nzs5SKR8bXhqxbd",
+                        "Z9L8vwQSBxGWCS6ZH",
+                        "JGvXwyEiv7uiC6uyj",
+                        "Xa5LrtMyHCvWddNB4",
+                        "inq2f47hCiwiZrH2T",
+                        "4sXf7Edugqz96QGE2",
+                        "CYyfKTaJxcF9F3huu",
+                        "tcas9fMyAdr9iWAmj",
+                        "CiwAinPZQB66hiR8i",
+                        "oy6rJQrNC7yw4iMiu"
+                    ]
+                },
+                {
                     "entry_count": 6,
                     "code": "{\n\t// Humans and robots cannot work together\n  \tall w: Workstation | no ((Human & w.workers) & (Robot & w.workers))\n\n}",
                     "ids": [
@@ -872,6 +872,16 @@
                         "ZPYLquCREXuPd8aXo",
                         "b834k8XyLseQ2McDe",
                         "MovQWBinG7WRD2sAz"
+                    ]
+                },
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// Humans and robots cannot work together\n  \tall s : Workstation | all w : s.workers | (w & Human != none implies w & Robot = none) and (w & Robot != none implies w & Human = none)\n\n}",
+                    "ids": [
+                        "wjf9L8hAk2CxMYbtk",
+                        "QFyXLn6CvzjamRcFh",
+                        "uivWwNPz6HKYZASBe",
+                        "yLF8bydRBrnXjYTG7"
                     ]
                 },
                 {
@@ -895,25 +905,6 @@
                     ]
                 },
                 {
-                    "entry_count": 4,
-                    "code": "{\n\t// Humans and robots cannot work together\n  \tall s : Workstation | all w : s.workers | (w & Human != none implies w & Robot = none) and (w & Robot != none implies w & Human = none)\n\n}",
-                    "ids": [
-                        "wjf9L8hAk2CxMYbtk",
-                        "QFyXLn6CvzjamRcFh",
-                        "uivWwNPz6HKYZASBe",
-                        "yLF8bydRBrnXjYTG7"
-                    ]
-                },
-                {
-                    "entry_count": 3,
-                    "code": "{\n\t// Humans and robots cannot work together\n  \tall w : Workstation | all p : Worker | p in Human and p in w.workers implies p not in Robot\n\n}",
-                    "ids": [
-                        "vMknDbY7nQ8RvhWnp",
-                        "GhCJRny5FnWeTmbsf",
-                        "Ez7mpvjEaF2e7rqmo"
-                    ]
-                },
-                {
                     "entry_count": 3,
                     "code": "{\n\t// Humans and robots cannot work together\n  \tall x: Workstation.*(succ.workers) | x in Human implies x not in Robot\n}",
                     "ids": [
@@ -933,11 +924,11 @@
                 },
                 {
                     "entry_count": 3,
-                    "code": "{\n\t// Humans and robots cannot work together\n\tno (Workstation.workers & Robot & Human)\n}",
+                    "code": "{\n\t// Humans and robots cannot work together\n\tall s: Workstation | all w: Worker |\n        (w in s.workers and w in Human) implies w not in Robot\n\n  \tall s: Workstation | all w: Worker |\n        (w in s.workers and w in Robot) implies w not in Human\n}",
                     "ids": [
-                        "ffFn788ifR7ZDSNiC",
-                        "a2iDZa5QmfQ2MCEMA",
-                        "rfCEZvfZkYoeL2vDR"
+                        "F6SoMNAQXjvEcMEm5",
+                        "uJTKc7SxSNtvxdsCH",
+                        "2tCz9ofSMsJNwjpxw"
                     ]
                 },
                 {
@@ -951,27 +942,20 @@
                 },
                 {
                     "entry_count": 3,
-                    "code": "{\n\t// Humans and robots cannot work together\n\tall s: Workstation | all w: Worker |\n        (w in s.workers and w in Human) implies w not in Robot\n\n  \tall s: Workstation | all w: Worker |\n        (w in s.workers and w in Robot) implies w not in Human\n}",
+                    "code": "{\n\t// Humans and robots cannot work together\n\tno (Workstation.workers & Robot & Human)\n}",
                     "ids": [
-                        "F6SoMNAQXjvEcMEm5",
-                        "uJTKc7SxSNtvxdsCH",
-                        "2tCz9ofSMsJNwjpxw"
+                        "ffFn788ifR7ZDSNiC",
+                        "a2iDZa5QmfQ2MCEMA",
+                        "rfCEZvfZkYoeL2vDR"
                     ]
                 },
                 {
-                    "entry_count": 2,
-                    "code": "{\n\t// Humans and robots cannot work together\n\tall h:Human, r: Robot | no (workstation. h & workstation.r) \n}",
+                    "entry_count": 3,
+                    "code": "{\n\t// Humans and robots cannot work together\n  \tall w : Workstation | all p : Worker | p in Human and p in w.workers implies p not in Robot\n\n}",
                     "ids": [
-                        "jMhWCqb39p87T4XeS",
-                        "MqD8rbeH2By9uast3"
-                    ]
-                },
-                {
-                    "entry_count": 2,
-                    "code": "{\n\t// Humans and robots cannot work together\n\n  \tall w : Workstation | (Human & w.workers) & (Robot & w.workers) = none\n}",
-                    "ids": [
-                        "tJSihKL5XEaFhA6EG",
-                        "FJtQQHdsGWtBnA7Kt"
+                        "vMknDbY7nQ8RvhWnp",
+                        "GhCJRny5FnWeTmbsf",
+                        "Ez7mpvjEaF2e7rqmo"
                     ]
                 },
                 {
@@ -984,58 +968,10 @@
                 },
                 {
                     "entry_count": 2,
-                    "code": "{\n\t// Humans and robots cannot work together\n\tall w:Workstation | (some h:Human | h in w.workers) implies (no r:Robot | r in w.workers) and (some r:Robot | r in w.workers) implies (no h:Human | h in w.workers)\n}",
+                    "code": "{\n\t// Humans and robots cannot work together\n\t\tall ws:Workstation , w:ws.workers|\n  \t\t\tw in Human implies ws.workers not in Robot\n}",
                     "ids": [
-                        "sFyYQbFL5wnaPKjjf",
-                        "zhtv45MkgTb2KvLrY"
-                    ]
-                },
-                {
-                    "entry_count": 2,
-                    "code": "{\n\t// Humans and robots cannot work together\n\tall h: Human | no workers.h & Robot\n}",
-                    "ids": [
-                        "9PKjhkSkseBQ2SxKY",
-                        "emdkT2DmXfs9KCS88"
-                    ]
-                },
-                {
-                    "entry_count": 2,
-                    "code": "{\n\t// Humans and robots cannot work together\n\tall h: Human, r: Robot | all w: Workstation | h in w.workers => r not in w.workers and r in w.workers => h not in w.workers\n}",
-                    "ids": [
-                        "yMhs5ypwyDfwzu6QD",
-                        "2fe9uuogsbZCd9XCm"
-                    ]
-                },
-                {
-                    "entry_count": 2,
-                    "code": "{\n\t// Humans and robots cannot work together\n\tall w : Workstation, worker : Worker | (Robot in worker and worker in w) implies Human not in Worker\n}",
-                    "ids": [
-                        "CjoTNdAs7b6R7zaPN",
-                        "avNfBMnRTG8Scv2pD"
-                    ]
-                },
-                {
-                    "entry_count": 2,
-                    "code": "{\n\t// Humans and robots cannot work together\n  \tall w: Workstation |all h: Human & w.workers| all r: Robot & w.workers | no h.workers & r.workers\n\n}",
-                    "ids": [
-                        "FwJQc9E2B4m6i5rih",
-                        "xdfZmwM2kNAgAhNGP"
-                    ]
-                },
-                {
-                    "entry_count": 2,
-                    "code": "{\n\t// Humans and robots cannot work together\n    all w: Workstation, workers: w.workers | (no Human & workers) or (no Robot & workers)\n}",
-                    "ids": [
-                        "P73qmJSGFbZenkiEF",
-                        "7Spwcipog7qhLy3jR"
-                    ]
-                },
-                {
-                    "entry_count": 2,
-                    "code": "{\n\t// Humans and robots cannot work together\n  \tall x: Workstation.*(succ.workers) | some (Human & x) implies no Robot & x\n}",
-                    "ids": [
-                        "GYougwrizCt2QKXFz",
-                        "rGZGi2ykpfYkd2J6k"
+                        "RE3EAdfPj5tLENJwL",
+                        "xcPw7TFHMMTGyM7wk"
                     ]
                 },
                 {
@@ -1048,6 +984,30 @@
                 },
                 {
                     "entry_count": 2,
+                    "code": "{\n\t// Humans and robots cannot work together\n\tall h: Human, r: Robot | all w: Workstation | h in w.workers => r not in w.workers and r in w.workers => h not in w.workers\n}",
+                    "ids": [
+                        "yMhs5ypwyDfwzu6QD",
+                        "2fe9uuogsbZCd9XCm"
+                    ]
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Humans and robots cannot work together\n\tall w:Workstation | (some h:Human | h in w.workers) implies (no r:Robot | r in w.workers) and (some r:Robot | r in w.workers) implies (no h:Human | h in w.workers)\n}",
+                    "ids": [
+                        "sFyYQbFL5wnaPKjjf",
+                        "zhtv45MkgTb2KvLrY"
+                    ]
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Humans and robots cannot work together\n\n  \tall w : Workstation | (Human & w.workers) & (Robot & w.workers) = none\n}",
+                    "ids": [
+                        "tJSihKL5XEaFhA6EG",
+                        "FJtQQHdsGWtBnA7Kt"
+                    ]
+                },
+                {
+                    "entry_count": 2,
                     "code": "{\n\t// Humans and robots cannot work together\n      no disj h: Human, r: Robot | h in r.workers\n\n\n}",
                     "ids": [
                         "PepuqhCZmvuSsBKbb",
@@ -1056,10 +1016,162 @@
                 },
                 {
                     "entry_count": 2,
-                    "code": "{\n\t// Humans and robots cannot work together\n\t\tall ws:Workstation , w:ws.workers|\n  \t\t\tw in Human implies ws.workers not in Robot\n}",
+                    "code": "{\n\t// Humans and robots cannot work together\n  \tall x: Workstation.*(succ.workers) | some (Human & x) implies no Robot & x\n}",
                     "ids": [
-                        "RE3EAdfPj5tLENJwL",
-                        "xcPw7TFHMMTGyM7wk"
+                        "GYougwrizCt2QKXFz",
+                        "rGZGi2ykpfYkd2J6k"
+                    ]
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Humans and robots cannot work together\n\tall h: Human | no workers.h & Robot\n}",
+                    "ids": [
+                        "9PKjhkSkseBQ2SxKY",
+                        "emdkT2DmXfs9KCS88"
+                    ]
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Humans and robots cannot work together\n\tall h:Human, r: Robot | no (workstation. h & workstation.r) \n}",
+                    "ids": [
+                        "jMhWCqb39p87T4XeS",
+                        "MqD8rbeH2By9uast3"
+                    ]
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Humans and robots cannot work together\n  \tall w: Workstation |all h: Human & w.workers| all r: Robot & w.workers | no h.workers & r.workers\n\n}",
+                    "ids": [
+                        "FwJQc9E2B4m6i5rih",
+                        "xdfZmwM2kNAgAhNGP"
+                    ]
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Humans and robots cannot work together\n\tall w : Workstation, worker : Worker | (Robot in worker and worker in w) implies Human not in Worker\n}",
+                    "ids": [
+                        "CjoTNdAs7b6R7zaPN",
+                        "avNfBMnRTG8Scv2pD"
+                    ]
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Humans and robots cannot work together\n    all w: Workstation, workers: w.workers | (no Human & workers) or (no Robot & workers)\n}",
+                    "ids": [
+                        "P73qmJSGFbZenkiEF",
+                        "7Spwcipog7qhLy3jR"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Humans and robots cannot work together\n\n  \tall w : Workstation | (Human <: w.workers) & (Robot <: w.workers) = none\n}",
+                    "ids": [
+                        "W6LE952bE5Eb2QHGg"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Humans and robots cannot work together\n\n  all ws : Workstation | no ( ws -> Human  & ws -> Robot) \n  \n}",
+                    "ids": [
+                        "cT86KosCR5d2zhqxR"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Humans and robots cannot work together\n  \tall w:Human | (some ws : Workstation | w in ws.workers implies all w1:Worker | w in ws.workers and w not in Robot)  \n\n}",
+                    "ids": [
+                        "3GJNcaALEu5LisPky"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n  all ws : Workstation| \n  all disj w,w1 : Worker | w in ws.workers and w1 in ws.workers implies \n  ( w in Robot implies w1 in Robot) or (w in Human implies w1 in Human)\n\t// Humans and robots cannot work together\n\n}",
+                    "ids": [
+                        "yZuGpMpsRpLwSWT8t"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Humans and robots cannot work together\n  \tall w : Worker | (w in Human) iff (w not in Robot) and (w in Robot) iff (w not in Human)\n}",
+                    "ids": [
+                        "fwzEpXN425B2dbKvX"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Humans and robots cannot work together\n  \tall w : Workstation | no (w.workers & Robot) & w.workers & Human\n\tall w : Workstation | no (w.workers & Human) & w.workers & Robot\n\n}",
+                    "ids": [
+                        "CtgdHFaceAoBwAzW3"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Humans and robots cannot work together\n\tno h: Human, r: Robot | h in r.workers and r in h.workers\n}",
+                    "ids": [
+                        "hBrQ8TbZkoKfcpiwf"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Humans and robots cannot work together\n  \tall w: Workstation |all h: Human| all r: Robot| no (h.workers & r.workers)\n\n}",
+                    "ids": [
+                        "PLDkkowupmezyYW3a"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Humans and robots cannot work together\n  all wr: Workstation, w1,w2: wr.workers | w1 in Robot implies w1 in Robot  \n\n}",
+                    "ids": [
+                        "f2YFLKFTzaCniKtHe"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Humans and robots cannot work together\n\tall ws:Workstation.workers | ws not in Human or ws not in Robot\n}",
+                    "ids": [
+                        "sGdkdbuA52nGrJ77G"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Humans and robots cannot work together\n\t(Human.workers & Robot.workers) = none\n}",
+                    "ids": [
+                        "6xaMM45w49CY5hYxk"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Humans and robots cannot work together\n\tall x:Workstation | (Human in x.workers implies Robot not in x.workers) iff (Robot in x.workers implies Human not in x.workers)\n}",
+                    "ids": [
+                        "wJwqoyPW9h4cfnvKX"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Humans and robots cannot work together\n  all w : Worker, h : Human, r : Robot | h in w.workers implies r not in w.workers\n\n}",
+                    "ids": [
+                        "PpQiYbwJHtCunHiXf"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Humans and robots cannot work together\n  \tall s : Workstation | all w : s.workers | (w in Human implies w not in Robot) and (w in Robot implies w not in Human) \n\n}",
+                    "ids": [
+                        "dJb7JPmKNRX72iZRx"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Humans and robots cannot work together\n  \tall s : Workstation | all w : s.workers | w in Human implies w not in Robot or w in Robot implies w not in Human \n\n}",
+                    "ids": [
+                        "BM4pPn3FLyquNNBW7"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Humans and robots cannot work together\n    all h : Human, r : Robot | all x : workers.h |  r not in x \n\n}",
+                    "ids": [
+                        "qcdsQs4fh8QnjJhjW"
                     ]
                 },
                 {
@@ -1067,6 +1179,13 @@
                     "code": "{\n\t// Humans and robots cannot work together\n\tall h : Human, w : Workstation | w->h in workstation implies(all x : Worker | (x!=h and w->x in workstation) implies x in Human)\n}",
                     "ids": [
                         "doHxzc8eECmdKEck8"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Humans and robots cannot work together\n\tall s: Workstation | all w: Worker |\n        (w in s.workers and w & Human != none implies w & Robot = none) and (w in s.workers and w & Robot != none \t\t\timplies w & Human = none)\n\n}",
+                    "ids": [
+                        "vAJS8MmqhfoNXFFnZ"
                     ]
                 },
                 {
@@ -1085,16 +1204,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Humans and robots cannot work together\n\tall ws:Workstation.workers | ws not in Human or ws not in Robot\n}",
+                    "code": "{\n\t// Humans and robots cannot work together\n\tno h: Human, r: Robot | h in r.workstation\n}",
                     "ids": [
-                        "sGdkdbuA52nGrJ77G"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n  all ws : Workstation| all disj w,w1 : Worker | w in ws.workers and w1 in ws.workers and w in Robot implies w1 in Human or w in Human implies w1 in Robot\n\t// Humans and robots cannot work together\n\n}",
-                    "ids": [
-                        "4EP8mipemZsQg2uoK"
+                        "bssDgYQ7seHXZ6bFq"
                     ]
                 },
                 {
@@ -1106,23 +1218,72 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Humans and robots cannot work together\n  \tall w: Workstation |all h: Human| all r: Robot| no (h.workers & r.workers)\n\n}",
+                    "code": "{\n  all ws : Workstation| all disj w,w1 : Worker | w in ws.workers and w1 in ws.workers and w in Robot implies w1 in Robot or w in Human implies w1 in Human\n\t// Humans and robots cannot work together\n\n}",
                     "ids": [
-                        "PLDkkowupmezyYW3a"
+                        "bPL9rwYB8pMBoEymr"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Humans and robots cannot work together\n\tno h: Human, r: Robot | h in r.workers and r in h.workers\n}",
+                    "code": "{\n\t// Humans and robots cannot work together\n\tall w : Workstation | some (w.workers & Human) => w.workers not in Robot\n}",
                     "ids": [
-                        "hBrQ8TbZkoKfcpiwf"
+                        "zN3i7vYKEB9Ywsxxk"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Humans and robots cannot work together\n  all wr: Workstation, w1,w2: wr.workers | w1 in Robot implies w1 in Robot  \n\n}",
+                    "code": "{\n\t// Humans and robots cannot work together\n\t//all h: Human, r: Robot, w: Workstation | {\n    //  h in w.workers => r not in w.workers\n    //  r in w.workers => h not in w.workers\n    //}\n  \tall w: Workstation | w != Human & Robot\n}",
                     "ids": [
-                        "f2YFLKFTzaCniKtHe"
+                        "jNdr4MDHCMYnPPrJ2"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Humans and robots cannot work together\n\tall s: Workstation |\n    all w: s.workers |\n        (w in Human implies w not in (s.workers & Robot)) and\n        (w in Robot implies w not in (s.workers & Human))\n}",
+                    "ids": [
+                        "mM422BZoqTuCHFLTN"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Humans and robots cannot work together\n  all  ws : Workstation | Robot in ws.workers implies Human not in ws.workers && Human in ws.workers implies Robot not in ws.workers\n\n}",
+                    "ids": [
+                        "roHM3fkWhPcpk2erF"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Humans and robots cannot work together\n\tno h: Human, r: Robot | h in Robot and r in Human\n}",
+                    "ids": [
+                        "ANWHgcAryxvPKHai6"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Humans and robots cannot work together\n  \tno (Human.workers & Robot.workers)\n\n}",
+                    "ids": [
+                        "TxYaCtraZNcNXHEm3"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Humans and robots cannot work together\n  \tall wo : Workstation | all w : Worker | w in wo.workers implies no Human & Robot\n\n}",
+                    "ids": [
+                        "GSozzz9pZYKhT2NtC"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Humans and robots cannot work together\n\t\n  all h : Human, r : Robot | no (h.workers & r.workers)\n  \n}",
+                    "ids": [
+                        "DneBNcWE2rDD67Mv6"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Humans and robots cannot work together\n    all w: Human | w not in workers.Robot\n\n}",
+                    "ids": [
+                        "4QWG3th4m5srt5SvX"
                     ]
                 },
                 {
@@ -1141,51 +1302,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Humans and robots cannot work together\n  \tall s : Workstation | all w : s.workers | w in Human implies w not in Robot or w in Robot implies w not in Human \n\n}",
+                    "code": "{\n  all ws : Workstation| all disj w,w1 : Worker | w in ws.workers and w1 in ws.workers and w in Robot implies w1 in Human or w in Human implies w1 in Robot\n\t// Humans and robots cannot work together\n\n}",
                     "ids": [
-                        "BM4pPn3FLyquNNBW7"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Humans and robots cannot work together\n  \tall s : Workstation | all w : s.workers | (w in Human implies w not in Robot) and (w in Robot implies w not in Human) \n\n}",
-                    "ids": [
-                        "dJb7JPmKNRX72iZRx"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Humans and robots cannot work together\n  \tall w : Worker | (w in Human) iff (w not in Robot) and (w in Robot) iff (w not in Human)\n}",
-                    "ids": [
-                        "fwzEpXN425B2dbKvX"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Humans and robots cannot work together\n\tall w : Workstation | some (w.workers & Human) => w.workers not in Robot\n}",
-                    "ids": [
-                        "zN3i7vYKEB9Ywsxxk"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Humans and robots cannot work together\n\tno h: Human, r: Robot | h in r.workstation\n}",
-                    "ids": [
-                        "bssDgYQ7seHXZ6bFq"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Humans and robots cannot work together\n\tall h:Human, r: Robot, w : Workstation |  w->h in workstation implies (not w->r in workstation)\n}",
-                    "ids": [
-                        "nyJHbJvj9jJSDYLsZ"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Humans and robots cannot work together\n\tall wo : Workstation | all w : Worker, r : Robot | (w in workers.wo implies r not in workers.r)\n  \n}",
-                    "ids": [
-                        "B58fduSJvMxPPC5Wi"
+                        "4EP8mipemZsQg2uoK"
                     ]
                 },
                 {
@@ -1197,93 +1316,16 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Humans and robots cannot work together\n\t(Human.workers & Robot.workers) = none\n}",
+                    "code": "{\n\t// Humans and robots cannot work together\n\tno workers.(Human & Robot)\n}",
                     "ids": [
-                        "6xaMM45w49CY5hYxk"
+                        "6nn2DnKFn5kE6aPiX"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Humans and robots cannot work together\n  \tall wo : Workstation | all w : Worker | w in wo.workers implies no Human & Robot\n\n}",
+                    "code": "{\n\t// Humans and robots cannot work together\n\tall h:Human, r: Robot, w : Workstation |  w->h in workstation implies (not w->r in workstation)\n}",
                     "ids": [
-                        "GSozzz9pZYKhT2NtC"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Humans and robots cannot work together\n  \tall w:Human | (some ws : Workstation | w in ws.workers implies all w1:Worker | w in ws.workers and w not in Robot)  \n\n}",
-                    "ids": [
-                        "3GJNcaALEu5LisPky"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Humans and robots cannot work together\n\t\n  all h : Human, r : Robot | no (h.workers & r.workers)\n  \n}",
-                    "ids": [
-                        "DneBNcWE2rDD67Mv6"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Humans and robots cannot work together\n  all w : Worker, h : Human, r : Robot | h in w.workers implies r not in w.workers\n\n}",
-                    "ids": [
-                        "PpQiYbwJHtCunHiXf"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Humans and robots cannot work together\n\tall wo : Workstation | all w : Worker, r : Robot | wo in workers.w implies r not in workers.w\n  \n}",
-                    "ids": [
-                        "CBCRZe2KDSS3z5DgQ"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Humans and robots cannot work together\n    all h : Human, r : Robot | all x : workers.h |  r not in x \n\n}",
-                    "ids": [
-                        "qcdsQs4fh8QnjJhjW"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Humans and robots cannot work together\n  \tall w : Workstation | no (w.workers & Robot) & w.workers & Human\n\tall w : Workstation | no (w.workers & Human) & w.workers & Robot\n\n}",
-                    "ids": [
-                        "CtgdHFaceAoBwAzW3"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Humans and robots cannot work together\n  \tno (Human.workers & Robot.workers)\n\n}",
-                    "ids": [
-                        "TxYaCtraZNcNXHEm3"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Humans and robots cannot work together\n\tall s: Workstation |\n    all w: s.workers |\n        (w in Human implies w not in (s.workers & Robot)) and\n        (w in Robot implies w not in (s.workers & Human))\n}",
-                    "ids": [
-                        "mM422BZoqTuCHFLTN"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Humans and robots cannot work together\n\n  \tall w : Workstation | (Human <: w.workers) & (Robot <: w.workers) = none\n}",
-                    "ids": [
-                        "W6LE952bE5Eb2QHGg"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Humans and robots cannot work together\n\t//all h: Human, r: Robot, w: Workstation | {\n    //  h in w.workers => r not in w.workers\n    //  r in w.workers => h not in w.workers\n    //}\n  \tall w: Workstation | w != Human & Robot\n}",
-                    "ids": [
-                        "jNdr4MDHCMYnPPrJ2"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n  all ws : Workstation| all disj w,w1 : Worker | w in ws.workers and w1 in ws.workers and w in Robot implies w1 in Robot or w in Human implies w1 in Human\n\t// Humans and robots cannot work together\n\n}",
-                    "ids": [
-                        "bPL9rwYB8pMBoEymr"
+                        "nyJHbJvj9jJSDYLsZ"
                     ]
                 },
                 {
@@ -1295,58 +1337,16 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Humans and robots cannot work together\n\n  all ws : Workstation | no ( ws -> Human  & ws -> Robot) \n  \n}",
+                    "code": "{\n\t// Humans and robots cannot work together\n\tall wo : Workstation | all w : Worker, r : Robot | wo in workers.w implies r not in workers.w\n  \n}",
                     "ids": [
-                        "cT86KosCR5d2zhqxR"
+                        "CBCRZe2KDSS3z5DgQ"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Humans and robots cannot work together\n\tall s: Workstation | all w: Worker |\n        (w in s.workers and w & Human != none implies w & Robot = none) and (w in s.workers and w & Robot != none \t\t\timplies w & Human = none)\n\n}",
+                    "code": "{\n\t// Humans and robots cannot work together\n\tall wo : Workstation | all w : Worker, r : Robot | (w in workers.wo implies r not in workers.r)\n  \n}",
                     "ids": [
-                        "vAJS8MmqhfoNXFFnZ"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Humans and robots cannot work together\n  all  ws : Workstation | Robot in ws.workers implies Human not in ws.workers && Human in ws.workers implies Robot not in ws.workers\n\n}",
-                    "ids": [
-                        "roHM3fkWhPcpk2erF"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Humans and robots cannot work together\n\tall x:Workstation | (Human in x.workers implies Robot not in x.workers) iff (Robot in x.workers implies Human not in x.workers)\n}",
-                    "ids": [
-                        "wJwqoyPW9h4cfnvKX"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n  all ws : Workstation| \n  all disj w,w1 : Worker | w in ws.workers and w1 in ws.workers implies \n  ( w in Robot implies w1 in Robot) or (w in Human implies w1 in Human)\n\t// Humans and robots cannot work together\n\n}",
-                    "ids": [
-                        "yZuGpMpsRpLwSWT8t"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Humans and robots cannot work together\n\tno workers.(Human & Robot)\n}",
-                    "ids": [
-                        "6nn2DnKFn5kE6aPiX"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Humans and robots cannot work together\n    all w: Human | w not in workers.Robot\n\n}",
-                    "ids": [
-                        "4QWG3th4m5srt5SvX"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Humans and robots cannot work together\n\tno h: Human, r: Robot | h in Robot and r in Human\n}",
-                    "ids": [
-                        "ANWHgcAryxvPKHai6"
+                        "B58fduSJvMxPPC5Wi"
                     ]
                 }
             ]
@@ -1409,14 +1409,6 @@
                 },
                 {
                     "entry_count": 2,
-                    "code": "{\n\t// Humans and robots cannot work together\n  \tall ws: Workstation | (Human in ws.workers implies !(Robot in ws.workers)) and\n  \t(Robot in ws.workers implies !(Human in ws.workers))\n\n}",
-                    "ids": [
-                        "EyEm3GB8Jc67fae6k",
-                        "T3xQdthxYcPS2BDge"
-                    ]
-                },
-                {
-                    "entry_count": 2,
                     "code": "{\n\t// Humans and robots cannot work together\n\tall w: Workstation | (Human in w.workers) implies (Robot not in w.workers)\n  \tall w: Workstation | (Robot in w.workers) implies (Human not in w.workers)\n  \tall w: Workstation | !((Human in w.workers) and (Robot in w.workers))\n}",
                     "ids": [
                         "gcRHFo2phki7um445",
@@ -1440,6 +1432,21 @@
                     ]
                 },
                 {
+                    "entry_count": 2,
+                    "code": "{\n\t// Humans and robots cannot work together\n  \tall ws: Workstation | (Human in ws.workers implies !(Robot in ws.workers)) and\n  \t(Robot in ws.workers implies !(Human in ws.workers))\n\n}",
+                    "ids": [
+                        "EyEm3GB8Jc67fae6k",
+                        "T3xQdthxYcPS2BDge"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Humans and robots cannot work together\n  all  ws : Workstation | Robot in ws.workers implies Human not in ws.workers\n  all  ws : Workstation | Human in ws.workers implies Robot not in ws.workers\n\n}",
+                    "ids": [
+                        "gdYE6xSiZyGZM5N2v"
+                    ]
+                },
+                {
                     "entry_count": 1,
                     "code": "{\n\t// Humans and robots cannot work together\n\tall w: Workstation | (Human in w.workers) => (Robot not in w.workers)\n    all w: Workstation | (Robot in w.workers) => !(Human in w.workers)\n  \t//all w: Workstation | (Robot in w.workers) implies (Human not in w.workers)\n  \t//all w: Workstation | !((Human in w.workers) and (Robot in w.workers))\n}",
                     "ids": [
@@ -1455,13 +1462,6 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Humans and robots cannot work together\n\tall w: Workstation | (Human in w.workers) implies (Robot not in w.workers)\n  \tall w: Workstation | (Robot in w.workers) implies (Human not in w.workers)\n  \t//all w: Workstation | !((Human in w.workers) and (Robot in w.workers))\n}",
-                    "ids": [
-                        "25sJZucorJTYKitEC"
-                    ]
-                },
-                {
-                    "entry_count": 1,
                     "code": "{\n\t// Humans and robots cannot work together\n  \tall ws: Workstation | (Human in ws.^workers implies !(Robot in ws.^workers)) and\n  \t(Robot in ws.^workers implies !(Human in ws.^workers))\n\n}",
                     "ids": [
                         "YLytBf3fj3mxEZixc"
@@ -1469,9 +1469,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Humans and robots cannot work together\n  all  ws : Workstation | Robot in ws.workers implies Human not in ws.workers\n  all  ws : Workstation | Human in ws.workers implies Robot not in ws.workers\n\n}",
+                    "code": "{\n\t// Humans and robots cannot work together\n\tall w: Workstation | (Human in w.workers) implies (Robot not in w.workers)\n  \tall w: Workstation | (Robot in w.workers) implies (Human not in w.workers)\n  \t//all w: Workstation | !((Human in w.workers) and (Robot in w.workers))\n}",
                     "ids": [
-                        "gdYE6xSiZyGZM5N2v"
+                        "25sJZucorJTYKitEC"
                     ]
                 }
             ]
@@ -1505,14 +1505,6 @@
                 },
                 {
                     "entry_count": 2,
-                    "code": "{\n\t// Humans and robots cannot work together\n\t\tall ws:Workstation , w:ws.workers|\n  \t\t\tw in Human iff w not in Robot\n}",
-                    "ids": [
-                        "gokEpBG8h2oWyaEnY",
-                        "79na47zTBmykdgeXC"
-                    ]
-                },
-                {
-                    "entry_count": 2,
                     "code": "{\n\t// Humans and robots cannot work together\n\tall ws:Workstation, w:Worker | w in ws.workers implies (w in Human or w in Robot)\n  \t// all ws:Workstation | some ws.workers & Human iff no ws.workers & Robot\n}",
                     "ids": [
                         "WidN4QPDzRjsXKQMr",
@@ -1525,6 +1517,28 @@
                     "ids": [
                         "ZXJj4qvb76KmdHcua",
                         "zZ9QMSbnNp757XQ9k"
+                    ]
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Humans and robots cannot work together\n\t\tall ws:Workstation , w:ws.workers|\n  \t\t\tw in Human iff w not in Robot\n}",
+                    "ids": [
+                        "gokEpBG8h2oWyaEnY",
+                        "79na47zTBmykdgeXC"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Humans and robots cannot work together\n\tall w : Workstation | no w.workers - Human - Robot\n}",
+                    "ids": [
+                        "DFu2PWHyiX2yfxD85"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Humans and robots cannot work together\n  all ws: Workstation | all w: Worker | w in ws.workers => (w in Robot iff not w in Human)\n\n}",
+                    "ids": [
+                        "iACQaRGnQkjdetvnu"
                     ]
                 },
                 {
@@ -1543,6 +1557,13 @@
                 },
                 {
                     "entry_count": 1,
+                    "code": "{\n\t// Humans and robots cannot work together\n  \tall x: Workstation.*succ.workers | some x & Human iff no x & Robot\n}",
+                    "ids": [
+                        "hFvzvMBQKn5Hfj9bs"
+                    ]
+                },
+                {
+                    "entry_count": 1,
                     "code": "{\n\t// Humans and robots cannot work together\n\tall w : Workstation | w.workers in Human+Robot\n}",
                     "ids": [
                         "L5KAsjmsbGST8Ky25"
@@ -1553,27 +1574,6 @@
                     "code": "{\n\t// Humans and robots cannot work together\n  \tall wo : Workstation | all w : Worker | w in wo.workers implies (w in Human and w !in Robot) or (w in Robot and w !in Human)\n\n}",
                     "ids": [
                         "G63Qn2uwhB3kC6rtZ"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Humans and robots cannot work together\n  \tall x: Workstation.*succ.workers | some x & Human iff no x & Robot\n}",
-                    "ids": [
-                        "hFvzvMBQKn5Hfj9bs"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Humans and robots cannot work together\n  all ws: Workstation | all w: Worker | w in ws.workers => (w in Robot iff not w in Human)\n\n}",
-                    "ids": [
-                        "iACQaRGnQkjdetvnu"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Humans and robots cannot work together\n\tall w : Workstation | no w.workers - Human - Robot\n}",
-                    "ids": [
-                        "DFu2PWHyiX2yfxD85"
                     ]
                 },
                 {
@@ -1619,18 +1619,18 @@
                 },
                 {
                     "entry_count": 2,
-                    "code": "{\n\t// Humans and robots cannot work together\n\tall ws: Workstation | all w1,w2:Worker |\n  \t\tw1 in ws.workers and w2 in ws.workers and w1 in Human \n  \t\t\timplies w2 in Human\n}",
-                    "ids": [
-                        "HjEisHEPx3HDiT4rT",
-                        "hqoAwp8Regt2iuFwf"
-                    ]
-                },
-                {
-                    "entry_count": 2,
                     "code": "{\n\t// Humans and robots cannot work together\n\tall ws : Workstation | all w1, w2 : Worker | ((w1 + w2) in ws.workers) and w1 in Human => w2 in Human\n}",
                     "ids": [
                         "Tozede6p8MsuLWs7F",
                         "TNct9YQAPrhzsHSfW"
+                    ]
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Humans and robots cannot work together\n\tall ws: Workstation | all w1,w2:Worker |\n  \t\tw1 in ws.workers and w2 in ws.workers and w1 in Human \n  \t\t\timplies w2 in Human\n}",
+                    "ids": [
+                        "HjEisHEPx3HDiT4rT",
+                        "hqoAwp8Regt2iuFwf"
                     ]
                 },
                 {
@@ -1649,10 +1649,10 @@
             "elems": [
                 {
                     "entry_count": 2,
-                    "code": "{\n\t// Humans and robots cannot work together\n\tall ws : Workstation | some w : Worker | w in ws.workers and w in Human implies not w in Robot\n}",
+                    "code": "{\n\t// Humans and robots cannot work together\n\tall ws : Workstation | some w : Worker | (w in ws.workers and w in Human) implies not w in Robot and (w in ws.workers and w in Robot) implies not w in Human\n}",
                     "ids": [
-                        "rQzvW6GmWmPo8ZHdf",
-                        "XXyhePwGBDrwWfArj"
+                        "5nqy9GsJAao3Z5kj6",
+                        "CELyECa7CWNDKpSWb"
                     ]
                 },
                 {
@@ -1665,6 +1665,14 @@
                 },
                 {
                     "entry_count": 2,
+                    "code": "{\n\t// Humans and robots cannot work together\n\tall ws : Workstation | some w : Worker | w in ws.workers and w in Human implies not w in Robot\n}",
+                    "ids": [
+                        "rQzvW6GmWmPo8ZHdf",
+                        "XXyhePwGBDrwWfArj"
+                    ]
+                },
+                {
+                    "entry_count": 2,
                     "code": "{\n\t// Humans and robots cannot work together\n  all w: Workstation | some wr : Worker | wr in Robot => no w.workers & Human\n  all w: Workstation | some wr : Worker | wr in Human => no w.workers & Robot\n\n}",
                     "ids": [
                         "gdpzouzHEL9dbFz3j",
@@ -1672,18 +1680,10 @@
                     ]
                 },
                 {
-                    "entry_count": 2,
-                    "code": "{\n\t// Humans and robots cannot work together\n\tall ws : Workstation | some w : Worker | (w in ws.workers and w in Human) implies not w in Robot and (w in ws.workers and w in Robot) implies not w in Human\n}",
-                    "ids": [
-                        "5nqy9GsJAao3Z5kj6",
-                        "CELyECa7CWNDKpSWb"
-                    ]
-                },
-                {
                     "entry_count": 1,
-                    "code": "{\n\t// Humans and robots cannot work together\n  all w: Workstation | some wr : Worker | wr in Robot => w.workers in Robot\n  all w: Workstation | some wr : Worker | wr in Human => w.workers in Human\n\n}",
+                    "code": "{\n\t// Humans and robots cannot work together\n\tall ws : Workstation | some w : Worker | (w in Human implies not w in Robot) \n}",
                     "ids": [
-                        "bC7ggA85YuWMoSnWN"
+                        "27hcHTJpMCRbYxvPd"
                     ]
                 },
                 {
@@ -1691,6 +1691,13 @@
                     "code": "{\n\t// Humans and robots cannot work together\n  all w: Workstation | some wr : Worker | wr in Robot => no w.workers & Human and no w.succ.workers & Human\n  all w: Workstation | some wr : Worker | wr in Human => no w.workers & Robot and no w.succ.workers & Robot\n  \n\n}",
                     "ids": [
                         "DpdT5PtFL4GypCigK"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Humans and robots cannot work together\n  all w: Workstation | some wr : Worker | wr in Robot => w.workers in Robot\n\n}",
+                    "ids": [
+                        "GEPfCK95xpQwsjeRF"
                     ]
                 },
                 {
@@ -1709,16 +1716,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Humans and robots cannot work together\n  all w: Workstation | some wr : Worker | wr in Robot => w.workers in Robot\n\n}",
+                    "code": "{\n\t// Humans and robots cannot work together\n  all w: Workstation | some wr : Worker | wr in Robot => w.workers in Robot\n  all w: Workstation | some wr : Worker | wr in Human => w.workers in Human\n\n}",
                     "ids": [
-                        "GEPfCK95xpQwsjeRF"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Humans and robots cannot work together\n\tall ws : Workstation | some w : Worker | (w in Human implies not w in Robot) \n}",
-                    "ids": [
-                        "27hcHTJpMCRbYxvPd"
+                        "bC7ggA85YuWMoSnWN"
                     ]
                 }
             ]
@@ -1757,23 +1757,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Humans and robots cannot work together\n\tall h: Human, r: Robot | one w: Workstation | h & r not in w.workers\n}",
+                    "code": "{\n\t// Humans and robots cannot work together\n  all w1, w2: Worker | w1 in Human implies w2 not in Robot\n\n}",
                     "ids": [
-                        "iz2P5vTPeAZGhm5Tn"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Humans and robots cannot work together\n  all h : Human, r : Robot | ~workers.h != ~workers.r\n}",
-                    "ids": [
-                        "cvsHGo3cubMMhHdh6"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Humans and robots cannot work together\n\tall w: Workstation | no h: Human, r: Robot | h & r in w.workers\n}",
-                    "ids": [
-                        "h63pPxrGEhGdMWsPT"
+                        "Q8R3fFdGgcPRcagt9"
                     ]
                 },
                 {
@@ -1785,9 +1771,23 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Humans and robots cannot work together\n  all w1, w2: Worker | w1 in Human implies w2 not in Robot\n\n}",
+                    "code": "{\n\t// Humans and robots cannot work together\n  all h : Human, r : Robot | ~workers.h != ~workers.r\n}",
                     "ids": [
-                        "Q8R3fFdGgcPRcagt9"
+                        "cvsHGo3cubMMhHdh6"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Humans and robots cannot work together\n\tall h: Human, r: Robot | one w: Workstation | h & r not in w.workers\n}",
+                    "ids": [
+                        "iz2P5vTPeAZGhm5Tn"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Humans and robots cannot work together\n\tall w: Workstation | no h: Human, r: Robot | h & r in w.workers\n}",
+                    "ids": [
+                        "h63pPxrGEhGdMWsPT"
                     ]
                 }
             ]
@@ -1827,16 +1827,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Humans and robots cannot work together\n  \n  all ws : Workstation | some ws.workers (no ( Human & Robot) )\n\n}",
+                    "code": "{\n\t// Humans and robots cannot work together\n\tall ws : Workstation | ws.workers not in Human or ws.workers not in Robot\n}",
                     "ids": [
-                        "seb86TDBuEz76L7it"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Humans and robots cannot work together\n\tall ws:Workstation | some w:Worker | w in ws.workers and (w in Human implies w not in Robot)\n  \t// all ws:Workstation | some ws.workers & Human iff no ws.workers & Robot\n}",
-                    "ids": [
-                        "bKZSva6CSDWSN5fNo"
+                        "RqrAHAbjaJFT9ivLk"
                     ]
                 },
                 {
@@ -1848,9 +1841,16 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Humans and robots cannot work together\n\tall ws : Workstation | ws.workers not in Human or ws.workers not in Robot\n}",
+                    "code": "{\n\t// Humans and robots cannot work together\n  \n  all ws : Workstation | some ws.workers (no ( Human & Robot) )\n\n}",
                     "ids": [
-                        "RqrAHAbjaJFT9ivLk"
+                        "seb86TDBuEz76L7it"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Humans and robots cannot work together\n\tall ws:Workstation | some w:Worker | w in ws.workers and (w in Human implies w not in Robot)\n  \t// all ws:Workstation | some ws.workers & Human iff no ws.workers & Robot\n}",
+                    "ids": [
+                        "bKZSva6CSDWSN5fNo"
                     ]
                 }
             ]
@@ -1871,23 +1871,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Humans and robots cannot work together\n  all ws:Workstation|\n  \tws in Human || ws in Robot\n\n}",
+                    "code": "{\n\t// Humans and robots cannot work together\n\tone w: Workstation | Human & Robot not in w.workers\n}",
                     "ids": [
-                        "dN4ufsgHT45RwshHF"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Humans and robots cannot work together\n  \tall x: Workstation | x.*(succ.workers) in Human iff x.*(succ.workers) not in Robot\n\n}",
-                    "ids": [
-                        "mJcqME993dhWiQhQN"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Humans and robots cannot work together\n\tall wo : Workstation | some w : Worker, r : Robot | w in workers.wo\n  \n}",
-                    "ids": [
-                        "tiqd56raGcQpApcpx"
+                        "7HhgNgHotybQTH6Q8"
                     ]
                 },
                 {
@@ -1899,9 +1885,30 @@
                 },
                 {
                     "entry_count": 1,
+                    "code": "{\n\t// Humans and robots cannot work together\n\tHuman & Robot not in Workstation.workers\n}",
+                    "ids": [
+                        "9AHoR77SdMMFrqT2E"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Humans and robots cannot work together\n  \tall x: Workstation | x.*(succ.workers) in Human iff x.*(succ.workers) not in Robot\n\n}",
+                    "ids": [
+                        "mJcqME993dhWiQhQN"
+                    ]
+                },
+                {
+                    "entry_count": 1,
                     "code": "{\n\t// Humans and robots cannot work together\n  \tall x: Workstation.*(succ.workers) | some x & Human iff no x & Robot\n}",
                     "ids": [
                         "5PNtfRfqQ8FQBJPS4"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Humans and robots cannot work together\n\tall wo : Workstation | some w : Worker, r : Robot | w in workers.wo\n  \n}",
+                    "ids": [
+                        "tiqd56raGcQpApcpx"
                     ]
                 },
                 {
@@ -1920,9 +1927,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Humans and robots cannot work together\n\tone w: Workstation | Human & Robot not in w.workers\n}",
+                    "code": "{\n\t// Humans and robots cannot work together\n  all ws:Workstation|\n  \tws in Human || ws in Robot\n\n}",
                     "ids": [
-                        "7HhgNgHotybQTH6Q8"
+                        "dN4ufsgHT45RwshHF"
                     ]
                 },
                 {
@@ -1930,13 +1937,6 @@
                     "code": "{\n\t// Humans and robots cannot work together\n\tall ws: Workstation {\n  \t\t((ws.workers in Human) or (ws.workers in Robot))\n  \t\t\tand (not (ws.workers in (Human + Robot)))\n     }\n}",
                     "ids": [
                         "SRS2KbnjPcuctzkMD"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Humans and robots cannot work together\n\tHuman & Robot not in Workstation.workers\n}",
-                    "ids": [
-                        "9AHoR77SdMMFrqT2E"
                     ]
                 }
             ]
@@ -1963,23 +1963,16 @@
                 },
                 {
                     "entry_count": 1,
+                    "code": "{\n\t// Humans and robots cannot work together\n\tall h : Human | h not in Workstation.workers+ Robot\n}",
+                    "ids": [
+                        "za7gbrZKBE2vwYKM7"
+                    ]
+                },
+                {
+                    "entry_count": 1,
                     "code": "{\n\t// Humans and robots cannot work together\n\tall ws : Workstation |  ws.workers = ws.workers-Human\n}",
                     "ids": [
                         "zRPrr29LzTZsLFkgc"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Humans and robots cannot work together\n  //all h: Human, r: Robot, wst: Workstation | h in wst.workers implies r not in wst.workers\n  \n  all w: Worker, wst: Workstation | (w in Human and w in wst.workers) implies (w not in Robot and w not in wst.workers)\n\n}",
-                    "ids": [
-                        "FuiThZnkNSfTNiCD2"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Humans and robots cannot work together\n  \tall ws:Workstation| (some w:Human | w in ws.workers) implies (workers.ws not in Robot)\n}",
-                    "ids": [
-                        "MzHhdLwrLkSgDfJNb"
                     ]
                 },
                 {
@@ -1998,9 +1991,16 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Humans and robots cannot work together\n\tall h : Human | h not in Workstation.workers+ Robot\n}",
+                    "code": "{\n\t// Humans and robots cannot work together\n  //all h: Human, r: Robot, wst: Workstation | h in wst.workers implies r not in wst.workers\n  \n  all w: Worker, wst: Workstation | (w in Human and w in wst.workers) implies (w not in Robot and w not in wst.workers)\n\n}",
                     "ids": [
-                        "za7gbrZKBE2vwYKM7"
+                        "FuiThZnkNSfTNiCD2"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Humans and robots cannot work together\n  \tall ws:Workstation| (some w:Human | w in ws.workers) implies (workers.ws not in Robot)\n}",
+                    "ids": [
+                        "MzHhdLwrLkSgDfJNb"
                     ]
                 }
             ]
@@ -2021,16 +2021,16 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Humans and robots cannot work together\n\tall h: Human, r: Robot | (h + r) not in Workstation.workers\n}",
+                    "code": "{\n\t// Humans and robots cannot work together\n\tsome workers.Human implies no workers.Robot\n}",
                     "ids": [
-                        "EuiegzRCDGapCem63"
+                        "HernmaLhhHpBEBqgp"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Humans and robots cannot work together\n\tsome workers.Human implies no workers.Robot\n}",
+                    "code": "{\n\t// Humans and robots cannot work together\n\tall h: Human, r: Robot | (h + r) not in Workstation.workers\n}",
                     "ids": [
-                        "HernmaLhhHpBEBqgp"
+                        "EuiegzRCDGapCem63"
                     ]
                 },
                 {
@@ -2256,18 +2256,18 @@
             "elems": [
                 {
                     "entry_count": 2,
-                    "code": "{\n\t// Humans and robots cannot work together\n\tall ws : Workstation |  (ws.workers in Human and ws.workers not in Robot) or  (ws.workers in Robot and ws.workers not in Human)\n}",
-                    "ids": [
-                        "x3KuPxAAcyBiidTMi",
-                        "JX9YsZ3WjncF7MkDM"
-                    ]
-                },
-                {
-                    "entry_count": 2,
                     "code": "{\n\t// Humans and robots cannot work together\n  \tall w : Workstation | ((w.workers in Human) iff (w.workers not in Robot)) and ((w.workers in Robot) iff (w.workers not in Human))\n}",
                     "ids": [
                         "5zrwmDwSwichGC4XZ",
                         "A9WtbejoDyWXwPJxe"
+                    ]
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Humans and robots cannot work together\n\tall ws : Workstation |  (ws.workers in Human and ws.workers not in Robot) or  (ws.workers in Robot and ws.workers not in Human)\n}",
+                    "ids": [
+                        "x3KuPxAAcyBiidTMi",
+                        "JX9YsZ3WjncF7MkDM"
                     ]
                 }
             ]
@@ -2302,13 +2302,6 @@
             "elems": [
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Humans and robots cannot work together\n  all ws: Workstation | some w: Worker | w in ws.workers => (w in Robot iff not w in Human)\n\n}",
-                    "ids": [
-                        "ffuna87e4hfDdBWmh"
-                    ]
-                },
-                {
-                    "entry_count": 1,
                     "code": "{\n\t// Humans and robots cannot work together\n\tall ws : Workstation | some w : Worker | w in ws.workers implies w in Human or w in Robot\n}",
                     "ids": [
                         "gYZkecp6DPAWTNtLs"
@@ -2319,6 +2312,13 @@
                     "code": "{\n\t// Humans and robots cannot work together\n\tall ws : Workstation | some w : Worker | w in ws.workers implies w in Human and w not in Robot or w in Robot and w not in Human\n}",
                     "ids": [
                         "4imNEDf6fKFYqvYtn"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Humans and robots cannot work together\n  all ws: Workstation | some w: Worker | w in ws.workers => (w in Robot iff not w in Human)\n\n}",
+                    "ids": [
+                        "ffuna87e4hfDdBWmh"
                     ]
                 },
                 {
@@ -2366,16 +2366,16 @@
             "elems": [
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Humans and robots cannot work together\n  \tall wo : Workstation | all w : Worker | w in wo.workers implies (w in Human and w !in Robot) and (w in Robot and w !in Human)\n\n}",
+                    "code": "{\n\t// Humans and robots cannot work together\n\t//all x:Workstation | (Human in x.workers implies Robot not in x.workers) iff (Robot in x.workers implies Human not in x.workers)\n\tall x:Workstation, y: Worker | y in x.workers implies y in Robot and y in Human\n  \n}",
                     "ids": [
-                        "6TdfBbXJp2bnQzrZ6"
+                        "RrwAsCHtgFGHghTK9"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Humans and robots cannot work together\n  \tall w1,w2:Worker, wk:Workstation | w1 in wk.workers and w2 in wk.workers implies \n w1 in Human and w2 in Robot \n}",
+                    "code": "{\n\t// Humans and robots cannot work together\n  \tall wo : Workstation | all w : Worker | w in wo.workers implies (w in Human and w !in Robot) and (w in Robot and w !in Human)\n\n}",
                     "ids": [
-                        "As3u7ANTW7A5RZ9GG"
+                        "6TdfBbXJp2bnQzrZ6"
                     ]
                 },
                 {
@@ -2387,9 +2387,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Humans and robots cannot work together\n\t//all x:Workstation | (Human in x.workers implies Robot not in x.workers) iff (Robot in x.workers implies Human not in x.workers)\n\tall x:Workstation, y: Worker | y in x.workers implies y in Robot and y in Human\n  \n}",
+                    "code": "{\n\t// Humans and robots cannot work together\n  \tall w1,w2:Worker, wk:Workstation | w1 in wk.workers and w2 in wk.workers implies \n w1 in Human and w2 in Robot \n}",
                     "ids": [
-                        "RrwAsCHtgFGHghTK9"
+                        "As3u7ANTW7A5RZ9GG"
                     ]
                 }
             ]
@@ -2471,13 +2471,6 @@
             "elems": [
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Humans and robots cannot work together\n\tall disj w1, w2: Worker | (w1 in Human and w2 in Robot) implies no workers.w1&workers.w1\n}",
-                    "ids": [
-                        "K8ZQFetnb8Qg2eu6J"
-                    ]
-                },
-                {
-                    "entry_count": 1,
                     "code": "{\n\t// Humans and robots cannot work together\n\tall disj w1, w2: Worker, w: Workstation | (w1 in Human and w2 in Robot) implies no workers.w1&workers.w1\n}",
                     "ids": [
                         "n3WXyMSWb7okEJk9m"
@@ -2489,6 +2482,13 @@
                     "ids": [
                         "gBbd3TD6LM8cx9hJx"
                     ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Humans and robots cannot work together\n\tall disj w1, w2: Worker | (w1 in Human and w2 in Robot) implies no workers.w1&workers.w1\n}",
+                    "ids": [
+                        "K8ZQFetnb8Qg2eu6J"
+                    ]
                 }
             ]
         },
@@ -2497,6 +2497,13 @@
             "group_count": 3,
             "correct": false,
             "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Humans and robots cannot work together\n\tall ws: Workstation | some h: Human | h in ws.workers => no r: Robot | r in ws.workers\n}",
+                    "ids": [
+                        "fN5r5DuMNASwrJrj7"
+                    ]
+                },
                 {
                     "entry_count": 1,
                     "code": "{\n\t// Humans and robots cannot work together\n  \tall w: Workstation | some h: Human | all r: Robot |not ( h in w.workers and r in w.workers )\n\n}",
@@ -2509,13 +2516,6 @@
                     "code": "{\n\t// Humans and robots cannot work together\n  \tall w: Workstation | some h: Human | all r: Robot | h in w.workers implies r not in w.workers \n\n}",
                     "ids": [
                         "Fn3XPqdh3epSz7FyK"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Humans and robots cannot work together\n\tall ws: Workstation | some h: Human | h in ws.workers => no r: Robot | r in ws.workers\n}",
-                    "ids": [
-                        "fN5r5DuMNASwrJrj7"
                     ]
                 }
             ]
@@ -2622,16 +2622,16 @@
             "elems": [
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Humans and robots cannot work together\n  \tall x: Workstation | x.workers in Human implies x.^succ.workers in Human\n}",
+                    "code": "{\n\t// Humans and robots cannot work together\n  \tall x: Workstation | x.workers in Human implies x.succ.workers in Human\n}",
                     "ids": [
-                        "mWTLGcpWzTN3Y6WoF"
+                        "8aiabMKsuZ5CxWJNy"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Humans and robots cannot work together\n  \tall x: Workstation | x.workers in Human implies x.succ.workers in Human\n}",
+                    "code": "{\n\t// Humans and robots cannot work together\n  \tall x: Workstation | x.workers in Human implies x.^succ.workers in Human\n}",
                     "ids": [
-                        "8aiabMKsuZ5CxWJNy"
+                        "mWTLGcpWzTN3Y6WoF"
                     ]
                 }
             ]
@@ -2694,16 +2694,16 @@
             "elems": [
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Humans and robots cannot work together\n  \tHuman in Workstation => Robot not in Workstation\n  \tRobot in Workstation => Human not in Workstation\n\n}",
+                    "code": "{\n\t// Humans and robots cannot work together\n\tall ws : Workstation | some w : Worker | w in Human or w in Robot\n}",
                     "ids": [
-                        "QSi6vnFwHb6XLpYNh"
+                        "TCFyveeZ2nMEd3Dds"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Humans and robots cannot work together\n\tall ws : Workstation | some w : Worker | w in Human or w in Robot\n}",
+                    "code": "{\n\t// Humans and robots cannot work together\n  \tHuman in Workstation => Robot not in Workstation\n  \tRobot in Workstation => Human not in Workstation\n\n}",
                     "ids": [
-                        "TCFyveeZ2nMEd3Dds"
+                        "QSi6vnFwHb6XLpYNh"
                     ]
                 }
             ]
@@ -2760,16 +2760,16 @@
             "elems": [
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Humans and robots cannot work together\n\t//all h: Human, r: Robot, w: Workstation | {\n    //  h in w.workers => r not in w.workers\n    //  r in w.workers => h not in w.workers\n    //}\n  \tall h: Human, r: Robot, w: Workstation | w.workers != h & r\n}",
+                    "code": "{\n\t// Humans and robots cannot work together\n\t//all h: Human, r: Robot, w: Workstation | {\n    //  h in w.workers => r not in w.workers\n    //  r in w.workers => h not in w.workers\n    //}\n  \tall h: Human, r: Robot, w: Workstation | w.workers != Human & Robot\n}",
                     "ids": [
-                        "4sZt35sJA9359WMRD"
+                        "rRm6vzGJj89MACR2P"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Humans and robots cannot work together\n\t//all h: Human, r: Robot, w: Workstation | {\n    //  h in w.workers => r not in w.workers\n    //  r in w.workers => h not in w.workers\n    //}\n  \tall h: Human, r: Robot, w: Workstation | w.workers != Human & Robot\n}",
+                    "code": "{\n\t// Humans and robots cannot work together\n\t//all h: Human, r: Robot, w: Workstation | {\n    //  h in w.workers => r not in w.workers\n    //  r in w.workers => h not in w.workers\n    //}\n  \tall h: Human, r: Robot, w: Workstation | w.workers != h & r\n}",
                     "ids": [
-                        "rRm6vzGJj89MACR2P"
+                        "4sZt35sJA9359WMRD"
                     ]
                 }
             ]
@@ -2796,16 +2796,16 @@
             "elems": [
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Humans and robots cannot work together\n  all w : Workstation.workers | Human in w implies not Robot in w\n}",
+                    "code": "{\n\t// Humans and robots cannot work together\n  all w : Workstation.workers | Human in w implies not Robot in w\n    all w : Workstation.workers | Robot in w implies not Human in w\n}",
                     "ids": [
-                        "opknAb6iQAtWpCgTS"
+                        "RHfdA85wS7yTNgApB"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Humans and robots cannot work together\n  all w : Workstation.workers | Human in w implies not Robot in w\n    all w : Workstation.workers | Robot in w implies not Human in w\n}",
+                    "code": "{\n\t// Humans and robots cannot work together\n  all w : Workstation.workers | Human in w implies not Robot in w\n}",
                     "ids": [
-                        "RHfdA85wS7yTNgApB"
+                        "opknAb6iQAtWpCgTS"
                     ]
                 }
             ]
@@ -2832,16 +2832,16 @@
             "elems": [
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Humans and robots cannot work together\n\tall disj w1, w2 : Worker, w : Workstation | (w1 in w.workers and w2 in w.workers) implies (w1 in Human and w2 in Human) or (w1 in Robot and w2 in Robot)\n}",
+                    "code": "{\n  all ws : Workstation| \n  all disj w,w1 : Worker | w in ws.workers and w1 in ws.workers implies \n  ( w in Robot and w1 in Robot) or (w in Human and w1 in Human)\n\t// Humans and robots cannot work together\n\n}",
                     "ids": [
-                        "iKa3nMPxo2AsEueKe"
+                        "n6ZAzsAwPRpAXZZhb"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n  all ws : Workstation| \n  all disj w,w1 : Worker | w in ws.workers and w1 in ws.workers implies \n  ( w in Robot and w1 in Robot) or (w in Human and w1 in Human)\n\t// Humans and robots cannot work together\n\n}",
+                    "code": "{\n\t// Humans and robots cannot work together\n\tall disj w1, w2 : Worker, w : Workstation | (w1 in w.workers and w2 in w.workers) implies (w1 in Human and w2 in Human) or (w1 in Robot and w2 in Robot)\n}",
                     "ids": [
-                        "n6ZAzsAwPRpAXZZhb"
+                        "iKa3nMPxo2AsEueKe"
                     ]
                 }
             ]
@@ -2853,16 +2853,16 @@
             "elems": [
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Humans and robots cannot work together\n  \tall ws:Workstation | all w1, w2: Worker | w1 in ws.workers and w2 in ws.workers \timplies ((w1 = Robot and w2 = Robot) or (w1 = Human and w2 = Human))\n}",
+                    "code": "{\n\t// Humans and robots cannot work together\n  \tall ws:Workstation | all w1, w2: Worker | w1 in ws.workers and w2 in ws.workers \timplies (w1 = Robot and w2 = Robot) or (w1 = Human and w2 = Human)\n}",
                     "ids": [
-                        "pkynXsSYESy3fLRQ9"
+                        "yodjSsLquviR6QHwn"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Humans and robots cannot work together\n  \tall ws:Workstation | all w1, w2: Worker | w1 in ws.workers and w2 in ws.workers \timplies (w1 = Robot and w2 = Robot) or (w1 = Human and w2 = Human)\n}",
+                    "code": "{\n\t// Humans and robots cannot work together\n  \tall ws:Workstation | all w1, w2: Worker | w1 in ws.workers and w2 in ws.workers \timplies ((w1 = Robot and w2 = Robot) or (w1 = Human and w2 = Human))\n}",
                     "ids": [
-                        "yodjSsLquviR6QHwn"
+                        "pkynXsSYESy3fLRQ9"
                     ]
                 }
             ]
@@ -2874,16 +2874,16 @@
             "elems": [
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Humans and robots cannot work together\n\n  \tall h : Human | (workers.h).workers in Human\n  \n  \tall r : Robot | (workers.r).workers in Robot\n}",
+                    "code": "{\n\t// Humans and robots cannot work together\n\t//all w : Workstation | some r: Robot | r in w.workers implies all human: Human | human not in w.workers\n  \t//all w : Workstation | some r: Human | r in w.workers implies all robot: Robot | robot not in w.workers\n  \n  \tall w: Workstation | all disj wor1: w.workers, wor2: w.workers | wor1 in Robot implies wor2 in Robot\n  \tall w: Workstation | all disj wor1: w.workers, wor2: w.workers | wor1 in Human implies wor2 in Human\n}",
                     "ids": [
-                        "B849PFhoD4zemp5jF"
+                        "gmQDDGL2acCheLPzp"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Humans and robots cannot work together\n\t//all w : Workstation | some r: Robot | r in w.workers implies all human: Human | human not in w.workers\n  \t//all w : Workstation | some r: Human | r in w.workers implies all robot: Robot | robot not in w.workers\n  \n  \tall w: Workstation | all disj wor1: w.workers, wor2: w.workers | wor1 in Robot implies wor2 in Robot\n  \tall w: Workstation | all disj wor1: w.workers, wor2: w.workers | wor1 in Human implies wor2 in Human\n}",
+                    "code": "{\n\t// Humans and robots cannot work together\n\n  \tall h : Human | (workers.h).workers in Human\n  \n  \tall r : Robot | (workers.r).workers in Robot\n}",
                     "ids": [
-                        "gmQDDGL2acCheLPzp"
+                        "B849PFhoD4zemp5jF"
                     ]
                 }
             ]

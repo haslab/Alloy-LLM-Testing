@@ -3,7 +3,7 @@
     "pred": "this/inv1",
     "entry_count": 792,
     "group_count": 45,
-    "duration": 24,
+    "duration": 15,
     "scope": 3,
     "groups": [
         {
@@ -577,15 +577,6 @@
                 },
                 {
                     "entry_count": 3,
-                    "code": "{\n\t// Workers are either human or robots\n  all w : Worker | one w & Human or one w & Robot \n\t\n}",
-                    "ids": [
-                        "pwNTvTTd5m7Ts9gNz",
-                        "zEwNBnAsGNPcWttFn",
-                        "ox4h4WboYzybN2Z3X"
-                    ]
-                },
-                {
-                    "entry_count": 3,
                     "code": "{\n\t// Workers are either human or robots\n\tall w : Worker | w in Human <=> w not in Robot \n}",
                     "ids": [
                         "qCH8j28X5QFotSked",
@@ -594,17 +585,19 @@
                     ]
                 },
                 {
-                    "entry_count": 1,
-                    "code": "{\n\t// Workers are either human or robots\n\t\n    all w : Worker | w in Human or w in Robot\n\t\n\tWorker = Human + Robot\n}",
+                    "entry_count": 3,
+                    "code": "{\n\t// Workers are either human or robots\n  all w : Worker | one w & Human or one w & Robot \n\t\n}",
                     "ids": [
-                        "gQ9WqP3bzF7S654P3"
+                        "pwNTvTTd5m7Ts9gNz",
+                        "zEwNBnAsGNPcWttFn",
+                        "ox4h4WboYzybN2Z3X"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Workers are either human or robots\n\tall x:Workstation, y: Worker | y in Human or y in Robot\n\n}",
+                    "code": "{\n\t// Workers are either human or robots\n\tall  a:Worker | a not in Human <=> a in Robot\n}",
                     "ids": [
-                        "HndoWkhqR6Yrzk8Kb"
+                        "qCoXE5YJ8HNpZR2hk"
                     ]
                 },
                 {
@@ -612,6 +605,13 @@
                     "code": "{\n\t// Workers are either human or robots\n\tall w: Worker | w in (Human + Robot) and (w in Human => w not in Robot) and (w in Robot => w not in Human)\n}",
                     "ids": [
                         "9cL3vzivpDcdFbh7d"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Workers are either human or robots\n\tall x:Workstation, y: Worker | y in Human or y in Robot\n\n}",
+                    "ids": [
+                        "HndoWkhqR6Yrzk8Kb"
                     ]
                 },
                 {
@@ -630,13 +630,6 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Workers are either human or robots\n\tall  a:Worker | a not in Human <=> a in Robot\n}",
-                    "ids": [
-                        "qCoXE5YJ8HNpZR2hk"
-                    ]
-                },
-                {
-                    "entry_count": 1,
                     "code": "{\n\t// Workers are either human or robots\n\tno (Worker - Robot - Human)\n}",
                     "ids": [
                         "jmxXBtbDu5YR4eyhn"
@@ -644,16 +637,23 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n  // no w : Worker | w not in Human or w not in Robot\t\n  // Workers are either human or robots\n  all w : Worker | w in Human + Robot and w not in (Human & Robot)\n}",
+                    "code": "{\n\t// Workers are either human or robots\n\tall w : Worker | w in Human or w in Robot and not ( w in Human and w in Robot)\n    \n  \n}",
                     "ids": [
-                        "8TETTvaDPkFsfAXMW"
+                        "jRzge32RPK8PZXcKr"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Workers are either human or robots\n\tall w : Worker | w in Human or w in Robot and not ( w in Human and w in Robot)\n    \n  \n}",
+                    "code": "{\n\t// Workers are either human or robots\n\t\n    all w : Worker | w in Human or w in Robot\n\t\n\tWorker = Human + Robot\n}",
                     "ids": [
-                        "jRzge32RPK8PZXcKr"
+                        "gQ9WqP3bzF7S654P3"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n  // no w : Worker | w not in Human or w not in Robot\t\n  // Workers are either human or robots\n  all w : Worker | w in Human + Robot and w not in (Human & Robot)\n}",
+                    "ids": [
+                        "8TETTvaDPkFsfAXMW"
                     ]
                 }
             ]
@@ -745,14 +745,6 @@
                 },
                 {
                     "entry_count": 2,
-                    "code": "{\n\t// Workers are either human or robots\n  \n  all w : Worker | w in Worker or w in Robot \n\t\n}",
-                    "ids": [
-                        "eZt6Q9KcLdGJLJzH9",
-                        "n5ej3jRrnnjB2spAR"
-                    ]
-                },
-                {
-                    "entry_count": 2,
                     "code": "{\n\t// Workers are either human or robots\n\tall w : Worker | w in Human implies w !in Robot\n  \tall w : Worker | w in Robot implies w !in Human\n}",
                     "ids": [
                         "WYc8RhpuMindrRBd3",
@@ -761,18 +753,10 @@
                 },
                 {
                     "entry_count": 2,
-                    "code": "{\n\t// Workers are either human or robots\n\tall w: Worker, h: Human | w in Worker and h in Worker\n}",
+                    "code": "{\n\t// Workers are either human or robots\n  Worker = (Human + Worker)\n\t\n}",
                     "ids": [
-                        "sPYFri45CFynwSBfA",
-                        "G3myf9KxdHaTJifeF"
-                    ]
-                },
-                {
-                    "entry_count": 2,
-                    "code": "{\n\t// Workers are either human or robots\n\tall w: Worker, h: Human | w + h in Worker\n}",
-                    "ids": [
-                        "gxfTvDBpHagdpn4HG",
-                        "LEjcvPtM7KibQW7yX"
+                        "T8GBMZgDuiFunNhzw",
+                        "tXrXnQtNe7hfpaFA4"
                     ]
                 },
                 {
@@ -781,6 +765,22 @@
                     "ids": [
                         "KrSbXZzTEPkG3W2y9",
                         "C26bkWN6ETzShjdFX"
+                    ]
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Workers are either human or robots\n  \n  all w : Worker | w in Worker or w in Robot \n\t\n}",
+                    "ids": [
+                        "eZt6Q9KcLdGJLJzH9",
+                        "n5ej3jRrnnjB2spAR"
+                    ]
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Workers are either human or robots\n\tall w: Worker, h: Human | w in Worker and h in Worker\n}",
+                    "ids": [
+                        "sPYFri45CFynwSBfA",
+                        "G3myf9KxdHaTJifeF"
                     ]
                 },
                 {
@@ -801,59 +801,10 @@
                 },
                 {
                     "entry_count": 2,
-                    "code": "{\n\t// Workers are either human or robots\n  Worker = (Human + Worker)\n\t\n}",
+                    "code": "{\n\t// Workers are either human or robots\n\tall w: Worker, h: Human | w + h in Worker\n}",
                     "ids": [
-                        "T8GBMZgDuiFunNhzw",
-                        "tXrXnQtNe7hfpaFA4"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Workers are either human or robots\n\tall w : Worker | w not in Human or w not in Robot\n}",
-                    "ids": [
-                        "SwcnXQostdwvqgJNq"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Workers are either human or robots\n\tHuman in Worker  \n  \tRobot in Worker\n}",
-                    "ids": [
-                        "5iBKbY2YaXM7MDrSW"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Workers are either human or robots\n\t(Robot+Human) in Worker\n}",
-                    "ids": [
-                        "evAe9Co8LDQTtvQc9"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Workers are either human or robots\n\tall w : Worker |\n  \t\tw in Human implies not w in Robot\n}",
-                    "ids": [
-                        "KoqryB3BsyAv4zA4B"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Workers are either human or robots\n\tall w : Worker |\n  \t\tlone (w->Human & w->Robot)\n}",
-                    "ids": [
-                        "Pz3hieHq5zSSZ4nd7"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Workers are either human or robots\n\tall w : Worker |\n  \t\tlone (Human & Robot)\n}",
-                    "ids": [
-                        "BHqEeJTeGZugJCcrA"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Workers are either human or robots\n\tall x: Workstation, y: Worker | y in workers.x implies (y in Human) or (y in Robot)\n}",
-                    "ids": [
-                        "qXiN3zMRhXzFPRkBm"
+                        "gxfTvDBpHagdpn4HG",
+                        "LEjcvPtM7KibQW7yX"
                     ]
                 },
                 {
@@ -865,9 +816,16 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Workers are either human or robots\n  all x,y : Worker | (x in Human and y in Robot) implies not y=x\n\t\n}",
+                    "code": "{\n\t// Workers are either human or robots\n\tall w : Worker | w = Human => w != Robot\n}",
                     "ids": [
-                        "2FFrmKXGX58bD3CCf"
+                        "s722vQyzMbXW4BJPM"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Workers are either human or robots\n\tall w : Worker |\n  \t\tlone (w->Human & w->Robot)\n}",
+                    "ids": [
+                        "Pz3hieHq5zSSZ4nd7"
                     ]
                 },
                 {
@@ -886,6 +844,55 @@
                 },
                 {
                     "entry_count": 1,
+                    "code": "{\n\t// Workers are either human or robots\n\tall w: Workstation | w in workers.w implies (w.workers in Human) or(w.workers in Robot)\n}",
+                    "ids": [
+                        "ts2DpQ8ARXPpKTsz7"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Workers are either human or robots\n\tall w : Worker | w not in Human or w not in Robot\n}",
+                    "ids": [
+                        "SwcnXQostdwvqgJNq"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Workers are either human or robots\n\tall w : Worker |\n  \t\tw in Human implies not w in Robot\n}",
+                    "ids": [
+                        "KoqryB3BsyAv4zA4B"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Workers are either human or robots\n  all x,y : Worker | (x in Human and y in Robot) implies not y=x\n\t\n}",
+                    "ids": [
+                        "2FFrmKXGX58bD3CCf"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Workers are either human or robots\n\tHuman in Worker  \n  \tRobot in Worker\n}",
+                    "ids": [
+                        "5iBKbY2YaXM7MDrSW"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Workers are either human or robots\n\tall x: Workstation, y: Worker | y in workers.x implies (y in Human) or (y in Robot)\n}",
+                    "ids": [
+                        "qXiN3zMRhXzFPRkBm"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Workers are either human or robots\n\tall w: Workstation | (Human + Robot).workers in Workstation\n}",
+                    "ids": [
+                        "zxL2FNtmTocXxvNh7"
+                    ]
+                },
+                {
+                    "entry_count": 1,
                     "code": "{\n\t// Workers are either human or robots\n\tall r: Robot, h: Human | h in Worker and h in Worker\n}",
                     "ids": [
                         "X3idKbQr4osG2Keth"
@@ -893,23 +900,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Workers are either human or robots\n\tall r: Robot | r in Worker\n}",
+                    "code": "{\n\t// Workers are either human or robots\n\tall w : Worker |\n  \t\tlone (Human & Robot)\n}",
                     "ids": [
-                        "K9m74XYfgyTjasQXs"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Workers are either human or robots\n\tall w : Worker | w = Human => w != Robot\n}",
-                    "ids": [
-                        "s722vQyzMbXW4BJPM"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Workers are either human or robots\n\tall w: Workstation | w in workers.w implies (w.workers in Human) or(w.workers in Robot)\n}",
-                    "ids": [
-                        "ts2DpQ8ARXPpKTsz7"
+                        "BHqEeJTeGZugJCcrA"
                     ]
                 },
                 {
@@ -921,9 +914,16 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Workers are either human or robots\n\tall w: Workstation | (Human + Robot).workers in Workstation\n}",
+                    "code": "{\n\t// Workers are either human or robots\n\t(Robot+Human) in Worker\n}",
                     "ids": [
-                        "zxL2FNtmTocXxvNh7"
+                        "evAe9Co8LDQTtvQc9"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Workers are either human or robots\n\tall r: Robot | r in Worker\n}",
+                    "ids": [
+                        "K9m74XYfgyTjasQXs"
                     ]
                 }
             ]
@@ -1015,23 +1015,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Workers are either human or robots\n\tall w : Workstation.workers | (w in Human and w not in Robot) or (w in Robot and w not in Human)\n}",
+                    "code": "{\n\t// Workers are either human or robots\n\t(Worker-(Human+Robot)) & Workstation.workers = none\n}",
                     "ids": [
-                        "6T9JHERTaXp8ytujT"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Workers are either human or robots\n      all wo:Workstation, w : Worker | wo->w in workers implies w in Human or w in Robot\n\t\n}",
-                    "ids": [
-                        "8SChRPjvvh4whTSqz"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Workers are either human or robots\n\tworkers in Workstation->(Robot+Human)\n}",
-                    "ids": [
-                        "RrnAfuFcqF4Wbet22"
+                        "mFjQktpQsHJLRsSjJ"
                     ]
                 },
                 {
@@ -1043,9 +1029,16 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Workers are either human or robots\n\t(Worker-(Human+Robot)) & Workstation.workers = none\n}",
+                    "code": "{\n\t// Workers are either human or robots\n      all wo:Workstation, w : Worker | wo->w in workers implies w in Human or w in Robot\n\t\n}",
                     "ids": [
-                        "mFjQktpQsHJLRsSjJ"
+                        "8SChRPjvvh4whTSqz"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Workers are either human or robots\n\tall w : Workstation.workers | (w in Human and w not in Robot) or (w in Robot and w not in Human)\n}",
+                    "ids": [
+                        "6T9JHERTaXp8ytujT"
                     ]
                 },
                 {
@@ -1053,6 +1046,13 @@
                     "code": "{\n\t// Workers are either human or robots\n  all w : Workstation | all wo : Worker | wo in w.workers implies (wo in Human or wo in Robot)\n\t\n}",
                     "ids": [
                         "S3PfDikG9aA2TYb2r"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Workers are either human or robots\n\tworkers in Workstation->(Robot+Human)\n}",
+                    "ids": [
+                        "RrnAfuFcqF4Wbet22"
                     ]
                 }
             ]
@@ -1083,9 +1083,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Workers are either human or robots\n\tWorker in (Human & Robot)\n}",
+                    "code": "{\n\t// Workers are either human or robots\n  Worker in Human\n  Worker in Robot\n  no w : Worker | w in { Human & Robot }\t\n}",
                     "ids": [
-                        "BuhN7jXqrZFdQ5HsZ"
+                        "cvnvTSQ4usXHN3Ndj"
                     ]
                 },
                 {
@@ -1097,16 +1097,16 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n  no w : Worker | w not in Human or w not in Robot\n}",
+                    "code": "{\n\t// Workers are either human or robots\n\tWorker in Human and Worker in Robot\n}",
                     "ids": [
-                        "TJ9kdwBJXemLXMshB"
+                        "N2MEzxhc7GEYLPgcj"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Workers are either human or robots\n\tWorker in Human and Worker in Robot\n}",
+                    "code": "{\n\t// Workers are either human or robots\n\tWorker in (Human & Robot)\n}",
                     "ids": [
-                        "N2MEzxhc7GEYLPgcj"
+                        "BuhN7jXqrZFdQ5HsZ"
                     ]
                 },
                 {
@@ -1118,13 +1118,6 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Workers are either human or robots\n   all w1, w2 : Worker | w1 in Human and w2 in Robot\n\t\n}",
-                    "ids": [
-                        "PzTDfqvpBXyiMDx9g"
-                    ]
-                },
-                {
-                    "entry_count": 1,
                     "code": "{\n\t// Workers are either human or robots\n\tWorker = Human & Robot\n}",
                     "ids": [
                         "R2ez9MmyaCtx69GFA"
@@ -1132,9 +1125,16 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Workers are either human or robots\n  Worker in Human\n  Worker in Robot\n  no w : Worker | w in { Human & Robot }\t\n}",
+                    "code": "{\n  no w : Worker | w not in Human or w not in Robot\n}",
                     "ids": [
-                        "cvnvTSQ4usXHN3Ndj"
+                        "TJ9kdwBJXemLXMshB"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Workers are either human or robots\n   all w1, w2 : Worker | w1 in Human and w2 in Robot\n\t\n}",
+                    "ids": [
+                        "PzTDfqvpBXyiMDx9g"
                     ]
                 }
             ]
@@ -1280,16 +1280,16 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Workers are either human or robots\n  Worker in Human\n\t\n}",
+                    "code": "{\n\t// Workers are either human or robots\n   all w1, w2 : Worker | w1 in Human\n\t\n}",
                     "ids": [
-                        "8jeTwkHo5A23kgxNM"
+                        "LXmdcXHcwDqyrGxeP"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Workers are either human or robots\n   all w1, w2 : Worker | w1 in Human\n\t\n}",
+                    "code": "{\n\t// Workers are either human or robots\n  Worker in Human\n\t\n}",
                     "ids": [
-                        "LXmdcXHcwDqyrGxeP"
+                        "8jeTwkHo5A23kgxNM"
                     ]
                 }
             ]

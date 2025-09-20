@@ -2,8 +2,8 @@
     "label": "inv1",
     "pred": "this/inv1",
     "entry_count": 792,
-    "group_count": 132,
-    "duration": 46,
+    "group_count": 127,
+    "duration": 44,
     "scope": 3,
     "groups": [
         {
@@ -423,23 +423,16 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// The station has at least one entry and one exit\n  \tsome {x: Track | x in Entry}\n    some Exit\n}",
-                    "ids": [
-                        "t7MDk7pkJARFb7LNY"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// The station has at least one entry and one exit\n\t#Entry >= 1\n  \t#Exit >= 1\n}",
-                    "ids": [
-                        "gtmcHSiJMDHgyJMDk"
-                    ]
-                },
-                {
-                    "entry_count": 1,
                     "code": "{\n\t// The station has at least one entry and one exit\n\tnot (no Entry)\n\tnot (no Exit)\n}",
                     "ids": [
                         "uZ7RvCZFYMtwZmqcg"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The station has at least one entry and one exit\n\tsome t:Track | (t.*succs & Entry != none)\n  \tsome t:Track | (t.*succs &  Exit != none)\n}",
+                    "ids": [
+                        "yiKBRqznpnqGs5n8b"
                     ]
                 },
                 {
@@ -451,9 +444,16 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// The station has at least one entry and one exit\n\tsome t:Track | (t.*succs & Entry != none)\n  \tsome t:Track | (t.*succs &  Exit != none)\n}",
+                    "code": "{\n\t// The station has at least one entry and one exit\n  \tsome {x: Track | x in Entry}\n    some Exit\n}",
                     "ids": [
-                        "yiKBRqznpnqGs5n8b"
+                        "t7MDk7pkJARFb7LNY"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The station has at least one entry and one exit\n\t#Entry >= 1\n  \t#Exit >= 1\n}",
+                    "ids": [
+                        "gtmcHSiJMDHgyJMDk"
                     ]
                 }
             ]
@@ -642,14 +642,6 @@
                 },
                 {
                     "entry_count": 2,
-                    "code": "{\n\t// The station has at least one entry and one exit\n  \tall t: Track | t in Entry \n  \tall t: Track | t in Exit\n  \t//some t: Track | t.succs in Exit\n\t\n}",
-                    "ids": [
-                        "zmJCbJCz9NLJGr6Lc",
-                        "NJPMaqHC9STCRNhkd"
-                    ]
-                },
-                {
-                    "entry_count": 2,
                     "code": "{\n\t// The station has at least one entry and one exit\n  all s : Track| some(s & Entry) and one(s & Exit)\n\t\n}",
                     "ids": [
                         "aEXA93bxqRE9zznWh",
@@ -657,10 +649,67 @@
                     ]
                 },
                 {
+                    "entry_count": 2,
+                    "code": "{\n\t// The station has at least one entry and one exit\n  \tall t: Track | t in Entry \n  \tall t: Track | t in Exit\n  \t//some t: Track | t.succs in Exit\n\t\n}",
+                    "ids": [
+                        "zmJCbJCz9NLJGr6Lc",
+                        "NJPMaqHC9STCRNhkd"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The station has at least one entry and one exit\n\tall t : Track | t!=t-Entry and t!=t-Exit\n}",
+                    "ids": [
+                        "2DNfGAcF6xnfNENmW"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The station has at least one entry and one exit\n\tall t : Track | some j : Entry | one e : Exit | j in t and e in t\n}",
+                    "ids": [
+                        "MGG6tHAMmuKpQ5y72"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The station has at least one entry and one exit\n  all t : Track | one e : Entry | e in t\n  all t : Track | one ex : Exit | ex in t\n\t\n}",
+                    "ids": [
+                        "iDJZ6xrQ5XAbsfh5T"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The station has at least one entry and one exit\n \tall t: Track | some e: Entry | e in t and some ex: Exit | ex in t and #(Track) >0\n\n\n}",
+                    "ids": [
+                        "uPX4HZt2XASqh7FJv"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The station has at least one entry and one exit\n\tall t : Track | some t => t in Entry & Exit\n}",
+                    "ids": [
+                        "fA53HW6CRhJqYhCQv"
+                    ]
+                },
+                {
                     "entry_count": 1,
                     "code": "{\n\t// The station has at least one entry and one exit\n \tall t: Track | some e: Entry | e in t and some ex: Exit | ex in t\n\n\n}",
                     "ids": [
                         "m3wDRqNqE4P7TyzAK"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The station has at least one entry and one exit\n \tall t: Track | \n        (some e: Entry | e in t and \n        some ex: Exit | ex in t) and \n        #t > 0\n\n}",
+                    "ids": [
+                        "dpiKTsivJbZFAzwZh"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The station has at least one entry and one exit\n  \tall t : Track | t in (Entry & Exit)\n\t\n}",
+                    "ids": [
+                        "pKBEzfx2ATtW6uYmz"
                     ]
                 },
                 {
@@ -679,51 +728,16 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// The station has at least one entry and one exit\n \tall t: Track | \n        (some e: Entry | e in t and \n        some ex: Exit | ex in t) and \n        #t > 0\n\n}",
+                    "code": "{\n\t// The station has at least one entry and one exit\n  \tall t,t1 : Track | t in Entry and t1 in Exit\n}",
                     "ids": [
-                        "dpiKTsivJbZFAzwZh"
+                        "eaMW6L3wQc3y8qza5"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// The station has at least one entry and one exit\n\tall t : Track | t!=t-Entry and t!=t-Exit\n}",
+                    "code": "{\n\t// The station has at least one entry and one exit\n\tall t : Track | (t in Entry and t in Exit) and t!=t.succs-Entry and t!=t.succs-Exit\n}",
                     "ids": [
-                        "2DNfGAcF6xnfNENmW"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// The station has at least one entry and one exit\n \tall t: Track | some e: Entry | e in t and some ex: Exit | ex in t and #(Track) >0\n\n\n}",
-                    "ids": [
-                        "uPX4HZt2XASqh7FJv"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// The station has at least one entry and one exit\n  all t : Track | one e : Entry | e in t\n  all t : Track | one ex : Exit | ex in t\n\t\n}",
-                    "ids": [
-                        "iDJZ6xrQ5XAbsfh5T"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// The station has at least one entry and one exit\n\tall t : Track | some j : Entry | one e : Exit | j in t and e in t\n}",
-                    "ids": [
-                        "MGG6tHAMmuKpQ5y72"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// The station has at least one entry and one exit\n \tall t: Track | some e: Entry | e in t and some ex: Exit | ex in t\n   \tall t:Track | #(t) >0\n\n\n}",
-                    "ids": [
-                        "67RfBEqo2JMunuwNx"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// The station has at least one entry and one exit\n\tall t : Track | some t => t in Entry & Exit\n}",
-                    "ids": [
-                        "fA53HW6CRhJqYhCQv"
+                        "DJsAqvH3vCt8QXYdw"
                     ]
                 },
                 {
@@ -735,23 +749,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// The station has at least one entry and one exit\n  \tall t : Track | t in (Entry & Exit)\n\t\n}",
+                    "code": "{\n\t// The station has at least one entry and one exit\n \tall t: Track | some e: Entry | e in t and some ex: Exit | ex in t\n   \tall t:Track | #(t) >0\n\n\n}",
                     "ids": [
-                        "pKBEzfx2ATtW6uYmz"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// The station has at least one entry and one exit\n  \tall t,t1 : Track | t in Entry and t1 in Exit\n}",
-                    "ids": [
-                        "eaMW6L3wQc3y8qza5"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// The station has at least one entry and one exit\n\tall t : Track | (t in Entry and t in Exit) and t!=t.succs-Entry and t!=t.succs-Exit\n}",
-                    "ids": [
-                        "DJsAqvH3vCt8QXYdw"
+                        "67RfBEqo2JMunuwNx"
                     ]
                 }
             ]
@@ -809,20 +809,6 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// The station has at least one entry and one exit\n\tall t: Track | some ex : Exit, en : Entry | t in succs.ex and t in succs.en\n}",
-                    "ids": [
-                        "StPuKLfeMkuehn67o"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// The station has at least one entry and one exit\n  all t: Track | some succ: t.succs | succ in Entry and some succ: t.succs | succ in Exit\n\t\n}",
-                    "ids": [
-                        "hDfqd8WkZF88iqxuJ"
-                    ]
-                },
-                {
-                    "entry_count": 1,
                     "code": "{\n\t// The station has at least one entry and one exit\n  \n  // Perguntar Alcino\n  all x: Track | not (Entry & x.succs = none) and not (Exit & x.succs = none)\n  \n\t\n}",
                     "ids": [
                         "BmJkxGAbp8fHSQam2"
@@ -830,9 +816,23 @@
                 },
                 {
                     "entry_count": 1,
+                    "code": "{\n\t// The station has at least one entry and one exit\n\tall t: Track | some ex : Exit, en : Entry | t in succs.ex and t in succs.en\n}",
+                    "ids": [
+                        "StPuKLfeMkuehn67o"
+                    ]
+                },
+                {
+                    "entry_count": 1,
                     "code": "{\n\t// The station has at least one entry and one exit\n\tall t : Track | t.succs & Entry != none and t.succs & Exit != none\n}",
                     "ids": [
                         "D9GSSvC7WoSJhcszn"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The station has at least one entry and one exit\n  all t: Track | some succ: t.succs | succ in Entry and some succ: t.succs | succ in Exit\n\t\n}",
+                    "ids": [
+                        "hDfqd8WkZF88iqxuJ"
                     ]
                 }
             ]
@@ -856,10 +856,26 @@
                 },
                 {
                     "entry_count": 2,
+                    "code": "{\n\t// The station has at least one entry and one exit\n\tsome Entry & Exit\n}",
+                    "ids": [
+                        "SopgDyKrXjf8Ea5yP",
+                        "Co7E8mWmkbXyupMQA"
+                    ]
+                },
+                {
+                    "entry_count": 2,
                     "code": "{\n\t// The station has at least one entry and one exit\n\tsome t: Track | some e: Entry | some x: Exit | t in e and t in x\n}",
                     "ids": [
                         "ZpyYsj8wdiSafbNrm",
                         "QpLpYRfTzZ8ne9pw3"
+                    ]
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// The station has at least one entry and one exit\n     some t :Track| some(Entry & t) and some(Exit & t)\n\t\n}",
+                    "ids": [
+                        "vXBXyDT48wSf7pq8R",
+                        "8QyNEaiX68FR6FRin"
                     ]
                 },
                 {
@@ -872,14 +888,6 @@
                 },
                 {
                     "entry_count": 2,
-                    "code": "{\n\t// The station has at least one entry and one exit\n\tsome Entry & Exit\n}",
-                    "ids": [
-                        "SopgDyKrXjf8Ea5yP",
-                        "Co7E8mWmkbXyupMQA"
-                    ]
-                },
-                {
-                    "entry_count": 2,
                     "code": "{\n\t// The station has at least one entry and one exit\n     some s : Track | some(s & Entry) and one(s & Exit)\n\t\n}",
                     "ids": [
                         "DgDhEfx4CuYT79bmf",
@@ -887,11 +895,10 @@
                     ]
                 },
                 {
-                    "entry_count": 2,
-                    "code": "{\n\t// The station has at least one entry and one exit\n     some t :Track| some(Entry & t) and some(Exit & t)\n\t\n}",
+                    "entry_count": 1,
+                    "code": "{\n\t// The station has at least one entry and one exit\n     some s : Track | one(s & Entry) and one(s & Exit)\n\t\n}",
                     "ids": [
-                        "vXBXyDT48wSf7pq8R",
-                        "8QyNEaiX68FR6FRin"
+                        "SLB2o8b5nsf2yQ4ZE"
                     ]
                 },
                 {
@@ -899,13 +906,6 @@
                     "code": "{\n\t// The station has at least one entry and one exit\n\t\n\n \tsome t : Track |  some (t.*succs & Entry & Exit) \n}",
                     "ids": [
                         "if6xFTo7JpzoBWaEm"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// The station has at least one entry and one exit\n\tsome t: Track | some e: Entry | some x: Exit | t in Entry and t in Exit\n}",
-                    "ids": [
-                        "ktBBo4zbsT3CX7fcC"
                     ]
                 },
                 {
@@ -924,9 +924,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// The station has at least one entry and one exit\n     some s : Track | one(s & Entry) and one(s & Exit)\n\t\n}",
+                    "code": "{\n\t// The station has at least one entry and one exit\n\tsome t: Track | some e: Entry | some x: Exit | t in Entry and t in Exit\n}",
                     "ids": [
-                        "SLB2o8b5nsf2yQ4ZE"
+                        "ktBBo4zbsT3CX7fcC"
                     ]
                 }
             ]
@@ -973,15 +973,6 @@
             "elems": [
                 {
                     "entry_count": 3,
-                    "code": "{\n\t// The station has at least one entry and one exit\n\tall t: Track | some en: Entry | some e: Exit | en in t.^succs+t and e in t.^succs+t\n}",
-                    "ids": [
-                        "RyxyD3ZNNWQA4Q7t4",
-                        "mEh93ZDcM3L4H39YX",
-                        "NLwFGEWPywDHKHSXN"
-                    ]
-                },
-                {
-                    "entry_count": 3,
                     "code": "{\n\t// The station has at least one entry and one exit\n  \tall t : Track | some en : Entry, ex : Exit | en in t.*succs and ex in t.*succs\n\t\n}",
                     "ids": [
                         "NFyjhkgbap3fHJZaL",
@@ -990,32 +981,20 @@
                     ]
                 },
                 {
+                    "entry_count": 3,
+                    "code": "{\n\t// The station has at least one entry and one exit\n\tall t: Track | some en: Entry | some e: Exit | en in t.^succs+t and e in t.^succs+t\n}",
+                    "ids": [
+                        "RyxyD3ZNNWQA4Q7t4",
+                        "mEh93ZDcM3L4H39YX",
+                        "NLwFGEWPywDHKHSXN"
+                    ]
+                },
+                {
                     "entry_count": 2,
                     "code": "{\n\t// The station has at least one entry and one exit\n  \tall t : Track | some en : Entry | en in t or en in t.^succs\n\tall t : Track | some ex : Exit  | ex in t or ex in t.^succs\n\t\n}",
                     "ids": [
                         "vHvrjbKq5BEP79bWs",
                         "eyEkZZYjQC2WhDGHS"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// The station has at least one entry and one exit\n\tall t : Track | some e : Entry | e in t.*succs\n    all t : Track | some e : Exit | e in t.*succs\n}",
-                    "ids": [
-                        "9zx9BtCqj94QWSLxn"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// The station has at least one entry and one exit\n  \tall t : Track | some en : Entry | en in t.*succs and some ex : Exit | ex in t.*succs\n\t\n}",
-                    "ids": [
-                        "EqwCFRCMAMFXBC86s"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// The station has at least one entry and one exit\n  \tall t : Track | some en : Entry, ex : Exit | (en in t or en in t.^succs) and (ex in t or ex in t.^succs)\n\t\n}",
-                    "ids": [
-                        "BKqCb3LZfbP6Dbhjp"
                     ]
                 },
                 {
@@ -1030,6 +1009,27 @@
                     "code": "{\n\t// The station has at least one entry and one exit\n\tall tr: Track |\n\t\ttr.*(succs) & Entry != none and\n  \t\ttr.*(succs) & Exit != none\n\n}",
                     "ids": [
                         "RPJXz2MLgw8PqBLBn"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The station has at least one entry and one exit\n  \tall t : Track | some en : Entry | en in t.*succs and some ex : Exit | ex in t.*succs\n\t\n}",
+                    "ids": [
+                        "EqwCFRCMAMFXBC86s"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The station has at least one entry and one exit\n\tall t : Track | some e : Entry | e in t.*succs\n    all t : Track | some e : Exit | e in t.*succs\n}",
+                    "ids": [
+                        "9zx9BtCqj94QWSLxn"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The station has at least one entry and one exit\n  \tall t : Track | some en : Entry, ex : Exit | (en in t or en in t.^succs) and (ex in t or ex in t.^succs)\n\t\n}",
+                    "ids": [
+                        "BKqCb3LZfbP6Dbhjp"
                     ]
                 }
             ]
@@ -1136,16 +1136,16 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// The station has at least one entry and one exit\n\tall t : Track | some e : Entry | e in t.^succs\n    all t : Track | some e : Exit | e in t.^succs\n}",
+                    "code": "{\n\t// The station has at least one entry and one exit\n\tall t: Track | some (t.^succs & Entry) and some (t.^succs & Exit)\n}",
                     "ids": [
-                        "suR5RRHx9NzdhQY6z"
+                        "9zkTD9Q3pKZ5EKJhz"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// The station has at least one entry and one exit\n\tall t: Track | some (t.^succs & Entry) and some (t.^succs & Exit)\n}",
+                    "code": "{\n\t// The station has at least one entry and one exit\n\tall t : Track | some e : Entry | e in t.^succs\n    all t : Track | some e : Exit | e in t.^succs\n}",
                     "ids": [
-                        "9zkTD9Q3pKZ5EKJhz"
+                        "suR5RRHx9NzdhQY6z"
                     ]
                 }
             ]
@@ -1168,13 +1168,6 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// The station has at least one entry and one exit\n  some t: Track | some (t & Entry)\n  \t\n}",
-                    "ids": [
-                        "EWBvCtMHbTAwkzwCp"
-                    ]
-                },
-                {
-                    "entry_count": 1,
                     "code": "{\n\t// The station has at least one entry and one exit\n  some en : Entry | en in Track\n  some ex : Entry | ex in Track \n}",
                     "ids": [
                         "rLy9yxkot4yMPAcEe"
@@ -1192,6 +1185,13 @@
                     "code": "{\n\t// The station has at least one entry and one exit\n\tsome t : Track | t in Entry\n}",
                     "ids": [
                         "uE3ZLyB2nMs8C6Mzz"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The station has at least one entry and one exit\n  some t: Track | some (t & Entry)\n  \t\n}",
+                    "ids": [
+                        "EWBvCtMHbTAwkzwCp"
                     ]
                 }
             ]
@@ -1236,9 +1236,16 @@
             "elems": [
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// The station has at least one entry and one exit\n\tsome Track.succs <: Entry\n  \tsome Track.succs <: Exit\n}",
+                    "code": "{\n\t// The station has at least one entry and one exit\n\tsome t:Track | (t.succs & Entry != none)\n  \tsome t:Track | (t.succs &  Exit != none)\n}",
                     "ids": [
-                        "Z75BkmabtXDkKX2yW"
+                        "oXPQKvDpTbegZhtZ6"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n  some e : Entry | some t : Track | e in t.succs and \n  some x : Exit | some t : Track | x in t.succs\t// The station has at least one entry and one exit\n\t\n}",
+                    "ids": [
+                        "HfCHY8zb4ZkkutPcE"
                     ]
                 },
                 {
@@ -1250,20 +1257,6 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// The station has at least one entry and one exit\n\tsome t:Track | (t.succs & Entry != none)\n  \tsome t:Track | (t.succs &  Exit != none)\n}",
-                    "ids": [
-                        "oXPQKvDpTbegZhtZ6"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// The station has at least one entry and one exit\n\tsome t:Track | (t.^succs & Entry != none)\n  \tsome t:Track | (t.^succs &  Exit != none)\n}",
-                    "ids": [
-                        "oPycnSCoRgdwQwtmy"
-                    ]
-                },
-                {
-                    "entry_count": 1,
                     "code": "{\n\t// The station has at least one entry and one exit\n\tsome entry: Entry | entry in Track.succs\n  \tsome exit: Exit | exit in Track.succs\n}",
                     "ids": [
                         "ChCLK4Y2iMy7fcdQj"
@@ -1271,9 +1264,16 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n  some e : Entry | some t : Track | e in t.succs and \n  some x : Exit | some t : Track | x in t.succs\t// The station has at least one entry and one exit\n\t\n}",
+                    "code": "{\n\t// The station has at least one entry and one exit\n\tsome Track.succs <: Entry\n  \tsome Track.succs <: Exit\n}",
                     "ids": [
-                        "HfCHY8zb4ZkkutPcE"
+                        "Z75BkmabtXDkKX2yW"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The station has at least one entry and one exit\n\tsome t:Track | (t.^succs & Entry != none)\n  \tsome t:Track | (t.^succs &  Exit != none)\n}",
+                    "ids": [
+                        "oPycnSCoRgdwQwtmy"
                     ]
                 }
             ]
@@ -1294,6 +1294,13 @@
                 },
                 {
                     "entry_count": 1,
+                    "code": "{\n\t// The station has at least one entry and one exit\n  \tone t : Track | t in (Entry & Exit)\n\t\n}",
+                    "ids": [
+                        "3NsGCYjb8odHiBweb"
+                    ]
+                },
+                {
+                    "entry_count": 1,
                     "code": "{\n\t// The station has at least one entry and one exit\n  \tone t:Track | some e:Entry, ex:Exit | e in t and ex in t\n\t\n}",
                     "ids": [
                         "Db29m3GYuWvGdqDTH"
@@ -1304,13 +1311,6 @@
                     "code": "{\n\t// The station has at least one entry and one exit\n\tone t: Track | one en: Entry, ex: Exit | en in t and ex in t\n}",
                     "ids": [
                         "7cacnEb3PLLmR6n3a"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// The station has at least one entry and one exit\n  \tone t : Track | t in (Entry & Exit)\n\t\n}",
-                    "ids": [
-                        "3NsGCYjb8odHiBweb"
                     ]
                 }
             ]
@@ -1353,18 +1353,18 @@
             "elems": [
                 {
                     "entry_count": 2,
-                    "code": "{\n\t// The station has at least one entry and one exit\n  all t : Track | some Exit & t.*succs and t in Entry.*succs  \n\t\n}",
-                    "ids": [
-                        "nAP5nA9NkQwNu5RnZ",
-                        "5RGGd2WZecxuSiKoL"
-                    ]
-                },
-                {
-                    "entry_count": 2,
                     "code": "{\n\t// The station has at least one entry and one exit\n  \n  (all e : Track | some Exit & e.*succs and some Entry & (*succs).e)\n\t\n}",
                     "ids": [
                         "hK4BCTav6pW34jBef",
                         "SqnPTDyXBtrWocbag"
+                    ]
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// The station has at least one entry and one exit\n  all t : Track | some Exit & t.*succs and t in Entry.*succs  \n\t\n}",
+                    "ids": [
+                        "nAP5nA9NkQwNu5RnZ",
+                        "5RGGd2WZecxuSiKoL"
                     ]
                 },
                 {
@@ -1427,13 +1427,6 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// The station has at least one entry and one exit\n  \n  // Perguntar Alcino\n  some x,x1: Track | x in Entry and x1 in Exit and not(x1=x)\n  \n\t\n}",
-                    "ids": [
-                        "betcTu2iHyoaPd72M"
-                    ]
-                },
-                {
-                    "entry_count": 1,
                     "code": "{\n\t// The station has at least one entry and one exit\n  \t\n\tsome disj t1,t2:Track|  t1 in Entry and t2 in Exit\n}",
                     "ids": [
                         "mas3KmbGTjuhXgWLG"
@@ -1445,6 +1438,13 @@
                     "ids": [
                         "tN3LQ2zM5zkrpfjFx"
                     ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The station has at least one entry and one exit\n  \n  // Perguntar Alcino\n  some x,x1: Track | x in Entry and x1 in Exit and not(x1=x)\n  \n\t\n}",
+                    "ids": [
+                        "betcTu2iHyoaPd72M"
+                    ]
                 }
             ]
         },
@@ -1455,13 +1455,6 @@
             "elems": [
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// The station has at least one entry and one exit\n\tall t : Track | all tsucc : t.*succs | tsucc.signals!=tsucc.signals-Entry and tsucc.signals!=tsucc.signals-Exit\n}",
-                    "ids": [
-                        "fLzXbeogxEiLe5Ayo"
-                    ]
-                },
-                {
-                    "entry_count": 1,
                     "code": "{\n\t// The station has at least one entry and one exit\n\tall t: Track | some j: Junction | some e: Exit | j in t.signals and e in t.signals\n}",
                     "ids": [
                         "P4LaQhEyuksSCtnvH"
@@ -1469,16 +1462,23 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// The station has at least one entry and one exit\n\tall t : Track | all tsucc : t.*succs | t.signals!=t.signals-Entry and t.signals!=t.signals-Exit\n}",
+                    "code": "{\n\t// The station has at least one entry and one exit\n  \t//all t: Track | t.succs in Entry \n  \t//all t: Track | t.succs in Exit\n  \t//some t: Track | t.succs in Exit\n  all t: Track |\n        some e: Entry | e in t.succs and e in t.signals and e in Exit and e in Junction\n        all t: Track |some x: Exit | x in t.succs and x in t.signals and x in Entry and x in Junction\n\t\n}",
                     "ids": [
-                        "wFwLoFHusAdfXLbRc"
+                        "3oMcrkp5rsksEjsa3"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// The station has at least one entry and one exit\n  \t//all t: Track | t.succs in Entry \n  \t//all t: Track | t.succs in Exit\n  \t//some t: Track | t.succs in Exit\n  all t: Track |\n        some e: Entry | e in t.succs and e in t.signals and e in Exit and e in Junction\n        all t: Track |some x: Exit | x in t.succs and x in t.signals and x in Entry and x in Junction\n\t\n}",
+                    "code": "{\n\t// The station has at least one entry and one exit\n\tall t : Track | all tsucc : t.*succs | tsucc.signals!=tsucc.signals-Entry and tsucc.signals!=tsucc.signals-Exit\n}",
                     "ids": [
-                        "3oMcrkp5rsksEjsa3"
+                        "fLzXbeogxEiLe5Ayo"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The station has at least one entry and one exit\n\tall t : Track | all tsucc : t.*succs | t.signals!=t.signals-Entry and t.signals!=t.signals-Exit\n}",
+                    "ids": [
+                        "wFwLoFHusAdfXLbRc"
                     ]
                 }
             ]
@@ -1578,9 +1578,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// The station has at least one entry and one exit\n  all t : Track | some (t & Entry) && some (t & Track)\n\t\n}",
+                    "code": "{\n\t// The station has at least one entry and one exit\n  all t : Track | some en : Entry | en in t\n  all t : Track | some ex : Entry | ex in t \n}",
                     "ids": [
-                        "iDPjHRAmdPp77MTB8"
+                        "QnXqZoP4ECTezdx8y"
                     ]
                 },
                 {
@@ -1592,9 +1592,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// The station has at least one entry and one exit\n  all t : Track | some en : Entry | en in t\n  all t : Track | some ex : Entry | ex in t \n}",
+                    "code": "{\n\t// The station has at least one entry and one exit\n  all t : Track | some (t & Entry) && some (t & Track)\n\t\n}",
                     "ids": [
-                        "QnXqZoP4ECTezdx8y"
+                        "iDPjHRAmdPp77MTB8"
                     ]
                 }
             ]
@@ -1628,9 +1628,9 @@
             "elems": [
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// The station has at least one entry and one exit\n\tsome none\n}",
+                    "code": "{\n\t// The station has at least one entry and one exit\n\tsome e: Entry, x: Exit, t: Track |\n        e != x && e in t && x in t\n}",
                     "ids": [
-                        "qT89ihPPW6y9hiRCt"
+                        "PruqasDnesTpgTZFL"
                     ]
                 },
                 {
@@ -1642,9 +1642,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// The station has at least one entry and one exit\n\tsome e: Entry, x: Exit, t: Track |\n        e != x && e in t && x in t\n}",
+                    "code": "{\n\t// The station has at least one entry and one exit\n\tsome none\n}",
                     "ids": [
-                        "PruqasDnesTpgTZFL"
+                        "qT89ihPPW6y9hiRCt"
                     ]
                 }
             ]
@@ -1654,13 +1654,6 @@
             "group_count": 3,
             "correct": false,
             "elems": [
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// The station has at least one entry and one exit\n\tsuccs in Track one -> some Entry\n  \n  \tsuccs in Track one -> some Exit\n  \n  \tsuccs in Track one -> set Junction\n}",
-                    "ids": [
-                        "SiqcvreEHj7rFbD3L"
-                    ]
-                },
                 {
                     "entry_count": 1,
                     "code": "{\n\t// The station has at least one entry and one exit\n\tsuccs in Track one -> some Entry\n  \n  \tsuccs in Track one -> some Exit\n  \n  \tsuccs in Track one -> lone Junction\n}",
@@ -1673,6 +1666,13 @@
                     "code": "{\n\t// The station has at least one entry and one exit\n\tsuccs in Track one -> some Entry\n  \n  \tsuccs in Track one -> some Exit\n  \n  \tsuccs in Track -> set Junction\n}",
                     "ids": [
                         "zkvaZrZEsqFLkGChJ"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The station has at least one entry and one exit\n\tsuccs in Track one -> some Entry\n  \n  \tsuccs in Track one -> some Exit\n  \n  \tsuccs in Track one -> set Junction\n}",
+                    "ids": [
+                        "SiqcvreEHj7rFbD3L"
                     ]
                 }
             ]
@@ -1752,16 +1752,16 @@
             "elems": [
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// The station has at least one entry and one exit\n  \n  some Exit and some Entry and (all e : Track | some Exit & e.*succs and some Entry & (*succs).e)\n \t\n}",
+                    "code": "{\n\t// The station has at least one entry and one exit\n  some Entry and some Exit and all t : Track | some Exit & t.*succs and t in Entry.*succs  \n\t\n}",
                     "ids": [
-                        "ZewKi2Ydp6jbwAbns"
+                        "Smc84Fjzz8mnxaPdR"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// The station has at least one entry and one exit\n  some Entry and some Exit and all t : Track | some Exit & t.*succs and t in Entry.*succs  \n\t\n}",
+                    "code": "{\n\t// The station has at least one entry and one exit\n  \n  some Exit and some Entry and (all e : Track | some Exit & e.*succs and some Entry & (*succs).e)\n \t\n}",
                     "ids": [
-                        "Smc84Fjzz8mnxaPdR"
+                        "ZewKi2Ydp6jbwAbns"
                     ]
                 }
             ]
@@ -1794,16 +1794,16 @@
             "elems": [
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// The station has at least one entry and one exit\n  \tlone t : Track | t in Entry and t in Exit\n\t\n}",
+                    "code": "{\n\t// The station has at least one entry and one exit\n  \tlone t : Track | t in (Entry & Exit)\n\t\n}",
                     "ids": [
-                        "ZtwiDBqb78EtrbiYq"
+                        "dd2S5u6xzAdpFh6gR"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// The station has at least one entry and one exit\n  \tlone t : Track | t in (Entry & Exit)\n\t\n}",
+                    "code": "{\n\t// The station has at least one entry and one exit\n  \tlone t : Track | t in Entry and t in Exit\n\t\n}",
                     "ids": [
-                        "dd2S5u6xzAdpFh6gR"
+                        "ZtwiDBqb78EtrbiYq"
                     ]
                 }
             ]
@@ -1836,16 +1836,16 @@
             "elems": [
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// The station has at least one entry and one exit\n\tsome e:Entry | some x:Exit | one st: e.^succs | x in st\n}",
+                    "code": "{\n\t// The station has at least one entry and one exit\n\tsome e:Entry | some x:Exit | x in e.^succs\n}",
                     "ids": [
-                        "Ftw9DAiNKgbZgRHsP"
+                        "Y9gyDLbd2BCtny3Nb"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// The station has at least one entry and one exit\n\tsome e:Entry | some x:Exit | x in e.^succs\n}",
+                    "code": "{\n\t// The station has at least one entry and one exit\n\tsome e:Entry | some x:Exit | one st: e.^succs | x in st\n}",
                     "ids": [
-                        "Y9gyDLbd2BCtny3Nb"
+                        "Ftw9DAiNKgbZgRHsP"
                     ]
                 }
             ]
@@ -1938,16 +1938,16 @@
             "elems": [
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// The station has at least one entry and one exit\n\tall t: Track | all en: Entry, ex: Exit | en in t iff ex in t\n}",
+                    "code": "{\n\t// The station has at least one entry and one exit\n\tall t: Track | all en: Entry, ex: Exit | en in t implies ex in t\n}",
                     "ids": [
-                        "rxhJKHDsX9j8Z2jpW"
+                        "2Dmhd72uepWnhd45W"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// The station has at least one entry and one exit\n\tall t: Track | all en: Entry, ex: Exit | en in t implies ex in t\n}",
+                    "code": "{\n\t// The station has at least one entry and one exit\n\tall t: Track | all en: Entry, ex: Exit | en in t iff ex in t\n}",
                     "ids": [
-                        "2Dmhd72uepWnhd45W"
+                        "rxhJKHDsX9j8Z2jpW"
                     ]
                 }
             ]
@@ -2004,16 +2004,16 @@
             "elems": [
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// The station has at least one entry and one exit\n  all t : Track | one (t.^succs & Exit)\n  all t : Track | one (t.^succs & Entry)\n  \n\t\n}",
+                    "code": "{\n\t// The station has at least one entry and one exit\n\tall t: Track | one en: Entry | one e: Exit | en in t.^succs and e in t.^succs\n}",
                     "ids": [
-                        "rAcerFzweapuYggAg"
+                        "zxmG529cBSKrmLh4f"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// The station has at least one entry and one exit\n\tall t: Track | one en: Entry | one e: Exit | en in t.^succs and e in t.^succs\n}",
+                    "code": "{\n\t// The station has at least one entry and one exit\n  all t : Track | one (t.^succs & Exit)\n  all t : Track | one (t.^succs & Entry)\n  \n\t\n}",
                     "ids": [
-                        "zxmG529cBSKrmLh4f"
+                        "rAcerFzweapuYggAg"
                     ]
                 }
             ]
@@ -2417,48 +2417,6 @@
             "elems": [
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// The station has at least one entry and one exit\n\tall t: Track | some e: Exit | some en: Entry | t in Station iff (e in t+t.^succs and en in t+t.^succs) \n}",
-                    "ids": [
-                        "szkjCRhGh5Xe26nzW"
-                    ]
-                }
-            ]
-        },
-        {
-            "entry_count": 1,
-            "group_count": 1,
-            "correct": false,
-            "elems": [
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// The station has at least one entry and one exit\n\tall t: Track | some e: Exit | some en: Entry | t in Station iff (e in t+t.^succs and en in t+t.^succs) \n}",
-                    "ids": [
-                        "Dic33JChzhiMtH3GQ"
-                    ]
-                }
-            ]
-        },
-        {
-            "entry_count": 1,
-            "group_count": 1,
-            "correct": false,
-            "elems": [
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// The station has at least one entry and one exit\n\tall t: Track | some e: Exit | some en: Entry | t in Station iff (e in t+t.^succs and en in t+t.^succs) \n}",
-                    "ids": [
-                        "XFPbCzsd8yt2SmfyM"
-                    ]
-                }
-            ]
-        },
-        {
-            "entry_count": 1,
-            "group_count": 1,
-            "correct": false,
-            "elems": [
-                {
-                    "entry_count": 1,
                     "code": "{\n\t// The station has at least one entry and one exit\n\tall t: Track | lone en: Entry, ex: Exit | en in t.^succs and ex in t.^succs\n}",
                     "ids": [
                         "Fh2qCqSnT7zQDgqRb"
@@ -2767,20 +2725,6 @@
             "elems": [
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// The station has at least one entry and one exit\n\tall t: Track | t in Entry and one suc:t.succs | suc in Exit implies t in Station\n}",
-                    "ids": [
-                        "WTd5ScT8TgSWjK9jK"
-                    ]
-                }
-            ]
-        },
-        {
-            "entry_count": 1,
-            "group_count": 1,
-            "correct": false,
-            "elems": [
-                {
-                    "entry_count": 1,
                     "code": "{\n\t// The station has at least one entry and one exit\n\tall t: Track |all suc:t.succs| some e:Exit | some et:Entry | e in t or e in suc and et in t or et in suc\n}",
                     "ids": [
                         "kX7WAEKciLMpvFkod"
@@ -2812,20 +2756,6 @@
                     "code": "{\n\t// The station has at least one entry and one exit\n\tsome e:Entry | some x:Exit | x in e.^succs or e=x\n}",
                     "ids": [
                         "4RfZcXrfzvXJP4psG"
-                    ]
-                }
-            ]
-        },
-        {
-            "entry_count": 1,
-            "group_count": 1,
-            "correct": false,
-            "elems": [
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// The station has at least one entry and one exit\n\tall t: Track | some e: Exit | some en: Entry | t in Station iff (e in t+t.^succs and en in t+t.^succs) \n}",
-                    "ids": [
-                        "vgxsgQSyfBM4zExRq"
                     ]
                 }
             ]
