@@ -1,38 +1,8 @@
-Alloy is a formal modelling language where that uses sets (named signatures in Alloy) and relations (sets of tuples, named fields in Alloy) to represent information in a domain. Consider, for example, the following Alloy model.
-
-open util/ordering[Value]
-sig Person {
-    likes : set Car,
-    owns : Car -> lone Value
-}
-sig Adult in Person {}
-abstract sig Car {}
-sig Sedan, SUV extends Car {}
-sig Value {}
-
-This model declares a set named Person, a subset of Person named Adult, a set name Car, two extensions (disjoint subsets) of Car named Sedan and SUV, and a set named Value. It also declares a binary relation named likes, that associates each Person with the set of Cars it likes, and ternary relation named owns that associates each Person with the set of Cars it owns and the respective value. When declaring a field we can use other multiplicity keywords instead of set: set means there is an arbitrary number of target elements associated with a source element, lone means there is at most one related element, some means there is at least one related element, and one means there is exactly one related element. When extensions are declared, if the parent signature is declared as abstract then it can only contain elements that are also contained in its extensions. In this model we have two disjoint extensions of abstract set Car, meaning all cars are either sedans or SUVs. A model can use the module ordering to impose a total ordering on a signature. In this example Value is a totally ordered signature. The total ordering is defined in a binary relation called next, that is implicitly declared.
+Alloy is a formal modelling language where that uses sets (named signatures in Alloy) and relations (sets of tuples, named fields in Alloy) to represent information in a domain.
 
 In Alloy we can express requirements about a model using facts specified in relational logic, which is an extension of first-order logic with relational operators. Given a requirement it is useful to have both positive and negative instances to serve as test cases for validation. An instance of a model is a valuation to all declared sets and relations. 
 
-Positive and negative instances can be included as test cases in a model using run commands. A run command includes a specification of the instance using relational logic, a scope that states how many elements of each top-level signature exist, and an expectation that states if the run command should be satisfiable (representing a positive instance) or unsatisfiable (representing a negative instance). To specify an instance with logic we can use an existential quantifiers to capture the elements of each signature of the domain, and then state what are the values of each set and relation using an equality with the name of the set or relation in the left hand side and the value in the right hand side.  To express that a set or relation is empty we can specify that it is equal to the empty set (none) or empty relation of appropriate arity (for example, none->none if the relation is binary). Since there can be multiple total orders we must disambiguate which next relation is being defined using the <: operator with the signature on the left. The same applies if more that one relation is declared with the same name. The scope of run command only needs to define the number of elements that exist in top-level signatures, those that are not subsets of any other. 
-
-For example, if a requirement is "Every person owns a car" the following command specifies a positive instance where this requirement is satisfied. 
-
-run Instance1 {
-    some disj Person1,Person2,Person3 : Person | some disj Car1, Car2 : Car | some disj Value1,Value2,Value3 : Value {
-        Person = Person1 + Person2 + Person3
-		Adult = none
-        Car = Car1 + Car2
-		Sedan = Car1
-		SUV = Car2
-		Value = Value1 + Value2 + Value3
-		likes = none->none
-        owns = Person1->Car1->Value1 + Person2->Car2->Value2 + Person3->Car2->Value2
-		Value <: next = Value1->Value2 + Value2->Value3
-    }
-} for 3 Person, 2 Car, 3 Value expect 1
-
-In the above instance we have three people, named Person1, Person2, and Person3, none of them is an Adult. We have two cars, named Car1 and Car2, the former a Sedan and the latter a SUV. We also have three possible Values, being Value1 the lowest possible and Value3 the highest possible. Person1 owns Car1 with value Value1, and Person2 and Person3 together own Car2 with value Value2. No one likes any car, because relation likes is empty.
+Positive and negative instances can be included as test cases in a model using run commands. A run command includes a specification of the instance using relational logic, a scope that states how many elements of each top-level signature exist, and an expectation that states if the run command should be satisfiable (representing a positive instance) or unsatisfiable (representing a negative instance). To specify an instance with logic we can use an existential quantifiers to capture the elements of each signature of the domain, and then state what are the values of each set and relation using an equality with the name of the set or relation in the left hand side and the value in the right hand side. To express that a set or relation is empty we can specify that it is equal to the empty set (none) or empty relation of appropriate arity (for example, none->none if the relation is binary). Since there can be multiple total orders we must disambiguate which next relation is being defined using the <: operator with the signature on the left. The same applies if more that one relation is declared with the same name. The scope of run command only needs to define the number of elements that exist in top-level signatures, those that are not subsets of any other. 
 
 In the following interaction you will act as an Alloy expert. I will ask you to generate positive and negative instances for different requirements for a given model.
 
@@ -42,6 +12,7 @@ Here are some instructions:
 - All instances should be truly different (be aware that the names of the elements are actually irrelevant).
 - Try to produce minimal instances with few elements.
 - All instances must include a comment explaining in natural language why it is positive or negative.
+- All positive instances should have an expect 1 and all negative an expect 0.
 - All instances must define the scopes for all top-level signatures in the model. 
 - In every instance you must specify the values for all declared sets and relations with an equality restriction.
 - To declare the elements of each signature use a some quantifier with the disj keyword to ensure that all elements are different.

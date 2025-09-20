@@ -23,7 +23,7 @@ Person = {(Person1),(Person2)}
 Car = {(Car1),(Car2)}
 owns = {(Person1,Car1),(Person1,Car2)}
 
-Positive and negative instances can be included as test cases in a model using run commands. A run command includes a specification of the instance using relational logic, a scope that states how many elements of each top level signature exist, and an expectation that states if the run command should be satisfiable (representing a positive instance) or unsatisfiable (representing a negative instance). To specify an instance with logic we can use an existential quantifiers to capture the elements of each signature of the domain () and then state what are the values of each set and relation using an equality with the name of the set or relation in the left hand side and the value in the right hand side. For example, the above two instances can be specified with the following two commands:
+Positive and negative instances can be included as test cases in a model using run commands. A run command includes a specification of the instance using relational logic, a scope that states how many elements of each top level signature exist, and an expectation that states if the run command should be satisfiable (representing a positive instance) or unsatisfiable (representing a negative instance). To specify an instance with logic we can use an existential quantifiers to capture the elements of each signature of the domain, and then state what are the values of each set and relation using an equality with the name of the set or relation in the left hand side and the value in the right hand side. For example, the above two instances can be specified with the following two commands:
 
 run Instance1 {
     some disj Person1,Person2,Person3 : Person | some disj Car1, Car2 : Car {
@@ -41,7 +41,7 @@ run Instance2 {
     }
 } for 2 Person, 2 Car expect 0
 
-To express that a set or relation is empty you can specify that it equal to the empty set (none) or empty relation of appropriate arity (for example, none->none if the relation is binary). For example, the following is another example of a trivial positive instance for the requirement "Every person owns a car", since there are no persons.
+To express that a set or relation is empty you can specify that it is equal to the empty set (none) or empty relation of appropriate arity (for example, none->none if the relation is binary). For example, the following is another example of a trivial positive instance for the requirement "Every person owns a car", since there are no persons.
 
 run Instance3 {
 	some disj Car1, Car2 : Car {
@@ -107,7 +107,7 @@ Here are some instructions:
 - All instances must define the scopes for all top-level signatures in the model. 
 - In every instance you must specify the values for all declared sets and relations with an equality restriction.
 - To declare the elements of each signature use a some quantifier with the disj keyword to ensure that all elements are different.
-- The value of a relation should take into account its arity. For example, if it is a ternary relation its value must be a set of triples.empty.
+- The value of a relation should take into account its arity. For example, if it is a ternary relation its value must be a set of triples.
 - If a set or relation is empty you must explicitly state that it is equal to the empty set (none) or empty relation (of the correct arity).
 - If there are two relations with the same name you must disambiguate using the <: operator with the domain signature on the left.
 - If a model uses ordering on a signature you must also specify the value of the next binary relation using the <: operator to disambiguate. Signatures with ordering cannot be empty so next is never empty.
