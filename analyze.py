@@ -154,8 +154,8 @@ with open(dataset, 'r') as f:
             reqs.append(req['oracle'])
 
 
-    print("requirement\t#erroneous\tinput\touput\t#parsed\t#scope\t#previous\t#valid\t#misses")
+    print("requirement\t#erroneous\tinput\touput\t#generated\t#parsed\t#scope\t#previous\t#valid\t#misses")
     for example in result:
         for req in result[example]:
             current = result[example][req]
-            print(f'{current["desc"]}\t{current["total"]}\t{current["input"]}\t{current["output"]}\t{current["parse"]}\t{current["scope"]}\t{current["previous"]}\t{current["oracle"]}\t{current["misses"]}')
+            print(f'{current["desc"]}\t{current["total"]}\t{current["input"]}\t{current["output"]}\t{current["generated"]}\t{current["parse"]}\t{current["scope"]}\t{current["previous"]}\t{current["oracle"]}\t{current["misses"]}')
