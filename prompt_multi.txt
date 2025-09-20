@@ -1,0 +1,107 @@
+Alloy is a formal modelling language where that uses sets (named signatures in Alloy) and relations (sets of tuples, named fields in Alloy) to represent information in a domain. For example, the Alloy model
+
+sig Person {
+    owns : set Car
+}
+sig Car {}
+
+declares a set named Person, a set name Car, and a binary relation named owns that associates each Person with the set of Cars it owns. When declaring a field we can use other multiplicity keywords instead of set: set means there is an arbitrary number of target elements associated with a source element, lone means there is at most one related element, some means there is at least one related element, and one means there is exactly one related element. If no multiplicity is declared it is by default one.
+
+In Alloy we can express requirements about a model using facts specified in relational logic, which is an extension of first-order logic with relational operators. Given a requirement it is useful to have both positive and negative instances to serve as test cases for validation. An instance of a model is a valuation to all declared sets and relations. 
+
+Positive and negative instances can be included as test cases in a model using run commands. A run command includes a specification of the instance using relational logic, a scope that states how many elements of each top level signature exist, and an expectation that states if the run command should be satisfiable (representing a positive instance) or unsatisfiable (representing a negative instance). To specify an instance with logic we can use an existential quantifiers to capture the elements of each signature of the domain, and then state what are the values of each set and relation using an equality with the name of the set or relation in the left hand side and the value in the right hand side.
+
+For example, if a requirement is "Every person owns a car" the following command specifies a positive instance where this requirement is satisfied. 
+
+run Instance1 {
+    some disj Person1,Person2,Person3 : Person | some disj Car1, Car2 : Car {
+        Person = Person1 + Person2 + Person3
+        Car = Car1 + Car2
+        owns = Person1->Car1 + Person2->Car2 + Person3->Car2
+    }
+} for 3 Person, 2 Car expect 1
+
+In this instance we have three people, named Person1, Person2, and Person3, two cars, named Car1 and Car2, Person1 owns Car1, and Person2 and Person3 together own Car2.
+
+On the other hand, the following is a negative instance where this requirement is not satisfied, since Person2 does not own a car.
+
+run Instance2 {
+    some disj Person1,Person2 : Person | some disj Car1, Car2 : Car {
+        Person = Person1 + Person2
+        Car = Car1 + Car2
+        owns = Person1->Car1 + Person1->Car2
+    }
+} for 2 Person, 2 Car expect 0
+
+To express that a set or relation is empty you can specify that it equal to the empty set (none) or empty relation of appropriate arity (for example, none->none if the relation is binary). For example, the following is another example of a trivial positive instance for the requirement "Every person owns a car", since there are no persons.
+
+run Instance3 {
+	some disj Car1, Car2 : Car {
+		Person = none
+		Car = Car1 + Car2
+		owns = none->none
+	}
+} for 0 Person, 2 Car expect 1
+
+A model can also declare subsets of a signature with keywords in and extends. The difference is that in declares an arbitrary subset while extends declares a subset that is disjoint from any other extension of the same signature. If the parent signature is declared as abstract then it can only contain elements that are also contained in its extensions. The scope of run command only needs to define the number of elements that exist in top-level signatures, those that are not subsets of any other. For example, we could have the following variant of the above model.
+
+sig Person {
+    owns : set Car
+}
+sig Adult in Person {}
+abstract sig Car {}
+sig Sedan, SUV extends Car {}
+
+In this model we have two disjoint extensions of abstract set Car, meaning all cars are either sedans or SUVs. We also have an arbitrary subset of Person that contains all the adult persons. If our requirement is again "Every person owns a car" the first positive instance above could be extended as follows, where no person is an Adult, Car1 is a Sedan and Car2 is a SUV.
+
+run Instance1 {
+    some disj Person1,Person2,Person3 : Person | some disj Car1, Car2 : Car {
+        Person = Person1 + Person2 + Person3
+		Adult = none
+        Car = Car1 + Car2
+		Sedan = Car1
+		SUV = Car2
+        owns = Person1->Car1 + Person2->Car2 + Person3->Car2
+    }
+} for 3 Person, 2 Car expect 1
+
+A model can also declare relations of arity higher than 2 and use the module ordering to impose a total ordering on a signature. That total ordering is implicitly defined in a binary relation called next. For example de following model includes the price of each car that is owned and Value is a totally ordered signature. Relation owns is now a ternary relation.
+
+open util/ordering[Value]
+sig Person {
+    owns : Car -> lone Value
+}
+sig Car {}
+sig Value {}
+
+When specifying an instance for a model that uses ordering we must specify the value of the next total ordering, as done in the following instance. Since there can be multiple total orders you must disambiguate which next relation is being defined using the <: operator with the signature on the left. The same applies if more that one relation is declared with the same name. 
+
+run Instance1 {
+    some disj Person1,Person2,Person3 : Person | some disj Car1, Car2 : Car | some disj Value1,Value2,Value3 : Value {
+        Person = Person1 + Person2 + Person3
+        Car = Car1 + Car2
+		Value = Value1 + Value2 + Value3
+        owns = Person1->Car1->Value1 + Person2->Car2->Value2 + Person3->Car2->Value2
+		Value <: next = Value1->Value2 + Value2->Value3
+    }
+} for 3 Person, 2 Car, 3 Value expect 1
+
+In this instance Car1 has the lowest price, since Value1 is the first element in the total order. Since owns is now a ternary relation its value is defined as sets of triples.
+
+In the following interaction you will act as an Alloy expert. I will ask you to generate positive and negative instances for different requirements for a given model.
+
+Here are some instructions:
+- Do not attempt to formalize the requirement with a fact, just output the requested instances as run commands.
+- I will clearly state how many positive and negative instances you should output. 
+- All instances should be truly different (be aware that the names of the elements are actually irrelevant).
+- Try to produce minimal instances with few elements.
+- All instances must include a comment explaining in natural language why it is positive or negative.
+- All instances must define the scopes for all top-level signatures in the model. 
+- In every instance you must specify the values for all declared sets and relations with an equality restriction.
+- To declare the elements of each signature use a some quantifier with the disj keyword to ensure that all elements are different.
+- The value of a relation should take into account its arity. For example, if it is a ternary relation its value must be a set of triples.empty.
+- If a set or relation is empty you must explicitly state that it is equal to the empty set (none) or empty relation (of the correct arity).
+- If there are two relations with the same name you must disambiguate using the <: operator with the domain signature on the left.
+- If a model uses ordering on a signature you must also specify the value of the next binary relation using the <: operator to disambiguate. Signatures with ordering cannot be empty so next is never empty.
+- If the value of some sets and relations is irrelevant for a given requirement you can just state that they are empty or assign them random values.
+- Generate only Alloy code, do not include any explanations outside the code.
