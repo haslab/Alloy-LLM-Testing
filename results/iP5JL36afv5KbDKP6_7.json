@@ -3,7 +3,7 @@
     "pred": "this/inv8",
     "entry_count": 928,
     "group_count": 85,
-    "duration": 63,
+    "duration": 66,
     "scope": 3,
     "groups": [
         {
@@ -434,12 +434,12 @@
                 },
                 {
                     "entry_count": 4,
-                    "code": "{\n\t// A professor cannot teach herself\n\tall pr : Professor | no c : Course | c in pr.enrolled and c in pr.teaches\n}",
+                    "code": "{\n\t// A professor cannot teach herself\n\tall p : Professor | no c : p.teaches | c in p.enrolled\n}",
                     "ids": [
-                        "xXuYiM7xMSjd6AWZE",
-                        "m4Lqxa3PHpJ6zt648",
-                        "J4zehAxC4jXaLEQks",
-                        "qW2mAx2xqZ4b5YTrt"
+                        "zTcS2FGh4ia5dAhjv",
+                        "6ReW6uYbArPJecQ7b",
+                        "73APDk9HxCbSBBQmT",
+                        "5W6Y8zBL6QnSWpF3e"
                     ]
                 },
                 {
@@ -464,30 +464,12 @@
                 },
                 {
                     "entry_count": 4,
-                    "code": "{\n\t// A professor cannot teach herself\n\tall p : Professor | no c : p.teaches | c in p.enrolled\n}",
+                    "code": "{\n\t// A professor cannot teach herself\n\tall pr : Professor | no c : Course | c in pr.enrolled and c in pr.teaches\n}",
                     "ids": [
-                        "zTcS2FGh4ia5dAhjv",
-                        "6ReW6uYbArPJecQ7b",
-                        "73APDk9HxCbSBBQmT",
-                        "5W6Y8zBL6QnSWpF3e"
-                    ]
-                },
-                {
-                    "entry_count": 3,
-                    "code": "{\n\t// A professor cannot teach herself\n  all c : Course | all p : Professor |\n not (c in p.teaches and c in p.enrolled)\n  \n\n}",
-                    "ids": [
-                        "8JFJqQyvuRDWEgX3x",
-                        "EMu8z52AnFfdxcntD",
-                        "hCp4xvuGttiYPcK23"
-                    ]
-                },
-                {
-                    "entry_count": 3,
-                    "code": "{\n\t// A professor cannot teach herself\n\tall p: Professor | all c: Course | (p in enrolled.c) implies (p not in teaches.c)\n}",
-                    "ids": [
-                        "KQppvj9FjbENNLo3X",
-                        "NzhtFRajsmTvBKyHf",
-                        "e2Xs5ByR2raa4tfGo"
+                        "xXuYiM7xMSjd6AWZE",
+                        "m4Lqxa3PHpJ6zt648",
+                        "J4zehAxC4jXaLEQks",
+                        "qW2mAx2xqZ4b5YTrt"
                     ]
                 },
                 {
@@ -497,15 +479,6 @@
                         "Q5NZsEv8JaTpF8hwE",
                         "HJChi4HWxTRvcfJXs",
                         "WF6rEyuR62WTNspQi"
-                    ]
-                },
-                {
-                    "entry_count": 3,
-                    "code": "{\n\t// A professor cannot teach herself\n\t\n  \tall p : Professor, c : Course | p->c in teaches implies p->c not in enrolled\n}",
-                    "ids": [
-                        "FKPndvKHsw4scwPyF",
-                        "TEddpFgocMGFerL9g",
-                        "afLvjkhozwNPhtAww"
                     ]
                 },
                 {
@@ -527,27 +500,62 @@
                     ]
                 },
                 {
+                    "entry_count": 3,
+                    "code": "{\n\t// A professor cannot teach herself\n  all c : Course | all p : Professor |\n not (c in p.teaches and c in p.enrolled)\n  \n\n}",
+                    "ids": [
+                        "8JFJqQyvuRDWEgX3x",
+                        "EMu8z52AnFfdxcntD",
+                        "hCp4xvuGttiYPcK23"
+                    ]
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// A professor cannot teach herself\n\t\n  \tall p : Professor, c : Course | p->c in teaches implies p->c not in enrolled\n}",
+                    "ids": [
+                        "FKPndvKHsw4scwPyF",
+                        "TEddpFgocMGFerL9g",
+                        "afLvjkhozwNPhtAww"
+                    ]
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// A professor cannot teach herself\n\tall p: Professor | all c: Course | (p in enrolled.c) implies (p not in teaches.c)\n}",
+                    "ids": [
+                        "KQppvj9FjbENNLo3X",
+                        "NzhtFRajsmTvBKyHf",
+                        "e2Xs5ByR2raa4tfGo"
+                    ]
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// A professor cannot teach herself\n\tall p : Professor | p.teaches = p.teaches - p.enrolled\n}",
+                    "ids": [
+                        "oCmWj3AQpprXiscoC",
+                        "jMrSh7sujPZTc3qf9"
+                    ]
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// A professor cannot teach herself\n    all p : Professor | all c : Course | not (p in teaches.c and p in enrolled.c)\n\n  \n  \tall p : Professor | no (p.teaches & p.enrolled)\n\n\t// OR, symmetrically, \n\n\t// all c : Course | no (teaches.c & enrolled.c)\n}",
+                    "ids": [
+                        "8HSqxBCAnzAMtBuGF",
+                        "7fzc7Bv6myah9NWps"
+                    ]
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// A professor cannot teach herself\n  all p : Professor | all c : Course | not (p->c in teaches and p->c in enrolled)\n\n}",
+                    "ids": [
+                        "apWY4o4msAnZxhMnF",
+                        "Hua4TtqHSkGsDvTZ5"
+                    ]
+                },
+                {
                     "entry_count": 2,
                     "code": "{\n\t// A professor cannot teach herself\n\tall t : Professor | all c : Course | c not in (t.enrolled & t.teaches)\n}",
                     "ids": [
                         "i2FPsfqFXApqAoL59",
                         "eun4bk4yDj5eD4qka"
-                    ]
-                },
-                {
-                    "entry_count": 2,
-                    "code": "{\n\t// A professor cannot teach herself\n  \tall p: Professor | p not in p.teaches.~enrolled\n\n}",
-                    "ids": [
-                        "NBGN5ZWF8DE4h33kB",
-                        "a7oAPuT4vjurxcPcM"
-                    ]
-                },
-                {
-                    "entry_count": 2,
-                    "code": "{\n\t// A professor cannot teach herself\n\tall p : Professor | not (p in teaches.(p.enrolled) )\n}",
-                    "ids": [
-                        "XrdKYvNKivwiNesws",
-                        "EcjFoAD44SnRX5ohy"
                     ]
                 },
                 {
@@ -568,42 +576,10 @@
                 },
                 {
                     "entry_count": 2,
-                    "code": "{\n\t// A professor cannot teach herself\n  all p : Professor | all c : Course | not (p->c in teaches and p->c in enrolled)\n\n}",
+                    "code": "{\n\t// A professor cannot teach herself\n\tall x : Professor | all c : Course | no x.teaches & x.enrolled\n}",
                     "ids": [
-                        "apWY4o4msAnZxhMnF",
-                        "Hua4TtqHSkGsDvTZ5"
-                    ]
-                },
-                {
-                    "entry_count": 2,
-                    "code": "{\n\t// A professor cannot teach herself\n  \tall p: Professor | #(p.teaches & p.enrolled) = 0\n\n}",
-                    "ids": [
-                        "JDpCvaEpJQ27cKBu8",
-                        "gJuwhi2CCzPPrz2cv"
-                    ]
-                },
-                {
-                    "entry_count": 2,
-                    "code": "{\n\t// A professor cannot teach herself\n    all p : Professor | all c : Course | not (p in teaches.c and p in enrolled.c)\n\n  \n  \tall p : Professor | no (p.teaches & p.enrolled)\n\n\t// OR, symmetrically, \n\n\t// all c : Course | no (teaches.c & enrolled.c)\n}",
-                    "ids": [
-                        "8HSqxBCAnzAMtBuGF",
-                        "7fzc7Bv6myah9NWps"
-                    ]
-                },
-                {
-                    "entry_count": 2,
-                    "code": "{\n\t// A professor cannot teach herself\n  \tall p : Professor, c: p.enrolled | p not in teaches.c\n\n}",
-                    "ids": [
-                        "mK8ssoF3yzaSh5BdH",
-                        "yao9BndaDFmLnKoFQ"
-                    ]
-                },
-                {
-                    "entry_count": 2,
-                    "code": "{\n\t// A professor cannot teach herself\n\tall p : Professor | p.teaches = p.teaches - p.enrolled\n}",
-                    "ids": [
-                        "oCmWj3AQpprXiscoC",
-                        "jMrSh7sujPZTc3qf9"
+                        "faC4Gkyeeu2ikxEsv",
+                        "4khvcEc8msNGdR9ye"
                     ]
                 },
                 {
@@ -616,17 +592,55 @@
                 },
                 {
                     "entry_count": 2,
-                    "code": "{\n\t// A professor cannot teach herself\n\tall x : Professor | all c : Course | no x.teaches & x.enrolled\n}",
+                    "code": "{\n\t// A professor cannot teach herself\n  \tall p : Professor, c: p.enrolled | p not in teaches.c\n\n}",
                     "ids": [
-                        "faC4Gkyeeu2ikxEsv",
-                        "4khvcEc8msNGdR9ye"
+                        "mK8ssoF3yzaSh5BdH",
+                        "yao9BndaDFmLnKoFQ"
+                    ]
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// A professor cannot teach herself\n  \tall p: Professor | #(p.teaches & p.enrolled) = 0\n\n}",
+                    "ids": [
+                        "JDpCvaEpJQ27cKBu8",
+                        "gJuwhi2CCzPPrz2cv"
+                    ]
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// A professor cannot teach herself\n  \tall p: Professor | p not in p.teaches.~enrolled\n\n}",
+                    "ids": [
+                        "NBGN5ZWF8DE4h33kB",
+                        "a7oAPuT4vjurxcPcM"
+                    ]
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// A professor cannot teach herself\n\tall p : Professor | not (p in teaches.(p.enrolled) )\n}",
+                    "ids": [
+                        "XrdKYvNKivwiNesws",
+                        "EcjFoAD44SnRX5ohy"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// A professor cannot teach herself\n\tall p:Professor | (no c:Course | p in teaches.c and p in enrolled.c)\n}",
+                    "code": "{\n\t// A professor cannot teach herself\n\tall t : Professor | all cr : t.teaches | t.enrolled = t.enrolled-cr\n}",
                     "ids": [
-                        "6MLKbiN7toP3FToxD"
+                        "aSajJYvi69fWeAEK7"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A professor cannot teach herself\n\tno p: Professor |\n  \t\tsome c: Course |\n  \t\t\tc in p.teaches and p in enrolled.c \n}",
+                    "ids": [
+                        "Dogagh27krG53NEDq"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A professor cannot teach herself\n  \tall p : Professor | p not in teaches.(p.enrolled)\n\t// all p : Professor | no (p.teaches & p.enrolled)\n}",
+                    "ids": [
+                        "X2XCr6bmcinZTEAzM"
                     ]
                 },
                 {
@@ -645,16 +659,16 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// A professor cannot teach herself\n  \tall p : Professor | p not in teaches.(p.enrolled)\n\t// all p : Professor | no (p.teaches & p.enrolled)\n}",
+                    "code": "{\n\t// A professor cannot teach herself\n\tno p: Professor |\n  \t\tsome c: Course |\n  \t\t\tc in p.teaches and p in c.~enrolled\n}",
                     "ids": [
-                        "X2XCr6bmcinZTEAzM"
+                        "wRP3LTEa5L9CwqE23"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// A professor cannot teach herself\n\n\t// all p : Professor | all c : Course |\n\t//  not (p->c in teaches and p->c in enrolled)\n\n\t// all p : Professor | all c : Course | not (p->c in teaches & enrolled)\n \n\tall p : Professor | no c : Course | p->c in teaches & enrolled\n\n\t// all p : Professor | no (p.teaches & p.enrolled)\n\n\t// all c : Course | no (teaches.c & enrolled.c)\n\n}",
+                    "code": "{\n\t// A professor cannot teach herself\n\tall p: Professor | no c:Course | p->c in teaches and p->c in enrolled\n\n}",
                     "ids": [
-                        "9rjreYBtSGKjnPhG7"
+                        "sSoyfMwQ5sZSMMwME"
                     ]
                 },
                 {
@@ -673,9 +687,16 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// A professor cannot teach herself\n\tno p : Professor | some c : Course | c in p.enrolled and c in p.teaches\n}",
+                    "code": "{\n\t// A professor cannot teach herself\n\n\t// all p : Professor | all c : Course |\n\t//  not (p->c in teaches and p->c in enrolled)\n\n\t// all p : Professor | all c : Course | not (p->c in teaches & enrolled)\n \n\tall p : Professor | no c : Course | p->c in teaches & enrolled\n\n\t// all p : Professor | no (p.teaches & p.enrolled)\n\n\t// all c : Course | no (teaches.c & enrolled.c)\n\n}",
                     "ids": [
-                        "ndxQsoPEscuHb3s5K"
+                        "9rjreYBtSGKjnPhG7"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A professor cannot teach herself\n\tall p:Professor | (no c:Course | p in teaches.c and p in enrolled.c)\n}",
+                    "ids": [
+                        "6MLKbiN7toP3FToxD"
                     ]
                 },
                 {
@@ -694,9 +715,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// A professor cannot teach herself\n\tall t : Professor | all cr : t.teaches | t.enrolled = t.enrolled-cr\n}",
+                    "code": "{\n\t// A professor cannot teach herself\n\tno p : Professor | some c : Course | c in p.enrolled and c in p.teaches\n}",
                     "ids": [
-                        "aSajJYvi69fWeAEK7"
+                        "ndxQsoPEscuHb3s5K"
                     ]
                 },
                 {
@@ -705,33 +726,12 @@
                     "ids": [
                         "qvZ5NTk6H7WzBdzj4"
                     ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// A professor cannot teach herself\n\tno p: Professor |\n  \t\tsome c: Course |\n  \t\t\tc in p.teaches and p in c.~enrolled\n}",
-                    "ids": [
-                        "wRP3LTEa5L9CwqE23"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// A professor cannot teach herself\n\tno p: Professor |\n  \t\tsome c: Course |\n  \t\t\tc in p.teaches and p in enrolled.c \n}",
-                    "ids": [
-                        "Dogagh27krG53NEDq"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// A professor cannot teach herself\n\tall p: Professor | no c:Course | p->c in teaches and p->c in enrolled\n\n}",
-                    "ids": [
-                        "sSoyfMwQ5sZSMMwME"
-                    ]
                 }
             ]
         },
         {
-            "entry_count": 196,
-            "group_count": 48,
+            "entry_count": 194,
+            "group_count": 46,
             "correct": true,
             "elems": [
                 {
@@ -874,19 +874,6 @@
                 },
                 {
                     "entry_count": 7,
-                    "code": "{\n\t// A professor cannot teach herself  \n  all p : Professor | not p in p.teaches \n  \n}",
-                    "ids": [
-                        "4k35ESgP2f5krJpH9",
-                        "6Fbaawto5RNZzakY8",
-                        "pYMhvNjaaqLzkQjGX",
-                        "KgQnHHFdqfkAyjwMQ",
-                        "BXxzuXHfagyD6zGNh",
-                        "rvFmWREJnbGFNnZfb",
-                        "xzLo2cqjF9qpB6teq"
-                    ]
-                },
-                {
-                    "entry_count": 7,
                     "code": "{\n\t// A professor cannot teach herself\n  \tall p : Professor | no(p.teaches & p)\n\n}",
                     "ids": [
                         "EauWvd3b3t8PnmJ5f",
@@ -896,6 +883,19 @@
                         "t4sMdAYgwyJG2Q7vq",
                         "fWucQw8zJqSuJXvRk",
                         "wD3HkzKe36wzcT9mp"
+                    ]
+                },
+                {
+                    "entry_count": 7,
+                    "code": "{\n\t// A professor cannot teach herself  \n  all p : Professor | not p in p.teaches \n  \n}",
+                    "ids": [
+                        "4k35ESgP2f5krJpH9",
+                        "6Fbaawto5RNZzakY8",
+                        "pYMhvNjaaqLzkQjGX",
+                        "KgQnHHFdqfkAyjwMQ",
+                        "BXxzuXHfagyD6zGNh",
+                        "rvFmWREJnbGFNnZfb",
+                        "xzLo2cqjF9qpB6teq"
                     ]
                 },
                 {
@@ -923,16 +923,6 @@
                 },
                 {
                     "entry_count": 4,
-                    "code": "{\n\t// A professor cannot teach herself  \n\tall p: Professor, c: Course | p !in c.teaches\n\n}",
-                    "ids": [
-                        "GqCQtwfz32j7nobru",
-                        "FXCgW6NvRBhsT56mq",
-                        "EEPkstCNawwSboCYD",
-                        "dhQZzyp8aHfkLBJo2"
-                    ]
-                },
-                {
-                    "entry_count": 4,
                     "code": "{\n\t// A professor cannot teach herself\n  all p: Professor | p not in p.teaches.enrolled\n}",
                     "ids": [
                         "HQk5eitf54y7gDcBR",
@@ -942,12 +932,13 @@
                     ]
                 },
                 {
-                    "entry_count": 3,
-                    "code": "{\n\t// A professor cannot teach herself  \n  all p: Professor | no c: Course | p in c.teaches\n\n\n}",
+                    "entry_count": 4,
+                    "code": "{\n\t// A professor cannot teach herself  \n\tall p: Professor, c: Course | p !in c.teaches\n\n}",
                     "ids": [
-                        "LFuvajjKrT3tnGdkY",
-                        "B96QoMfsEWrdPiPqZ",
-                        "pieY4x4LD5HGWNhGp"
+                        "GqCQtwfz32j7nobru",
+                        "FXCgW6NvRBhsT56mq",
+                        "EEPkstCNawwSboCYD",
+                        "dhQZzyp8aHfkLBJo2"
                     ]
                 },
                 {
@@ -960,11 +951,20 @@
                     ]
                 },
                 {
-                    "entry_count": 2,
-                    "code": "{\n\t// A professor cannot teach herself\n\tall p: Person | p in Professor implies p not in p.teaches\n}",
+                    "entry_count": 3,
+                    "code": "{\n\t// A professor cannot teach herself  \n  all p: Professor | no c: Course | p in c.teaches\n\n\n}",
                     "ids": [
-                        "B8uE4sr7dC9BMEM5k",
-                        "TypSWv6KYaWH5jwWa"
+                        "LFuvajjKrT3tnGdkY",
+                        "B96QoMfsEWrdPiPqZ",
+                        "pieY4x4LD5HGWNhGp"
+                    ]
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// A professor cannot teach herself\n\tall p : Professor | some p.teaches => p not in p.enrolled\n}",
+                    "ids": [
+                        "FFezsLfJ5KReM36Dx",
+                        "HNAKuNsopH6rMubm4"
                     ]
                 },
                 {
@@ -985,10 +985,10 @@
                 },
                 {
                     "entry_count": 2,
-                    "code": "{\n\t// A professor cannot teach herself\n  all p1,p2:Professor | p1.teaches in p2.enrolled or p2.teaches in p1.enrolled implies p1 != p2\n\n}",
+                    "code": "{\n\t// A professor cannot teach herself\n\tall p : Professor | not (p in teaches.p)\n}",
                     "ids": [
-                        "sEwEieDGyTxDfnKCD",
-                        "bpbu2DchMsbNLbW6n"
+                        "BDWpQ3xM8uAhHt7or",
+                        "8BifYx5Jd9JrtwtXZ"
                     ]
                 },
                 {
@@ -1001,123 +1001,25 @@
                 },
                 {
                     "entry_count": 2,
-                    "code": "{\n\t// A professor cannot teach herself\n\tall p : Professor | not (p in teaches.p)\n}",
+                    "code": "{\n\t// A professor cannot teach herself\n  all p1,p2:Professor | p1.teaches in p2.enrolled or p2.teaches in p1.enrolled implies p1 != p2\n\n}",
                     "ids": [
-                        "BDWpQ3xM8uAhHt7or",
-                        "8BifYx5Jd9JrtwtXZ"
+                        "sEwEieDGyTxDfnKCD",
+                        "bpbu2DchMsbNLbW6n"
                     ]
                 },
                 {
                     "entry_count": 2,
-                    "code": "{\n\t// A professor cannot teach herself\n\tall p : Professor | some p.teaches => p not in p.enrolled\n}",
+                    "code": "{\n\t// A professor cannot teach herself\n\tall p: Person | p in Professor implies p not in p.teaches\n}",
                     "ids": [
-                        "FFezsLfJ5KReM36Dx",
-                        "HNAKuNsopH6rMubm4"
+                        "B8uE4sr7dC9BMEM5k",
+                        "TypSWv6KYaWH5jwWa"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// A professor cannot teach herself\n  \tall p : Person | p in p.teaches implies p in Professor\n\n}",
+                    "code": "{\n\t// A professor cannot teach herself\nall p : Professor | all c : p.teaches | not (p in c.enrolled)\n}",
                     "ids": [
-                        "h7BGxHAqQQxwm7WMH"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// A professor cannot teach herself\n all p: Person | p.enrolled !=none implies p not in p.teaches\n}",
-                    "ids": [
-                        "fcuRKb2DqHaWnRkdJ"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// A professor cannot teach herself\n  all p:Professor, c:p.teaches |\n  \tp not in c.grades.Person\n  \n\n}",
-                    "ids": [
-                        "4Y3wzSSEgMiANyRsa"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// A professor cannot teach herself\n\tno p : Professor | p in p.^teaches\n}",
-                    "ids": [
-                        "gdYyL26ro6RQF4PdB"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// A professor cannot teach herself\n  \t all p : Professor | no c : Course | p in c.teaches and p in c.teaches\n\n}",
-                    "ids": [
-                        "HMcabrLvzTbkGBm5j"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// A professor cannot teach herself\n\tall p: Professor | all c: Course | c in p.teaches implies c not in c.enrolled\n}",
-                    "ids": [
-                        "YJdbhX6YGvTaaWsf5"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// A professor cannot teach herself\n  all p1,p2:Professor,c:Course | p1.teaches in p2.enrolled or p2.teaches in p1.enrolled implies p1 != p2\n\n}",
-                    "ids": [
-                        "LvG5C5T8g6qoeBuoM"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// A professor cannot teach herself\n\tall p : Professor | not (p in p.enrolled.teaches)\n}",
-                    "ids": [
-                        "8GdYYx5to4NJsFQBb"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// A professor cannot teach herself\n  \tno p : Professor |\n\t\tp in p.teaches & p.enrolled\n\n}",
-                    "ids": [
-                        "ofk4tycqmCws7omMm"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// A professor cannot teach herself\n\tno (teaches & iden)\n}",
-                    "ids": [
-                        "r6RjZ4jtnE38gLgaL"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// A professor cannot teach herself\n\tinv2\n}",
-                    "ids": [
-                        "R2QJ2bB7nJf5JENfo"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// A professor cannot teach herself\n\tall s : Professor | no(teaches.s & s.enrolled)\n}",
-                    "ids": [
-                        "LwQrGifQuqb9QR6zh"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// A professor cannot teach herself\n  \tall p : Professor, c : p.teaches |\n  \t\tp.teaches not in enrolled.c\n\n}",
-                    "ids": [
-                        "6p5g5zYKHXzJZKvCT"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// A professor cannot teach herself\n  all p : Professor | no c : p.teaches | p in c.enrolled\n}",
-                    "ids": [
-                        "NfJtxXdqy9qYrwPJn"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// A professor cannot teach herself\n\tinv1\n}",
-                    "ids": [
-                        "8tuh6726RWpXA6xwD"
+                        "EthrQrM44f2mHQZez"
                     ]
                 },
                 {
@@ -1129,51 +1031,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// A professor cannot teach herself\n\tall p:Professor , c:Course| (p in teaches.c) implies p not in c\n\n}",
+                    "code": "{\n\t// A professor cannot teach herself\n\tall p: Professor | all c: Course | c in p.teaches implies c not in c.enrolled\n}",
                     "ids": [
-                        "55Zck4kLDrSgz6j5R"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// A professor cannot teach herself\n  \tall p : Professor | p.teaches = p.teaches - p\n}",
-                    "ids": [
-                        "rykeWe9qSz8Rca4tf"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// A professor cannot teach herself\nall p : Professor | all c : p.teaches | not (p in c.grades.Person)\n}",
-                    "ids": [
-                        "6EWWxvekC8gzST2pX"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// A professor cannot teach herself\n\tno (teaches & enrolled & iden)\n}",
-                    "ids": [
-                        "wDKEhkRbNz69iL9ya"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// A professor cannot teach herself\n  \tall p : Professor | no(enrolled.p.teaches & p)\n\n}",
-                    "ids": [
-                        "M4fFw7DLLXhQEKZ7x"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// A professor cannot teach herself\n           no (teaches.(~(enrolled))) or (iden not in teaches.(~(enrolled)))\n\n\n\n\n\n}",
-                    "ids": [
-                        "QJcmzHDTE8RRw4W8e"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// A professor cannot teach herself\nall p : Professor | no c : p.teaches | p in c.grades.Person\n}",
-                    "ids": [
-                        "RTohtEr23kCF8ysp3"
+                        "YJdbhX6YGvTaaWsf5"
                     ]
                 },
                 {
@@ -1185,6 +1045,76 @@
                 },
                 {
                     "entry_count": 1,
+                    "code": "{\n\t// A professor cannot teach herself\n\tno (teaches & enrolled & iden)\n}",
+                    "ids": [
+                        "wDKEhkRbNz69iL9ya"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A professor cannot teach herself\n all p: Person | p.enrolled !=none implies p not in p.teaches\n}",
+                    "ids": [
+                        "fcuRKb2DqHaWnRkdJ"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A professor cannot teach herself\n           no (teaches.(~(enrolled))) or (iden not in teaches.(~(enrolled)))\n\n\n\n\n\n}",
+                    "ids": [
+                        "QJcmzHDTE8RRw4W8e"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A professor cannot teach herself\n  all p : Professor | no c : p.teaches | p in c.enrolled\n}",
+                    "ids": [
+                        "NfJtxXdqy9qYrwPJn"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A professor cannot teach herself\n  all p1,p2:Professor,c:Course | p1.teaches in p2.enrolled or p2.teaches in p1.enrolled implies p1 != p2\n\n}",
+                    "ids": [
+                        "LvG5C5T8g6qoeBuoM"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A professor cannot teach herself\n  \tno p : Professor |\n\t\tp in p.teaches & p.enrolled\n\n}",
+                    "ids": [
+                        "ofk4tycqmCws7omMm"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A professor cannot teach herself\n\tno p : Professor | p in p.^teaches\n}",
+                    "ids": [
+                        "gdYyL26ro6RQF4PdB"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A professor cannot teach herself\nall p : Professor | all c : p.teaches | not (p in c.grades.Person)\n}",
+                    "ids": [
+                        "6EWWxvekC8gzST2pX"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A professor cannot teach herself\n  \tall p : Professor | p.teaches = p.teaches - p\n}",
+                    "ids": [
+                        "rykeWe9qSz8Rca4tf"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A professor cannot teach herself\n\tall s : Professor | no(teaches.s & s.enrolled)\n}",
+                    "ids": [
+                        "LwQrGifQuqb9QR6zh"
+                    ]
+                },
+                {
+                    "entry_count": 1,
                     "code": "{\n\t// A professor cannot teach herself\n\n\tall p : Professor | not p->p in teaches \n}",
                     "ids": [
                         "Eq3fRTRiS3PZodsF7"
@@ -1192,9 +1122,30 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// A professor cannot teach herself\n  \tall p : Person | p in Professor implies no(p.teaches & p)\n\n}",
+                    "code": "{\n\t// A professor cannot teach herself\n\tall p : Professor | not (p in p.enrolled.teaches)\n}",
                     "ids": [
-                        "tZRQkZhznZCCu5MqS"
+                        "8GdYYx5to4NJsFQBb"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A professor cannot teach herself\n  \tall p : Professor | no(enrolled.p.teaches & p)\n\n}",
+                    "ids": [
+                        "M4fFw7DLLXhQEKZ7x"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A professor cannot teach herself\n\tall p:Professor , c:Course| (p in teaches.c) implies p not in c\n\n}",
+                    "ids": [
+                        "55Zck4kLDrSgz6j5R"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A professor cannot teach herself\nall p : Professor | no c : p.teaches | p in c.grades.Person\n}",
+                    "ids": [
+                        "RTohtEr23kCF8ysp3"
                     ]
                 },
                 {
@@ -1206,6 +1157,13 @@
                 },
                 {
                     "entry_count": 1,
+                    "code": "{\n\t// A professor cannot teach herself\n  \t all p : Professor | no c : Course | p in c.teaches and p in c.teaches\n\n}",
+                    "ids": [
+                        "HMcabrLvzTbkGBm5j"
+                    ]
+                },
+                {
+                    "entry_count": 1,
                     "code": "{\n\t// A professor cannot teach herself\n  \tall p : Professor, c: p.enrolled | p not in c.teaches\n\n}",
                     "ids": [
                         "xh5nNra8NucRwiSdo"
@@ -1213,9 +1171,37 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// A professor cannot teach herself\nall p : Professor | all c : p.teaches | not (p in c.enrolled)\n}",
+                    "code": "{\n\t// A professor cannot teach herself\n  \tall p : Professor, c : p.teaches |\n  \t\tp.teaches not in enrolled.c\n\n}",
                     "ids": [
-                        "EthrQrM44f2mHQZez"
+                        "6p5g5zYKHXzJZKvCT"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A professor cannot teach herself\n\tno (teaches & iden)\n}",
+                    "ids": [
+                        "r6RjZ4jtnE38gLgaL"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A professor cannot teach herself\n  all p:Professor, c:p.teaches |\n  \tp not in c.grades.Person\n  \n\n}",
+                    "ids": [
+                        "4Y3wzSSEgMiANyRsa"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A professor cannot teach herself\n  \tall p : Person | p in p.teaches implies p in Professor\n\n}",
+                    "ids": [
+                        "h7BGxHAqQQxwm7WMH"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A professor cannot teach herself\n  \tall p : Person | p in Professor implies no(p.teaches & p)\n\n}",
+                    "ids": [
+                        "tZRQkZhznZCCu5MqS"
                     ]
                 }
             ]
@@ -1356,15 +1342,6 @@
                 },
                 {
                     "entry_count": 3,
-                    "code": "{\n\t// A professor cannot teach herself\n\tall p: Person | all c: Course | c in p.enrolled implies not c in p.teaches\n}",
-                    "ids": [
-                        "7spj5saXc8xxNRDGY",
-                        "6bjuFWuRttwRSWNFF",
-                        "Yun49oKqXD78Wce6e"
-                    ]
-                },
-                {
-                    "entry_count": 3,
                     "code": "{\n\t// A professor cannot teach herself\n\tno iden & teaches.~enrolled\n}",
                     "ids": [
                         "QBATJPH2MjSgaQ6b3",
@@ -1373,11 +1350,12 @@
                     ]
                 },
                 {
-                    "entry_count": 2,
-                    "code": "{\n\t// A professor cannot teach herself\n  all p: Professor | no (p.teaches & p.enrolled)\n  no(teaches & enrolled)\n\n}",
+                    "entry_count": 3,
+                    "code": "{\n\t// A professor cannot teach herself\n\tall p: Person | all c: Course | c in p.enrolled implies not c in p.teaches\n}",
                     "ids": [
-                        "32QQCLjTBNn445GhC",
-                        "czwfxzBmyMA2bqdt3"
+                        "7spj5saXc8xxNRDGY",
+                        "6bjuFWuRttwRSWNFF",
+                        "Yun49oKqXD78Wce6e"
                     ]
                 },
                 {
@@ -1413,52 +1391,11 @@
                     ]
                 },
                 {
-                    "entry_count": 1,
-                    "code": "{\n\t// A professor cannot teach herself\n\tall p: Person | no c: Course | c in p.enrolled and c in p.teaches\n}",
+                    "entry_count": 2,
+                    "code": "{\n\t// A professor cannot teach herself\n  all p: Professor | no (p.teaches & p.enrolled)\n  no(teaches & enrolled)\n\n}",
                     "ids": [
-                        "o2pPyHSTMmc2wn9Bb"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// A professor cannot teach herself\n\tall p : Person , c : Course | not(c in p.teaches and c in p.enrolled)\n}",
-                    "ids": [
-                        "PG8wYfFssvZRuiPuD"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// A professor cannot teach herself\n\tteaches & enrolled = none->none\n}",
-                    "ids": [
-                        "a4AQnGw2RCEN3xgtA"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// A professor cannot teach herself\n\tno (~enrolled).teaches & iden\n}",
-                    "ids": [
-                        "msuWa7SfAFNteftfJ"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// A professor cannot teach herself\n  all p1,p2:Person, c:Course| c in p1.teaches implies c not in p1.enrolled\n\n}",
-                    "ids": [
-                        "A8EExf3ESEvbkmzAM"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// A professor cannot teach herself\n  \tall p : Person, c : Course | c in p.enrolled implies c not in p.teaches \n\n}",
-                    "ids": [
-                        "vPoMNFvJewc7782dt"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// A professor cannot teach herself\n\tall p: teaches.Course | p not in enrolled.(p.teaches)\n}",
-                    "ids": [
-                        "y8s4WRhC2KxbmTMyR"
+                        "32QQCLjTBNn445GhC",
+                        "czwfxzBmyMA2bqdt3"
                     ]
                 },
                 {
@@ -1473,6 +1410,55 @@
                     "code": "{\n\t// A professor cannot teach herself\n\tall p: Person, c: Course | p in teaches.c implies p not in enrolled.c\n}",
                     "ids": [
                         "Tk9Dq3ELk4KcCeNtq"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A professor cannot teach herself\n\tno (~enrolled).teaches & iden\n}",
+                    "ids": [
+                        "msuWa7SfAFNteftfJ"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A professor cannot teach herself\n  \tall p : Person, c : Course | c in p.enrolled implies c not in p.teaches \n\n}",
+                    "ids": [
+                        "vPoMNFvJewc7782dt"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A professor cannot teach herself\n\tteaches & enrolled = none->none\n}",
+                    "ids": [
+                        "a4AQnGw2RCEN3xgtA"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A professor cannot teach herself\n  all p1,p2:Person, c:Course| c in p1.teaches implies c not in p1.enrolled\n\n}",
+                    "ids": [
+                        "A8EExf3ESEvbkmzAM"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A professor cannot teach herself\n\tall p : Person , c : Course | not(c in p.teaches and c in p.enrolled)\n}",
+                    "ids": [
+                        "PG8wYfFssvZRuiPuD"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A professor cannot teach herself\n\tall p: teaches.Course | p not in enrolled.(p.teaches)\n}",
+                    "ids": [
+                        "y8s4WRhC2KxbmTMyR"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A professor cannot teach herself\n\tall p: Person | no c: Course | c in p.enrolled and c in p.teaches\n}",
+                    "ids": [
+                        "o2pPyHSTMmc2wn9Bb"
                     ]
                 }
             ]
@@ -1596,15 +1582,6 @@
             "elems": [
                 {
                     "entry_count": 3,
-                    "code": "{\n\t// A professor cannot teach herself\n\tall p: Professor | no p.teaches\n\n}",
-                    "ids": [
-                        "HkLEzdmQP5QEK499v",
-                        "oZHbYoL9Rbxm9W7J5",
-                        "49BLQpZYXAFr7Zo3B"
-                    ]
-                },
-                {
-                    "entry_count": 3,
                     "code": "{\n\t// A professor cannot teach herself\n  all p :Professor , c: Course | p not in teaches.c \n\n}",
                     "ids": [
                         "6tHhAGH4acD2esatw",
@@ -1613,18 +1590,20 @@
                     ]
                 },
                 {
+                    "entry_count": 3,
+                    "code": "{\n\t// A professor cannot teach herself\n\tall p: Professor | no p.teaches\n\n}",
+                    "ids": [
+                        "HkLEzdmQP5QEK499v",
+                        "oZHbYoL9Rbxm9W7J5",
+                        "49BLQpZYXAFr7Zo3B"
+                    ]
+                },
+                {
                     "entry_count": 2,
                     "code": "{\n\t// A professor cannot teach herself\n\tall p : Professor | all c : Course | not (p in teaches.c )\n}",
                     "ids": [
                         "NYvaiyGKG3eZs9wQy",
                         "NLDJvpwDKbohuLjgx"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// A professor cannot teach herself\n\tall p : Professor | p not in p.teaches.~teaches\n}",
-                    "ids": [
-                        "GqdEqtkeHqdqJhmFA"
                     ]
                 },
                 {
@@ -1646,6 +1625,13 @@
                     "code": "{\n\t// A professor cannot teach herself\n\n\tall p: Professor | not p in p.teaches.~teaches\n\n}",
                     "ids": [
                         "eFttYXT3F43WcAGTL"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A professor cannot teach herself\n\tall p : Professor | p not in p.teaches.~teaches\n}",
+                    "ids": [
+                        "GqdEqtkeHqdqJhmFA"
                     ]
                 }
             ]
@@ -1709,13 +1695,6 @@
             "elems": [
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// A professor cannot teach herself\n\tall p : Professor | (some c : Course | not (p in teaches.c and p in enrolled.c))\n\n}",
-                    "ids": [
-                        "RMTBsRw6XrkNiPti3"
-                    ]
-                },
-                {
-                    "entry_count": 1,
                     "code": "{\n\t// A professor cannot teach herself\n\tno p : Professor| all c : Course | p in enrolled.c and p in teaches.c\n  \n}",
                     "ids": [
                         "nJSQcQFGqiYQBP6rE"
@@ -1730,6 +1709,13 @@
                 },
                 {
                     "entry_count": 1,
+                    "code": "{\n\t// A professor cannot teach herself\n\tall p:Professor | some c:Course |\n  \t\tc in p.teaches implies not(c in p.enrolled)\n}",
+                    "ids": [
+                        "thXTti2zcT8gx4HQP"
+                    ]
+                },
+                {
+                    "entry_count": 1,
                     "code": "{\n\t// A professor cannot teach herself\n\tall p:Professor | some c:Course |\n  \t\tc in p.teaches implies c not in p.enrolled\n}",
                     "ids": [
                         "N9kbwHupfoJJmPkqH"
@@ -1737,9 +1723,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// A professor cannot teach herself\n\tall p:Professor | some c:Course |\n  \t\tc in p.teaches implies not(c in p.enrolled)\n}",
+                    "code": "{\n\t// A professor cannot teach herself\n\tall p : Professor | (some c : Course | not (p in teaches.c and p in enrolled.c))\n\n}",
                     "ids": [
-                        "thXTti2zcT8gx4HQP"
+                        "RMTBsRw6XrkNiPti3"
                     ]
                 }
             ]
@@ -1791,9 +1777,9 @@
             "elems": [
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// A professor cannot teach herself\n  \t//all p : Professor | no (p.teaches & p.enrolled)\n \n//all p : Professor, c : Course |  p-> c not in teaches and p->c not in enrolled\nall p : Professor, c : Course | \n        p not in teaches.c and p not in enrolled.c\n\n}",
+                    "code": "{\n  all p : Professor | p.teaches + p.enrolled = none\n}",
                     "ids": [
-                        "7ReLkSwNZr7TQKvkD"
+                        "FCPZg7oSx2tWjue2a"
                     ]
                 },
                 {
@@ -1805,9 +1791,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n  all p : Professor | p.teaches + p.enrolled = none\n}",
+                    "code": "{\n\t// A professor cannot teach herself\n  \t//all p : Professor | no (p.teaches & p.enrolled)\n \n//all p : Professor, c : Course |  p-> c not in teaches and p->c not in enrolled\nall p : Professor, c : Course | \n        p not in teaches.c and p not in enrolled.c\n\n}",
                     "ids": [
-                        "FCPZg7oSx2tWjue2a"
+                        "7ReLkSwNZr7TQKvkD"
                     ]
                 },
                 {
@@ -1865,6 +1851,13 @@
             "elems": [
                 {
                     "entry_count": 1,
+                    "code": "{\n\t// A professor cannot teach herself\n all p: Person | p.enrolled !=none implies p.^teaches=none\n}",
+                    "ids": [
+                        "BTobWiJpHz8DmsvzE"
+                    ]
+                },
+                {
+                    "entry_count": 1,
                     "code": "{\n\t// A professor cannot teach herself\n all p: Person | p.enrolled !=none implies p.teaches=none\n}",
                     "ids": [
                         "dCDsEC2dJWHm22kqC"
@@ -1875,13 +1868,6 @@
                     "code": "{\n\t// A professor cannot teach herself\n all p: Person | p.^enrolled !=none implies p.^teaches=none\n}",
                     "ids": [
                         "KqoSLpuZjDdhxwTyN"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// A professor cannot teach herself\n all p: Person | p.enrolled !=none implies p.^teaches=none\n}",
-                    "ids": [
-                        "BTobWiJpHz8DmsvzE"
                     ]
                 }
             ]
@@ -1937,9 +1923,9 @@
             "elems": [
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// A professor cannot teach herself\n       some (teaches & enrolled) implies (teaches.(~(enrolled)) not in iden)\n\n\n\n\n}",
+                    "code": "{\n\t// A professor cannot teach herself\n           no (teaches.(~(enrolled))) or (teaches.(~(enrolled)) not in iden)\n\n\n\n\n\n}",
                     "ids": [
-                        "7XCBXBp4JiCL7bb38"
+                        "sHeMiqnaLvsD2jdma"
                     ]
                 },
                 {
@@ -1951,9 +1937,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// A professor cannot teach herself\n           no (teaches.(~(enrolled))) or (teaches.(~(enrolled)) not in iden)\n\n\n\n\n\n}",
+                    "code": "{\n\t// A professor cannot teach herself\n       some (teaches & enrolled) implies (teaches.(~(enrolled)) not in iden)\n\n\n\n\n}",
                     "ids": [
-                        "sHeMiqnaLvsD2jdma"
+                        "7XCBXBp4JiCL7bb38"
                     ]
                 }
             ]
@@ -1972,16 +1958,16 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// A professor cannot teach herself\n  \tall p : Professor | p not in p.teaches.grades.Grade\n\n}",
+                    "code": "{\n\t// A professor cannot teach herself\n  \tall p : Professor | no p.teaches.grades[p]\n\n}",
                     "ids": [
-                        "txyTfdWz6nXFXSu2j"
+                        "mYPSg5PTNwS6mffrv"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// A professor cannot teach herself\n  \tall p : Professor | no p.teaches.grades[p]\n\n}",
+                    "code": "{\n\t// A professor cannot teach herself\n  \tall p : Professor | p not in p.teaches.grades.Grade\n\n}",
                     "ids": [
-                        "mYPSg5PTNwS6mffrv"
+                        "txyTfdWz6nXFXSu2j"
                     ]
                 }
             ]
@@ -2008,16 +1994,16 @@
             "elems": [
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// A professor cannot teach herself\n\tall p : Person, c : Course | (p in Professor and p in c.teaches) and (p in Student and p in c.enrolled)\n}",
+                    "code": "{\n\t// A professor cannot teach herself\n\tall p : Person, c : Course | p in c.teaches and p in c.enrolled\n}",
                     "ids": [
-                        "nqTkx5j5Fds9e6xTf"
+                        "xyigJLgWf8mgTNqLK"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// A professor cannot teach herself\n\tall p : Person, c : Course | p in c.teaches and p in c.enrolled\n}",
+                    "code": "{\n\t// A professor cannot teach herself\n\tall p : Person, c : Course | (p in Professor and p in c.teaches) and (p in Student and p in c.enrolled)\n}",
                     "ids": [
-                        "xyigJLgWf8mgTNqLK"
+                        "nqTkx5j5Fds9e6xTf"
                     ]
                 }
             ]
@@ -2065,16 +2051,16 @@
             "elems": [
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// A professor cannot teach herself\n\tall p : Professor, c : Course | p in teaches.c and p in enrolled.c \n  \n  \tall p : Professor | no (p.teaches & p.enrolled)\n\n\t// OR, symmetrically, \n\n\t// all c : Course | no (teaches.c & enrolled.c)\n}",
+                    "code": "{\n\t// A professor cannot teach herself\n\tall p : Professor, c : Course | p in c.teaches and p in c.enrolled\n}",
                     "ids": [
-                        "fLcQw4WdycTFG5DM7"
+                        "qko4pNKap3wGFqogo"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// A professor cannot teach herself\n\tall p : Professor, c : Course | p in c.teaches and p in c.enrolled\n}",
+                    "code": "{\n\t// A professor cannot teach herself\n\tall p : Professor, c : Course | p in teaches.c and p in enrolled.c \n  \n  \tall p : Professor | no (p.teaches & p.enrolled)\n\n\t// OR, symmetrically, \n\n\t// all c : Course | no (teaches.c & enrolled.c)\n}",
                     "ids": [
-                        "qko4pNKap3wGFqogo"
+                        "fLcQw4WdycTFG5DM7"
                     ]
                 }
             ]

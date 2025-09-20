@@ -2,8 +2,8 @@
     "label": "inv1",
     "pred": "this/inv1",
     "entry_count": 3054,
-    "group_count": 124,
-    "duration": 60,
+    "group_count": 119,
+    "duration": 62,
     "scope": 3,
     "groups": [
         {
@@ -1598,20 +1598,6 @@
                 },
                 {
                     "entry_count": 8,
-                    "code": "{\n  all p: Photo | one p.~posts\n}",
-                    "ids": [
-                        "wjjKb3FZGkdeMHNYr",
-                        "hsCGiaPNZL9awfWdF",
-                        "pwPXefhGZmF7YtcMh",
-                        "p8Fv6uih7cgye6v3L",
-                        "38ZaHAqNnzuF5nBMx",
-                        "vBugeaXsY6gvg2naX",
-                        "GX6iAYdoZxsqc8uLk",
-                        "gzeSgwWcTrnd9SsJr"
-                    ]
-                },
-                {
-                    "entry_count": 8,
                     "code": "{\n\t// Every image is posted by one user.\n  \n    // all y : Photo | some x : User | x -> y in posts\n    // all x,z:User, y:Photo | x -> y in posts and z -> y in posts implies x=z\n  \n  \tall y : Photo | some x : User | x in posts.y\n    all x,z:User, y:Photo | x in posts.y and z in posts.y implies x=z\n\n}",
                     "ids": [
                         "nFr22AyBwEEg826af",
@@ -1622,6 +1608,20 @@
                         "ZBJbCP2yBhc8MeHgY",
                         "hGTE9SQrxXYLKjvYN",
                         "j6LbHC58r92kLD6fA"
+                    ]
+                },
+                {
+                    "entry_count": 8,
+                    "code": "{\n  all p: Photo | one p.~posts\n}",
+                    "ids": [
+                        "wjjKb3FZGkdeMHNYr",
+                        "hsCGiaPNZL9awfWdF",
+                        "pwPXefhGZmF7YtcMh",
+                        "p8Fv6uih7cgye6v3L",
+                        "38ZaHAqNnzuF5nBMx",
+                        "vBugeaXsY6gvg2naX",
+                        "GX6iAYdoZxsqc8uLk",
+                        "gzeSgwWcTrnd9SsJr"
                     ]
                 },
                 {
@@ -1673,22 +1673,22 @@
                 },
                 {
                     "entry_count": 4,
-                    "code": "{\n\t// Every image is posted by one user.\n  \n\t//posts in User one -> Photo\n     //~posts in Photo -> one User\n  //all x : Photo | one posts.x\n  User.posts = Photo and all x : Photo | lone posts.x\n}",
-                    "ids": [
-                        "Qe58QDbdfLoQ5AFas",
-                        "KJu37jLTMYswiKgzq",
-                        "M3e7Ntq67XW3xFSmW",
-                        "gDrS8aYxexx5T4C6P"
-                    ]
-                },
-                {
-                    "entry_count": 4,
                     "code": "{\n\t// Every image is posted by one user.\n\tall y : Photo | some x : User | x -> y in posts // par x,y relacionado por posts\n    \n\tall y : Photo | some x : User | x in posts.y // todos os utilizadores que postarem a foto y\n\tall y : Photo | some x : User | y in x.posts // todas as fotos postadas por x\n  \t\n  \tall x, z : User, y : Photo | x -> y in posts and z -> y in posts implies x = z\n\n  // Ou usando o quantificador \"one\"\n\tall y : Photo | one x : User | x -> y in posts\n  \n  // Substituir quantificador \"one\" por operador \"one\" sobre conjuntos -- exprime a cardinalidade 1\n \tall y : Photo | one posts.y\n  \n}",
                     "ids": [
                         "Y3KJBNPQSmjzDh8Cq",
                         "H56knfn87imoJHShc",
                         "oyYF9gvsatLXKkhFS",
                         "xnLtc75GZY5vAqc4H"
+                    ]
+                },
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// Every image is posted by one user.\n  \n\t//posts in User one -> Photo\n     //~posts in Photo -> one User\n  //all x : Photo | one posts.x\n  User.posts = Photo and all x : Photo | lone posts.x\n}",
+                    "ids": [
+                        "Qe58QDbdfLoQ5AFas",
+                        "KJu37jLTMYswiKgzq",
+                        "M3e7Ntq67XW3xFSmW",
+                        "gDrS8aYxexx5T4C6P"
                     ]
                 },
                 {
@@ -1703,15 +1703,6 @@
                 },
                 {
                     "entry_count": 3,
-                    "code": "{\n\t// Every image is posted by one user.\n\tall disj u1, u2: User | no (u1.posts & u2.posts)\n\t//not some p: Photo | no posts.p\n  \tall p:Photo | one posts.p\n}",
-                    "ids": [
-                        "r5J4BLdG5JWddvFEz",
-                        "jHQeyy2GLxekw4tyQ",
-                        "5pYbmoPNqfhnfTwaG"
-                    ]
-                },
-                {
-                    "entry_count": 3,
                     "code": "{\n\t// Every image is posted by one user.\n  \talways(all p:Photo| one u: User| p in u.posts)\n\t\n}",
                     "ids": [
                         "vqmG5FzKoNobKCDQp",
@@ -1720,43 +1711,12 @@
                     ]
                 },
                 {
-                    "entry_count": 2,
-                    "code": "{\n\t// Every image is posted by one user.\n\tall disj x, y: User | x.posts & y.posts = none\n    Photo in User.posts\n}",
+                    "entry_count": 3,
+                    "code": "{\n\t// Every image is posted by one user.\n\tall disj u1, u2: User | no (u1.posts & u2.posts)\n\t//not some p: Photo | no posts.p\n  \tall p:Photo | one posts.p\n}",
                     "ids": [
-                        "Ht6DzwoE36q2psBHi",
-                        "tKDmPcsXjeZ5Wnyhk"
-                    ]
-                },
-                {
-                    "entry_count": 2,
-                    "code": "{\n  all p : Photo | one u:User | one (p & u.posts)\n\t// Every image is posted by one user.\n\t\n}",
-                    "ids": [
-                        "KywLcPvkhoRR6geGA",
-                        "8ZfH57YiaZDu7Pr9H"
-                    ]
-                },
-                {
-                    "entry_count": 2,
-                    "code": "{\n\t// Every image is posted by one user.\n\tall p : Photo | (some u : User | p in u.posts) and (lone posts.p)\n}",
-                    "ids": [
-                        "TaavamLg3WuoC743z",
-                        "CMqve2cv6k44rYufz"
-                    ]
-                },
-                {
-                    "entry_count": 2,
-                    "code": "{\n    all p : Photo | #({u : User | p in u.posts}) = 1\n}",
-                    "ids": [
-                        "NKQehRDD4dXPPouWk",
-                        "Z5vvfZqdg5oaPJ2NL"
-                    ]
-                },
-                {
-                    "entry_count": 2,
-                    "code": "{\n\t// Every image is posted by one user.\n\t\n  \t all p : Photo | one u : User | p in u.posts\n  \n  \t all p : Photo | one u : User | u in posts.p\n}",
-                    "ids": [
-                        "xobpSPGEXfvgmCX6s",
-                        "nyakbY2bWHZb3c9nC"
+                        "r5J4BLdG5JWddvFEz",
+                        "jHQeyy2GLxekw4tyQ",
+                        "5pYbmoPNqfhnfTwaG"
                     ]
                 },
                 {
@@ -1769,10 +1729,64 @@
                 },
                 {
                     "entry_count": 2,
+                    "code": "{\n\t// Every image is posted by one user.\n\tall disj x, y: User | x.posts & y.posts = none\n    Photo in User.posts\n}",
+                    "ids": [
+                        "Ht6DzwoE36q2psBHi",
+                        "tKDmPcsXjeZ5Wnyhk"
+                    ]
+                },
+                {
+                    "entry_count": 2,
                     "code": "{\n\t// Every image is posted by one user.\n  all p: Photo | p in User.posts and #posts.p = 1\n\t\n}",
                     "ids": [
                         "vz3hy3s7XcSWH6o6b",
                         "44yuCu7kA4QBzozsg"
+                    ]
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n  all p : Photo | one u:User | one (p & u.posts)\n\t// Every image is posted by one user.\n\t\n}",
+                    "ids": [
+                        "KywLcPvkhoRR6geGA",
+                        "8ZfH57YiaZDu7Pr9H"
+                    ]
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Every image is posted by one user.\n\t\n  \t all p : Photo | one u : User | p in u.posts\n  \n  \t all p : Photo | one u : User | u in posts.p\n}",
+                    "ids": [
+                        "xobpSPGEXfvgmCX6s",
+                        "nyakbY2bWHZb3c9nC"
+                    ]
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n    all p : Photo | #({u : User | p in u.posts}) = 1\n}",
+                    "ids": [
+                        "NKQehRDD4dXPPouWk",
+                        "Z5vvfZqdg5oaPJ2NL"
+                    ]
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Every image is posted by one user.\n\tall p : Photo | (some u : User | p in u.posts) and (lone posts.p)\n}",
+                    "ids": [
+                        "TaavamLg3WuoC743z",
+                        "CMqve2cv6k44rYufz"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n  \n  \tall i : Photo | one posts.i\n  \tall i : Photo | one u : User | i in u.posts\n\t\n}",
+                    "ids": [
+                        "tx6LA5Go4RjgP8d4n"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n\tall disj u1, u2 : User |\n\t\tu1.posts & u2.posts = none\n  \n  \tall p : Photo | p in User.posts\n}",
+                    "ids": [
+                        "wfyjp6G8gpCdTW6Wy"
                     ]
                 },
                 {
@@ -1784,9 +1798,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Every image is posted by one user.\n\t//all p : Photo |#(p.~posts)=1\n    all p : Photo| some u : User | p in u.posts\n    all disj u1, u2 :User | u1.posts & u2.posts = none\n}",
+                    "code": "{\n\t// Every image is posted by one user.\n  \t\n  \tall p : Photo | one u : User | u -> p in posts\n  \n  \tall p : Photo | one u : User | u in posts.p\n  \n  \tall p : Photo | one posts.p\n\t\n}",
                     "ids": [
-                        "iJYToE5v92egvgRdX"
+                        "fvuXcDN3nspe7SaNv"
                     ]
                 },
                 {
@@ -1798,37 +1812,16 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Every image is posted by one user.\n  \n  \t// 1 ou +\n  \tall i : Photo | some u : User | u -> i in posts\n  \n  \t// 0 ou 1  \t\n\tall i : Photo, u1, u2 : User | i in u1.posts and u2 -> i in posts implies u1 = u2\n  \n  \t\n}",
+                    "code": "{\n\t// Every image is posted by one user.\n\n  Photo = User.posts\n\n  all x, y : User | x != y implies no (x.posts & y.posts)\n\n\n\n\n\t\n}",
                     "ids": [
-                        "Ly9b77tajemtCqS92"
+                        "aXTvS2nao8MP34HK5"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Every image is posted by one user.\n\t\n  \tall p: Photo | one u : User | u in posts.p\n  \n  \tall p: Photo | one posts.p\n}",
+                    "code": "{\n// Every image is posted by one user.\n    all y: Photo | some x: User | x->y in posts\n    all x,y : User, z: Photo | x->z in posts and y->z in posts implies x=y\n    \n    // or (equivalent to 2nd formula)\n    all x,y : User, z: Photo | x in posts.z and y in posts.z implies x=y\n    \n    // or (equivalent to 1st and 2nd formula)\n    all y: Photo | some posts.y\n    all y: Photo | lone posts.y\n    \n    // or (equivalent to 1st and 2nd formula)\n    all y:Photo | one posts.y\n}",
                     "ids": [
-                        "vGEJrNhYhceg9z27d"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Every image is posted by one user.\n\t(all p: Photo| one User & posts.p)\n}",
-                    "ids": [
-                        "GLBr4uAAA7KgtwJiL"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Every image is posted by one user.\n\tall y: Photo | some x: User | x->y in posts\n  \tall x,y : User, z: Photo | x in posts.z and y in posts.z implies x=y\n}",
-                    "ids": [
-                        "5s8sKvW8zt9snzcrw"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Every image is posted by one user.\n\t\n  // Duas restri\u00e7\u00f5es \n  // Usando os dois quantificadores standard\n  \n  all y : Photo | some x : User | x -> y in posts\n  all x, z : User, y : Photo | x -> y in posts and z -> y in posts implies x=z\n  \n  // Ou ent\u00e3o usando o quantificador 'one'\n  //\n  // all y : Photo | one x : User | x -> y in posts\n  \n  // Rela\u00e7\u00e3o usada como prefixo\n  //\n  // all y : Photo | one x : User | x in posts.y\n  \n  // Substituimos quantificador 'one' sobre conjuntos\n  // -- exprime cadinalidade 1\n  all y : Photo | one posts.y\n}",
-                    "ids": [
-                        "ofe9G9Sk24xgYQxe4"
+                        "xWmtzntZoSZtGxa7o"
                     ]
                 },
                 {
@@ -1836,6 +1829,13 @@
                     "code": "{\n\t// Every image is posted by one user.\n  \tall p: Photo | p in User.posts\n  \tall u: User, p: Photo | p in u.posts implies \n  \t\tno u1: User | u != u1 and p in u1.posts\n\t\n}",
                     "ids": [
                         "DTqCeuvpk3JHg5qbn"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n\tall p, u: Photo | one posts.u\n}",
+                    "ids": [
+                        "wxcj4YxsdoSsb5CeZ"
                     ]
                 },
                 {
@@ -1854,9 +1854,16 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Every image is posted by one user.\n  \n  \t// 1 ou +\n  \tall i : Photo | some u : User | i in u.posts\n  \n  \t// 0 ou 1  \t\n\tall x, z: User, y:Photo | x -> y in posts and z -> y in posts implies x=z\n  \n  \t\n}",
+                    "code": "{\n\t// Every image is posted by one user.\n\t(all p: Photo| one User & posts.p)\n}",
                     "ids": [
-                        "6sLz7u2HdBssLtyks"
+                        "GLBr4uAAA7KgtwJiL"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n  \n  \t// 1 ou +\n  \tall i : Photo | some u : User | u -> i in posts\n  \n  \t// 0 ou 1  \t\n\tall i : Photo, u1, u2 : User | i in u1.posts and u2 -> i in posts implies u1 = u2\n  \n  \t\n}",
+                    "ids": [
+                        "Ly9b77tajemtCqS92"
                     ]
                 },
                 {
@@ -1868,37 +1875,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Every image is posted by one user.\n  \n  \tall i : Photo | one posts.i\n  \tall i : Photo | one u : User | i in u.posts\n\t\n}",
+                    "code": "{\n\t// Every image is posted by one user.\n\t//all p : Photo |#(p.~posts)=1\n    all p : Photo| some u : User | p in u.posts\n    all disj u1, u2 :User | u1.posts & u2.posts = none\n}",
                     "ids": [
-                        "tx6LA5Go4RjgP8d4n"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n// Every image is posted by one user.\n    all y: Photo | some x: User | x->y in posts\n    all x,y : User, z: Photo | x->z in posts and y->z in posts implies x=y\n    \n    // or (equivalent to 2nd formula)\n    all x,y : User, z: Photo | x in posts.z and y in posts.z implies x=y\n    \n    // or (equivalent to 1st and 2nd formula)\n    all y: Photo | some posts.y\n    all y: Photo | lone posts.y\n    \n    // or (equivalent to 1st and 2nd formula)\n    all y:Photo | one posts.y\n}",
-                    "ids": [
-                        "xWmtzntZoSZtGxa7o"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Every image is posted by one user.\n\n  Photo = User.posts\n\n  all x, y : User | x != y implies no (x.posts & y.posts)\n\n\n\n\n\t\n}",
-                    "ids": [
-                        "aXTvS2nao8MP34HK5"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Every image is posted by one user.\n  all p : Photo | some u : User | posts.p = u\n\n  \n\t\n}",
-                    "ids": [
-                        "pijrFqfJ4LGZgAcRy"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Every image is posted by one user.\n\tall disj u1, u2 : User |\n\t\tu1.posts & u2.posts = none\n  \n  \tall p : Photo | p in User.posts\n}",
-                    "ids": [
-                        "wfyjp6G8gpCdTW6Wy"
+                        "iJYToE5v92egvgRdX"
                     ]
                 },
                 {
@@ -1910,9 +1889,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Every image is posted by one user.\n  \n  \t// 1 ou +\n  \tall i : Photo | some u : User | u -> i in posts\n  \n  \t// 0 ou 1  \t\n  \tall i : Photo, u1, u2 : User | i in u1.posts and i in u2.posts implies u1 = u2\n  \n  \t// Mais simples\n  \tall i : Photo | one posts.i\n}",
+                    "code": "{\n\t// Every image is posted by one user.\n\tall y: Photo | some x: User | x->y in posts\n  \tall x,y : User, z: Photo | x in posts.z and y in posts.z implies x=y\n}",
                     "ids": [
-                        "kaqnsfwT7FLXQMFko"
+                        "5s8sKvW8zt9snzcrw"
                     ]
                 },
                 {
@@ -1924,9 +1903,37 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Every image is posted by one user.\n\tall p, u: Photo | one posts.u\n}",
+                    "code": "{\n\t// Every image is posted by one user.\n  \n  \t// 1 ou +\n  \tall i : Photo | some u : User | u -> i in posts\n  \n  \t// 0 ou 1  \t\n  \tall i : Photo, u1, u2 : User | i in u1.posts and i in u2.posts implies u1 = u2\n  \n  \t// Mais simples\n  \tall i : Photo | one posts.i\n}",
                     "ids": [
-                        "wxcj4YxsdoSsb5CeZ"
+                        "kaqnsfwT7FLXQMFko"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n  \n  \t// 1 ou +\n  \tall i : Photo | some u : User | i in u.posts\n  \n  \t// 0 ou 1  \t\n\tall x, z: User, y:Photo | x -> y in posts and z -> y in posts implies x=z\n  \n  \t\n}",
+                    "ids": [
+                        "6sLz7u2HdBssLtyks"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n\t\n  \tall p: Photo | one u : User | u in posts.p\n  \n  \tall p: Photo | one posts.p\n}",
+                    "ids": [
+                        "vGEJrNhYhceg9z27d"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n\t\n  // Duas restri\u00e7\u00f5es \n  // Usando os dois quantificadores standard\n  \n  all y : Photo | some x : User | x -> y in posts\n  all x, z : User, y : Photo | x -> y in posts and z -> y in posts implies x=z\n  \n  // Ou ent\u00e3o usando o quantificador 'one'\n  //\n  // all y : Photo | one x : User | x -> y in posts\n  \n  // Rela\u00e7\u00e3o usada como prefixo\n  //\n  // all y : Photo | one x : User | x in posts.y\n  \n  // Substituimos quantificador 'one' sobre conjuntos\n  // -- exprime cadinalidade 1\n  all y : Photo | one posts.y\n}",
+                    "ids": [
+                        "ofe9G9Sk24xgYQxe4"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n  all p : Photo | some u : User | posts.p = u\n\n  \n\t\n}",
+                    "ids": [
+                        "pijrFqfJ4LGZgAcRy"
                     ]
                 },
                 {
@@ -1934,13 +1941,6 @@
                     "code": "{\n\t// Every image is posted by one user.\n  \n\t// Duas restri\u00e7\u00f5es para captar \"exactamente um\"\n\t// Usando os dois quantificadores standard\n\t// \n\tall y : Photo | some x : User | x -> y in posts\n \t// all x, z : User, y : Photo | x -> y in posts and z -> y in posts implies x=z\n\n\t// Ou ent\u00e3o usamos o quantificador 'one' \n\t// \n\t// all y : Photo | one x : User | x -> y in posts\n\n\t// rela\u00e7\u00e3o usada como prefixo\n\t// \n\t// all y : Photo | one x : User | x in posts.y\n\n    // Substituimos quantificador 'one' por operador 'one' sobre conjuntos\n    // -- exprime cardinalidade 1 \n    all y : Photo | one posts.y \n\n}",
                     "ids": [
                         "TA5oYujrbvhvHo7vy"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Every image is posted by one user.\n  \t\n  \tall p : Photo | one u : User | u -> p in posts\n  \n  \tall p : Photo | one u : User | u in posts.p\n  \n  \tall p : Photo | one posts.p\n\t\n}",
-                    "ids": [
-                        "fvuXcDN3nspe7SaNv"
                     ]
                 }
             ]
@@ -2386,26 +2386,10 @@
                 },
                 {
                     "entry_count": 2,
-                    "code": "{\n\t// Every image is posted by one user.\n\tlone User.~posts\n}",
+                    "code": "{\n\t// Every image is posted by one user.\n\tposts.Photo in User\n}",
                     "ids": [
-                        "y2wspKczKjPeCwMbp",
-                        "84RH7G7dCFmx8Fhw7"
-                    ]
-                },
-                {
-                    "entry_count": 2,
-                    "code": "{\n\t// Every image is posted by one user.\n\tall p : Photo, u : User | (one p -> u)\n}",
-                    "ids": [
-                        "DDYztMEqEkYy9BGEk",
-                        "hBejPbzphNuRr32ib"
-                    ]
-                },
-                {
-                    "entry_count": 2,
-                    "code": "{\n\t// Every image is posted by one user.\n  all x: Photo | lone x.posts\n\t\n}",
-                    "ids": [
-                        "SagsWYP66HQPK2E8q",
-                        "zAcuhWNwJ9tyfKzGq"
+                        "LvGzpSpeTGX7vNGiK",
+                        "2o5xh3hDLg3dmiwk4"
                     ]
                 },
                 {
@@ -2418,10 +2402,18 @@
                 },
                 {
                     "entry_count": 2,
-                    "code": "{\n\t// Every image is posted by one user.\n\tall ph : Photo, u : User| ph in posts.u implies ph in u.posts \n}",
+                    "code": "{\n\t// Every image is posted by one user.\n  all x: Photo | lone x.posts\n\t\n}",
                     "ids": [
-                        "Y9yzSfW75fw6NXg7B",
-                        "WskKuMQxmPZy2Wbms"
+                        "SagsWYP66HQPK2E8q",
+                        "zAcuhWNwJ9tyfKzGq"
+                    ]
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Every image is posted by one user.\n\tall p : Photo, u : User | (one p -> u)\n}",
+                    "ids": [
+                        "DDYztMEqEkYy9BGEk",
+                        "hBejPbzphNuRr32ib"
                     ]
                 },
                 {
@@ -2434,52 +2426,25 @@
                 },
                 {
                     "entry_count": 2,
-                    "code": "{\n\t// Every image is posted by one user.\n\tposts.Photo in User\n}",
+                    "code": "{\n\t// Every image is posted by one user.\n\tlone User.~posts\n}",
                     "ids": [
-                        "LvGzpSpeTGX7vNGiK",
-                        "2o5xh3hDLg3dmiwk4"
+                        "y2wspKczKjPeCwMbp",
+                        "84RH7G7dCFmx8Fhw7"
+                    ]
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Every image is posted by one user.\n\tall ph : Photo, u : User| ph in posts.u implies ph in u.posts \n}",
+                    "ids": [
+                        "Y9yzSfW75fw6NXg7B",
+                        "WskKuMQxmPZy2Wbms"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n  // Every image is posted by one user.\n\tall x: Photo | all u,y:User | x in u.posts and y in u.posts implies x=y\n\t\n}",
+                    "code": "{\n\t// Every image is posted by one user.\n\tall u1, u2 : User | u1 != u2 implies no (u1.date & u2.posts)\n}",
                     "ids": [
-                        "iAuRKjzCkMg9fN3aH"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Every image is posted by one user.\n    (posts.Photo & User) in User\n\t\n}",
-                    "ids": [
-                        "rLwxrXpp5LQDkNnKL"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Every image is posted by one user.\n  all p : Photo, u1,u2 : User | p in posts.u1 implies p not in posts.u2\n\t\n}",
-                    "ids": [
-                        "JuTTFW4LcbdoSjrrE"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Every image is posted by one user.\n\tall ph : Photo, u1,u2 : User | u1 = ph.posts implies u2 != posts.ph  \t\n}",
-                    "ids": [
-                        "SzM5gd9gpkfnJCqvM"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Every image is posted by one user.\n\tall p: Photo, u: User | lone (p & u)\n}",
-                    "ids": [
-                        "CmTaNLxefDsQXTmem"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Every image is posted by one user.\n\tall u: User | lone u.~posts\n}",
-                    "ids": [
-                        "MZKZuozQ6qXvH65Nz"
+                        "sw3i2Rb2fLpKvb3nx"
                     ]
                 },
                 {
@@ -2491,51 +2456,23 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Every image is posted by one user.\n\tall u : User, p : Photo | lone(u.posts & p)\n\t\n}",
+                    "code": "{\n\t// Every image is posted by one user.\n\tall p: Photo, u: User | lone (p & u)\n}",
                     "ids": [
-                        "XcgwYSXRPBHEXdncd"
+                        "CmTaNLxefDsQXTmem"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Every image is posted by one user. \n\tall u : User.posts | u not in u.sees\n}",
+                    "code": "{\n\t// Every image is posted by one user.\n  all p : Photo, u1,u2 : User | p in posts.u1 implies p not in posts.u2\n\t\n}",
                     "ids": [
-                        "8ZNJ6miC74xPh2PCd"
+                        "JuTTFW4LcbdoSjrrE"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Every image is posted by one user.\n\tall p : Photo, u : User | (one u -> p)\n}",
+                    "code": "{\n  // Every image is posted by one user.\n\tall x: Photo | all u,y:User | x in u.posts and y in u.posts implies x=y\n\t\n}",
                     "ids": [
-                        "2cw4PvXjHuQ8YXPKf"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Every image is posted by one user.\n\tall ph : Photo, u1,u2 : User | u1 = ph.posts implies u2 != ph.posts  \t\n}",
-                    "ids": [
-                        "DGgemCQQSr2w2qMgr"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Every image is posted by one user.\n\tall u:User, p:Photo | lone (u.posts & posts.p)\n}",
-                    "ids": [
-                        "sENyry8EqDSLZkAEa"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Every image is posted by one user.\n  Ad.posts in User.posts\n\n\n\t\n}",
-                    "ids": [
-                        "PRSZZbcG9gB2mq2jh"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Every image is posted by one user.\n\tall u : User, disj p1,p2 : Photo | p1 != p2\n}",
-                    "ids": [
-                        "YZCW3H2rEvu6E6qPb"
+                        "iAuRKjzCkMg9fN3aH"
                     ]
                 },
                 {
@@ -2547,9 +2484,58 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Every image is posted by one user.\n\tall u1, u2 : User | u1 != u2 implies no (u1.date & u2.posts)\n}",
+                    "code": "{\n\t// Every image is posted by one user.\n\tall ph : Photo, u1,u2 : User | u1 = ph.posts implies u2 != ph.posts  \t\n}",
                     "ids": [
-                        "sw3i2Rb2fLpKvb3nx"
+                        "DGgemCQQSr2w2qMgr"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n\tall disj x, y : Photo | no (x.posts & y.posts)\n}",
+                    "ids": [
+                        "Y9RFtWZEQauRdw3rv"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n\tall u : User, p : Photo | lone(u.posts & p)\n\t\n}",
+                    "ids": [
+                        "XcgwYSXRPBHEXdncd"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n\tall u:User, p:Photo | lone (u.posts & posts.p)\n}",
+                    "ids": [
+                        "sENyry8EqDSLZkAEa"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n\tall ph : Photo, u : User | posts.ph = u implies ph in u.posts\n}",
+                    "ids": [
+                        "FvmtNzGJwvcaueJrT"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n\tall ph : Photo, u1,u2 : User | u1 = ph.posts implies u2 != posts.ph  \t\n}",
+                    "ids": [
+                        "SzM5gd9gpkfnJCqvM"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n    (posts.Photo & User) in User\n\t\n}",
+                    "ids": [
+                        "rLwxrXpp5LQDkNnKL"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n  Ad.posts in User.posts\n\n\n\t\n}",
+                    "ids": [
+                        "PRSZZbcG9gB2mq2jh"
                     ]
                 },
                 {
@@ -2568,6 +2554,27 @@
                 },
                 {
                     "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n\tall p : Photo, u : User | (one u -> p)\n}",
+                    "ids": [
+                        "2cw4PvXjHuQ8YXPKf"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user. \n\tall u : User.posts | u not in u.sees\n}",
+                    "ids": [
+                        "8ZNJ6miC74xPh2PCd"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n\tall u: User | lone u.~posts\n}",
+                    "ids": [
+                        "MZKZuozQ6qXvH65Nz"
+                    ]
+                },
+                {
+                    "entry_count": 1,
                     "code": "{\n\t// Every image is posted by one user.\n\tall u1,u2 : User | u1 != u1 implies no (u1.posts & u2.posts)\n\t\n}",
                     "ids": [
                         "MhfpwF5dKWXaFCXQk"
@@ -2575,23 +2582,16 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Every image is posted by one user.\n\tall ph : Photo, u : User | posts.ph = u implies ph in u.posts\n}",
-                    "ids": [
-                        "FvmtNzGJwvcaueJrT"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Every image is posted by one user.\n\tall disj x, y : Photo | no (x.posts & y.posts)\n}",
-                    "ids": [
-                        "Y9RFtWZEQauRdw3rv"
-                    ]
-                },
-                {
-                    "entry_count": 1,
                     "code": "{\n\t// Every image is posted by one user.\n\tall p: Photo, u: User | lone (p.posts)\n}",
                     "ids": [
                         "mQmjduR4Ycvyh2iyv"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n\tall u : User, disj p1,p2 : Photo | p1 != p2\n}",
+                    "ids": [
+                        "YZCW3H2rEvu6E6qPb"
                     ]
                 }
             ]
@@ -2870,11 +2870,11 @@
                 },
                 {
                     "entry_count": 3,
-                    "code": "{\n\t// Every image is posted by one user.\n  \tall p : Photo  | some u : User | u in posts.p\n\t\n}",
+                    "code": "{\n\t// Every image is posted by one user.\n\tPhoto = User.posts\n}",
                     "ids": [
-                        "cspKHoymNRvZetpgF",
-                        "vJqRszPBaQHYiit4o",
-                        "xJLa43R2LNiv6ShEf"
+                        "hHk4wKZemoAiDWTH9",
+                        "yZpKg3KzbmPPgwiZg",
+                        "fPjYF5CtMjr7codAo"
                     ]
                 },
                 {
@@ -2888,19 +2888,11 @@
                 },
                 {
                     "entry_count": 3,
-                    "code": "{\n\t// Every image is posted by one user.\n\tPhoto = User.posts\n}",
+                    "code": "{\n\t// Every image is posted by one user.\n  \tall p : Photo  | some u : User | u in posts.p\n\t\n}",
                     "ids": [
-                        "hHk4wKZemoAiDWTH9",
-                        "yZpKg3KzbmPPgwiZg",
-                        "fPjYF5CtMjr7codAo"
-                    ]
-                },
-                {
-                    "entry_count": 2,
-                    "code": "{\n\t// Every image is posted by one user.\n\tPhoto&(User.posts) = Photo\n}",
-                    "ids": [
-                        "t2dDuBvqGx6APDw8D",
-                        "7wcFyuJKNrnGcPSsr"
+                        "cspKHoymNRvZetpgF",
+                        "vJqRszPBaQHYiit4o",
+                        "xJLa43R2LNiv6ShEf"
                     ]
                 },
                 {
@@ -2913,6 +2905,14 @@
                 },
                 {
                     "entry_count": 2,
+                    "code": "{\n\t// Every image is posted by one user.\n\tPhoto&(User.posts) = Photo\n}",
+                    "ids": [
+                        "t2dDuBvqGx6APDw8D",
+                        "7wcFyuJKNrnGcPSsr"
+                    ]
+                },
+                {
+                    "entry_count": 2,
                     "code": "{\n\t// Every image is posted by one user.\n  \tposts in User some -> set Photo\n\t\n}",
                     "ids": [
                         "kQAakuo2tLyh6RmLp",
@@ -2921,9 +2921,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Every image is posted by one user.\n\tPhoto in User.posts and Ad in User.posts\n}",
+                    "code": "{\n\t// Every image is posted by one user.\n\tall p: Photo | User.posts = Photo\n}",
                     "ids": [
-                        "EPNRzW6ND8F3aEg99"
+                        "nHptMQofbq4gxwFsQ"
                     ]
                 },
                 {
@@ -2949,9 +2949,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Every image is posted by one user.\n\tall p: Photo | User.posts = Photo\n}",
+                    "code": "{\n\t// Every image is posted by one user.\n\tPhoto in User.posts and Ad in User.posts\n}",
                     "ids": [
-                        "nHptMQofbq4gxwFsQ"
+                        "EPNRzW6ND8F3aEg99"
                     ]
                 },
                 {
@@ -3111,19 +3111,6 @@
                 },
                 {
                     "entry_count": 7,
-                    "code": "{\n\t// Every image is posted by one user.\n\tall p : Photo | all u1,u2 : User | (p in u1.posts) and (p in u2.posts) implies u1 = u2\n}",
-                    "ids": [
-                        "FxqM6pG7HewkmCuqL",
-                        "zGBZBDDwZA7aFMkp6",
-                        "nSHih3fQFFiZRzRTR",
-                        "Z4tnwCRmEtvy6gwKH",
-                        "oxxNRbagYWiqJfBAS",
-                        "gvPFfkM3XDg45q5JD",
-                        "MfPwoJW6koxn8iNxd"
-                    ]
-                },
-                {
-                    "entry_count": 7,
                     "code": "{\n\t// Every image is posted by one user.\n\t//all y : Photo | some x : User | x -> y in posts \n  all x,z: User, y:Photo | x->y in posts and z -> y in posts implies x = z\n}",
                     "ids": [
                         "dG8e9QHXEHKKkXbzt",
@@ -3133,6 +3120,19 @@
                         "KqnfjhgMgAwGFgSic",
                         "qSBi4RzYybdNmvDj2",
                         "CSZGmdYhZYJJg8ifv"
+                    ]
+                },
+                {
+                    "entry_count": 7,
+                    "code": "{\n\t// Every image is posted by one user.\n\tall p : Photo | all u1,u2 : User | (p in u1.posts) and (p in u2.posts) implies u1 = u2\n}",
+                    "ids": [
+                        "FxqM6pG7HewkmCuqL",
+                        "zGBZBDDwZA7aFMkp6",
+                        "nSHih3fQFFiZRzRTR",
+                        "Z4tnwCRmEtvy6gwKH",
+                        "oxxNRbagYWiqJfBAS",
+                        "gvPFfkM3XDg45q5JD",
+                        "MfPwoJW6koxn8iNxd"
                     ]
                 },
                 {
@@ -3155,18 +3155,18 @@
                 },
                 {
                     "entry_count": 2,
-                    "code": "{\n\t// Every image is posted by one user.\n  \tall u: User, p: Photo | p in u.posts implies \n  \t\tno u1: User | u != u1 and p in u1.posts\n\t\n}",
-                    "ids": [
-                        "cSnSf4aicPpefa2xm",
-                        "totEoMfmFnu6n5uMi"
-                    ]
-                },
-                {
-                    "entry_count": 2,
                     "code": "{\n\t// Every image is posted by one user.\n  all disj u1, u2: User, p: Photo | p in u1.posts implies p not in u2.posts\n\t\n}",
                     "ids": [
                         "yrnvByhE9Lo97P5QY",
                         "hXLanJtRmmW5f8tto"
+                    ]
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Every image is posted by one user.\n  \tall u: User, p: Photo | p in u.posts implies \n  \t\tno u1: User | u != u1 and p in u1.posts\n\t\n}",
+                    "ids": [
+                        "cSnSf4aicPpefa2xm",
+                        "totEoMfmFnu6n5uMi"
                     ]
                 },
                 {
@@ -3178,13 +3178,6 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Every image is posted by one user.\n  \tall p : Photo | lone u : User | u in posts.p \n\t \n}",
-                    "ids": [
-                        "EGwW4Hv6GtPobJmET"
-                    ]
-                },
-                {
-                    "entry_count": 1,
                     "code": "{\n\t// Every image is posted by one user.\n  all u:User, p:Photo , others:User-u |\n \t\tp in User.posts && p in u.posts implies p not in others.posts\n\t\n}",
                     "ids": [
                         "ZKhoL2rQNXzQfy55t"
@@ -3192,9 +3185,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Every image is posted by one user.\n\tall p : Photo, u : User | lone posts.p\n}",
+                    "code": "{\n\t// Every image is posted by one user.\n  all p : Photo, u1,u2 : User |  p in u1.posts and p in u2.posts implies u1 = u2 and p in User.posts\n\t\n}",
                     "ids": [
-                        "DmCCwYMmmnmyKxnag"
+                        "9N3ywFzL5M3aJCmyn"
                     ]
                 },
                 {
@@ -3202,6 +3195,13 @@
                     "code": "{\n\t// Every image is posted by one user.\n  all p : Photo, u1,u2 : User |  u1 in posts.p and u2 in posts.p implies u1 = u2\n\t\n}",
                     "ids": [
                         "7qGYK26M7rpXvvXY9"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n  \tall p : Photo | lone u : User | u in posts.p \n\t \n}",
+                    "ids": [
+                        "EGwW4Hv6GtPobJmET"
                     ]
                 },
                 {
@@ -3234,9 +3234,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Every image is posted by one user.\n  all p : Photo, u1,u2 : User |  p in u1.posts and p in u2.posts implies u1 = u2 and p in User.posts\n\t\n}",
+                    "code": "{\n\t// Every image is posted by one user.\n\tall p : Photo, u : User | lone posts.p\n}",
                     "ids": [
-                        "9N3ywFzL5M3aJCmyn"
+                        "DmCCwYMmmnmyKxnag"
                     ]
                 }
             ]
@@ -3312,6 +3312,14 @@
                 },
                 {
                     "entry_count": 2,
+                    "code": "{\n\t// Every image is posted by one user.\n\tall p : Photo, u: User | one p & u.posts\n}",
+                    "ids": [
+                        "iS6WWRRWpg99ko4aF",
+                        "aTuMLHRGAw5uTEcNd"
+                    ]
+                },
+                {
+                    "entry_count": 2,
                     "code": "{\n\t// Every image is posted by one user.\n  all p: Photo, u: User | always p in u.posts\n\t\n}",
                     "ids": [
                         "nuPpsyWn4ZXEazPqu",
@@ -3327,21 +3335,6 @@
                     ]
                 },
                 {
-                    "entry_count": 2,
-                    "code": "{\n\t// Every image is posted by one user.\n\tall p : Photo, u: User | one p & u.posts\n}",
-                    "ids": [
-                        "iS6WWRRWpg99ko4aF",
-                        "aTuMLHRGAw5uTEcNd"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Every image is posted by one user.\n\tall p : Photo, u: User | some p & u.posts\n}",
-                    "ids": [
-                        "zGnRv7Xyv5XY6sbGQ"
-                    ]
-                },
-                {
                     "entry_count": 1,
                     "code": "{\n\t// Every image is posted by one user.\n  all p: Photo, u: User |  p in u.posts and one u\n\t\n}",
                     "ids": [
@@ -3353,6 +3346,13 @@
                     "code": "{\n\t// Every image is posted by one user.\n\tall u: User | all p: Photo | p in u.^posts\n}",
                     "ids": [
                         "zy9tpqySrABWsZbqE"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n\tall p : Photo, u: User | some p & u.posts\n}",
+                    "ids": [
+                        "zGnRv7Xyv5XY6sbGQ"
                     ]
                 }
             ]
@@ -3404,20 +3404,20 @@
                 },
                 {
                     "entry_count": 3,
-                    "code": "{\n\t// Every image is posted by one user.\n\tall p: Photo | one u: User | p in posts.u\n}",
-                    "ids": [
-                        "9tg4A5fLFJ6QZFzBZ",
-                        "yrJTMkEbqB3JybiYF",
-                        "hs5AcaBnMWbSudkHJ"
-                    ]
-                },
-                {
-                    "entry_count": 3,
                     "code": "{\n\t// Every image is posted by one user.\n  all p : Photo | p in p.posts\n\t\n}",
                     "ids": [
                         "zByyrzbWHecAzGbmC",
                         "5gmdQnEK3HhkiHyyF",
                         "qD4nXfzFZLkNzDJRf"
+                    ]
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Every image is posted by one user.\n\tall p: Photo | one u: User | p in posts.u\n}",
+                    "ids": [
+                        "9tg4A5fLFJ6QZFzBZ",
+                        "yrJTMkEbqB3JybiYF",
+                        "hs5AcaBnMWbSudkHJ"
                     ]
                 },
                 {
@@ -3446,9 +3446,23 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Every image is posted by one user.\n\tall p, u: Photo | one posts.u & p\n}",
+                    "code": "{\n\t// Every image is posted by one user.\n    all i: Photo | one u : User | u in i.posts\n\t\n}",
                     "ids": [
-                        "8jCnnLzuvXNAoTekJ"
+                        "ERKghYNsSEgy7x7PE"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n  all p : Photo | p in User.posts\n  all p : Photo, u1,u2 : User | p in u1.posts implies p not in u2.posts\n\t\n}",
+                    "ids": [
+                        "5Bnh7tB2vcwa5SwWZ"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n  all image: Photo | one user: User | user in image\n}",
+                    "ids": [
+                        "piZzSpnwnqKZtorey"
                     ]
                 },
                 {
@@ -3460,58 +3474,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Every image is posted by one user.\n  all image: Photo | one user: User | image in user.posts\n  all image: Photo | one u1: User, u2: User | image in u1.posts and image in u2.posts and u1 != u2\n}",
+                    "code": "{\n\tno Photo\n}",
                     "ids": [
-                        "hscQTpfrBFwGmiFr6"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Every image is posted by one user.\n  Photo in posts.User\n\n}",
-                    "ids": [
-                        "AA27p5WWavqkgJkDz"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Every image is posted by one user.\n\tall p, u: Photo | one u.posts & p\n}",
-                    "ids": [
-                        "iu94usyJrJJLgCJ7o"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n    all p: Photo | p in p.^posts\n}",
-                    "ids": [
-                        "pwYCXsYgrcBn6tvh4"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Every image is posted by one user.\n\tall p: Photo | some u: User | u in p.posts\n}",
-                    "ids": [
-                        "gCMWNastxk3SLAwe6"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Every image is posted by one user.\n  all p : Photo | one u : User | u.posts = u\n\t\n}",
-                    "ids": [
-                        "rBHbSQgeL3fDgkBmY"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Every image is posted by one user.\n    all p: Photo | one date.p\n\t\n}",
-                    "ids": [
-                        "HMouytmdJTtuSYEmz"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Every image is posted by one user.\n\tall p, u: Photo | one u.posts\n}",
-                    "ids": [
-                        "QihoKXjcg9LmFyGH3"
+                        "CdHe6CYkHsjPgL2pF"
                     ]
                 },
                 {
@@ -3523,6 +3488,69 @@
                 },
                 {
                     "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n  all i:Photo | #i.posts=1\n\t\n}",
+                    "ids": [
+                        "6gcyyQmBqhZJyqaq2"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n\tall p, u: Photo | one u.posts & p\n}",
+                    "ids": [
+                        "iu94usyJrJJLgCJ7o"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\tall p: Photo | p in User.posts and posts.p = 1\n\t// Every image is posted by one user.\n\t\n}",
+                    "ids": [
+                        "FKqGdaWCvewZCmGse"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n  all p : Photo |one u : User| p in u\n\t\n}",
+                    "ids": [
+                        "DxvGSNroayGyr2dQA"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n\tall p: Photo | one u: User | u.posts = 1\n}",
+                    "ids": [
+                        "25YECkmqaRmQtJ5YR"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n\tall p: Photo | some u: User | u in p.posts\n}",
+                    "ids": [
+                        "gCMWNastxk3SLAwe6"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n\tall p, u: Photo | one posts.u & p\n}",
+                    "ids": [
+                        "8jCnnLzuvXNAoTekJ"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n  all p : Photo | one u : User | u.posts = u\n\t\n}",
+                    "ids": [
+                        "rBHbSQgeL3fDgkBmY"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n  all image: Photo | one user: User | image in user.posts\n  all image: Photo | one u1: User, u2: User | image in u1.posts and image in u2.posts and u1 != u2\n}",
+                    "ids": [
+                        "hscQTpfrBFwGmiFr6"
+                    ]
+                },
+                {
+                    "entry_count": 1,
                     "code": "{\n\t// Every image is posted by one user.\n  all image: Photo | one user: User | image in user.posts\n  all image: Photo | one u1: User, u2: User | image in u1.posts && image in u2.posts => u1 != u2\n}",
                     "ids": [
                         "4EH2hquvSows2sPip"
@@ -3530,9 +3558,16 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Every image is posted by one user.\n  all i:Photo | #i.posts=1\n\t\n}",
+                    "code": "{\n\t// Every image is posted by one user.\n\tall disj u0,u1: User | no (u0.posts &  u1.posts)\n  \tall p: Photo | one u:User | one posts.p & u.posts\n}",
                     "ids": [
-                        "6gcyyQmBqhZJyqaq2"
+                        "RPcpNmEHSBnc7Swbj"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n  Photo in posts.User\n\n}",
+                    "ids": [
+                        "AA27p5WWavqkgJkDz"
                     ]
                 },
                 {
@@ -3551,23 +3586,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Every image is posted by one user.\n\tall p: Photo | one u: User | u.posts = 1\n}",
+                    "code": "{\n\t// Every image is posted by one user.\n\tall p, u: Photo | one u.posts\n}",
                     "ids": [
-                        "25YECkmqaRmQtJ5YR"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Every image is posted by one user.\n  all p : Photo |one u : User| p in u\n\t\n}",
-                    "ids": [
-                        "DxvGSNroayGyr2dQA"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Every image is posted by one user.\n\tall disj u0,u1: User | no (u0.posts &  u1.posts)\n  \tall p: Photo | one u:User | one posts.p & u.posts\n}",
-                    "ids": [
-                        "RPcpNmEHSBnc7Swbj"
+                        "QihoKXjcg9LmFyGH3"
                     ]
                 },
                 {
@@ -3579,37 +3600,16 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Every image is posted by one user.\n  all image: Photo | one user: User | user in image\n}",
+                    "code": "{\n    all p: Photo | p in p.^posts\n}",
                     "ids": [
-                        "piZzSpnwnqKZtorey"
+                        "pwYCXsYgrcBn6tvh4"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Every image is posted by one user.\n    all i: Photo | one u : User | u in i.posts\n\t\n}",
+                    "code": "{\n\t// Every image is posted by one user.\n    all p: Photo | one date.p\n\t\n}",
                     "ids": [
-                        "ERKghYNsSEgy7x7PE"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\tno Photo\n}",
-                    "ids": [
-                        "CdHe6CYkHsjPgL2pF"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Every image is posted by one user.\n  all p : Photo | p in User.posts\n  all p : Photo, u1,u2 : User | p in u1.posts implies p not in u2.posts\n\t\n}",
-                    "ids": [
-                        "5Bnh7tB2vcwa5SwWZ"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\tall p: Photo | p in User.posts and posts.p = 1\n\t// Every image is posted by one user.\n\t\n}",
-                    "ids": [
-                        "FKqGdaWCvewZCmGse"
+                        "HMouytmdJTtuSYEmz"
                     ]
                 }
             ]
@@ -3760,27 +3760,6 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Every image is posted by one user.\n\tall ph : Photo, u1,u2 : User| ph in u1.posts implies u2 not in posts.ph\n}",
-                    "ids": [
-                        "barzmjNKcfrwpNdFt"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Every image is posted by one user.\n\tall u1, u2: User | no p: Photo | p in u1.posts and p in u2.posts\n}",
-                    "ids": [
-                        "ZthH2fcRcrRXpvAK5"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n  // Every image is posted by one user.\n  all disj u1 : User, u2 : User | disj[u1.posts, u2.posts]\n}",
-                    "ids": [
-                        "fhvNvHHt5gCyoP9u5"
-                    ]
-                },
-                {
-                    "entry_count": 1,
                     "code": "{\n\t// Every image is posted by one user.\n\tall disj u0,u1: User | no (u0.posts &  u1.posts)\n  \tall p: Photo | no posts.p\n}",
                     "ids": [
                         "CwyhZSSdpgB7fcnzH"
@@ -3795,9 +3774,16 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Every image is posted by one user.\n  \tall p: Photo, u1,u2: User | p in u1.posts implies not p in u2.posts\n\t\n}",
+                    "code": "{\n  // Every image is posted by one user.\n  all disj u1 : User, u2 : User | disj[u1.posts, u2.posts]\n}",
                     "ids": [
-                        "B7xQkscayyiCGs4uW"
+                        "fhvNvHHt5gCyoP9u5"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n\tall u1, u2: User | no p: Photo | p in u1.posts and p in u2.posts\n}",
+                    "ids": [
+                        "ZthH2fcRcrRXpvAK5"
                     ]
                 },
                 {
@@ -3805,6 +3791,20 @@
                     "code": "{\n\t// Every image is posted by one user.\n\tall ph : Photo, u : User| ph in u.posts implies u in ph.posts\n}",
                     "ids": [
                         "YPZx6CHNvKh6ja3co"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n\tall ph : Photo, u1,u2 : User| ph in u1.posts implies u2 not in posts.ph\n}",
+                    "ids": [
+                        "barzmjNKcfrwpNdFt"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n  \tall p: Photo, u1,u2: User | p in u1.posts implies not p in u2.posts\n\t\n}",
+                    "ids": [
+                        "B7xQkscayyiCGs4uW"
                     ]
                 }
             ]
@@ -3852,6 +3852,13 @@
                 },
                 {
                     "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n\tposts in User -> lone Photo\n}",
+                    "ids": [
+                        "tvozmCfENECiCYixL"
+                    ]
+                },
+                {
+                    "entry_count": 1,
                     "code": "{\n\t// Every image is posted by one user.\n\tall x : User | lone ~posts.x\n}",
                     "ids": [
                         "JHzDwgtkEEv8X2nxS"
@@ -3862,13 +3869,6 @@
                     "code": "{\n  // Every image is posted by one user.\n  all u: User |\n    all p1, p2: u.posts | p1 = p2\n}",
                     "ids": [
                         "sz5DJq664246NPu8P"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Every image is posted by one user.\n\tposts in User -> lone Photo\n}",
-                    "ids": [
-                        "tvozmCfENECiCYixL"
                     ]
                 }
             ]
@@ -3931,14 +3931,6 @@
                 },
                 {
                     "entry_count": 2,
-                    "code": "{\n\tno User\n\t\n}",
-                    "ids": [
-                        "E2akZftQ9cJKDDPy8",
-                        "Cz4DugPGrLFfwubb3"
-                    ]
-                },
-                {
-                    "entry_count": 2,
                     "code": "{\n\t// Every image is posted by one user.\n \tposts in User one -> User\n\t\n}",
                     "ids": [
                         "EwgfME7oQ3jLujqAv",
@@ -3946,17 +3938,11 @@
                     ]
                 },
                 {
-                    "entry_count": 1,
-                    "code": "{\n\t// Every image is posted by one user.\n\tno u,s :User | u.posts = s.posts\n}",
+                    "entry_count": 2,
+                    "code": "{\n\tno User\n\t\n}",
                     "ids": [
-                        "MH7goLkmMYdMa3wDj"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Every image is posted by one user.\n\tall u: User | one User.~posts\n}",
-                    "ids": [
-                        "o2RJti4m9KimNzuBw"
+                        "E2akZftQ9cJKDDPy8",
+                        "Cz4DugPGrLFfwubb3"
                     ]
                 },
                 {
@@ -3971,13 +3957,6 @@
                     "code": "{\n\t// Every image is posted by one user. \n\tall u : User | u.posts - Photo not in u.follows.posts\n}",
                     "ids": [
                         "jcW4nJAJYk2THhxWP"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Every image is posted by one user.\n\tall u: User | one u.~posts\n}",
-                    "ids": [
-                        "dZRsBBXMmruHoC5XG"
                     ]
                 },
                 {
@@ -3999,6 +3978,27 @@
                     "code": "{\n\t// Every image is posted by one user.\n  all u:User | #posts.u=1\n\t\n}",
                     "ids": [
                         "5SW8fzXCB43bXN5gE"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n\tall u: User | one u.~posts\n}",
+                    "ids": [
+                        "dZRsBBXMmruHoC5XG"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n\tall u: User | one User.~posts\n}",
+                    "ids": [
+                        "o2RJti4m9KimNzuBw"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n\tno u,s :User | u.posts = s.posts\n}",
+                    "ids": [
+                        "MH7goLkmMYdMa3wDj"
                     ]
                 }
             ]
@@ -4068,16 +4068,16 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Every image is posted by one user.\n \t//all x : Photo, y,z : User | y->x in posts and z->x in posts implies y = z\n  \t//all x : Photo | some y: User | y->x in posts\n  \tone posts\n\t\n}",
+                    "code": "{\n\t// Every image is posted by one user.\n\t//all p: Photo | one p.~posts\n  \tone ~posts\n}",
                     "ids": [
-                        "88BBFWt4PFJkcPY63"
+                        "8pGxQ4kXP7E2529jY"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Every image is posted by one user.\n\t//all p: Photo | one p.~posts\n  \tone ~posts\n}",
+                    "code": "{\n\t// Every image is posted by one user.\n \t//all x : Photo, y,z : User | y->x in posts and z->x in posts implies y = z\n  \t//all x : Photo | some y: User | y->x in posts\n  \tone posts\n\t\n}",
                     "ids": [
-                        "8pGxQ4kXP7E2529jY"
+                        "88BBFWt4PFJkcPY63"
                     ]
                 }
             ]
@@ -4166,16 +4166,16 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Every image is posted by one user. \n\tall u : User | one Photo & u.posts\n}",
+                    "code": "{\n\t// Every image is posted by one user.\n    all u:User | one p:Photo | p in u.posts\n\t\n}",
                     "ids": [
-                        "rku8cJPBcFPGEq63r"
+                        "MjodCPdMNZgbWvsu6"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Every image is posted by one user.\n    all u:User | one p:Photo | p in u.posts\n\t\n}",
+                    "code": "{\n\t// Every image is posted by one user. \n\tall u : User | one Photo & u.posts\n}",
                     "ids": [
-                        "MjodCPdMNZgbWvsu6"
+                        "rku8cJPBcFPGEq63r"
                     ]
                 }
             ]
@@ -4234,16 +4234,16 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Every image is posted by one user.\n    (posts.Photo & User) in User and User in posts.Photo\n\t\n}",
+                    "code": "{\n\t// Every image is posted by one user.\n    (posts.Photo & User) in User and User in (posts.Photo & User)\n\t\n}",
                     "ids": [
-                        "HYDC6QpbYPRrzFCD2"
+                        "n2L9QFj8R9zLssnKa"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Every image is posted by one user.\n    (posts.Photo & User) in User and User in (posts.Photo & User)\n\t\n}",
+                    "code": "{\n\t// Every image is posted by one user.\n    posts.Photo in User and User in posts.Photo\n\t\n}",
                     "ids": [
-                        "n2L9QFj8R9zLssnKa"
+                        "WLJ8JboQ8qJpgHad2"
                     ]
                 },
                 {
@@ -4262,9 +4262,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Every image is posted by one user.\n    posts.Photo in User and User in posts.Photo\n\t\n}",
+                    "code": "{\n\t// Every image is posted by one user.\n    (posts.Photo & User) in User and User in posts.Photo\n\t\n}",
                     "ids": [
-                        "WLJ8JboQ8qJpgHad2"
+                        "HYDC6QpbYPRrzFCD2"
                     ]
                 }
             ]
@@ -4276,16 +4276,9 @@
             "elems": [
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Every image is posted by one user.\n  all x : Photo, y : User {\n  \tx -> y in posts\n  }  \n}",
+                    "code": "{\n\t// Every image is posted by one user.\n\t//all p: Photo | one p.~posts\n  \tall p: Photo, u: User | one (p & u) \n}",
                     "ids": [
-                        "DTnv43Z2Yef8dRq9m"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Every image is posted by one user.\n  all p : Photo, u1,u2 : User | p in u1.posts and p not in u2.posts\n\t\n}",
-                    "ids": [
-                        "98DyXrpgoQcs5DXs9"
+                        "LZWcM9qh6kRXyDZat"
                     ]
                 },
                 {
@@ -4297,9 +4290,44 @@
                 },
                 {
                     "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n\tall p:Photo, u:User | p in posts.u\n}",
+                    "ids": [
+                        "FdxJqRZrTDGfPKkSN"
+                    ]
+                },
+                {
+                    "entry_count": 1,
                     "code": "{\n\t// Every image is posted by one user.\n  all p : Photo, u1,u2 : User | u1 in posts.p and u2 not in posts.p\n\t\n}",
                     "ids": [
                         "6hpLGMmrKFaDSzhuz"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n  all p : Photo, u1,u2 : User | p in u1.posts and p not in u2.posts\n\t\n}",
+                    "ids": [
+                        "98DyXrpgoQcs5DXs9"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n\t//all p: Photo | one p.~posts\n  \tall p: Photo, u: User | one (p.posts & u.posts) \n}",
+                    "ids": [
+                        "qCtsNbtbZa53kEc59"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n  all x : Photo, y : User {\n  \tx -> y in posts\n  }  \n}",
+                    "ids": [
+                        "DTnv43Z2Yef8dRq9m"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n\tall p : Photo , u : User | # (posts.u)=1\n\t\n}",
+                    "ids": [
+                        "vhMwwmmbxj6A8RHDR"
                     ]
                 },
                 {
@@ -4314,34 +4342,6 @@
                     "code": "{\n\t// Every image is posted by one user.\n\tall p : Photo | all u : User | p in u\n}",
                     "ids": [
                         "AcM9pCq7i3j3ggdeW"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Every image is posted by one user.\n\tall p:Photo, u:User | p in posts.u\n}",
-                    "ids": [
-                        "FdxJqRZrTDGfPKkSN"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Every image is posted by one user.\n\tall p : Photo , u : User | # (posts.u)=1\n\t\n}",
-                    "ids": [
-                        "vhMwwmmbxj6A8RHDR"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Every image is posted by one user.\n\t//all p: Photo | one p.~posts\n  \tall p: Photo, u: User | one (p & u) \n}",
-                    "ids": [
-                        "LZWcM9qh6kRXyDZat"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Every image is posted by one user.\n\t//all p: Photo | one p.~posts\n  \tall p: Photo, u: User | one (p.posts & u.posts) \n}",
-                    "ids": [
-                        "qCtsNbtbZa53kEc59"
                     ]
                 }
             ]
@@ -4381,13 +4381,6 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Every image is posted by one user.\n  all disj u1, u2 : User |\n  all p : Photo |\n  p in u1.posts && no u1.posts & u2.posts\n\t\n}",
-                    "ids": [
-                        "CCRkoe9AeJrauZYKz"
-                    ]
-                },
-                {
-                    "entry_count": 1,
                     "code": "{\n\t// Every image is posted by one user.\n  all u:User, p:Photo , others:User-u |\n \tp in u.posts && p not in others.posts\n\t\n}",
                     "ids": [
                         "zucJ2rvGhWC7zEtBf"
@@ -4398,6 +4391,13 @@
                     "code": "{\n\t// Every image is posted by one user.\n\tall p: Photo | lone User->p\n}",
                     "ids": [
                         "2NgdHs6WrjDQoA7vR"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n  all disj u1, u2 : User |\n  all p : Photo |\n  p in u1.posts && no u1.posts & u2.posts\n\t\n}",
+                    "ids": [
+                        "CCRkoe9AeJrauZYKz"
                     ]
                 },
                 {
@@ -4449,16 +4449,16 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Every image is posted by one user.\n    some (Photo & User.posts) and no posts.Photo\n}",
+                    "code": "{\n\t// Every image is posted by one user.\n\tsome none\n}",
                     "ids": [
-                        "TNmHsWfQbEhYbrzMF"
+                        "qDYpQNbmRvZbwX8DQ"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Every image is posted by one user. \n\tone u : User |  u.posts not in u.posts\n}",
+                    "code": "{\n\t// Every image is posted by one user.\n    some (Photo & User.posts) and no posts.Photo\n}",
                     "ids": [
-                        "veqGnKLhzg9ausTgz"
+                        "TNmHsWfQbEhYbrzMF"
                     ]
                 },
                 {
@@ -4470,9 +4470,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Every image is posted by one user.\n\tsome none\n}",
+                    "code": "{\n\t// Every image is posted by one user. \n\tone u : User |  u.posts not in u.posts\n}",
                     "ids": [
-                        "qDYpQNbmRvZbwX8DQ"
+                        "veqGnKLhzg9ausTgz"
                     ]
                 }
             ]
@@ -4494,16 +4494,16 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Every image is posted by one user.\n  all p : Photo | one User -> p\n\t\n}",
+                    "code": "{\n\t// Every image is posted by one user.\n  all p:Photo | one u:User | one p->u\n\t\n}",
                     "ids": [
-                        "kvCjhD4NjgonHe8fF"
+                        "A97Nbkjndbe2ijHGB"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Every image is posted by one user.\n  all p:Photo | one u:User | one p->u\n\t\n}",
+                    "code": "{\n\t// Every image is posted by one user.\n  all p : Photo | one User -> p\n\t\n}",
                     "ids": [
-                        "A97Nbkjndbe2ijHGB"
+                        "kvCjhD4NjgonHe8fF"
                     ]
                 }
             ]
@@ -4566,58 +4566,16 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Every image is posted by one user.\n  \tall p : Photo | User.posts in p\n\t\n}",
-                    "ids": [
-                        "LwM2ztDpMtBRML8Jv"
-                    ]
-                },
-                {
-                    "entry_count": 1,
                     "code": "{\n\t// Every image is posted by one user.\n\tall p:Photo, up:User.posts | up = p \n}",
                     "ids": [
                         "HPq6f8ksEyZ9YG3rh"
                     ]
-                }
-            ]
-        },
-        {
-            "entry_count": 5,
-            "group_count": 5,
-            "correct": false,
-            "elems": [
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Every image is posted by one user.\n\t//all p: Photo | one p.~posts\n  \tone (User.posts & Photo)\n}",
-                    "ids": [
-                        "6FWsLi8aGjugW3L3d"
-                    ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Every image is posted by one user.\n\tone p: Photo |  p in User.posts\n}",
+                    "code": "{\n\t// Every image is posted by one user.\n  \tall p : Photo | User.posts in p\n\t\n}",
                     "ids": [
-                        "9Lt8zW9uw4MQ6sSr4"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Every image is posted by one user.\n  some p: Photo | one User.posts\n\t\n}",
-                    "ids": [
-                        "4zZR34NnMJ2SeFzJt"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Every image is posted by one user.\n\t//all p: Photo | one p.~posts\n  \tone ~posts.User\n}",
-                    "ids": [
-                        "RLz29Ec7MaofE6Xue"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Every image is posted by one user.\n\teq[#User.posts,1]\n}",
-                    "ids": [
-                        "FGBbjYpJZbzMT5o7e"
+                        "LwM2ztDpMtBRML8Jv"
                     ]
                 }
             ]
@@ -4629,18 +4587,18 @@
             "elems": [
                 {
                     "entry_count": 2,
-                    "code": "{\n  all photo: posts.Photo | one User\n\t// Every image is posted by one user.\n\t\n}",
-                    "ids": [
-                        "T3a35QrgyfSiZNGs7",
-                        "rFzqcrfYJYKQrgdCQ"
-                    ]
-                },
-                {
-                    "entry_count": 2,
                     "code": "{\n\t// Every image is posted by one user.\n\tall p : Photo | p in User.posts implies one User\n}",
                     "ids": [
                         "x5WXyPWd9dzf8BJ8c",
                         "YS8PwgB3HNBDak6pF"
+                    ]
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n  all photo: posts.Photo | one User\n\t// Every image is posted by one user.\n\t\n}",
+                    "ids": [
+                        "T3a35QrgyfSiZNGs7",
+                        "rFzqcrfYJYKQrgdCQ"
                     ]
                 },
                 {
@@ -4667,16 +4625,16 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Every image is posted by one user.\n  Ad in User.posts\n\n\n\t\n}",
+                    "code": "{\n\t// Every image is posted by one user.\n\tPhoto in User.posts or Ad in User.posts\n}",
                     "ids": [
-                        "soW8ZLWkyMJPpSn8w"
+                        "7Xey4S2P5sq9WFEiq"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Every image is posted by one user.\n\tPhoto in User.posts or Ad in User.posts\n}",
+                    "code": "{\n\t// Every image is posted by one user.\n  Ad in User.posts\n\n\n\t\n}",
                     "ids": [
-                        "7Xey4S2P5sq9WFEiq"
+                        "soW8ZLWkyMJPpSn8w"
                     ]
                 }
             ]
@@ -4725,16 +4683,16 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Every image is posted by one user.\n \tall x : Photo, y,z : User | y->x in posts and z->x in posts implies y = z\n  \tall x : Photo, y: User | y->x in posts\n\t\n}",
+                    "code": "{\n\t// Every image is posted by one user.\n\tall p:Photo, u: User| p in u.posts and all other: User -u | p not in other.posts\n}",
                     "ids": [
-                        "pRXQbGnXLT4hzs9ni"
+                        "byPNaXkpPhC6g4RZG"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Every image is posted by one user.\n\tall p:Photo, u: User| p in u.posts and all other: User -u | p not in other.posts\n}",
+                    "code": "{\n\t// Every image is posted by one user.\n \tall x : Photo, y,z : User | y->x in posts and z->x in posts implies y = z\n  \tall x : Photo, y: User | y->x in posts\n\t\n}",
                     "ids": [
-                        "byPNaXkpPhC6g4RZG"
+                        "pRXQbGnXLT4hzs9ni"
                     ]
                 }
             ]
@@ -4777,16 +4735,16 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Every image is posted by one user.\n  all p: Photo, disj u: User, i: Influencer |  p in u.posts or p in i.posts and (one u or one i)\n\t\n}",
+                    "code": "{\n\t// Every image is posted by one user.\n  all p:Photo, u:User, i:Influencer | p in u+i.posts\n\t\n}",
                     "ids": [
-                        "tB8pkDuAnJ2nKtemE"
+                        "BMhxWZqwZK7QfuCWe"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Every image is posted by one user.\n  all p:Photo, u:User, i:Influencer | p in u+i.posts\n\t\n}",
+                    "code": "{\n\t// Every image is posted by one user.\n  all p: Photo, disj u: User, i: Influencer |  p in u.posts or p in i.posts and (one u or one i)\n\t\n}",
                     "ids": [
-                        "BMhxWZqwZK7QfuCWe"
+                        "tB8pkDuAnJ2nKtemE"
                     ]
                 }
             ]
@@ -4822,6 +4780,41 @@
         },
         {
             "entry_count": 4,
+            "group_count": 4,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n  some p: Photo | one User.posts\n\t\n}",
+                    "ids": [
+                        "4zZR34NnMJ2SeFzJt"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n\t//all p: Photo | one p.~posts\n  \tone (User.posts & Photo)\n}",
+                    "ids": [
+                        "6FWsLi8aGjugW3L3d"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n\tone p: Photo |  p in User.posts\n}",
+                    "ids": [
+                        "9Lt8zW9uw4MQ6sSr4"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n\t//all p: Photo | one p.~posts\n  \tone ~posts.User\n}",
+                    "ids": [
+                        "RLz29Ec7MaofE6Xue"
+                    ]
+                }
+            ]
+        },
+        {
+            "entry_count": 4,
             "group_count": 3,
             "correct": false,
             "elems": [
@@ -4835,16 +4828,16 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Every image is posted by one user.\n\tall p : Photo , u : User | # (~posts.u)=1\n\t\n}",
+                    "code": "{\n\t// Every image is posted by one user.\n\tall p:Photo , u:User | one p implies one u.posts\n}",
                     "ids": [
-                        "4D3YAzcWksshGCKQM"
+                        "7SuXJj7tjmumAQqm5"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Every image is posted by one user.\n\tall p:Photo , u:User | one p implies one u.posts\n}",
+                    "code": "{\n\t// Every image is posted by one user.\n\tall p : Photo , u : User | # (~posts.u)=1\n\t\n}",
                     "ids": [
-                        "7SuXJj7tjmumAQqm5"
+                        "4D3YAzcWksshGCKQM"
                     ]
                 }
             ]
@@ -5156,16 +5149,16 @@
             "elems": [
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Every image is posted by one user.\n  all i : Photo - Ad | i in User.posts\n\n  \n\n\n\n\n\t\n}",
+                    "code": "{\n\t// Every image is posted by one user.\n  Photo - Ad in User.posts\n\n\n\t\n}",
                     "ids": [
-                        "hapdcANJDmjZqTNYR"
+                        "Jzm29kr3o85sX5BTC"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Every image is posted by one user.\n  Photo - Ad in User.posts\n\n\n\t\n}",
+                    "code": "{\n\t// Every image is posted by one user.\n  all i : Photo - Ad | i in User.posts\n\n  \n\n\n\n\n\t\n}",
                     "ids": [
-                        "Jzm29kr3o85sX5BTC"
+                        "hapdcANJDmjZqTNYR"
                     ]
                 }
             ]
@@ -5255,16 +5248,16 @@
             "elems": [
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Every image is posted by one user.\n\tlone ~posts\n}",
+                    "code": "{\n\t// Every image is posted by one user.\n  lone u: User, p: Photo | p in u.posts\n\t\n}",
                     "ids": [
-                        "7kdcLppJKKSk4A86R"
+                        "ArufP87qLxGygp8kD"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Every image is posted by one user.\n  lone u: User, p: Photo | p in u.posts\n\t\n}",
+                    "code": "{\n\t// Every image is posted by one user.\n\tlone ~posts\n}",
                     "ids": [
-                        "ArufP87qLxGygp8kD"
+                        "7kdcLppJKKSk4A86R"
                     ]
                 }
             ]
@@ -5336,16 +5329,16 @@
             "elems": [
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Every image is posted by one user.\n\tposts in Photo some -> one User\n}",
+                    "code": "{\n\t// Every image is posted by one user.\n  \t//all p: Photo | one posts.p \n  \tposts in Photo one -> one User\n}",
                     "ids": [
-                        "3DjSwsxDaLoBfB5KL"
+                        "eJdb63aua4cRBYuHz"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Every image is posted by one user.\n  \t//all p: Photo | one posts.p \n  \tposts in Photo one -> one User\n}",
+                    "code": "{\n\t// Every image is posted by one user.\n\tposts in Photo some -> one User\n}",
                     "ids": [
-                        "eJdb63aua4cRBYuHz"
+                        "3DjSwsxDaLoBfB5KL"
                     ]
                 }
             ]
@@ -5357,16 +5350,16 @@
             "elems": [
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Every image is posted by one user.\n  \tall p : Photo | let u = {u : User | p in u.posts } | no u2 : User, inf : \t\t\t\t\tInfluencer | p in u2.posts or p in inf.posts and ( u = u2 or inf = u)\n\t\n}",
+                    "code": "{\n\t// Every image is posted by one user.\n  \tall p : Photo | let U = {u : User | p in u.posts } | no u2 : User, inf : \t\t\t\t\tInfluencer | p in u2.posts or p in inf.posts\n\t\n}",
                     "ids": [
-                        "W5A7idkhETXczFRG3"
+                        "RBfxWWtbFgZvgLjfc"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Every image is posted by one user.\n  \tall p : Photo | let U = {u : User | p in u.posts } | no u2 : User, inf : \t\t\t\t\tInfluencer | p in u2.posts or p in inf.posts\n\t\n}",
+                    "code": "{\n\t// Every image is posted by one user.\n  \tall p : Photo | let u = {u : User | p in u.posts } | no u2 : User, inf : \t\t\t\t\tInfluencer | p in u2.posts or p in inf.posts and ( u = u2 or inf = u)\n\t\n}",
                     "ids": [
-                        "RBfxWWtbFgZvgLjfc"
+                        "W5A7idkhETXczFRG3"
                     ]
                 }
             ]
@@ -5981,20 +5974,6 @@
             "elems": [
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Every image is posted by one user.\n  all p: Photo | all ad:Ad |  p in User.posts and ad in User.posts\n  onePostoneUser\n\t\n}",
-                    "ids": [
-                        "Cz4BGHKEgd6yMSqGC"
-                    ]
-                }
-            ]
-        },
-        {
-            "entry_count": 1,
-            "group_count": 1,
-            "correct": false,
-            "elems": [
-                {
-                    "entry_count": 1,
                     "code": "{\n  all disj x,y : User-Influencer | no (x.posts & y.posts)\n\t// Every image is posted by one user.\n}",
                     "ids": [
                         "rwWqrsZ6ZNkPx7DX2"
@@ -6124,62 +6103,6 @@
                     "code": "{\n\t// Every image is posted by one user.\n\tposts in User lone -> lone Photo\n}",
                     "ids": [
                         "cBpzozzdjuGTCA5pA"
-                    ]
-                }
-            ]
-        },
-        {
-            "entry_count": 1,
-            "group_count": 1,
-            "correct": false,
-            "elems": [
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Every image is posted by one user.\n  \tall p: Photo | one p.from\n\t\n}",
-                    "ids": [
-                        "ChbYXs7jjeo8j7uvP"
-                    ]
-                }
-            ]
-        },
-        {
-            "entry_count": 1,
-            "group_count": 1,
-            "correct": false,
-            "elems": [
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Every image is posted by one user.\n  \tPhoto.from in User\n\t\n}",
-                    "ids": [
-                        "jKB4PRfQZEnP7KAup"
-                    ]
-                }
-            ]
-        },
-        {
-            "entry_count": 1,
-            "group_count": 1,
-            "correct": false,
-            "elems": [
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Every image is posted by one user.\n\tall p: Photo | one p.from and p.from in User\t\n}",
-                    "ids": [
-                        "S2SvL6uHrbjTRrHGE"
-                    ]
-                }
-            ]
-        },
-        {
-            "entry_count": 1,
-            "group_count": 1,
-            "correct": false,
-            "elems": [
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Every image is posted by one user.\n\tall p: Photo | one p.from\t\n}",
-                    "ids": [
-                        "jK3Rea4emGvWnZwST"
                     ]
                 }
             ]

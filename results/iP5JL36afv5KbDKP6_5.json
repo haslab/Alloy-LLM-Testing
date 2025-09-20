@@ -2,8 +2,8 @@
     "label": "inv6",
     "pred": "this/inv6",
     "entry_count": 1150,
-    "group_count": 182,
-    "duration": 247,
+    "group_count": 177,
+    "duration": 240,
     "scope": 3,
     "groups": [
         {
@@ -452,6 +452,15 @@
                 },
                 {
                     "entry_count": 3,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall s : Student, p : s.projects |\n  \t\tsome s.enrolled & Course <: projects.p\n}",
+                    "ids": [
+                        "5YWPZ2iz38dj9Z5Qv",
+                        "757TqERqCfi69idTq",
+                        "7pK842DForn4pHZj8"
+                    ]
+                },
+                {
+                    "entry_count": 3,
                     "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall s : Student | all p : Project | s in projects.p implies p in s.enrolled.projects\n\t// pr in s.projects implies pr in s.enrolled.projects\n\n}",
                     "ids": [
                         "5z2YayM4RpihWAcwM",
@@ -460,12 +469,11 @@
                     ]
                 },
                 {
-                    "entry_count": 3,
-                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall s : Student, p : s.projects |\n  \t\tsome s.enrolled & Course <: projects.p\n}",
+                    "entry_count": 2,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall s : Student | all p : Project | s->p in projects implies \n  \t\t\t\t\t(some c : Course | c->p in (Course<:projects) and s->c in enrolled) \n}",
                     "ids": [
-                        "5YWPZ2iz38dj9Z5Qv",
-                        "757TqERqCfi69idTq",
-                        "7pK842DForn4pHZj8"
+                        "xvQedCdWhbeaLgMra",
+                        "ex7rF7eQm3dfo7Aqd"
                     ]
                 },
                 {
@@ -485,25 +493,17 @@
                     ]
                 },
                 {
-                    "entry_count": 2,
-                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall s : Student | all p : Project | s->p in projects implies \n  \t\t\t\t\t(some c : Course | c->p in (Course<:projects) and s->c in enrolled) \n}",
-                    "ids": [
-                        "xvQedCdWhbeaLgMra",
-                        "ex7rF7eQm3dfo7Aqd"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n    all s: Student | s.projects - s.enrolled.projects = none\n}",
-                    "ids": [
-                        "NosYNpST3bRPu7MJx"
-                    ]
-                },
-                {
                     "entry_count": 1,
                     "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  \tall s:Student | all proj:s.projects | some en: s.enrolled.projects | proj in en\n}",
                     "ids": [
                         "GK7NtwAc7tihbb6Ed"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n   all s: Student | all p: Project | \n        p in s.projects implies some c: s.enrolled | p in c.projects\n}",
+                    "ids": [
+                        "CTQKgh4Ho84xe7wKD"
                     ]
                 },
                 {
@@ -515,9 +515,58 @@
                 },
                 {
                     "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n    all s: Student, p: Project | s.projects - s.enrolled.projects = none\n}",
+                    "ids": [
+                        "inSAPbt9GogRWGn2f"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n    all s: Student | s.projects - s.enrolled.projects = none\n}",
+                    "ids": [
+                        "NosYNpST3bRPu7MJx"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  all s: Student, p: s.projects | s.enrolled.projects & s.projects = s.projects  \n\n}",
+                    "ids": [
+                        "iAAWrWLCz2gChfKga"
+                    ]
+                },
+                {
+                    "entry_count": 1,
                     "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall s : Student,p : Project  | s.projects in (s.enrolled.projects)\n}",
                     "ids": [
                         "QQgBEDQWCfgvRX5LY"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall s: Student | some s.projects implies s.projects in s.enrolled.projects\n}",
+                    "ids": [
+                        "idT3rKGHjtTPK3Mdh"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall s : Student , p : s.projects | some(s.enrolled.projects & p )\n}",
+                    "ids": [
+                        "ib8FR7b2jvrwDqJbn"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall p : Person & Student | all po : Project | po in p.projects implies po in p.enrolled.projects \n}",
+                    "ids": [
+                        "nwQCac3PTycbCtfgd"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  all s:Student , proj:s.projects|\n  \tproj in Project implies proj in s.enrolled.projects\n\n}",
+                    "ids": [
+                        "jdmu4hXxaxs3Gh3xF"
                     ]
                 },
                 {
@@ -536,34 +585,6 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n   all s: Student | all p: Project | \n        p in s.projects implies some c: s.enrolled | p in c.projects\n}",
-                    "ids": [
-                        "CTQKgh4Ho84xe7wKD"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  all s: Student, p: s.projects | s.enrolled.projects & s.projects = s.projects  \n\n}",
-                    "ids": [
-                        "iAAWrWLCz2gChfKga"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall s : Student , p : s.projects | some(s.enrolled.projects & p )\n}",
-                    "ids": [
-                        "ib8FR7b2jvrwDqJbn"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  all s: Student, p: Project | \n  \t\t(s->p in projects) \n  \t\timplies\n  \t\t(some c: Course | p in c.projects and c in s.enrolled)\n\n}",
-                    "ids": [
-                        "PvHAnTLMh48YAYqQW"
-                    ]
-                },
-                {
-                    "entry_count": 1,
                     "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall s : Student, p : s.projects | some s.enrolled & (Course <: projects).p\n}",
                     "ids": [
                         "rmYsSS38kw4m77cLM"
@@ -571,30 +592,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  all s:Student , proj:s.projects|\n  \tproj in Project implies proj in s.enrolled.projects\n\n}",
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  all s: Student, p: Project | \n  \t\t(s->p in projects) \n  \t\timplies\n  \t\t(some c: Course | p in c.projects and c in s.enrolled)\n\n}",
                     "ids": [
-                        "jdmu4hXxaxs3Gh3xF"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall s: Student | some s.projects implies s.projects in s.enrolled.projects\n}",
-                    "ids": [
-                        "idT3rKGHjtTPK3Mdh"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall p : Person & Student | all po : Project | po in p.projects implies po in p.enrolled.projects \n}",
-                    "ids": [
-                        "nwQCac3PTycbCtfgd"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n    all s: Student, p: Project | s.projects - s.enrolled.projects = none\n}",
-                    "ids": [
-                        "inSAPbt9GogRWGn2f"
+                        "PvHAnTLMh48YAYqQW"
                     ]
                 },
                 {
@@ -640,27 +640,6 @@
                 },
                 {
                     "entry_count": 15,
-                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  all s : Student, c: Course | (some s.projects&c.projects) implies s->c in enrolled\n\n}",
-                    "ids": [
-                        "HbxPHsmit6S8MKzXD",
-                        "EXMzMeDuChwNTW82d",
-                        "kmFxhdKXSLmXg8yqM",
-                        "Zdye3FDHFZfXxeHbe",
-                        "4qYxpeh3BQmhW2Ba6",
-                        "8HbhAvdqPufev7rjC",
-                        "Tr4C49gCXCptvAXKy",
-                        "ppqrHbmuqcduHhATs",
-                        "jradKar9Pj4padS9B",
-                        "mvfaR5sNmDEcFc7tb",
-                        "6P3LK4ySSE324uLPk",
-                        "rD5WY3AsG7ykhNhRt",
-                        "MyBoFa9dBYsvvcGHG",
-                        "jiFjk4W8sHpg8cgBL",
-                        "6g59q3Z5i9rQFw3FT"
-                    ]
-                },
-                {
-                    "entry_count": 15,
                     "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall s: Student, c: Course | some s.projects & c.projects implies c in s.enrolled\n}",
                     "ids": [
                         "emxf2rdCcixmhtJpC",
@@ -678,6 +657,27 @@
                         "LyxMmmW3tYmvsPuNA",
                         "df6i9268GN6cfbzHx",
                         "CGwpDYRcLy39z8WTD"
+                    ]
+                },
+                {
+                    "entry_count": 15,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  all s : Student, c: Course | (some s.projects&c.projects) implies s->c in enrolled\n\n}",
+                    "ids": [
+                        "HbxPHsmit6S8MKzXD",
+                        "EXMzMeDuChwNTW82d",
+                        "kmFxhdKXSLmXg8yqM",
+                        "Zdye3FDHFZfXxeHbe",
+                        "4qYxpeh3BQmhW2Ba6",
+                        "8HbhAvdqPufev7rjC",
+                        "Tr4C49gCXCptvAXKy",
+                        "ppqrHbmuqcduHhATs",
+                        "jradKar9Pj4padS9B",
+                        "mvfaR5sNmDEcFc7tb",
+                        "6P3LK4ySSE324uLPk",
+                        "rD5WY3AsG7ykhNhRt",
+                        "MyBoFa9dBYsvvcGHG",
+                        "jiFjk4W8sHpg8cgBL",
+                        "6g59q3Z5i9rQFw3FT"
                     ]
                 },
                 {
@@ -758,15 +758,6 @@
                 },
                 {
                     "entry_count": 3,
-                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  all s: Student, p: Project | p in s.projects implies (Course <: projects).p in s.enrolled\n}",
-                    "ids": [
-                        "HTb5vjG6pXxx67EHk",
-                        "TznGxocy5PFpTvRQK",
-                        "hCQqf3ErrZWbemsaS"
-                    ]
-                },
-                {
-                    "entry_count": 3,
                     "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  all s : Student | no s.projects & (Course - s.enrolled).projects\n\n}",
                     "ids": [
                         "RWqKNCCEpbicvTGAC",
@@ -775,19 +766,12 @@
                     ]
                 },
                 {
-                    "entry_count": 2,
-                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall s: Student | all p: s.projects | p.~(Course <: projects) in s.enrolled\n}",
+                    "entry_count": 3,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  all s: Student, p: Project | p in s.projects implies (Course <: projects).p in s.enrolled\n}",
                     "ids": [
-                        "kZwJ4JnYPSpztP66L",
-                        "iwtSh35YpwX5Pk4Ef"
-                    ]
-                },
-                {
-                    "entry_count": 2,
-                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall p : Person | all pr : Project | all c : Course | p in Student and pr in p.projects and pr in c.projects implies c in p.enrolled\n}",
-                    "ids": [
-                        "FBqXCgmWcATeSKv2h",
-                        "YY6JdTB4MBDuorYpf"
+                        "HTb5vjG6pXxx67EHk",
+                        "TznGxocy5PFpTvRQK",
+                        "hCQqf3ErrZWbemsaS"
                     ]
                 },
                 {
@@ -800,6 +784,14 @@
                 },
                 {
                     "entry_count": 2,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall p : Person | all pr : Project | all c : Course | p in Student and pr in p.projects and pr in c.projects implies c in p.enrolled\n}",
+                    "ids": [
+                        "FBqXCgmWcATeSKv2h",
+                        "YY6JdTB4MBDuorYpf"
+                    ]
+                },
+                {
+                    "entry_count": 2,
                     "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall s : Student | all p : s.projects | (Course <: projects.p) in s.enrolled\n}",
                     "ids": [
                         "Ppc2SoFwePaKizeQW",
@@ -807,31 +799,11 @@
                     ]
                 },
                 {
-                    "entry_count": 1,
-                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n    all pr : Project, s : Student | all c : (Course <: projects).pr | pr in s.projects implies c in s.enrolled\n\n}",
+                    "entry_count": 2,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall s: Student | all p: s.projects | p.~(Course <: projects) in s.enrolled\n}",
                     "ids": [
-                        "CoEKahvbwzGNKxmCW"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall s: Student, c: Course | (some s.projects <: c.projects) implies s -> c in enrolled\n}",
-                    "ids": [
-                        "nt5ucKwMf7AMxMbP6"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall s : Student, c : Course, pr : Project | (pr in s.projects) and (pr in \t\t\tc.projects) implies (s in enrolled.c)\n}",
-                    "ids": [
-                        "zQZvZfcFsaQeStmqz"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n      all s: Student, p: Project | ((s->p) in projects) implies ((s->(projects.p & Course)) in enrolled)\n\n\n}",
-                    "ids": [
-                        "6BnXJhWQ8auK3nxSC"
+                        "kZwJ4JnYPSpztP66L",
+                        "iwtSh35YpwX5Pk4Ef"
                     ]
                 },
                 {
@@ -843,23 +815,30 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  \tall s: Student,c: Course, pr: Project | pr in s.projects implies (Course<:projects).pr in s.enrolled\n}",
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall s : Student, c : Course | (some p : Project | p in c.projects and s -> p in projects) implies s->c in enrolled\n\n}",
                     "ids": [
-                        "qESWcjPmZYzzWDG3m"
+                        "NdnwaaWy2EAS94NgB"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  all u : Person, p : Project, c : Course | u in Student and u in projects.p and c in projects.p implies u in enrolled.c\n\n}",
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n    all pr : Project, s : Student | all c : (Course <: projects).pr | pr in s.projects implies c in s.enrolled\n\n}",
                     "ids": [
-                        "JG99yD8aQHZTax55Y"
+                        "CoEKahvbwzGNKxmCW"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall s : Student | (Course & projects.(s.projects)) in s.enrolled\n}",
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  \tall s : Student | s.projects.~projects :> Course in s.enrolled \n}",
                     "ids": [
-                        "RrLs62WYXnh6rgydQ"
+                        "MvMn2MAnqbs7niPNa"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall s: Student, c: Course | (some s.projects <: c.projects) implies s -> c in enrolled\n}",
+                    "ids": [
+                        "nt5ucKwMf7AMxMbP6"
                     ]
                 },
                 {
@@ -871,37 +850,16 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  all u : Student, p : Project, c : Course | u in Student and u in projects.p and c in projects.p implies u in enrolled.c\n\n}",
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall s : Student | (Course & projects.(s.projects)) in s.enrolled\n}",
                     "ids": [
-                        "Sze5oHQPaC9i76pqm"
+                        "RrLs62WYXnh6rgydQ"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall s:Student, p:Project | p in s.projects implies projects.p <: Course in s.enrolled\n}",
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n      all s: Student, p: Project | ((s->p) in projects) implies ((s->(projects.p & Course)) in enrolled)\n\n\n}",
                     "ids": [
-                        "3apci8Hp3jgCSi9ic"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  \n  \tall s : Student, c : Course | (some s.projects & c.projects) implies s -> c in enrolled\n\n\tall s : Student, c : Course, pr : Project | c -> pr in projects and s -> pr in projects implies s -> c in enrolled\n}",
-                    "ids": [
-                        "cKj3bNodHJnqPBnBh"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall s: Student, c: Course, p: c.projects | p in s.projects implies s in enrolled.c \n}",
-                    "ids": [
-                        "smzeXMFpkZDu2Qpk2"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall s : Student, c : Course | (some p : Project | p in c.projects and s -> p in projects) implies s->c in enrolled\n\n}",
-                    "ids": [
-                        "NdnwaaWy2EAS94NgB"
+                        "6BnXJhWQ8auK3nxSC"
                     ]
                 },
                 {
@@ -913,6 +871,20 @@
                 },
                 {
                     "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  \n  \tall s : Student, c : Course | (some s.projects & c.projects) implies s -> c in enrolled\n\n\tall s : Student, c : Course, pr : Project | c -> pr in projects and s -> pr in projects implies s -> c in enrolled\n}",
+                    "ids": [
+                        "cKj3bNodHJnqPBnBh"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  all u : Student, p : Project, c : Course | u in Student and u in projects.p and c in projects.p implies u in enrolled.c\n\n}",
+                    "ids": [
+                        "Sze5oHQPaC9i76pqm"
+                    ]
+                },
+                {
+                    "entry_count": 1,
                     "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall s : Student, p : s.projects | Course:>projects.p in s.enrolled\n}",
                     "ids": [
                         "AC4RGDv2TN5YsRpXW"
@@ -920,9 +892,37 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  \tall s : Student | s.projects.~projects :> Course in s.enrolled \n}",
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall s: Student, c: Course, p: c.projects | p in s.projects implies s in enrolled.c \n}",
                     "ids": [
-                        "MvMn2MAnqbs7niPNa"
+                        "smzeXMFpkZDu2Qpk2"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall s:Student, p:Project | p in s.projects implies projects.p <: Course in s.enrolled\n}",
+                    "ids": [
+                        "3apci8Hp3jgCSi9ic"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall s : Student, c : Course, pr : Project | (pr in s.projects) and (pr in \t\t\tc.projects) implies (s in enrolled.c)\n}",
+                    "ids": [
+                        "zQZvZfcFsaQeStmqz"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  all u : Person, p : Project, c : Course | u in Student and u in projects.p and c in projects.p implies u in enrolled.c\n\n}",
+                    "ids": [
+                        "JG99yD8aQHZTax55Y"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  \tall s: Student,c: Course, pr: Project | pr in s.projects implies (Course<:projects).pr in s.enrolled\n}",
+                    "ids": [
+                        "qESWcjPmZYzzWDG3m"
                     ]
                 }
             ]
@@ -978,14 +978,6 @@
                 },
                 {
                     "entry_count": 2,
-                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  \tlet cProjects = Course <: projects , pProjects =Person <: projects |\n\tcProjects.enrolled in pProjects\n}",
-                    "ids": [
-                        "etemutyacY2KwdXDN",
-                        "tN9FphAjn8D4uMxmP"
-                    ]
-                },
-                {
-                    "entry_count": 2,
                     "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  \tall p : Person | (some c : Course, p : Project | p in enrolled.c and c in projects.p ) implies p in Student \n\n}",
                     "ids": [
                         "HmGWQy4uAmXPEif65",
@@ -993,73 +985,18 @@
                     ]
                 },
                 {
-                    "entry_count": 1,
-                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  \tall s: Student, pr: Project | pr in s.projects implies pr.(Course<:projects) in s.enrolled \n}",
+                    "entry_count": 2,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  \tlet cProjects = Course <: projects , pProjects =Person <: projects |\n\tcProjects.enrolled in pProjects\n}",
                     "ids": [
-                        "m9YjPYAZNF43Y9jGb"
+                        "etemutyacY2KwdXDN",
+                        "tN9FphAjn8D4uMxmP"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall s: Student | all p: s.projects | p.(Course <: projects) in s.enrolled\n}",
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall s: Student, c: Course | s in c.enrolled implies s.projects in c.projects\n\n}",
                     "ids": [
-                        "ioxFNhPgAG2qtxJGC"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall p : Student, c : Course | (p in c.enrolled implies some c.projects)\n}",
-                    "ids": [
-                        "yQjKA7eCkih5QMtZk"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  \tall s: Student, pr: Project, c: Course | s -> pr in enrolled implies pr in c.projects\n}",
-                    "ids": [
-                        "NiczNL2kh6KQZBhxj"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\t(Course <: Course.projects).enrolled in (Person <: Person.projects)\n}",
-                    "ids": [
-                        "ihrhXoTDjBEnvZLaF"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall s : Student, c : Course | (some (Course <: projects).c) implies s->c in enrolled\n}",
-                    "ids": [
-                        "arroorNbYLzyBdwpj"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tStudent.projects.projects in Student.enrolled\n}",
-                    "ids": [
-                        "fpZTy6MzF5iCpoEnJ"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  Student->(~projects.Course).projects in enrolled \n}",
-                    "ids": [
-                        "M6esbyBCxLP5LwT3H"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tStudent.projects.(Course <: projects) in Student.enrolled\n}",
-                    "ids": [
-                        "xyA2vAnjLqXm2txbq"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall p : Person, pr : Project, c : Course | (pr in p.projects and pr in c) implies c in p.enrolled \n}",
-                    "ids": [
-                        "JnrZBXbp4mXpDF4KR"
+                        "Tqe4t9cB7M6yyPnFe"
                     ]
                 },
                 {
@@ -1078,16 +1015,65 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall s: Student, c: Course | s in c.enrolled implies s.projects in c.projects\n\n}",
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\t(Course <: Course.projects).enrolled in (Person <: Person.projects)\n}",
                     "ids": [
-                        "Tqe4t9cB7M6yyPnFe"
+                        "ihrhXoTDjBEnvZLaF"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  \tall p: Person | (Person<:projects).p in (Course<:projects).p \n}",
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  \tall p: Person | all pr: Project | p -> pr in enrolled implies p in Student\n  \t\t\n\n}",
                     "ids": [
-                        "heQvmNtXtPKZWKSXq"
+                        "49RoNNmaE3mqssT6X"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall c: Course, p: Student | c in p.(Person <: projects) implies c in p.enrolled\n}",
+                    "ids": [
+                        "hrgYm78ycWb3NPXnZ"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall p: Project | all s: Student | all c: Course | p in c.projects and p in p.projects implies c in s.enrolled\n}",
+                    "ids": [
+                        "rWY2SsbhSHjNdB3Jb"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall s: Student | all p: s.projects | p.(Course <: projects) in s.enrolled\n}",
+                    "ids": [
+                        "ioxFNhPgAG2qtxJGC"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  all c : Course | (Person <: projects).c.projects in Student\n\n}",
+                    "ids": [
+                        "j3gkSxf7pasWXdR9k"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  \tall s: Student, pr: Project | pr in s.projects implies pr.(Course<:projects) in s.enrolled \n}",
+                    "ids": [
+                        "m9YjPYAZNF43Y9jGb"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall p : Person, pr : Project, c : Course | (pr in p.projects and pr in c) implies c in p.enrolled \n}",
+                    "ids": [
+                        "JnrZBXbp4mXpDF4KR"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall s : Student, c : Course | (some (Course <: projects).c) implies s->c in enrolled\n}",
+                    "ids": [
+                        "arroorNbYLzyBdwpj"
                     ]
                 },
                 {
@@ -1095,6 +1081,48 @@
                     "code": "{\n    // Students only work on projects of courses they are enrolled in\n    all s:Student | all p:Project | all c:Course | s->p in enrolled implies c->p in projects\n}",
                     "ids": [
                         "CBcXs4QG4GMC2MNhN"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall p : Student, c : Course | (p in c.enrolled implies some c.projects)\n}",
+                    "ids": [
+                        "yQjKA7eCkih5QMtZk"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  Student->(~projects.Course).projects in enrolled \n}",
+                    "ids": [
+                        "M6esbyBCxLP5LwT3H"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall s : Student, p : s.projects, c : Course | c in s.enrolled implies p in s.projects \n}",
+                    "ids": [
+                        "sgqwNNqruysF9J6GJ"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tStudent.projects.projects in Student.enrolled\n}",
+                    "ids": [
+                        "fpZTy6MzF5iCpoEnJ"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n// /s.projects -> projects of student\n  all c: Course , s : Student | s.projects.projects in s.enrolled  \n}",
+                    "ids": [
+                        "F9YnSM34mZWM2GsKN"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  \tall s: Student, pr: Project, c: Course | s -> pr in enrolled implies pr in c.projects\n}",
+                    "ids": [
+                        "NiczNL2kh6KQZBhxj"
                     ]
                 },
                 {
@@ -1113,44 +1141,16 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  \tall p: Person | all pr: Project | p -> pr in enrolled implies p in Student\n  \t\t\n\n}",
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  \tall p: Person | (Person<:projects).p in (Course<:projects).p \n}",
                     "ids": [
-                        "49RoNNmaE3mqssT6X"
+                        "heQvmNtXtPKZWKSXq"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall s : Student, p : s.projects, c : Course | c in s.enrolled implies p in s.projects \n}",
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tStudent.projects.(Course <: projects) in Student.enrolled\n}",
                     "ids": [
-                        "sgqwNNqruysF9J6GJ"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall p: Project | all s: Student | all c: Course | p in c.projects and p in p.projects implies c in s.enrolled\n}",
-                    "ids": [
-                        "rWY2SsbhSHjNdB3Jb"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  all c : Course | (Person <: projects).c.projects in Student\n\n}",
-                    "ids": [
-                        "j3gkSxf7pasWXdR9k"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall c: Course, p: Student | c in p.(Person <: projects) implies c in p.enrolled\n}",
-                    "ids": [
-                        "hrgYm78ycWb3NPXnZ"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n// /s.projects -> projects of student\n  all c: Course , s : Student | s.projects.projects in s.enrolled  \n}",
-                    "ids": [
-                        "F9YnSM34mZWM2GsKN"
+                        "xyA2vAnjLqXm2txbq"
                     ]
                 }
             ]
@@ -1247,16 +1247,16 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall p : Project | all x : (Person<:projects).p | x in enrolled.(Course<:projects).p\n}",
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n        (projects & (Person->Project)) in enrolled.(projects & (Course->Project))\n\n\n}",
                     "ids": [
-                        "tNBbMFwZrMoK3gMX6"
+                        "CLfSPn5gBkfQYcrZf"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n        (projects & (Person->Project)) in enrolled.(projects & (Course->Project))\n\n\n}",
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall p : Project | all x : (Person<:projects).p | x in enrolled.(Course<:projects).p\n}",
                     "ids": [
-                        "CLfSPn5gBkfQYcrZf"
+                        "tNBbMFwZrMoK3gMX6"
                     ]
                 }
             ]
@@ -1291,15 +1291,6 @@
                 },
                 {
                     "entry_count": 3,
-                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  \tall s:Student | (Person<:projects).(s.projects) in s.enrolled \n\t\n}",
-                    "ids": [
-                        "fLNEwuf3iWHE86YHS",
-                        "b5XY4wRbi6rzdKd9h",
-                        "ToT6SsncJQZgrQHMq"
-                    ]
-                },
-                {
-                    "entry_count": 3,
                     "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall s : Student | s.projects in s.projects.enrolled \n}",
                     "ids": [
                         "p6AeDbF3dww4fTgvg",
@@ -1308,11 +1299,20 @@
                     ]
                 },
                 {
-                    "entry_count": 2,
-                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\t// all s : Student, p : s.projects | some s.enrolled & (Course <: projects).p\n  \tall s : Student | s.projects in (s.projects).projects\n}",
+                    "entry_count": 3,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  \tall s:Student | (Person<:projects).(s.projects) in s.enrolled \n\t\n}",
                     "ids": [
-                        "NEbaWE5Fr3sbMpP3w",
-                        "zCNZTPxYD8sw2G9wy"
+                        "fLNEwuf3iWHE86YHS",
+                        "b5XY4wRbi6rzdKd9h",
+                        "ToT6SsncJQZgrQHMq"
+                    ]
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  \tStudent.projects in Student.enrolled\n\n}",
+                    "ids": [
+                        "gRHAGsjMdYR4Qvhp3",
+                        "KRxvd2pK5RNJwSFHJ"
                     ]
                 },
                 {
@@ -1325,17 +1325,10 @@
                 },
                 {
                     "entry_count": 2,
-                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  \tStudent.projects in Student.enrolled\n\n}",
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\t// all s : Student, p : s.projects | some s.enrolled & (Course <: projects).p\n  \tall s : Student | s.projects in (s.projects).projects\n}",
                     "ids": [
-                        "gRHAGsjMdYR4Qvhp3",
-                        "KRxvd2pK5RNJwSFHJ"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall s : Student, p : Project | p in s.projects implies some c : s.enrolled | p in c.enrolled\n}",
-                    "ids": [
-                        "7Jm4Qhy7NPx54pye6"
+                        "NEbaWE5Fr3sbMpP3w",
+                        "zCNZTPxYD8sw2G9wy"
                     ]
                 },
                 {
@@ -1347,9 +1340,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  \tlet cProjects = Course <: projects , sProjects = Student <: projects |\n\tsProjects in cProjects.enrolled\n}",
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  \tall s:Student | all proj:s.projects | some en: s.enrolled | proj in en\n}",
                     "ids": [
-                        "7EWt3XoB7inYLzzz9"
+                        "tJjh8iyxyQ2yG6gfN"
                     ]
                 },
                 {
@@ -1361,13 +1354,6 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  \tall s : Student, p : Project |\n  \t\tp in s.projects implies p in p.enrolled.projects \n\n}",
-                    "ids": [
-                        "bRhteSdepKLdfQr5C"
-                    ]
-                },
-                {
-                    "entry_count": 1,
                     "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall s : Student | some s.projects implies s.projects in s.enrolled\n}",
                     "ids": [
                         "G6gNsq4mCiy4iBgcJ"
@@ -1375,16 +1361,30 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall s : Student, p : Project | p in s.projects implies some c : Course |\n  \t\t\t\t\t\t\t\t\tp in c.projects and s in c.grades.Student\n}",
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  \tall s : Student, p : Project |\n  \t\tp in s.projects implies p in p.enrolled.projects \n\n}",
                     "ids": [
-                        "rg6Y4wNtpqtm3tgwt"
+                        "bRhteSdepKLdfQr5C"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  \tall s:Student | all proj:s.projects | some en: s.enrolled | proj in en\n}",
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall s : Student, p : Project | p in s.projects implies some c : s.enrolled | p in c.enrolled\n}",
                     "ids": [
-                        "tJjh8iyxyQ2yG6gfN"
+                        "7Jm4Qhy7NPx54pye6"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  all p : Person, pr : Project | p in Student and p in projects.pr implies p in enrolled.pr\n  \n\n}",
+                    "ids": [
+                        "QoutFo9eBoQHLmQMM"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  \tlet cProjects = Course <: projects , sProjects = Student <: projects |\n\tsProjects in cProjects.enrolled\n}",
+                    "ids": [
+                        "7EWt3XoB7inYLzzz9"
                     ]
                 },
                 {
@@ -1396,9 +1396,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  all p : Person, pr : Project | p in Student and p in projects.pr implies p in enrolled.pr\n  \n\n}",
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall s : Student, p : Project | p in s.projects implies some c : Course |\n  \t\t\t\t\t\t\t\t\tp in c.projects and s in c.grades.Student\n}",
                     "ids": [
-                        "QoutFo9eBoQHLmQMM"
+                        "rg6Y4wNtpqtm3tgwt"
                     ]
                 }
             ]
@@ -1445,34 +1445,10 @@
                 },
                 {
                     "entry_count": 2,
-                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  \tall s : Student, c : Course | (some p : Project | c in projects.p) implies s in enrolled.c\n}",
-                    "ids": [
-                        "emzzmjyfCvrSRcWXG",
-                        "BeFCtt8rSg23RzwAR"
-                    ]
-                },
-                {
-                    "entry_count": 2,
-                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  \t// all p: Student | (some pr:Project, c:Course | p in projects.pr and pr in c.projects implies p in enrolled.c)\n\n\tall s:Student | all c:Course | (some c.projects implies s in enrolled.c)\n}",
-                    "ids": [
-                        "Bebb7JwDNCyhJDoGb",
-                        "PrSM8bSsRKsuGc8Gw"
-                    ]
-                },
-                {
-                    "entry_count": 2,
                     "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall s : Student, c: Course | (some s->c.projects) implies s->c in enrolled\n}",
                     "ids": [
                         "GEXZyhd4aerfxynPv",
                         "AhNRPHkzEPXrkwpvK"
-                    ]
-                },
-                {
-                    "entry_count": 2,
-                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  \t// all p: Student | (some pr:Project, c:Course | p in projects.pr and pr in c.projects implies p in enrolled.c)\n\n\t// all s:Student | all c:Course | (some c.projects) implies s in enrolled.c\n \tall s : Student | all c : Course | (some pr : Project | c->pr in projects) implies s->c in enrolled\n}",
-                    "ids": [
-                        "c3ey9xsSdjQGhyDv3",
-                        "pdpskf2uTgjPAciCQ"
                     ]
                 },
                 {
@@ -1485,6 +1461,22 @@
                 },
                 {
                     "entry_count": 2,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  \t// all p: Student | (some pr:Project, c:Course | p in projects.pr and pr in c.projects implies p in enrolled.c)\n\n\t// all s:Student | all c:Course | (some c.projects) implies s in enrolled.c\n \tall s : Student | all c : Course | (some pr : Project | c->pr in projects) implies s->c in enrolled\n}",
+                    "ids": [
+                        "c3ey9xsSdjQGhyDv3",
+                        "pdpskf2uTgjPAciCQ"
+                    ]
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  \t// all p: Student | (some pr:Project, c:Course | p in projects.pr and pr in c.projects implies p in enrolled.c)\n\n\tall s:Student | all c:Course | (some c.projects implies s in enrolled.c)\n}",
+                    "ids": [
+                        "Bebb7JwDNCyhJDoGb",
+                        "PrSM8bSsRKsuGc8Gw"
+                    ]
+                },
+                {
+                    "entry_count": 2,
                     "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  \tall s : Student, c : Course | all p : Project | c in projects.p implies s in enrolled.c\n}",
                     "ids": [
                         "owTvhiSJaELbkXDeb",
@@ -1492,10 +1484,11 @@
                     ]
                 },
                 {
-                    "entry_count": 1,
-                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\n\t// all s : Student | all c : Course | (some pr : Project | c->pr in projects) implies s->c in enrolled\n\n\tall s : Student | all c : Course | (some c.projects) implies s->c in enrolled\n\n        // all s : Student | all c : Course | all pr : Project | \n\t//   c->pr in projects implies s->c in enrolled\n\n     all s : Student | all c : Course | all pr : Project | c in projects.pr implies c in s.enrolled\n\n        // all s : Student | all pr : Project | (Course <: projects).pr in s.enrolled\n\n        // all s : Student | all pr : Project | pr in s.projects implies pr in s.enrolled.projects\n\n        //all s : Student | s.projects in s.enrolled.projects\n}",
+                    "entry_count": 2,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  \tall s : Student, c : Course | (some p : Project | c in projects.p) implies s in enrolled.c\n}",
                     "ids": [
-                        "FhQQCMyGj2jMpZt7Q"
+                        "emzzmjyfCvrSRcWXG",
+                        "BeFCtt8rSg23RzwAR"
                     ]
                 },
                 {
@@ -1510,6 +1503,13 @@
                     "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall p: Project, c: Course, s: Student | p in c.projects implies c in s.enrolled\n}",
                     "ids": [
                         "qcLuXBFX7r3mSnvqp"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\n\t// all s : Student | all c : Course | (some pr : Project | c->pr in projects) implies s->c in enrolled\n\n\tall s : Student | all c : Course | (some c.projects) implies s->c in enrolled\n\n        // all s : Student | all c : Course | all pr : Project | \n\t//   c->pr in projects implies s->c in enrolled\n\n     all s : Student | all c : Course | all pr : Project | c in projects.pr implies c in s.enrolled\n\n        // all s : Student | all pr : Project | (Course <: projects).pr in s.enrolled\n\n        // all s : Student | all pr : Project | pr in s.projects implies pr in s.enrolled.projects\n\n        //all s : Student | s.projects in s.enrolled.projects\n}",
+                    "ids": [
+                        "FhQQCMyGj2jMpZt7Q"
                     ]
                 }
             ]
@@ -1559,23 +1559,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\t//all s : Student, c : Course | (some...) implies s->c in enrolled\n\n\tall s : Student, p : Project, c : Course | s -> p in projects implies (p in c.projects and s -> c in enrolled)\n}",
-                    "ids": [
-                        "7iRMX9K4FcvkhjTiG"
-                    ]
-                },
-                {
-                    "entry_count": 1,
                     "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall s: Student, p: Project, c: Course | s in projects.p implies p in c.projects and s in enrolled.c\n}",
                     "ids": [
                         "dzYokqjNqMuJcWKvd"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall pe:Person | all c:Course | all p:Project | pe in Student and p in pe.projects implies c in pe.enrolled and p in c.projects\n}",
-                    "ids": [
-                        "dTWYY43jDMJs5AYgm"
                     ]
                 },
                 {
@@ -1590,6 +1576,20 @@
                     "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  \t//all s: Student, p: Project | p in s.projects implies one (s.enrolled & (Course<:projects.p))\n  \tall s: Student, p: Project, c: Course | p in s.projects implies s in enrolled.c and p in c.projects\n}",
                     "ids": [
                         "59sreNgHRG4zkAemP"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\t//all s : Student, c : Course | (some...) implies s->c in enrolled\n\n\tall s : Student, p : Project, c : Course | s -> p in projects implies (p in c.projects and s -> c in enrolled)\n}",
+                    "ids": [
+                        "7iRMX9K4FcvkhjTiG"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall pe:Person | all c:Course | all p:Project | pe in Student and p in pe.projects implies c in pe.enrolled and p in c.projects\n}",
+                    "ids": [
+                        "dTWYY43jDMJs5AYgm"
                     ]
                 },
                 {
@@ -1711,9 +1711,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall s : Student | all p : s.projects | s.enrolled in projects.p\n}",
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall s : Student | all p : s.projects | all c : s.enrolled | c in projects.p\n}",
                     "ids": [
-                        "bv9jZfNtyNJk3xGgX"
+                        "e3EvvM4hABkxoCSoy"
                     ]
                 },
                 {
@@ -1725,9 +1725,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall s: Student | all s_p: s.projects | all s_c: s.enrolled | \n  \t\tsome (s_p & s_c.projects)\n}",
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall s : Student | all p : s.projects | s.enrolled in projects.p\n}",
                     "ids": [
-                        "9fSdbMojoc7Cfp2WF"
+                        "bv9jZfNtyNJk3xGgX"
                     ]
                 },
                 {
@@ -1746,9 +1746,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall s : Student | all p : s.projects | all c : s.enrolled | c in projects.p\n}",
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall s: Student | all s_p: s.projects | all s_c: s.enrolled | \n  \t\tsome (s_p & s_c.projects)\n}",
                     "ids": [
-                        "e3EvvM4hABkxoCSoy"
+                        "9fSdbMojoc7Cfp2WF"
                     ]
                 }
             ]
@@ -1802,6 +1802,13 @@
                 },
                 {
                     "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  all s:Student, p:Project, c:Course | s->p in projects implies s->c in enrolled\n\n}",
+                    "ids": [
+                        "rczW44ME5SWvFbtgW"
+                    ]
+                },
+                {
+                    "entry_count": 1,
                     "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  all p : Person, pr : Project, c : Course | p in Student and p in projects.pr implies \n  p in enrolled.c \n\n}",
                     "ids": [
                         "ERvdK8W84BvtK6w9q"
@@ -1812,13 +1819,6 @@
                     "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall p: Project, c: Course, s: Student | s in projects.p implies c in s.enrolled\n}",
                     "ids": [
                         "jcTdSHYc9FRe3XEYH"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  all s:Student, p:Project, c:Course | s->p in projects implies s->c in enrolled\n\n}",
-                    "ids": [
-                        "rczW44ME5SWvFbtgW"
                     ]
                 }
             ]
@@ -1847,37 +1847,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall s: Student, c: Course | c in s.enrolled implies c.projects in s.projects\n}",
-                    "ids": [
-                        "TsFa6A4WmJK5oe5bk"
-                    ]
-                },
-                {
-                    "entry_count": 1,
                     "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  \tall s : Student | s.enrolled.projects = (s.enrolled.projects & s.projects)\n\n}",
                     "ids": [
                         "sL8iB6QExvA5qXkRZ"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\t//all s: Student, pr: Project | pr in s.(Person <: projects) implies (some c: Course | c in s.enrolled and pr in c.(Course <: projects))\n\tall s: Student, c: s.enrolled | c.(Course <: projects) in s.(Person<: projects)\n\t\n}",
-                    "ids": [
-                        "HtMX44vZDdbEz5tEb"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  all s:Student ,c:s.enrolled,proj:c.projects|\n  \tproj in s.projects\n\n}",
-                    "ids": [
-                        "Snmx8izALvQCQiQ4h"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  all s: Student | all p: Project |\n        (some c: Course | c in s.enrolled and p in c.projects) implies p in s.projects and\n        // Ensure that a student who teaches a course cannot work on projects from that course\n        all c: Course | (s in c.teaches) implies (p not in c.projects)\n}",
-                    "ids": [
-                        "brQ93Ls7KWSjnSJAh"
                     ]
                 },
                 {
@@ -1889,9 +1861,16 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall p: Student, c: Course, y: Project | (c in projects.y) and (p in enrolled.c) implies (p in projects.y)\n}",
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\t//all s: Student, pr: Project | pr in s.(Person <: projects) implies (some c: Course | c in s.enrolled and pr in c.(Course <: projects))\n\tall s: Student, c: s.enrolled | c.(Course <: projects) in s.(Person<: projects)\n\t\n}",
                     "ids": [
-                        "hSdfztSQdBQxiYM4r"
+                        "HtMX44vZDdbEz5tEb"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  all s:Student | all c:Course, p:c.projects | c in s.enrolled implies p in s.projects\n\n}",
+                    "ids": [
+                        "sMeyhLozPZ4D8d42x"
                     ]
                 },
                 {
@@ -1903,9 +1882,16 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n    // Students only work on projects of courses they are enrolled in\n    all s: Student | all c: Course | (s in enrolled.c) implies \n        all p: Project | (p in c.projects) implies (p in s.projects)\n}",
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall p: Student, c: Course, y: Project | (c in projects.y) and (p in enrolled.c) implies (p in projects.y)\n}",
                     "ids": [
-                        "yBqFraTB3BGMoqPcf"
+                        "hSdfztSQdBQxiYM4r"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  all s:Student ,c:s.enrolled,proj:c.projects|\n  \tproj in s.projects\n\n}",
+                    "ids": [
+                        "Snmx8izALvQCQiQ4h"
                     ]
                 },
                 {
@@ -1917,9 +1903,23 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  all s:Student | all c:Course, p:c.projects | c in s.enrolled implies p in s.projects\n\n}",
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  all s: Student | all p: Project |\n        (some c: Course | c in s.enrolled and p in c.projects) implies p in s.projects and\n        // Ensure that a student who teaches a course cannot work on projects from that course\n        all c: Course | (s in c.teaches) implies (p not in c.projects)\n}",
                     "ids": [
-                        "sMeyhLozPZ4D8d42x"
+                        "brQ93Ls7KWSjnSJAh"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall s: Student, c: Course | c in s.enrolled implies c.projects in s.projects\n}",
+                    "ids": [
+                        "TsFa6A4WmJK5oe5bk"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n    // Students only work on projects of courses they are enrolled in\n    all s: Student | all c: Course | (s in enrolled.c) implies \n        all p: Project | (p in c.projects) implies (p in s.projects)\n}",
+                    "ids": [
+                        "yBqFraTB3BGMoqPcf"
                     ]
                 }
             ]
@@ -1961,16 +1961,16 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall s : Student | all p : s.projects | one c : Course | p in c.projects and c in s.enrolled\n}",
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  \t//all s: Student, p: Project | p in s.projects implies one (s.enrolled & (Course<:projects.p))\n  \tall s: Student, p: Project | p in s.projects implies (one c: Course | s in enrolled.c and p in c.projects)\n}",
                     "ids": [
-                        "v5Xvshdrz5HsRsf4T"
+                        "8vW6h285Lip7AdFsn"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  \t//all s: Student, p: Project | p in s.projects implies one (s.enrolled & (Course<:projects.p))\n  \tall s: Student, p: Project | p in s.projects implies (one c: Course | s in enrolled.c and p in c.projects)\n}",
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall s : Student | all p : s.projects | one c : Course | p in c.projects and c in s.enrolled\n}",
                     "ids": [
-                        "8vW6h285Lip7AdFsn"
+                        "v5Xvshdrz5HsRsf4T"
                     ]
                 }
             ]
@@ -1991,14 +1991,6 @@
                 },
                 {
                     "entry_count": 2,
-                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  all c : Course | Person <: projects.(c.projects) in enrolled.c\n\n}",
-                    "ids": [
-                        "TJqMAgcL8N87Enx5D",
-                        "BZy7fAt2vriToNYk5"
-                    ]
-                },
-                {
-                    "entry_count": 2,
                     "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall p : Person, c : Course, pr : Project | \n  \t(pr in p.projects and pr in c.projects) implies c in p.enrolled\n}",
                     "ids": [
                         "RJ6qMuPiSrbh8nCxk",
@@ -2006,10 +1998,11 @@
                     ]
                 },
                 {
-                    "entry_count": 1,
-                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall p : Project, st : Person, c :Course | (p in st.projects and p in c.projects) implies st in enrolled.c\n}",
+                    "entry_count": 2,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  all c : Course | Person <: projects.(c.projects) in enrolled.c\n\n}",
                     "ids": [
-                        "qGDmfYTnFx8cMBW7h"
+                        "TJqMAgcL8N87Enx5D",
+                        "BZy7fAt2vriToNYk5"
                     ]
                 },
                 {
@@ -2021,9 +2014,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\t(Person->Course & projects.~projects) in enrolled\n}",
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall p: Project, s: (Person <: projects).p |\n  (Course <: projects).p in s.enrolled\n  \n}",
                     "ids": [
-                        "Ydij2PCFdijWuoL5x"
+                        "QyKaQnPurh6jdqSiA"
                     ]
                 },
                 {
@@ -2035,9 +2028,16 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall p: Project, s: (Person <: projects).p |\n  (Course <: projects).p in s.enrolled\n  \n}",
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\t(Person->Course & projects.~projects) in enrolled\n}",
                     "ids": [
-                        "QyKaQnPurh6jdqSiA"
+                        "Ydij2PCFdijWuoL5x"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall p : Project, st : Person, c :Course | (p in st.projects and p in c.projects) implies st in enrolled.c\n}",
+                    "ids": [
+                        "qGDmfYTnFx8cMBW7h"
                     ]
                 }
             ]
@@ -2058,10 +2058,10 @@
                 },
                 {
                     "entry_count": 2,
-                    "code": "{\n    // Students only work on projects of courses they are enrolled in\n    all s:Student | all p:Project | all c:Course | s->c in enrolled implies s->p in projects\n}",
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall p: Project, c: Course, s: Student | s in enrolled.c implies s in projects.p\n}",
                     "ids": [
-                        "9o8vuwzHsGHea4s8a",
-                        "HmqJjusbHX3M2kuoj"
+                        "M5nH3hzRoD8REfJjW",
+                        "KGrX2rPp5feN5srox"
                     ]
                 },
                 {
@@ -2074,17 +2074,10 @@
                 },
                 {
                     "entry_count": 2,
-                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall p: Project, c: Course, s: Student | s in enrolled.c implies s in projects.p\n}",
+                    "code": "{\n    // Students only work on projects of courses they are enrolled in\n    all s:Student | all p:Project | all c:Course | s->c in enrolled implies s->p in projects\n}",
                     "ids": [
-                        "M5nH3hzRoD8REfJjW",
-                        "KGrX2rPp5feN5srox"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  \tall p: Student, pr: Project, c: Course | p -> c in enrolled implies p in Student and pr in p.projects\n}",
-                    "ids": [
-                        "oiXMctcNtW4NvAW8J"
+                        "9o8vuwzHsGHea4s8a",
+                        "HmqJjusbHX3M2kuoj"
                     ]
                 },
                 {
@@ -2092,6 +2085,13 @@
                     "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall p: Project, c: Course, s: Student | c in s.enrolled implies s in projects.p \n}",
                     "ids": [
                         "p9DDscnBrN7hSisCG"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  \tall p: Student, pr: Project, c: Course | p -> c in enrolled implies p in Student and pr in p.projects\n}",
+                    "ids": [
+                        "oiXMctcNtW4NvAW8J"
                     ]
                 }
             ]
@@ -2198,13 +2198,6 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall p : Person | all p2 : p.projects | p2 in p.enrolled\n}",
-                    "ids": [
-                        "yk3bNDoH4afnTykZL"
-                    ]
-                },
-                {
-                    "entry_count": 1,
                     "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  \tlet cProjects = Course <: projects , pProjects = Person <: projects |\n\tpProjects in cProjects.enrolled\n}",
                     "ids": [
                         "AZDqXQJriQ8gPcCrj"
@@ -2219,6 +2212,20 @@
                 },
                 {
                     "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  \tlet cProjects = Course <: projects , pProjects = Person <: projects |\n\tpProjects in cProjects\n}",
+                    "ids": [
+                        "SbDv6A75XEJ4cJ2PM"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall p : Person | all p2 : p.projects | p2 in p.enrolled\n}",
+                    "ids": [
+                        "yk3bNDoH4afnTykZL"
+                    ]
+                },
+                {
+                    "entry_count": 1,
                     "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  \tall pers:Person | pers.projects in pers.enrolled\n\n}",
                     "ids": [
                         "Ns29x2qBPShX77Xqc"
@@ -2229,13 +2236,6 @@
                     "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  \tall p: Project | (Person<:projects).p in (Course<:projects).p \n}",
                     "ids": [
                         "mdo8n2h2iEozsKYEq"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  \tlet cProjects = Course <: projects , pProjects = Person <: projects |\n\tpProjects in cProjects\n}",
-                    "ids": [
-                        "SbDv6A75XEJ4cJ2PM"
                     ]
                 }
             ]
@@ -2356,16 +2356,16 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall s: Student | all p: Project | all c: Course | p in s.projects implies (c in p.enrolled and p in c.projects)\n}",
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\t//all s : Student, c : Course | (some...) implies s->c in enrolled\n\n\tall s : Student, p : Project, c : Course | p in s.projects implies p in c.projects and s in c.enrolled\n}",
                     "ids": [
-                        "XsooYuknx7pxur5Di"
+                        "gvvn6R2L3bXczYHtg"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\t//all s : Student, c : Course | (some...) implies s->c in enrolled\n\n\tall s : Student, p : Project, c : Course | p in s.projects implies p in c.projects and s in c.enrolled\n}",
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall s: Student | all p: Project | all c: Course | p in s.projects implies (c in p.enrolled and p in c.projects)\n}",
                     "ids": [
-                        "gvvn6R2L3bXczYHtg"
+                        "XsooYuknx7pxur5Di"
                     ]
                 },
                 {
@@ -2392,9 +2392,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall p : Person | some p.enrolled implies p.enrolled.projects in p.projects\n}",
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  \tlet cProjects = Course <: projects , pProjects = Person <: projects |\n\tcProjects[enrolled] in pProjects\n}",
                     "ids": [
-                        "RcjgGY7pfCH9oCsbQ"
+                        "h9y8pemwmex6GLocA"
                     ]
                 },
                 {
@@ -2406,9 +2406,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  \tlet cProjects = Course <: projects , pProjects = Person <: projects |\n\tcProjects[enrolled] in pProjects\n}",
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall p : Person | some p.enrolled implies p.enrolled.projects in p.projects\n}",
                     "ids": [
-                        "h9y8pemwmex6GLocA"
+                        "RcjgGY7pfCH9oCsbQ"
                     ]
                 }
             ]
@@ -2429,16 +2429,16 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall s : Student | s.enrolled = (Course & projects.(s.projects))\n}",
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall p : Student | p.enrolled = p.projects.~projects\n}",
                     "ids": [
-                        "ETwJWHXHtmk9gPrsM"
+                        "XDWGMFZ9d2SJKzWkx"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall p : Student | p.enrolled = p.projects.~projects\n}",
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall s : Student | s.enrolled = (Course & projects.(s.projects))\n}",
                     "ids": [
-                        "XDWGMFZ9d2SJKzWkx"
+                        "ETwJWHXHtmk9gPrsM"
                     ]
                 }
             ]
@@ -2521,29 +2521,6 @@
         },
         {
             "entry_count": 4,
-            "group_count": 2,
-            "correct": false,
-            "elems": [
-                {
-                    "entry_count": 3,
-                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  \t(Student <: projects).Project = enrolled.Course\n\n}",
-                    "ids": [
-                        "dnq6gM2kmiaabikx8",
-                        "YS53FQz4cXB3QC9TB",
-                        "oG4y8Wf2puwCzMxZS"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  \tinv5\n  \t(Student <: projects).Project = enrolled.Course\n\n}",
-                    "ids": [
-                        "tkYvtwPGQzEirNLin"
-                    ]
-                }
-            ]
-        },
-        {
-            "entry_count": 4,
             "group_count": 3,
             "correct": true,
             "elems": [
@@ -2557,16 +2534,16 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  \n  \tall s : Student, c : Course | (some s.projects & c.projects) implies s -> c in enrolled\n\n\tall s : Student, c : Course, pr : Project | c -> pr in projects and s -> pr in projects implies s -> c in enrolled\n\n\tall s : Student, pr : s.projects | (Course <: projects).pr in s.enrolled\n\n\tall s : Student | s.projects in s.enrolled.projects\n}",
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  \n  \t//all s : Student, c : Course | (some s.projects & c.projects) implies s -> c in enrolled\n\n\tall s : Student, c : Course, pr : Project | c -> pr in projects and s -> pr in projects implies s -> c in enrolled\n\n\tall s : Student, pr : s.projects | (Course <: projects).pr in s.enrolled\n\n\tall s : Student | s.projects in s.enrolled.projects\n}",
                     "ids": [
-                        "K6dy2Rkk2om8srvdD"
+                        "a3MHvyq6zPLLKAXBA"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  \n  \t//all s : Student, c : Course | (some s.projects & c.projects) implies s -> c in enrolled\n\n\tall s : Student, c : Course, pr : Project | c -> pr in projects and s -> pr in projects implies s -> c in enrolled\n\n\tall s : Student, pr : s.projects | (Course <: projects).pr in s.enrolled\n\n\tall s : Student | s.projects in s.enrolled.projects\n}",
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  \n  \tall s : Student, c : Course | (some s.projects & c.projects) implies s -> c in enrolled\n\n\tall s : Student, c : Course, pr : Project | c -> pr in projects and s -> pr in projects implies s -> c in enrolled\n\n\tall s : Student, pr : s.projects | (Course <: projects).pr in s.enrolled\n\n\tall s : Student | s.projects in s.enrolled.projects\n}",
                     "ids": [
-                        "a3MHvyq6zPLLKAXBA"
+                        "K6dy2Rkk2om8srvdD"
                     ]
                 }
             ]
@@ -2585,9 +2562,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall p : Student | p.enrolled in p.projects.~projects\n}",
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall s : Student | all c : s.enrolled | some p : s.projects | p in c.projects  \n}",
                     "ids": [
-                        "6ef6mhCyELy3XEASY"
+                        "34FL9odTaAo8Cu8zs"
                     ]
                 },
                 {
@@ -2599,9 +2576,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall s : Student | all c : s.enrolled | some p : s.projects | p in c.projects  \n}",
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall p : Student | p.enrolled in p.projects.~projects\n}",
                     "ids": [
-                        "34FL9odTaAo8Cu8zs"
+                        "6ef6mhCyELy3XEASY"
                     ]
                 }
             ]
@@ -2624,6 +2601,22 @@
                     "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall p : Person | all c : p.enrolled | some p.enrolled implies p in Student and (c.projects in p.projects)\n}",
                     "ids": [
                         "77vGa5rRiBSsnMWWh"
+                    ]
+                }
+            ]
+        },
+        {
+            "entry_count": 3,
+            "group_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  \t(Student <: projects).Project = enrolled.Course\n\n}",
+                    "ids": [
+                        "dnq6gM2kmiaabikx8",
+                        "YS53FQz4cXB3QC9TB",
+                        "oG4y8Wf2puwCzMxZS"
                     ]
                 }
             ]
@@ -2667,6 +2660,13 @@
             "elems": [
                 {
                     "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  \tStudent.projects in Course.projects\n\n}",
+                    "ids": [
+                        "M5ALyWbCwQXEsBKod"
+                    ]
+                },
+                {
+                    "entry_count": 1,
                     "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  all s: Student | all pr: s.projects | some c: Course | pr in c.projects\n}",
                     "ids": [
                         "2nF96YdPvqTfMmQrj"
@@ -2677,13 +2677,6 @@
                     "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  all s:Student | all p: Project | p in s.projects => some c:Course | p in c.projects\n\n}",
                     "ids": [
                         "hqDixjEP4ofjrjiuq"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  \tStudent.projects in Course.projects\n\n}",
-                    "ids": [
-                        "M5ALyWbCwQXEsBKod"
                     ]
                 }
             ]
@@ -2717,6 +2710,13 @@
             "elems": [
                 {
                     "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  all p : Person, pr : Project, c : Course | p in projects.pr implies p in enrolled.c \n\n}",
+                    "ids": [
+                        "B63AvJvhfirKiqXgP"
+                    ]
+                },
+                {
+                    "entry_count": 1,
                     "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  all pr : Project, c : Course | (Person <: projects).pr in enrolled.c\n\n}",
                     "ids": [
                         "XBPymfkxwisjh5t9e"
@@ -2727,13 +2727,6 @@
                     "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall p : Project, st : Person, c :Course | p in st.projects implies st in enrolled.c\n}",
                     "ids": [
                         "SjX2HFyQzWoJn9QJy"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  all p : Person, pr : Project, c : Course | p in projects.pr implies p in enrolled.c \n\n}",
-                    "ids": [
-                        "B63AvJvhfirKiqXgP"
                     ]
                 }
             ]
@@ -2799,13 +2792,6 @@
             "elems": [
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\t//all s: Student, x: Project, c: Course | s in projects.x implies (s in enrolled.c and c in projects.x)\n  \n  //some p:Student, x: Project, c: Course |( p in projects.x) iff (p in enrolled.c and c in projects.x)  \n  \n  all p: Student | some x: Project, c:Course | x in p.projects implies (c in projects.x and p in enrolled.c) \n}",
-                    "ids": [
-                        "8RwhETLaLdbd5JPN6"
-                    ]
-                },
-                {
-                    "entry_count": 1,
                     "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\t//all s: Student, x: Project, c: Course | s in projects.x implies (s in enrolled.c and c in projects.x)\n  \n  //some p:Student, x: Project, c: Course |( p in projects.x) iff (p in enrolled.c and c in projects.x)  \n  \n  all p: Student | some x: Project, c:Course | p in projects.x implies (p in enrolled.c and c in projects.x) \n}",
                     "ids": [
                         "E2a2wPawuGjeBMLHp"
@@ -2816,6 +2802,13 @@
                     "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall s:Student | some p:Project | some c:Course |\n  \t\tp in s.projects implies (p in c.projects and c in s.enrolled)\n  \t\n}",
                     "ids": [
                         "CTceXTMFYFYhp2LQ3"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\t//all s: Student, x: Project, c: Course | s in projects.x implies (s in enrolled.c and c in projects.x)\n  \n  //some p:Student, x: Project, c: Course |( p in projects.x) iff (p in enrolled.c and c in projects.x)  \n  \n  all p: Student | some x: Project, c:Course | x in p.projects implies (c in projects.x and p in enrolled.c) \n}",
+                    "ids": [
+                        "8RwhETLaLdbd5JPN6"
                     ]
                 }
             ]
@@ -2879,16 +2872,16 @@
             "elems": [
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall s:Student | some p:Project,c:Course | p in c.projects and p in s.projects implies c in s.enrolled  \n}",
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  \tall p: Student | (some pr:Project, c:Course | p in projects.pr and pr in c.projects implies p in enrolled.c)\n}",
                     "ids": [
-                        "6XJjMyeYTea5iFqhD"
+                        "nN2qmJfgiik3PFzE2"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  \tall p: Student | (some pr:Project, c:Course | p in projects.pr and pr in c.projects implies p in enrolled.c)\n}",
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall s:Student | some p:Project,c:Course | p in c.projects and p in s.projects implies c in s.enrolled  \n}",
                     "ids": [
-                        "nN2qmJfgiik3PFzE2"
+                        "6XJjMyeYTea5iFqhD"
                     ]
                 }
             ]
@@ -3023,16 +3016,16 @@
             "elems": [
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\t// all s : Student, p : s.projects | some s.enrolled & (Course <: projects).p\n  \tall s : Student | s.enrolled in (s.projects).projects\n}",
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall s : Student | s.enrolled = s.projects.projects\n}",
                     "ids": [
-                        "672PtaPWrE5D8NduH"
+                        "HoYtcPFH2pM4g2HSB"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall s : Student | s.enrolled = s.projects.projects\n}",
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\t// all s : Student, p : s.projects | some s.enrolled & (Course <: projects).p\n  \tall s : Student | s.enrolled in (s.projects).projects\n}",
                     "ids": [
-                        "HoYtcPFH2pM4g2HSB"
+                        "672PtaPWrE5D8NduH"
                     ]
                 }
             ]
@@ -3086,16 +3079,16 @@
             "elems": [
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall p: Person | all c: Course | c in p.enrolled => p.projects in c.projects \n}",
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall p:Project | all s:Person | s->p in projects implies s.enrolled in (Course<:projects).p\n}",
                     "ids": [
-                        "BEEJahLuzS3DoGL4r"
+                        "uRrjBHvK8A7SW2PNj"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall p:Project | all s:Person | s->p in projects implies s.enrolled in (Course<:projects).p\n}",
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall p: Person | all c: Course | c in p.enrolled => p.projects in c.projects \n}",
                     "ids": [
-                        "uRrjBHvK8A7SW2PNj"
+                        "BEEJahLuzS3DoGL4r"
                     ]
                 }
             ]
@@ -3143,16 +3136,16 @@
             "elems": [
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall s : Student, p : Project, c : Course | p in c.projects\n  //c in s.enrolled implies p in s.projects \n}",
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  all s : Student, pr : Project, c : Course | c in projects.pr\n}",
                     "ids": [
-                        "zDBMmqErMjEzJ5HFk"
+                        "7rEEbksFcZfJkYpTe"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  all s : Student, pr : Project, c : Course | c in projects.pr\n}",
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall s : Student, p : Project, c : Course | p in c.projects\n  //c in s.enrolled implies p in s.projects \n}",
                     "ids": [
-                        "7rEEbksFcZfJkYpTe"
+                        "zDBMmqErMjEzJ5HFk"
                     ]
                 }
             ]
@@ -3791,62 +3784,6 @@
             "elems": [
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall p: Person | some p.personProjects\n}",
-                    "ids": [
-                        "G9y3mJMth6tM8Ave4"
-                    ]
-                }
-            ]
-        },
-        {
-            "entry_count": 1,
-            "group_count": 1,
-            "correct": true,
-            "elems": [
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall p: Person | p.projects in p.personProjects\n}",
-                    "ids": [
-                        "q4n2B3KqTjy4SdqjK"
-                    ]
-                }
-            ]
-        },
-        {
-            "entry_count": 1,
-            "group_count": 1,
-            "correct": true,
-            "elems": [
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall p: Person | p.projects in p.personProjects\n}",
-                    "ids": [
-                        "QqQMX5GrnuJvwjmjG"
-                    ]
-                }
-            ]
-        },
-        {
-            "entry_count": 1,
-            "group_count": 1,
-            "correct": true,
-            "elems": [
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall p: Person | p.projects in p.personProjects\n}",
-                    "ids": [
-                        "JjbCMG3hv4RfytkpE"
-                    ]
-                }
-            ]
-        },
-        {
-            "entry_count": 1,
-            "group_count": 1,
-            "correct": false,
-            "elems": [
-                {
-                    "entry_count": 1,
                     "code": "{\n  \t// Students only work on projects of courses they are enrolled in\n  \tsome s : Student | all pr : Project | some c : Course |\n  \t\tpr in s.projects implies (pr in c.projects and c in s.enrolled)\n  \n  \t\n}",
                     "ids": [
                         "RQkBKdxxviy3ZYZPS"
@@ -4424,20 +4361,6 @@
                     "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  \tlet cProjects = Course <: projects , pProjects = Person <: projects |\n\tcProjects[enrolled] = pProjects\n}",
                     "ids": [
                         "N2C78xnkpQEkiB63D"
-                    ]
-                }
-            ]
-        },
-        {
-            "entry_count": 1,
-            "group_count": 1,
-            "correct": true,
-            "elems": [
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tsProjects in enrolled.cProjects\n}",
-                    "ids": [
-                        "eMnAFCJiz9sBZK5vF"
                     ]
                 }
             ]

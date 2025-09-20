@@ -2,8 +2,8 @@
     "label": "inv10",
     "pred": "this/inv10",
     "entry_count": 882,
-    "group_count": 82,
-    "duration": 55,
+    "group_count": 81,
+    "duration": 76,
     "scope": 3,
     "groups": [
         {
@@ -473,19 +473,6 @@
                 },
                 {
                     "entry_count": 7,
-                    "code": "{\n\t// Only students have grades\n\tall p:Person | all c:Course | all g:Grade | p in c.grades.g implies p in Student\n}",
-                    "ids": [
-                        "LPYYWS7uPjYfEuhDf",
-                        "hGZCch44EXXMnEKaq",
-                        "Xcx8LzhKYC8aiBM4g",
-                        "gp9jnE4rXCSQ2WrWf",
-                        "QoSYX72enZiRFYWzn",
-                        "zQZjXxtCPEbcPqKTC",
-                        "NtSAK4R4Rhqo5S4Q5"
-                    ]
-                },
-                {
-                    "entry_count": 7,
                     "code": "{\n\t// Only students have grades\n  \tall c: Course | all g : c.grades.Grade | g in Student\n\n}",
                     "ids": [
                         "JNyDmDBdM6FwhfyC7",
@@ -495,6 +482,19 @@
                         "tLPB44k9pEm5Tqcfe",
                         "76nhpqGcr85wDriXK",
                         "d9mSmjNWGWZYvMWzu"
+                    ]
+                },
+                {
+                    "entry_count": 7,
+                    "code": "{\n\t// Only students have grades\n\tall p:Person | all c:Course | all g:Grade | p in c.grades.g implies p in Student\n}",
+                    "ids": [
+                        "LPYYWS7uPjYfEuhDf",
+                        "hGZCch44EXXMnEKaq",
+                        "Xcx8LzhKYC8aiBM4g",
+                        "gp9jnE4rXCSQ2WrWf",
+                        "QoSYX72enZiRFYWzn",
+                        "zQZjXxtCPEbcPqKTC",
+                        "NtSAK4R4Rhqo5S4Q5"
                     ]
                 },
                 {
@@ -532,22 +532,22 @@
                 },
                 {
                     "entry_count": 4,
-                    "code": "{\n\t// Only students have grades\n    no (Person-Student) & Course.grades.Grade\n\n}",
-                    "ids": [
-                        "SfZLXZpX6t9wabkYA",
-                        "JeFRAE7pFzQ7Kcvh9",
-                        "vjPn5PCiCMSWuQDes",
-                        "28vPG59QTPkKFrTqq"
-                    ]
-                },
-                {
-                    "entry_count": 4,
                     "code": "{\n\t// Only students have grades\n  \tall p : Person, c : Course| p not in Student implies no c.grades[p]\n\n}",
                     "ids": [
                         "345AYtT52Bg63Cv9K",
                         "CLfiCb3qiwz6JPZo5",
                         "NYZDhWTD5Mv4JDXPE",
                         "3GMCj9JGjPT5Lrq9e"
+                    ]
+                },
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// Only students have grades\n    no (Person-Student) & Course.grades.Grade\n\n}",
+                    "ids": [
+                        "SfZLXZpX6t9wabkYA",
+                        "JeFRAE7pFzQ7Kcvh9",
+                        "vjPn5PCiCMSWuQDes",
+                        "28vPG59QTPkKFrTqq"
                     ]
                 },
                 {
@@ -562,20 +562,20 @@
                 },
                 {
                     "entry_count": 3,
-                    "code": "{\n\t// Only students have grades\n    Student <: Course.grades = Course.grades \n  \t\n}",
+                    "code": "{\n\t// Only students have grades\n    //all p: Person - Student | no g: Grade | p -> g in Course.grades\n    all p: Person - Student | no g: Grade | p in Course.grades.g\n\n}",
                     "ids": [
-                        "oWofS8u64hxGDCWdj",
-                        "dzDiLMhQuHpTBFLXD",
-                        "mg9H5aN2aF9xFttaZ"
+                        "b4DxnkyGjn3TGcnB8",
+                        "Zi6uQgtvQHHz7FQbg",
+                        "AH3EHdve2cHp54bFf"
                     ]
                 },
                 {
                     "entry_count": 3,
-                    "code": "{\n\t// Only students have grades\n\tall p : Person | some Course.grades[p] implies p in Student\n}",
+                    "code": "{\n\t// Only students have grades\n  \tall c: Course | all p: (Person - Student) | no c.grades[p]\n}",
                     "ids": [
-                        "DhRQ9rsaZ662mnPAw",
-                        "D53fqqo85snTayzcz",
-                        "ybzkickD97MHbiTmC"
+                        "qPw2aWtsYmaTo5yhx",
+                        "GMhaD5WrPGrSg9zA5",
+                        "DLee3Ctmn4CDZYKd7"
                     ]
                 },
                 {
@@ -598,20 +598,36 @@
                 },
                 {
                     "entry_count": 3,
-                    "code": "{\n\t// Only students have grades\n    //all p: Person - Student | no g: Grade | p -> g in Course.grades\n    all p: Person - Student | no g: Grade | p in Course.grades.g\n\n}",
+                    "code": "{\n\t// Only students have grades\n    Student <: Course.grades = Course.grades \n  \t\n}",
                     "ids": [
-                        "b4DxnkyGjn3TGcnB8",
-                        "Zi6uQgtvQHHz7FQbg",
-                        "AH3EHdve2cHp54bFf"
+                        "oWofS8u64hxGDCWdj",
+                        "dzDiLMhQuHpTBFLXD",
+                        "mg9H5aN2aF9xFttaZ"
                     ]
                 },
                 {
                     "entry_count": 3,
-                    "code": "{\n\t// Only students have grades\n  \tall c: Course | all p: (Person - Student) | no c.grades[p]\n}",
+                    "code": "{\n\t// Only students have grades\n\tall p : Person | some Course.grades[p] implies p in Student\n}",
                     "ids": [
-                        "qPw2aWtsYmaTo5yhx",
-                        "GMhaD5WrPGrSg9zA5",
-                        "DLee3Ctmn4CDZYKd7"
+                        "DhRQ9rsaZ662mnPAw",
+                        "D53fqqo85snTayzcz",
+                        "ybzkickD97MHbiTmC"
+                    ]
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Only students have grades\n\tall c : Course | all p : Person | some (c.grades.Grade & p) implies p in Student \n}",
+                    "ids": [
+                        "gNnnfaNyvyd2JmyGP",
+                        "ujCT2AWedWpjhJurc"
+                    ]
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Only students have grades\n\tall p: Person, c: Course | (some g : Grade | p->g in c.grades) implies p in Student  \n}",
+                    "ids": [
+                        "xGiXBsbuy8pgj8HGT",
+                        "69D5bsnFJuNauJCSX"
                     ]
                 },
                 {
@@ -632,14 +648,6 @@
                 },
                 {
                     "entry_count": 2,
-                    "code": "{\n\t// Only students have grades\n\tall p: Person, c: Course | (some g : Grade | p->g in c.grades) implies p in Student  \n}",
-                    "ids": [
-                        "xGiXBsbuy8pgj8HGT",
-                        "69D5bsnFJuNauJCSX"
-                    ]
-                },
-                {
-                    "entry_count": 2,
                     "code": "{\n\t// Only students have grades\n\t//all grade : Grade | one student : Person & Student | some course :student.enrolled | grade in course.grades.Grade\n  \tall curso : Course | curso.grades.Grade = curso.grades.Grade & Student\n}",
                     "ids": [
                         "foDNsE7nCe3vTSKJE",
@@ -647,32 +655,101 @@
                     ]
                 },
                 {
-                    "entry_count": 2,
-                    "code": "{\n\t// Only students have grades\n\tall c : Course | all p : Person | some (c.grades.Grade & p) implies p in Student \n}",
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n  \tall c : Course | all g : Grade | c.grades.g in Student\n\tCourse.grades.Grade in Student\n  \t\n}",
                     "ids": [
-                        "gNnnfaNyvyd2JmyGP",
-                        "ujCT2AWedWpjhJurc"
+                        "Wq7u8MDarD3oMAfPD"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Only students have grades\n\tall c: Course | all p: Person | #p.(c.grades) > 0 implies p in Student\n\n}",
+                    "code": "{\n\t// Only students have grades\n\t//all c : Course | c.grades.Grade in Student\n    //all p: Person - Student | no g: Grade | p -> g in Course.grades\n    all p: Person - Student | all g: Grade | p not in Course.grades.g\n}",
                     "ids": [
-                        "n8HTYqeGhnYxufDYQ"
+                        "qsiF5CoAgwmKGZ2hP"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Only students have grades\n\tall g : Course.grades.Grade | some g & Student\n}",
+                    "code": "{\n\t// Only students have grades\n\tall p: Person, c: Course, g: Grade | p not in Student => p->g not in c.grades\n}",
                     "ids": [
-                        "M3Aay4MGR42wtQjqQ"
+                        "CbN65o6bgxew4YQGG"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Only students have grades\n\t// all c: Course, p: Person, g:Grade | p->g in c.grades => p in Student\n  \tall c: Course | c.grades in Student->univ\n}",
+                    "code": "{\n\t// Only students have grades\n\tno (Course.grades - Student -> Grade)\n}",
                     "ids": [
-                        "W3TdGeScuckfGy6j6"
+                        "ejyRnaz9Pwf6r6Cvj"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n\tall c : Course, g : Grade, p : Person | c.grades.g in Student\n}",
+                    "ids": [
+                        "LrF6K3SqJHhFLoSZh"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n  all p: Person-Student, g: Grade | no c: Course | p->g in c.grades\n\n}",
+                    "ids": [
+                        "hmQ6QkpJwcwEThS6P"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n  \tCourse.grades.univ in Student\n\n}",
+                    "ids": [
+                        "7ZMhsgg2D8SFgxDgc"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n  \tno (grades.Course.Grade - Student)\n\tCourse.grades.Grade in Student\n}",
+                    "ids": [
+                        "L8EJrD57LuciYt7Yh"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n  all p: Person | some (p <: Course.grades) implies p in Student\n\n}",
+                    "ids": [
+                        "MPRsCqY3WT98ucZfK"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n    all c : Course | all g : Grade | all p : Person | c->p->g in grades implies p in Student\n  \n    all c : Course | all g : Grade | all p : Person | p in c.grades.g implies p in Student\n    \n    all c : Course | all g : Grade | c.grades.g in Student\n\n\tCourse.grades.Grade in Student\n}",
+                    "ids": [
+                        "dTEZLT3h3BmTkdGQD"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n    all p: Person - Student | no g: Grade | p -> g in Course.grades\n\n}",
+                    "ids": [
+                        "WG5HdJbjtfRFjAogw"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n    all c : Course | all g : Grade | all p : Person | c->p->g in grades implies p in Student\n\n    all c : Course | all g : Grade | c.grades.g in Student\n\n\tCourse.grades.Grade in Student\n}",
+                    "ids": [
+                        "Sy6bBcL8LiDE5qnYj"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n\t// all c: Course, p: Person, g:Grade | p->g in c.grades => p in Student\n  \tCourse.grades in Student->univ\n}",
+                    "ids": [
+                        "zPByKG4DTPdQDfh84"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n\tall c: Course | all g: Grade | c.grades.Grade in Student\n}",
+                    "ids": [
+                        "rCnB8ybsJkEGLrDbn"
                     ]
                 },
                 {
@@ -691,30 +768,16 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Only students have grades\n\tno (Course.grades - Student -> Grade)\n}",
+                    "code": "{\n\t// Only students have grades\n\tall p: Person | p not in Student => no Course.grades[p]\n}",
                     "ids": [
-                        "ejyRnaz9Pwf6r6Cvj"
+                        "vZpYwy4j5MWtBBagG"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Only students have grades\n\tall c : Course, g : Grade, p : Person | c->p->g in grades implies p in Student\n  \tall c : Course, g : Grade | c.grades.g in Student\n}",
+                    "code": "{\n\t// Only students have grades\n\t// all c: Course, p: Person, g:Grade | p->g in c.grades => p in Student\n  \tall c: Course | c.grades in Student->univ\n}",
                     "ids": [
-                        "9AaYvPQCahmzFjp5F"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Only students have grades\n    all c : Course | all g : Grade | all p : Person | c->p->g in grades implies p in Student\n  \n    all c : Course | all g : Grade | all p : Person | p in c.grades.g implies p in Student\n    \n    all c : Course | all g : Grade | c.grades.g in Student\n\n\tCourse.grades.Grade in Student\n}",
-                    "ids": [
-                        "dTEZLT3h3BmTkdGQD"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Only students have grades\n\t//all c : Course | c.grades.Grade in Student\n    //all p: Person - Student | no g: Grade | p -> g in Course.grades\n    all p: Person - Student | all g: Grade | p not in Course.grades.g\n}",
-                    "ids": [
-                        "qsiF5CoAgwmKGZ2hP"
+                        "W3TdGeScuckfGy6j6"
                     ]
                 },
                 {
@@ -726,20 +789,6 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Only students have grades\n\tall p: Person | p not in Student => no Course.grades[p]\n}",
-                    "ids": [
-                        "vZpYwy4j5MWtBBagG"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Only students have grades\n    all p: Person - Student | no g: Grade | p -> g in Course.grades\n\n}",
-                    "ids": [
-                        "WG5HdJbjtfRFjAogw"
-                    ]
-                },
-                {
-                    "entry_count": 1,
                     "code": "{\n\t// Only students have grades\n\tall p : Person | all c : Course | all g : c.grades[p] | p in Student  \n\n}",
                     "ids": [
                         "Y9A4ptQuy7vanZjNP"
@@ -747,44 +796,23 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Only students have grades\n\tall c: Course | all g: Grade | c.grades.Grade in Student\n}",
+                    "code": "{\n\t// Only students have grades\n\tall c : Course, g : Grade, p : Person | c->p->g in grades implies p in Student\n  \tall c : Course, g : Grade | c.grades.g in Student\n}",
                     "ids": [
-                        "rCnB8ybsJkEGLrDbn"
+                        "9AaYvPQCahmzFjp5F"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Only students have grades\n    all c : Course | all g : Grade | all p : Person | c->p->g in grades implies p in Student\n\n    all c : Course | all g : Grade | c.grades.g in Student\n\n\tCourse.grades.Grade in Student\n}",
+                    "code": "{\n\t// Only students have grades\n\tall c: Course | all p: Person | #p.(c.grades) > 0 implies p in Student\n\n}",
                     "ids": [
-                        "Sy6bBcL8LiDE5qnYj"
+                        "n8HTYqeGhnYxufDYQ"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Only students have grades\n  \tno (grades.Course.Grade - Student)\n\tCourse.grades.Grade in Student\n}",
+                    "code": "{\n\t// Only students have grades\n  \tall g : Grade | Course.(grades.g) in Student\n\n}",
                     "ids": [
-                        "L8EJrD57LuciYt7Yh"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Only students have grades\n  all g : Grade | no (Person-Student) & Course.grades.g\n\n}",
-                    "ids": [
-                        "kzpkeuS5Je9Zw62WK"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Only students have grades\n  all p: Person-Student, g: Grade | no c: Course | p->g in c.grades\n\n}",
-                    "ids": [
-                        "hmQ6QkpJwcwEThS6P"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Only students have grades\n  \tall c : Course | all g : Grade | c.grades.g in Student\n\tCourse.grades.Grade in Student\n  \t\n}",
-                    "ids": [
-                        "Wq7u8MDarD3oMAfPD"
+                        "F2E5MsuDCuDfwz6Af"
                     ]
                 },
                 {
@@ -796,44 +824,16 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Only students have grades\n  \tCourse.grades.univ in Student\n\n}",
+                    "code": "{\n\t// Only students have grades\n\tall g : Course.grades.Grade | some g & Student\n}",
                     "ids": [
-                        "7ZMhsgg2D8SFgxDgc"
+                        "M3Aay4MGR42wtQjqQ"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Only students have grades\n\t// all c: Course, p: Person, g:Grade | p->g in c.grades => p in Student\n  \tCourse.grades in Student->univ\n}",
+                    "code": "{\n\t// Only students have grades\n  all g : Grade | no (Person-Student) & Course.grades.g\n\n}",
                     "ids": [
-                        "zPByKG4DTPdQDfh84"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Only students have grades\n\tall p: Person, c: Course, g: Grade | p not in Student => p->g not in c.grades\n}",
-                    "ids": [
-                        "CbN65o6bgxew4YQGG"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Only students have grades\n\tall c : Course, g : Grade, p : Person | c.grades.g in Student\n}",
-                    "ids": [
-                        "LrF6K3SqJHhFLoSZh"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Only students have grades\n  all p: Person | some (p <: Course.grades) implies p in Student\n\n}",
-                    "ids": [
-                        "MPRsCqY3WT98ucZfK"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Only students have grades\n  \tall g : Grade | Course.(grades.g) in Student\n\n}",
-                    "ids": [
-                        "F2E5MsuDCuDfwz6Af"
+                        "kzpkeuS5Je9Zw62WK"
                     ]
                 }
             ]
@@ -959,22 +959,22 @@
                 },
                 {
                     "entry_count": 4,
-                    "code": "{\n\t// Only students have grades\n\tall c : Course | (c.grades).Person in Student\n}",
-                    "ids": [
-                        "bQNLr7q4dwqiBKFBg",
-                        "Qh4oQQ5Lzt5STNosQ",
-                        "qg5CC6Bc6iAekKAca",
-                        "7BYdKRCzxaBzXm2Hk"
-                    ]
-                },
-                {
-                    "entry_count": 4,
                     "code": "{\n\t// Only students have grades\n  \tall p : Professor, c : Course | no c.grades.p\n\n}",
                     "ids": [
                         "7YNjsNhr4n4AxkWsC",
                         "xhgdsbyanxjRkpC3h",
                         "X2EaEYigzzejWREWQ",
                         "RGCcAK6hsZerSMM8S"
+                    ]
+                },
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// Only students have grades\n\tall c : Course | (c.grades).Person in Student\n}",
+                    "ids": [
+                        "bQNLr7q4dwqiBKFBg",
+                        "Qh4oQQ5Lzt5STNosQ",
+                        "qg5CC6Bc6iAekKAca",
+                        "7BYdKRCzxaBzXm2Hk"
                     ]
                 },
                 {
@@ -988,6 +988,14 @@
                 },
                 {
                     "entry_count": 2,
+                    "code": "{\n\t// Only students have grades\n\tall pe: Person | pe not in Student implies pe not in Course.grades.Person \n}",
+                    "ids": [
+                        "7qzj6H4Y6c5h8Ay8s",
+                        "EStJvv3fXFMRrPn2P"
+                    ]
+                },
+                {
+                    "entry_count": 2,
                     "code": "{\n\t// Only students have grades\n  all p: Person-Student | no c: Course | p in c.grades.Person\n\n}",
                     "ids": [
                         "6AbizpibBNBWMfNrn",
@@ -996,34 +1004,10 @@
                 },
                 {
                     "entry_count": 2,
-                    "code": "{\n\t// Only students have grades\n  \tall c : Course , p : Person - Student | p not in (c.grades).p\n\n}",
+                    "code": "{\n\t// Only students have grades\n\tall p : Person, c : Course | p -> c in c.grades => p in Student\n}",
                     "ids": [
-                        "oGCJpsDzaCpKo5nWX",
-                        "9McRwSfAPKtEbMjmz"
-                    ]
-                },
-                {
-                    "entry_count": 2,
-                    "code": "{\n\t// Only students have grades\n\tall p:Person | all c:Course | all g:Grade |\n  \t\tg in c.grades.p implies p in Student\n  \t\t\n}",
-                    "ids": [
-                        "Z7gf3BWAJkJd9B9u8",
-                        "yaRMaCsckPcsPwmbf"
-                    ]
-                },
-                {
-                    "entry_count": 2,
-                    "code": "{\n\t// Only students have grades\n\tall p:Person | all c:Course | some g:Grade |\n  \t\tg in c.grades.p implies p in Student\n  \t\t\n}",
-                    "ids": [
-                        "qvgQAPwMqYZjsWrZ8",
-                        "wtwnHea99R4kK2NM6"
-                    ]
-                },
-                {
-                    "entry_count": 2,
-                    "code": "{\n\t// Only students have grades\n\tall g: Grade | all c: Course | all x: c.grades[g] | x not in Professor\n}",
-                    "ids": [
-                        "vqG9FfbDLYbd9Eys6",
-                        "vPdLFc8CvBBFNpQmy"
+                        "qPT7kXpjGoW5PDWmo",
+                        "uMYnC4hBZDzWXBema"
                     ]
                 },
                 {
@@ -1032,6 +1016,14 @@
                     "ids": [
                         "GsswTgKHbLChQdHiX",
                         "gJ9MCgzj2XWJaexs7"
+                    ]
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Only students have grades\n\tall p:Person | all c:Course | some g:Grade |\n  \t\tg in c.grades.p implies p in Student\n  \t\t\n}",
+                    "ids": [
+                        "qvgQAPwMqYZjsWrZ8",
+                        "wtwnHea99R4kK2NM6"
                     ]
                 },
                 {
@@ -1052,10 +1044,18 @@
                 },
                 {
                     "entry_count": 2,
-                    "code": "{\n\t// Only students have grades\n\tall pe: Person | pe not in Student implies pe not in Course.grades.Person \n}",
+                    "code": "{\n\t// Only students have grades\n  \tall c : Course , p : Person - Student | p not in (c.grades).p\n\n}",
                     "ids": [
-                        "7qzj6H4Y6c5h8Ay8s",
-                        "EStJvv3fXFMRrPn2P"
+                        "oGCJpsDzaCpKo5nWX",
+                        "9McRwSfAPKtEbMjmz"
+                    ]
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Only students have grades\n\tall p:Person | all c:Course | all g:Grade |\n  \t\tg in c.grades.p implies p in Student\n  \t\t\n}",
+                    "ids": [
+                        "Z7gf3BWAJkJd9B9u8",
+                        "yaRMaCsckPcsPwmbf"
                     ]
                 },
                 {
@@ -1068,192 +1068,10 @@
                 },
                 {
                     "entry_count": 2,
-                    "code": "{\n\t// Only students have grades\n\tall p : Person, c : Course | p -> c in c.grades => p in Student\n}",
+                    "code": "{\n\t// Only students have grades\n\tall g: Grade | all c: Course | all x: c.grades[g] | x not in Professor\n}",
                     "ids": [
-                        "qPT7kXpjGoW5PDWmo",
-                        "uMYnC4hBZDzWXBema"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Only students have grades\n\tall c : Course | c.grades[1] = c.grades[0]-Professor\n}",
-                    "ids": [
-                        "SwYHrz4Q35muWM2iQ"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Only studen ts have grades\n\tall c: Course | all p : Person | no (c.grades.p & Professor) \n}",
-                    "ids": [
-                        "xZzCxTs4pSD9YTdqG"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Only students have grades\n\t//all c: Course | all g: Grade | c.grades.g in Student\n\tall c: Course | all s: Student | c.grades.s in Grade\n\t  \n \t//for c in Courses\n \t//\tfor g in Grades\n\t//\t\tc.grades[g] <=> Student\n\n}",
-                    "ids": [
-                        "uHyrT88JQZ7ubm7G8"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Only students have grades\n   all p : Professor | no Course.grades.p\n\n}",
-                    "ids": [
-                        "3dsKHNGtF8aDstJRQ"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Only students have grades\n  all c : Course | all p: c.grades.Person | p in Student and p not in Professor\n\n}",
-                    "ids": [
-                        "vougjq3eTuseYE94X"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Only students have grades\n  \tall p : Person , c : Course | some (c.grades).p implies p not in Professor\n\n}",
-                    "ids": [
-                        "8me69KY4KHJm5mGMr"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Only students have grades\n  \tall c : Course, p : Professor , g:Grade | no grades[p,g]  \n\n}",
-                    "ids": [
-                        "mieGhZQASkMWn5fPv"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Only students have grades\n  all g : Grade | no (Person-Student).grades.g\n\n}",
-                    "ids": [
-                        "r56BA98v4oGyJHHgj"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Only students have grades\n  \tall p : Professor, g : Grade | no p.grades.g  \n\n}",
-                    "ids": [
-                        "HokonPLySB4wTLHJq"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Only students have grades\n\tall c : Course | (grades.Grade).c in Student\n}",
-                    "ids": [
-                        "XSA8pik7YbLhi3cDM"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Only students have grades\n  all c : Course, p : Person | p in c.grades.Person => Person in Student\n\n}",
-                    "ids": [
-                        "uGN6CvvDxpgwdxL9i"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Only students have grades\n\tall c: Course | all p: Person | some (c.grades.Person & p) implies p in Student\n}",
-                    "ids": [
-                        "NntM9YLB5fxKAn4To"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Only students have grades\n    all p: Person | some Course.grades.p implies p not in Student\n}",
-                    "ids": [
-                        "H4DgyLm2coRL4WSLY"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Only students have grades\n  \tno p : Person-Student | some grades.p\n\n}",
-                    "ids": [
-                        "xfSSyuC2yR2KdDSPk"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Only students have grades\n    all p: Person, c: Course | some c.grades.p implies p not in Student\n}",
-                    "ids": [
-                        "M3KwkMFY8xRwT2w9C"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Only students have grades\n    all p: Person | no p.grades or p in Student\n\n}",
-                    "ids": [
-                        "a46QW5g7454m68kpY"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Only students have grades\n  \n  all c : Course, p : Person , g : Grade | g -> p -> g  in grades implies p in Student \n}",
-                    "ids": [
-                        "B2q9LQuZa6LtgGyWo"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Only students have grades\n\tall p: Person | all c: Course | all x: c.grades[p] | lone x\n}",
-                    "ids": [
-                        "LW4AR2ebxqDuRuHRk"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n    // Only students have grades\n  all p: Professor | all c: Course | not (p->c in c.grades)\n\n}",
-                    "ids": [
-                        "xEh5bHczPoHqxtXyp"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Only students have grades\n  all p : Person, c : Course | p in grades.Grade.c implies p in Student\n\n}",
-                    "ids": [
-                        "hFpP5ogr3e6ByH7D7"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Only students have grades\n\tall g:Grade | all p:Person | some (grades.(p->g)) implies p in Student\n}",
-                    "ids": [
-                        "nm3DH5q4wiLDqQNRL"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Only students have grades\n  \tall p : Person , g : Grade | some grades[p,g] implies p in Student \n\n}",
-                    "ids": [
-                        "rznDnkmwooaCT3nod"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Only students have grades\n  no Course.grades.(Person-Student)\n\n}",
-                    "ids": [
-                        "jg5eMADb3DNApnZuc"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Only students have grades\n    all p: Person | some Course.grades.p implies p in Student\n}",
-                    "ids": [
-                        "fy3ywmcQdPzFw7qrw"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Only students have grades\n\tall c : Course | (c.grades).Course in Student\n}",
-                    "ids": [
-                        "f6NxhfiSKwQLSjyk7"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n    // Apenas estudantes podem ter notas\n    all p: Person, g: Grade, c: Course |\n            g in p.(enrolled.projects).(c.grades) implies p in Student\n}",
-                    "ids": [
-                        "mobSKfnR25r6vW6pe"
+                        "vqG9FfbDLYbd9Eys6",
+                        "vPdLFc8CvBBFNpQmy"
                     ]
                 },
                 {
@@ -1265,9 +1083,65 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Only students have grades\n  all c : Course | all p: c.grades.Person | p in Person - Professor\n\n}",
+                    "code": "{\n\t// Only students have grades\n  \n  all c : Course, p : Person , g : Grade | g -> p -> g  in grades implies p in Student \n}",
                     "ids": [
-                        "gdeJtMgzLHmxzDjuN"
+                        "B2q9LQuZa6LtgGyWo"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n    all p: Person | no p.grades or p in Student\n\n}",
+                    "ids": [
+                        "a46QW5g7454m68kpY"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n  \tall c : Course, p : Person, g:Grade | some grades[p,g] implies p in Student \n\n}",
+                    "ids": [
+                        "8aXfYNj9fZ8JZYAu3"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n\tall pe: Person | pe not in Student implies no Course.grades.Person & pe\n}",
+                    "ids": [
+                        "jmthziL48Nz2vjD3t"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n\t//all c: Course | all g: Grade | c.grades.g in Student\n\tall c: Course | all s: Student | c.grades.s in Grade\n\t  \n \t//for c in Courses\n \t//\tfor g in Grades\n\t//\t\tc.grades[g] <=> Student\n\n}",
+                    "ids": [
+                        "uHyrT88JQZ7ubm7G8"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n    all p: Person | some Course.grades.p implies p in Student\n}",
+                    "ids": [
+                        "fy3ywmcQdPzFw7qrw"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n    // Apenas estudantes podem ter notas\n    all p: Person, g: Grade, c: Course |\n            g in p.(enrolled.projects).(c.grades) implies p in Student\n}",
+                    "ids": [
+                        "mobSKfnR25r6vW6pe"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n\tall c : Course | (c.grades).Course in Student\n}",
+                    "ids": [
+                        "f6NxhfiSKwQLSjyk7"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n   all c : Course | no c.grades.Person\n\n}",
+                    "ids": [
+                        "49qiXiSQcSxpszz2f"
                     ]
                 },
                 {
@@ -1286,97 +1160,6 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Only students have grades\n  \tno (grades.Course.Grade - Student)\n\t\n}",
-                    "ids": [
-                        "oPbfcadaqDA6ESA3H"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Only students have grades\n  \tno p : Person-Student | some p.grades\n\n}",
-                    "ids": [
-                        "45ZSpZExFBqbgGJWH"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Only students have grades\n\tall p: Person | all c: Course | all x: c.grades[p] | one x\n}",
-                    "ids": [
-                        "orKe2nJEMNidoAC4a"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Only students have grades\n  \tPerson.enrolled.grades.Person in Student\n}",
-                    "ids": [
-                        "rv56RXTzBK4bmvQkc"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Only students have grades\n\tall c : Course, p : Person | p in c.grades.p => p in Student\n}",
-                    "ids": [
-                        "P7ebD7jdBjMFoanaF"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Only students have grades\n  \tall c : Course, p : Person, g:Grade | some grades[p,g] implies p in Student \n\n}",
-                    "ids": [
-                        "8aXfYNj9fZ8JZYAu3"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Only students have grades\n  all p: Person-Student | no c: Course | p in c.grades[Grade]\n\n}",
-                    "ids": [
-                        "pK4DGXYpNieY8qHq7"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Only students have grades\n  \tno Course.grades.Professor \n}",
-                    "ids": [
-                        "3oBRix26HiG6TQPj9"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Only students have grades\n   all c : Course | no c.grades.Person\n\n}",
-                    "ids": [
-                        "49qiXiSQcSxpszz2f"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Only students have grades\n\tall p: Person, c: Course | (some g : Grade | p->c in c.grades) implies p in Student\n}",
-                    "ids": [
-                        "B8gFPPok2dPibJzvx"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Only students have grades\n\tall pe: Person | pe not in Student implies no Course.grades.Person & pe\n}",
-                    "ids": [
-                        "jmthziL48Nz2vjD3t"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Only students have grades\n\tall p : Course.grades.Person | p in Student\n}",
-                    "ids": [
-                        "MNNpF5T49Ytdiu27r"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Only students have grades\n  all c : Course | all p: c.grades.Person | p = Student \n\n}",
-                    "ids": [
-                        "HHSr7GMkXhZFk57y4"
-                    ]
-                },
-                {
-                    "entry_count": 1,
                     "code": "{\n\t// Only students have grades\n  \tall c : Course, p : Professor , g:Grade | p not in grades[p,g]  \n\n}",
                     "ids": [
                         "uBfDBZ9NhqpiBvkTq"
@@ -1384,23 +1167,16 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Only students have grades\n\tall c : Course | some c.grades implies c.grades.Person in Student\n}",
+                    "code": "{\n\t// Only students have grades\n  \tno (grades.Course.Grade - Student)\n\t\n}",
                     "ids": [
-                        "H3Mp26TmxEzicf7eT"
+                        "oPbfcadaqDA6ESA3H"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Only students have grades\n\tall p1 : Person | all c1 : Course | all g1 : Grade|\n  \t(p1->c1->g1 in grades) implies (p1 in Student)\n}",
+                    "code": "{\n\t// Only students have grades\n  all g : Grade | no (Person-Student).grades.g\n\n}",
                     "ids": [
-                        "shv65hcK9STFMwDEu"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Only students have grades\n  \tall p : Professor, g : Grade | no grades[p,g]  \n\n}",
-                    "ids": [
-                        "GHqQC6Z9pgyjfLXLF"
+                        "r56BA98v4oGyJHHgj"
                     ]
                 },
                 {
@@ -1412,9 +1188,191 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Only students have grades\n\tall c : Course | c.grades[0] = c.grades[0]-Professor\n}",
+                    "code": "{\n\t// Only studen ts have grades\n\tall c: Course | all p : Person | no (c.grades.p & Professor) \n}",
                     "ids": [
-                        "ujRMXSux73wQ9K6Kn"
+                        "xZzCxTs4pSD9YTdqG"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n  \tall p : Professor, g : Grade | no p.grades.g  \n\n}",
+                    "ids": [
+                        "HokonPLySB4wTLHJq"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n    all p: Person | some Course.grades.p implies p not in Student\n}",
+                    "ids": [
+                        "H4DgyLm2coRL4WSLY"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n\tall p: Person | all c: Course | all x: c.grades[p] | lone x\n}",
+                    "ids": [
+                        "LW4AR2ebxqDuRuHRk"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n   all p : Professor | no Course.grades.p\n\n}",
+                    "ids": [
+                        "3dsKHNGtF8aDstJRQ"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n\tall c : Course | c.grades[1] = c.grades[0]-Professor\n}",
+                    "ids": [
+                        "SwYHrz4Q35muWM2iQ"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n  all c : Course | all p: c.grades.Person | p in Student and p not in Professor\n\n}",
+                    "ids": [
+                        "vougjq3eTuseYE94X"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n    // Only students have grades\n  all p: Professor | all c: Course | not (p->c in c.grades)\n\n}",
+                    "ids": [
+                        "xEh5bHczPoHqxtXyp"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n    all p: Person, c: Course | some c.grades.p implies p not in Student\n}",
+                    "ids": [
+                        "M3KwkMFY8xRwT2w9C"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n\tall g:Grade | all p:Person | some (grades.(p->g)) implies p in Student\n}",
+                    "ids": [
+                        "nm3DH5q4wiLDqQNRL"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n  all c : Course | all p: c.grades.Person | p = Student \n\n}",
+                    "ids": [
+                        "HHSr7GMkXhZFk57y4"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n  \tall p : Person , c : Course | some (c.grades).p implies p not in Professor\n\n}",
+                    "ids": [
+                        "8me69KY4KHJm5mGMr"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n\tall c : Course | some c.grades implies c.grades.Person in Student\n}",
+                    "ids": [
+                        "H3Mp26TmxEzicf7eT"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n  all p: Person-Student | no c: Course | p in c.grades[Grade]\n\n}",
+                    "ids": [
+                        "pK4DGXYpNieY8qHq7"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n  \tall p : Person , g : Grade | some grades[p,g] implies p in Student \n\n}",
+                    "ids": [
+                        "rznDnkmwooaCT3nod"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n\tall c : Course | (grades.Grade).c in Student\n}",
+                    "ids": [
+                        "XSA8pik7YbLhi3cDM"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n\tall p: Person | all c: Course | all x: c.grades[p] | one x\n}",
+                    "ids": [
+                        "orKe2nJEMNidoAC4a"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n  all p : Person, c : Course | p in grades.Grade.c implies p in Student\n\n}",
+                    "ids": [
+                        "hFpP5ogr3e6ByH7D7"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n  all c : Course | all p: c.grades.Person | p in Person - Professor\n\n}",
+                    "ids": [
+                        "gdeJtMgzLHmxzDjuN"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n  \tno p : Person-Student | some grades.p\n\n}",
+                    "ids": [
+                        "xfSSyuC2yR2KdDSPk"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n  \tall c : Course, p : Professor , g:Grade | no grades[p,g]  \n\n}",
+                    "ids": [
+                        "mieGhZQASkMWn5fPv"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n\tall p: Person, c: Course | (some g : Grade | p->c in c.grades) implies p in Student\n}",
+                    "ids": [
+                        "B8gFPPok2dPibJzvx"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n  \tall p : Professor, g : Grade | no grades[p,g]  \n\n}",
+                    "ids": [
+                        "GHqQC6Z9pgyjfLXLF"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n\tall c : Course, p : Person | p in c.grades.p => p in Student\n}",
+                    "ids": [
+                        "P7ebD7jdBjMFoanaF"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n\tall p1 : Person | all c1 : Course | all g1 : Grade|\n  \t(p1->c1->g1 in grades) implies (p1 in Student)\n}",
+                    "ids": [
+                        "shv65hcK9STFMwDEu"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n  no Course.grades.(Person-Student)\n\n}",
+                    "ids": [
+                        "jg5eMADb3DNApnZuc"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n\tall c: Course | all p: Person | some (c.grades.Person & p) implies p in Student\n}",
+                    "ids": [
+                        "NntM9YLB5fxKAn4To"
                     ]
                 },
                 {
@@ -1426,9 +1384,51 @@
                 },
                 {
                     "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n  \tno p : Person-Student | some p.grades\n\n}",
+                    "ids": [
+                        "45ZSpZExFBqbgGJWH"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n  \tno Course.grades.Professor \n}",
+                    "ids": [
+                        "3oBRix26HiG6TQPj9"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n  all c : Course, p : Person | p in c.grades.Person => Person in Student\n\n}",
+                    "ids": [
+                        "uGN6CvvDxpgwdxL9i"
+                    ]
+                },
+                {
+                    "entry_count": 1,
                     "code": "{\n\t// Only students have grades\n  \tno (Professor <: grades)\n\n}",
                     "ids": [
                         "MsteAFnYuvCs224RM"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n\tall p : Course.grades.Person | p in Student\n}",
+                    "ids": [
+                        "MNNpF5T49Ytdiu27r"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n\tall c : Course | c.grades[0] = c.grades[0]-Professor\n}",
+                    "ids": [
+                        "ujRMXSux73wQ9K6Kn"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n  \tPerson.enrolled.grades.Person in Student\n}",
+                    "ids": [
+                        "rv56RXTzBK4bmvQkc"
                     ]
                 }
             ]
@@ -1468,15 +1468,6 @@
                 },
                 {
                     "entry_count": 3,
-                    "code": "{\n\t// Only students have grades\n\tno Course.grades[Professor]\n}",
-                    "ids": [
-                        "Xxv3GGazxDkBBwGF5",
-                        "kewGhsYwqfLrKLQXg",
-                        "iR4hPJLcWYKeSfuuh"
-                    ]
-                },
-                {
-                    "entry_count": 3,
                     "code": "{\n\t// Only students have grades\n\tall c : Course.grades.Grade | no c & Professor\n}",
                     "ids": [
                         "mJAizfAeMwErhn2Gm",
@@ -1485,19 +1476,20 @@
                     ]
                 },
                 {
+                    "entry_count": 3,
+                    "code": "{\n\t// Only students have grades\n\tno Course.grades[Professor]\n}",
+                    "ids": [
+                        "Xxv3GGazxDkBBwGF5",
+                        "kewGhsYwqfLrKLQXg",
+                        "iR4hPJLcWYKeSfuuh"
+                    ]
+                },
+                {
                     "entry_count": 2,
                     "code": "{\n\t// Only students have grades\n\tall p : Professor | p not in (Course.grades.Grade) \n}",
                     "ids": [
                         "Cvhy3M9qioXxnj9JQ",
                         "4SbuEpQGshLxd8kh8"
-                    ]
-                },
-                {
-                    "entry_count": 2,
-                    "code": "{\n\t// Only students have grades\n  \tall p : Professor, c : Course | no p.(c.grades)\n\n}",
-                    "ids": [
-                        "ecMmProdiXP9A8f74",
-                        "T2w74vmCbmobmn5RR"
                     ]
                 },
                 {
@@ -1517,24 +1509,11 @@
                     ]
                 },
                 {
-                    "entry_count": 1,
-                    "code": "{\n\t// Only students have grades\n\tall c: Course | no Professor.(c.grades)\n}",
+                    "entry_count": 2,
+                    "code": "{\n\t// Only students have grades\n  \tall p : Professor, c : Course | no p.(c.grades)\n\n}",
                     "ids": [
-                        "iDaJMnCDhfdcgwpNA"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Only students have grades\n\tall c: Course | no (c.grades.Grade & Professor) \n}",
-                    "ids": [
-                        "Rf5TRcMgqjRzsLXib"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Only students have grades\n\tCourse.grades & Professor->Grade = none->none\n}",
-                    "ids": [
-                        "YiAg7RzS6oFTgRLhi"
+                        "ecMmProdiXP9A8f74",
+                        "T2w74vmCbmobmn5RR"
                     ]
                 },
                 {
@@ -1549,6 +1528,27 @@
                     "code": "{\n\t// Only students have grades\n\tall p: Person | all c: Course | all x: c.grades[p] | p not in Professor\n}",
                     "ids": [
                         "4Le7JpcYyzMHJGG4h"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n\tall c: Course | no Professor.(c.grades)\n}",
+                    "ids": [
+                        "iDaJMnCDhfdcgwpNA"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n\tCourse.grades & Professor->Grade = none->none\n}",
+                    "ids": [
+                        "YiAg7RzS6oFTgRLhi"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n\tall c: Course | no (c.grades.Grade & Professor) \n}",
+                    "ids": [
+                        "Rf5TRcMgqjRzsLXib"
                     ]
                 }
             ]
@@ -1570,14 +1570,6 @@
                 },
                 {
                     "entry_count": 2,
-                    "code": "{\n\t// Only students have grades\n   all c : Course | no Person->c.grades\n\n}",
-                    "ids": [
-                        "FEpdDvATg486CmMz6",
-                        "wMfWusLzKv9ZL8hw4"
-                    ]
-                },
-                {
-                    "entry_count": 2,
                     "code": "{\n\t// Only students have grades\n\tno Course.grades\n}",
                     "ids": [
                         "JKyJ8x5oSRYmfbRLT",
@@ -1593,10 +1585,67 @@
                     ]
                 },
                 {
+                    "entry_count": 2,
+                    "code": "{\n\t// Only students have grades\n   all c : Course | no Person->c.grades\n\n}",
+                    "ids": [
+                        "FEpdDvATg486CmMz6",
+                        "wMfWusLzKv9ZL8hw4"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n\tall p: Person | all c: Course | all x, y: c.grades[p] | x in Student\n}",
+                    "ids": [
+                        "Re4pD7uQacddAm9qn"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n\tall c : Course | Person.(c.grades) in Student\n}",
+                    "ids": [
+                        "AyF63zHf6GypLcTzs"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n\tall c: Course | c.grades in Person -> Student\n}",
+                    "ids": [
+                        "Xz3ScoJkuyuQKP5FF"
+                    ]
+                },
+                {
                     "entry_count": 1,
                     "code": "{\n\t// Only students have grades\n  all c : Course | all p: Person.(c.grades) | p = Student \n\n}",
                     "ids": [
                         "dQiMg98iFYL4xum5J"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n\tall p: Person | all c: Course | all x, y: c.grades[p] | y in Student\n}",
+                    "ids": [
+                        "fiSCz2MNXsLLSmknF"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n  all c : Course | all p: Person.(c.grades)| p in Student and p not in Professor  // Check if the person associated with the grade is a Student\n}",
+                    "ids": [
+                        "Q2HBNQaq76ncAAQR7"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n  \tall c : Course |  no c.grades\n\n}",
+                    "ids": [
+                        "vyXzPeQXvQFM8EJ5N"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n  \tStudent <: grades = grades\n\n}",
+                    "ids": [
+                        "TRgp6T9YpedFX2uZC"
                     ]
                 },
                 {
@@ -1611,55 +1660,6 @@
                     "code": "{\n\t// Only students have grades\n  \tgrades :> Student = grades\n\n}",
                     "ids": [
                         "RaoyuWhhgBXsuYgg4"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Only students have grades\n\tall c : Course | Person.(c.grades) in Student\n}",
-                    "ids": [
-                        "AyF63zHf6GypLcTzs"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Only students have grades\n  \tall c : Course |  no c.grades\n\n}",
-                    "ids": [
-                        "vyXzPeQXvQFM8EJ5N"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Only students have grades\n  all c : Course | all p: Person.(c.grades)| p in Student and p not in Professor  // Check if the person associated with the grade is a Student\n}",
-                    "ids": [
-                        "Q2HBNQaq76ncAAQR7"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Only students have grades\n  \tStudent <: grades = grades\n\n}",
-                    "ids": [
-                        "TRgp6T9YpedFX2uZC"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Only students have grades\n\tall c: Course | c.grades in Person -> Student\n}",
-                    "ids": [
-                        "Xz3ScoJkuyuQKP5FF"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Only students have grades\n\tall p: Person | all c: Course | all x, y: c.grades[p] | x in Student\n}",
-                    "ids": [
-                        "Re4pD7uQacddAm9qn"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Only students have grades\n\tall p: Person | all c: Course | all x, y: c.grades[p] | y in Student\n}",
-                    "ids": [
-                        "fiSCz2MNXsLLSmknF"
                     ]
                 }
             ]
@@ -1712,16 +1712,16 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Only students have grades\n\tall p : Person - Student | #p.enrolled.grades = 0 and \n  \tno p.enrolled.grades[p]\n}",
+                    "code": "{\n\t// Only students have grades\n\tall p : Person - Student | #p.enrolled.grades = 0 and \n  \t(no #p.enrolled.grades[p] or no p.enrolled.grades )\n}",
                     "ids": [
-                        "nzXxfAeaRoZjSeSBS"
+                        "TFLskvHKc6w8LZ4Jg"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Only students have grades\n\tall p : Person - Student | #p.enrolled.grades = 0 and \n  \t(no #p.enrolled.grades[p] or no p.enrolled.grades )\n}",
+                    "code": "{\n\t// Only students have grades\n\tall p : Person - Student | #p.enrolled.grades = 0 and \n  \tno p.enrolled.grades[p]\n}",
                     "ids": [
-                        "TFLskvHKc6w8LZ4Jg"
+                        "nzXxfAeaRoZjSeSBS"
                     ]
                 }
             ]
@@ -1770,20 +1770,20 @@
             "elems": [
                 {
                     "entry_count": 3,
-                    "code": "{\n\t// Only students have grades\n\tall c: Course | all p: Person | p->Grade in c.grades implies p in Student\n}",
-                    "ids": [
-                        "E9Q2PnhaZaivBotkQ",
-                        "3gtqe3sbos2CbPzCN",
-                        "Kz2Z3hH8wh7hzvbtE"
-                    ]
-                },
-                {
-                    "entry_count": 3,
                     "code": "{\n\t// Only students have grades\n\tall p : Person, c : Course | \n\t\tsome g : Grade | (p -> g) in c.grades implies p in Student\n  \t\t\n\n}",
                     "ids": [
                         "4Pa99dhhEE72ARj3h",
                         "hEzXEQaCNLaM8nZyt",
                         "bafaD23JiPwvHufrZ"
+                    ]
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Only students have grades\n\tall c: Course | all p: Person | p->Grade in c.grades implies p in Student\n}",
+                    "ids": [
+                        "E9Q2PnhaZaivBotkQ",
+                        "3gtqe3sbos2CbPzCN",
+                        "Kz2Z3hH8wh7hzvbtE"
                     ]
                 },
                 {
@@ -1850,16 +1850,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Only students have grades\n  \tall p : Person | all g : Grade | p->g in Course.grades => p in Student\n  \n  \tsome Person.(grades.(Person->Grade))\n}",
+                    "code": "{\n\t// Only students have grades\n\tGrade in Student.enrolled.grades.Student\n}",
                     "ids": [
-                        "biZk6sPZjGfkev8jR"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Only students have grades\n  \tall c : Grade | c in Student\n}",
-                    "ids": [
-                        "vd8eFYbyCNjCRmCDB"
+                        "hgzWCEf6bWnYeNA24"
                     ]
                 },
                 {
@@ -1871,9 +1864,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Only students have grades\n\tGrade in Student.enrolled.grades.Student\n}",
+                    "code": "{\n\t// Only students have grades\n  \tall p : Person | all g : Grade | p->g in Course.grades => p in Student\n  \n  \tsome Person.(grades.(Person->Grade))\n}",
                     "ids": [
-                        "hgzWCEf6bWnYeNA24"
+                        "biZk6sPZjGfkev8jR"
                     ]
                 },
                 {
@@ -1881,6 +1874,13 @@
                     "code": "{\n\t// Only students have grades\n  \tall p : Person | all g : Grade | p->g in Course.grades => p in Student\n  \n  \tsome grades.(Person->Grade).Person\n}",
                     "ids": [
                         "FcMEKoye9jeBFq9hW"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n  \tall c : Grade | c in Student\n}",
+                    "ids": [
+                        "vd8eFYbyCNjCRmCDB"
                     ]
                 }
             ]
@@ -1900,9 +1900,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Only students have grades\n    all s: Student | s.grades = Course->Grade\n\n}",
+                    "code": "{\n\t// Only students have grades\n  \tall c : Course | all s: Student |  s in c.grades[s]\n\n}",
                     "ids": [
-                        "a9HgqjbN9wZgNWiA2"
+                        "9NjGZWzgasZ8j7zWp"
                     ]
                 },
                 {
@@ -1914,16 +1914,16 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Only students have grades\n  \n  all c : Course, s: Student | some ((c.grades).Student & s )\n}",
+                    "code": "{\n\t// Only students have grades\n    all s: Student | s.grades = Course->Grade\n\n}",
                     "ids": [
-                        "Pnyos3RndLXKHdwAz"
+                        "a9HgqjbN9wZgNWiA2"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Only students have grades\n  \tall c : Course | all s: Student |  s in c.grades[s]\n\n}",
+                    "code": "{\n\t// Only students have grades\n  \n  all c : Course, s: Student | some ((c.grades).Student & s )\n}",
                     "ids": [
-                        "9NjGZWzgasZ8j7zWp"
+                        "Pnyos3RndLXKHdwAz"
                     ]
                 }
             ]
@@ -1981,13 +1981,6 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n    // Only students have grades\n  all s: Student | all c: Course |  s->Grade in c.grades\n\n}",
-                    "ids": [
-                        "qoj67qdK2o52PxCya"
-                    ]
-                },
-                {
-                    "entry_count": 1,
                     "code": "{\n\n\tall c : Course | all g : Grade | all s : Student |  c->s->g in grades\n\n}",
                     "ids": [
                         "zWEJWvx2oq6GvZJ9v"
@@ -1999,6 +1992,13 @@
                     "ids": [
                         "DzD4vmqicGwv9YKoE"
                     ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n    // Only students have grades\n  all s: Student | all c: Course |  s->Grade in c.grades\n\n}",
+                    "ids": [
+                        "qoj67qdK2o52PxCya"
+                    ]
                 }
             ]
         },
@@ -2009,9 +2009,23 @@
             "elems": [
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Only students have grades\n\tall p: Person |\n\t\t(p in Student) => (some c: Course | p in c.grades.Person)\n}",
+                    "code": "{\n\t// Only students have grades\n\tall p : Student | p in p.enrolled.grades.Person\n}",
                     "ids": [
-                        "fiRCtzoRwJsx95yJq"
+                        "RJn4nkKq7i9ByNxTt"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n  all p : Person, c : Grade | p in Student implies some c.grades[p]\n\n}",
+                    "ids": [
+                        "PHrmfoa2RqTCdg6sY"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n  all p: Person | \n    (some c: Course | p in c.grades.Person) iff p in Student\n}",
+                    "ids": [
+                        "FJnCzg4aH5jo7td5A"
                     ]
                 },
                 {
@@ -2030,23 +2044,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Only students have grades\n\tall p : Student | p in p.enrolled.grades.Person\n}",
+                    "code": "{\n\t// Only students have grades\n\tall p: Person |\n\t\t(p in Student) => (some c: Course | p in c.grades.Person)\n}",
                     "ids": [
-                        "RJn4nkKq7i9ByNxTt"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n  all p: Person | \n    (some c: Course | p in c.grades.Person) iff p in Student\n}",
-                    "ids": [
-                        "FJnCzg4aH5jo7td5A"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Only students have grades\n  all p : Person, c : Grade | p in Student implies some c.grades[p]\n\n}",
-                    "ids": [
-                        "PHrmfoa2RqTCdg6sY"
+                        "fiRCtzoRwJsx95yJq"
                     ]
                 }
             ]
@@ -2107,16 +2107,16 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Only students have grades\n  no Course.grades->(Person-Student)\n\n}",
+                    "code": "{\n\t// Only students have grades\n\tall c : Course, p : Person | some(c.grades) implies p in Student\n}",
                     "ids": [
-                        "QQh26LLEWhd4AdopZ"
+                        "z6qjsBMBpugtziLfQ"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Only students have grades\n\tall c : Course, p : Person | some(c.grades) implies p in Student\n}",
+                    "code": "{\n\t// Only students have grades\n  no Course.grades->(Person-Student)\n\n}",
                     "ids": [
-                        "z6qjsBMBpugtziLfQ"
+                        "QQh26LLEWhd4AdopZ"
                     ]
                 }
             ]
@@ -2151,9 +2151,9 @@
             "elems": [
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Only students have grades\n\tall p : Person | some (p.enrolled.grades + p.teaches.grades) => p in Student\n}",
+                    "code": "{\n\t// Only students have grades\n\tall p : Person - Student | #p.enrolled.grades + #p.teaches.grades = 0 \n}",
                     "ids": [
-                        "j7LqM7jw7RgQcvJmJ"
+                        "BAF9TEgmCsncXjK5T"
                     ]
                 },
                 {
@@ -2165,16 +2165,16 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Only students have grades\n\tall p : Person - Student | #p.enrolled.grades + #p.teaches.grades = 0 \n}",
+                    "code": "{\n\t// Only students have grades\n\tall p : Person - Student | #p.enrolled.grades = 0 and #p.teaches.grades = 0\n}",
                     "ids": [
-                        "BAF9TEgmCsncXjK5T"
+                        "nb9SqGMi5QqpFZuCM"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Only students have grades\n\tall p : Person - Student | #p.enrolled.grades = 0 and #p.teaches.grades = 0\n}",
+                    "code": "{\n\t// Only students have grades\n\tall p : Person | some (p.enrolled.grades + p.teaches.grades) => p in Student\n}",
                     "ids": [
-                        "nb9SqGMi5QqpFZuCM"
+                        "j7LqM7jw7RgQcvJmJ"
                     ]
                 }
             ]
@@ -2194,16 +2194,16 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Only students have grades\n\tall g:Grade | all p:Person | some (p->g) implies p in Student\n}",
+                    "code": "{\n\t// Only students have grades\nall p:Person, g:Grade| (Person<:grades).g in enrolled implies p in Student}",
                     "ids": [
-                        "pxZxWwj6ii9pFzFYW"
+                        "3pCb7aG4TzqWFhcCo"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Only students have grades\nall p:Person, g:Grade| (Person<:grades).g in enrolled implies p in Student}",
+                    "code": "{\n\t// Only students have grades\n\tall g:Grade | all p:Person | some (p->g) implies p in Student\n}",
                     "ids": [
-                        "3pCb7aG4TzqWFhcCo"
+                        "pxZxWwj6ii9pFzFYW"
                     ]
                 }
             ]
@@ -2253,9 +2253,9 @@
             "elems": [
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Only students have grades\n\tall s : Person | all g : Grade|  s in Student implies s->g in Course.grades\n}",
+                    "code": "{\n\t// Only students have grades\n  \t/* Ternary relationships:\n    \tif\n        x : Course\n        y : Student\n        z : Grade\n        then,\n        x.grades.z -> all students with grade z in course y \n        y.(x.grades) -> all grades of student y in course x\n        (grades.z).y -> all courses where sutent y got grade z\n        \n        In all examples above you can use the signature's name instead of a variable (Course/Student/Grade) to get all entries of that type\n    all p : Course.grades.Grade | p in Student\n    */\n  \tall s : Student, g : Grade | some  c : Course |\n\t\ts in c.grades.g  \n}",
                     "ids": [
-                        "ca5pvL8u8Qwcm4zK8"
+                        "YiLpgYF3HiXuShq9G"
                     ]
                 },
                 {
@@ -2267,9 +2267,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Only students have grades\n  \t/* Ternary relationships:\n    \tif\n        x : Course\n        y : Student\n        z : Grade\n        then,\n        x.grades.z -> all students with grade z in course y \n        y.(x.grades) -> all grades of student y in course x\n        (grades.z).y -> all courses where sutent y got grade z\n        \n        In all examples above you can use the signature's name instead of a variable (Course/Student/Grade) to get all entries of that type\n    all p : Course.grades.Grade | p in Student\n    */\n  \tall s : Student, g : Grade | some  c : Course |\n\t\ts in c.grades.g  \n}",
+                    "code": "{\n\t// Only students have grades\n\tall s : Person | all g : Grade|  s in Student implies s->g in Course.grades\n}",
                     "ids": [
-                        "YiLpgYF3HiXuShq9G"
+                        "ca5pvL8u8Qwcm4zK8"
                     ]
                 }
             ]
@@ -2279,6 +2279,13 @@
             "group_count": 3,
             "correct": false,
             "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n  all p: Person-Student | no c: Course | no g: Grade | g in c.grades[p]\n\n}",
+                    "ids": [
+                        "DZYYCGoG5pe8SdBAn"
+                    ]
+                },
                 {
                     "entry_count": 1,
                     "code": "{\n\t// Only students have grades\n  all p: Person-Student | no c: Course | p not in c.grades.Grade\n\n}",
@@ -2291,13 +2298,6 @@
                     "code": "{\n\t// Only students have grades\n  all p: Person-Student | no c: Course | no c.grades[p]\n\n}",
                     "ids": [
                         "TZokZiARopyAeZiJH"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Only students have grades\n  all p: Person-Student | no c: Course | no g: Grade | g in c.grades[p]\n\n}",
-                    "ids": [
-                        "DZYYCGoG5pe8SdBAn"
                     ]
                 }
             ]
@@ -2384,16 +2384,16 @@
             "elems": [
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Only students have grades\n   all p : Professor | no Course.grades->p\n\n}",
+                    "code": "{\n\t// Only students have grades\n  \tall c : Course | all p : Professor | no c.grades\n\n}",
                     "ids": [
-                        "NNyoae4iJCFG3oqis"
+                        "E5JJZa3EGyhrxodmS"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Only students have grades\n  \tall c : Course | all p : Professor | no c.grades\n\n}",
+                    "code": "{\n\t// Only students have grades\n   all p : Professor | no Course.grades->p\n\n}",
                     "ids": [
-                        "E5JJZa3EGyhrxodmS"
+                        "NNyoae4iJCFG3oqis"
                     ]
                 }
             ]
@@ -2528,16 +2528,16 @@
             "elems": [
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Only students have grades\n\tall c: Course, p: Person, g:Grade | p->g in c.grades => p in Professor\n}",
+                    "code": "{\n\t// Only students have grades\n\tall c: Course | all p: Person-Professor | all g:Grade | p->g not in c.grades\n}",
                     "ids": [
-                        "6TSiNpkgLwYJpvHae"
+                        "wxekdBHRPA9WKp7YM"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Only students have grades\n\tall c: Course | all p: Person-Professor | all g:Grade | p->g not in c.grades\n}",
+                    "code": "{\n\t// Only students have grades\n\tall c: Course, p: Person, g:Grade | p->g in c.grades => p in Professor\n}",
                     "ids": [
-                        "wxekdBHRPA9WKp7YM"
+                        "6TSiNpkgLwYJpvHae"
                     ]
                 }
             ]
@@ -2591,16 +2591,16 @@
             "elems": [
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Only students have grades\n  \n  all c : Course | some c.grades.Person \n}",
+                    "code": "{\n\t// Only students have grades\n\tall c: Course | some (c.grades.Person & Student) \n}",
                     "ids": [
-                        "yt54iAFucqzcYJnwW"
+                        "Y9LtJFduHth6ekJRj"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Only students have grades\n\tall c: Course | some (c.grades.Person & Student) \n}",
+                    "code": "{\n\t// Only students have grades\n  \n  all c : Course | some c.grades.Person \n}",
                     "ids": [
-                        "Y9LtJFduHth6ekJRj"
+                        "yt54iAFucqzcYJnwW"
                     ]
                 }
             ]
@@ -2612,16 +2612,16 @@
             "elems": [
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Only students have grades\n  all g : Grade | Professor not in g\n\n}",
+                    "code": "{\n\t// Only students have grades\n   Professor not in Course.grades.Person\n\n}",
                     "ids": [
-                        "x8CxneH2EcL5bD9C6"
+                        "HGWkZQuXiNj3A4T4P"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Only students have grades\n   Professor not in Course.grades.Person\n\n}",
+                    "code": "{\n\t// Only students have grades\n  all g : Grade | Professor not in g\n\n}",
                     "ids": [
-                        "HGWkZQuXiNj3A4T4P"
+                        "x8CxneH2EcL5bD9C6"
                     ]
                 }
             ]
@@ -2930,20 +2930,6 @@
                     "code": "{\n\t// Only students have grades\n\tall s: Student, c: Course | some c.grades\n\n}",
                     "ids": [
                         "bjsA7yDcQASSY4v8Y"
-                    ]
-                }
-            ]
-        },
-        {
-            "entry_count": 1,
-            "group_count": 1,
-            "correct": false,
-            "elems": [
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Only students have grades\n\tall c : Course | c.grades.first in Student\n}",
-                    "ids": [
-                        "zpNc2MPhPvkrjY6mc"
                     ]
                 }
             ]

@@ -2,8 +2,8 @@
     "label": "inv8",
     "pred": "this/inv8",
     "entry_count": 508,
-    "group_count": 55,
-    "duration": 10,
+    "group_count": 53,
+    "duration": 11,
     "scope": 3,
     "groups": [
         {
@@ -216,24 +216,6 @@
                 },
                 {
                     "entry_count": 3,
-                    "code": "{\n\t// It should be possible to reach every exit from every entry\n\tall e : Entry | Exit in e.^succs or (e in Exit and (Exit - e) in e.^succs)\n}",
-                    "ids": [
-                        "8wgBW7niua7L5xsbE",
-                        "KRP9LKJ7cf4iqE5sR",
-                        "SikPRmWeP4ro3YxoZ"
-                    ]
-                },
-                {
-                    "entry_count": 3,
-                    "code": "{\n\t// It should be possible to reach every exit from every entry\n\tEntry->Exit in *succs\n}",
-                    "ids": [
-                        "qCN3WNxey5SMNBAEp",
-                        "v8paE99cxocKiSWFF",
-                        "nGqKqnJWZeXY3Qeuz"
-                    ]
-                },
-                {
-                    "entry_count": 3,
                     "code": "{\n\t// It should be possible to reach every exit from every entry\n\tall e : Entry, s : Exit | e!=s implies some e <: ^succs :> s\n}",
                     "ids": [
                         "5LWMRRa93soMLfgNg",
@@ -248,6 +230,40 @@
                         "SPMaNmTtj5CqtdYWn",
                         "4S76jW6Qvqpk4RQ9Y",
                         "ofQ3PaxAsr6NdomB9"
+                    ]
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// It should be possible to reach every exit from every entry\n\tEntry->Exit in *succs\n}",
+                    "ids": [
+                        "qCN3WNxey5SMNBAEp",
+                        "v8paE99cxocKiSWFF",
+                        "nGqKqnJWZeXY3Qeuz"
+                    ]
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// It should be possible to reach every exit from every entry\n\tall e : Entry | Exit in e.^succs or (e in Exit and (Exit - e) in e.^succs)\n}",
+                    "ids": [
+                        "8wgBW7niua7L5xsbE",
+                        "KRP9LKJ7cf4iqE5sR",
+                        "SikPRmWeP4ro3YxoZ"
+                    ]
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// It should be possible to reach every exit from every entry\n\t//all e : Entry | Exit in e.*succs\n  \tall disj t1,t2 : Track | t1 in Entry and t2 in Exit => t2 in t1.*succs\n}",
+                    "ids": [
+                        "4E9pims8vXop7E3rz",
+                        "jCNt2XMymncMoB6GX"
+                    ]
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// It should be possible to reach every exit from every entry\n\tall e : Entry | e.(*succs :> Exit) = Exit\n}",
+                    "ids": [
+                        "3k6nY3J33FyC7wC9F",
+                        "69NkvWcWgLYdgLw5u"
                     ]
                 },
                 {
@@ -275,75 +291,10 @@
                     ]
                 },
                 {
-                    "entry_count": 2,
-                    "code": "{\n\t// It should be possible to reach every exit from every entry\n\t//all e : Entry | Exit in e.*succs\n  \tall disj t1,t2 : Track | t1 in Entry and t2 in Exit => t2 in t1.*succs\n}",
-                    "ids": [
-                        "4E9pims8vXop7E3rz",
-                        "jCNt2XMymncMoB6GX"
-                    ]
-                },
-                {
-                    "entry_count": 2,
-                    "code": "{\n\t// It should be possible to reach every exit from every entry\n\tall e : Entry | e.(*succs :> Exit) = Exit\n}",
-                    "ids": [
-                        "3k6nY3J33FyC7wC9F",
-                        "69NkvWcWgLYdgLw5u"
-                    ]
-                },
-                {
                     "entry_count": 1,
-                    "code": "{\n\t// It should be possible to reach every exit from every entry\n  \tall en: Entry, ex: Exit | en in ex or ex in en.^succs\n\n}",
+                    "code": "{\n\t// It should be possible to reach every exit from every entry\n\tall ex:Exit,en:Entry| ( ex & en.*succs != none) \n}",
                     "ids": [
-                        "gZraHqeDWKLM2ngbb"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// It should be possible to reach every exit from every entry\n\tall entry : Entry | all exit : Exit | entry != exit and exit in entry.^succs or entry = exit\n}",
-                    "ids": [
-                        "wA9rKND3A7ChgGzrR"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// It should be possible to reach every exit from every entry\n\tall e : Entry | Exit in e.^succs or (e in Exit and Exit in e.*succs)\n\n}",
-                    "ids": [
-                        "4oLu844Ct25wmcsih"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// It should be possible to reach every exit from every entry\n    all e: Entry, ex: Exit | some path: e.*(succs) | ex in path\n\n}",
-                    "ids": [
-                        "GaHFS88SfmJMpo6Wa"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// It should be possible to reach every exit from every entry\n\tall e : Entry | Exit-e in e.^succs\n}",
-                    "ids": [
-                        "WMpnrfXKjKxpi5Bmt"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n  all t1,t2 : Track | t1 in Exit and t2 in Entry implies t1 in t2.*succs\n\t// It should be possible to reach every exit from every entry\n  \n\n}",
-                    "ids": [
-                        "6vKACeizEaFmjtP3W"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// It should be possible to reach every exit from every entry\n\tall e : Entry, end : Exit | end in e + e.^succs\n}",
-                    "ids": [
-                        "BfyvSKczCFAGqquLL"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// It should be possible to reach every exit from every entry\n\tall t: Track | all tt: Track | t!=tt and t in Exit and tt in Entry => t in tt.^succs \n}",
-                    "ids": [
-                        "S7aJzC6PqWJhgcf4i"
+                        "ot9nJsqRdz3wFHtQa"
                     ]
                 },
                 {
@@ -355,9 +306,44 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// It should be possible to reach every exit from every entry\n\tall ex:Exit,en:Entry| ( ex & en.*succs != none) \n}",
+                    "code": "{\n\t// It should be possible to reach every exit from every entry\n  \tall en: Entry, ex: Exit | en in ex or ex in en.^succs\n\n}",
                     "ids": [
-                        "ot9nJsqRdz3wFHtQa"
+                        "gZraHqeDWKLM2ngbb"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// It should be possible to reach every exit from every entry\n\tall e : Entry, end : Exit | end in e + e.^succs\n}",
+                    "ids": [
+                        "BfyvSKczCFAGqquLL"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// It should be possible to reach every exit from every entry\n    all e: Entry, ex: Exit | some path: e.*(succs) | ex in path\n\n}",
+                    "ids": [
+                        "GaHFS88SfmJMpo6Wa"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// It should be possible to reach every exit from every entry\n\tall entry : Entry | all exit : Exit | entry != exit and exit in entry.^succs or entry = exit\n}",
+                    "ids": [
+                        "wA9rKND3A7ChgGzrR"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// It should be possible to reach every exit from every entry\n    all e : Entry | Exit in e.^succs+e\n}",
+                    "ids": [
+                        "SzgScfFnkPAxgthSZ"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// It should be possible to reach every exit from every entry\n\tall e : Entry | Exit-e in e.^succs\n}",
+                    "ids": [
+                        "WMpnrfXKjKxpi5Bmt"
                     ]
                 },
                 {
@@ -369,16 +355,16 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// It should be possible to reach every exit from every entry\n  \tall e: Entry | ( e.^succs & Exit ) + e = Exit + e\n\n}",
+                    "code": "{\n\t// It should be possible to reach every exit from every entry\n\tall t: Track | all tt: Track | t!=tt and t in Exit and tt in Entry => t in tt.^succs \n}",
                     "ids": [
-                        "7GbZzEnaptHyYgR9T"
+                        "S7aJzC6PqWJhgcf4i"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// It should be possible to reach every exit from every entry\n\tall e : Exit | Entry in e.*(~succs)\n}",
+                    "code": "{\n\t// It should be possible to reach every exit from every entry\n\tall e : Entry | Exit in e.^succs or (e in Exit and Exit in e.*succs)\n\n}",
                     "ids": [
-                        "YGANtc9eBYiccMK5M"
+                        "4oLu844Ct25wmcsih"
                     ]
                 },
                 {
@@ -390,9 +376,23 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// It should be possible to reach every exit from every entry\n    all e : Entry | Exit in e.^succs+e\n}",
+                    "code": "{\n  all t1,t2 : Track | t1 in Exit and t2 in Entry implies t1 in t2.*succs\n\t// It should be possible to reach every exit from every entry\n  \n\n}",
                     "ids": [
-                        "SzgScfFnkPAxgthSZ"
+                        "6vKACeizEaFmjtP3W"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// It should be possible to reach every exit from every entry\n\tall e : Exit | Entry in e.*(~succs)\n}",
+                    "ids": [
+                        "YGANtc9eBYiccMK5M"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// It should be possible to reach every exit from every entry\n  \tall e: Entry | ( e.^succs & Exit ) + e = Exit + e\n\n}",
+                    "ids": [
+                        "7GbZzEnaptHyYgR9T"
                     ]
                 }
             ]
@@ -555,18 +555,18 @@
                 },
                 {
                     "entry_count": 2,
-                    "code": "{\n\t// It should be possible to reach every exit from every entry\n\tall e : Entry | Exit in e.^succs or (e in Exit and Exit in e.^succs - e)\n}",
-                    "ids": [
-                        "Qnac89q2QMqf4nbnh",
-                        "2uvnq8gm749BfCL3d"
-                    ]
-                },
-                {
-                    "entry_count": 2,
                     "code": "{\n\t// It should be possible to reach every exit from every entry\n\tall t1, t2: Track | (t1 in Entry and t2 in Exit) implies t2 in t1.^succs\n}",
                     "ids": [
                         "HBSEbCD6vzixJXEjm",
                         "3F44b7na2LYWiNhbt"
+                    ]
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// It should be possible to reach every exit from every entry\n\tall e : Entry, s : Exit | some e <: ^succs :> s\n}",
+                    "ids": [
+                        "MKaqEAEkPt4e6pGrA",
+                        "dg4bivbxfgWjFinNx"
                     ]
                 },
                 {
@@ -579,24 +579,10 @@
                 },
                 {
                     "entry_count": 2,
-                    "code": "{\n\t// It should be possible to reach every exit from every entry\n\tall e : Entry, s : Exit | some e <: ^succs :> s\n}",
+                    "code": "{\n\t// It should be possible to reach every exit from every entry\n\tall e : Entry | Exit in e.^succs or (e in Exit and Exit in e.^succs - e)\n}",
                     "ids": [
-                        "MKaqEAEkPt4e6pGrA",
-                        "dg4bivbxfgWjFinNx"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// It should be possible to reach every exit from every entry\n  all e: Entry, x: Exit | some p: Track | \n        x in e.^succs\n\n}",
-                    "ids": [
-                        "CdX5DnvJFPeDtN8os"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// It should be possible to reach every exit from every entry\n\tall e : Entry | Exit in e.^succs or (e in Exit and Exit in e.^succs)\n}",
-                    "ids": [
-                        "KGsmQn2PKFmPM7tea"
+                        "Qnac89q2QMqf4nbnh",
+                        "2uvnq8gm749BfCL3d"
                     ]
                 },
                 {
@@ -622,9 +608,23 @@
                 },
                 {
                     "entry_count": 1,
+                    "code": "{\n\t// It should be possible to reach every exit from every entry\n  all e: Entry, x: Exit | some p: Track | \n        x in e.^succs\n\n}",
+                    "ids": [
+                        "CdX5DnvJFPeDtN8os"
+                    ]
+                },
+                {
+                    "entry_count": 1,
                     "code": "{\n\t// It should be possible to reach every exit from every entry\n\tall t: Track | all tt: Track | t in Exit and tt in Entry => t in tt.^succs \n}",
                     "ids": [
                         "25Dh8i8fe6Xt7DAtG"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// It should be possible to reach every exit from every entry\n\tall e : Entry | Exit in e.^succs or (e in Exit and Exit in e.^succs)\n}",
+                    "ids": [
+                        "KGsmQn2PKFmPM7tea"
                     ]
                 }
             ]
@@ -821,22 +821,22 @@
             "elems": [
                 {
                     "entry_count": 4,
-                    "code": "{\n\t// It should be possible to reach every exit from every entry\n  \tall en: Entry | some ex: Exit | ex in en.^succs\n\n}",
-                    "ids": [
-                        "FcNhDcCn5B2Kbjopb",
-                        "f6NfecEsaosigdLDQ",
-                        "BFnGnX8MooSqEinHz",
-                        "FiEmbtJuRREDC7Ax7"
-                    ]
-                },
-                {
-                    "entry_count": 4,
                     "code": "{\n\t// It should be possible to reach every exit from every entry\n  all e : Entry | some (e.^(succs) & Exit)\n\n}",
                     "ids": [
                         "RnXCfxeTMRCypJseC",
                         "ccH77LzngTuzpECxX",
                         "a5EcdLmrRjjDy5PHG",
                         "YAFE3avjgAB2nwdRE"
+                    ]
+                },
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// It should be possible to reach every exit from every entry\n  \tall en: Entry | some ex: Exit | ex in en.^succs\n\n}",
+                    "ids": [
+                        "FcNhDcCn5B2Kbjopb",
+                        "f6NfecEsaosigdLDQ",
+                        "BFnGnX8MooSqEinHz",
+                        "FiEmbtJuRREDC7Ax7"
                     ]
                 }
             ]
@@ -928,16 +928,16 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// It should be possible to reach every exit from every entry\n\t((iden & succs) + *succs) in Entry -> Exit\n}",
+                    "code": "{\n\t// It should be possible to reach every exit from every entry\n\t(Track->Track & iden) + *succs in Entry -> Exit\n}",
                     "ids": [
-                        "oTQEpkTiPPusbWZWq"
+                        "JohgetCTESjAaurme"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// It should be possible to reach every exit from every entry\n\t(Track->Track & iden) + *succs in Entry -> Exit\n}",
+                    "code": "{\n\t// It should be possible to reach every exit from every entry\n\t((iden & succs) + *succs) in Entry -> Exit\n}",
                     "ids": [
-                        "JohgetCTESjAaurme"
+                        "oTQEpkTiPPusbWZWq"
                     ]
                 }
             ]
@@ -974,16 +974,16 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// It should be possible to reach every exit from every entry\n\tExit in Track.*succs\n}",
+                    "code": "{\n\t// It should be possible to reach every exit from every entry\n\tall e : Entry, ex : Exit | e in Track.^succs => ex in Track\n}",
                     "ids": [
-                        "dsaoyT3nEtjXeApxm"
+                        "LTQkrcGhcMCMuW7of"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// It should be possible to reach every exit from every entry\n\tall e : Entry, ex : Exit | e in Track.^succs => ex in Track\n}",
+                    "code": "{\n\t// It should be possible to reach every exit from every entry\n\tExit in Track.*succs\n}",
                     "ids": [
-                        "LTQkrcGhcMCMuW7of"
+                        "dsaoyT3nEtjXeApxm"
                     ]
                 }
             ]
@@ -993,6 +993,13 @@
             "group_count": 3,
             "correct": false,
             "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// It should be possible to reach every exit from every entry\n\tall e: Entry | all x:Exit | (e = x) //or (x in e.^succs)\n}",
+                    "ids": [
+                        "ia88Xc5jGgK5WFw9E"
+                    ]
+                },
                 {
                     "entry_count": 1,
                     "code": "{\n\t// It should be possible to reach every exit from every entry\n\tall t,e,ex : Track | e in Entry and ex in Exit and e in t implies ex in t \n}",
@@ -1006,13 +1013,6 @@
                     "ids": [
                         "4RfD2Hdfgz7t4xCnB"
                     ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// It should be possible to reach every exit from every entry\n\tall e: Entry | all x:Exit | (e = x) //or (x in e.^succs)\n}",
-                    "ids": [
-                        "ia88Xc5jGgK5WFw9E"
-                    ]
                 }
             ]
         },
@@ -1023,9 +1023,9 @@
             "elems": [
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// It should be possible to reach every exit from every entry\n    all e: Entry, x: Exit | e = x or x in e.succs\n}",
+                    "code": "{\n\t// It should be possible to reach every exit from every entry\n\tall e : Entry, s : Exit | e!=s implies some e <: succs :> s\n}",
                     "ids": [
-                        "k8ByztstT4mDhmPye"
+                        "HmrJT6qAzdNmfFYHa"
                     ]
                 },
                 {
@@ -1037,9 +1037,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// It should be possible to reach every exit from every entry\n\tall e : Entry, s : Exit | e!=s implies some e <: succs :> s\n}",
+                    "code": "{\n\t// It should be possible to reach every exit from every entry\n    all e: Entry, x: Exit | e = x or x in e.succs\n}",
                     "ids": [
-                        "HmrJT6qAzdNmfFYHa"
+                        "k8ByztstT4mDhmPye"
                     ]
                 }
             ]
@@ -1089,16 +1089,16 @@
             "elems": [
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// It should be possible to reach every exit from every entry\n\tall t: Track | some ex : Exit | ex in t.*succs.signals\n}",
+                    "code": "{\n\t// It should be possible to reach every exit from every entry\n\tall t: Track | some ex : Exit | ex in t.^succs.signals\n}",
                     "ids": [
-                        "mcogB3uq3t3umsLar"
+                        "C4F2WRzq8exmcCHY2"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// It should be possible to reach every exit from every entry\n\tall t: Track | some ex : Exit | ex in t.^succs.signals\n}",
+                    "code": "{\n\t// It should be possible to reach every exit from every entry\n\tall t: Track | some ex : Exit | ex in t.*succs.signals\n}",
                     "ids": [
-                        "C4F2WRzq8exmcCHY2"
+                        "mcogB3uq3t3umsLar"
                     ]
                 }
             ]
@@ -1110,16 +1110,16 @@
             "elems": [
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// It should be possible to reach every exit from every entry\n  all e: Exit , t: Track - Exit | t in Entry <=> e in t.*succs \n\n}",
+                    "code": "{\n\t// It should be possible to reach every exit from every entry\n  all e: Exit , t: Track - Exit | t in Entry <=> e in t.^succs \n\n}",
                     "ids": [
-                        "QCkF27MkrxLqPeXHs"
+                        "tLhe3zNzt9zfAqN3Z"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// It should be possible to reach every exit from every entry\n  all e: Exit , t: Track - Exit | t in Entry <=> e in t.^succs \n\n}",
+                    "code": "{\n\t// It should be possible to reach every exit from every entry\n  all e: Exit , t: Track - Exit | t in Entry <=> e in t.*succs \n\n}",
                     "ids": [
-                        "tLhe3zNzt9zfAqN3Z"
+                        "QCkF27MkrxLqPeXHs"
                     ]
                 }
             ]
@@ -1305,34 +1305,6 @@
                     "code": "{\n\t// It should be possible to reach every exit from every entry\n  all e: Exit , t: Track - Exit | t in Entry => e in t.succs \n\n}",
                     "ids": [
                         "5tQa8rufQyfJRa2vG"
-                    ]
-                }
-            ]
-        },
-        {
-            "entry_count": 1,
-            "group_count": 1,
-            "correct": false,
-            "elems": [
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// It should be possible to reach every exit from every entry\n\tall e: Exit, ent: Entry | \n        let rel = toBinaryRelation[ent.succs] |\n            some t: Track | (t in e.*(rel) and t in Track)\n}",
-                    "ids": [
-                        "Ch4NvgoxgxpJ6frME"
-                    ]
-                }
-            ]
-        },
-        {
-            "entry_count": 1,
-            "group_count": 1,
-            "correct": false,
-            "elems": [
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// It should be possible to reach every exit from every entry\n\tall e: Exit, ent: Entry | \n        let rel = toBinaryRelation[ent.succs] |\n            some t: Track | (t in e.*(rel) and t in Track)\n}",
-                    "ids": [
-                        "rXi3Yh3MxRAat4WZv"
                     ]
                 }
             ]

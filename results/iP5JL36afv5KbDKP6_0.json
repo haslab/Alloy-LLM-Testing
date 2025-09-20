@@ -3,7 +3,7 @@
     "pred": "this/inv1",
     "entry_count": 1903,
     "group_count": 163,
-    "duration": 215,
+    "duration": 245,
     "scope": 3,
     "groups": [
         {
@@ -1086,15 +1086,6 @@
                 },
                 {
                     "entry_count": 3,
-                    "code": "{\n\t// Only students can be enrolled in courses\n\tall p : Person | (not (p in Student)) implies no p.enrolled\n}",
-                    "ids": [
-                        "LBWDiXTpewxyBdPEZ",
-                        "yr9w3PDvfbncqsiF5",
-                        "mnoDoKetDrDWPtGKd"
-                    ]
-                },
-                {
-                    "entry_count": 3,
                     "code": "{\n\t// Only students can be enrolled in courses\n\tall p : Person - Student | all c : Course | p not in enrolled.c\n}",
                     "ids": [
                         "Bnvw5zN86w4rFj3uJ",
@@ -1103,27 +1094,20 @@
                     ]
                 },
                 {
-                    "entry_count": 2,
-                    "code": "{\n\t// Only students can be enrolled in courses\n  \tenrolled.Course = enrolled.Course & Student\n\t\n}",
+                    "entry_count": 3,
+                    "code": "{\n\t// Only students can be enrolled in courses\n\tall p : Person | (not (p in Student)) implies no p.enrolled\n}",
                     "ids": [
-                        "Lwoa6Gnz8GDfGocc9",
-                        "6Ct9WwJbBdEjPcAPS"
+                        "LBWDiXTpewxyBdPEZ",
+                        "yr9w3PDvfbncqsiF5",
+                        "mnoDoKetDrDWPtGKd"
                     ]
                 },
                 {
                     "entry_count": 2,
-                    "code": "{\n\t// Only students can be enrolled in courses\n  \t//Algumas pessoas matriculadas implicam que sejam alunos\n  \tall p : Person | (some p.enrolled) implies p in Student\n\t//or\n  \tenrolled in Student -> Course\n\t\n}",
+                    "code": "{\n\t// Only students can be enrolled in courses\n    all p: Person - Student | no c: Course | p in enrolled.c\n    \n\t\n}",
                     "ids": [
-                        "CGjWBxNPE3pbGXKwm",
-                        "C94qqjXC74mpNb6h5"
-                    ]
-                },
-                {
-                    "entry_count": 2,
-                    "code": "{\n\t// Only students can be enrolled in courses\n\tCourse.~enrolled in Student\n}",
-                    "ids": [
-                        "Ad9JwTv4DArvPCa8r",
-                        "2uuCkwGqNYzJxdwbY"
+                        "skhSPy6AWNT6JcEAi",
+                        "WQYEEAciazTnbx4zh"
                     ]
                 },
                 {
@@ -1136,26 +1120,18 @@
                 },
                 {
                     "entry_count": 2,
+                    "code": "{\n\t// Only students can be enrolled in courses\n\tCourse.~enrolled in Student\n}",
+                    "ids": [
+                        "Ad9JwTv4DArvPCa8r",
+                        "2uuCkwGqNYzJxdwbY"
+                    ]
+                },
+                {
+                    "entry_count": 2,
                     "code": "{\n\t// Only students can be enrolled in courses\n\tall p: Person, c: Course |\n  \t\t(some p.enrolled) implies p in Student\n}",
                     "ids": [
                         "ezBuSxwQzoS4BMpwr",
                         "Rw9DFibkNCcXsHuMz"
-                    ]
-                },
-                {
-                    "entry_count": 2,
-                    "code": "{\n\t// Only students can be enrolled in courses\n\t//all p1 : Person | all c1 : Course | p1->c1 in enrolled implies p1 in Student\n  \tall p: Person - Student | p.enrolled = none\n}",
-                    "ids": [
-                        "NpydrvytcwzRxfd5K",
-                        "eZKEYJhSME3q5Kf54"
-                    ]
-                },
-                {
-                    "entry_count": 2,
-                    "code": "{\n\t// Only students can be enrolled in courses\n\tall p : Person - Student | #(p.enrolled) = 0\n}",
-                    "ids": [
-                        "NRAeEosdmGADqBaqK",
-                        "iQvMe9fmD9BCNrYaK"
                     ]
                 },
                 {
@@ -1168,10 +1144,34 @@
                 },
                 {
                     "entry_count": 2,
-                    "code": "{\n\t// Only students can be enrolled in courses\n    all p: Person - Student | no c: Course | p in enrolled.c\n    \n\t\n}",
+                    "code": "{\n\t// Only students can be enrolled in courses\n  \t//Algumas pessoas matriculadas implicam que sejam alunos\n  \tall p : Person | (some p.enrolled) implies p in Student\n\t//or\n  \tenrolled in Student -> Course\n\t\n}",
                     "ids": [
-                        "skhSPy6AWNT6JcEAi",
-                        "WQYEEAciazTnbx4zh"
+                        "CGjWBxNPE3pbGXKwm",
+                        "C94qqjXC74mpNb6h5"
+                    ]
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Only students can be enrolled in courses\n  \tenrolled.Course = enrolled.Course & Student\n\t\n}",
+                    "ids": [
+                        "Lwoa6Gnz8GDfGocc9",
+                        "6Ct9WwJbBdEjPcAPS"
+                    ]
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Only students can be enrolled in courses\n\tall p : Person - Student | #(p.enrolled) = 0\n}",
+                    "ids": [
+                        "NRAeEosdmGADqBaqK",
+                        "iQvMe9fmD9BCNrYaK"
+                    ]
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Only students can be enrolled in courses\n\t//all p1 : Person | all c1 : Course | p1->c1 in enrolled implies p1 in Student\n  \tall p: Person - Student | p.enrolled = none\n}",
+                    "ids": [
+                        "NpydrvytcwzRxfd5K",
+                        "eZKEYJhSME3q5Kf54"
                     ]
                 },
                 {
@@ -1179,6 +1179,27 @@
                     "code": "{\n\t// Only students can be enrolled in courses\n\tall c: Course |\t\n  \t\tenrolled.c - Student = none\n}",
                     "ids": [
                         "ZHbNeXr6532gSkzwq"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students can be enrolled in courses\n\tall t : Professor | t not in Person implies t.enrolled = none\n  \tall p : Person | p not in Student implies p.enrolled = none\n  \t\n}",
+                    "ids": [
+                        "fLDSzMFN5jswiMMau"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students can be enrolled in courses\n\tall c : Course | all p : Person | enrolled.c in Student\n}",
+                    "ids": [
+                        "Wat3a7gjoXAPNCXcT"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students can be enrolled in courses\n  \tall c : Course | enrolled.c = enrolled.c & Student\n\t\n}",
+                    "ids": [
+                        "LEroqSASrbpe5r59n"
                     ]
                 },
                 {
@@ -1197,9 +1218,30 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Only students can be enrolled in courses\n  \t//all p : Professor, s : Student | s in enrolled.Course and p not in enrolled.Course\n  //all s : Student | s in enrolled.Course\n  //all p : Professor | not p in enrolled.Course\n  no p: Person - Student | some p.enrolled\n  //all c : Course, p : Person | (c in p.enrolled) implies (p in Student)\n\n\t\n}",
+                    "code": "{\n\t// Only students can be enrolled in courses\n  \tenrolled.univ in Student\n\t\n}",
                     "ids": [
-                        "LF7yBF7qaz5PiFe4L"
+                        "L7jWWW9vuvj5DobQv"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students can be enrolled in courses\n\tall p: Person | p not in Student => p.enrolled = none\n}",
+                    "ids": [
+                        "skzFngiRztBfsvoA2"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students can be enrolled in courses\n  all p : Person | no Student & p implies no p.enrolled\n\t\n}",
+                    "ids": [
+                        "t8u6qytqrRBBEcnqQ"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students can be enrolled in courses\n  \tall p: { p: Person | some p.enrolled } | p in Student\n\t\n}",
+                    "ids": [
+                        "49t8cv9rvrr9fBNaE"
                     ]
                 },
                 {
@@ -1225,51 +1267,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Only students can be enrolled in courses\n  \tall p: { p: Person | some p.enrolled } | p in Student\n\t\n}",
+                    "code": "{\n\t// Only students can be enrolled in courses\n\tall p : Person | (some c : Course | p in enrolled.c) implies p in Student\n\n\tall p : Person | some p.enrolled implies p in Student\n}",
                     "ids": [
-                        "49t8cv9rvrr9fBNaE"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Only students can be enrolled in courses\n  \tenrolled.univ in Student\n\t\n}",
-                    "ids": [
-                        "L7jWWW9vuvj5DobQv"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Only students can be enrolled in courses\n\tall c : Course | all p : Person | enrolled.c in Student\n}",
-                    "ids": [
-                        "Wat3a7gjoXAPNCXcT"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Only students can be enrolled in courses\n\tall p: Person | p not in Student => p.enrolled = none\n}",
-                    "ids": [
-                        "skzFngiRztBfsvoA2"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Only students can be enrolled in courses\n\tall c : Course | no (enrolled.c  & Person-Student)\n}",
-                    "ids": [
-                        "Ar8qjHqFzmWipgxd5"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Only students can be enrolled in courses\n  all p : Person | no Student & p implies no p.enrolled\n\t\n}",
-                    "ids": [
-                        "t8u6qytqrRBBEcnqQ"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Only students can be enrolled in courses\n  \tall c : Course | enrolled.c = enrolled.c & Student\n\t\n}",
-                    "ids": [
-                        "LEroqSASrbpe5r59n"
+                        "7hLMBgHTxYF4hAcCs"
                     ]
                 },
                 {
@@ -1281,16 +1281,16 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Only students can be enrolled in courses\n\tall p : Person | (some c : Course | p in enrolled.c) implies p in Student\n\n\tall p : Person | some p.enrolled implies p in Student\n}",
+                    "code": "{\n\t// Only students can be enrolled in courses\n\tall c : Course | no (enrolled.c  & Person-Student)\n}",
                     "ids": [
-                        "7hLMBgHTxYF4hAcCs"
+                        "Ar8qjHqFzmWipgxd5"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Only students can be enrolled in courses\n\tall t : Professor | t not in Person implies t.enrolled = none\n  \tall p : Person | p not in Student implies p.enrolled = none\n  \t\n}",
+                    "code": "{\n\t// Only students can be enrolled in courses\n  \t//all p : Professor, s : Student | s in enrolled.Course and p not in enrolled.Course\n  //all s : Student | s in enrolled.Course\n  //all p : Professor | not p in enrolled.Course\n  no p: Person - Student | some p.enrolled\n  //all c : Course, p : Person | (c in p.enrolled) implies (p in Student)\n\n\t\n}",
                     "ids": [
-                        "fLDSzMFN5jswiMMau"
+                        "LF7yBF7qaz5PiFe4L"
                     ]
                 },
                 {
@@ -1498,17 +1498,6 @@
                 },
                 {
                     "entry_count": 5,
-                    "code": "{\n\t// Only students can be enrolled in courses\n\tStudent in Person\n}",
-                    "ids": [
-                        "yhMFAHpgtQALb2sSH",
-                        "vnpAzzKMZMuWFnpFA",
-                        "vA8m9pYP3WEXKfDg3",
-                        "RmxP7Q2rv72coQA8y",
-                        "JoexgyGvQaZEKH6Em"
-                    ]
-                },
-                {
-                    "entry_count": 5,
                     "code": "{\n\t// Only students can be enrolled in courses\nall p : Person | p in p.enrolled implies p in Student\n\n}",
                     "ids": [
                         "vM8A4igS369Gfr75n",
@@ -1516,6 +1505,17 @@
                         "NfG3s7aDwBD6iJqhW",
                         "LJkybhetBtFDLE78m",
                         "fKtGWfdGpXwbz2ZaK"
+                    ]
+                },
+                {
+                    "entry_count": 5,
+                    "code": "{\n\t// Only students can be enrolled in courses\n\tStudent in Person\n}",
+                    "ids": [
+                        "yhMFAHpgtQALb2sSH",
+                        "vnpAzzKMZMuWFnpFA",
+                        "vA8m9pYP3WEXKfDg3",
+                        "RmxP7Q2rv72coQA8y",
+                        "JoexgyGvQaZEKH6Em"
                     ]
                 },
                 {
@@ -1530,29 +1530,11 @@
                 },
                 {
                     "entry_count": 3,
-                    "code": "{\n\t// Only students can be enrolled in courses\n\tall p : Person | p.enrolled in Course\n}",
-                    "ids": [
-                        "h3af6ZEmojnyC9kJt",
-                        "AMhCCLkHNdizoHR3Q",
-                        "tofjETCxdccpnSqqY"
-                    ]
-                },
-                {
-                    "entry_count": 3,
                     "code": "{\n\t// Only students can be enrolled in courses\n  all p: Professor | p not in Person.enrolled\n\t\n}",
                     "ids": [
                         "BmCi7Xa8859MGFE9Y",
                         "ti9PLng4FW8gBkn5j",
                         "8szpQxBuXSyNvREQs"
-                    ]
-                },
-                {
-                    "entry_count": 3,
-                    "code": "{\n\t// Only students can be enrolled in courses\n\tall c : Course, p : Professor | p not in c \n}",
-                    "ids": [
-                        "oTSuzcyHKfviR5nHi",
-                        "MesXJiH4M9mJfedaF",
-                        "mFmFMbjeybyESGdJG"
                     ]
                 },
                 {
@@ -1565,11 +1547,37 @@
                     ]
                 },
                 {
-                    "entry_count": 2,
-                    "code": "{\n\t// Only students can be enrolled in courses\n\tall p : Person | p in Course implies p in Student\n}",
+                    "entry_count": 3,
+                    "code": "{\n\t// Only students can be enrolled in courses\n\tall p : Person | p.enrolled in Course\n}",
                     "ids": [
-                        "vbLQrYsWFsojvjdCA",
-                        "pT7uTxgctDsp2DD95"
+                        "h3af6ZEmojnyC9kJt",
+                        "AMhCCLkHNdizoHR3Q",
+                        "tofjETCxdccpnSqqY"
+                    ]
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Only students can be enrolled in courses\n\tall c : Course, p : Professor | p not in c \n}",
+                    "ids": [
+                        "oTSuzcyHKfviR5nHi",
+                        "MesXJiH4M9mJfedaF",
+                        "mFmFMbjeybyESGdJG"
+                    ]
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Only students can be enrolled in courses\n\tno enrolled.Person & Professor\n}",
+                    "ids": [
+                        "fPmz5LCcHqkS4JH4b",
+                        "9WNkuncPHkt3Sddcn"
+                    ]
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Only students can be enrolled in courses\n\tall p : Person | (some c : Course | some c.grades.p) implies (p in Student)\t\n}",
+                    "ids": [
+                        "gsXBavaYKw3N7DjMq",
+                        "ayQz9cfB7yePct3jr"
                     ]
                 },
                 {
@@ -1582,10 +1590,10 @@
                 },
                 {
                     "entry_count": 2,
-                    "code": "{\n\t// Only students can be enrolled in courses\n\tall p : Person | (some c : Course | some c.grades.p) implies (p in Student)\t\n}",
+                    "code": "{\n\t// Only students can be enrolled in courses\n\tall p: Person | p in Person.enrolled implies p in Student\n}",
                     "ids": [
-                        "gsXBavaYKw3N7DjMq",
-                        "ayQz9cfB7yePct3jr"
+                        "gir48Qvyf3CJ7BiHd",
+                        "8u4hxrpKJhJjRCisL"
                     ]
                 },
                 {
@@ -1606,186 +1614,10 @@
                 },
                 {
                     "entry_count": 2,
-                    "code": "{\n\t// Only students can be enrolled in courses\n\tno enrolled.Person & Professor\n}",
+                    "code": "{\n\t// Only students can be enrolled in courses\n\tall p : Person | p in Course implies p in Student\n}",
                     "ids": [
-                        "fPmz5LCcHqkS4JH4b",
-                        "9WNkuncPHkt3Sddcn"
-                    ]
-                },
-                {
-                    "entry_count": 2,
-                    "code": "{\n\t// Only students can be enrolled in courses\n\tall p: Person | p in Person.enrolled implies p in Student\n}",
-                    "ids": [
-                        "gir48Qvyf3CJ7BiHd",
-                        "8u4hxrpKJhJjRCisL"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n    all s: Student |\n        all c: s.enrolled |\n            c in Course\n}",
-                    "ids": [
-                        "7ANba7dj3GcYmHySh"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Only students can be enrolled in courses\n  all s1,s2:Student |\n  \ts1=s2 implies s1.projects=s2.projects\n\t\n}",
-                    "ids": [
-                        "ZtkynJ7AEGbvnQqrY"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Only students can be enrolled in courses\n  \tall p : Professor | not ( p in p.enrolled)\n\t\n}",
-                    "ids": [
-                        "eBqTXEShbaDEDSeAc"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Only students can be enrolled in courses\n\tall p:Person,c:Course | no((p-Student)&c.enrolled)  \n}",
-                    "ids": [
-                        "dPkxy2sy8dSTnuwRJ"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Only students can be enrolled in courses\n\t//all p : Person | Student in p.enrolled \n  \tall p : Person | p.enrolled & p in Student\n}",
-                    "ids": [
-                        "Rji3E9vp2acdNnvfY"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Only students can be enrolled in courses\n\tall p : Person | p in Professor implies p not in Person.enrolled\n}",
-                    "ids": [
-                        "Y2xewD9KgFhSinyG9"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Only students can be enrolled in courses\n  \tall p:Person-Student | p.enrolled not in Course implies p in Professor\n}",
-                    "ids": [
-                        "QK3KWuFW9qaqLZ6C2"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Only students can be enrolled in courses\n  all p : Student, c : Course | p in enrolled.c implies p in Student\n\t\n}",
-                    "ids": [
-                        "qEiMv44RMb9e74hrX"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Only students can be enrolled in courses\n  \t//all c:Course | all p:Person | p->c in enrolled implies p in Student\n  \t//all c:Course | enrolled.c in Student\n  \tno enrolled.(Person - Student)\n\t\n}",
-                    "ids": [
-                        "8e3uDCCLWFNecCzE5"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Only students can be enrolled in courses\n\tall pe: Person| not some p: Professor| p in pe.enrolled\n}",
-                    "ids": [
-                        "66XpS8BMP4mMd4S6o"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Only students can be enrolled in courses\n\tall x : Person, y : Professor  | x->y not in enrolled\n}",
-                    "ids": [
-                        "Gf3w3BH9Crpkeqrp2"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Only students can be enrolled in courses\n  all p:Person, e:p.enrolled, s:Student | p in e implies s in p\n\t\n}",
-                    "ids": [
-                        "fjSSFBFDjwsjSyN2z"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Only students can be enrolled in courses\n\tall p: Person | p in enrolled.Person implies p in Student\n}",
-                    "ids": [
-                        "wyLuQuF4HX9ueEysG"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Only students can be enrolled in courses\n  \tno ((Person - Student) & Person.enrolled)\n}",
-                    "ids": [
-                        "FDbBDcMLLzEBMyuKE"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Only students can be enrolled in courses\n\tall c : Course, p : Professor | p not in c.enrolled \n}",
-                    "ids": [
-                        "un2xi5XBfusNb9Ahn"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Only students can be enrolled in courses\n    all s: Student | s in Student => all c: s.enrolled | c in Course\n}",
-                    "ids": [
-                        "Jzhif9vBojhXfFLBw"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Only students can be enrolled in courses\n  all p: Person-Student | not p in Course\n\t\n}",
-                    "ids": [
-                        "2AxGiQtDESz6jPnk7"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Only students can be enrolled in courses\n\t\n  \tall p: Person, c: Course | p in Student and p.enrolled in c implies p in Student\n  \n}",
-                    "ids": [
-                        "mg4ptYj3swMYY2FnY"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Only students can be enrolled in courses\n  all p : Person, c : Course | p in p.enrolled implies p = Student\n}",
-                    "ids": [
-                        "JQyTsYjpBCmAabymp"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Only students can be enrolled in courses\n  all p : Person | p in Professor and p not in Student and p not in Person implies no p.enrolled\n\t\n}",
-                    "ids": [
-                        "gN4hCjSzrDYa3KrQj"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Only students can be enrolled in courses\n\tno p: Professor | p in Person.enrolled\n}",
-                    "ids": [
-                        "YDM6Bf7aQK2Zjnuu7"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Only students can be enrolled in courses\n\tall c : Course | c.grades.Person & Professor = none\n}",
-                    "ids": [
-                        "PqDq7B693fkcPg3L5"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Only students can be enrolled in courses\n  \tall p : Professor | not( p in Person.enrolled)\n\t\n}",
-                    "ids": [
-                        "DGAZXMiurM26nGsKc"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n  all p : Person | some enrolled.p implies p in Student\n\t// Only students can be enrolled in courses\n\t\n}",
-                    "ids": [
-                        "paJASjAmcofc6zicM"
+                        "vbLQrYsWFsojvjdCA",
+                        "pT7uTxgctDsp2DD95"
                     ]
                 },
                 {
@@ -1797,9 +1629,79 @@
                 },
                 {
                     "entry_count": 1,
+                    "code": "{\n\t// Only students can be enrolled in courses\n\t//all p : Person | Student in p.enrolled \n  \tall p : Person | p.enrolled & p in Student\n}",
+                    "ids": [
+                        "Rji3E9vp2acdNnvfY"
+                    ]
+                },
+                {
+                    "entry_count": 1,
                     "code": "{\n  no (enrolled.Person & Student)\n\t// Only students can be enrolled in courses\n\t\n}",
                     "ids": [
                         "iJfBDimHuasDsxtBc"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students can be enrolled in courses\n  all c : Course, p : Person | c in p.enrolled implies Student in Person\n\t\n}",
+                    "ids": [
+                        "itaZWQPAsvC4EF4Hf"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students can be enrolled in courses\n\tall p : Professor | p !in p.enrolled\n}",
+                    "ids": [
+                        "DwLB437eSBSFuuCJf"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\tall p: Person |\n        (p in Professor or p in Student) => p.enrolled in Course\n\t\n}",
+                    "ids": [
+                        "u2wztgCBLiaeBuPkd"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students can be enrolled in courses\n\tall p:Person,c:Course | no((p-Student)&c.enrolled)  \n}",
+                    "ids": [
+                        "dPkxy2sy8dSTnuwRJ"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students can be enrolled in courses\n  \n  \tall x : Student | lone enrolled.x\n  \n\t\n}",
+                    "ids": [
+                        "FtSCunotaekg3Yprq"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students can be enrolled in courses\n  \tall p : Professor | not ( p in p.enrolled)\n\t\n}",
+                    "ids": [
+                        "eBqTXEShbaDEDSeAc"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students can be enrolled in courses\n\tall s:Person, c:Course | s not in Student implies s not in c.enrolled\n}",
+                    "ids": [
+                        "kk5AJGZYAbbgi7wZc"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students can be enrolled in courses\n  \tall p: Person | p.teaches not in Course and p.enrolled in Course implies p in Student\n}",
+                    "ids": [
+                        "Sk6CCRaKSA4iK5k2t"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students can be enrolled in courses\n  all p:Person, e:p.enrolled, s:Student | p in e implies s in p\n\t\n}",
+                    "ids": [
+                        "fjSSFBFDjwsjSyN2z"
                     ]
                 },
                 {
@@ -1811,6 +1713,48 @@
                 },
                 {
                     "entry_count": 1,
+                    "code": "{\n\t// Only students can be enrolled in courses\n\tall c: Course | Student in enrolled.c or Person not in enrolled.c\n}",
+                    "ids": [
+                        "iDjFpdcdchYkDFxJW"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students can be enrolled in courses\n\t\n  \tall p: Person, c: Course | p in Student and p.enrolled in c implies p in Student\n  \n}",
+                    "ids": [
+                        "mg4ptYj3swMYY2FnY"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students can be enrolled in courses\n\tall professor : Professor-Student-Person | no professor.enrolled\n}",
+                    "ids": [
+                        "4N2P2w5JiXyBYg6DA"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students can be enrolled in courses\n\tall c : Course | c.grades.Person & Professor = none\n}",
+                    "ids": [
+                        "PqDq7B693fkcPg3L5"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students can be enrolled in courses\n  all p : Person, c : Course | p in p.enrolled implies p = Student\n}",
+                    "ids": [
+                        "JQyTsYjpBCmAabymp"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students can be enrolled in courses\n  \t//all c:Course | all p:Person | p->c in enrolled implies p in Student\n  \t//all c:Course | enrolled.c in Student\n  \tno enrolled.(Person - Student)\n\t\n}",
+                    "ids": [
+                        "8e3uDCCLWFNecCzE5"
+                    ]
+                },
+                {
+                    "entry_count": 1,
                     "code": "{\n\t// Only students can be enrolled in courses\n\tall p : Person | all p1 : enrolled.p | p1 in Person - Professor\n}",
                     "ids": [
                         "9c7Q5mvZRGtpRCrsa"
@@ -1818,16 +1762,114 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Only students can be enrolled in courses\n  enrolled.Course in Person\n\t\n}",
+                    "code": "{\n\t// Only students can be enrolled in courses\n  \tno ((Person - Student) & Person.enrolled)\n}",
                     "ids": [
-                        "YPs4hPjQ6W3h2jpM8"
+                        "FDbBDcMLLzEBMyuKE"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Only students can be enrolled in courses\n\tall p : Person | p.enrolled - Professor = p.enrolled\n}",
+                    "code": "{\n\t// Only students can be enrolled in courses\n  all s1,s2:Student |\n  \ts1=s2 implies s1.projects=s2.projects\n\t\n}",
                     "ids": [
-                        "JnhG2zNrR7ZRW2wap"
+                        "ZtkynJ7AEGbvnQqrY"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students can be enrolled in courses\n\tall x : Person, y : Professor  | x->y not in enrolled\n}",
+                    "ids": [
+                        "Gf3w3BH9Crpkeqrp2"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students can be enrolled in courses\n\tall pe: Person| not some p: Professor| p in pe.enrolled\n}",
+                    "ids": [
+                        "66XpS8BMP4mMd4S6o"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students can be enrolled in courses\n\tall p: Person | p in enrolled.Person implies p in Student\n}",
+                    "ids": [
+                        "wyLuQuF4HX9ueEysG"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students can be enrolled in courses\n  \tall p:Person-Student | p.enrolled not in Course implies p in Professor\n}",
+                    "ids": [
+                        "QK3KWuFW9qaqLZ6C2"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students can be enrolled in courses\n  all p: Person-Student | not p in Course\n\t\n}",
+                    "ids": [
+                        "2AxGiQtDESz6jPnk7"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students can be enrolled in courses\n\tall p : Person, c : Course | no (c.enrolled & Professor) \n}",
+                    "ids": [
+                        "tyLTCefcytgvzGsEs"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students can be enrolled in courses\n  all x : Professor | no (enrolled.x)  \n}",
+                    "ids": [
+                        "bt2cg5eqyj5nLA275"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students can be enrolled in courses\n\tall p : Person | p in Professor implies p not in Person.enrolled\n}",
+                    "ids": [
+                        "Y2xewD9KgFhSinyG9"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students can be enrolled in courses\n    all s: Student | s in Student => all c: s.enrolled | c in Course\n}",
+                    "ids": [
+                        "Jzhif9vBojhXfFLBw"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n  all p : Person | some enrolled.p implies p in Student\n\t// Only students can be enrolled in courses\n\t\n}",
+                    "ids": [
+                        "paJASjAmcofc6zicM"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students can be enrolled in courses\n\tno p: Professor | p in Person.enrolled\n}",
+                    "ids": [
+                        "YDM6Bf7aQK2Zjnuu7"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students can be enrolled in courses\n  all p : Student, c : Course | p in enrolled.c implies p in Student\n\t\n}",
+                    "ids": [
+                        "qEiMv44RMb9e74hrX"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students can be enrolled in courses\n\tall c : Course, p : Professor | p not in c.enrolled \n}",
+                    "ids": [
+                        "un2xi5XBfusNb9Ahn"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students can be enrolled in courses\n\t// all p : Person | some p.enrolled implies p in Student\n  \tall p : Person | enrolled.p in Student\n}",
+                    "ids": [
+                        "Wbh2Yxz8oH26cdhMA"
                     ]
                 },
                 {
@@ -1846,13 +1888,6 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Only students can be enrolled in courses\n\t// all p : Person | some p.enrolled implies p in Student\n  \tall p : Person | enrolled.p in Student\n}",
-                    "ids": [
-                        "Wbh2Yxz8oH26cdhMA"
-                    ]
-                },
-                {
-                    "entry_count": 1,
                     "code": "{\n\t// Only students can be enrolled in courses\n\t//all p: Person, c: Course | p in enrolled.c => p in Student\n\tenrolled.Person in Course\n}",
                     "ids": [
                         "sD3Qk8aEfBYGA7B4w"
@@ -1860,72 +1895,30 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Only students can be enrolled in courses\n  all x : Professor | no (enrolled.x)  \n}",
+                    "code": "{\n\t// Only students can be enrolled in courses\n  all p : Person | p in Professor and p not in Student and p not in Person implies no p.enrolled\n\t\n}",
                     "ids": [
-                        "bt2cg5eqyj5nLA275"
+                        "gN4hCjSzrDYa3KrQj"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Only students can be enrolled in courses\n\tall professor : Professor-Student-Person | no professor.enrolled\n}",
+                    "code": "{\n\t// Only students can be enrolled in courses\n  enrolled.Course in Person\n\t\n}",
                     "ids": [
-                        "4N2P2w5JiXyBYg6DA"
+                        "YPs4hPjQ6W3h2jpM8"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\tall p: Person |\n        (p in Professor or p in Student) => p.enrolled in Course\n\t\n}",
+                    "code": "{\n\t// Only students can be enrolled in courses\n\tall p : Person | p.enrolled - Professor = p.enrolled\n}",
                     "ids": [
-                        "u2wztgCBLiaeBuPkd"
+                        "JnhG2zNrR7ZRW2wap"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Only students can be enrolled in courses\n  \tall p: Person | p.teaches not in Course and p.enrolled in Course implies p in Student\n}",
+                    "code": "{\n    all s: Student |\n        all c: s.enrolled |\n            c in Course\n}",
                     "ids": [
-                        "Sk6CCRaKSA4iK5k2t"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Only students can be enrolled in courses\n\tall p : Person, c : Course | no (c.enrolled & Professor) \n}",
-                    "ids": [
-                        "tyLTCefcytgvzGsEs"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Only students can be enrolled in courses\n\tall c: Course | Student in enrolled.c or Person not in enrolled.c\n}",
-                    "ids": [
-                        "iDjFpdcdchYkDFxJW"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Only students can be enrolled in courses\n    all p: Professor | all c: Course | not (p in c.enrolled)\n\t\n}",
-                    "ids": [
-                        "68mJj4Xx9tiy9Bkqg"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Only students can be enrolled in courses\n  all c : Course, p : Person | c in p.enrolled implies Student in Person\n\t\n}",
-                    "ids": [
-                        "itaZWQPAsvC4EF4Hf"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Only students can be enrolled in courses\n\tall s:Person, c:Course | s not in Student implies s not in c.enrolled\n}",
-                    "ids": [
-                        "kk5AJGZYAbbgi7wZc"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Only students can be enrolled in courses\n  all p:Person | !( p in Professor & p.enrolled)\n\t\n}",
-                    "ids": [
-                        "ovX7cuWngRnqSuCpN"
+                        "7ANba7dj3GcYmHySh"
                     ]
                 },
                 {
@@ -1937,16 +1930,23 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Only students can be enrolled in courses\n\tall p : Professor | p !in p.enrolled\n}",
+                    "code": "{\n\t// Only students can be enrolled in courses\n  \tall p : Professor | not( p in Person.enrolled)\n\t\n}",
                     "ids": [
-                        "DwLB437eSBSFuuCJf"
+                        "DGAZXMiurM26nGsKc"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Only students can be enrolled in courses\n  \n  \tall x : Student | lone enrolled.x\n  \n\t\n}",
+                    "code": "{\n\t// Only students can be enrolled in courses\n  all p:Person | !( p in Professor & p.enrolled)\n\t\n}",
                     "ids": [
-                        "FtSCunotaekg3Yprq"
+                        "ovX7cuWngRnqSuCpN"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students can be enrolled in courses\n    all p: Professor | all c: Course | not (p in c.enrolled)\n\t\n}",
+                    "ids": [
+                        "68mJj4Xx9tiy9Bkqg"
                     ]
                 }
             ]
@@ -2085,18 +2085,10 @@
                 },
                 {
                     "entry_count": 2,
-                    "code": "{\n\t// Only students can be enrolled in courses\n  \t//all p : Professor, s : Student | s in enrolled.Course and p not in enrolled.Course\n  //all s : Student | s in enrolled.Course\n  //all p : Professor | not p in enrolled.Course\n  no p: Professor | p in enrolled.Course\n\n\t\n}",
+                    "code": "{\n\t// Only students can be enrolled in courses\n\tall p : Professor | all c : Course | not c in p.enrolled \n}",
                     "ids": [
-                        "8ePgxw6TKLJRBBqtv",
-                        "oyheaMDTQwefXv23F"
-                    ]
-                },
-                {
-                    "entry_count": 2,
-                    "code": "{\n\t// Only students can be enrolled in courses\n\tall p : Person | some p.enrolled implies p not in Professor\n}",
-                    "ids": [
-                        "yFzNrhPGLHNNtJ4Ky",
-                        "LvhCpPCrDWpeSSH7x"
+                        "AKcbCe6WKv4x6odk8",
+                        "hgzoZtXtvcwswjaWp"
                     ]
                 },
                 {
@@ -2105,6 +2097,22 @@
                     "ids": [
                         "RqzwHMPKzbJHFLjnc",
                         "mt7mhJ7BdaxE26S3k"
+                    ]
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Only students can be enrolled in courses\n  \t//all p : Professor, s : Student | s in enrolled.Course and p not in enrolled.Course\n  //all s : Student | s in enrolled.Course\n  //all p : Professor | not p in enrolled.Course\n  no p: Professor | p in enrolled.Course\n\n\t\n}",
+                    "ids": [
+                        "8ePgxw6TKLJRBBqtv",
+                        "oyheaMDTQwefXv23F"
+                    ]
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Only students can be enrolled in courses\n all x : Professor | x.enrolled in none\n\t\n}",
+                    "ids": [
+                        "zTDfF4GiECfywP2og",
+                        "sw3zDteGJf4d6ig8Q"
                     ]
                 },
                 {
@@ -2125,39 +2133,10 @@
                 },
                 {
                     "entry_count": 2,
-                    "code": "{\n\t// Only students can be enrolled in courses\n all x : Professor | x.enrolled in none\n\t\n}",
+                    "code": "{\n\t// Only students can be enrolled in courses\n\tall p : Person | some p.enrolled implies p not in Professor\n}",
                     "ids": [
-                        "zTDfF4GiECfywP2og",
-                        "sw3zDteGJf4d6ig8Q"
-                    ]
-                },
-                {
-                    "entry_count": 2,
-                    "code": "{\n\t// Only students can be enrolled in courses\n\tall p : Professor | all c : Course | not c in p.enrolled \n}",
-                    "ids": [
-                        "AKcbCe6WKv4x6odk8",
-                        "hgzoZtXtvcwswjaWp"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Only students can be enrolled in courses\n  \tno p: Professor | #(p.enrolled) > 0\n  \n  \t\n\t\n}",
-                    "ids": [
-                        "2T69j9oxbacyQdn7b"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Only students can be enrolled in courses\n\tProfessor & enrolled.Course = none\n}",
-                    "ids": [
-                        "fCnfSxwjkKQJF2SLv"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Only students can be enrolled in courses\n\tall p: Person | some (p.enrolled) implies no (p & Professor)\n}",
-                    "ids": [
-                        "mh5SoAwmgrGQmxH4R"
+                        "yFzNrhPGLHNNtJ4Ky",
+                        "LvhCpPCrDWpeSSH7x"
                     ]
                 },
                 {
@@ -2169,58 +2148,16 @@
                 },
                 {
                     "entry_count": 1,
+                    "code": "{\n\t// Only students can be enrolled in courses\n  \tno p: Professor | #(p.enrolled) > 0\n  \n  \t\n\t\n}",
+                    "ids": [
+                        "2T69j9oxbacyQdn7b"
+                    ]
+                },
+                {
+                    "entry_count": 1,
                     "code": "{\n\t// Only students can be enrolled in courses\n  //Person-Student not in enrolled.Course\n  all x : Person | (x in Professor) implies (all y:Course | x->y not in enrolled)\n}",
                     "ids": [
                         "73i6hEDuWcTGqRwck"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Only students can be enrolled in courses\n\tno c: Course | c in Professor.enrolled \n}",
-                    "ids": [
-                        "eajzsybwEpWYQFr5s"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Only students can be enrolled in courses\n\tno Person.enrolled & Professor.enrolled\n}",
-                    "ids": [
-                        "kA9DMi2zGdphzsiL9"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Only students can be enrolled in courses\n\tall c: Course | c not in Professor.enrolled \n}",
-                    "ids": [
-                        "vu3cCcefovZGP4sfu"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Only students can be enrolled in courses\n\t//all c : Course | enrolled.c in Student\n  \tall c : enrolled.Course&Professor | #c = 0\n}",
-                    "ids": [
-                        "YrsZCjPbHgz5vXeN9"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Only students can be enrolled in courses\n\tall p : Person | all c : Course | p in Professor implies c not in p.enrolled \n}",
-                    "ids": [
-                        "AwQMtGe8JANXLTqY9"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Only students can be enrolled in courses\n  \tnot some p: Professor| p.enrolled!=none\n}",
-                    "ids": [
-                        "E7gv4yj7Fuz7omYRk"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Only students can be enrolled in courses\n  \tall p: Professor | #(p.enrolled) = 0\n}",
-                    "ids": [
-                        "WwMLgTy3TrmpEx2dn"
                     ]
                 },
                 {
@@ -2232,16 +2169,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Only students can be enrolled in courses\n\tall p : Person | p in Professor implies p.enrolled = none\n}",
+                    "code": "{\n\t// Only students can be enrolled in courses\n\tProfessor & enrolled.Course = none\n}",
                     "ids": [
-                        "ZaRE2ort3mhg7xEHL"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Only students can be enrolled in courses\n\tall p : Person, c : Course | no (enrolled.c & Professor) \n}",
-                    "ids": [
-                        "duepbZqFeA3gxJg3f"
+                        "fCnfSxwjkKQJF2SLv"
                     ]
                 },
                 {
@@ -2253,9 +2183,44 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Only students can be enrolled in courses\n\tall Pr : Professor | no c : Course | c in Pr.enrolled\n}",
+                    "code": "{\n\t// Only students can be enrolled in courses\n\tall p : Person | p in Professor implies p.enrolled = none\n}",
                     "ids": [
-                        "jbFCDJxZxhpaR3Qkr"
+                        "ZaRE2ort3mhg7xEHL"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students can be enrolled in courses\n\tno Person.enrolled & Professor.enrolled\n}",
+                    "ids": [
+                        "kA9DMi2zGdphzsiL9"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students can be enrolled in courses\n\tno c: Course | c in Professor.enrolled \n}",
+                    "ids": [
+                        "eajzsybwEpWYQFr5s"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students can be enrolled in courses\n\tall p : Person, c : Course | no (enrolled.c & Professor) \n}",
+                    "ids": [
+                        "duepbZqFeA3gxJg3f"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students can be enrolled in courses\n  \tnot some p: Professor| p.enrolled!=none\n}",
+                    "ids": [
+                        "E7gv4yj7Fuz7omYRk"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students can be enrolled in courses\n\tall p : Person | all c : Course | p in Professor implies c not in p.enrolled \n}",
+                    "ids": [
+                        "AwQMtGe8JANXLTqY9"
                     ]
                 },
                 {
@@ -2263,6 +2228,41 @@
                     "code": "{\n\t// Only students can be enrolled in courses\n  all p : Professor | no  Professor.enrolled\n\t\n}",
                     "ids": [
                         "sSpPYGDx8mXsSTnZX"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students can be enrolled in courses\n\tall Pr : Professor | no c : Course | c in Pr.enrolled\n}",
+                    "ids": [
+                        "jbFCDJxZxhpaR3Qkr"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students can be enrolled in courses\n\tall p: Person | some (p.enrolled) implies no (p & Professor)\n}",
+                    "ids": [
+                        "mh5SoAwmgrGQmxH4R"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students can be enrolled in courses\n  \tall p: Professor | #(p.enrolled) = 0\n}",
+                    "ids": [
+                        "WwMLgTy3TrmpEx2dn"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students can be enrolled in courses\n\t//all c : Course | enrolled.c in Student\n  \tall c : enrolled.Course&Professor | #c = 0\n}",
+                    "ids": [
+                        "YrsZCjPbHgz5vXeN9"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students can be enrolled in courses\n\tall c: Course | c not in Professor.enrolled \n}",
+                    "ids": [
+                        "vu3cCcefovZGP4sfu"
                     ]
                 }
             ]
@@ -2337,48 +2337,6 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Only students can be enrolled in courses\n\tall p : Person | all p1 : p.enrolled | p1 in Person - Professor\n}",
-                    "ids": [
-                        "GHN3v4AQW5uvNtPDu"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Only students can be enrolled in courses\n\tall p : Person | all e : p.enrolled | e = Student\n}",
-                    "ids": [
-                        "QKR3h7T7EWafNE2Lr"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Only students can be enrolled in courses\n  \tall p: { p: Person | some p.enrolled } | p in Student\n  \tuniv.enrolled in Student\n\t\n}",
-                    "ids": [
-                        "PdZZxvdBirjf5SkQc"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Only students can be enrolled in courses\n  all t : Professor | no t.enrolled\n  all p : Person | no p.enrolled\n\t\n}",
-                    "ids": [
-                        "Keyo2zHetLomHykWt"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Only students can be enrolled in courses\n\tall p : Person, c : Course | p.enrolled in Student\n}",
-                    "ids": [
-                        "irP4D4HK3pKnf6T9D"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Only students can be enrolled in courses\n  all p: Person | no p.enrolled\n  all s: Student | s.enrolled in Course\n}",
-                    "ids": [
-                        "GcG9SdazWh89wFjM7"
-                    ]
-                },
-                {
-                    "entry_count": 1,
                     "code": "{\n    // Only students can be enrolled in courses\n  \t// Da contra-exemplo mas acho que est\u00e1 bem\n    all p: Person |\n        all c:Course |\n  \t\t\tc not in p.enrolled\n}",
                     "ids": [
                         "bx4Y24EWmAivRiYXQ"
@@ -2386,23 +2344,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Only students can be enrolled in courses\n\t//all p : Person | Student in p.enrolled \n  \tall p : Person | all c : p.enrolled | p.enrolled in Student\n}",
+                    "code": "{\n\t// Only students can be enrolled in courses\n  all t : Professor | no t.enrolled\n  all p : Person | no p.enrolled\n\t\n}",
                     "ids": [
-                        "affS7bvaSBewyYJdP"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Only students can be enrolled in courses\n\tall p : Person | all p1 : p.enrolled | p1 in Person\n}",
-                    "ids": [
-                        "BGtrxS9sYXNhsyXmk"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Only students can be enrolled in courses\n\tPerson.enrolled in Person-Professor\n}",
-                    "ids": [
-                        "cyfti4mFr4oF6F4P7"
+                        "Keyo2zHetLomHykWt"
                     ]
                 },
                 {
@@ -2417,6 +2361,62 @@
                     "code": "{\n\t// Only students can be enrolled in courses\n\tenrolled in Course -> Student\n}",
                     "ids": [
                         "sDY8gpfDwZDQQKCLx"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students can be enrolled in courses\n  \tall p: { p: Person | some p.enrolled } | p in Student\n  \tuniv.enrolled in Student\n\t\n}",
+                    "ids": [
+                        "PdZZxvdBirjf5SkQc"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students can be enrolled in courses\n\tall p : Person | all p1 : p.enrolled | p1 in Person - Professor\n}",
+                    "ids": [
+                        "GHN3v4AQW5uvNtPDu"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students can be enrolled in courses\n  all p: Person | no p.enrolled\n  all s: Student | s.enrolled in Course\n}",
+                    "ids": [
+                        "GcG9SdazWh89wFjM7"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students can be enrolled in courses\n\tall p : Person | all p1 : p.enrolled | p1 in Person\n}",
+                    "ids": [
+                        "BGtrxS9sYXNhsyXmk"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students can be enrolled in courses\n\tall p : Person, c : Course | p.enrolled in Student\n}",
+                    "ids": [
+                        "irP4D4HK3pKnf6T9D"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students can be enrolled in courses\n\t//all p : Person | Student in p.enrolled \n  \tall p : Person | all c : p.enrolled | p.enrolled in Student\n}",
+                    "ids": [
+                        "affS7bvaSBewyYJdP"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students can be enrolled in courses\n\tall p : Person | all e : p.enrolled | e = Student\n}",
+                    "ids": [
+                        "QKR3h7T7EWafNE2Lr"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students can be enrolled in courses\n\tPerson.enrolled in Person-Professor\n}",
+                    "ids": [
+                        "cyfti4mFr4oF6F4P7"
                     ]
                 }
             ]
@@ -2467,18 +2467,18 @@
                 },
                 {
                     "entry_count": 2,
-                    "code": "{\n\t// Only students can be enrolled in courses\n\t// p in courses implies p in student\n  \tall p : Person |\n  \t\tp.enrolled != 0 implies p in Student\n}",
-                    "ids": [
-                        "E6kzPrZRBFaF5dB8D",
-                        "vWdTbxg4TdWvs8PjH"
-                    ]
-                },
-                {
-                    "entry_count": 2,
                     "code": "{\n\t// Only students can be enrolled in courses\n\tall p : Person | (enrolled.p in Course) implies p in Student\n}",
                     "ids": [
                         "fRS8RGYRbXup6Gxaw",
                         "e7j9W7pLTeWPnbzRa"
+                    ]
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Only students can be enrolled in courses\n\t// p in courses implies p in student\n  \tall p : Person |\n  \t\tp.enrolled != 0 implies p in Student\n}",
+                    "ids": [
+                        "E6kzPrZRBFaF5dB8D",
+                        "vWdTbxg4TdWvs8PjH"
                     ]
                 },
                 {
@@ -2491,37 +2491,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Only students can be enrolled in courses\n  all p: Person | some s: Student | p = s\n\t\n}",
+                    "code": "{\n\t// Only students can be enrolled in courses\n\t//all p: Person, c: Course | p in enrolled.c => p in Student\n\tenrolled.Person in Course => Person in Student\n}",
                     "ids": [
-                        "Z4juXihCfcjP5aZM8"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Only students can be enrolled in courses\n\t\n  all p : Person-Student | p in p.enrolled\n}",
-                    "ids": [
-                        "i7Nwbjdhh846reubu"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Only students can be enrolled in courses\n\tall p : Person | some #p.enrolled implies p in Student\n}",
-                    "ids": [
-                        "8gy4Gbvug8RPsPsaR"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Only students can be enrolled in courses\n Person - Student in none\n\t\n}",
-                    "ids": [
-                        "2SG4HGuxeJtk4y4sW"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Only students can be enrolled in courses\n  \tno ((Person - Student))\n}",
-                    "ids": [
-                        "GR5FhjbSCDfWRNQpK"
+                        "jFKqyAPWJaDFvSrpL"
                     ]
                 },
                 {
@@ -2540,9 +2512,37 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Only students can be enrolled in courses\n\t//all p: Person, c: Course | p in enrolled.c => p in Student\n\tenrolled.Person in Course => Person in Student\n}",
+                    "code": "{\n\t// Only students can be enrolled in courses\n\tall p : Person | some #p.enrolled implies p in Student\n}",
                     "ids": [
-                        "jFKqyAPWJaDFvSrpL"
+                        "8gy4Gbvug8RPsPsaR"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students can be enrolled in courses\n\t\n  all p : Person-Student | p in p.enrolled\n}",
+                    "ids": [
+                        "i7Nwbjdhh846reubu"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students can be enrolled in courses\n  all p: Person | some s: Student | p = s\n\t\n}",
+                    "ids": [
+                        "Z4juXihCfcjP5aZM8"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students can be enrolled in courses\n Person - Student in none\n\t\n}",
+                    "ids": [
+                        "2SG4HGuxeJtk4y4sW"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students can be enrolled in courses\n  \tno ((Person - Student))\n}",
+                    "ids": [
+                        "GR5FhjbSCDfWRNQpK"
                     ]
                 }
             ]
@@ -2588,18 +2588,18 @@
                 },
                 {
                     "entry_count": 2,
-                    "code": "{\n\t// Only students can be enrolled in courses\n\tall p:Person | p in Student implies #(p.enrolled) >0\n}",
-                    "ids": [
-                        "zYN7rE6bde6v34Pk4",
-                        "yRaGupFYhCw8i5XiE"
-                    ]
-                },
-                {
-                    "entry_count": 2,
                     "code": "{\n\t// Only students can be enrolled in courses\n\tall p : Person | no p.enrolled implies p not in Student\n}",
                     "ids": [
                         "jxWnzxapS5gYt6yZX",
                         "DHbmBwpy7xftQtcRH"
+                    ]
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Only students can be enrolled in courses\n  \tall s : Student | s.enrolled != none\n\t\n}",
+                    "ids": [
+                        "KRFYH84Gqez2SCKRA",
+                        "HByuNEKNNcyTvN55o"
                     ]
                 },
                 {
@@ -2612,17 +2612,10 @@
                 },
                 {
                     "entry_count": 2,
-                    "code": "{\n\t// Only students can be enrolled in courses\n  \tall s : Student | s.enrolled != none\n\t\n}",
+                    "code": "{\n\t// Only students can be enrolled in courses\n\tall p:Person | p in Student implies #(p.enrolled) >0\n}",
                     "ids": [
-                        "KRFYH84Gqez2SCKRA",
-                        "HByuNEKNNcyTvN55o"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Only students can be enrolled in courses\n\tStudent in enrolled.Course\n}",
-                    "ids": [
-                        "3sahtqDRpKWWgQWjR"
+                        "zYN7rE6bde6v34Pk4",
+                        "yRaGupFYhCw8i5XiE"
                     ]
                 },
                 {
@@ -2634,9 +2627,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Only students can be enrolled in courses\n       all p : Person | p in Student implies some p.enrolled and no (p - Student).enrolled\n\t\n}",
+                    "code": "{\n\t// Only students can be enrolled in courses\n  \tall s: Student | #(s.enrolled) > 0\n\n}",
                     "ids": [
-                        "6ZrRFLhPC8ppEbYpM"
+                        "LfcdWnQjoGcbwhsyX"
                     ]
                 },
                 {
@@ -2655,9 +2648,16 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Only students can be enrolled in courses\n  \tall s: Student | #(s.enrolled) > 0\n\n}",
+                    "code": "{\n\t// Only students can be enrolled in courses\n       all p : Person | p in Student implies some p.enrolled and no (p - Student).enrolled\n\t\n}",
                     "ids": [
-                        "LfcdWnQjoGcbwhsyX"
+                        "6ZrRFLhPC8ppEbYpM"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students can be enrolled in courses\n\tStudent in enrolled.Course\n}",
+                    "ids": [
+                        "3sahtqDRpKWWgQWjR"
                     ]
                 }
             ]
@@ -2708,20 +2708,20 @@
                 },
                 {
                     "entry_count": 3,
-                    "code": "{\n\t// Only students can be enrolled in courses\n    all s : Student, c : Course | c in s.enrolled \n\t\n}",
-                    "ids": [
-                        "s43furxGbLiiEpfk6",
-                        "MT8vdrYTm8EGAYqe6",
-                        "XfeWqpXahHugfr32q"
-                    ]
-                },
-                {
-                    "entry_count": 3,
                     "code": "{\n\t// Only students can be enrolled in courses\n\tStudent in Person\n  \tall s:Student | s.enrolled = Course\n}",
                     "ids": [
                         "XeSX6bK6FXSpkEXsw",
                         "7fQZm6b4hWui9pCxf",
                         "siYQf8tPTxLwXQLGT"
+                    ]
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Only students can be enrolled in courses\n    all s : Student, c : Course | c in s.enrolled \n\t\n}",
+                    "ids": [
+                        "s43furxGbLiiEpfk6",
+                        "MT8vdrYTm8EGAYqe6",
+                        "XfeWqpXahHugfr32q"
                     ]
                 },
                 {
@@ -2765,9 +2765,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Only students can be enrolled in courses\n\tall s: Student | s in s.enrolled\n}",
+                    "code": "{\n\t// Only students can be enrolled in courses\n\t//all p: Person, c: Course | p in enrolled.c => p in Student\n\tStudent in Course\n}",
                     "ids": [
-                        "iLbWFnhBJz7EcSvzX"
+                        "v5vdvTXkHquea3qvF"
                     ]
                 },
                 {
@@ -2779,30 +2779,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Only students can be enrolled in courses\n\t(Person.enrolled & Student) = Student\n  \n}",
+                    "code": "{\n\t// Only students can be enrolled in courses\n\tall p : Person | enrolled.Person = Student\n}",
                     "ids": [
-                        "mMJZwFQJ4goQjDT2u"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Only students can be enrolled in courses\n  \tall s : Student |  s in (some s.enrolled)\n\t\n}",
-                    "ids": [
-                        "W2bMtGy4LLE8TnTZy"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Only students can be enrolled in courses\n\tall p: Person | p in Student => p in p.enrolled\n}",
-                    "ids": [
-                        "H9DmsJFKtTALAHryf"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Only students can be enrolled in courses\n\tall c : Student | some enrolled.c\n}",
-                    "ids": [
-                        "7wYCvzaegvZ2xGFD9"
+                        "4bGKcEGwG6veSsPk8"
                     ]
                 },
                 {
@@ -2814,44 +2793,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Only students can be enrolled in courses\n  all p:Person, s:Student | p.enrolled = s\n\t\n}",
+                    "code": "{\n\t// Only students can be enrolled in courses\n  \tall s : Student |  s in (some s.enrolled)\n\t\n}",
                     "ids": [
-                        "dnytP8eQjyeAwjJee"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Only students can be enrolled in courses\n\tall p : Person | enrolled.Person = Student\n}",
-                    "ids": [
-                        "4bGKcEGwG6veSsPk8"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Only students can be enrolled in courses\n  \tall s : Student | (some s) implies s in s.enrolled\n\t\n}",
-                    "ids": [
-                        "559AGFnjobjbrog9r"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Only students can be enrolled in courses\n\t//all p: Person, c: Course | p in enrolled.c => p in Student\n\tStudent in Course\n}",
-                    "ids": [
-                        "v5vdvTXkHquea3qvF"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Only students can be enrolled in courses\n\tall x: Person | x.enrolled & x = Student\n\t\n}",
-                    "ids": [
-                        "J7ish4HRfDZaGTjHG"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Only students can be enrolled in courses\n\tall s : Student | some c : Course | s in s.enrolled \n}",
-                    "ids": [
-                        "oWRsmZyYXzADYivhh"
+                        "W2bMtGy4LLE8TnTZy"
                     ]
                 },
                 {
@@ -2863,9 +2807,65 @@
                 },
                 {
                     "entry_count": 1,
+                    "code": "{\n\t// Only students can be enrolled in courses\n\tall s : Student | some c : Course | s in s.enrolled \n}",
+                    "ids": [
+                        "oWRsmZyYXzADYivhh"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students can be enrolled in courses\n  all p:Person, s:Student | p.enrolled = s\n\t\n}",
+                    "ids": [
+                        "dnytP8eQjyeAwjJee"
+                    ]
+                },
+                {
+                    "entry_count": 1,
                     "code": "{\n\t// Only students can be enrolled in courses\n\tall p: Person | p in Student iff p.enrolled in Course and p.teaches not in Course\n}",
                     "ids": [
                         "zHb2aw3NPeCsyaK8c"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students can be enrolled in courses\n\tall s: Student | s in s.enrolled\n}",
+                    "ids": [
+                        "iLbWFnhBJz7EcSvzX"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students can be enrolled in courses\n\tall c : Student | some enrolled.c\n}",
+                    "ids": [
+                        "7wYCvzaegvZ2xGFD9"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students can be enrolled in courses\n\tall p: Person | p in Student => p in p.enrolled\n}",
+                    "ids": [
+                        "H9DmsJFKtTALAHryf"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students can be enrolled in courses\n  \tall s : Student | (some s) implies s in s.enrolled\n\t\n}",
+                    "ids": [
+                        "559AGFnjobjbrog9r"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students can be enrolled in courses\n\tall x: Person | x.enrolled & x = Student\n\t\n}",
+                    "ids": [
+                        "J7ish4HRfDZaGTjHG"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students can be enrolled in courses\n\t(Person.enrolled & Student) = Student\n  \n}",
+                    "ids": [
+                        "mMJZwFQJ4goQjDT2u"
                     ]
                 }
             ]
@@ -2900,14 +2900,6 @@
                 },
                 {
                     "entry_count": 2,
-                    "code": "{\n\t// Only students can be enrolled in courses\n  \tall p: Professor | no p.enrolled\n  \tall s: Student | #(s.enrolled) > 0\n  \tno p: Person| (p in Professor) and (p in Student)\n}",
-                    "ids": [
-                        "RwHNHoPrpWRb72kPq",
-                        "8L5dmuJ5b2CCYkrW3"
-                    ]
-                },
-                {
-                    "entry_count": 2,
                     "code": "{\n\t// Only students can be enrolled in courses\n  \tall p: Professor | no p.enrolled\n  \tall s: Student | #(s.enrolled) > 0\n}",
                     "ids": [
                         "DTQ5macCMXrQNtQ5H",
@@ -2915,31 +2907,18 @@
                     ]
                 },
                 {
-                    "entry_count": 1,
-                    "code": "{\n\t// Only students can be enrolled in courses\n  \tall s : Student | s.enrolled != none and s not in Professor\n  \tall p: Professor | p.enrolled = none and p not in Student\n\t\n}",
+                    "entry_count": 2,
+                    "code": "{\n\t// Only students can be enrolled in courses\n  \tall p: Professor | no p.enrolled\n  \tall s: Student | #(s.enrolled) > 0\n  \tno p: Person| (p in Professor) and (p in Student)\n}",
                     "ids": [
-                        "DnRMdhTKpiB5gynik"
+                        "RwHNHoPrpWRb72kPq",
+                        "8L5dmuJ5b2CCYkrW3"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Only students can be enrolled in courses\n  \t//all p : Professor, s : Student | s in enrolled.Course and p not in enrolled.Course\n  all s : Student | some c : Course | s in enrolled.c\n  all p : Professor, c : Course | p not in enrolled.c\n\t\n}",
+                    "code": "{\n\t// Only students can be enrolled in courses\n  \t//all p : Professor, s : Student | s in enrolled.Course and p not in enrolled.Course\n  all s : Student | s in enrolled.Course\n  all p : Professor | p not in enrolled.Course\n\t\n}",
                     "ids": [
-                        "RsBjXz3XYFBpCfzT9"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Only students can be enrolled in courses\n  \tall p: Professor | no p.enrolled\n\tall s: Student | some s.enrolled\n\t\n}",
-                    "ids": [
-                        "WzHH94M7T4G5PmgnM"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Only students can be enrolled in courses\n  \tall p: Professor | no p.enrolled\n  \tall s: Student | #(s.enrolled) > 0\n  \tno p1, p2: Person | p1 in Professor and p2 in Student and p1 = p2\n}",
-                    "ids": [
-                        "FcDtoKtBrPe7DzrFJ"
+                        "sfno2ucJ9BzLFh75f"
                     ]
                 },
                 {
@@ -2951,9 +2930,30 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Only students can be enrolled in courses\n  \t//all p : Professor, s : Student | s in enrolled.Course and p not in enrolled.Course\n  all s : Student | s in enrolled.Course\n  all p : Professor | p not in enrolled.Course\n\t\n}",
+                    "code": "{\n\t// Only students can be enrolled in courses\n  \tall p: Professor | no p.enrolled\n  \tall s: Student | #(s.enrolled) > 0\n  \tno p1, p2: Person | p1 in Professor and p2 in Student and p1 = p2\n}",
                     "ids": [
-                        "sfno2ucJ9BzLFh75f"
+                        "FcDtoKtBrPe7DzrFJ"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students can be enrolled in courses\n  \t//all p : Professor, s : Student | s in enrolled.Course and p not in enrolled.Course\n  all s : Student | some c : Course | s in enrolled.c\n  all p : Professor, c : Course | p not in enrolled.c\n\t\n}",
+                    "ids": [
+                        "RsBjXz3XYFBpCfzT9"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students can be enrolled in courses\n  \tall s : Student | s.enrolled != none and s not in Professor\n  \tall p: Professor | p.enrolled = none and p not in Student\n\t\n}",
+                    "ids": [
+                        "DnRMdhTKpiB5gynik"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students can be enrolled in courses\n  \tall p: Professor | no p.enrolled\n\tall s: Student | some s.enrolled\n\t\n}",
+                    "ids": [
+                        "WzHH94M7T4G5PmgnM"
                     ]
                 }
             ]
@@ -3004,9 +3004,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Only students can be enrolled in courses\n\tall p: Person | (some c : Course | c in p.enrolled) <=> p in Student\n}",
+                    "code": "{\n\t// Only students can be enrolled in courses\n\tall p: Person | (p in Student implies some(p.enrolled)) and (p not in Student implies no(p.enrolled))\n}",
                     "ids": [
-                        "hQYvgDyCmS2zM5eqz"
+                        "ydEKucPoT52nLbrzH"
                     ]
                 },
                 {
@@ -3018,13 +3018,6 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Only students can be enrolled in courses\n\tall p : Person | (some c : Course | p in enrolled.c) implies p in Student\n\n\tall p : Student | some p.enrolled\n}",
-                    "ids": [
-                        "63CxiyoHhZzfHQKhK"
-                    ]
-                },
-                {
-                    "entry_count": 1,
                     "code": "{\n\t// Only students can be enrolled in courses\n  \tall p: Person | some p.enrolled implies p in Student else p in Person - Student\n}",
                     "ids": [
                         "kZJk45voS4jMttpdr"
@@ -3032,9 +3025,16 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Only students can be enrolled in courses\n\tall p: Person | (p in Student implies some(p.enrolled)) and (p not in Student implies no(p.enrolled))\n}",
+                    "code": "{\n\t// Only students can be enrolled in courses\n\tall p: Person | (some c : Course | c in p.enrolled) <=> p in Student\n}",
                     "ids": [
-                        "ydEKucPoT52nLbrzH"
+                        "hQYvgDyCmS2zM5eqz"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students can be enrolled in courses\n\tall p : Person | (some c : Course | p in enrolled.c) implies p in Student\n\n\tall p : Student | some p.enrolled\n}",
+                    "ids": [
+                        "63CxiyoHhZzfHQKhK"
                     ]
                 }
             ]
@@ -3065,20 +3065,6 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Only students can be enrolled in courses\n \tall p:Person - Student | all c:Course | p.enrolled not in c\n}",
-                    "ids": [
-                        "5h5tynHtzAAiFGaKY"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Only students can be enrolled in courses\n\tall p : Person, c : Course | p.enrolled in c implies p in Student and p not in p.teaches\n}",
-                    "ids": [
-                        "MXFzkyvGKBosAimMq"
-                    ]
-                },
-                {
-                    "entry_count": 1,
                     "code": "{\n\t// Only students can be enrolled in courses\n\tall p : Person, c : Course | p.enrolled in c implies p in Student and not p in p.teaches\n}",
                     "ids": [
                         "sm5LkZdfap5Qra49A"
@@ -3086,9 +3072,23 @@
                 },
                 {
                     "entry_count": 1,
+                    "code": "{\n\t// Only students can be enrolled in courses\n \tall p:Person - Student | all c:Course | p.enrolled not in c\n}",
+                    "ids": [
+                        "5h5tynHtzAAiFGaKY"
+                    ]
+                },
+                {
+                    "entry_count": 1,
                     "code": "{\n\t// Only students can be enrolled in courses\n\tall p : Person, c : Course | p.enrolled in c implies p in Student and not p in teaches.p\n}",
                     "ids": [
                         "qoixfKJCfh4bFKRn9"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students can be enrolled in courses\n\tall p : Person, c : Course | p.enrolled in c implies p in Student and p not in p.teaches\n}",
+                    "ids": [
+                        "MXFzkyvGKBosAimMq"
                     ]
                 }
             ]
@@ -3128,9 +3128,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Only students can be enrolled in courses\n  all p : Person | p in Professor and p not in Student implies no p.enrolled\n\t\n}",
+                    "code": "{\n\t// Only students can be enrolled in courses\n\tall x : Professor | x not in Student implies no x . enrolled\n}",
                     "ids": [
-                        "JfWisXJp6HEyTHALg"
+                        "8AE5K9punamXCdYDZ"
                     ]
                 },
                 {
@@ -3149,9 +3149,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Only students can be enrolled in courses\n\tall x : Professor | x not in Student implies no x . enrolled\n}",
+                    "code": "{\n\t// Only students can be enrolled in courses\n  all p : Person | p in Professor and p not in Student implies no p.enrolled\n\t\n}",
                     "ids": [
-                        "8AE5K9punamXCdYDZ"
+                        "JfWisXJp6HEyTHALg"
                     ]
                 },
                 {
@@ -3221,16 +3221,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Only students can be enrolled in courses\n\tall p : enrolled.Course | p in Professor\n}",
+                    "code": "{\n\tall p: Person, c: Course | p->c in enrolled implies p in Professor\n\t\n}",
                     "ids": [
-                        "waN5Tvyen24ute5A5"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Only students can be enrolled in courses\n\tno (Person-Professor).enrolled\n}",
-                    "ids": [
-                        "QP2yooWH6FYgWrBaj"
+                        "tTEtRCTJpsKba3wRo"
                     ]
                 },
                 {
@@ -3242,6 +3235,13 @@
                 },
                 {
                     "entry_count": 1,
+                    "code": "{\n\t// Only students can be enrolled in courses\n\tall p : enrolled.Course | p in Professor\n}",
+                    "ids": [
+                        "waN5Tvyen24ute5A5"
+                    ]
+                },
+                {
+                    "entry_count": 1,
                     "code": "{\n\t// Only students can be enrolled in courses\n\tall p : Person | all c : Course | c in p.enrolled implies p in Professor\n}",
                     "ids": [
                         "pcEZxujhY3fyATWtg"
@@ -3249,9 +3249,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\tall p: Person, c: Course | p->c in enrolled implies p in Professor\n\t\n}",
+                    "code": "{\n\t// Only students can be enrolled in courses\n\tno (Person-Professor).enrolled\n}",
                     "ids": [
-                        "tTEtRCTJpsKba3wRo"
+                        "QP2yooWH6FYgWrBaj"
                     ]
                 },
                 {
@@ -3279,20 +3279,20 @@
                 },
                 {
                     "entry_count": 3,
-                    "code": "{\n\t// Only students can be enrolled in courses\n  \t//all c : Course, s : Student | one s in enrolled.c\n    all p : Person | p in Student and some p.enrolled\n\t\n}",
-                    "ids": [
-                        "MXE8tHW5ZgykjS8fv",
-                        "sqpBF3y4Sfe3azLzM",
-                        "gLL39HDDRiDPzbRRL"
-                    ]
-                },
-                {
-                    "entry_count": 3,
                     "code": "{\n\t// Only students can be enrolled in courses\n  all p : Person | some c : p.enrolled & Course | p in Student\n\t\n}",
                     "ids": [
                         "3uYS9svoegeQD3ESq",
                         "bgEK3o7a6G88G6BGh",
                         "5pufyA5PJdSduKm4D"
+                    ]
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Only students can be enrolled in courses\n  \t//all c : Course, s : Student | one s in enrolled.c\n    all p : Person | p in Student and some p.enrolled\n\t\n}",
+                    "ids": [
+                        "MXE8tHW5ZgykjS8fv",
+                        "sqpBF3y4Sfe3azLzM",
+                        "gLL39HDDRiDPzbRRL"
                     ]
                 },
                 {
@@ -3336,16 +3336,16 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Only students can be enrolled in courses\n all p : Person - Professor | some p.enrolled \n}",
+                    "code": "{\n\t// Only students can be enrolled in courses\n\tall p: Person-Professor | not no p.enrolled\n\n}",
                     "ids": [
-                        "wr8kD6fD5sibGCZ4y"
+                        "DCvcWJCnEyos6Wgkt"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Only students can be enrolled in courses\n\tall p: Person-Professor | not no p.enrolled\n\n}",
+                    "code": "{\n\t// Only students can be enrolled in courses\n all p : Person - Professor | some p.enrolled \n}",
                     "ids": [
-                        "DCvcWJCnEyos6Wgkt"
+                        "wr8kD6fD5sibGCZ4y"
                     ]
                 }
             ]
@@ -3402,16 +3402,16 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Only students can be enrolled in courses\n  all p: Person | Student not in p implies all c: Course | p not in enrolled.c\n}",
+                    "code": "{\n\t// Only students can be enrolled in courses\n  all c : Course, p : Person | c in p.enrolled implies Student in p\n\t\n}",
                     "ids": [
-                        "BKbHz5d8P9pqiWsFK"
+                        "aResX8e6zgHRBvTKY"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Only students can be enrolled in courses\n  all c : Course, p : Person | c in p.enrolled implies Student in p\n\t\n}",
+                    "code": "{\n\t// Only students can be enrolled in courses\n  all p: Person | Student not in p implies all c: Course | p not in enrolled.c\n}",
                     "ids": [
-                        "aResX8e6zgHRBvTKY"
+                        "BKbHz5d8P9pqiWsFK"
                     ]
                 }
             ]
@@ -3432,18 +3432,18 @@
                 },
                 {
                     "entry_count": 2,
-                    "code": "{\n\t// Only students can be enrolled in courses\n  all p : Person | p.enrolled = Student\n\t\n}",
-                    "ids": [
-                        "9fokKyepcAwjBp2oq",
-                        "mDMqvbQtJPgvDwDAJ"
-                    ]
-                },
-                {
-                    "entry_count": 2,
                     "code": "{\n\t// Only students can be enrolled in courses\n\tall s : Person | Person.enrolled = Student\n}",
                     "ids": [
                         "h8kWa4YS8WEgJe6Ej",
                         "5PEfcYQ2BiKWTkmwJ"
+                    ]
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Only students can be enrolled in courses\n  all p : Person | p.enrolled = Student\n\t\n}",
+                    "ids": [
+                        "9fokKyepcAwjBp2oq",
+                        "mDMqvbQtJPgvDwDAJ"
                     ]
                 }
             ]
@@ -3455,14 +3455,6 @@
             "elems": [
                 {
                     "entry_count": 2,
-                    "code": "{\n\t// Only students can be enrolled in courses\n\tall p : Person | (some c : Course | some c.grades[p]) implies (p in Student)\t\n}",
-                    "ids": [
-                        "wqrbfTma7MBnokynX",
-                        "gBZgEYvxAwpc83man"
-                    ]
-                },
-                {
-                    "entry_count": 2,
                     "code": "{\n\t// Only students can be enrolled in courses\n  \tall c: Course | c.grades in (Student -> Grade)\n\t\n}",
                     "ids": [
                         "RZC3HTk87ty2Bj6a3",
@@ -3470,10 +3462,18 @@
                     ]
                 },
                 {
-                    "entry_count": 1,
-                    "code": "{\n\t// Only students can be enrolled in courses\n  \tall c: Course | all g : Grade | no g.^(~(c.grades)) - Student\n\t\n}",
+                    "entry_count": 2,
+                    "code": "{\n\t// Only students can be enrolled in courses\n\tall p : Person | (some c : Course | some c.grades[p]) implies (p in Student)\t\n}",
                     "ids": [
-                        "zA8poq74i9Skht6EA"
+                        "wqrbfTma7MBnokynX",
+                        "gBZgEYvxAwpc83man"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students can be enrolled in courses\n\tall c : Course | all p : Person | some c.grades[p] implies p in Student\n}",
+                    "ids": [
+                        "oewq7w468miA5Ywz7"
                     ]
                 },
                 {
@@ -3485,9 +3485,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Only students can be enrolled in courses\n\tall c : Course | all p : Person | some c.grades[p] implies p in Student\n}",
+                    "code": "{\n\t// Only students can be enrolled in courses\n  \tall c: Course | all g : Grade | no g.^(~(c.grades)) - Student\n\t\n}",
                     "ids": [
-                        "oewq7w468miA5Ywz7"
+                        "zA8poq74i9Skht6EA"
                     ]
                 }
             ]
@@ -3515,6 +3515,13 @@
                 },
                 {
                     "entry_count": 1,
+                    "code": "{\n\t// Only students can be enrolled in courses\n\tall p : Person | #(p.enrolled) > 0 implies p = Student\n}",
+                    "ids": [
+                        "NpqCzyv56yoARLk35"
+                    ]
+                },
+                {
+                    "entry_count": 1,
                     "code": "{\n\t// Only students can be enrolled in courses\n  all p:Person | all c : Course | p in enrolled.c implies p = Student\n\t\n}",
                     "ids": [
                         "ig4FjCb9wRemd3DKu"
@@ -3525,13 +3532,6 @@
                     "code": "{\n\t// Only students can be enrolled in courses\n\tall p : enrolled.Course | p = Student \n}",
                     "ids": [
                         "2icEx7FjfD576yxb3"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Only students can be enrolled in courses\n\tall p : Person | #(p.enrolled) > 0 implies p = Student\n}",
-                    "ids": [
-                        "NpqCzyv56yoARLk35"
                     ]
                 }
             ]
@@ -3582,9 +3582,16 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Only students can be enrolled in courses\n  \tall p: Professor | p.enrolled not in Course \n}",
+                    "code": "{\n\t// Only students can be enrolled in courses\n\tno p : Person | some #p.enrolled and p in Professor\n}",
                     "ids": [
-                        "PddhooxGjNkJ4rAqb"
+                        "sskFcmsT8kLtYiToo"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students can be enrolled in courses\n  \tno Professor-Student.enrolled\n\t\n}",
+                    "ids": [
+                        "x73meXC84fqrcm4hs"
                     ]
                 },
                 {
@@ -3596,16 +3603,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Only students can be enrolled in courses\n\tno p : Person | some #p.enrolled and p in Professor\n}",
+                    "code": "{\n\t// Only students can be enrolled in courses\n  \tall p: Professor | p.enrolled not in Course \n}",
                     "ids": [
-                        "sskFcmsT8kLtYiToo"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Only students can be enrolled in courses\n  \tno Professor-Student.enrolled\n\t\n}",
-                    "ids": [
-                        "x73meXC84fqrcm4hs"
+                        "PddhooxGjNkJ4rAqb"
                     ]
                 }
             ]
@@ -3750,16 +3750,9 @@
             "elems": [
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Only students can be enrolled in courses\n\tall p: Person | p in p.enrolled\n}",
+                    "code": "{\n\t// Only students can be enrolled in courses\n\tall p : Person | (some c : Course | p in enrolled.c) implies p in Student\n\n\tall p : Person | some (p.enrolled & Student)\n}",
                     "ids": [
-                        "pMxJqyppCf7k97TAv"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Only students can be enrolled in courses \nall p,s : Person |\n\tp!=s and\n\tp in Professor and\n\ts in Student\n\t\n}",
-                    "ids": [
-                        "XWir5zmCqNbTx5CwT"
+                        "49qjaucmo57WoY6Xk"
                     ]
                 },
                 {
@@ -3771,6 +3764,13 @@
                 },
                 {
                     "entry_count": 1,
+                    "code": "{\n\t// Only students can be enrolled in courses\n\tall p: Person | p in p.enrolled\n}",
+                    "ids": [
+                        "pMxJqyppCf7k97TAv"
+                    ]
+                },
+                {
+                    "entry_count": 1,
                     "code": "{\n\t// Only students can be enrolled in courses\n\tall p : Person | some (enrolled.p)\n}",
                     "ids": [
                         "6Ldcq7ezL6jEEGbg6"
@@ -3778,9 +3778,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Only students can be enrolled in courses\n\tall p : Person | (some c : Course | p in enrolled.c) implies p in Student\n\n\tall p : Person | some (p.enrolled & Student)\n}",
+                    "code": "{\n\t// Only students can be enrolled in courses \nall p,s : Person |\n\tp!=s and\n\tp in Professor and\n\ts in Student\n\t\n}",
                     "ids": [
-                        "49qjaucmo57WoY6Xk"
+                        "XWir5zmCqNbTx5CwT"
                     ]
                 }
             ]
@@ -3822,13 +3822,6 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Only students can be enrolled in courses \n  all s: Student, c: Course | s.enrolled = c and no s.teaches\n\t\n}",
-                    "ids": [
-                        "qnzgmkCmBDfk8wNKN"
-                    ]
-                },
-                {
-                    "entry_count": 1,
                     "code": "{\n\t// Only students can be enrolled in courses \n  all s: Student, c: Course | s.enrolled = c and #(s.teaches) = 0\n\t\n}",
                     "ids": [
                         "8cj8Pkpd7p9koXzin"
@@ -3839,6 +3832,13 @@
                     "code": "{\n\t// Only students can be enrolled in courses \n  all s: Student, c: Course | s.enrolled = c and s.teaches != Course\n\t\n}",
                     "ids": [
                         "qBk92d934LB9NdkmQ"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students can be enrolled in courses \n  all s: Student, c: Course | s.enrolled = c and no s.teaches\n\t\n}",
+                    "ids": [
+                        "qnzgmkCmBDfk8wNKN"
                     ]
                 }
             ]
@@ -3902,9 +3902,16 @@
             "elems": [
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Only students can be enrolled in courses\n  \tall p: Person | some c:Course | c in p.enrolled and c not in p.teaches implies p in Student\n  and c in p.teaches implies c not in p.enrolled\n}",
+                    "code": "{\n\t// Only students can be enrolled in courses\n  \tall p : Person | some x : Course | x in enrolled.p  implies p in Student\n\t\n  //enrolled.Course in Student\n}",
                     "ids": [
-                        "CyxaQP586TxxtbMia"
+                        "tKrGpr7tyt4WBHs2z"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students can be enrolled in courses\n\tall p : Person | some c : Course | some c.grades.p implies p in Student\t\n}",
+                    "ids": [
+                        "abeQkGXzrkm8Pznst"
                     ]
                 },
                 {
@@ -3916,16 +3923,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Only students can be enrolled in courses\n  \tall p : Person | some x : Course | x in enrolled.p  implies p in Student\n\t\n  //enrolled.Course in Student\n}",
+                    "code": "{\n\t// Only students can be enrolled in courses\n  \tall p: Person | some c:Course | c in p.enrolled and c not in p.teaches implies p in Student\n  and c in p.teaches implies c not in p.enrolled\n}",
                     "ids": [
-                        "tKrGpr7tyt4WBHs2z"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Only students can be enrolled in courses\n\tall p : Person | some c : Course | some c.grades.p implies p in Student\t\n}",
-                    "ids": [
-                        "abeQkGXzrkm8Pznst"
+                        "CyxaQP586TxxtbMia"
                     ]
                 }
             ]
@@ -4026,9 +4026,9 @@
             "elems": [
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Only students can be enrolled in courses\n  Person-Professor not in Course.enrolled \n}",
+                    "code": "{\n\t// Only students can be enrolled in courses\n  Person-Professor not in enrolled.Person \n}",
                     "ids": [
-                        "3mDQz88LuuhB5Zi6P"
+                        "ws2jt78aTak6PKbin"
                     ]
                 },
                 {
@@ -4040,9 +4040,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Only students can be enrolled in courses\n  Person-Professor not in enrolled.Person \n}",
+                    "code": "{\n\t// Only students can be enrolled in courses\n  Person-Professor not in Course.enrolled \n}",
                     "ids": [
-                        "ws2jt78aTak6PKbin"
+                        "3mDQz88LuuhB5Zi6P"
                     ]
                 }
             ]
@@ -4136,13 +4136,6 @@
             "elems": [
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Only students can be enrolled in courses\n  univ - Student in none\n\t\n}",
-                    "ids": [
-                        "MTtm6TzLLrHSnzGDv"
-                    ]
-                },
-                {
-                    "entry_count": 1,
                     "code": "{\n\t// Only students can be enrolled in courses\n  \tall p: Person | p in Student or no p.enrolled\n  \tsome s : Student | some s.enrolled\n  \tall p: Person | no p.enrolled\n}",
                     "ids": [
                         "YYhpRgRRwCB5dhhFT"
@@ -4153,6 +4146,13 @@
                     "code": "{\n\t// Only students can be enrolled in courses\n  \tPerson-Student not in Person\n\t\n}",
                     "ids": [
                         "tXLzj632KC3ywa4Bz"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students can be enrolled in courses\n  univ - Student in none\n\t\n}",
+                    "ids": [
+                        "MTtm6TzLLrHSnzGDv"
                     ]
                 }
             ]
@@ -4171,16 +4171,16 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Only students can be enrolled in courses\n\tall s:Person, c:Course | s in Professor and s not in c.enrolled\n}",
+                    "code": "{\n\t// Only students can be enrolled in courses\n\tall c : Course | c.enrolled = Person - Professor\n}",
                     "ids": [
-                        "Meho5ifvkBBs7HAKB"
+                        "jFakxJgCyqiGyxk5o"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Only students can be enrolled in courses\n\tall c : Course | c.enrolled = Person - Professor\n}",
+                    "code": "{\n\t// Only students can be enrolled in courses\n\tall s:Person, c:Course | s in Professor and s not in c.enrolled\n}",
                     "ids": [
-                        "jFakxJgCyqiGyxk5o"
+                        "Meho5ifvkBBs7HAKB"
                     ]
                 }
             ]
@@ -4245,16 +4245,16 @@
             "elems": [
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Only students can be enrolled in courses\n\tall p: Professor, s: Student, c: Course | \n  \t\tp != s and\n  \t\tp + s = Person and\n  \t\tp != Person and\n  \t\tno p.enrolled\n}",
+                    "code": "{\n\t// Only students can be enrolled in courses\n\tall p: Professor, s: Student, c: Course | \n  \t\tp != s and\n  \t\tp + s = Person and\n  \t\tno p.enrolled\n}",
                     "ids": [
-                        "uBr7peP3W59BfsCz6"
+                        "jR2LYmm5Ddq6mzh7p"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Only students can be enrolled in courses\n\tall p: Professor, s: Student, c: Course | \n  \t\tp != s and\n  \t\tp + s = Person and\n  \t\tno p.enrolled\n}",
+                    "code": "{\n\t// Only students can be enrolled in courses\n\tall p: Professor, s: Student, c: Course | \n  \t\tp != s and\n  \t\tp + s = Person and\n  \t\tp != Person and\n  \t\tno p.enrolled\n}",
                     "ids": [
-                        "jR2LYmm5Ddq6mzh7p"
+                        "uBr7peP3W59BfsCz6"
                     ]
                 }
             ]
@@ -4398,16 +4398,16 @@
             "elems": [
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Only students can be enrolled in courses\n\tall p : Person - Professor | p in enrolled.Course\n  \n  \tno(enrolled.Course-Student)\n}",
+                    "code": "{\n\t// Only students can be enrolled in courses\n  \tall p: Person | some p.enrolled implies p in Student else p in Professor\n}",
                     "ids": [
-                        "ci23ipyiqqy6tP96f"
+                        "qPcDdSijewFEGR4wP"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Only students can be enrolled in courses\n  \tall p: Person | some p.enrolled implies p in Student else p in Professor\n}",
+                    "code": "{\n\t// Only students can be enrolled in courses\n\tall p : Person - Professor | p in enrolled.Course\n  \n  \tno(enrolled.Course-Student)\n}",
                     "ids": [
-                        "qPcDdSijewFEGR4wP"
+                        "ci23ipyiqqy6tP96f"
                     ]
                 }
             ]
@@ -4470,16 +4470,16 @@
             "elems": [
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Only students can be enrolled in courses\n\tPerson-Student not in Course.enrolled  \n}",
+                    "code": "{\n\t// Only students can be enrolled in courses\n  Person-Student not in Person.enrolled\n}",
                     "ids": [
-                        "4s3ELqKCg3ZtYiYXB"
+                        "Xu9jxBX5fjpLTXbwK"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Only students can be enrolled in courses\n  Person-Student not in Person.enrolled\n}",
+                    "code": "{\n\t// Only students can be enrolled in courses\n\tPerson-Student not in Course.enrolled  \n}",
                     "ids": [
-                        "Xu9jxBX5fjpLTXbwK"
+                        "4s3ELqKCg3ZtYiYXB"
                     ]
                 }
             ]
@@ -4557,16 +4557,16 @@
             "elems": [
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Only students can be enrolled in courses\n\tall c : Course | enrolled.c = Person\n}",
+                    "code": "{\n\t// Only students can be enrolled in courses\n\tall p: Person, c: Course| p -> c in enrolled\n}",
                     "ids": [
-                        "otSrHJKqaRa68iXrn"
+                        "xqk9xHKuRJ59brFmg"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Only students can be enrolled in courses\n\tall p: Person, c: Course| p -> c in enrolled\n}",
+                    "code": "{\n\t// Only students can be enrolled in courses\n\tall c : Course | enrolled.c = Person\n}",
                     "ids": [
-                        "xqk9xHKuRJ59brFmg"
+                        "otSrHJKqaRa68iXrn"
                     ]
                 }
             ]
@@ -4593,16 +4593,16 @@
             "elems": [
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Only students can be enrolled in courses\n\tall c : Course | Person-Professor in enrolled.c\n}",
+                    "code": "{\n\t// Only students can be enrolled in courses\n  all p : Person - Professor, c : Course | c in p.enrolled \n\t\n}",
                     "ids": [
-                        "SEXjRfgqEWAZeLPJ2"
+                        "sDnZsj3KsmqvXf5pH"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Only students can be enrolled in courses\n  all p : Person - Professor, c : Course | c in p.enrolled \n\t\n}",
+                    "code": "{\n\t// Only students can be enrolled in courses\n\tall c : Course | Person-Professor in enrolled.c\n}",
                     "ids": [
-                        "sDnZsj3KsmqvXf5pH"
+                        "SEXjRfgqEWAZeLPJ2"
                     ]
                 }
             ]

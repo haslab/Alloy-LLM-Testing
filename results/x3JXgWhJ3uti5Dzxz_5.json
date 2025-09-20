@@ -2,8 +2,8 @@
     "label": "inv6",
     "pred": "this/inv6",
     "entry_count": 1223,
-    "group_count": 71,
-    "duration": 21,
+    "group_count": 70,
+    "duration": 22,
     "scope": 3,
     "groups": [
         {
@@ -749,18 +749,6 @@
                 },
                 {
                     "entry_count": 6,
-                    "code": "{\n\t// Influencers post every day.\n\t(all u: Influencer|\n  \t(u.posts).date & Day = Day)\n}",
-                    "ids": [
-                        "sXkCeS2ZdYq3hsu2j",
-                        "eBkh7RP6BcNkkF7yW",
-                        "ePdGzLisQdPt4KFvC",
-                        "wQkoAM6e4Gaya5aPk",
-                        "da2Fhef88vMd5EmRZ",
-                        "cfwM5AoYh6KzxgfSk"
-                    ]
-                },
-                {
-                    "entry_count": 6,
                     "code": "{\n\t// Influencers post every day.\n  \tall i:Influencer, d:Day | some p:Photo | p in date.d and p in i.posts\n\t// all i:Influencer, d:Day | i in posts.date.d\n}",
                     "ids": [
                         "GgMZswERsEng49rs7",
@@ -769,6 +757,18 @@
                         "38bM9EAz472QWCaWh",
                         "RAdGxGfA3LyjbRG5j",
                         "t2LihZqTKtut2rqaX"
+                    ]
+                },
+                {
+                    "entry_count": 6,
+                    "code": "{\n\t// Influencers post every day.\n\t(all u: Influencer|\n  \t(u.posts).date & Day = Day)\n}",
+                    "ids": [
+                        "sXkCeS2ZdYq3hsu2j",
+                        "eBkh7RP6BcNkkF7yW",
+                        "ePdGzLisQdPt4KFvC",
+                        "wQkoAM6e4Gaya5aPk",
+                        "da2Fhef88vMd5EmRZ",
+                        "cfwM5AoYh6KzxgfSk"
                     ]
                 },
                 {
@@ -795,16 +795,6 @@
                 },
                 {
                     "entry_count": 4,
-                    "code": "{\n\t// Influencers post every day.\n\tall u: User |\n  \t\tu in Influencer implies (all d: Day | some p: u.posts | p.date = d)\n}",
-                    "ids": [
-                        "mbiATqpxGjgrdn8m7",
-                        "RcfkWZtAynBSHbGfA",
-                        "q9pxRoJvZPTDMTjdo",
-                        "TnncRutYkZ2cRdTx8"
-                    ]
-                },
-                {
-                    "entry_count": 4,
                     "code": "{\n\t// Influencers post every day.\n\tall u : User, d : Day | u in Influencer implies some (u.posts.date & d)\n}",
                     "ids": [
                         "WoSPhXCh43aNkt6F9",
@@ -821,6 +811,25 @@
                         "qRKjyNRbMkczAnNn7",
                         "kcW2CuZa6HtWiBujp",
                         "D94zJvqqcr83cuxzm"
+                    ]
+                },
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// Influencers post every day.\n\tall u: User |\n  \t\tu in Influencer implies (all d: Day | some p: u.posts | p.date = d)\n}",
+                    "ids": [
+                        "mbiATqpxGjgrdn8m7",
+                        "RcfkWZtAynBSHbGfA",
+                        "q9pxRoJvZPTDMTjdo",
+                        "TnncRutYkZ2cRdTx8"
+                    ]
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Influencers post every day.\n\tall i:Influencer, d:Day | i in posts.date.d\n}",
+                    "ids": [
+                        "NKv9Lh5pvMkd9676Z",
+                        "7YLFPTkujFqGKaJGq",
+                        "uBvwijL9QHMPG2QNw"
                     ]
                 },
                 {
@@ -852,15 +861,6 @@
                 },
                 {
                     "entry_count": 3,
-                    "code": "{\n\t// Influencers post every day.\n\tall i:Influencer, d:Day | i in posts.date.d\n}",
-                    "ids": [
-                        "NKv9Lh5pvMkd9676Z",
-                        "7YLFPTkujFqGKaJGq",
-                        "uBvwijL9QHMPG2QNw"
-                    ]
-                },
-                {
-                    "entry_count": 3,
                     "code": "{\n\t// Influencers post every day.\n  \tall i: Influencer | (no d:Day | d not in i.posts.date)\n\n}",
                     "ids": [
                         "MWtMyfnsK8mKsKiLG",
@@ -874,6 +874,30 @@
                     "ids": [
                         "uHa6Hpcoc8MLjmCrZ",
                         "yYn94fA6tP7F3W88E"
+                    ]
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Influencers post every day.\n\talways(all i: Influencer| no d: Day| d not in i.posts.date)\n\n}",
+                    "ids": [
+                        "vCQLYYgGmAn5v3PHN",
+                        "JMvTWf4ytCbQQERxe"
+                    ]
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Influencers post every day.\n\tall d : Day | all i : Influencer | some p : i.posts | p.date in d\n}",
+                    "ids": [
+                        "zfRm4xwQFF6mD3ebc",
+                        "Tg2cEXiRPoPWDWtHM"
+                    ]
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Influencers post every day.\n  all i:Influencer, d:Day | some dx:Day | d in i.posts.date and not dx not in i.posts.date\n\n}",
+                    "ids": [
+                        "gvBv47jqceMS3aWGp",
+                        "xQqFk7ZMB29CGgAdo"
                     ]
                 },
                 {
@@ -894,26 +918,10 @@
                 },
                 {
                     "entry_count": 2,
-                    "code": "{\n\t// Influencers post every day.\n\talways(all i: Influencer| no d: Day| d not in i.posts.date)\n\n}",
-                    "ids": [
-                        "vCQLYYgGmAn5v3PHN",
-                        "JMvTWf4ytCbQQERxe"
-                    ]
-                },
-                {
-                    "entry_count": 2,
                     "code": "{\n\t// Influencers post every day.\n\tall i : Influencer | i . posts . date in Day and Day in i . posts . date \n  \n}",
                     "ids": [
                         "AZEkdfo2gn6hrjrqw",
                         "Djk4bebMRYZ2NM9Bd"
-                    ]
-                },
-                {
-                    "entry_count": 2,
-                    "code": "{\n\t// Influencers post every day.\n  all i:Influencer, d:Day | some dx:Day | d in i.posts.date and not dx not in i.posts.date\n\n}",
-                    "ids": [
-                        "gvBv47jqceMS3aWGp",
-                        "xQqFk7ZMB29CGgAdo"
                     ]
                 },
                 {
@@ -925,32 +933,17 @@
                     ]
                 },
                 {
-                    "entry_count": 2,
-                    "code": "{\n\t// Influencers post every day.\n\tall d : Day | all i : Influencer | some p : i.posts | p.date in d\n}",
+                    "entry_count": 1,
+                    "code": "{\n     // Influencers post every day.\n  \n     // all x : User | x in Influencer implies \n     //    all d : Day | some z : Photo | x->z in posts and z->d in date\n  \n     // all x : Influencer, d : Day |\n     //    some z : Photo | z in x.posts and z in date.d\n \n     // all x : Influencer, d : Day |\n     //    some z : Photo | z in x.posts & date.d\n \n    \n \n     // all x : Influencer, d : Day | x in posts.date.d\n \n     all d : Day | Influencer in posts.date.d\n\n     // WRONG!!\n     // Influencer in posts.date.Day\n\n     // all x : Influencer, d : Day | d in x.posts.date\n \n     all x : Influencer | Day in x.posts.date\n\n     // WRONG!!\n     // Day in Influencer.posts.date\n\n}",
                     "ids": [
-                        "zfRm4xwQFF6mD3ebc",
-                        "Tg2cEXiRPoPWDWtHM"
+                        "LqdiKzuRcBRAhP7Au"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Influencers post every day.\n  \tall i : Influencer, d : Day | some p : Photo | i in posts.p and p in date.d\n \t\n  \tall i : Influencer, d : Day | some (i.posts & date.d)\n}",
+                    "code": "{\n\t// Influencers post every day.\n\t\n  \tall x : Influencer, d : Day | some x.posts & date.d\n \n    all x : Influencer, d : Day | x in posts.date.d\n}",
                     "ids": [
-                        "XetDg7D7avJ2b2N9m"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Influencers post every day.\nall x : User | x in Influencer implies \n all d : Day | some z : Photo | x in posts.z and z->d in date\n\n}",
-                    "ids": [
-                        "CApkxMapAaJbhdfqA"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n     // Influencers post every day.\n  \n     // all x : User | x in Influencer implies \n     //    all d : Day | some z : Photo | x->z in posts and z->d in date\n  \n     // all x : Influencer, d : Day |\n     //    some z : Photo | z in x.posts and z in date.d\n \n     // all x : Influencer, d : Day |\n     //    some z : Photo | z in x.posts & date.d\n \n     all x : Influencer, d : Day | some x.posts & date.d\n \n     // all x : Influencer, d : Day | x in posts.date.d\n \n     all d : Day | Influencer in posts.date.d\n\n     // WRONG!!\n     // Influencer in posts.date.Day\n\n     all x : Influencer, d : Day | d in x.posts.date\n \n     all x : Influencer | Day in x.posts.date\n\n     // WRONG!!\n     // Day in Influencer.posts.date\n\n}",
-                    "ids": [
-                        "sEhgjeNyd6rvJaHgG"
+                        "iC2YGyiAzJakMgDk9"
                     ]
                 },
                 {
@@ -962,9 +955,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Influencers post every day.\n  \tall i : Influencer | all d : Day | some p : Photo | i->p in posts and d in p.date \n}",
+                    "code": "{\n\t// Influencers post every day.\n  \tno i: Influencer | i.posts.date != Day\n\n}",
                     "ids": [
-                        "RwRcnaTBt28xGsNsC"
+                        "v5QMveQ9bQRkkjbw5"
                     ]
                 },
                 {
@@ -976,9 +969,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Influencers post every day.\n  \tall i : Influencer, d : Day | some p:Photo | i in posts.p and d in p.date \n  \n\n}",
+                    "code": "{\n\t// Influencers post every day.\n  \tall i : Influencer | all d : Day | some p : Photo | i->p in posts and d in p.date \n}",
                     "ids": [
-                        "Ws23Bgzwe9BGaMPht"
+                        "RwRcnaTBt28xGsNsC"
                     ]
                 },
                 {
@@ -990,9 +983,16 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t\n  \t// Influencers post every day\n  \t//all d: Day | Influencer in posts.date.d\n\t// all i: Influencer | i.posts.date = Day\n  \n  \tInfluencer -> Day in posts.date\n  \t\n}",
+                    "code": "{\n     // Influencers post every day.\n  \n     // all x : User | x in Influencer implies \n     //    all d : Day | some z : Photo | x->z in posts and z->d in date\n  \n     // all x : Influencer, d : Day |\n     //    some z : Photo | z in x.posts and z in date.d\n \n     // all x : Influencer, d : Day |\n     //    some z : Photo | z in x.posts & date.d\n \n     all x : Influencer, d : Day | some x.posts & date.d\n \n     // all x : Influencer, d : Day | x in posts.date.d\n \n     all d : Day | Influencer in posts.date.d\n\n     // WRONG!!\n     // Influencer in posts.date.Day\n\n     all x : Influencer, d : Day | d in x.posts.date\n \n     all x : Influencer | Day in x.posts.date\n\n     // WRONG!!\n     // Day in Influencer.posts.date\n\n}",
                     "ids": [
-                        "vw3hpJz7xhgmfWukT"
+                        "sEhgjeNyd6rvJaHgG"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n  \tall i : Influencer, d : Day | some p:Photo | i in posts.p and d in p.date \n  \n\n}",
+                    "ids": [
+                        "Ws23Bgzwe9BGaMPht"
                     ]
                 },
                 {
@@ -1004,16 +1004,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Influencers post every day.\n\tall d : Day | all i : Influencer | Influencer in posts.date.d\n}",
+                    "code": "{\n\t\n  \t// Influencers post every day\n  \t//all d: Day | Influencer in posts.date.d\n\t// all i: Influencer | i.posts.date = Day\n  \n  \tInfluencer -> Day in posts.date\n  \t\n}",
                     "ids": [
-                        "5gvwDQeTyLxim7RXx"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Influencers post every day.\n\t\n  \tall x : Influencer, d : Day | some x.posts & date.d\n \n    all x : Influencer, d : Day | x in posts.date.d\n}",
-                    "ids": [
-                        "iC2YGyiAzJakMgDk9"
+                        "vw3hpJz7xhgmfWukT"
                     ]
                 },
                 {
@@ -1032,23 +1025,30 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n     // Influencers post every day.\n  \n     // all x : User | x in Influencer implies \n     //    all d : Day | some z : Photo | x->z in posts and z->d in date\n  \n     // all x : Influencer, d : Day |\n     //    some z : Photo | z in x.posts and z in date.d\n \n     // all x : Influencer, d : Day |\n     //    some z : Photo | z in x.posts & date.d\n \n    \n \n     // all x : Influencer, d : Day | x in posts.date.d\n \n     all d : Day | Influencer in posts.date.d\n\n     // WRONG!!\n     // Influencer in posts.date.Day\n\n     // all x : Influencer, d : Day | d in x.posts.date\n \n     all x : Influencer | Day in x.posts.date\n\n     // WRONG!!\n     // Day in Influencer.posts.date\n\n}",
+                    "code": "{\n\t// Influencers post every day.\n\tall d : Day | all i : Influencer | Influencer in posts.date.d\n}",
                     "ids": [
-                        "LqdiKzuRcBRAhP7Au"
+                        "5gvwDQeTyLxim7RXx"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Influencers post every day.\n  \tno i: Influencer | i.posts.date != Day\n\n}",
+                    "code": "{\n\t// Influencers post every day.\n  \tall i : Influencer, d : Day | some p : Photo | i in posts.p and p in date.d\n \t\n  \tall i : Influencer, d : Day | some (i.posts & date.d)\n}",
                     "ids": [
-                        "v5QMveQ9bQRkkjbw5"
+                        "XetDg7D7avJ2b2N9m"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\nall x : User | x in Influencer implies \n all d : Day | some z : Photo | x in posts.z and z->d in date\n\n}",
+                    "ids": [
+                        "CApkxMapAaJbhdfqA"
                     ]
                 }
             ]
         },
         {
-            "entry_count": 92,
-            "group_count": 31,
+            "entry_count": 88,
+            "group_count": 27,
             "correct": false,
             "elems": [
                 {
@@ -1134,42 +1134,10 @@
                 },
                 {
                     "entry_count": 2,
-                    "code": "{\n\t// Influencers post every day.\n\tall u: User |\n  \t\tu in Influencer implies u.posts.date - Day = none\n}",
+                    "code": "{\n\t// Influencers post every day.\n\tall ip : Influencer.posts | ip.date in Day\n}",
                     "ids": [
-                        "bxBCx7qtypbdHa2Ac",
-                        "xAW2jhAJD4PL62MJP"
-                    ]
-                },
-                {
-                    "entry_count": 2,
-                    "code": "{\n\t// Influencers post every day.\n  \t\t\t//all i: Influencer | all d: Day | one (i.posts & d)\n  \tall i: Influencer | all d: Day | lone ds: Day | (i.posts.date = ds) and ds in d  \n}",
-                    "ids": [
-                        "HKqGACbDqhb8MRNSW",
-                        "xGnsh23JTorT6sK6y"
-                    ]
-                },
-                {
-                    "entry_count": 2,
-                    "code": "{\n\t// Influencers post every day.\n\tall i: Influencer | all d: Day | posts.i in d\n}",
-                    "ids": [
-                        "QkrtMzwKFYx9upw83",
-                        "NHjDmaprJdsibaHCR"
-                    ]
-                },
-                {
-                    "entry_count": 2,
-                    "code": "{\n\t// Influencers post every day.\n  all i : Influencer | i.posts.date in User.posts.date\n\n}",
-                    "ids": [
-                        "nH9LzvZX9gNwJ4A4X",
-                        "cM6PrrKTRF8kxLQAW"
-                    ]
-                },
-                {
-                    "entry_count": 2,
-                    "code": "{\n\t// Influencers post every day.\n  \t\t\t//all i: Influencer | all d: Day | one (i.posts & d)\n  \tall i: Influencer | lone d1, d2: Day | i.posts.date = d1 and i.posts.date = d2\n}",
-                    "ids": [
-                        "FmoTDMNewNvh2nH8T",
-                        "x59dS8ZRGHPEZcYho"
+                        "65HLbcy35HoBoamWL",
+                        "T6gvXwGbNhbWSDLHu"
                     ]
                 },
                 {
@@ -1182,6 +1150,22 @@
                 },
                 {
                     "entry_count": 2,
+                    "code": "{\n\t// Influencers post every day.\n\tall u: User |\n  \t\tu in Influencer implies u.posts.date - Day = none\n}",
+                    "ids": [
+                        "bxBCx7qtypbdHa2Ac",
+                        "xAW2jhAJD4PL62MJP"
+                    ]
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Influencers post every day.\n  all i : Influencer | i.posts.date in User.posts.date\n\n}",
+                    "ids": [
+                        "nH9LzvZX9gNwJ4A4X",
+                        "cM6PrrKTRF8kxLQAW"
+                    ]
+                },
+                {
+                    "entry_count": 2,
                     "code": "{\n\t// Influencers post every day.\n  \tall d:Day, i:Influencer | d in i.posts implies some dz:Day | d != dz\n\n}",
                     "ids": [
                         "2aHcYKomhn2CdMZSi",
@@ -1190,94 +1174,26 @@
                 },
                 {
                     "entry_count": 2,
-                    "code": "{\n\t// Influencers post every day.\n\tall ip : Influencer.posts | ip.date in Day\n}",
+                    "code": "{\n\t// Influencers post every day.\n\tall i: Influencer | all d: Day | posts.i in d\n}",
                     "ids": [
-                        "65HLbcy35HoBoamWL",
-                        "T6gvXwGbNhbWSDLHu"
+                        "QkrtMzwKFYx9upw83",
+                        "NHjDmaprJdsibaHCR"
                     ]
                 },
                 {
-                    "entry_count": 1,
-                    "code": "{\n\t// Influencers post every day.\n\t\n  \t\n  all p: Photo, i: Influencer | posts.i in Day.next\n  \n  \n  \n}",
+                    "entry_count": 2,
+                    "code": "{\n\t// Influencers post every day.\n  \t\t\t//all i: Influencer | all d: Day | one (i.posts & d)\n  \tall i: Influencer | all d: Day | lone ds: Day | (i.posts.date = ds) and ds in d  \n}",
                     "ids": [
-                        "4zqkmogWHBCAfGEZ9"
+                        "HKqGACbDqhb8MRNSW",
+                        "xGnsh23JTorT6sK6y"
                     ]
                 },
                 {
-                    "entry_count": 1,
-                    "code": "{\n\t// Influencers post every day.\n  all i:Influencer, p:i.posts, dx:p.date | dx in p implies some dy:p.date | dy != dx\n\n}",
+                    "entry_count": 2,
+                    "code": "{\n\t// Influencers post every day.\n  \t\t\t//all i: Influencer | all d: Day | one (i.posts & d)\n  \tall i: Influencer | lone d1, d2: Day | i.posts.date = d1 and i.posts.date = d2\n}",
                     "ids": [
-                        "NMNxc7c7wPesnrsJK"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Influencers post every day.\n\tall i:Influencer | posts.i in Day.next \n}",
-                    "ids": [
-                        "j5pwLyL9fsFh5Dzdu"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Influencers post every day.\n\tall d : Day, i: Influencer | posts.i in date.d \n}",
-                    "ids": [
-                        "i7xD6y4DhnXrta3M7"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Influencers post every day.\n\t\n  \t\n  all p: Photo, i: Influencer | posts.i in Day implies posts.i in Day.next\n  \n  \n  \n}",
-                    "ids": [
-                        "iHqgasi84PWaZsd2o"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Influencers post every day.\n\tall i: Influencer | posts.i in Day\n}",
-                    "ids": [
-                        "WpHnBnCKPZNaekSmj"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Influencers post every day.\n  all d: Day | d.date in Influencer.posts.date \n\n}",
-                    "ids": [
-                        "nMt8NBBJKh5JbsqHe"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t\n  \t// Influencers post every day\n  \t//all d: Day | Influencer in posts.date.d\n\t// all i: Influencer | i.posts.date = Day\n  \n  \t// ~date.~post :> Influencer in Day some -> some Influencer\n  \n  \t// Influencer <: posts.date in Influencer some -> some Day\n  \n  \tsome Day & Influencer => (\n      Influencer -> Influencer & iden in posts.date.~date.~posts and\n  \t  Day -> Day & iden in ~date.~(Influencer <: posts).(Influencer <: posts).date )\n  \n}",
-                    "ids": [
-                        "YRmkYBCRwu8zDJcG3"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Influencers post every day.\n\tno (Influencer.posts.date - Day)\n\n}",
-                    "ids": [
-                        "MBSxpKM3yWSdidShc"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Influencers post every day.\n\tall i:Influencer | posts.i in Day.next \n  \t\n  all p: Photo, i: Influencer | posts.i in Day.next\n  \n  \n  \n}",
-                    "ids": [
-                        "hPrnbKpqy45TvGdeX"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Influencers post every day.\n\tall p: Photo| some p.date\n}",
-                    "ids": [
-                        "5XRxjXAFptronBXuF"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Influencers post every day.\n  \tall dx:Day, dy:Day, i:Influencer | dx in i.posts and dy in i.posts implies dx != dy\n\n}",
-                    "ids": [
-                        "HkgHEZsDt6XwF4dRn"
+                        "FmoTDMNewNvh2nH8T",
+                        "x59dS8ZRGHPEZcYho"
                     ]
                 },
                 {
@@ -1289,16 +1205,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Influencers post every day.\n  Influencer.posts.date in Day\n}",
+                    "code": "{\n\t// Influencers post every day.\n  all d: Day | d.date in Influencer.posts.date \n\n}",
                     "ids": [
-                        "vurDJEyHJvBAxoATg"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Influencers post every day.\n  all d: Day, i: Influencer | d.date in i.posts.date \n\n}",
-                    "ids": [
-                        "qcqN45AnBXoZBTPdN"
+                        "nMt8NBBJKh5JbsqHe"
                     ]
                 },
                 {
@@ -1310,9 +1219,30 @@
                 },
                 {
                     "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n  Influencer.posts.date in Day\n}",
+                    "ids": [
+                        "vurDJEyHJvBAxoATg"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n\tall p: Photo| some p.date\n}",
+                    "ids": [
+                        "5XRxjXAFptronBXuF"
+                    ]
+                },
+                {
+                    "entry_count": 1,
                     "code": "{\n\t// Influencers post every day.\n\tall p: Photo| lone p.date\n}",
                     "ids": [
                         "5Z4K8GPtffT3dFNos"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n\tno (Influencer.posts.date - Day)\n\n}",
+                    "ids": [
+                        "MBSxpKM3yWSdidShc"
                     ]
                 },
                 {
@@ -1324,9 +1254,51 @@
                 },
                 {
                     "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n  all d: Day, i: Influencer | d.date in i.posts.date \n\n}",
+                    "ids": [
+                        "qcqN45AnBXoZBTPdN"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n  \tall dx:Day, dy:Day, i:Influencer | dx in i.posts and dy in i.posts implies dx != dy\n\n}",
+                    "ids": [
+                        "HkgHEZsDt6XwF4dRn"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t\n  \t// Influencers post every day\n  \t//all d: Day | Influencer in posts.date.d\n\t// all i: Influencer | i.posts.date = Day\n  \n  \t// ~date.~post :> Influencer in Day some -> some Influencer\n  \n  \t// Influencer <: posts.date in Influencer some -> some Day\n  \n  \tsome Day & Influencer => (\n      Influencer -> Influencer & iden in posts.date.~date.~posts and\n  \t  Day -> Day & iden in ~date.~(Influencer <: posts).(Influencer <: posts).date )\n  \n}",
+                    "ids": [
+                        "YRmkYBCRwu8zDJcG3"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n\tall i: Influencer | posts.i in Day\n}",
+                    "ids": [
+                        "WpHnBnCKPZNaekSmj"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n\tall d : Day, i: Influencer | posts.i in date.d \n}",
+                    "ids": [
+                        "i7xD6y4DhnXrta3M7"
+                    ]
+                },
+                {
+                    "entry_count": 1,
                     "code": "{\n\t// Influencers post every day.\n  all i:Influencer, p:i.posts, dx:p.date, dy:p.date | dx != dy iff dx in p and dy in p\n\n}",
                     "ids": [
                         "MAMfd2SiWpREPr42k"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n  all i:Influencer, p:i.posts, dx:p.date | dx in p implies some dy:p.date | dy != dx\n\n}",
+                    "ids": [
+                        "NMNxc7c7wPesnrsJK"
                     ]
                 }
             ]
@@ -1377,15 +1349,6 @@
                 },
                 {
                     "entry_count": 3,
-                    "code": "{\n\t// Influencers post every day.\n\tall d:Day | Influencer.posts.date in d\n}",
-                    "ids": [
-                        "HjjdAmzEa2qZTo5CH",
-                        "HquSJLyfZMJePcHWG",
-                        "PQcaqkP9FZo9MY8sj"
-                    ]
-                },
-                {
-                    "entry_count": 3,
                     "code": "{\n\t// Influencers post every day.\n\tall i : Influencer, p : i.posts\n  \t\t| Day in p.date\n}",
                     "ids": [
                         "k5yLPneT7Wn7HHQs4",
@@ -1403,11 +1366,12 @@
                     ]
                 },
                 {
-                    "entry_count": 2,
-                    "code": "{\n\t// Influencers post every day.\n\tall ip : Influencer.posts | Day in ip.date\n}",
+                    "entry_count": 3,
+                    "code": "{\n\t// Influencers post every day.\n\tall d:Day | Influencer.posts.date in d\n}",
                     "ids": [
-                        "LcZgSbYtX2czwnrGj",
-                        "nEw6LAEHfTRGCYLtA"
+                        "HjjdAmzEa2qZTo5CH",
+                        "HquSJLyfZMJePcHWG",
+                        "PQcaqkP9FZo9MY8sj"
                     ]
                 },
                 {
@@ -1420,18 +1384,18 @@
                 },
                 {
                     "entry_count": 2,
-                    "code": "{\n\t// Influencers post every day.\n  \tall i: Influencer | all d: Day | all p: i.posts.date | d in p\n\n}",
-                    "ids": [
-                        "3aFEwBkmFhsCZREDu",
-                        "sQZpagwhiZ4YgfynK"
-                    ]
-                },
-                {
-                    "entry_count": 2,
                     "code": "{\n\t// Influencers post every day.\n\tall d : Day, i: Influencer | i.posts in date.d \n}",
                     "ids": [
                         "EtHyYttuSZwv4mFbM",
                         "EpaEZHMGa2kEtupiv"
+                    ]
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Influencers post every day.\n  \tall i: Influencer | all d: Day | all p: i.posts.date | d in p\n\n}",
+                    "ids": [
+                        "3aFEwBkmFhsCZREDu",
+                        "sQZpagwhiZ4YgfynK"
                     ]
                 },
                 {
@@ -1443,10 +1407,11 @@
                     ]
                 },
                 {
-                    "entry_count": 1,
-                    "code": "{\n\t// Influencers post every day.\n\tall i : Influencer | all p : Photo | i -> p in posts implies all d : Day | p -> d in date\n}",
+                    "entry_count": 2,
+                    "code": "{\n\t// Influencers post every day.\n\tall ip : Influencer.posts | Day in ip.date\n}",
                     "ids": [
-                        "doWvJ7zCjR7SanDq5"
+                        "LcZgSbYtX2czwnrGj",
+                        "nEw6LAEHfTRGCYLtA"
                     ]
                 },
                 {
@@ -1458,23 +1423,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Influencers post every day.\n\tall ip: Influencer.posts.date, d:Day | ip in d and ip not in Influencer.posts.date - ip\n}",
-                    "ids": [
-                        "CfD5EtThiBNM8JKf2"
-                    ]
-                },
-                {
-                    "entry_count": 1,
                     "code": "{\n\t// Influencers post every day.\n  \tall i : Influencer, p : i.posts | lone p -> Day\n\n}",
                     "ids": [
                         "sD4KeawP8CfdE7zFp"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Influencers post every day.\n  all i: Influencer, disj d1,d2: Day |  i.posts in date.d1 and i.posts in date.d2\n\n}",
-                    "ids": [
-                        "wMuNAi6rvDhGfEBre"
                     ]
                 },
                 {
@@ -1486,23 +1437,16 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Influencers post every day.\n  all u:Influencer | all p:u.posts | (p not in none) implies p.date&Day = Day\n}",
+                    "code": "{\n\t// Influencers post every day.\n\tall x:Influencer, y:Photo, z:Day {x->y in posts implies y->z in date}\n}",
                     "ids": [
-                        "w2pcRSWPXqD6ZcjoZ"
+                        "PghyTzMQH9d8ozFki"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Influencers post every day.\n  \tall pid:Influencer.posts.date, d:Day | pid in d\n  \n\n}",
+                    "code": "{\n\t// Influencers post every day.\n  all i: Influencer, disj d1,d2: Day |  i.posts in date.d1 and i.posts in date.d2\n\n}",
                     "ids": [
-                        "bSChug97o85JLEqxC"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Influencers post every day.\n  all u:Influencer | all p:u.posts | (p != none) implies p.date&Day = Day\n}",
-                    "ids": [
-                        "BYshoQtffbqPWabDo"
+                        "wMuNAi6rvDhGfEBre"
                     ]
                 },
                 {
@@ -1514,30 +1458,16 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Influencers post every day.\n  all i: Influencer, disj d1,d2: Day | i.posts in Day \n  \n}",
+                    "code": "{\n\t// Influencers post every day.\n  all u:Influencer | all p:u.posts | (p != none) implies p.date&Day = Day\n}",
                     "ids": [
-                        "R5Eh56xzptNRHeFuA"
+                        "BYshoQtffbqPWabDo"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Influencers post every day.\n\tall u : User, d : Day, p : u.posts | u in Influencer implies  d in p.date\n}",
+                    "code": "{\n\t// Influencers post every day.\n\tall i : Influencer | all p : Photo | i -> p in posts implies all d : Day | p -> d in date\n}",
                     "ids": [
-                        "hgPC7SE5EeN6hHbjc"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Influencers post every day.\n  all u:Influencer | all p:u.posts | p.date&Day = Day\n}",
-                    "ids": [
-                        "tmgvEHfDCE7zciN7y"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n  all i : Influencer, p : Photo | p in i.posts implies no d : Day | p.date!= d\n  \n\t// Influencers post every day.\n\n}",
-                    "ids": [
-                        "J6jsQaDoy7DEF32fb"
+                        "doWvJ7zCjR7SanDq5"
                     ]
                 },
                 {
@@ -1549,23 +1479,30 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Influencers post every day.\n\tall u: User, d:Day | u in Influencer implies u.posts in date.d\n}",
+                    "code": "{\n\t// Influencers post every day.\n  \n  all i : Influencer , p : Photo, d : Day \t| i.posts in date.d\n  \n\n}",
                     "ids": [
-                        "kdwZXZqfTYS46HYBW"
+                        "Lzr5CY6u2xS26FyW8"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Influencers post every day.\n  \tall pid:Influencer.posts.date, d:Day | d in pid\n  \n\n}",
+                    "code": "{\n\t// Influencers post every day.\n  \tall pid:Influencer.posts.date, d:Day | pid in d\n  \n\n}",
                     "ids": [
-                        "yqo9SnEX4uA3o9eGb"
+                        "bSChug97o85JLEqxC"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Influencers post every day.\n  \t//one d1: Date, d2: Date| all i: Influencer, p1: date.d1, p2: date.d2|  \n\n  \t//all i: Influencer, p: Photo| one d1: Day, d2:Day | some posts.i implies posts.d1!=posts.d2\n  \n  all i:Influencer, x,y:i.posts| Day in  x.date\n  //all x : Influencer | Day in x.posts.date\n  \n  //p->d in Date   photos p est\u00e3o no set de photos de data D\n}",
+                    "code": "{\n\t// Influencers post every day.\n\tall ip: Influencer.posts.date, d:Day | ip in d and ip not in Influencer.posts.date - ip\n}",
                     "ids": [
-                        "xH9iS2tMJNnz5MrFT"
+                        "CfD5EtThiBNM8JKf2"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n  all i : Influencer, p : Photo | p in i.posts implies no d : Day | p.date!= d\n  \n\t// Influencers post every day.\n\n}",
+                    "ids": [
+                        "J6jsQaDoy7DEF32fb"
                     ]
                 },
                 {
@@ -1577,6 +1514,27 @@
                 },
                 {
                     "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n\tall u : User, d : Day, p : u.posts | u in Influencer implies  d in p.date\n}",
+                    "ids": [
+                        "hgPC7SE5EeN6hHbjc"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n  \tall pid:Influencer.posts.date, d:Day | d in pid\n  \n\n}",
+                    "ids": [
+                        "yqo9SnEX4uA3o9eGb"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n\tall u: User, d:Day | u in Influencer implies u.posts in date.d\n}",
+                    "ids": [
+                        "kdwZXZqfTYS46HYBW"
+                    ]
+                },
+                {
+                    "entry_count": 1,
                     "code": "{\n\t// Influencers post every day.\n  \tall i : Influencer, d : Day, p : Photo | p in i.posts implies d in p.date\n}",
                     "ids": [
                         "tpGY6MgSuapznbFYf"
@@ -1584,16 +1542,30 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Influencers post every day.\n  \n  all i : Influencer , p : Photo, d : Day \t| i.posts in date.d\n  \n\n}",
+                    "code": "{\n\t// Influencers post every day.\n  all u:Influencer | all p:u.posts | p.date&Day = Day\n}",
                     "ids": [
-                        "Lzr5CY6u2xS26FyW8"
+                        "tmgvEHfDCE7zciN7y"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Influencers post every day.\n\tall x:Influencer, y:Photo, z:Day {x->y in posts implies y->z in date}\n}",
+                    "code": "{\n\t// Influencers post every day.\n  all i: Influencer, disj d1,d2: Day | i.posts in Day \n  \n}",
                     "ids": [
-                        "PghyTzMQH9d8ozFki"
+                        "R5Eh56xzptNRHeFuA"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n  \t//one d1: Date, d2: Date| all i: Influencer, p1: date.d1, p2: date.d2|  \n\n  \t//all i: Influencer, p: Photo| one d1: Day, d2:Day | some posts.i implies posts.d1!=posts.d2\n  \n  all i:Influencer, x,y:i.posts| Day in  x.date\n  //all x : Influencer | Day in x.posts.date\n  \n  //p->d in Date   photos p est\u00e3o no set de photos de data D\n}",
+                    "ids": [
+                        "xH9iS2tMJNnz5MrFT"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n  all u:Influencer | all p:u.posts | (p not in none) implies p.date&Day = Day\n}",
+                    "ids": [
+                        "w2pcRSWPXqD6ZcjoZ"
                     ]
                 }
             ]
@@ -1668,14 +1640,6 @@
                 },
                 {
                     "entry_count": 2,
-                    "code": "{\n\t// Influencers post every day.\n  \tall i: Influencer | all d: Day | one (i.posts & d)\n}",
-                    "ids": [
-                        "BoqP9KM97nhQJxaGP",
-                        "CzFAJsRqJFyZ9vbno"
-                    ]
-                },
-                {
-                    "entry_count": 2,
                     "code": "{\n\t// Influencers post every day.\n\tall i : Influencer | all d : Day | some i.posts & d\n}",
                     "ids": [
                         "6YYLeCQy98Ar7Ghg8",
@@ -1683,24 +1647,18 @@
                     ]
                 },
                 {
-                    "entry_count": 1,
-                    "code": "{\n  \tall x: Influencer, d: Day | x -> d in posts\n\t// Influencers post every day.\n\n}",
+                    "entry_count": 2,
+                    "code": "{\n\t// Influencers post every day.\n  \tall i: Influencer | all d: Day | one (i.posts & d)\n}",
                     "ids": [
-                        "D5iZffEMBALXQiKjw"
+                        "BoqP9KM97nhQJxaGP",
+                        "CzFAJsRqJFyZ9vbno"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Influencers post every day.\n\t// todos os nfluencers, all post.date em all days\n  \tall i : Influencer |\n  \t\tall d : Day |\n  \t\t\tsome p : i.posts | d in i.posts\n\t\t// i.posts all Day\n}",
+                    "code": "{\n\t// Influencers post every day.\n\tall u : Influencer, d : Day |\n  \t\tone p : Photo |\n  \t\t\tp in u.posts and p in d.date\n}",
                     "ids": [
-                        "p6rghgRWFfvdfS2DG"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Influencers post every day.\n\tall d:Day,i:Influencer | some p : i.posts| i.date = d\n}",
-                    "ids": [
-                        "eHerpGs3bsF9ZhGA7"
+                        "k8EeHJkuena2WgyNj"
                     ]
                 },
                 {
@@ -1712,9 +1670,16 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Influencers post every day.\n  \tall dx:Day, dy:Day, i:Influencer | dx in i.posts and dy in i.posts and dx != dy\n\n}",
+                    "code": "{\n\t// Influencers post every day.\n  \tall i : Influencer, d : Day | d in i.date\n\n}",
                     "ids": [
-                        "dGe3t4qbZAe8rbvAW"
+                        "Aw4YQTvxnzvoNAAat"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n\t//all i : Influencer, d : Day | some p : i.posts | p.date = d\n\tall i : Influencer, d : Day | some p : Photo | i.posts & p.date = d\n}",
+                    "ids": [
+                        "g2DD8mkn7F7HRCQvf"
                     ]
                 },
                 {
@@ -1733,79 +1698,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Influencers post every day.\n  all u : User, d : Day | u in Influencer implies d in posts.u\n\n}",
+                    "code": "{\n  \tall x: Influencer, d: Day | x -> d in posts\n\t// Influencers post every day.\n\n}",
                     "ids": [
-                        "b8iLTJ6JBX4kcA8po"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Influencers post every day.\n\t//all i : Influencer, d : Day | some p : i.posts | p.date = d\n\tall i : Influencer, d : Day | some p : Photo | i.posts & p.date = d\n}",
-                    "ids": [
-                        "g2DD8mkn7F7HRCQvf"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Influencers post every day.\n\tall d : Day | Influencer in posts.d\n}",
-                    "ids": [
-                        "LxdMTQgXwGKzQr5d8"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Influencers post every day.\n//  all i:Influencer, p: Photo, d:Day| i.posts in date.d implies p in i.posts.d\n  \n  all i : Influencer, d : Day | some z : Photo | z in i.posts and i in date.d\n}",
-                    "ids": [
-                        "5uFSojZg4YfPuST76"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Influencers post every day.\n  all i:Influencer, d:Day | some dx:Day | d in i.posts and not dx not in i.posts\n\n}",
-                    "ids": [
-                        "K9MTArhec8i7aeDY9"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n  \tall x: Influencer, d: Day | d -> x in posts\n\t// Influencers post every day.\n\n}",
-                    "ids": [
-                        "mKSwuwwMYsjrigC9t"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Influencers post every day.\n\n    all d: Day, i: Influencer | d in date.posts.i\n}",
-                    "ids": [
-                        "zWYf5of9iftsT6N23"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Influencers post every day.\n\tall u : Influencer, d : Day |\n  \t\tone p : Photo |\n  \t\t\tp in u.posts and p in d.date\n}",
-                    "ids": [
-                        "k8EeHJkuena2WgyNj"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Influencers post every day.\n\tall d : Day | Influencer in posts.Day\n  \n}",
-                    "ids": [
-                        "snxutsXMwLzxWRYtP"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Influencers post every day.\n\tall x : Influencer, y : Day | some z : Photo | z->y in date and x->y in posts\n}",
-                    "ids": [
-                        "oQ3XxJBtfGSuwZiPf"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Influencers post every day.\n  all u : User, d : Day | u in Influencer implies u in posts.d\n\n}",
-                    "ids": [
-                        "MaugowhRddzBFs5Hy"
+                        "D5iZffEMBALXQiKjw"
                     ]
                 },
                 {
@@ -1817,16 +1712,16 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Influencers post every day.\n  \tall i : Influencer, d : Day | d in i.date\n\n}",
+                    "code": "{\n  \tall x: Influencer, d: Day | d -> x in posts\n\t// Influencers post every day.\n\n}",
                     "ids": [
-                        "Aw4YQTvxnzvoNAAat"
+                        "mKSwuwwMYsjrigC9t"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Influencers post every day.\n\tall i : Influencer | Day in posts.i \n}",
+                    "code": "{\n\t// Influencers post every day.\n\tall d : Day | Influencer in posts.d\n}",
                     "ids": [
-                        "8YbLHfZPyRWJykDBk"
+                        "LxdMTQgXwGKzQr5d8"
                     ]
                 },
                 {
@@ -1838,6 +1733,13 @@
                 },
                 {
                     "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n\tall i : Influencer | Day in posts.i \n}",
+                    "ids": [
+                        "8YbLHfZPyRWJykDBk"
+                    ]
+                },
+                {
+                    "entry_count": 1,
                     "code": "{\n\t// Influencers post every day.\n  all i:Influencer, d:Day | some dx:Day | d in i.posts and not dx not in i.posts.date\n\n}",
                     "ids": [
                         "rSYwDai33E4thpfWi"
@@ -1845,9 +1747,79 @@
                 },
                 {
                     "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n  \tall dx:Day, dy:Day, i:Influencer | dx in i.posts and dy in i.posts and dx != dy\n\n}",
+                    "ids": [
+                        "dGe3t4qbZAe8rbvAW"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n\tall d : Day | Influencer in posts.Day\n  \n}",
+                    "ids": [
+                        "snxutsXMwLzxWRYtP"
+                    ]
+                },
+                {
+                    "entry_count": 1,
                     "code": "{\n  \tall x: Influencer, d: Day | some p : Photo  | d in Photo and x -> p in posts\n\t// Influencers post every day.\n\n}",
                     "ids": [
                         "r4SYrEFMtJHoPGLBF"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n\t// todos os nfluencers, all post.date em all days\n  \tall i : Influencer |\n  \t\tall d : Day |\n  \t\t\tsome p : i.posts | d in i.posts\n\t\t// i.posts all Day\n}",
+                    "ids": [
+                        "p6rghgRWFfvdfS2DG"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n//  all i:Influencer, p: Photo, d:Day| i.posts in date.d implies p in i.posts.d\n  \n  all i : Influencer, d : Day | some z : Photo | z in i.posts and i in date.d\n}",
+                    "ids": [
+                        "5uFSojZg4YfPuST76"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n\tall d:Day,i:Influencer | some p : i.posts| i.date = d\n}",
+                    "ids": [
+                        "eHerpGs3bsF9ZhGA7"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n  all u : User, d : Day | u in Influencer implies u in posts.d\n\n}",
+                    "ids": [
+                        "MaugowhRddzBFs5Hy"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n  all i:Influencer, d:Day | some dx:Day | d in i.posts and not dx not in i.posts\n\n}",
+                    "ids": [
+                        "K9MTArhec8i7aeDY9"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n\tall x : Influencer, y : Day | some z : Photo | z->y in date and x->y in posts\n}",
+                    "ids": [
+                        "oQ3XxJBtfGSuwZiPf"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n  all u : User, d : Day | u in Influencer implies d in posts.u\n\n}",
+                    "ids": [
+                        "b8iLTJ6JBX4kcA8po"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n\n    all d: Day, i: Influencer | d in date.posts.i\n}",
+                    "ids": [
+                        "zWYf5of9iftsT6N23"
                     ]
                 }
             ]
@@ -1901,16 +1873,6 @@
                 },
                 {
                     "entry_count": 4,
-                    "code": "{\n\t// Influencers post every day.\n  \tall d : Day| some i : Influencer| d in i.posts.date\n\n}",
-                    "ids": [
-                        "evcjyh8xEWxfrGYLG",
-                        "omjBHrYRP9iLfZhAr",
-                        "PeB7jL4swpMFiT4Lp",
-                        "JxjviqBj66LSAtyQd"
-                    ]
-                },
-                {
-                    "entry_count": 4,
                     "code": "{\n\t// Influencers post every day.\n  \n// all x:User | x in Influencer implies \n//    (all d:Day | some z:Photo | x->z in posts and z->d in date)\n  \n// all x:Influencer | \n//      (all d:Day | some z:Photo | x in posts.z and z in date.d)\n \n    // all x:Influencer, d:Day | x in posts.date.d\n \n     all d : Day | some Influencer.posts & date.d\n}",
                     "ids": [
                         "MCrymgdgqRAPLKEno",
@@ -1920,25 +1882,21 @@
                     ]
                 },
                 {
+                    "entry_count": 4,
+                    "code": "{\n\t// Influencers post every day.\n  \tall d : Day| some i : Influencer| d in i.posts.date\n\n}",
+                    "ids": [
+                        "evcjyh8xEWxfrGYLG",
+                        "omjBHrYRP9iLfZhAr",
+                        "PeB7jL4swpMFiT4Lp",
+                        "JxjviqBj66LSAtyQd"
+                    ]
+                },
+                {
                     "entry_count": 2,
                     "code": "{\n\t// Influencers post every day.\n  no Day - Influencer.posts.date\n\n}",
                     "ids": [
                         "YvmYuYgop7S4df5Rw",
                         "Kgirbt4MYWcbJwfNf"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Influencers post every day.\n  \t(Influencer <: posts.date) in Influencer some -> Day \n\n}",
-                    "ids": [
-                        "GsNBT7K3gfRhTRva2"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Influencers post every day.\n\tall d : Day | some p : Influencer.posts | p.date in d\n}",
-                    "ids": [
-                        "4EekaMJp22pCh5aRd"
                     ]
                 },
                 {
@@ -1960,6 +1918,20 @@
                     "code": "{\n\t// Influencers post every day.\n  all d : Day | some (d & Influencer.posts.date )\n\n}",
                     "ids": [
                         "f6Na3yw6RcPayk4bd"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n\tall d : Day | some p : Influencer.posts | p.date in d\n}",
+                    "ids": [
+                        "4EekaMJp22pCh5aRd"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n  \t(Influencer <: posts.date) in Influencer some -> Day \n\n}",
+                    "ids": [
+                        "GsNBT7K3gfRhTRva2"
                     ]
                 }
             ]
@@ -2012,93 +1984,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Influencers post every day.\n\tall i: Influencer | all d: Day | i.posts in Day\n}",
+                    "code": "{\n\t// Influencers post every day.\n  \t//one d1: Date, d2: Date| all i: Influencer, p1: date.d1, p2: date.d2|  \n\n  \t//all i: Influencer, p: Photo| one d1: Day, d2:Day | some posts.i implies posts.d1!=posts.d2\n  \n  all u:User,i:Influencer, p: Photo, x,y:i.posts |  x.date!=y.date  \n  \n  //p->d in Date   photos p est\u00e3o no set de photos de data D\n}",
                     "ids": [
-                        "ovgHRFL5rca6EpCH2"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Influencers post every day.\n  all i:Influencer, p:i.posts, dx:p.date, dy:p.date | dx not in p implies p not in i.posts\n\n}",
-                    "ids": [
-                        "JTEYQwi3N8brJn8Fs"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Influencers post every day.\n  all i:Influencer, d:Day, z:Photo | z in i.posts iff d in i.date.posts\n\n}",
-                    "ids": [
-                        "kzTwE2sxZryiLeRn6"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Influencers post every day.\n  all i:Influencer, p:i.posts, dx:p.date, dy:p.date | dx in p and dy in p and dx != dy\n\n}",
-                    "ids": [
-                        "5yE2K6YdPzu7mJgcj"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Influencers post every day.\n\tall i: Influencer | all d : Day | i.posts in d.posts\n}",
-                    "ids": [
-                        "A38NJy3gcE6bHHtbp"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Influencers post every day.\n\tall i : Influencer, p: Photo | p in i.posts implies (all d : Day | p in d.date)\n}",
-                    "ids": [
-                        "m8GzmKd3Nw6xxt5rF"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Influencers post every day.\n\tall i : Influencer, p: Photo | p in i.posts implies (all d: Day | p in i.date)\n}",
-                    "ids": [
-                        "RSAGYAChANvsjW6CD"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Influencers post every day.\n  \t//one d1: Date, d2: Date| all i: Influencer, p1: date.d1, p2: date.d2|  \n\n  \t//all i: Influencer, p: Photo| one d1: Day, d2:Day | some posts.i implies posts.d1!=posts.d2\n  \n  all i:Influencer, x,y:i.posts |  date.x!=date.y  \n  \n  //p->d in Date   photos p est\u00e3o no set de photos de data D\n}",
-                    "ids": [
-                        "jh4uEDFMHLBsCZ2Hk"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Influencers post every day.\n  \t//one d1: Date, d2: Date| all i: Influencer, p1: date.d1, p2: date.d2|  \n\n  \t//all i: Influencer, p: Photo| one d1: Day, d2:Day | some posts.i implies posts.d1!=posts.d2\n  \n  all i:Influencer, p: Photo, x,y:i.posts |  x.date!=y.date  \n  \n  //p->d in Date   photos p est\u00e3o no set de photos de data D\n}",
-                    "ids": [
-                        "Cop3WfH4tLahuLetC"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Influencers post every day.\n\tall i : Influencer | all p : i.posts | p in Day\n}",
-                    "ids": [
-                        "2CqZNz4Fb5o6jMSc6"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Influencers post every day.\n  all d : Day, ip : Influencer.posts | d in ip\n\n}",
-                    "ids": [
-                        "dnLBujrauSYy2GcwD"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Influencers post every day.\n  \t//one d1: Date, d2: Date| all i: Influencer, p1: date.d1, p2: date.d2|  \n\n  \t//all i: Influencer, p: Photo| one d1: Day, d2:Day | some posts.i implies posts.d1!=posts.d2\n  \n  all i:Influencer, x,y:i.posts |  x.^date!=y.^date  \n  \n  //p->d in Date   photos p est\u00e3o no set de photos de data D\n}",
-                    "ids": [
-                        "pftZnfJWbZbaPFxy7"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Influencers post every day.\n  all i:Influencer, p:i.posts, dx:p.date, dy:p.date | dx != dy\n\n}",
-                    "ids": [
-                        "fqmr9CQEPff2sLhTw"
+                        "MPe9GHYyDY5HH9dWH"
                     ]
                 },
                 {
@@ -2110,9 +1998,93 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Influencers post every day.\n  \t//one d1: Date, d2: Date| all i: Influencer, p1: date.d1, p2: date.d2|  \n\n  \t//all i: Influencer, p: Photo| one d1: Day, d2:Day | some posts.i implies posts.d1!=posts.d2\n  \n  all u:User,i:Influencer, p: Photo, x,y:i.posts |  x.date!=y.date  \n  \n  //p->d in Date   photos p est\u00e3o no set de photos de data D\n}",
+                    "code": "{\n\t// Influencers post every day.\n\tall i : Influencer | all p : i.posts | p in Day\n}",
                     "ids": [
-                        "MPe9GHYyDY5HH9dWH"
+                        "2CqZNz4Fb5o6jMSc6"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n  \t//one d1: Date, d2: Date| all i: Influencer, p1: date.d1, p2: date.d2|  \n\n  \t//all i: Influencer, p: Photo| one d1: Day, d2:Day | some posts.i implies posts.d1!=posts.d2\n  \n  all i:Influencer, x,y:i.posts |  date.x!=date.y  \n  \n  //p->d in Date   photos p est\u00e3o no set de photos de data D\n}",
+                    "ids": [
+                        "jh4uEDFMHLBsCZ2Hk"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n  all i:Influencer, d:Day, z:Photo | z in i.posts iff d in i.date.posts\n\n}",
+                    "ids": [
+                        "kzTwE2sxZryiLeRn6"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n\tall i : Influencer, p: Photo | p in i.posts implies (all d: Day | p in i.date)\n}",
+                    "ids": [
+                        "RSAGYAChANvsjW6CD"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n  all i:Influencer, p:i.posts, dx:p.date, dy:p.date | dx not in p implies p not in i.posts\n\n}",
+                    "ids": [
+                        "JTEYQwi3N8brJn8Fs"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n\tall i : Influencer, p: Photo | p in i.posts implies (all d : Day | p in d.date)\n}",
+                    "ids": [
+                        "m8GzmKd3Nw6xxt5rF"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n  all i:Influencer, p:i.posts, dx:p.date, dy:p.date | dx in p and dy in p and dx != dy\n\n}",
+                    "ids": [
+                        "5yE2K6YdPzu7mJgcj"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n  all d : Day, ip : Influencer.posts | d in ip\n\n}",
+                    "ids": [
+                        "dnLBujrauSYy2GcwD"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n\tall i: Influencer | all d: Day | i.posts in Day\n}",
+                    "ids": [
+                        "ovgHRFL5rca6EpCH2"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n  all i:Influencer, p:i.posts, dx:p.date, dy:p.date | dx != dy\n\n}",
+                    "ids": [
+                        "fqmr9CQEPff2sLhTw"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n\tall i: Influencer | all d : Day | i.posts in d.posts\n}",
+                    "ids": [
+                        "A38NJy3gcE6bHHtbp"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n  \t//one d1: Date, d2: Date| all i: Influencer, p1: date.d1, p2: date.d2|  \n\n  \t//all i: Influencer, p: Photo| one d1: Day, d2:Day | some posts.i implies posts.d1!=posts.d2\n  \n  all i:Influencer, p: Photo, x,y:i.posts |  x.date!=y.date  \n  \n  //p->d in Date   photos p est\u00e3o no set de photos de data D\n}",
+                    "ids": [
+                        "Cop3WfH4tLahuLetC"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n  \t//one d1: Date, d2: Date| all i: Influencer, p1: date.d1, p2: date.d2|  \n\n  \t//all i: Influencer, p: Photo| one d1: Day, d2:Day | some posts.i implies posts.d1!=posts.d2\n  \n  all i:Influencer, x,y:i.posts |  x.^date!=y.^date  \n  \n  //p->d in Date   photos p est\u00e3o no set de photos de data D\n}",
+                    "ids": [
+                        "pftZnfJWbZbaPFxy7"
                     ]
                 }
             ]
@@ -2171,18 +2143,18 @@
                 },
                 {
                     "entry_count": 2,
-                    "code": "{\n\t// Influencers post every day.\n\t all i: Influencer | some d: Day | some p: i.posts | p.date = d\n}",
-                    "ids": [
-                        "ShJBQKCsxT6rsDGWt",
-                        "7vbdR7TwWqePDqZTB"
-                    ]
-                },
-                {
-                    "entry_count": 2,
                     "code": "{\n\t// Influencers post every day.\n\tall i : Influencer | some i.posts\n}",
                     "ids": [
                         "msSgcE5YTQiPS6FE8",
                         "YWhrrDhzPA3RJT9Nj"
+                    ]
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Influencers post every day.\n\t all i: Influencer | some d: Day | some p: i.posts | p.date = d\n}",
+                    "ids": [
+                        "ShJBQKCsxT6rsDGWt",
+                        "7vbdR7TwWqePDqZTB"
                     ]
                 },
                 {
@@ -2195,9 +2167,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Influencers post every day.\n  \n// all x:User | x in Influencer implies \n//    (all d:Day | some z:Photo | x->z in posts and z->d in date)\n  \n// all x:Influencer | \n//      (all d:Day | some z:Photo | x in posts.z and z in date.d)\n \n    // all x:Influencer, d:Day | x in posts.date.d\n \n     all x : Influencer | x in posts.date.Day\n}",
+                    "code": "{\n\t// Influencers post every day.\n  all x:Influencer | x.posts.date & Day != none\n}",
                     "ids": [
-                        "BcHgpxhhj3GCPMoSu"
+                        "2MQZiMAXQQuyamNfh"
                     ]
                 },
                 {
@@ -2209,9 +2181,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Influencers post every day.\n\tall u : Influencer | some d : Day | some u.posts & date.d \n}",
+                    "code": "{\n\t// Influencers post every day.\n  \n// all x:User | x in Influencer implies \n//    (all d:Day | some z:Photo | x->z in posts and z->d in date)\n  \n// all x:Influencer | \n//      (all d:Day | some z:Photo | x in posts.z and z in date.d)\n \n    // all x:Influencer, d:Day | x in posts.date.d\n \n     all x : Influencer | x in posts.date.Day\n}",
                     "ids": [
-                        "47H7KhJBEXEvcR4AF"
+                        "BcHgpxhhj3GCPMoSu"
                     ]
                 },
                 {
@@ -2223,16 +2195,16 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Influencers post every day.\n  all x:Influencer | x.posts.date & Day != none\n}",
+                    "code": "{\n  \tall x: Influencer | some p : Photo | x -> p in posts\n\t// Influencers post every day.\n\n}",
                     "ids": [
-                        "2MQZiMAXQQuyamNfh"
+                        "SppQbPPhDmHdFbw5z"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n  \tall x: Influencer | some p : Photo | x -> p in posts\n\t// Influencers post every day.\n\n}",
+                    "code": "{\n\t// Influencers post every day.\n\tall u : Influencer | some d : Day | some u.posts & date.d \n}",
                     "ids": [
-                        "SppQbPPhDmHdFbw5z"
+                        "47H7KhJBEXEvcR4AF"
                     ]
                 }
             ]
@@ -2273,16 +2245,16 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Influencers post every day.\n\tall x : User | x in Influencer implies \n\t all d : Day | all z : Photo | x->z in posts and z->d in date\n}",
+                    "code": "{\n\t// Influencers post every day.\n  all d : Day, i : Influencer | i.posts = date.d\n\n}",
                     "ids": [
-                        "PLsQ5ianfHB8Jw4By"
+                        "wjqXmeE7Jm9i6da9r"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Influencers post every day.\n  all d : Day, i : Influencer | i.posts = date.d\n\n}",
+                    "code": "{\n\t// Influencers post every day.\n\tall x : User | x in Influencer implies \n\t all d : Day | all z : Photo | x->z in posts and z->d in date\n}",
                     "ids": [
-                        "wjqXmeE7Jm9i6da9r"
+                        "PLsQ5ianfHB8Jw4By"
                     ]
                 }
             ]
@@ -2310,23 +2282,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Influencers post every day.\n  all i : Influencer, d : Day, p : Photo | p in i.posts & d\n\n}",
+                    "code": "{\n\t// Influencers post every day.\n  all d : Day, i : Influencer | i.posts.date = date.d\n\n}",
                     "ids": [
-                        "7krKAGkZLH3WJ4Ngr"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Influencers post every day.\n\tall i : Influencer, p: Photo, d: Day | p in i.posts and p in i.date\n}",
-                    "ids": [
-                        "8KQkZY9wZvmhYsrrY"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Influencers post every day.\n\tall p: Photo| Influencer in p.date\n}",
-                    "ids": [
-                        "uYdoqrpKJtEYip5BE"
+                        "Go4D9mNvZJPXZ2K58"
                     ]
                 },
                 {
@@ -2345,13 +2303,6 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Influencers post every day.\n  \n    // all i : Influencer | all d : Day | some p : Photo | i -> p in posts and p -> d in date\n\tall i : Influencer | Photo = i.posts.date\n\n}",
-                    "ids": [
-                        "r6QvQwjqNPxhK7xij"
-                    ]
-                },
-                {
-                    "entry_count": 1,
                     "code": "{\n\t// Influencers post every day.\n  \tall i: Influencer, p: Photo | some (i.posts & date.p)\n}",
                     "ids": [
                         "CH6GBgk6zuRC7Cwpb"
@@ -2359,9 +2310,30 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Influencers post every day.\n  all d : Day, i : Influencer | i.posts.date = date.d\n\n}",
+                    "code": "{\n\t// Influencers post every day.\n\tall p: Photo| Influencer in p.date\n}",
                     "ids": [
-                        "Go4D9mNvZJPXZ2K58"
+                        "uYdoqrpKJtEYip5BE"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n  all i : Influencer, d : Day, p : Photo | p in i.posts & d\n\n}",
+                    "ids": [
+                        "7krKAGkZLH3WJ4Ngr"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n\tall i : Influencer, p: Photo, d: Day | p in i.posts and p in i.date\n}",
+                    "ids": [
+                        "8KQkZY9wZvmhYsrrY"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n  \n    // all i : Influencer | all d : Day | some p : Photo | i -> p in posts and p -> d in date\n\tall i : Influencer | Photo = i.posts.date\n\n}",
+                    "ids": [
+                        "r6QvQwjqNPxhK7xij"
                     ]
                 }
             ]
@@ -2392,9 +2364,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n  \tall x: Influencer, d: Day | one p: Photo | x -> p in posts and p.date = d\n\t// Influencers post every day.\n\n}",
+                    "code": "{\n\t// Influencers post every day.\n\tall u : Influencer, d : Day |\n  \t\tone p : Photo |\n  \t\t\tp in u.posts and p in date.d\n}",
                     "ids": [
-                        "DmoBq2yjQ2uqxjYPW"
+                        "q8ptbkwC7gaMjB6ok"
                     ]
                 },
                 {
@@ -2406,9 +2378,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Influencers post every day.\n\tall u : Influencer, d : Day |\n  \t\tone p : Photo |\n  \t\t\tp in u.posts and p in date.d\n}",
+                    "code": "{\n  \tall x: Influencer, d: Day | one p: Photo | x -> p in posts and p.date = d\n\t// Influencers post every day.\n\n}",
                     "ids": [
-                        "q8ptbkwC7gaMjB6ok"
+                        "DmoBq2yjQ2uqxjYPW"
                     ]
                 }
             ]
@@ -2420,34 +2392,6 @@
             "elems": [
                 {
                     "entry_count": 1,
-                    "code": "{\n  \tall x: Influencer | one d: Day| x -> d in posts\n\t// Influencers post every day.\n\n}",
-                    "ids": [
-                        "WfNgzg7ZqWp2n5fWo"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Influencers post every day.\nall i: Influencer| all u: User | i in u.posts\n}",
-                    "ids": [
-                        "YB8ftvsLTwnhfajuS"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Influencers post every day.\n\tall d, Day, i: Influencer | some p: i.posts | p.date = d \n\n}",
-                    "ids": [
-                        "xYNyxtAD7aJJxrcCp"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Influencers post every day.\n\tall i: Influencer | Day - i.posts.date = 0\n}",
-                    "ids": [
-                        "GCRPdbatiugeipaJ4"
-                    ]
-                },
-                {
-                    "entry_count": 1,
                     "code": "{\n\t// Influencers post every day.\n\tall i : Influencer | some date.posts.i\n}",
                     "ids": [
                         "D4G2TggNNT3hMGX9h"
@@ -2455,16 +2399,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Influencers post every day.\n\tno Influencer\n}",
+                    "code": "{\n  \tall x: Influencer | one d: Day| x -> d in posts\n\t// Influencers post every day.\n\n}",
                     "ids": [
-                        "p5BvjJbqsNnKrrZQQ"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Influencers post every day.\n  all x : Influencer | some y: Photo | all z: Day | y in z.date and y in x.posts\n}",
-                    "ids": [
-                        "Fr2FJf5XYmZbBoYcL"
+                        "WfNgzg7ZqWp2n5fWo"
                     ]
                 },
                 {
@@ -2479,6 +2416,41 @@
                     "code": "{\n\t// Influencers post every day.\n  all x : Influencer | some y: Photo | all z: Day | y in date.z and y in posts.x\n}",
                     "ids": [
                         "G5SzPExdKpCKFLpQb"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n\tall d, Day, i: Influencer | some p: i.posts | p.date = d \n\n}",
+                    "ids": [
+                        "xYNyxtAD7aJJxrcCp"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n\tno Influencer\n}",
+                    "ids": [
+                        "p5BvjJbqsNnKrrZQQ"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\nall i: Influencer| all u: User | i in u.posts\n}",
+                    "ids": [
+                        "YB8ftvsLTwnhfajuS"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n  all x : Influencer | some y: Photo | all z: Day | y in z.date and y in x.posts\n}",
+                    "ids": [
+                        "Fr2FJf5XYmZbBoYcL"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n\tall i: Influencer | Day - i.posts.date = 0\n}",
+                    "ids": [
+                        "GCRPdbatiugeipaJ4"
                     ]
                 },
                 {
@@ -2524,14 +2496,6 @@
             "elems": [
                 {
                     "entry_count": 2,
-                    "code": "{\n\t// Influencers post every day.\n\tall i : Influencer | all d : Day | some p : Photo | i->p in posts implies p->d in date\n}",
-                    "ids": [
-                        "8vsWDmaPHZ7MF9Pt2",
-                        "jQyfvjrQSYjbG98BK"
-                    ]
-                },
-                {
-                    "entry_count": 2,
                     "code": "{\n\t// Influencers post every day.\n\tall x : User | x in Influencer implies (all d : Day | some p : Photo | x->p in posts implies p->d in date)\n\n}",
                     "ids": [
                         "YoaDjGWwwRGGA59at",
@@ -2539,10 +2503,11 @@
                     ]
                 },
                 {
-                    "entry_count": 1,
-                    "code": "{\n\t// Influencers post every day.\n  all d : Day | all i : Influencer | some p: Photo | p in i.posts implies p.date in d\n\n}",
+                    "entry_count": 2,
+                    "code": "{\n\t// Influencers post every day.\n\tall i : Influencer | all d : Day | some p : Photo | i->p in posts implies p->d in date\n}",
                     "ids": [
-                        "dAgdbFTrA9A2AoP6Q"
+                        "8vsWDmaPHZ7MF9Pt2",
+                        "jQyfvjrQSYjbG98BK"
                     ]
                 },
                 {
@@ -2564,6 +2529,13 @@
                     "code": "{\n\t// Influencers post every day.\n  all i:Influencer, d:Day | some z:Photo | z in i.posts implies d in i.posts.date\n\n}",
                     "ids": [
                         "ErHWQAKtwB7SPMtGW"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n  all d : Day | all i : Influencer | some p: Photo | p in i.posts implies p.date in d\n\n}",
+                    "ids": [
+                        "dAgdbFTrA9A2AoP6Q"
                     ]
                 }
             ]
@@ -2652,16 +2624,16 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Influencers post every day.\n  all x : Influencer | some y: Photo | all z: Day | y->z in date and y in x.posts\n}",
+                    "code": "{\n\t// Influencers post every day.\n  all u:  User | u in Influencer implies some p : Photo | all d : Day | u in posts.p and p in date.d\n\n}",
                     "ids": [
-                        "B3koRJgWNyMbTvDoJ"
+                        "tZ9uhFhtYmGGmYiHw"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Influencers post every day.\n  all u:  User | u in Influencer implies some p : Photo | all d : Day | u in posts.p and p in date.d\n\n}",
+                    "code": "{\n\t// Influencers post every day.\n  all x : Influencer | some y: Photo | all z: Day | y->z in date and y in x.posts\n}",
                     "ids": [
-                        "tZ9uhFhtYmGGmYiHw"
+                        "B3koRJgWNyMbTvDoJ"
                     ]
                 }
             ]
@@ -2681,13 +2653,6 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Influencers post every day.\n  \tall i:Influencer, d:Day | some p:Photo | d in p.date\n\t// all i:Influencer, d:Day | i in posts.date.d\n}",
-                    "ids": [
-                        "n4rNbRt9XJu9pHB8P"
-                    ]
-                },
-                {
-                    "entry_count": 1,
                     "code": "{\n\t// Influencers post every day.\n  \tall i : Influencer | all d : Day | some date.d\n\n}",
                     "ids": [
                         "sACAvQpkK5TXWWnRp"
@@ -2698,6 +2663,13 @@
                     "code": "{\n\t// Influencers post every day.\n  \tall i:Influencer, d:Day | some p:Photo | p in date.d\n\t// all i:Influencer, d:Day | i in posts.date.d\n}",
                     "ids": [
                         "59xFyz8C4xXoPpZjd"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n  \tall i:Influencer, d:Day | some p:Photo | d in p.date\n\t// all i:Influencer, d:Day | i in posts.date.d\n}",
+                    "ids": [
+                        "n4rNbRt9XJu9pHB8P"
                     ]
                 }
             ]
@@ -2738,13 +2710,6 @@
             "elems": [
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Influencers post every day.\n  all i:Influencer, d:Day, z:Photo | z in i.posts and d in i.posts.date implies not some dx:Day | dx not in i.posts.date\n\n}",
-                    "ids": [
-                        "r9xhHzrnDJ5cf7tzZ"
-                    ]
-                },
-                {
-                    "entry_count": 1,
                     "code": "{\n\t// Influencers post every day.\n  all i:Influencer, d:Day, z:Photo | z in i.posts implies d in i.posts.date\n\n}",
                     "ids": [
                         "Xcm5QEm25tEwaiWBH"
@@ -2755,6 +2720,13 @@
                     "code": "{\n\t// Influencers post every day.\n  all i:Influencer, d:Day, z:Photo | z in i.posts implies not some dx:Day | dx not in i.posts.date\n\n}",
                     "ids": [
                         "A6YRZczRWSn7sBRx5"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n  all i:Influencer, d:Day, z:Photo | z in i.posts and d in i.posts.date implies not some dx:Day | dx not in i.posts.date\n\n}",
+                    "ids": [
+                        "r9xhHzrnDJ5cf7tzZ"
                     ]
                 }
             ]
@@ -2788,9 +2760,9 @@
             "elems": [
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Influencers post every day.\n\tall i: Influencer | all disj p1, p2: Photo | p1 in i.posts and p2 in i.posts implies p1.date = p2.date\n}",
+                    "code": "{\n\t// Influencers post every day.\n  \t\tall i: Influencer | lone d1, d2: Day | d1 in i.posts.date and d2 in i.posts.date \n}",
                     "ids": [
-                        "FoJku5f57BZ7zwZi2"
+                        "aFSDNbw5zCesYam9P"
                     ]
                 },
                 {
@@ -2802,9 +2774,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Influencers post every day.\n  \t\tall i: Influencer | lone d1, d2: Day | d1 in i.posts.date and d2 in i.posts.date \n}",
+                    "code": "{\n\t// Influencers post every day.\n\tall i: Influencer | all disj p1, p2: Photo | p1 in i.posts and p2 in i.posts implies p1.date = p2.date\n}",
                     "ids": [
-                        "aFSDNbw5zCesYam9P"
+                        "FoJku5f57BZ7zwZi2"
                     ]
                 }
             ]
@@ -2882,16 +2854,16 @@
             "elems": [
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Influencers post every day.\n  all d: Day, i: Influencer | (i.posts.date+i.sees.date) in d\n\n}",
+                    "code": "{\n\t// Influencers post every day.\n  all d: Day, i: Influencer | (i.posts.date++i.sees.date) in d\n\n}",
                     "ids": [
-                        "TRuZSr3Fevw9PjQBX"
+                        "TEi3dx4xtT4W9mMqw"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Influencers post every day.\n  all d: Day, i: Influencer | (i.posts.date++i.sees.date) in d\n\n}",
+                    "code": "{\n\t// Influencers post every day.\n  all d: Day, i: Influencer | (i.posts.date+i.sees.date) in d\n\n}",
                     "ids": [
-                        "TEi3dx4xtT4W9mMqw"
+                        "TRuZSr3Fevw9PjQBX"
                     ]
                 }
             ]
@@ -2969,16 +2941,16 @@
             "elems": [
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Influencers post every day.\n  \n  all i : Influencer , p : Photo, d : Day \t| some i.posts & date.d\n  \n\n}",
+                    "code": "{\n  // Influencers post every day.\n  \n  all i : Influencer, p : Photo, d : Day | some p : i.posts | p.date = d\n}",
                     "ids": [
-                        "by2ZGKWjFwQXfCiRW"
+                        "fcEPgWscjPsQAzrYE"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n  // Influencers post every day.\n  \n  all i : Influencer, p : Photo, d : Day | some p : i.posts | p.date = d\n}",
+                    "code": "{\n\t// Influencers post every day.\n  \n  all i : Influencer , p : Photo, d : Day \t| some i.posts & date.d\n  \n\n}",
                     "ids": [
-                        "fcEPgWscjPsQAzrYE"
+                        "by2ZGKWjFwQXfCiRW"
                     ]
                 }
             ]
@@ -2990,16 +2962,16 @@
             "elems": [
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Influencers post every day.\n  \tall u : User, d :Day | some p : Photo | u in posts.p and p in date.d\n\n}",
+                    "code": "{\n\t// Influencers post every day.\n  all u:User, d:Day | (some p: Photo | p in u.posts and d in p.date)\n\n}",
                     "ids": [
-                        "EKM9zdjFp27XXmHry"
+                        "rPc4zCyZdgPKYoMcc"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Influencers post every day.\n  all u:User, d:Day | (some p: Photo | p in u.posts and d in p.date)\n\n}",
+                    "code": "{\n\t// Influencers post every day.\n  \tall u : User, d :Day | some p : Photo | u in posts.p and p in date.d\n\n}",
                     "ids": [
-                        "rPc4zCyZdgPKYoMcc"
+                        "EKM9zdjFp27XXmHry"
                     ]
                 }
             ]
@@ -3041,16 +3013,16 @@
             "elems": [
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Influencers post every day.\n\tall u: Influencer, disj d1,d2:Day|some i:u.posts | i in date.d1 and i in date.d2 implies d1!=d2\n}",
+                    "code": "{\n\t// Influencers post every day.\n\tall u: Influencer, disj d1,d2:Day|some i:u.posts | i in d1 and i in d2 implies d1!=d2\n}",
                     "ids": [
-                        "mYqQ9idNy2vEn8G3s"
+                        "qpxZkhHfrKMSEnMqF"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Influencers post every day.\n\tall u: Influencer, disj d1,d2:Day|some i:u.posts | i in d1 and i in d2 implies d1!=d2\n}",
+                    "code": "{\n\t// Influencers post every day.\n\tall u: Influencer, disj d1,d2:Day|some i:u.posts | i in date.d1 and i in date.d2 implies d1!=d2\n}",
                     "ids": [
-                        "qpxZkhHfrKMSEnMqF"
+                        "mYqQ9idNy2vEn8G3s"
                     ]
                 }
             ]
@@ -3457,20 +3429,6 @@
                     "code": "{\n\t// Influencers post every day.\n  \n  all i : Influencer , p : Photo, d : Day \t| i.posts in p && i.posts in date.d\n  \n\n}",
                     "ids": [
                         "bTbqBNLQq6cWJsnm7"
-                    ]
-                }
-            ]
-        },
-        {
-            "entry_count": 1,
-            "group_count": 1,
-            "correct": false,
-            "elems": [
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Influencers post every day.\n\tall i: Influencer | all disj p1, p2: Photo | p1 in i.posts and p2 in i.posts implies p1.date = p2.date.next\n}",
-                    "ids": [
-                        "omCuAGXkdScZmryE7"
                     ]
                 }
             ]

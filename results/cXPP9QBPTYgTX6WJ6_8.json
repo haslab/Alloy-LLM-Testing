@@ -3,7 +3,7 @@
     "pred": "this/inv9",
     "entry_count": 768,
     "group_count": 206,
-    "duration": 107,
+    "duration": 104,
     "scope": 3,
     "groups": [
         {
@@ -221,22 +221,22 @@
                 },
                 {
                     "entry_count": 4,
-                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tno ((Track - (succs.Junction)).signals :> Semaphore)\n}",
-                    "ids": [
-                        "kbMb4LF7ezvwry8Sh",
-                        "By7b8ufKpdRP3SqhK",
-                        "fcnyf3T3h8ePKphTW",
-                        "oB5Y4b34ss3WNymso"
-                    ]
-                },
-                {
-                    "entry_count": 4,
                     "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n  \tall t : Track |  some (Semaphore&t.signals) implies  some (Junction&t.succs)\n\n}",
                     "ids": [
                         "7kfFRRz5PzoPsEe62",
                         "nxkd4PZ8r8jdGxDWN",
                         "GiGZNxiBA85jhHEmG",
                         "kZKTcWC5G6jWF95pR"
+                    ]
+                },
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tno ((Track - (succs.Junction)).signals :> Semaphore)\n}",
+                    "ids": [
+                        "kbMb4LF7ezvwry8Sh",
+                        "By7b8ufKpdRP3SqhK",
+                        "fcnyf3T3h8ePKphTW",
+                        "oB5Y4b34ss3WNymso"
                     ]
                 },
                 {
@@ -294,23 +294,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t: Track | no t.succs & Junction implies all s:Semaphore| s not in t.signals\n}",
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t : Track, s : Semaphore | no t.succs & Junction implies s not in t.signals\n}",
                     "ids": [
-                        "f74mPYx8xYm8RmER3"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n  all x: Track | \n    no {j: Junction | x->j in succs} implies no x.signals & Semaphore\n}",
-                    "ids": [
-                        "uNkcDheoem9qcdCjf"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\nall e : Track |  (not (some j : Junction|j in e.succs)) implies (all s : Semaphore | s not in e.signals)}",
-                    "ids": [
-                        "9Zr8Lz7LesvozzFHL"
+                        "t39yBqe485BEYyuDp"
                     ]
                 },
                 {
@@ -329,16 +315,16 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\t//no ((Track - (succs.Junction)).signals :> Semaphore)\n  \tall t: Track | no (t.succs & Junction) implies no t.signals :> Semaphore\n  \t// t.signals & Semaphore = t.signals :> Semaphore\n}",
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t: Track | no t.succs & Junction implies all s:Semaphore| s not in t.signals\n}",
                     "ids": [
-                        "pek5LjPzBpzEt3pZX"
+                        "f74mPYx8xYm8RmER3"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t : Track, s : Semaphore | no t.succs & Junction implies s not in t.signals\n}",
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n  all t: Track - Junction.~succs | no s: Semaphore | s in t.signals\n\n}",
                     "ids": [
-                        "t39yBqe485BEYyuDp"
+                        "LRabuq8jgmZ9m6Nv9"
                     ]
                 },
                 {
@@ -350,9 +336,23 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n  all t: Track - Junction.~succs | no s: Semaphore | s in t.signals\n\n}",
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\t//no ((Track - (succs.Junction)).signals :> Semaphore)\n  \tall t: Track | no (t.succs & Junction) implies no t.signals :> Semaphore\n  \t// t.signals & Semaphore = t.signals :> Semaphore\n}",
                     "ids": [
-                        "LRabuq8jgmZ9m6Nv9"
+                        "pek5LjPzBpzEt3pZX"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n  all x: Track | \n    no {j: Junction | x->j in succs} implies no x.signals & Semaphore\n}",
+                    "ids": [
+                        "uNkcDheoem9qcdCjf"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\nall e : Track |  (not (some j : Junction|j in e.succs)) implies (all s : Semaphore | s not in e.signals)}",
+                    "ids": [
+                        "9Zr8Lz7LesvozzFHL"
                     ]
                 }
             ]
@@ -415,9 +415,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n  \tall t : Track | Junction not in t.succs implies not (Semaphore in t.signals)\n\n}",
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t : Track | Semaphore in t.signals implies Junction in t.succs\n}",
                     "ids": [
-                        "j3R6rs4QnNcLW4nJb"
+                        "yTE34yYZqn7NqAFqS"
                     ]
                 },
                 {
@@ -429,9 +429,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t : Track | Semaphore in t.signals implies Junction in t.succs\n}",
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n  \tall t : Track | Junction not in t.succs implies not (Semaphore in t.signals)\n\n}",
                     "ids": [
-                        "yTE34yYZqn7NqAFqS"
+                        "j3R6rs4QnNcLW4nJb"
                     ]
                 }
             ]
@@ -504,20 +504,6 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n  \tall t : Track | not(t.succs in Junction) implies no(t.signals & Semaphore)\n\n}",
-                    "ids": [
-                        "DhuJfJyuZysRwzfCz"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n    // Tracks not followed by junctions do not have semaphores\n      all t:Track | all t1:t.succs | t1 not in Junction implies no (t.signals & Semaphore)\n  //all t:Track | all t1:t.succs | \n  \t\n\n}",
-                    "ids": [
-                        "siDCLwkicvrisgoA7"
-                    ]
-                },
-                {
-                    "entry_count": 1,
                     "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t:Track | all s:t.signals| t.succs not in Junction implies s not in Semaphore\n  \n}",
                     "ids": [
                         "m9FqbxGaCCLXFJpKc"
@@ -535,6 +521,20 @@
                     "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t,t1 : Track | (t1 in t.succs and t1 not in Junction) implies no (t.signals & Semaphore)\t\n }",
                     "ids": [
                         "JKgPbSZFBReAi4fMw"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n  \tall t : Track | not(t.succs in Junction) implies no(t.signals & Semaphore)\n\n}",
+                    "ids": [
+                        "DhuJfJyuZysRwzfCz"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n    // Tracks not followed by junctions do not have semaphores\n      all t:Track | all t1:t.succs | t1 not in Junction implies no (t.signals & Semaphore)\n  //all t:Track | all t1:t.succs | \n  \t\n\n}",
+                    "ids": [
+                        "siDCLwkicvrisgoA7"
                     ]
                 }
             ]
@@ -560,16 +560,6 @@
                 },
                 {
                     "entry_count": 4,
-                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\t(all t: Track|all j: Junction| j not in t.succs implies no t.signals & Semaphore)\n}",
-                    "ids": [
-                        "47SHXa7X9PibCmxfB",
-                        "tXB3bds6Nbibgmquk",
-                        "n5T29j8ToHwQPCx9S",
-                        "ZLeAHWxwhbQncxhbA"
-                    ]
-                },
-                {
-                    "entry_count": 4,
                     "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t: Track, s: Semaphore, j: Junction | j not in t.succs => s not in t.signals\n}",
                     "ids": [
                         "iwf94YYyphtt3roG3",
@@ -579,12 +569,30 @@
                     ]
                 },
                 {
+                    "entry_count": 4,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\t(all t: Track|all j: Junction| j not in t.succs implies no t.signals & Semaphore)\n}",
+                    "ids": [
+                        "47SHXa7X9PibCmxfB",
+                        "tXB3bds6Nbibgmquk",
+                        "n5T29j8ToHwQPCx9S",
+                        "ZLeAHWxwhbQncxhbA"
+                    ]
+                },
+                {
                     "entry_count": 3,
                     "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t: Track, j: Junction|\n  \t\tj not in t.succs implies (all s: t.signals | s not in Semaphore)\n}",
                     "ids": [
                         "pNgeMTzKy243cPFaD",
                         "fsqv7QrbaZWat8cyP",
                         "Qtw3E8r5ThGQxpYde"
+                    ]
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t: Track | all j: Junction | (j not in t.succs or no t.succs) => no s: Semaphore | s in t.signals\n}",
+                    "ids": [
+                        "KeYLjPjxjNqZ3cteT",
+                        "shDky5nT5GKBX88mf"
                     ]
                 },
                 {
@@ -605,32 +613,10 @@
                 },
                 {
                     "entry_count": 2,
-                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t: Track | all j: Junction | (j not in t.succs or no t.succs) => no s: Semaphore | s in t.signals\n}",
-                    "ids": [
-                        "KeYLjPjxjNqZ3cteT",
-                        "shDky5nT5GKBX88mf"
-                    ]
-                },
-                {
-                    "entry_count": 2,
                     "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n  all x: Track | Junction not in x.succs implies x.signals & Semaphore = none \n\n}",
                     "ids": [
                         "gAFMnCn3EoA3jCSRb",
                         "pD9nrF6zk9MyM39qQ"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t:Track, j:Junction, s:t.signals | j not in t.succs implies s not in Semaphore\n}",
-                    "ids": [
-                        "BqsfGz3Q3s7yhtSnC"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t: Track, s: Semaphore | Junction not in t.succs => s not in t.signals\n}",
-                    "ids": [
-                        "Mh52iTWgxPtKncCk8"
                     ]
                 },
                 {
@@ -645,6 +631,20 @@
                     "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n  \tall t : Track, j : Junction | no t.succs & j => no s : Semaphore | s in t.signals\n\n}",
                     "ids": [
                         "bSCReoWgc5oyQRrB6"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t:Track, j:Junction, s:t.signals | j not in t.succs implies s not in Semaphore\n}",
+                    "ids": [
+                        "BqsfGz3Q3s7yhtSnC"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t: Track, s: Semaphore | Junction not in t.succs => s not in t.signals\n}",
+                    "ids": [
+                        "Mh52iTWgxPtKncCk8"
                     ]
                 },
                 {
@@ -700,16 +700,16 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n  \tall t : Track | (some t.succs and not(t.succs in Junction)) implies not(t.signals in Semaphore)\n\n}",
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t: Track | all s: t.succs | s not in Junction implies t.signals not in Semaphore\n}",
                     "ids": [
-                        "y9ASyLWZvTdMD2CEk"
+                        "S35EjwbKqPwoi9mDg"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t: Track | all s: t.succs | s not in Junction implies t.signals not in Semaphore\n}",
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n  \tall t : Track | (some t.succs and not(t.succs in Junction)) implies not(t.signals in Semaphore)\n\n}",
                     "ids": [
-                        "S35EjwbKqPwoi9mDg"
+                        "y9ASyLWZvTdMD2CEk"
                     ]
                 },
                 {
@@ -755,30 +755,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n    all t: Track - Junction | no s: Semaphore | s in signals.t\n\n}",
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n  all t : Track | Junction not in t.succs implies no(t.signals & Semaphore) and no(t.succs) implies no(t.signals & Semaphore)\n\n}",
                     "ids": [
-                        "hmTYdLEFuZnjeAMPx"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n  \tall t: Track | (some s: Semaphore | s in t.succs) implies t.succs in Junction\n\n}",
-                    "ids": [
-                        "eogAtJx9jPB9gv7pS"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n  all t : Track, s : Semaphore | t.*succs not in Junction implies s not in signals.t \n\n}",
-                    "ids": [
-                        "guKBYFRrZ9v6D4jej"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n    no t: Track - Junction, s: Semaphore | t in s.^signals\n\n}",
-                    "ids": [
-                        "ctzP2yyojFGDMR7fo"
+                        "ZHj8JtaoMQWTsSC8e"
                     ]
                 },
                 {
@@ -790,9 +769,30 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n    no t: Track - Junction, s: Semaphore | t in t.signals\n\n}",
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t : Track | no Junction & t.succs implies no Semaphore & t.succs\n}",
                     "ids": [
-                        "3ZvdyhwT2px4DGqmm"
+                        "R52FPjKtBpgzzzfN8"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n    no t: Track - Junction, s: Semaphore | s in s.signals\n\n}",
+                    "ids": [
+                        "HKLazfR7jxZDguQXq"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n    all t: Track - Junction | no s: Semaphore | t in s.signals\n\n}",
+                    "ids": [
+                        "CSiKkoMm38SMd4zSW"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n    all t: Track - Junction | no s: Semaphore | s in signals.t\n\n}",
+                    "ids": [
+                        "hmTYdLEFuZnjeAMPx"
                     ]
                 },
                 {
@@ -811,6 +811,20 @@
                 },
                 {
                     "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n  all t : Track, s : Semaphore | t.*succs not in Junction implies s not in signals.t \n\n}",
+                    "ids": [
+                        "guKBYFRrZ9v6D4jej"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n    no t: Track - Junction, s: Semaphore | t in s.^signals\n\n}",
+                    "ids": [
+                        "ctzP2yyojFGDMR7fo"
+                    ]
+                },
+                {
+                    "entry_count": 1,
                     "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n    no t: Junction, s: Semaphore | t in s.^signals\n\n}",
                     "ids": [
                         "Tb5pzbm9MafPPteMK"
@@ -818,30 +832,16 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n  all t : Track | Junction not in t.succs implies no(t.signals & Semaphore) and no(t.succs) implies no(t.signals & Semaphore)\n\n}",
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n    no t: Track - Junction, s: Semaphore | t in t.signals\n\n}",
                     "ids": [
-                        "ZHj8JtaoMQWTsSC8e"
+                        "3ZvdyhwT2px4DGqmm"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n    all t: Track - Junction | no s: Semaphore | t in s.signals\n\n}",
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n  \tall t: Track | (some s: Semaphore | s in t.succs) implies t.succs in Junction\n\n}",
                     "ids": [
-                        "CSiKkoMm38SMd4zSW"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t : Track | no Junction & t.succs implies no Semaphore & t.succs\n}",
-                    "ids": [
-                        "R52FPjKtBpgzzzfN8"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n    no t: Track - Junction, s: Semaphore | s in s.signals\n\n}",
-                    "ids": [
-                        "HKLazfR7jxZDguQXq"
+                        "eogAtJx9jPB9gv7pS"
                     ]
                 }
             ]
@@ -887,16 +887,16 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t: Track|\n  \t\t(no j: Junction | j in t.^succs) implies (all s: t.signals | s not in Semaphore)\n}",
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n  all t: Track | some t.signals & Semaphore => some Junction & t.^succs\n\n}",
                     "ids": [
-                        "vAQZrJKmho8tHDcB3"
+                        "9J7Aim8W9rc7L9Xur"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n  all t: Track | some t.signals & Semaphore => some Junction & t.^succs\n\n}",
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t: Track|\n  \t\t(no j: Junction | j in t.^succs) implies (all s: t.signals | s not in Semaphore)\n}",
                     "ids": [
-                        "9J7Aim8W9rc7L9Xur"
+                        "vAQZrJKmho8tHDcB3"
                     ]
                 }
             ]
@@ -919,16 +919,6 @@
                 },
                 {
                     "entry_count": 4,
-                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t: Track | Junction not in t.succs iff Semaphore not in t.signals\n}",
-                    "ids": [
-                        "5SE4rt7jK45oiBsN2",
-                        "6qwqQtP32qDhfT4t3",
-                        "mwo9gXpxYLrxRF6QH",
-                        "BgNeLD55fYDcAZKXD"
-                    ]
-                },
-                {
-                    "entry_count": 4,
                     "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t: Track | Junction in t.succs <=> Semaphore in t.signals\n}",
                     "ids": [
                         "mCErWdpadnKDzmqZ2",
@@ -938,10 +928,13 @@
                     ]
                 },
                 {
-                    "entry_count": 1,
-                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n  all t: Track | not Semaphore in t.signals iff not Junction in t.succs \n}",
+                    "entry_count": 4,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t: Track | Junction not in t.succs iff Semaphore not in t.signals\n}",
                     "ids": [
-                        "HMafyCg4SfTsanrxJ"
+                        "5SE4rt7jK45oiBsN2",
+                        "6qwqQtP32qDhfT4t3",
+                        "mwo9gXpxYLrxRF6QH",
+                        "BgNeLD55fYDcAZKXD"
                     ]
                 },
                 {
@@ -949,6 +942,13 @@
                     "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t: Track | Junction in t.succs => Semaphore in t.signals else Semaphore not in t.signals\n}",
                     "ids": [
                         "Ec7vDbLSFvsw3E5QB"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n  all t: Track | not Semaphore in t.signals iff not Junction in t.succs \n}",
+                    "ids": [
+                        "HMafyCg4SfTsanrxJ"
                     ]
                 }
             ]
@@ -982,16 +982,16 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n  //all t : Track | Junction not in t.succs => Speed not in t.signals \n  all t: Track | no t.~succs & Junction => no t.signals & Semaphore\n\n}",
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n    all t: Track | t !in Junction.succs implies t.signals & Semaphore = none\n}",
                     "ids": [
-                        "87FMgvGTmakeDAZdH"
+                        "BRXd2g7wksR5Gu7Pa"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n    all t: Track | t !in Junction.succs implies t.signals & Semaphore = none\n}",
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n  //all t : Track | Junction not in t.succs => Speed not in t.signals \n  all t: Track | no t.~succs & Junction => no t.signals & Semaphore\n\n}",
                     "ids": [
-                        "BRXd2g7wksR5Gu7Pa"
+                        "87FMgvGTmakeDAZdH"
                     ]
                 }
             ]
@@ -1093,14 +1093,6 @@
             "elems": [
                 {
                     "entry_count": 2,
-                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n  \t// Tracks followed by junctions do have semaphores\n\t\n  all t : Track| some(t.succs & Junction) implies no(t.signals & Semaphore)\n}",
-                    "ids": [
-                        "sii9y9TDK29Xi5wsi",
-                        "JnLtJQRntEPA7iY2r"
-                    ]
-                },
-                {
-                    "entry_count": 2,
                     "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n  \t// Tracks followed by junctions do have semaphores\n\t\n  all t : Track| t.succs != none and some(t.succs & Junction) implies no(t.signals & Semaphore)\n}",
                     "ids": [
                         "tsWd3xGpgopfN5Zhp",
@@ -1109,24 +1101,18 @@
                 },
                 {
                     "entry_count": 2,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n  \t// Tracks followed by junctions do have semaphores\n\t\n  all t : Track| some(t.succs & Junction) implies no(t.signals & Semaphore)\n}",
+                    "ids": [
+                        "sii9y9TDK29Xi5wsi",
+                        "JnLtJQRntEPA7iY2r"
+                    ]
+                },
+                {
+                    "entry_count": 2,
                     "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t : succs.Junction | no t.signals & Semaphore \n}",
                     "ids": [
                         "Tm8rJhWWcBr3QS2kJ",
                         "E8XiTS8FuvXnYnkrc"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n  all x: Track | not (Junction & x.succs = none) \n  \t\t\t\t implies x.signals & Semaphore = none \n\n}",
-                    "ids": [
-                        "sEspjF3rpPNWrTEsd"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t1,t2:Track| t2 in t1.succs and t2 in Junction implies (all s:Signal|t1->s in signals implies s not in Semaphore)\n}",
-                    "ids": [
-                        "zj8Cn7qrhC5D7zkM4"
                     ]
                 },
                 {
@@ -1141,6 +1127,20 @@
                     "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t: Track | \n  \t\t(some j: Junction | j in t.succs) implies\n\t\t\t(no s: Semaphore | s in t.signals)\n}",
                     "ids": [
                         "ryNuxvfqXvbByike3"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t1,t2:Track| t2 in t1.succs and t2 in Junction implies (all s:Signal|t1->s in signals implies s not in Semaphore)\n}",
+                    "ids": [
+                        "zj8Cn7qrhC5D7zkM4"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n  all x: Track | not (Junction & x.succs = none) \n  \t\t\t\t implies x.signals & Semaphore = none \n\n}",
+                    "ids": [
+                        "sEspjF3rpPNWrTEsd"
                     ]
                 }
             ]
@@ -1160,13 +1160,6 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\nall t:Track-Junction, s:Semaphore | t->s not in signals\n}",
-                    "ids": [
-                        "bq2zwbLs9HnKiuBMX"
-                    ]
-                },
-                {
-                    "entry_count": 1,
                     "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t : Track - Junction | no s : t.signals | s in Semaphore\n}",
                     "ids": [
                         "fvpZRvkYiwwJJ4ePn"
@@ -1174,9 +1167,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t: Track, s: Semaphore | t not in Junction implies s not in t.signals\n}",
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n    all t: Track - Junction | no s: Semaphore | s in t.signals\n\n}",
                     "ids": [
-                        "yQgMM9RMH27baNQGK"
+                        "Jw3dT2JFqJLc9paik"
                     ]
                 },
                 {
@@ -1188,13 +1181,6 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n    no t: Track - Junction, s: Semaphore | s in t.^signals\n\n}",
-                    "ids": [
-                        "mE6QpbCtoTS5YKuW2"
-                    ]
-                },
-                {
-                    "entry_count": 1,
                     "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n    all t: Track - Junction | no s: Semaphore | t in signals.s\n\n}",
                     "ids": [
                         "cbgdGWx8mF9oRXBtK"
@@ -1202,9 +1188,23 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n    all t: Track - Junction | no s: Semaphore | s in t.signals\n\n}",
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n    no t: Track - Junction, s: Semaphore | s in t.^signals\n\n}",
                     "ids": [
-                        "Jw3dT2JFqJLc9paik"
+                        "mE6QpbCtoTS5YKuW2"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t: Track, s: Semaphore | t not in Junction implies s not in t.signals\n}",
+                    "ids": [
+                        "yQgMM9RMH27baNQGK"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\nall t:Track-Junction, s:Semaphore | t->s not in signals\n}",
+                    "ids": [
+                        "bq2zwbLs9HnKiuBMX"
                     ]
                 }
             ]
@@ -1501,16 +1501,16 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t : Track | (no t.succs or t.succs not in Junction) implies no s : t.signals | s in Semaphore\n}",
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t: Track | (t.succs not in Junction or no t.succs) => no s: Semaphore | s in t.signals\n}",
                     "ids": [
-                        "HR8fRvNNsupdv6ggc"
+                        "u9vBzWwKiouSvesy2"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t: Track | (t.succs not in Junction or no t.succs) => no s: Semaphore | s in t.signals\n}",
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t : Track | (no t.succs or t.succs not in Junction) implies no s : t.signals | s in Semaphore\n}",
                     "ids": [
-                        "u9vBzWwKiouSvesy2"
+                        "HR8fRvNNsupdv6ggc"
                     ]
                 }
             ]
@@ -1522,16 +1522,9 @@
             "elems": [
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t:Track| Junction & t.*succs =none \n  \t\t\t\timplies (Semaphore & t.signals = none)\n}",
+                    "code": "{\n\n  all t : Track | \n    (all j : Junction | j not in t.*(succs)) implies \n    (all s : Semaphore | s not in t.signals)\n\n  \t//all t : Track | no (t.succs & Junction) implies no (t.signals & Semaphore)\t\n\n}",
                     "ids": [
-                        "d2zoA2o8ydzCrihn9"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n  all t : Track | t not in Junction and no t.^succs & Junction implies no s : Semaphore | s in t.signals\n}",
-                    "ids": [
-                        "FRK29G9SLMJLrcP9h"
+                        "hxzrtep3zgrmtiKZt"
                     ]
                 },
                 {
@@ -1550,9 +1543,16 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\n  all t : Track | \n    (all j : Junction | j not in t.*(succs)) implies \n    (all s : Semaphore | s not in t.signals)\n\n  \t//all t : Track | no (t.succs & Junction) implies no (t.signals & Semaphore)\t\n\n}",
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t:Track| Junction & t.*succs =none \n  \t\t\t\timplies (Semaphore & t.signals = none)\n}",
                     "ids": [
-                        "hxzrtep3zgrmtiKZt"
+                        "d2zoA2o8ydzCrihn9"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n  all t : Track | t not in Junction and no t.^succs & Junction implies no s : Semaphore | s in t.signals\n}",
+                    "ids": [
+                        "FRK29G9SLMJLrcP9h"
                     ]
                 }
             ]
@@ -1593,16 +1593,16 @@
             "elems": [
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t : Track | t.succs not in Junction => Semaphore not in t.signals\n}",
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n  \tall t: Track | (all s: Semaphore | s in t.signals) implies (t.succs in Junction)\n\n}",
                     "ids": [
-                        "ci9nXP4HikuRcRAM5"
+                        "LWjE6HTKQZv4Wvank"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n  \tall t : Track | not(t.succs in Junction) implies not(Semaphore in t.signals)\n\n}",
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t : Track | t.succs not in Junction => Semaphore not in t.signals\n}",
                     "ids": [
-                        "WgTsPv4j7HKmLt5Q6"
+                        "ci9nXP4HikuRcRAM5"
                     ]
                 },
                 {
@@ -1614,9 +1614,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n  \tall t: Track | (all s: Semaphore | s in t.signals) implies (t.succs in Junction)\n\n}",
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n  \tall t : Track | not(t.succs in Junction) implies not(Semaphore in t.signals)\n\n}",
                     "ids": [
-                        "LWjE6HTKQZv4Wvank"
+                        "WgTsPv4j7HKmLt5Q6"
                     ]
                 }
             ]
@@ -1675,6 +1675,13 @@
                 },
                 {
                     "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n  all t : Track | Junction not in t.*succs implies no(t.signals & Semaphore)\n\n}",
+                    "ids": [
+                        "8X3N566DxBnY8tF3T"
+                    ]
+                },
+                {
+                    "entry_count": 1,
                     "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t: Track, j: Junction, s: Semaphore | j not in t.*succs => s not in t.signals\n}",
                     "ids": [
                         "Y85FmFNPv4XpzMHyH"
@@ -1685,13 +1692,6 @@
                     "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t : Track | all j: Junction |all s: Signal | j not in t.*(succs) and s in t.signals implies s not in Semaphore\n}",
                     "ids": [
                         "47vDy3EjZSi3Kycpm"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n  all t : Track | Junction not in t.*succs implies no(t.signals & Semaphore)\n\n}",
-                    "ids": [
-                        "8X3N566DxBnY8tF3T"
                     ]
                 }
             ]
@@ -1916,9 +1916,9 @@
             "elems": [
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t: Track | t not in Junction.*(Junction -> Track)\n}",
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall j : Junction | some s : Semaphore | s in j.*succs\n}",
                     "ids": [
-                        "rqmTAdZPwEjADS7cL"
+                        "yAiYDNE33ANqpmC5R"
                     ]
                 },
                 {
@@ -1930,9 +1930,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall j : Junction | some s : Semaphore | s in j.*succs\n}",
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t: Track | t not in Junction.*(Junction -> Track)\n}",
                     "ids": [
-                        "yAiYDNE33ANqpmC5R"
+                        "rqmTAdZPwEjADS7cL"
                     ]
                 }
             ]
@@ -2007,16 +2007,16 @@
             "elems": [
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t: Track, j: Junction | t.^succs not in Junction implies t.signals not in Semaphore\n}",
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t: Track, j: Junction | t.^succs not in Junction implies t.^signals not in Semaphore\n}",
                     "ids": [
-                        "SRrkoBnkvSSkcK5G3"
+                        "uvF3ab8ZmWAPW5uzR"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t: Track, j: Junction | t.^succs not in Junction implies t.^signals not in Semaphore\n}",
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t: Track, j: Junction | t.^succs not in Junction implies t.signals not in Semaphore\n}",
                     "ids": [
-                        "uvF3ab8ZmWAPW5uzR"
+                        "SRrkoBnkvSSkcK5G3"
                     ]
                 }
             ]
@@ -2049,16 +2049,16 @@
             "elems": [
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n  all t : Track, j : Junction | t not in Junction and j not in t.^succs implies all s : Semaphore | s not in t.signals\n}",
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n  all t : Track, j : Junction | t not in Junction and not j in t.^succs implies all s : Semaphore | s not in t.signals\n}",
                     "ids": [
-                        "pr5yowQ5xwR3YPMhm"
+                        "d7mNQkf8N4FKdnTwa"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n  all t : Track, j : Junction | t not in Junction and not j in t.^succs implies all s : Semaphore | s not in t.signals\n}",
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n  all t : Track, j : Junction | t not in Junction and j not in t.^succs implies all s : Semaphore | s not in t.signals\n}",
                     "ids": [
-                        "d7mNQkf8N4FKdnTwa"
+                        "pr5yowQ5xwR3YPMhm"
                     ]
                 }
             ]
@@ -2068,19 +2068,19 @@
             "group_count": 2,
             "correct": false,
             "elems": [
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t:Track|all j:Junction| all s:Semaphore | j not in t.^succs => s not in t.succs.signals\n}",
-                    "ids": [
-                        "k2A4gCNJ7FnSJiHa5"
-                    ]
-                },
                 {
                     "entry_count": 1,
                     "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t:Track|all j:Junction| all s:Semaphore | j not in t.^succs => s not in t.^succs.signals\n}",
                     "ids": [
                         "Wax72miT9NTHpBTRZ"
                     ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t:Track|all j:Junction| all s:Semaphore | j not in t.^succs => s not in t.succs.signals\n}",
+                    "ids": [
+                        "k2A4gCNJ7FnSJiHa5"
+                    ]
                 }
             ]
         },
@@ -2091,16 +2091,16 @@
             "elems": [
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n  \tall t: Track | ((no t2: Track | t2 in t.succs) or (no j: Junction | j in t.succs)) => no s: Semaphore | s not in t.signals\n}",
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t: Track | no t.succs & Junction implies no s:Semaphore| s not in t.signals\n}",
                     "ids": [
-                        "KzQ79ziqnZDJM5ses"
+                        "c853SwW5DC2soJAvA"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t: Track | no t.succs & Junction implies no s:Semaphore| s not in t.signals\n}",
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n  \tall t: Track | ((no t2: Track | t2 in t.succs) or (no j: Junction | j in t.succs)) => no s: Semaphore | s not in t.signals\n}",
                     "ids": [
-                        "c853SwW5DC2soJAvA"
+                        "KzQ79ziqnZDJM5ses"
                     ]
                 }
             ]
@@ -2232,16 +2232,16 @@
             "elems": [
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t : Track - Junction | not t.signals in Semaphore\n}",
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t : Track - Junction | t.signals not in Semaphore\n}",
                     "ids": [
-                        "hv3QuStmoCJXoydDr"
+                        "CsscJJfLmyKXfcdHf"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t : Track - Junction | t.signals not in Semaphore\n}",
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t : Track - Junction | not t.signals in Semaphore\n}",
                     "ids": [
-                        "CsscJJfLmyKXfcdHf"
+                        "hv3QuStmoCJXoydDr"
                     ]
                 }
             ]
@@ -2251,19 +2251,19 @@
             "group_count": 2,
             "correct": false,
             "elems": [
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t : Track | no j : t.succs | j in Junction implies no t.signals & Semaphore\n}",
-                    "ids": [
-                        "z2fZH2GXzri9D2CGt"
-                    ]
-                },
                 {
                     "entry_count": 1,
                     "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t : Track | no j : t.succs | no s : t.signals| j in Junction and s in Semaphore\n}",
                     "ids": [
                         "LtD2ihhmTM3wqNgi2"
                     ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t : Track | no j : t.succs | j in Junction implies no t.signals & Semaphore\n}",
+                    "ids": [
+                        "z2fZH2GXzri9D2CGt"
+                    ]
                 }
             ]
         },
@@ -2274,16 +2274,16 @@
             "elems": [
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t : Track | all s: Signal | s in t.signals implies t in Junction\n}",
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n    all t: Track - Junction| no t.^signals\n\n}",
                     "ids": [
-                        "AG3KobbjR6aCKN8gc"
+                        "veJ8i6647sCjuXj6f"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n    all t: Track - Junction| no t.^signals\n\n}",
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t : Track | all s: Signal | s in t.signals implies t in Junction\n}",
                     "ids": [
-                        "veJ8i6647sCjuXj6f"
+                        "AG3KobbjR6aCKN8gc"
                     ]
                 }
             ]
@@ -2430,16 +2430,16 @@
             "elems": [
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\nall disj x,y:Track| y not in Junction and x->y in succs implies no s:Semaphore| x->s in signals\n}",
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n  \tall disj t1, t2 : Track | t2 in t1.succs and t2 not in Junction implies all s : Semaphore | s not in t1.signals\n  \n   // all t : Track | no (t.succs & Junction) implies no (Semaphore & t.signals)\n}",
                     "ids": [
-                        "HfvZQ7cHbg9SDKGEF"
+                        "sM3HQJvivyroLA8AN"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n  \tall disj t1, t2 : Track | t2 in t1.succs and t2 not in Junction implies all s : Semaphore | s not in t1.signals\n  \n   // all t : Track | no (t.succs & Junction) implies no (Semaphore & t.signals)\n}",
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\nall disj x,y:Track| y not in Junction and x->y in succs implies no s:Semaphore| x->s in signals\n}",
                     "ids": [
-                        "sM3HQJvivyroLA8AN"
+                        "HfvZQ7cHbg9SDKGEF"
                     ]
                 }
             ]
@@ -2472,16 +2472,16 @@
             "elems": [
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t : Track | t.*succs not in Junction implies t.signals not in Semaphore\n}",
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t:Track | t.signals in Semaphore => t.*succs in Junction\n}",
                     "ids": [
-                        "2kBnXHN5Na3rhT6L5"
+                        "pDoZaL3fDjfG7GoGR"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t:Track | t.signals in Semaphore => t.*succs in Junction\n}",
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t : Track | t.*succs not in Junction implies t.signals not in Semaphore\n}",
                     "ids": [
-                        "pDoZaL3fDjfG7GoGR"
+                        "2kBnXHN5Na3rhT6L5"
                     ]
                 }
             ]

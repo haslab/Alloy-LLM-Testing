@@ -2,8 +2,8 @@
     "label": "inv10",
     "pred": "this/inv10",
     "entry_count": 425,
-    "group_count": 95,
-    "duration": 26,
+    "group_count": 90,
+    "duration": 23,
     "scope": 3,
     "groups": [
         {
@@ -196,17 +196,6 @@
                 },
                 {
                     "entry_count": 5,
-                    "code": "{\n\t// Every track before a junction has a semaphore\n\tall t : Track | t in succs.Junction => some Semaphore & t.signals\n}",
-                    "ids": [
-                        "uCawCoy68dJqieQPM",
-                        "5mCoJyLbwh2stm6hz",
-                        "PgRHZjPeM9TkwwDWP",
-                        "w3PuWEZ3Gg9omwgCn",
-                        "94gjaTe93HNiHRgJz"
-                    ]
-                },
-                {
-                    "entry_count": 5,
                     "code": "{\n\t// Every track before a junction has a semaphore\n\tall t : Track | t.succs & Junction not = none implies t.signals & Semaphore not = none\n}",
                     "ids": [
                         "jYEiPW97ozFez33no",
@@ -214,6 +203,17 @@
                         "yY6ax84ivPYhfhLDK",
                         "wdfi5rHBoxpYNY5wZ",
                         "TjNm5tHLL4D3ok32c"
+                    ]
+                },
+                {
+                    "entry_count": 5,
+                    "code": "{\n\t// Every track before a junction has a semaphore\n\tall t : Track | t in succs.Junction => some Semaphore & t.signals\n}",
+                    "ids": [
+                        "uCawCoy68dJqieQPM",
+                        "5mCoJyLbwh2stm6hz",
+                        "PgRHZjPeM9TkwwDWP",
+                        "w3PuWEZ3Gg9omwgCn",
+                        "94gjaTe93HNiHRgJz"
                     ]
                 },
                 {
@@ -261,16 +261,16 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Every track before a junction has a semaphore\n\tall t: Track  | (some tnext : t.succs | tnext in Junction) implies some s : Semaphore | s in t.signals\n}",
+                    "code": "{\n\t// Every track before a junction has a semaphore\n  all t: Junction.~succs | some s: Semaphore | s in t.signals\n\n}",
                     "ids": [
-                        "MGxggKARAy8rCsTze"
+                        "PdHySn9nCuRL2FxFM"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Every track before a junction has a semaphore\n\tall t : Track | (some s : t.succs | s in Junction) implies some s : t.signals | s in Semaphore\n}",
+                    "code": "{\n\t// Every track before a junction has a semaphore\n\n  all x: Track |  not (Junction & x.succs = none) implies not (Semaphore & x.signals = none)\n\n}",
                     "ids": [
-                        "YqNyTP9wsZseDPBbk"
+                        "rA9jLiqjxFdTwacmQ"
                     ]
                 },
                 {
@@ -289,13 +289,6 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Every track before a junction has a semaphore\n\n  all x: Track |  not (Junction & x.succs = none) implies not (Semaphore & x.signals = none)\n\n}",
-                    "ids": [
-                        "rA9jLiqjxFdTwacmQ"
-                    ]
-                },
-                {
-                    "entry_count": 1,
                     "code": "{\n\t// Every track before a junction has a semaphore\n\tall t:Track | not no (Junction & t.succs) implies not no(Semaphore & t.signals)\n}",
                     "ids": [
                         "dv7FppzqpvYsa3vQs"
@@ -303,23 +296,16 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Every track before a junction has a semaphore\n  all t: Junction.~succs | some s: Semaphore | s in t.signals\n\n}",
+                    "code": "{\n\t// Every track before a junction has a semaphore\n\tall t: Track  | (some tnext : t.succs | tnext in Junction) implies some s : Semaphore | s in t.signals\n}",
                     "ids": [
-                        "PdHySn9nCuRL2FxFM"
+                        "MGxggKARAy8rCsTze"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Every track before a junction has a semaphore\n\tall j : Junction | all t : Track | j in t.succs implies (some s:Semaphore | t->s in signals)\n}",
+                    "code": "{\n\t// Every track before a junction has a semaphore\n\tall t : Track | (some s : t.succs | s in Junction) implies some s : t.signals | s in Semaphore\n}",
                     "ids": [
-                        "QgKahwQzD4YG8Mpig"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Every track before a junction has a semaphore\n\t//succs.Junction = (succs.Junction) <: signals.Semaphore\n  \tall t: Track | some (t.succs & Junction) implies some (t.signals :> Semaphore)\n}",
-                    "ids": [
-                        "pouhPN3Hi5d2HoGBR"
+                        "YqNyTP9wsZseDPBbk"
                     ]
                 },
                 {
@@ -334,6 +320,20 @@
                     "code": "{\n\t// Every track before a junction has a semaphore\n\tall t : Track | all j : Junction | t in succs.j implies some Semaphore & t.signals\n}",
                     "ids": [
                         "cTCsevRRztz79YoND"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every track before a junction has a semaphore\n\tall j : Junction | all t : Track | j in t.succs implies (some s:Semaphore | t->s in signals)\n}",
+                    "ids": [
+                        "QgKahwQzD4YG8Mpig"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every track before a junction has a semaphore\n\t//succs.Junction = (succs.Junction) <: signals.Semaphore\n  \tall t: Track | some (t.succs & Junction) implies some (t.signals :> Semaphore)\n}",
+                    "ids": [
+                        "pouhPN3Hi5d2HoGBR"
                     ]
                 }
             ]
@@ -371,10 +371,10 @@
                 },
                 {
                     "entry_count": 2,
-                    "code": "{\n\t// Every track before a junction has a semaphore\n  all j:Junction | all t:Track | t in j.succs => some s:Semaphore | s in t.signals\n\n}",
+                    "code": "{\n\t// Every track before a junction has a semaphore\n\tall t : Track | t in Junction.succs implies some Semaphore & t.signals\n\n}",
                     "ids": [
-                        "eoXpDgcueTKryKnyv",
-                        "SN2tacDRAb8LeqS3e"
+                        "TLQREHBu3q7w5eAQs",
+                        "SS9BpjnngcBp8A58o"
                     ]
                 },
                 {
@@ -387,10 +387,17 @@
                 },
                 {
                     "entry_count": 2,
-                    "code": "{\n\t// Every track before a junction has a semaphore\n\tall t : Track | t in Junction.succs implies some Semaphore & t.signals\n\n}",
+                    "code": "{\n\t// Every track before a junction has a semaphore\n  all j:Junction | all t:Track | t in j.succs => some s:Semaphore | s in t.signals\n\n}",
                     "ids": [
-                        "TLQREHBu3q7w5eAQs",
-                        "SS9BpjnngcBp8A58o"
+                        "eoXpDgcueTKryKnyv",
+                        "SN2tacDRAb8LeqS3e"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every track before a junction has a semaphore\n\tall t: Junction.succs | some s: Semaphore| s in t.signals\n}",
+                    "ids": [
+                        "SXLpRGcwLCwfhQfcH"
                     ]
                 },
                 {
@@ -405,13 +412,6 @@
                     "code": "{\n\t// Every track before a junction has a semaphore\n\tall t : Track | some Junction.succs & t implies some Semaphore & t.signals\n\n}",
                     "ids": [
                         "pYJsNwnSCqWDkK3u2"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Every track before a junction has a semaphore\n\tall t: Junction.succs | some s: Semaphore| s in t.signals\n}",
-                    "ids": [
-                        "SXLpRGcwLCwfhQfcH"
                     ]
                 }
             ]
@@ -440,13 +440,6 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Every track before a junction has a semaphore\n  \tall t: Junction.~succs | Semaphore in t.signals\n\n}",
-                    "ids": [
-                        "yQfLDci2fn6ws2bcz"
-                    ]
-                },
-                {
-                    "entry_count": 1,
                     "code": "{\n\t// Every track before a junction has a semaphore\n  succs.Junction->Semaphore in signals\n\n}",
                     "ids": [
                         "K4RAPmQWnT4emnG9E"
@@ -454,16 +447,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Every track before a junction has a semaphore\n\tall t: Track, j: Junction | all s: Semaphore {\n      j in t.succs => s in t.signals\n  \t}\n}",
+                    "code": "{\n\t// Every track before a junction has a semaphore\n\tall t: Track  | (some tnext : t.succs | tnext in Junction) implies Semaphore in t.signals\n}",
                     "ids": [
-                        "BykbRqokTu4zaEtWd"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Every track before a junction has a semaphore\n\tall t: Track | all j: t.succs | all s: Semaphore | j in Junction implies s in t.signals\n}",
-                    "ids": [
-                        "Nh5yB3rtH4HhnW9Ce"
+                        "wN6FF7tLmkzRNQXYv"
                     ]
                 },
                 {
@@ -475,13 +461,6 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Every track before a junction has a semaphore\n  \tall t: Track | all j: Junction| all jp: j.~succs| Semaphore in jp.signals\n\n}",
-                    "ids": [
-                        "EXfNcmcoFnqtbGZHb"
-                    ]
-                },
-                {
-                    "entry_count": 1,
                     "code": "{\n\t// Every track before a junction has a semaphore\n  \tall j: Junction| all predt: j.~succs & Track| Semaphore in predt.signals\n\n}",
                     "ids": [
                         "irMXq3fD4bh2gDd3Y"
@@ -489,58 +468,30 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Every track before a junction has a semaphore\n\tall t: Track  | (some tnext : t.succs | tnext in Junction) implies Semaphore in t.signals\n}",
+                    "code": "{\n\t// Every track before a junction has a semaphore\n\tall t: Track, j: Junction | all s: Semaphore {\n      j in t.succs => s in t.signals\n  \t}\n}",
                     "ids": [
-                        "wN6FF7tLmkzRNQXYv"
-                    ]
-                }
-            ]
-        },
-        {
-            "entry_count": 12,
-            "group_count": 5,
-            "correct": false,
-            "elems": [
-                {
-                    "entry_count": 7,
-                    "code": "{\n\t// Every track before a junction has a semaphore\n\n}",
-                    "ids": [
-                        "kQSaZfTRqTLHrmqjY",
-                        "xte9mwN3JbTwKwrQC",
-                        "GfEhBALuHFkcJ6aCY",
-                        "6PeWz2a336C9oud7C",
-                        "y9cJxfnFMWepaqG7F",
-                        "eTonvAPRWwXJMfYHa",
-                        "nQy6dcvcPrJa54zAh"
-                    ]
-                },
-                {
-                    "entry_count": 2,
-                    "code": "{\n\t// Every track before a junction has a semaphore\n  inv9\n   //all t: Track | (t.succs & Junction) != none iff (t.signals & Semaphore) != none\n\n}",
-                    "ids": [
-                        "AQ9qutq286cWvmg6n",
-                        "mBzigKcFLT3dnSJJy"
+                        "BykbRqokTu4zaEtWd"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Every track before a junction has a semaphore\n\tinv9\n}",
+                    "code": "{\n\t// Every track before a junction has a semaphore\n  \tall t: Junction.~succs | Semaphore in t.signals\n\n}",
                     "ids": [
-                        "zkmxcSsrJdzxAKmJY"
+                        "yQfLDci2fn6ws2bcz"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Every track before a junction has a semaphore\n\tinv9\n}",
+                    "code": "{\n\t// Every track before a junction has a semaphore\n  \tall t: Track | all j: Junction| all jp: j.~succs| Semaphore in jp.signals\n\n}",
                     "ids": [
-                        "gD4BXKPsD6hCkRxJP"
+                        "EXfNcmcoFnqtbGZHb"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Every track before a junction has a semaphore\n\tall t: Junction | no t.succs & Semaphore\n}",
+                    "code": "{\n\t// Every track before a junction has a semaphore\n\tall t: Track | all j: t.succs | all s: Semaphore | j in Junction implies s in t.signals\n}",
                     "ids": [
-                        "MBvNXjxDYKHpmed5e"
+                        "Nh5yB3rtH4HhnW9Ce"
                     ]
                 }
             ]
@@ -608,16 +559,16 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Every track before a junction has a semaphore\n\tall t : Track, j : Junction | j in t.succs implies one s : Semaphore | s in t.signals\n}",
+                    "code": "{\n\t// Every track before a junction has a semaphore\n\tall t : Track | some t.succs & Junction implies one s : Semaphore | s in t.signals\n}",
                     "ids": [
-                        "nTnc78tbnaTqYbYhE"
+                        "buCJJXEk3pPCLaJfE"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Every track before a junction has a semaphore\n\tall t : Track | some t.succs & Junction implies one s : Semaphore | s in t.signals\n}",
+                    "code": "{\n\t// Every track before a junction has a semaphore\n\tall t : Track, j : Junction | j in t.succs implies one s : Semaphore | s in t.signals\n}",
                     "ids": [
-                        "buCJJXEk3pPCLaJfE"
+                        "nTnc78tbnaTqYbYhE"
                     ]
                 }
             ]
@@ -707,6 +658,33 @@
                     "code": "{\n\t// Every track before a junction has a semaphore\n    all t:Track, j:Junction | some s:Semaphore | t in succs.j implies s in t.signals\n}",
                     "ids": [
                         "d3rH4q2rNWauuALsE"
+                    ]
+                }
+            ]
+        },
+        {
+            "entry_count": 8,
+            "group_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 7,
+                    "code": "{\n\t// Every track before a junction has a semaphore\n\n}",
+                    "ids": [
+                        "kQSaZfTRqTLHrmqjY",
+                        "xte9mwN3JbTwKwrQC",
+                        "GfEhBALuHFkcJ6aCY",
+                        "6PeWz2a336C9oud7C",
+                        "y9cJxfnFMWepaqG7F",
+                        "eTonvAPRWwXJMfYHa",
+                        "nQy6dcvcPrJa54zAh"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every track before a junction has a semaphore\n\tall t: Junction | no t.succs & Semaphore\n}",
+                    "ids": [
+                        "MBvNXjxDYKHpmed5e"
                     ]
                 }
             ]
@@ -1158,16 +1136,16 @@
             "elems": [
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Every track before a junction has a semaphore\n\tall t: Track | some j: Junction | all s: Semaphore {\n      j in t.succs => s in t.signals\n  \t}\n}",
+                    "code": "{\n\t// Every track before a junction has a semaphore\n\tall t: Track | some j: Junction | {\n      j in t.succs => Semaphore in t.signals\n  \t}\n}",
                     "ids": [
-                        "wpr5SS2fpKvZfeAsG"
+                        "xqp5DnRFrBkMXFRYS"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Every track before a junction has a semaphore\n\tall t: Track | some j: Junction | {\n      j in t.succs => Semaphore in t.signals\n  \t}\n}",
+                    "code": "{\n\t// Every track before a junction has a semaphore\n\tall t: Track | some j: Junction | all s: Semaphore {\n      j in t.succs => s in t.signals\n  \t}\n}",
                     "ids": [
-                        "xqp5DnRFrBkMXFRYS"
+                        "wpr5SS2fpKvZfeAsG"
                     ]
                 }
             ]
@@ -1224,16 +1202,16 @@
             "elems": [
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Every track before a junction has a semaphore\n   all t1, t2: Track | some  s1: t1.signals |\n        t2 in Junction and t2 in t1.succs \n            implies s1 in Semaphore\n}",
+                    "code": "{\n\t// Every track before a junction has a semaphore\n   all t: Track | some  s: t.signals |\n        some ( Junction & t.succs )\n            implies s in Semaphore\n  \n  //all t: Track | some (t.succs & Junction) implies some s: Semaphore | s in t.signals\n}",
                     "ids": [
-                        "kg2MngsgjgGim3Sss"
+                        "NKDWcqkHQjd2eiSkd"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Every track before a junction has a semaphore\n   all t: Track | some  s: t.signals |\n        some ( Junction & t.succs )\n            implies s in Semaphore\n  \n  //all t: Track | some (t.succs & Junction) implies some s: Semaphore | s in t.signals\n}",
+                    "code": "{\n\t// Every track before a junction has a semaphore\n   all t1, t2: Track | some  s1: t1.signals |\n        t2 in Junction and t2 in t1.succs \n            implies s1 in Semaphore\n}",
                     "ids": [
-                        "NKDWcqkHQjd2eiSkd"
+                        "kg2MngsgjgGim3Sss"
                     ]
                 }
             ]
@@ -1600,76 +1578,6 @@
                     "code": "{\n\t// Every track before a junction has a semaphore\n\tsome {t: Track | some t.succs & Junction }\n}",
                     "ids": [
                         "eedJK6Pqspxk3aadN"
-                    ]
-                }
-            ]
-        },
-        {
-            "entry_count": 1,
-            "group_count": 1,
-            "correct": false,
-            "elems": [
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Every track before a junction has a semaphore\n\t{t: Track | some t.succs & Junction } in Test\n}",
-                    "ids": [
-                        "WPL8ohAjZEMgeKSC4"
-                    ]
-                }
-            ]
-        },
-        {
-            "entry_count": 1,
-            "group_count": 1,
-            "correct": false,
-            "elems": [
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Every track before a junction has a semaphore\n\t{t: Track | some t.succs & Junction } = Test\n}",
-                    "ids": [
-                        "aZH35kR7fDx8N4NBq"
-                    ]
-                }
-            ]
-        },
-        {
-            "entry_count": 1,
-            "group_count": 1,
-            "correct": false,
-            "elems": [
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Every track before a junction has a semaphore\n  \t{t: Track | some t.succs & Junction } = Test\n\t//some {t: Track | some t.succs & Junction }.signals & Semaphore\n}",
-                    "ids": [
-                        "n7HmJqek2Fdez6Qew"
-                    ]
-                }
-            ]
-        },
-        {
-            "entry_count": 1,
-            "group_count": 1,
-            "correct": false,
-            "elems": [
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Every track before a junction has a semaphore\n\tsuccs.Junction.signals = Test\n}",
-                    "ids": [
-                        "r9hArBkZwrnswAdKP"
-                    ]
-                }
-            ]
-        },
-        {
-            "entry_count": 1,
-            "group_count": 1,
-            "correct": false,
-            "elems": [
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Every track before a junction has a semaphore\n\tsuccs.Junction = Test\n}",
-                    "ids": [
-                        "qZNvWaenuiyQf9jMt"
                     ]
                 }
             ]

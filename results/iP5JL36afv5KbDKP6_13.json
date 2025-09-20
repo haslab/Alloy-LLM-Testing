@@ -3,7 +3,7 @@
     "pred": "this/inv14",
     "entry_count": 577,
     "group_count": 54,
-    "duration": 72,
+    "duration": 39,
     "scope": 3,
     "groups": [
         {
@@ -261,6 +261,16 @@
                 },
                 {
                     "entry_count": 4,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n  \tall disj s1, s2 : Student, disj p1, p2 : Project | (p1 in s1.projects and p1 in s2.projects) implies (p2 not in s1.projects or p2 not in s2.projects)\n\n}",
+                    "ids": [
+                        "EBtxLWxCqSsumux4S",
+                        "HFkCRnXiss6tdXZgr",
+                        "ow4KfR2Zuja6saofX",
+                        "3ZKZqFmcNakRsJaKc"
+                    ]
+                },
+                {
+                    "entry_count": 4,
                     "code": "{\n\t// A student cannot work with the same student in different projects\n  all disj s1,s2: Student | #(s1.projects & s2.projects) <= 1 \n}",
                     "ids": [
                         "sjxDddtWJDG4LThSi",
@@ -271,22 +281,12 @@
                 },
                 {
                     "entry_count": 4,
-                    "code": "{\n\t// A student cannot work with the same student in different projects\n\n        all s1, s2 : Student | all p1, p2 : Project |\n\t s1!=s2 and \n\t   s1->p1 in projects and s2->p1 in projects and s1->p2 in projects and s2->p2 in projects\n\t  implies p1 = p2\n \n\t\n\n}",
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n\n        all disj s1, s2 : Student | lone pr : Project | pr in (s1.projects & s2.projects)\n \n\t\n\n}",
                     "ids": [
-                        "r2t5hGhSFn55nTsb2",
-                        "oi34938bKnm4uDE6r",
-                        "rtgdAZrXJ66BvyE2W",
-                        "gmF3ryz3P62NX6s4Y"
-                    ]
-                },
-                {
-                    "entry_count": 4,
-                    "code": "{\n\t// A student cannot work with the same student in different projects\n  \tall disj s1, s2 : Student, disj p1, p2 : Project | (p1 in s1.projects and p1 in s2.projects) implies (p2 not in s1.projects or p2 not in s2.projects)\n\n}",
-                    "ids": [
-                        "EBtxLWxCqSsumux4S",
-                        "HFkCRnXiss6tdXZgr",
-                        "ow4KfR2Zuja6saofX",
-                        "3ZKZqFmcNakRsJaKc"
+                        "Jusr29vJ2MFzowwhK",
+                        "kBwkpkT6cg2kYkRSY",
+                        "bSZtfbXuZiCkiPo4u",
+                        "z63PSDmcq6RAaGuKA"
                     ]
                 },
                 {
@@ -301,12 +301,12 @@
                 },
                 {
                     "entry_count": 4,
-                    "code": "{\n\t// A student cannot work with the same student in different projects\n\n        all disj s1, s2 : Student | lone pr : Project | pr in (s1.projects & s2.projects)\n \n\t\n\n}",
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n\n        all s1, s2 : Student | all p1, p2 : Project |\n\t s1!=s2 and \n\t   s1->p1 in projects and s2->p1 in projects and s1->p2 in projects and s2->p2 in projects\n\t  implies p1 = p2\n \n\t\n\n}",
                     "ids": [
-                        "Jusr29vJ2MFzowwhK",
-                        "kBwkpkT6cg2kYkRSY",
-                        "bSZtfbXuZiCkiPo4u",
-                        "z63PSDmcq6RAaGuKA"
+                        "r2t5hGhSFn55nTsb2",
+                        "oi34938bKnm4uDE6r",
+                        "rtgdAZrXJ66BvyE2W",
+                        "gmF3ryz3P62NX6s4Y"
                     ]
                 },
                 {
@@ -320,42 +320,10 @@
                 },
                 {
                     "entry_count": 2,
-                    "code": "{\n\t// A student cannot work with the same student in different projects\n  \tall disj s1, s2 : Student, disj p1, p2 : Project | (p1 in s1.projects and p1 in s2.projects) implies not (p2 in s1.projects and p2 in s2.projects)\n\n}",
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall disj s1, s2 : Student | all pr1, pr2 : Project | \n  \ts1 in projects.pr1 and s2 in projects.pr1 and \n    s1 in projects.pr2 and s2 in projects.pr2 implies pr1 = pr2\n}",
                     "ids": [
-                        "adbd4Lcpk2zWhX7ty",
-                        "EvtQ4BMn8mv7oySLP"
-                    ]
-                },
-                {
-                    "entry_count": 2,
-                    "code": "{\n\t// A student cannot work with the same student in different projects\n  \tall s1,s2 :Student | all p1:s1.projects | all p2:s2.projects |\n  \t\t\tp1 = p2 and s1 != s2 implies all rest:s1.projects-p1 | rest not in s2.projects-p1 \n}",
-                    "ids": [
-                        "BdF7XYccjrkT8ErYy",
-                        "mYXy2A9vj6GWLRGXM"
-                    ]
-                },
-                {
-                    "entry_count": 2,
-                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall s1, s2 : Student | lone p : Project | s1 != s2  and p in s1.projects and p in s2.projects \n}",
-                    "ids": [
-                        "amunJmczmnEpa7nHo",
-                        "faAWk4cQW4cGy2QKC"
-                    ]
-                },
-                {
-                    "entry_count": 2,
-                    "code": "{\n\t// A student cannot work with the same student in different projects\n  all s: Student , p: s.projects | all s1: Student-s | p in s1.projects => one s.projects & s1.projects \n\n}",
-                    "ids": [
-                        "ExQTucPtn7JvHzu4v",
-                        "nS5iKurk9HJXnRFCv"
-                    ]
-                },
-                {
-                    "entry_count": 2,
-                    "code": "{\n\tall s1,s2 : Student, p1,p2 : Project | (not s1=s2 and not p1=p2 and s1->p1 in projects and s2->p1 in projects and s1->p2 in projects) implies (not s2->p2 in projects)\t\n\n\n}",
-                    "ids": [
-                        "hx6enDz67JtHsWtBB",
-                        "XDvfduuQjH2EYMKcq"
+                        "sYCf7EgTptMrhQALD",
+                        "ijzpGCCBzdAydJi7q"
                     ]
                 },
                 {
@@ -368,10 +336,34 @@
                 },
                 {
                     "entry_count": 2,
-                    "code": "{\n\t// A student cannot work with the same student in different projects\n\n        all disj s1, s2 : Student | all p1, p2 : Project |\n\t    s1->p1 in projects and s2->p1 in projects and s1->p2 in projects and s2->p2 in projects\n\t   implies p1 = p2\n \n\t\n\n}",
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall s1, s2 : Student | lone p : Project | s1 != s2  and p in s1.projects and p in s2.projects \n}",
                     "ids": [
-                        "5hXYJGWSsHCaqQDN7",
-                        "oceGgyxkrZ9gZ6EuJ"
+                        "amunJmczmnEpa7nHo",
+                        "faAWk4cQW4cGy2QKC"
+                    ]
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n  \tall disj s1, s2 : Student, disj p1, p2 : Project | (p1 in s1.projects and p1 in s2.projects) implies not (p2 in s1.projects and p2 in s2.projects)\n\n}",
+                    "ids": [
+                        "adbd4Lcpk2zWhX7ty",
+                        "EvtQ4BMn8mv7oySLP"
+                    ]
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n  all s: Student , p: s.projects | all s1: Student-s | p in s1.projects => one s.projects & s1.projects \n\n}",
+                    "ids": [
+                        "ExQTucPtn7JvHzu4v",
+                        "nS5iKurk9HJXnRFCv"
+                    ]
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n  \tall s1,s2 :Student | all p1:s1.projects | all p2:s2.projects |\n  \t\t\tp1 = p2 and s1 != s2 implies all rest:s1.projects-p1 | rest not in s2.projects-p1 \n}",
+                    "ids": [
+                        "BdF7XYccjrkT8ErYy",
+                        "mYXy2A9vj6GWLRGXM"
                     ]
                 },
                 {
@@ -384,52 +376,18 @@
                 },
                 {
                     "entry_count": 2,
-                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall disj s1, s2 : Student | all pr1, pr2 : Project | \n  \ts1 in projects.pr1 and s2 in projects.pr1 and \n    s1 in projects.pr2 and s2 in projects.pr2 implies pr1 = pr2\n}",
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n\n        all disj s1, s2 : Student | all p1, p2 : Project |\n\t    s1->p1 in projects and s2->p1 in projects and s1->p2 in projects and s2->p2 in projects\n\t   implies p1 = p2\n \n\t\n\n}",
                     "ids": [
-                        "sYCf7EgTptMrhQALD",
-                        "ijzpGCCBzdAydJi7q"
+                        "5hXYJGWSsHCaqQDN7",
+                        "oceGgyxkrZ9gZ6EuJ"
                     ]
                 },
                 {
-                    "entry_count": 1,
-                    "code": "{\n\t// A student cannot work with the same student in different projects\n     all s : Student, p : s.projects, s1 : (Student<:projects).p | s1!=s implies no (s1.projects&s.projects)-p\n}",
+                    "entry_count": 2,
+                    "code": "{\n\tall s1,s2 : Student, p1,p2 : Project | (not s1=s2 and not p1=p2 and s1->p1 in projects and s2->p1 in projects and s1->p2 in projects) implies (not s2->p2 in projects)\t\n\n\n}",
                     "ids": [
-                        "XWgvR6ZngFtjiqyTr"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// A student cannot work with the same student in different projects\n  \tall s1,s2:Student | not s1=s2 implies lone (s1.projects & s2.projects)\n\n}",
-                    "ids": [
-                        "aHxmWkQ4AfTgYEC9g"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall disj p1, p2:Student | no disj d1, d2:Project | d1 in p1.projects and d2 in p1.projects and d1 in p2.projects and d2 in p2.projects\n}",
-                    "ids": [
-                        "YETsuoEpvC96N5awM"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// A student cannot work with the same student in different projects\n\t\n  \tall s1,s2 : Student | s1->s2 not in iden implies lone s1.projects & s2.projects\n}",
-                    "ids": [
-                        "JsN788Pyja6vJGpLe"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// A student cannot work with the same student in different projects\n\n        all disj s1, s2 : Student | all disj p1, p2 : Project |\n\t  s1->p1 in projects and s2->p1 in projects and s1->p2 in projects implies not s2->p2 in projects\n\n\n}",
-                    "ids": [
-                        "5MnDMXrRmubyYm2Ev"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall s1,s2 : Student | lone p1 : s1.projects | s1 != s2 and p1 in s2.projects\n  \n}",
-                    "ids": [
-                        "wxGP8yT5ncCdPGzMh"
+                        "hx6enDz67JtHsWtBB",
+                        "XDvfduuQjH2EYMKcq"
                     ]
                 },
                 {
@@ -441,69 +399,6 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// A student cannot work with the same student in different projects\n\n\tall s1 : Student | all s2 : Student | all p1 : Project | all p2 : Project | s1->p1 in projects and s2->p1 in projects and s1->p2 in projects and s1!=s2 and p1!=p2 implies not s2->p2 in projects\n\n\t// all s1 : Student | all s2 : Student | lone (s1.projects & s2.projects)\n\n}",
-                    "ids": [
-                        "22bYqjfzH2sqJ8Hpv"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall disj s1, s2 : Student | all pr1, pr2 : Project | s1 in projects.pr1 \n  \tand s2 in projects.pr1 and s1 in projects.pr2 and s2 in projects.pr2 \n  \timplies pr1 = pr2\n  \n  \tall disj s1, s2 : Student | lone s1.projects & s2.projects\n}",
-                    "ids": [
-                        "PZMYLtqo7zGvu77e7"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// A student cannot work with the same student in different projects\n  all s1,s2: Student | s1 != s2 implies (#(s1.projects & s2.projects) < 2)\n\n}",
-                    "ids": [
-                        "jfcD2vs8EfMQP3YRN"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// A student cannot work with the same student in different projects\n\n\t    all s1, s2: Student, p1, p2: Project |\n        ((s1 != s2) and (p1 in s1.projects & s2.projects) and (p1 != p2)) implies\n            not(p2 in s1.projects & s2.projects)\n\n}",
-                    "ids": [
-                        "nw6ZPtfH35g4rXNxD"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// A student cannot work with the same student in different projects\n  all s1, s2 : Student | all p1, p2 : Project | p1 in s1.projects and p2 in s1.projects and p1 in s2.projects and s1 != s2 and p1 != p2 implies p2 not in s2.projects\n  \n\n}",
-                    "ids": [
-                        "NGBoe5Lav3rDPqDQe"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall p : Project, disj s1,s2:Student | lone s1.projects&s2.projects\n}",
-                    "ids": [
-                        "n6H4ckTwGs7bHeQ8X"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// A student cannot work with the same student in different projects\n  /*\n  all s1, s2: Student, p: Project | \n  \t\t(s1 != s2 and \n  \t\ts1->p in (Person<:projects) and\n  \t\ts2->p in (Person<:projects)) implies\n  \t\tone p1: Project | s1->p1 in (Person<:projects) and s2->p1 in (Person<:projects)\n  */\n  all s1, s2: Student | lone p: Project | \n  \t\t(s1 != s2 and \n  \t\ts1->p in (Person<:projects) and\n  \t\ts2->p in (Person<:projects))\n}",
-                    "ids": [
-                        "dgKFGX9fQwGtLJ4oZ"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// A student cannot work with the same student in different projects\n  \tall s,s2 : Student, p : Project | s!=s2 and p in s.projects&s2.projects implies no p2 : Project | p!=p2 and p2 in s.projects&s2.projects\n}",
-                    "ids": [
-                        "jF5CJLhKtvjgwYGbC"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall disj s1, s2: Student | all p1, p2: Project | p1 in (s1.projects & s2.projects) and p2 in (s1.projects & s2.projects) => p1 = p2\n}",
-                    "ids": [
-                        "LmPsP6RhcHDBvHYPT"
-                    ]
-                },
-                {
-                    "entry_count": 1,
                     "code": "{\n\t// A student cannot work with the same student in different projects\n\tall disj s1, s2 : Student | lone pr : Project | s1->pr in projects and s2->pr in projects \n\n\t\n\n}",
                     "ids": [
                         "A8KH5RAnGrwhngXjQ"
@@ -511,30 +406,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall s, s1: Student | all p, p1: Project | s != s1 and p != p1 and ( p in s.projects and p in s1.projects) implies (p1 not in s.projects or p1 not in s1.projects)\n}",
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall disj p1, p2:Student | no disj d1, d2:Project | d1 in p1.projects and d2 in p1.projects and d1 in p2.projects and d2 in p2.projects\n}",
                     "ids": [
-                        "C9evY85DRJ2Xge6Dp"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// A student cannot work with the same student in different projects\n\n        all disj s1, s2 : Student | all disj p1, p2 : Project |\n\t    s1->p1 in projects and s2->p1 in projects and s1->p2 in projects and s2->p2 in projects\n\t   implies p1 = p2\n \n\t\n\n}",
-                    "ids": [
-                        "8G5poTSNi6u7WKaAE"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall s1,s2 : Student | all p1 : s1.projects| s1 != s2 and\n  \t\t\t\tp1 in s2.projects =>  all p2 : s1.projects-p1 | p2 not in s2.projects\n}",
-                    "ids": [
-                        "e9S5H5Cnspm76yBTD"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall s1,s2 : Student | all p1,p2 : Project |\n  \t(s1->p1 in projects and s2->p1 in projects and s1!=s2 and p1!=p2) implies\n  \t( (s1->p2 not in projects) or (s2->p2 not in projects) )\n}",
-                    "ids": [
-                        "9dipK5gGSeFoXBjnA"
+                        "YETsuoEpvC96N5awM"
                     ]
                 },
                 {
@@ -546,9 +420,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// A student cannot work with the same student in different projects\n  all s1, s2: Student, p: Project | \n  \t\t(s1 != s2 and \n  \t\ts1->p in (Person<:projects) and\n  \t\ts2->p in (Person<:projects)) implies\n  \t\tone p1: Project | s1->p1 in (Person<:projects) and s2->p1 in (Person<:projects)\n\n}",
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall s1,s2 : Student | all p1 : s1.projects| s1 != s2 and\n  \t\t\t\tp1 in s2.projects =>  all p2 : s1.projects-p1 | p2 not in s2.projects\n}",
                     "ids": [
-                        "sMLCgCszhbkr9MACu"
+                        "e9S5H5Cnspm76yBTD"
                     ]
                 },
                 {
@@ -556,6 +430,132 @@
                     "code": "{\n\t// A student cannot work with the same student in different projects\n\tall s1, s2: Student |all p1, p2: Project |( p1 != p2 and s1 != s2 and p1 in s1.projects and p1 in s2.projects) implies p2 not in s1.projects or p2 not in s2.projects\n}",
                     "ids": [
                         "mX2WKivyTfK3xjGfz"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall p : Project, disj s1,s2:Student | lone s1.projects&s2.projects\n}",
+                    "ids": [
+                        "n6H4ckTwGs7bHeQ8X"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall disj s1, s2: Student | all p1, p2: Project | p1 in (s1.projects & s2.projects) and p2 in (s1.projects & s2.projects) => p1 = p2\n}",
+                    "ids": [
+                        "LmPsP6RhcHDBvHYPT"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall s1,s2 : Student | lone p1 : s1.projects | s1 != s2 and p1 in s2.projects\n  \n}",
+                    "ids": [
+                        "wxGP8yT5ncCdPGzMh"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall s, s1: Student | all p, p1: Project | s != s1 and p != p1 and ( p in s.projects and p in s1.projects) implies (p1 not in s.projects or p1 not in s1.projects)\n}",
+                    "ids": [
+                        "C9evY85DRJ2Xge6Dp"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n\t\n  \tall s1,s2 : Student | s1->s2 not in iden implies lone s1.projects & s2.projects\n}",
+                    "ids": [
+                        "JsN788Pyja6vJGpLe"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n  \tall s,s2 : Student, p : Project | s!=s2 and p in s.projects&s2.projects implies no p2 : Project | p!=p2 and p2 in s.projects&s2.projects\n}",
+                    "ids": [
+                        "jF5CJLhKtvjgwYGbC"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n  all s1, s2 : Student | all p1, p2 : Project | p1 in s1.projects and p2 in s1.projects and p1 in s2.projects and s1 != s2 and p1 != p2 implies p2 not in s2.projects\n  \n\n}",
+                    "ids": [
+                        "NGBoe5Lav3rDPqDQe"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n\n        all disj s1, s2 : Student | all disj p1, p2 : Project |\n\t  s1->p1 in projects and s2->p1 in projects and s1->p2 in projects implies not s2->p2 in projects\n\n\n}",
+                    "ids": [
+                        "5MnDMXrRmubyYm2Ev"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n\n\tall s1 : Student | all s2 : Student | all p1 : Project | all p2 : Project | s1->p1 in projects and s2->p1 in projects and s1->p2 in projects and s1!=s2 and p1!=p2 implies not s2->p2 in projects\n\n\t// all s1 : Student | all s2 : Student | lone (s1.projects & s2.projects)\n\n}",
+                    "ids": [
+                        "22bYqjfzH2sqJ8Hpv"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n     all s : Student, p : s.projects, s1 : (Student<:projects).p | s1!=s implies no (s1.projects&s.projects)-p\n}",
+                    "ids": [
+                        "XWgvR6ZngFtjiqyTr"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n\n\t    all s1, s2: Student, p1, p2: Project |\n        ((s1 != s2) and (p1 in s1.projects & s2.projects) and (p1 != p2)) implies\n            not(p2 in s1.projects & s2.projects)\n\n}",
+                    "ids": [
+                        "nw6ZPtfH35g4rXNxD"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n  \tall s1,s2:Student | not s1=s2 implies lone (s1.projects & s2.projects)\n\n}",
+                    "ids": [
+                        "aHxmWkQ4AfTgYEC9g"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n  all s1,s2: Student | s1 != s2 implies (#(s1.projects & s2.projects) < 2)\n\n}",
+                    "ids": [
+                        "jfcD2vs8EfMQP3YRN"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n  all s1, s2: Student, p: Project | \n  \t\t(s1 != s2 and \n  \t\ts1->p in (Person<:projects) and\n  \t\ts2->p in (Person<:projects)) implies\n  \t\tone p1: Project | s1->p1 in (Person<:projects) and s2->p1 in (Person<:projects)\n\n}",
+                    "ids": [
+                        "sMLCgCszhbkr9MACu"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n  /*\n  all s1, s2: Student, p: Project | \n  \t\t(s1 != s2 and \n  \t\ts1->p in (Person<:projects) and\n  \t\ts2->p in (Person<:projects)) implies\n  \t\tone p1: Project | s1->p1 in (Person<:projects) and s2->p1 in (Person<:projects)\n  */\n  all s1, s2: Student | lone p: Project | \n  \t\t(s1 != s2 and \n  \t\ts1->p in (Person<:projects) and\n  \t\ts2->p in (Person<:projects))\n}",
+                    "ids": [
+                        "dgKFGX9fQwGtLJ4oZ"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n\n        all disj s1, s2 : Student | all disj p1, p2 : Project |\n\t    s1->p1 in projects and s2->p1 in projects and s1->p2 in projects and s2->p2 in projects\n\t   implies p1 = p2\n \n\t\n\n}",
+                    "ids": [
+                        "8G5poTSNi6u7WKaAE"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall disj s1, s2 : Student | all pr1, pr2 : Project | s1 in projects.pr1 \n  \tand s2 in projects.pr1 and s1 in projects.pr2 and s2 in projects.pr2 \n  \timplies pr1 = pr2\n  \n  \tall disj s1, s2 : Student | lone s1.projects & s2.projects\n}",
+                    "ids": [
+                        "PZMYLtqo7zGvu77e7"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall s1,s2 : Student | all p1,p2 : Project |\n  \t(s1->p1 in projects and s2->p1 in projects and s1!=s2 and p1!=p2) implies\n  \t( (s1->p2 not in projects) or (s2->p2 not in projects) )\n}",
+                    "ids": [
+                        "9dipK5gGSeFoXBjnA"
                     ]
                 }
             ]
@@ -652,6 +652,16 @@
                 },
                 {
                     "entry_count": 4,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall s1, s2: Student | #(s1.projects & s2.projects) < 2\n}",
+                    "ids": [
+                        "FnmMXAadNQM9P4uNb",
+                        "5nt6jZX6NtaHkoMr9",
+                        "3yoEAaiqpHNCcn5H5",
+                        "7NbLLXjpkgv4j2ncd"
+                    ]
+                },
+                {
+                    "entry_count": 4,
                     "code": "{\n\t// A student cannot work with the same student in different projects\n\tall s1, s2: Student, p1, p2: Project | p1 in s1.projects and p2 in s1.projects and p1 in s2.projects and p2 in s2.projects => p1 = p2\n}",
                     "ids": [
                         "yWguYt6vfJsSzfDCP",
@@ -661,13 +671,12 @@
                     ]
                 },
                 {
-                    "entry_count": 4,
-                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall s1, s2: Student | #(s1.projects & s2.projects) < 2\n}",
+                    "entry_count": 3,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall x, y: Student | #(x.projects & y.projects) <= 1\n}",
                     "ids": [
-                        "FnmMXAadNQM9P4uNb",
-                        "5nt6jZX6NtaHkoMr9",
-                        "3yoEAaiqpHNCcn5H5",
-                        "7NbLLXjpkgv4j2ncd"
+                        "q7SBaNmFCcgDmDFzk",
+                        "YH7e2Erhtweuzz6oB",
+                        "6uGzbt7p3yfvrP9rY"
                     ]
                 },
                 {
@@ -680,12 +689,27 @@
                     ]
                 },
                 {
-                    "entry_count": 3,
-                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall x, y: Student | #(x.projects & y.projects) <= 1\n}",
+                    "entry_count": 2,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall s1, s2: Student | all p1, p2: Project | p1 in (s1.projects & s2.projects) and p2 in (s1.projects & s2.projects) => p1 = p2\n}",
                     "ids": [
-                        "q7SBaNmFCcgDmDFzk",
-                        "YH7e2Erhtweuzz6oB",
-                        "6uGzbt7p3yfvrP9rY"
+                        "eS3w3Fdmhy2vrr6tG",
+                        "vJKHreB89RdckwZ6E"
+                    ]
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall s1, s2: Student | lone p: Project | p in s1.projects & s2.projects\n}",
+                    "ids": [
+                        "tuX3iqt2dQxNnMWex",
+                        "hhwGi887vhhL3A3uz"
+                    ]
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\n  all s1,s2 :Student , p1: s1.projects & s2.projects, p2:Project-p1 | p2 not in s1.projects & s2.projects\n// A student cannot work with the same student in different projects\n\n}",
+                    "ids": [
+                        "ko94EnyaJsiAHG95Z",
+                        "B8KnPHb5nCWM7wfe7"
                     ]
                 },
                 {
@@ -706,34 +730,31 @@
                 },
                 {
                     "entry_count": 2,
-                    "code": "{\n\n  all s1,s2 :Student , p1: s1.projects & s2.projects, p2:Project-p1 | p2 not in s1.projects & s2.projects\n// A student cannot work with the same student in different projects\n\n}",
-                    "ids": [
-                        "ko94EnyaJsiAHG95Z",
-                        "B8KnPHb5nCWM7wfe7"
-                    ]
-                },
-                {
-                    "entry_count": 2,
-                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall s1, s2: Student | lone p: Project | p in s1.projects & s2.projects\n}",
-                    "ids": [
-                        "tuX3iqt2dQxNnMWex",
-                        "hhwGi887vhhL3A3uz"
-                    ]
-                },
-                {
-                    "entry_count": 2,
-                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall s1, s2: Student | all p1, p2: Project | p1 in (s1.projects & s2.projects) and p2 in (s1.projects & s2.projects) => p1 = p2\n}",
-                    "ids": [
-                        "eS3w3Fdmhy2vrr6tG",
-                        "vJKHreB89RdckwZ6E"
-                    ]
-                },
-                {
-                    "entry_count": 2,
                     "code": "{\n\n  all s1,s2 :Student,\n      p1,p2: Project|   \n  \t\tp1+p2 in s1.projects & s2.projects => p1=p2\n// A student cannot work with the same student in different projects\n\n}",
                     "ids": [
                         "FLjGP3hv6mRZMmTow",
                         "b7kbmqHsrdq6oLp4r"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n\n        all s1, s2 : Student | all p1, p2 : Project |\n\t \n\t   s1->p1 in projects and s2->p1 in projects and s1->p2 in projects and s2->p2 in projects\n\t  implies p1 = p2\n \n\t\n\n}",
+                    "ids": [
+                        "Ar8gxMoWREkYicLXX"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall s1: Student | no s2: Student | #(s1 & s2).projects > 1\n}",
+                    "ids": [
+                        "tQnKoQpkMDuYKFZCR"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall s1 : Student | all s2 : Student | one (s1.projects & s2.projects) or no ( s1.projects & s2.projects)\n}",
+                    "ids": [
+                        "mvq4SjZi6F9y6AeSB"
                     ]
                 },
                 {
@@ -745,9 +766,58 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// A student cannot work with the same student in different projects\n     all s : Student, p : s.projects, s1 : (Student<:projects).p | no (s1.projects&s.projects)-p\n}",
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall s1, s2: Student | all disj p1, p2: Project | p1 in (s1.projects & s2.projects) => p2 not in (s1.projects & s2.projects)\n}",
                     "ids": [
-                        "ovTiLtC3WAo3uPkDW"
+                        "AYPeiCvJ2qSNZE2eZ"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall s : Student | all disj p, p2 : s.projects | no (Person <: projects).p & (Person <: projects).p2\n}",
+                    "ids": [
+                        "ScKNquRzouejN9LHh"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n\n\tall s1 : Student | all s2 : Student | all p1 : Project | all p2 : Project | s1->p1 in projects and s2->p1 in projects and s1->p2 in projects and p1!=p2 implies not s2->p2 in projects\n\n\t// all s1 : Student | all s2 : Student | lone (s1.projects & s2.projects)\n\n}",
+                    "ids": [
+                        "WPe3DA84xpBWNxRMc"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n  \n  all p1,p2 : Student | all p : Project | p in p1.projects and p in p2.projects implies no pr : Project - p | pr in p1.projects and pr in p2.projects\n\n}",
+                    "ids": [
+                        "hj97DbFa9xopSfTJH"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n  all s1, s2 : Student | lone (s1.projects & s2.projects) -s1 -s2\n\n}",
+                    "ids": [
+                        "yMnXTZaTrKw3SSd3H"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall x1, x2: Student | all disj p1, p2: Project |\n  \t\tp1 in x1.projects and\n  \t\tp1 in x2.projects and\n  \t\tp2 in x1.projects implies p2 not in x2.projects\n}",
+                    "ids": [
+                        "edBuJWkpdF6wfsSWY"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall s1,s2 : Student,p : Project | p in ( s1.projects & s2.projects ) \n    implies \n    (all p2: Project | p2 in ( s1.projects & s2.projects ) implies p = p2)\n\n}",
+                    "ids": [
+                        "qmPfKTp4gHkuN7SXC"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n  \tall s1,s2 :Student | all p1:s1.projects | all p2:s2.projects |\n  \t\t\tp1 = p2 implies all rest:s1.projects-p1 | rest not in s2.projects-p1 and s1 != s2\n}",
+                    "ids": [
+                        "5qSqEP3APeYbQFLFE"
                     ]
                 },
                 {
@@ -766,86 +836,16 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// A student cannot work with the same student in different projects\n  \n  all p1,p2 : Student | all p : Project | p in p1.projects and p in p2.projects implies no pr : Project - p | pr in p1.projects and pr in p2.projects\n\n}",
-                    "ids": [
-                        "hj97DbFa9xopSfTJH"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall s1: Student | no s2: Student | #(s1 & s2).projects > 1\n}",
-                    "ids": [
-                        "tQnKoQpkMDuYKFZCR"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// A student cannot work with the same student in different projects\n  all s1, s2 : Student | lone (s1.projects & s2.projects) -s1 -s2\n\n}",
-                    "ids": [
-                        "yMnXTZaTrKw3SSd3H"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// A student cannot work with the same student in different projects\n  \tall s1,s2 :Student | all p1:s1.projects | all p2:s2.projects |\n  \t\t\tp1 = p2 implies all rest:s1.projects-p1 | rest not in s2.projects-p1 and s1 != s2\n}",
-                    "ids": [
-                        "5qSqEP3APeYbQFLFE"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall s : Student | all disj p, p2 : s.projects | no (Person <: projects).p & (Person <: projects).p2\n}",
-                    "ids": [
-                        "ScKNquRzouejN9LHh"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall s1 : Student | all s2 : Student | one (s1.projects & s2.projects) or no ( s1.projects & s2.projects)\n}",
-                    "ids": [
-                        "mvq4SjZi6F9y6AeSB"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall x1, x2: Student | all disj p1, p2: Project |\n  \t\tp1 in x1.projects and\n  \t\tp1 in x2.projects and\n  \t\tp2 in x1.projects implies p2 not in x2.projects\n}",
-                    "ids": [
-                        "edBuJWkpdF6wfsSWY"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// A student cannot work with the same student in different projects\n\n\tall s1 : Student | all s2 : Student | all p1 : Project | all p2 : Project | s1->p1 in projects and s2->p1 in projects and s1->p2 in projects and p1!=p2 implies not s2->p2 in projects\n\n\t// all s1 : Student | all s2 : Student | lone (s1.projects & s2.projects)\n\n}",
-                    "ids": [
-                        "WPe3DA84xpBWNxRMc"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall s1,s2 : Student,p : Project | p in ( s1.projects & s2.projects ) \n    implies \n    (all p2: Project | p2 in ( s1.projects & s2.projects ) implies p = p2)\n\n}",
-                    "ids": [
-                        "qmPfKTp4gHkuN7SXC"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// A student cannot work with the same student in different projects\n\n        all s1, s2 : Student | all p1, p2 : Project |\n\t \n\t   s1->p1 in projects and s2->p1 in projects and s1->p2 in projects and s2->p2 in projects\n\t  implies p1 = p2\n \n\t\n\n}",
-                    "ids": [
-                        "Ar8gxMoWREkYicLXX"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall s1, s2: Student | all disj p1, p2: Project | p1 in (s1.projects & s2.projects) => p2 not in (s1.projects & s2.projects)\n}",
-                    "ids": [
-                        "AYPeiCvJ2qSNZE2eZ"
-                    ]
-                },
-                {
-                    "entry_count": 1,
                     "code": "{\n\t// A student cannot work with the same student in different projects\n  all s, e : Student | all p1, p2 : Project | p1 != p2 and (p1 in s.projects and p1 in e.projects) implies not (p2 in s.projects and p2 in e.projects)\n\n}",
                     "ids": [
                         "Ed5Gwwyxdtssda8oG"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n     all s : Student, p : s.projects, s1 : (Student<:projects).p | no (s1.projects&s.projects)-p\n}",
+                    "ids": [
+                        "ovTiLtC3WAo3uPkDW"
                     ]
                 }
             ]
@@ -880,11 +880,11 @@
                 },
                 {
                     "entry_count": 3,
-                    "code": "{\n\t// A student cannot work with the same student in different projects\n  all s1, s2 : Student | all p1, p2 : Project | p1 in s1.projects and p2 in s1.projects and p1 in s2.projects implies p2 not in s2.projects\n\n}",
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n  \tall s1, s2 : Student, p1, p2 : Project | (p1 in s1.projects and p1 in s2.projects) implies (p2 not in s1.projects or p2 not in s2.projects)\n\n}",
                     "ids": [
-                        "kYa56NMJZDjPJYi8B",
-                        "PzjFTFRY2eJMGkJRf",
-                        "jMMLxqDcGfjCXQ7Pu"
+                        "dQnDffyqfAdM3uvNM",
+                        "M9apGoctJHd9JmYJW",
+                        "4X8Ygzm56YqiFHDh4"
                     ]
                 },
                 {
@@ -898,11 +898,11 @@
                 },
                 {
                     "entry_count": 3,
-                    "code": "{\n\t// A student cannot work with the same student in different projects\n  \tall s1, s2 : Student, p1, p2 : Project | (p1 in s1.projects and p1 in s2.projects) implies (p2 not in s1.projects or p2 not in s2.projects)\n\n}",
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n  all s1, s2 : Student | all p1, p2 : Project | p1 in s1.projects and p2 in s1.projects and p1 in s2.projects implies p2 not in s2.projects\n\n}",
                     "ids": [
-                        "dQnDffyqfAdM3uvNM",
-                        "M9apGoctJHd9JmYJW",
-                        "4X8Ygzm56YqiFHDh4"
+                        "kYa56NMJZDjPJYi8B",
+                        "PzjFTFRY2eJMGkJRf",
+                        "jMMLxqDcGfjCXQ7Pu"
                     ]
                 },
                 {
@@ -924,9 +924,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall s1, s2: Student | no (s1 & s2).projects\n}",
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall disj s1: Student, s2: Student | all disj p1: Project, p2: Project | ((p1 in s1.projects) && (p1 in s1.projects)) implies !( (p2 in s1.projects) && (p2 in s2.projects) )\n}",
                     "ids": [
-                        "Th5zmB9bdpJZND6Hw"
+                        "mgQxu2uePiYm6edjh"
                     ]
                 },
                 {
@@ -938,23 +938,23 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// A student cannot work with the same student ins different projects\n\tall s1, s2 : Student , p1, p2: Project | (p1 in s1.projects and p1 in s2.projects) implies (p2 in s2.projects implies not p2 in s1.projects )\n}",
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall s1,s2: Student, p: s1.projects, ap: Project | ap in s1.projects implies ap not in s2.projects\n}",
                     "ids": [
-                        "JQEjd3CER7PvcmPCE"
+                        "6M6GrGJ2bdXNS5ENb"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall disj s1: Student, s2: Student | all disj p1: Project, p2: Project | ((p1 in s1.projects) && (p1 in s1.projects)) implies !( (p2 in s1.projects) && (p2 in s2.projects) )\n}",
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall s1, s2: Student, p1, p2: Project | p1 in (s1.projects & s2.projects) => p2 not in (s1.projects & s2.projects)\n}",
                     "ids": [
-                        "mgQxu2uePiYm6edjh"
+                        "KDbwFf66bTmGrmGu8"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall p1,p2: Project, s1,s2: Student | s1+s2 in (Person <: projects).p1 implies\n  s1+s2 not in (Person <: projects).p2\n}",
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n\n\tall s1 : Student | all s2 : Student | all p1 : Project | all p2 : Project | s1->p1 in projects and s2->p1 in projects and s1->p2 in projects implies not s2->p2 in projects\n\n\t// all s1 : Student | all s2 : Student | lone (s1.projects & s2.projects)\n\n}",
                     "ids": [
-                        "iRHMzhyA9jHsP8GmP"
+                        "5idbQz3QsvvLbZj7b"
                     ]
                 },
                 {
@@ -966,6 +966,13 @@
                 },
                 {
                     "entry_count": 1,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n  \tall s1,s2 :Student | all p1:s1.projects | all p2:s2.projects |\n  \t\t\tp1 = p2 implies s1.^projects-p1 not in s2.^projects-p1 and s1 != s2\n}",
+                    "ids": [
+                        "MY5jZbfExGtoPWo7H"
+                    ]
+                },
+                {
+                    "entry_count": 1,
                     "code": "{\n\t// A student cannot work with the same student in different projects\n\tall s1,s2 : Student | all p1,p2 : Project | p1 in s1.projects and p1 in s2.projects implies p2 not in s1.projects\n}",
                     "ids": [
                         "FEuKF4dJ8gjpA7Ghu"
@@ -973,9 +980,16 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// A student cannot work with the same student in different projects\n  \tall s1,s2 :Student | all p1:s1.projects | all p2:s2.projects |\n  \t\t\tp1 = p2 implies s1.^projects-p1 not in s2.^projects-p1 and s1 != s2\n}",
+                    "code": "{\n\t// A student cannot work with the same student ins different projects\n\tall s1, s2 : Student , p1, p2: Project | (p1 in s1.projects and p1 in s2.projects) implies (p2 in s2.projects implies not p2 in s1.projects )\n}",
                     "ids": [
-                        "MY5jZbfExGtoPWo7H"
+                        "JQEjd3CER7PvcmPCE"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall p1,p2: Project, s1,s2: Student | s1+s2 in (Person <: projects).p1 implies\n  s1+s2 not in (Person <: projects).p2\n}",
+                    "ids": [
+                        "iRHMzhyA9jHsP8GmP"
                     ]
                 },
                 {
@@ -994,23 +1008,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// A student cannot work with the same student in different projects\n\n\tall s1 : Student | all s2 : Student | all p1 : Project | all p2 : Project | s1->p1 in projects and s2->p1 in projects and s1->p2 in projects implies not s2->p2 in projects\n\n\t// all s1 : Student | all s2 : Student | lone (s1.projects & s2.projects)\n\n}",
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall s1, s2: Student | no (s1 & s2).projects\n}",
                     "ids": [
-                        "5idbQz3QsvvLbZj7b"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall s1,s2: Student, p: s1.projects, ap: Project | ap in s1.projects implies ap not in s2.projects\n}",
-                    "ids": [
-                        "6M6GrGJ2bdXNS5ENb"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall s1, s2: Student, p1, p2: Project | p1 in (s1.projects & s2.projects) => p2 not in (s1.projects & s2.projects)\n}",
-                    "ids": [
-                        "KDbwFf66bTmGrmGu8"
+                        "Th5zmB9bdpJZND6Hw"
                     ]
                 }
             ]
@@ -1068,23 +1068,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// A student cannot work with the same student in different projects\nall s1, s2: Student, p1, p2: Project, c: Course | \n    (p1 in s1.projects.enrolled and p2 in s2.projects.enrolled) implies (s1 != s2 or p1 != p2)\n}",
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall disj s1, s2: Student | no (s1 & s2).projects\n}",
                     "ids": [
-                        "sTojiKGJnJcpPmNDD"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// A student cannot work with the same student in different projects\n  all s: Person, p: s.projects | lone (Person-s).projects & p \n\n}",
-                    "ids": [
-                        "3W7mHy9AvRpTSJFAv"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall s,s1: Student | lone(s.projects.grades[s] & s1.projects.grades[s1])\n}",
-                    "ids": [
-                        "xLRjbvm8oi76FeuJc"
+                        "i5ryo4SrBhhaABcoQ"
                     ]
                 },
                 {
@@ -1096,20 +1082,6 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall disj s1, s2: Student, p1, p2: Project | p1 in s1.enrolled and p2 in s2.enrolled => p1 = p2 \n}",
-                    "ids": [
-                        "9HdNcnCDfmxXmznGW"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall disj s1, s2: Student | #(s1 & s2).projects < 2\n}",
-                    "ids": [
-                        "7EN5hacnpjrbjGKdn"
-                    ]
-                },
-                {
-                    "entry_count": 1,
                     "code": "{\n\t// A student cannot work with the same student in different projects\n\tall p1,p2:Person, w1,w2: Project | p1 != p2 and w1 != w2 and w1 in p1.projects and w1 in p2.projects implies not (p2 in w2 and p1 in w2)\n}",
                     "ids": [
                         "WZFXagEGR36WnHxNJ"
@@ -1117,9 +1089,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall s1,s2 : Student | all p1 : s1.projects | all p2 : s2.projects | lone p1 & p2\n}",
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall s,s1: Student | lone(s.projects.grades[s] & s1.projects.grades[s1])\n}",
                     "ids": [
-                        "cKszqhKP9Rwozzv6B"
+                        "xLRjbvm8oi76FeuJc"
                     ]
                 },
                 {
@@ -1131,6 +1103,27 @@
                 },
                 {
                     "entry_count": 1,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall disj s1, s2: Student | #(s1 & s2).projects < 2\n}",
+                    "ids": [
+                        "7EN5hacnpjrbjGKdn"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall disj s1, s2: Student, p1, p2: Project | p1 in s1.enrolled and p2 in s2.enrolled => p1 = p2 \n}",
+                    "ids": [
+                        "9HdNcnCDfmxXmznGW"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n  all s: Person, p: s.projects | lone (Person-s).projects & p \n\n}",
+                    "ids": [
+                        "3W7mHy9AvRpTSJFAv"
+                    ]
+                },
+                {
+                    "entry_count": 1,
                     "code": "{\n\t// A student cannot work with the same student in different projects\n\tall s1, s2: Student | lone Person<:(s1 & s2).projects\n}",
                     "ids": [
                         "SzMcLjsjDC6ZM7JCp"
@@ -1138,9 +1131,16 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall disj s1, s2: Student | no (s1 & s2).projects\n}",
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall s1,s2 : Student | all p1 : s1.projects | all p2 : s2.projects | lone p1 & p2\n}",
                     "ids": [
-                        "i5ryo4SrBhhaABcoQ"
+                        "cKszqhKP9Rwozzv6B"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\nall s1, s2: Student, p1, p2: Project, c: Course | \n    (p1 in s1.projects.enrolled and p2 in s2.projects.enrolled) implies (s1 != s2 or p1 != p2)\n}",
+                    "ids": [
+                        "sTojiKGJnJcpPmNDD"
                     ]
                 }
             ]
@@ -1160,44 +1160,16 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall s, s1: Student | all p, p1: Project | s != s1 and ( p in s.projects and p in s1.projects) implies (p1 not in s.projects or p1 not in s1.projects)\n}",
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n\n            all disj s1, s2 : Student | all pr : Project | \n           not (pr in s1.projects and pr in s2.projects)\n\n\n}",
                     "ids": [
-                        "A873u4sXDNcX73Wx6"
+                        "fzyzdDQvgb3j4oeoo"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// A student cannot work with the same student in different projects\n  \tall disj s1, s2: Student | all p1, p2: Project | p1 in s1.projects and p1 in s2.projects and p2 in s1.projects implies p2 not in s2.projects\n\n}",
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n\n  \tall s,s2: Student | s != s2 implies lone s.projects & s2.projects\n  \n  \tall s,s2: Student | s != s2 implies no (s.projects & s2.projects)\n}",
                     "ids": [
-                        "sEALray7B8m97ryjx"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// A student cannot work with the same student in different projects\n  \tall disj s1, s2 : Student, p1, p2 : Project | (p1 in s1.projects and p1 in s2.projects) implies not (p2 in s1.projects and p2 in s2.projects)\n\n}",
-                    "ids": [
-                        "M8r8bjXpzDBJqFgKF"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall p1,p2 : Student | all c1: Project |\n      (p1!=p2 and p1->c1 in projects and p2->c1 in projects) implies \n       (all c2 : Project | p1->c2 in projects implies p2->c2 not in projects)\n}",
-                    "ids": [
-                        "Gx2RwMv2NzmfQWgZ6"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall disj s1,s2 : Student | all p1,p2 : Project | p1 in s1.projects and p1 in s2.projects implies p2 not in s1.projects\n}",
-                    "ids": [
-                        "2KRgnDCFgzAHKgbqE"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// A student cannot work with the same student in different projects\n  all s1, s2 : Student | all p1, p2 : Project | p1 in s1.projects and p2 in s1.projects and p1 in s2.projects and s1 != s2 implies p2 not in s2.projects\n  \n\n}",
-                    "ids": [
-                        "PLSbj8zdtybo9m3EX"
+                        "3h9wi8PEfLPGsFeEf"
                     ]
                 },
                 {
@@ -1216,16 +1188,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// A student cannot work with the same student in different projects\n\n            all disj s1, s2 : Student | all pr : Project | \n           not (pr in s1.projects and pr in s2.projects)\n\n\n}",
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall disj s1,s2 : Student | no s1.projects  & s2.projects\n}",
                     "ids": [
-                        "fzyzdDQvgb3j4oeoo"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// A student cannot work with the same student in different projects\n\n  \tall s,s2: Student | s != s2 implies lone s.projects & s2.projects\n  \n  \tall s,s2: Student | s != s2 implies no (s.projects & s2.projects)\n}",
-                    "ids": [
-                        "3h9wi8PEfLPGsFeEf"
+                        "K8kYTuCG3MXDRTcwa"
                     ]
                 },
                 {
@@ -1237,6 +1202,34 @@
                 },
                 {
                     "entry_count": 1,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall p1,p2 : Student | all c1: Project |\n      (p1!=p2 and p1->c1 in projects and p2->c1 in projects) implies \n       (all c2 : Project | p1->c2 in projects implies p2->c2 not in projects)\n}",
+                    "ids": [
+                        "Gx2RwMv2NzmfQWgZ6"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n  \tall disj s1, s2 : Student, p1, p2 : Project | (p1 in s1.projects and p1 in s2.projects) implies not (p2 in s1.projects and p2 in s2.projects)\n\n}",
+                    "ids": [
+                        "M8r8bjXpzDBJqFgKF"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n  \tall disj s1, s2: Student | all p1, p2: Project | p1 in s1.projects and p1 in s2.projects and p2 in s1.projects implies p2 not in s2.projects\n\n}",
+                    "ids": [
+                        "sEALray7B8m97ryjx"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n  all s1, s2 : Student | all p1, p2 : Project | p1 in s1.projects and p2 in s1.projects and p1 in s2.projects and s1 != s2 implies p2 not in s2.projects\n  \n\n}",
+                    "ids": [
+                        "PLSbj8zdtybo9m3EX"
+                    ]
+                },
+                {
+                    "entry_count": 1,
                     "code": "{\n\t// A student cannot work with the same student in different projects\n  all s: Student, p: s.projects | no (Student-s).projects & p \n\n}",
                     "ids": [
                         "8yATmWS7R72tLCC6d"
@@ -1244,9 +1237,16 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall disj s1,s2 : Student | no s1.projects  & s2.projects\n}",
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall disj s1,s2 : Student | all p1,p2 : Project | p1 in s1.projects and p1 in s2.projects implies p2 not in s1.projects\n}",
                     "ids": [
-                        "K8kYTuCG3MXDRTcwa"
+                        "2KRgnDCFgzAHKgbqE"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall s, s1: Student | all p, p1: Project | s != s1 and ( p in s.projects and p in s1.projects) implies (p1 not in s.projects or p1 not in s1.projects)\n}",
+                    "ids": [
+                        "A873u4sXDNcX73Wx6"
                     ]
                 }
             ]
@@ -1274,20 +1274,6 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall s1,s2 : Student | s1 != s2 and s1.projects not in s2.projects\n}",
-                    "ids": [
-                        "CLJRCE6sqE3pG5WSZ"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall s1, s2 : Student | s1.projects != s2.projects \n}",
-                    "ids": [
-                        "vENxpiNFTgbbjkhmx"
-                    ]
-                },
-                {
-                    "entry_count": 1,
                     "code": "{\n\t// A student cannot work with the same student in different projects\n\n\tall s1, s2: Student | not s1.projects in s2.projects\n}",
                     "ids": [
                         "Bd7FGx77369a65WJ2"
@@ -1305,6 +1291,20 @@
                     "code": "{\n\t// A student cannot work with the same student in different projects\n\tall x : Student, y : Student | one p : Project | x != y and p in x.projects and p in y.projects \n}",
                     "ids": [
                         "vwqo9a39TYKhEHfWj"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall s1,s2 : Student | s1 != s2 and s1.projects not in s2.projects\n}",
+                    "ids": [
+                        "CLJRCE6sqE3pG5WSZ"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall s1, s2 : Student | s1.projects != s2.projects \n}",
+                    "ids": [
+                        "vENxpiNFTgbbjkhmx"
                     ]
                 }
             ]
@@ -1369,16 +1369,9 @@
             "elems": [
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall p : Person, disj x,y : p.projects | no ((Person <: projects).x & projects.y) - p\n}",
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n  all p1:Person | all p2:Person-p1 | all pr1:Project | all pr2:Project - pr1  | pr1 in p1.projects and pr1  in p2.projects and pr2 in p1.projects and pr2 in p2.projects implies pr1 = pr2\n\n}",
                     "ids": [
-                        "LXFH2RbmtootxEDoN"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall p1,p2:Person, w1,w2: Project | p1 != p2 and w1 != w2 \n  \t\t\t\t\t\t\t\t\t\tand w1 in p1.projects and w1 in p2.projects \n  \t\t\t\t\t\t\t\t\t\t\timplies not (w2 in p2.projects and w2 in p1.projects)\n  \t\n}",
-                    "ids": [
-                        "5PrZwhiaQ4hBAHNeZ"
+                        "tj44zo94fgtJmEKTL"
                     ]
                 },
                 {
@@ -1390,9 +1383,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// A student cannot work with the same student in different projects\n  all p1:Person | all p2:Person-p1 | all pr1:Project | all pr2:Project - pr1  | pr1 in p1.projects and pr1  in p2.projects and pr2 in p1.projects and pr2 in p2.projects implies pr1 = pr2\n\n}",
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall p1,p2:Person, w1,w2: Project | p1 != p2 and w1 != w2 \n  \t\t\t\t\t\t\t\t\t\tand w1 in p1.projects and w1 in p2.projects \n  \t\t\t\t\t\t\t\t\t\t\timplies not (w2 in p2.projects and w2 in p1.projects)\n  \t\n}",
                     "ids": [
-                        "tj44zo94fgtJmEKTL"
+                        "5PrZwhiaQ4hBAHNeZ"
                     ]
                 },
                 {
@@ -1400,6 +1393,13 @@
                     "code": "{\n\t// A student cannot work with the same student in different projects\n\n        all s1, s2 : Student | all p1, p2 : Project | s1->p1 in projects and s2->p1 in projects and s1->p2 in projects and s1!=s2 and p1!=p2 implies not s2->p2 in projects\n\t// all s1 : Student | all s2 : Student | lone (s1.projects & s2.projects)\n\n\tall p : Person, disj x,y : p.projects | no ((Person <: projects).x & projects.y) - p\n\n\n}",
                     "ids": [
                         "kq42cWpriAdu4Y9aX"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall p : Person, disj x,y : p.projects | no ((Person <: projects).x & projects.y) - p\n}",
+                    "ids": [
+                        "LXFH2RbmtootxEDoN"
                     ]
                 },
                 {
@@ -1416,6 +1416,20 @@
             "group_count": 5,
             "correct": false,
             "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n  \tall s1, s2 : Student, p1, p2 : Project | s1 != s2 and (p1 in s1.projects and p1 in s2.projects and p2 in s1.projects and p2 in s2.projects => p1 = p2)\n    //all s1, s2 : Student | s1 != s2 and (lone (s1.projects & s2.projects))\n}",
+                    "ids": [
+                        "9mqvMgWAr4zuiSnnr"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n  all s: Student, s2: Student, p: Project| (s & s2) in (projects.p) and  no(s.projects & s2.projects)\n\t// A student cannot work with the same student in different projects\n\n}",
+                    "ids": [
+                        "9xptfAgLXHfZEq7g7"
+                    ]
+                },
                 {
                     "entry_count": 1,
                     "code": "{\n  all s: Student, s2: Student, p: Project| (s & s2) in (projects.p) and some p2: Project | not(s-> p in projects) or not(s2-> p in projects)\n\t// A student cannot work with the same student in different projects\n\n}",
@@ -1436,20 +1450,6 @@
                     "ids": [
                         "PgZCzC7FCiaRk7p4z"
                     ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// A student cannot work with the same student in different projects\n  \tall s1, s2 : Student, p1, p2 : Project | s1 != s2 and (p1 in s1.projects and p1 in s2.projects and p2 in s1.projects and p2 in s2.projects => p1 = p2)\n    //all s1, s2 : Student | s1 != s2 and (lone (s1.projects & s2.projects))\n}",
-                    "ids": [
-                        "9mqvMgWAr4zuiSnnr"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n  all s: Student, s2: Student, p: Project| (s & s2) in (projects.p) and  no(s.projects & s2.projects)\n\t// A student cannot work with the same student in different projects\n\n}",
-                    "ids": [
-                        "9xptfAgLXHfZEq7g7"
-                    ]
                 }
             ]
         },
@@ -1458,27 +1458,6 @@
             "group_count": 5,
             "correct": false,
             "elems": [
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall s : Student, s2 : Student-s, p : Project, p2 : Project-p | (s->p in projects and s2->p in projects) implies (not s2->p2 in projects)\n}",
-                    "ids": [
-                        "Ek6j7qAgvJCyHbsE2"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall disj s1, s2: Student | all p1, p2: Project | p1 in s1.projects and p1 in s2.projects and p1 in s1.projects and p2 in s2.projects => p1 = p2\n}",
-                    "ids": [
-                        "MSzKZ73WJErK65aY3"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// A student cannot work with the same student in different projects\n  \tall disj s1, s2 : Student, disj p1, p2 : Project | (p1 in s1.projects and p1 in s2.projects) implies (p2 not in s1.projects and p2 not in s2.projects)\n\n}",
-                    "ids": [
-                        "KjiXzAbvwnrGRsceA"
-                    ]
-                },
                 {
                     "entry_count": 1,
                     "code": "{\n\t// A student cannot work with the same student in different projects\n\tall s1, s2: Student | s1 != s2 implies no p1, p2: s1.projects | p1 != p2 and p2 in s2.projects\n}",
@@ -1491,6 +1470,27 @@
                     "code": "{\n\t// A student cannot work with the same student in different projects\n\tall disj s1,s2:Student | all disj p1,p2:Project | p1 in s1.projects and p2 in s2.projects and p2 in s1.projects implies p2 not in s2.projects\n}",
                     "ids": [
                         "BdAnLiS2RXWkAX9HP"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n  \tall disj s1, s2 : Student, disj p1, p2 : Project | (p1 in s1.projects and p1 in s2.projects) implies (p2 not in s1.projects and p2 not in s2.projects)\n\n}",
+                    "ids": [
+                        "KjiXzAbvwnrGRsceA"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall disj s1, s2: Student | all p1, p2: Project | p1 in s1.projects and p1 in s2.projects and p1 in s1.projects and p2 in s2.projects => p1 = p2\n}",
+                    "ids": [
+                        "MSzKZ73WJErK65aY3"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall s : Student, s2 : Student-s, p : Project, p2 : Project-p | (s->p in projects and s2->p in projects) implies (not s2->p2 in projects)\n}",
+                    "ids": [
+                        "Ek6j7qAgvJCyHbsE2"
                     ]
                 }
             ]
@@ -1531,16 +1531,16 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall s : Student, s2 : Student-s, p : Project, p2 : Project-p | (s->p in projects and s2->p in projects) implies (not s2->p2 in projects and s->p2 in projects)\n}",
+                    "code": "{\n    // A student cannot work with the same student in different projects\n    all s1, s2: Student, p1, p2: Project |\n        s1 != s2 and p1 != p2 and p1 in s1.projects and p1 in s2.projects implies \n            (p2 in s1.projects and p2 not in s2.projects)\n}",
                     "ids": [
-                        "AZvW4wLZkviTm494S"
+                        "DCa2w3eeP6Htiyh5H"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n    // A student cannot work with the same student in different projects\n    all s1, s2: Student, p1, p2: Project |\n        s1 != s2 and p1 != p2 and p1 in s1.projects and p1 in s2.projects implies \n            (p2 in s1.projects and p2 not in s2.projects)\n}",
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall s : Student, s2 : Student-s, p : Project, p2 : Project-p | (s->p in projects and s2->p in projects) implies (not s2->p2 in projects and s->p2 in projects)\n}",
                     "ids": [
-                        "DCa2w3eeP6Htiyh5H"
+                        "AZvW4wLZkviTm494S"
                     ]
                 }
             ]
@@ -1552,16 +1552,16 @@
             "elems": [
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall x,y : Project | all a,b : (Person<:projects).x | a in projects.y implies b not in projects.y\n}",
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall p1,p2: Project, s1,s2: Person | s1+s2 in (Person <: projects).p1 implies\n  s1+s2 not in (Person <: projects).p2\n}",
                     "ids": [
-                        "nHCugSxwrWDztqA5y"
+                        "LHRTrzw5pRRz9Mddj"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall p1,p2: Project, s1,s2: Person | s1+s2 in (Person <: projects).p1 implies\n  s1+s2 not in (Person <: projects).p2\n}",
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall x,y : Project | all a,b : (Person<:projects).x | a in projects.y implies b not in projects.y\n}",
                     "ids": [
-                        "LHRTrzw5pRRz9Mddj"
+                        "nHCugSxwrWDztqA5y"
                     ]
                 },
                 {
@@ -1623,16 +1623,16 @@
             "elems": [
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall s1,s2 : Student | lone p1 : s1.projects | s1 != s2 and p1 not in s2.projects\n}",
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n    all s1 : Student, s2 : Student | lone (s1.projects - s2.projects)\n\n}",
                     "ids": [
-                        "TzQsCYgTFWopP9Zr2"
+                        "waRwZTBwBqjjmKaQu"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// A student cannot work with the same student in different projects\n    all s1 : Student, s2 : Student | lone (s1.projects - s2.projects)\n\n}",
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall s1,s2 : Student | lone p1 : s1.projects | s1 != s2 and p1 not in s2.projects\n}",
                     "ids": [
-                        "waRwZTBwBqjjmKaQu"
+                        "TzQsCYgTFWopP9Zr2"
                     ]
                 }
             ]
@@ -1701,16 +1701,16 @@
             "elems": [
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall s1,s2 : Student | some p1,p2 : s1.projects | s1 != s2 and p1 in s2.projects and p2 in s2.projects implies p1 = p2\n  \n}",
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall s1,s2 : Student | some p1,p2 : s1.projects | p1 in s2.projects and p2 in s2.projects implies p1 = p2\n  \n}",
                     "ids": [
-                        "y7fzF2kyho3JTYauy"
+                        "sF4mQHZnKPoBrvwfd"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall s1,s2 : Student | some p1,p2 : s1.projects | p1 in s2.projects and p2 in s2.projects implies p1 = p2\n  \n}",
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall s1,s2 : Student | some p1,p2 : s1.projects | s1 != s2 and p1 in s2.projects and p2 in s2.projects implies p1 = p2\n  \n}",
                     "ids": [
-                        "sF4mQHZnKPoBrvwfd"
+                        "y7fzF2kyho3JTYauy"
                     ]
                 }
             ]
@@ -1720,19 +1720,19 @@
             "group_count": 2,
             "correct": false,
             "elems": [
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// A student cannot work with the same student in different projects\n  \t\n\tall s1,s2: Student | some p1,p2: Project | ( p1 in s1.projects + s2.projects) and ( p2 in s1.projects + s2.projects) implies p1 = p2\n}",
-                    "ids": [
-                        "mde9sdgfYpss2jWrT"
-                    ]
-                },
                 {
                     "entry_count": 1,
                     "code": "{\n\t// A student cannot work with the same student in different projects\n  all s1, s2 : Student | some p : Project | p in (s1.projects & s2.projects) implies p not in (s1.projects & s2.projects) - p\n}",
                     "ids": [
                         "E9oQtzxZKRdySL2KL"
                     ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n  \t\n\tall s1,s2: Student | some p1,p2: Project | ( p1 in s1.projects + s2.projects) and ( p2 in s1.projects + s2.projects) implies p1 = p2\n}",
+                    "ids": [
+                        "mde9sdgfYpss2jWrT"
+                    ]
                 }
             ]
         },
@@ -1743,16 +1743,16 @@
             "elems": [
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall s1, s2: Student, p1, p2: Project | p1 in s1.projects and p2 in s2.projects => p1 = p2 \n}",
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n  \t\n\tall s1,s2: Student | all p1,p2: Project | ( p1 in s1.projects + s2.projects) and ( p2 in s1.projects + s2.projects) implies p1 = p2\n}",
                     "ids": [
-                        "JHjhiEAW2SgekE2YM"
+                        "BowzRhLAKE4BM5sEk"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// A student cannot work with the same student in different projects\n  \t\n\tall s1,s2: Student | all p1,p2: Project | ( p1 in s1.projects + s2.projects) and ( p2 in s1.projects + s2.projects) implies p1 = p2\n}",
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall s1, s2: Student, p1, p2: Project | p1 in s1.projects and p2 in s2.projects => p1 = p2 \n}",
                     "ids": [
-                        "BowzRhLAKE4BM5sEk"
+                        "JHjhiEAW2SgekE2YM"
                     ]
                 }
             ]

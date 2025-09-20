@@ -3,7 +3,7 @@
     "pred": "this/inv5",
     "entry_count": 836,
     "group_count": 166,
-    "duration": 77,
+    "duration": 79,
     "scope": 3,
     "groups": [
         {
@@ -203,22 +203,22 @@
                 },
                 {
                     "entry_count": 4,
-                    "code": "{\n    // Junctions are the tracks with more than one predecessor\n      all t:Track | lone succs.t iff t not in Junction\n\n}",
-                    "ids": [
-                        "AxaTWstvbWhyo5eZf",
-                        "qaXWtiR43RAhPdXTT",
-                        "6LAyYbgyZ8ihuCvpg",
-                        "oStMJ3PFSB7g3zzSD"
-                    ]
-                },
-                {
-                    "entry_count": 4,
                     "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tJunction = {t: Track | some disj t1, t2: Track | t1+t2 in succs.t}\n}",
                     "ids": [
                         "rN4yMGA9QCsfpEzYB",
                         "7rGh4ZgAwAQDZ7ftQ",
                         "H6sJ5d5ACHgxz9hyj",
                         "byYe6cufCmpbLEsms"
+                    ]
+                },
+                {
+                    "entry_count": 4,
+                    "code": "{\n    // Junctions are the tracks with more than one predecessor\n      all t:Track | lone succs.t iff t not in Junction\n\n}",
+                    "ids": [
+                        "AxaTWstvbWhyo5eZf",
+                        "qaXWtiR43RAhPdXTT",
+                        "6LAyYbgyZ8ihuCvpg",
+                        "oStMJ3PFSB7g3zzSD"
                     ]
                 },
                 {
@@ -266,10 +266,10 @@
                 },
                 {
                     "entry_count": 2,
-                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  \tall t:Track | t in Junction <=>\n  \t(some disj t1,t2:Track | t1->t in succs and t2->t in succs)\n}",
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t:Track|t in Junction iff some disj t1,t2:Track | t in t1.succs & t2.succs \n}",
                     "ids": [
-                        "sY7dtQ44BQ47DdtkJ",
-                        "JXT5CjiGgTW44Mchc"
+                        "i6tFYD3fWxDkpb748",
+                        "RRPRQ9Wwt8mkRBuER"
                     ]
                 },
                 {
@@ -282,6 +282,14 @@
                 },
                 {
                     "entry_count": 2,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall j : Junction | some t1, t2: Track | t1 != t2 and j in t1.succs and j in t2.succs\n  \tall t : Track-Junction | lone(succs.t)\n}",
+                    "ids": [
+                        "JSytZ9BkZymtXRZez",
+                        "bBf3TChQSdmqGGwaS"
+                    ]
+                },
+                {
+                    "entry_count": 2,
                     "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t: Track | t in Junction iff some disj t2,t3: Track | t in t2.succs and t in t3.succs and t2 != t3\n}",
                     "ids": [
                         "meuRrtrEL5v7aNQtE",
@@ -290,18 +298,10 @@
                 },
                 {
                     "entry_count": 2,
-                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t : Track | some succs.t and not one succs.t implies t in Junction\n\tall t : Junction | some succs.t and not one succs.t\n}",
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  \tall t:Track | t in Junction <=>\n  \t(some disj t1,t2:Track | t1->t in succs and t2->t in succs)\n}",
                     "ids": [
-                        "b2wEEcaX4QdWEkFhS",
-                        "dtEab5eFwb6m9KfZt"
-                    ]
-                },
-                {
-                    "entry_count": 2,
-                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall j : Junction | some t1, t2: Track | t1 != t2 and j in t1.succs and j in t2.succs\n  \tall t : Track-Junction | lone(succs.t)\n}",
-                    "ids": [
-                        "JSytZ9BkZymtXRZez",
-                        "bBf3TChQSdmqGGwaS"
+                        "sY7dtQ44BQ47DdtkJ",
+                        "JXT5CjiGgTW44Mchc"
                     ]
                 },
                 {
@@ -314,94 +314,10 @@
                 },
                 {
                     "entry_count": 2,
-                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t:Track|t in Junction iff some disj t1,t2:Track | t in t1.succs & t2.succs \n}",
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t : Track | some succs.t and not one succs.t implies t in Junction\n\tall t : Junction | some succs.t and not one succs.t\n}",
                     "ids": [
-                        "i6tFYD3fWxDkpb748",
-                        "RRPRQ9Wwt8mkRBuER"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  all t: Track | #(succs.t)>=2 implies one (t & Junction) else (no t & Junction)\n}",
-                    "ids": [
-                        "pzycapWKLhkwdtdqw"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n    all t: Track | (t in Junction implies (some t1, t2: Track | t1 != t2 and t in t1.succs and t in t2.succs)) and ((some t1, t2: Track | t1 != t2 and t in t1.succs and t in t2.succs) implies t in Junction)\n}",
-                    "ids": [
-                        "fR6oEyyavyfAEBZQJ"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\tall j : Track | (j in Junction) implies(some t1,t2:Track | t1!=t2 and t1->j in succs and t2->j in succs)\t\n\tall x:Track | (not x in Junction) implies((some t : Track| t->x in succs and all t2:Track| t2!=t implies(not t2->x in succs)) or (all t3:Track| not t3->x in succs))\t\n\n\n}",
-                    "ids": [
-                        "e59kXrbid7z726JfH"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t:Track| t in Junction iff some p1,p2 : Track | p1 in succs.t and p2 in succs.t and p1!=p2\n}",
-                    "ids": [
-                        "YjBWJ7hxAC7SaPwnj"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  \tall t : Track | (t in Junction) iff not (lone succs.t)\n\n}",
-                    "ids": [
-                        "sfKC6wraTy2AKCK63"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  all t:Track| t not in Junction implies lone succs.t\n  all j:Junction | #(succs.j)>1\n}",
-                    "ids": [
-                        "HwuQSWgYTTQF792Ag"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t : Track | #(Track & succs.t) > 1 iff (t in Junction)\n}",
-                    "ids": [
-                        "T7vSfsneftnRoZLtW"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tJunction = {t: Track | some disj t1, t2: Track | t1++t2 in succs.t}\n}",
-                    "ids": [
-                        "SACocWJnc4qGJCXip"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall j:Track | not (lone t:Track | j in t.succs) <=> j in Junction\n}",
-                    "ids": [
-                        "5Rd39cRhAdmXNr6YN"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t : Track | lone succs.t iff not t in Junction\n}",
-                    "ids": [
-                        "8dz6ngxi6R8DREJ3u"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tJunction = {t: Track | some disj t1, t2: Track | t in t1.succs and t in t2.succs}\n}",
-                    "ids": [
-                        "W6JenxJ7PWuszvWjZ"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n    // Junctions are the tracks with more than one predecessor\n    all t: Junction | # {t2: Track | t in t2.succs} > 1\n    all t: Track | t !in Junction implies # {t2: Track | t in t2.succs} <= 1\n}",
-                    "ids": [
-                        "hXCNFvTtPDdALcREg"
+                        "b2wEEcaX4QdWEkFhS",
+                        "dtEab5eFwb6m9KfZt"
                     ]
                 },
                 {
@@ -413,6 +329,34 @@
                 },
                 {
                     "entry_count": 1,
+                    "code": "{\n    // Junctions are the tracks with more than one predecessor\n    all t: Junction | # {t2: Track | t in t2.succs} > 1\n    all t: Track | t !in Junction implies # {t2: Track | t in t2.succs} <= 1\n}",
+                    "ids": [
+                        "hXCNFvTtPDdALcREg"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  all t: Track | #(succs.t)>=2 implies one (t & Junction) else (no t & Junction)\n}",
+                    "ids": [
+                        "pzycapWKLhkwdtdqw"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall j:Track | not (lone t:Track | j in t.succs) <=> j in Junction\n}",
+                    "ids": [
+                        "5Rd39cRhAdmXNr6YN"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\tall j : Track | (j in Junction) implies(some t1,t2:Track | t1!=t2 and t1->j in succs and t2->j in succs)\t\n\tall x:Track | (not x in Junction) implies((some t : Track| t->x in succs and all t2:Track| t2!=t implies(not t2->x in succs)) or (all t3:Track| not t3->x in succs))\t\n\n\n}",
+                    "ids": [
+                        "e59kXrbid7z726JfH"
+                    ]
+                },
+                {
+                    "entry_count": 1,
                     "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tJunction = { t : Track | #succs.t > 1 }\n  \tJunction = { t : Track | #t.~succs > 1 }\n}",
                     "ids": [
                         "SpDBXvvaxbqzWo59i"
@@ -420,30 +364,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  \tall j : Junction | #j.~succs > 1\n  \tall t : Track - Junction | lone t.~succs\n}",
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  \tall t : Track | (t in Junction) iff not (lone succs.t)\n\n}",
                     "ids": [
-                        "qAYGt5SKMawNgvyjc"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n  \tall t : Track | t in Junction iff some disj a,b: succs.t | a in succs.t\n\t// Junctions are the tracks with more than one predecessor\n\t//all t : Track, disj a,b : succs.t | a in succs.t iff t in Junction \n}",
-                    "ids": [
-                        "Bt4kRwPzYPviTqKCe"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t: Track - Junction | lone succs.t\n  \tall j: Junction | #(succs.j) >= 2\n}",
-                    "ids": [
-                        "CaYWP2MGY3Q8gjCEH"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t: Track | #t.~succs > 1 => t in Junction else t not in Junction\n}",
-                    "ids": [
-                        "462zvfLqGRehwvqWY"
+                        "sfKC6wraTy2AKCK63"
                     ]
                 },
                 {
@@ -455,16 +378,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  \tall t : Track | \n       (#succs.t > 1 implies t in Junction) and \n       (t in Junction implies #succs.t > 1)all t : Track | (#succs.t > 1) iff t in Junction\n}",
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t:Track | (some t2:succs.t | some t3:succs.t | not t3=t2) implies (t in Junction)\n\tall t:Track | (t in Junction) implies (some t2:succs.t | some t3:succs.t | not t3=t2)\n}",
                     "ids": [
-                        "xzeQgkicrayXE5R9Q"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  all t:Track | #(succs.t) >= 2 implies t in Junction else t not in Junction\n\n}",
-                    "ids": [
-                        "5qPi9rQmDQ97qpm9B"
+                        "u9ZyhjjibiAXBfvqc"
                     ]
                 },
                 {
@@ -476,9 +392,65 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t:Track | (some t2:succs.t | some t3:succs.t | not t3=t2) implies (t in Junction)\n\tall t:Track | (t in Junction) implies (some t2:succs.t | some t3:succs.t | not t3=t2)\n}",
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  \tall j : Junction | #j.~succs > 1\n  \tall t : Track - Junction | lone t.~succs\n}",
                     "ids": [
-                        "u9ZyhjjibiAXBfvqc"
+                        "qAYGt5SKMawNgvyjc"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n    all t: Track | (t in Junction implies (some t1, t2: Track | t1 != t2 and t in t1.succs and t in t2.succs)) and ((some t1, t2: Track | t1 != t2 and t in t1.succs and t in t2.succs) implies t in Junction)\n}",
+                    "ids": [
+                        "fR6oEyyavyfAEBZQJ"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t: Track | #t.~succs > 1 => t in Junction else t not in Junction\n}",
+                    "ids": [
+                        "462zvfLqGRehwvqWY"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  all t:Track | #(succs.t) >= 2 implies t in Junction else t not in Junction\n\n}",
+                    "ids": [
+                        "5qPi9rQmDQ97qpm9B"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t : Track | #(Track & succs.t) > 1 iff (t in Junction)\n}",
+                    "ids": [
+                        "T7vSfsneftnRoZLtW"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tJunction = {t: Track | some disj t1, t2: Track | t in t1.succs and t in t2.succs}\n}",
+                    "ids": [
+                        "W6JenxJ7PWuszvWjZ"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  all t:Track| t not in Junction implies lone succs.t\n  all j:Junction | #(succs.j)>1\n}",
+                    "ids": [
+                        "HwuQSWgYTTQF792Ag"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t : Track | lone succs.t iff not t in Junction\n}",
+                    "ids": [
+                        "8dz6ngxi6R8DREJ3u"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  \tall t : Track | \n       (#succs.t > 1 implies t in Junction) and \n       (t in Junction implies #succs.t > 1)all t : Track | (#succs.t > 1) iff t in Junction\n}",
+                    "ids": [
+                        "xzeQgkicrayXE5R9Q"
                     ]
                 },
                 {
@@ -486,6 +458,34 @@
                     "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  all j:Junction | not one(succs.j) and some(succs.j)\n  all t:Track | (not one(succs.t) and some(succs.t)) implies t in Junction\n\n}",
                     "ids": [
                         "KvP4arqQxrhcHf5L2"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t:Track| t in Junction iff some p1,p2 : Track | p1 in succs.t and p2 in succs.t and p1!=p2\n}",
+                    "ids": [
+                        "YjBWJ7hxAC7SaPwnj"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n  \tall t : Track | t in Junction iff some disj a,b: succs.t | a in succs.t\n\t// Junctions are the tracks with more than one predecessor\n\t//all t : Track, disj a,b : succs.t | a in succs.t iff t in Junction \n}",
+                    "ids": [
+                        "Bt4kRwPzYPviTqKCe"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tJunction = {t: Track | some disj t1, t2: Track | t1++t2 in succs.t}\n}",
+                    "ids": [
+                        "SACocWJnc4qGJCXip"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t: Track - Junction | lone succs.t\n  \tall j: Junction | #(succs.j) >= 2\n}",
+                    "ids": [
+                        "CaYWP2MGY3Q8gjCEH"
                     ]
                 }
             ]
@@ -592,16 +592,6 @@
                 },
                 {
                     "entry_count": 4,
-                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t: Track | (t in Junction) implies #(succs.t) > 1\n}",
-                    "ids": [
-                        "WjsCzXtKKmNmcBF9L",
-                        "mMt35Lzy3nM4s3eGW",
-                        "AZoQBBez35HZJHsgW",
-                        "Yk4X5fEShb5foWHEi"
-                    ]
-                },
-                {
-                    "entry_count": 4,
                     "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall j : Junction | not one succs.j and some succs.j\n}",
                     "ids": [
                         "KjLtAcPhjihAKu6Hk",
@@ -621,12 +611,13 @@
                     ]
                 },
                 {
-                    "entry_count": 3,
-                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall j: Junction| some pj1, pj2 : (succs.j) | pj1 != pj2\n}",
+                    "entry_count": 4,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t: Track | (t in Junction) implies #(succs.t) > 1\n}",
                     "ids": [
-                        "ZGmxsN2Nx6SXBdroM",
-                        "9aTkm9kEFXokKNqQL",
-                        "J5ZbnnkmWFPzQvcf8"
+                        "WjsCzXtKKmNmcBF9L",
+                        "mMt35Lzy3nM4s3eGW",
+                        "AZoQBBez35HZJHsgW",
+                        "Yk4X5fEShb5foWHEi"
                     ]
                 },
                 {
@@ -639,27 +630,20 @@
                     ]
                 },
                 {
+                    "entry_count": 3,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall j: Junction| some pj1, pj2 : (succs.j) | pj1 != pj2\n}",
+                    "ids": [
+                        "ZGmxsN2Nx6SXBdroM",
+                        "9aTkm9kEFXokKNqQL",
+                        "J5ZbnnkmWFPzQvcf8"
+                    ]
+                },
+                {
                     "entry_count": 2,
                     "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t:Track| t in Junction implies(some disj t1,t2:Track| t in t1.succs and t in t2.succs)\n}",
                     "ids": [
                         "m52j2Jys6ZSEAnuDz",
                         "iNasM38euGBH8cTco"
-                    ]
-                },
-                {
-                    "entry_count": 2,
-                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  all j:Junction | #(succs.j) >= 2\n\n}",
-                    "ids": [
-                        "7Nk68g7frmvBNampk",
-                        "S6P5pxeH7YzxgG6aE"
-                    ]
-                },
-                {
-                    "entry_count": 2,
-                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t: Junction | some  t1: Track, t2: Track | (t in t1.succs) and (t in t2.succs)\n  \tall t: Junction | #succs.t > 1\n}",
-                    "ids": [
-                        "mgnzZXf7u95p7kFmB",
-                        "Qrc5EHH7LwjuvYm55"
                     ]
                 },
                 {
@@ -672,10 +656,18 @@
                 },
                 {
                     "entry_count": 2,
-                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  \tall t: Track | t in Junction implies((not one(succs.t)) and some(succs.t))\n\n}",
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t: Junction | some  t1: Track, t2: Track | (t in t1.succs) and (t in t2.succs)\n  \tall t: Junction | #succs.t > 1\n}",
                     "ids": [
-                        "rYveshYpcjEaNK6z2",
-                        "DnnmKjPAMXcAb6grt"
+                        "mgnzZXf7u95p7kFmB",
+                        "Qrc5EHH7LwjuvYm55"
+                    ]
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  all j:Junction | #(succs.j) >= 2\n\n}",
+                    "ids": [
+                        "7Nk68g7frmvBNampk",
+                        "S6P5pxeH7YzxgG6aE"
                     ]
                 },
                 {
@@ -687,38 +679,11 @@
                     ]
                 },
                 {
-                    "entry_count": 1,
-                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall j : Junction | some e1, e2 : Track | e1 != e2 and e1 != j and j in e1.succs and j in e2.succs\n}",
+                    "entry_count": 2,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  \tall t: Track | t in Junction implies((not one(succs.t)) and some(succs.t))\n\n}",
                     "ids": [
-                        "9FE2F95ZpM6RBrFvQ"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t : Track | lone (succs.t) implies t not in Junction\n  \tall t : Junction | some t1, t2 : Track | t1 in ^succs.t and t2 in ^succs.t \n}",
-                    "ids": [
-                        "bhxYqZpYsNx4abyDM"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t: Track | t in Junction implies some disj a, b: Track | t in (a.succs & b.succs) \n}",
-                    "ids": [
-                        "QPYv8BTEE3M4fPLnk"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall j: Junction | some disj a, b: Track | a != j && j in (a.succs & b.succs) \n}",
-                    "ids": [
-                        "mTQESv9XCo9ji3Mtb"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  // Perguntar Alcino\n  \n  //all j: Junction | some s1,s2:Track | s1 in j.succs and s2 in j.succs and not (s1=s2)\n    all x : Track | some s1,s2: Track | x in s1.succs and x in s2.succs and not(s1=s2) iff x in Junction\n}",
-                    "ids": [
-                        "eBLGeGNW3Zvieq9JB"
+                        "rYveshYpcjEaNK6z2",
+                        "DnnmKjPAMXcAb6grt"
                     ]
                 },
                 {
@@ -737,6 +702,13 @@
                 },
                 {
                     "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t:Track | t in Junction => some t1,t2:Track | t in t1.succs and t in t2.succs and t1 != t2\n}",
+                    "ids": [
+                        "9BjipkRznMpuwSdnm"
+                    ]
+                },
+                {
+                    "entry_count": 1,
                     "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  \t//all t: Track | some t.~succs implies t in Junction\n  \tall j: Junction | #(j.~succs & Track) > 1\n\n}",
                     "ids": [
                         "TMSJWvTTaH558XkzE"
@@ -744,16 +716,16 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t : Track | lone (succs.t) => t not in Junction\n  }",
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall j: Junction | some disj a, b: Track | a != j && j in (a.succs & b.succs) \n}",
                     "ids": [
-                        "o9DBcn6sqqWjj2hSB"
+                        "mTQESv9XCo9ji3Mtb"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall j : Junction | (not (one succs.j & Track)) and (some succs.j & Track)\n}",
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t: Track | t in Junction implies some disj a, b: Track | t in (a.succs & b.succs) \n}",
                     "ids": [
-                        "23FL2iEp44u33wKHp"
+                        "QPYv8BTEE3M4fPLnk"
                     ]
                 },
                 {
@@ -765,9 +737,37 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t:Track | t in Junction => some t1,t2:Track | t in t1.succs and t in t2.succs and t1 != t2\n}",
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall j : Junction | (not (one succs.j & Track)) and (some succs.j & Track)\n}",
                     "ids": [
-                        "9BjipkRznMpuwSdnm"
+                        "23FL2iEp44u33wKHp"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall j : Junction | some e1, e2 : Track | e1 != e2 and e1 != j and j in e1.succs and j in e2.succs\n}",
+                    "ids": [
+                        "9FE2F95ZpM6RBrFvQ"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t : Track | lone (succs.t) => t not in Junction\n  }",
+                    "ids": [
+                        "o9DBcn6sqqWjj2hSB"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t : Track | lone (succs.t) implies t not in Junction\n  \tall t : Junction | some t1, t2 : Track | t1 in ^succs.t and t2 in ^succs.t \n}",
+                    "ids": [
+                        "bhxYqZpYsNx4abyDM"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  // Perguntar Alcino\n  \n  //all j: Junction | some s1,s2:Track | s1 in j.succs and s2 in j.succs and not (s1=s2)\n    all x : Track | some s1,s2: Track | x in s1.succs and x in s2.succs and not(s1=s2) iff x in Junction\n}",
+                    "ids": [
+                        "eBLGeGNW3Zvieq9JB"
                     ]
                 }
             ]
@@ -833,20 +833,20 @@
                 },
                 {
                     "entry_count": 3,
-                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall j: Junction | some a, b: Track | j in (a.succs & b.succs) \n}",
-                    "ids": [
-                        "teveLuQggC6FyJMxu",
-                        "GAyLDdzqY6viBTpEn",
-                        "WNn6czYjaoctxmrer"
-                    ]
-                },
-                {
-                    "entry_count": 3,
                     "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  \n  all j : Junction | (some t:Track | t->j in succs) \n\n}",
                     "ids": [
                         "zTzcqNDNCJdunziJ5",
                         "2arPcBJ8oQaoXKgk9",
                         "87EckdtJZZYvJ6G6K"
+                    ]
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall j: Junction | some a, b: Track | j in (a.succs & b.succs) \n}",
+                    "ids": [
+                        "teveLuQggC6FyJMxu",
+                        "GAyLDdzqY6viBTpEn",
+                        "WNn6czYjaoctxmrer"
                     ]
                 },
                 {
@@ -859,16 +859,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t: Track | t in Junction implies some a, b: Track | t in (a.succs & b.succs) \n}",
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t : Junction | some (Track.^succs & t)\n}",
                     "ids": [
-                        "PRSKt5GG8JHD4hHEs"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  \tall t: Track | t in Junction implies some t.~succs\n\n}",
-                    "ids": [
-                        "5Xc4Z7K2phdAkZ8sZ"
+                        "aTZGz6P75Y8jZRFgx"
                     ]
                 },
                 {
@@ -880,23 +873,16 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t : Track | (t in Junction) implies (some t1, t2 : Track | t in t1.^succs and t in t2.^succs)\n}",
-                    "ids": [
-                        "9L4z55aoFLpq3AYHa"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  \tall t: Track | t in Junction implies t in Track.^succs \n\n}",
-                    "ids": [
-                        "2JMgTRzz2YdC7oqWb"
-                    ]
-                },
-                {
-                    "entry_count": 1,
                     "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t:Track | t in Junction => some t1,t2:Track | t in t1.succs and t in t2.succs\n}",
                     "ids": [
                         "2hQxsdkfH5SNuTyHx"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t : Track | (t in Junction) implies (some t1, t2 : Track | t in t1.^succs and t in t2.^succs)\n}",
+                    "ids": [
+                        "9L4z55aoFLpq3AYHa"
                     ]
                 },
                 {
@@ -908,16 +894,30 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  \tall t1: Track | t1 in Junction => some t2, t3: Track | t2.succs = t3.succs and t1 in t2.succs and t1 in t3.succs\n}",
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  \tall t: Track | t in Junction implies some t.~succs\n\n}",
                     "ids": [
-                        "yB3HPK7XZ8WNhCRMR"
+                        "5Xc4Z7K2phdAkZ8sZ"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t : Junction | some (Track.^succs & t)\n}",
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  \tall t: Track | t in Junction implies t in Track.^succs \n\n}",
                     "ids": [
-                        "aTZGz6P75Y8jZRFgx"
+                        "2JMgTRzz2YdC7oqWb"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t: Track | t in Junction implies some a, b: Track | t in (a.succs & b.succs) \n}",
+                    "ids": [
+                        "PRSKt5GG8JHD4hHEs"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  \tall t1: Track | t1 in Junction => some t2, t3: Track | t2.succs = t3.succs and t1 in t2.succs and t1 in t3.succs\n}",
+                    "ids": [
+                        "yB3HPK7XZ8WNhCRMR"
                     ]
                 }
             ]
@@ -1013,9 +1013,30 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t : Track | (t in Junction) <=> (some t1, t2 : Track | t in t1.^succs and t in t2.^succs)\n}",
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t : Track | t in Junction <=> some (Track.succs & t)\n}",
                     "ids": [
-                        "qBsT6dvcm4Lxn26Rz"
+                        "3Cv3fr8m3PHxJKAmQ"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t : Track | t in Junction iff #succs.t >= 1\n}",
+                    "ids": [
+                        "TBrudYzupBDtcPTHL"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tJunction = { t : Track | some t.~succs }\n}",
+                    "ids": [
+                        "eSxjmwQt7xJcicf8B"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tra^cks with more than one predecessor\n\tall t : Track | no(succs.t) => t not in Junction\n  \tall t : Track | some(succs.t) => t in Junction\n}",
+                    "ids": [
+                        "5jppmxnPSnu7jbA5K"
                     ]
                 },
                 {
@@ -1027,16 +1048,16 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t : Track | t in Junction <=> some (Track.succs & t)\n}",
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t : Track | (t in Junction) <=> (some t1, t2 : Track | t in t1.^succs and t in t2.^succs)\n}",
                     "ids": [
-                        "3Cv3fr8m3PHxJKAmQ"
+                        "qBsT6dvcm4Lxn26Rz"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t : Track | t in Junction iff #succs.t >= 1\n}",
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t:Track|t in Junction iff some t1,t2:Track | t in t1.succs & t2.succs \n}",
                     "ids": [
-                        "TBrudYzupBDtcPTHL"
+                        "ymrehFK2spabD62db"
                     ]
                 },
                 {
@@ -1066,27 +1087,6 @@
                     "ids": [
                         "fs972cqdQn9WkqCJc"
                     ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t:Track|t in Junction iff some t1,t2:Track | t in t1.succs & t2.succs \n}",
-                    "ids": [
-                        "ymrehFK2spabD62db"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tJunction = { t : Track | some t.~succs }\n}",
-                    "ids": [
-                        "eSxjmwQt7xJcicf8B"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Junctions are the tra^cks with more than one predecessor\n\tall t : Track | no(succs.t) => t not in Junction\n  \tall t : Track | some(succs.t) => t in Junction\n}",
-                    "ids": [
-                        "5jppmxnPSnu7jbA5K"
-                    ]
                 }
             ]
         },
@@ -1114,22 +1114,22 @@
                 },
                 {
                     "entry_count": 4,
-                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall disj a, b: Track | (a.succs & b.succs) in Junction\n}",
-                    "ids": [
-                        "SJeonNtYrHKDAHCWm",
-                        "R9gZauzFqqbJr9yFo",
-                        "SbcijgC9oMY3YqTHD",
-                        "45zFaJ2nKmDNhRDZb"
-                    ]
-                },
-                {
-                    "entry_count": 4,
                     "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  \tall t : Track | (some e1,e2 : Track | e1 != e2 and t in e1.succs and t in e2.succs) implies t in Junction \n}",
                     "ids": [
                         "Zo9HFenpKbzsmnqC7",
                         "G8mRDFYmS7kv4gBbN",
                         "hiCuXKSfT43KYHYEr",
                         "tbQ3nZJtJeW9zXQNZ"
+                    ]
+                },
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall disj a, b: Track | (a.succs & b.succs) in Junction\n}",
+                    "ids": [
+                        "SJeonNtYrHKDAHCWm",
+                        "R9gZauzFqqbJr9yFo",
+                        "SbcijgC9oMY3YqTHD",
+                        "45zFaJ2nKmDNhRDZb"
                     ]
                 },
                 {
@@ -1159,23 +1159,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  // all j : Junction | some succs.j - j\n  all t : Track - Junction | lone succs.t\n\n}",
-                    "ids": [
-                        "cyGN6Quy2Pj3WN9F6"
-                    ]
-                },
-                {
-                    "entry_count": 1,
                     "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t : Track, disj a,b : succs.t | a in succs.t implies t in Junction \n}",
                     "ids": [
                         "vdXoGqf2FcrkeMStS"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t:Track | (some t2:succs.t | some t3:succs.t | not t3=t2) implies (t in Junction)\n}",
-                    "ids": [
-                        "K8cvKRgy9pZnZ7m8t"
                     ]
                 },
                 {
@@ -1187,9 +1173,16 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t : Track, disj a,b : succs.t | a in succs.t iff t in Junction \n}",
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  // all j : Junction | some succs.j - j\n  all t : Track - Junction | lone succs.t\n\n}",
                     "ids": [
-                        "k55JB9Hps8iSzcbkh"
+                        "cyGN6Quy2Pj3WN9F6"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t1,t2, t3 : Track | t1 != t2 and t3 in t1.succs and t3 in t2.succs implies t3 in Junction \n}",
+                    "ids": [
+                        "GzYywBS6WG4Wwvbmg"
                     ]
                 },
                 {
@@ -1208,9 +1201,16 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t1,t2, t3 : Track | t1 != t2 and t3 in t1.succs and t3 in t2.succs implies t3 in Junction \n}",
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t:Track | (some t2:succs.t | some t3:succs.t | not t3=t2) implies (t in Junction)\n}",
                     "ids": [
-                        "GzYywBS6WG4Wwvbmg"
+                        "K8cvKRgy9pZnZ7m8t"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t : Track, disj a,b : succs.t | a in succs.t iff t in Junction \n}",
+                    "ids": [
+                        "k55JB9Hps8iSzcbkh"
                     ]
                 }
             ]
@@ -1259,15 +1259,6 @@
                 },
                 {
                     "entry_count": 3,
-                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  \t//all t: Junction | #(t.succs) > 1 && no disj t.succs\n  \tall t: Junction | #(t.succs) > 1 && #(t.succs) = #t.succs\n\t//all t: Junction | all tr: Track and #(tr.^succs) > 1\n}",
-                    "ids": [
-                        "dMYNxiFox7yeXgQMm",
-                        "sEjyp4fFkME9mJucH",
-                        "zXWjqov8iXhbKbQ4e"
-                    ]
-                },
-                {
-                    "entry_count": 3,
                     "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall j: Junction| some sj1,sj2 : j.succs| sj1!= sj2\n}",
                     "ids": [
                         "9oYp7sazXQcJFPTGk",
@@ -1276,10 +1267,12 @@
                     ]
                 },
                 {
-                    "entry_count": 1,
-                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall j : Junction | some e1, e2 : Track | e1 != e2 and e1 in j.succs and e2 in j.succs \n}",
+                    "entry_count": 3,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  \t//all t: Junction | #(t.succs) > 1 && no disj t.succs\n  \tall t: Junction | #(t.succs) > 1 && #(t.succs) = #t.succs\n\t//all t: Junction | all tr: Track and #(tr.^succs) > 1\n}",
                     "ids": [
-                        "CziwbaYjZAbcfQtJP"
+                        "dMYNxiFox7yeXgQMm",
+                        "sEjyp4fFkME9mJucH",
+                        "zXWjqov8iXhbKbQ4e"
                     ]
                 },
                 {
@@ -1291,13 +1284,6 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  all j: Junction | not lone j.succs\n\n}",
-                    "ids": [
-                        "2dAoWrKjzDbLmzcCD"
-                    ]
-                },
-                {
-                    "entry_count": 1,
                     "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall j : Junction | some e1, e2 : Track | e1 != e2 and e1 != j and e1 in j.succs and e2 in j.succs \n}",
                     "ids": [
                         "Ap6QFq9k6JDjoxXSB"
@@ -1305,9 +1291,23 @@
                 },
                 {
                     "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall j : Junction | some e1, e2 : Track | e1 != e2 and e1 in j.succs and e2 in j.succs \n}",
+                    "ids": [
+                        "CziwbaYjZAbcfQtJP"
+                    ]
+                },
+                {
+                    "entry_count": 1,
                     "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  // Perguntar Alcino\n  \n  //all j: Junction | some s1,s2:Track | s1 in j.succs and s2 in j.succs and not (s1=s2)\n    all x : Track | some s1,s2: Track | s1 in x.succs and s2 in x.succs and not(s1=s2) iff x in Junction\n}",
                     "ids": [
                         "tjJoJRbwfiamrftMa"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  all j: Junction | not lone j.succs\n\n}",
+                    "ids": [
+                        "2dAoWrKjzDbLmzcCD"
                     ]
                 }
             ]
@@ -1367,18 +1367,18 @@
             "elems": [
                 {
                     "entry_count": 2,
-                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  \tall t: Track | t in Junction => some t2: Track | t in (t2.succs - t) and some t3: (t2.succs - t) | t in t3.succs\n}",
-                    "ids": [
-                        "wmKxvCGAnPxjDNxcc",
-                        "bdXAZ4qu63karfyiv"
-                    ]
-                },
-                {
-                    "entry_count": 2,
                     "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  \tall t: Track | t in Junction => some t2: Track | t in (t2.succs - t) and some t3: (t2.succs - t) | t in (t3.succs - t)\n}",
                     "ids": [
                         "sRinyxhZzCEa94Tkz",
                         "8dNwwCEfcMYtckMtL"
+                    ]
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  \tall t: Track | t in Junction => some t2: Track | t in (t2.succs - t) and some t3: (t2.succs - t) | t in t3.succs\n}",
+                    "ids": [
+                        "wmKxvCGAnPxjDNxcc",
+                        "bdXAZ4qu63karfyiv"
                     ]
                 },
                 {
@@ -1391,16 +1391,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  \tall j : Junction | #(j & Track.succs) > 1\n  \tall t : Track | #(t & Track.succs) > 1 implies t in Junction\n}",
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t : Track | t in Junction iff some succs.t and t not in *succs.t\n}",
                     "ids": [
-                        "wBZrR9yAqZeN3Sa8v"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall j: Junction | some t: Track | j in (t.succs - j)\n}",
-                    "ids": [
-                        "SbnrgbPaL5c7z9h2T"
+                        "MoDPBmZGFMx8eRaE7"
                     ]
                 },
                 {
@@ -1412,37 +1405,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t1 : Track | t1 in Junction iff all t2,t3 : Track | t2 != t3 and t1 in t2.succs and t1 in t3.succs\n}",
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  \tall j : Junction | #(j & Track.succs) > 1\n  \tall t : Track | #(t & Track.succs) > 1 implies t in Junction\n}",
                     "ids": [
-                        "kidKSQCFEGxniwYXE"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n//\tall t:Track | t in Junction iff #(t.~succs)>1\n  \tall t:Track | some t1:Track | t in Junction iff t1.succs=t and #t1>1\n}",
-                    "ids": [
-                        "Pajnth2Tk9vRHiKPi"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t: Track | t in Junction iff ( all prec: Track | t in prec.succs and #prec > 1) \n}",
-                    "ids": [
-                        "CqtbXzh2Ce45hxxyS"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall j: Junction | some t: Track | j in t.succs.succs - j\n}",
-                    "ids": [
-                        "vur2ETuBv5xfoLXr8"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall j: Junction | some t: Track | j in (t.succs - j).succs - j\n}",
-                    "ids": [
-                        "FPMLejzciXQduri8n"
+                        "wBZrR9yAqZeN3Sa8v"
                     ]
                 },
                 {
@@ -1454,16 +1419,23 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t : Track | t in Junction iff some succs.t and t not in *succs.t\n}",
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n//\tall t:Track | t in Junction iff #(t.~succs)>1\n  \tall t:Track | some t1:Track | t in Junction iff #(t1.succs & t)>1\n}",
                     "ids": [
-                        "MoDPBmZGFMx8eRaE7"
+                        "vqB4dYG5JJMLCHcJZ"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n//\tall t:Track | t in Junction iff #(t.~succs)>1\n  \tall t:Track | some t1:Track | t in Junction iff #(t1.succs & t)>1\n}",
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall j: Junction | some t: Track | j in (t.succs - j).succs - j\n}",
                     "ids": [
-                        "vqB4dYG5JJMLCHcJZ"
+                        "FPMLejzciXQduri8n"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t1 : Track | t1 in Junction iff all t2,t3 : Track | t2 != t3 and t1 in t2.succs and t1 in t3.succs\n}",
+                    "ids": [
+                        "kidKSQCFEGxniwYXE"
                     ]
                 },
                 {
@@ -1478,6 +1450,34 @@
                     "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  all j : Junction | some succs.j and j not in *succs.j\n\n}",
                     "ids": [
                         "eJ368tQNYbYJuX3v8"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall j: Junction | some t: Track | j in (t.succs - j)\n}",
+                    "ids": [
+                        "SbnrgbPaL5c7z9h2T"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t: Track | t in Junction iff ( all prec: Track | t in prec.succs and #prec > 1) \n}",
+                    "ids": [
+                        "CqtbXzh2Ce45hxxyS"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n//\tall t:Track | t in Junction iff #(t.~succs)>1\n  \tall t:Track | some t1:Track | t in Junction iff t1.succs=t and #t1>1\n}",
+                    "ids": [
+                        "Pajnth2Tk9vRHiKPi"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall j: Junction | some t: Track | j in t.succs.succs - j\n}",
+                    "ids": [
+                        "vur2ETuBv5xfoLXr8"
                     ]
                 }
             ]
@@ -1513,9 +1513,23 @@
                 },
                 {
                     "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall j : Junction| not ( one ( ^(succs).j) ) and  not ( no ( ^(succs).j) )\n}",
+                    "ids": [
+                        "Y7mzqpnoYQa2CBprY"
+                    ]
+                },
+                {
+                    "entry_count": 1,
                     "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall j : Junction | # { t : Track | j in t.^succs} >1 \n}",
                     "ids": [
                         "BtXc6iG4RkFDpGiPP"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n  // Junctions are the tracks with more than one predecessor\n  all j: Junction | \n    some p1, p2: Track | p1 in ^succs.j and p2 in ^succs.j and p1 != p2\n}",
+                    "ids": [
+                        "2aLSy5T4zSY5zgPeB"
                     ]
                 },
                 {
@@ -1530,20 +1544,6 @@
                     "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t: Track | (t in Junction) implies #(^succs.t) > 1\n}",
                     "ids": [
                         "Y4AasgowpJKanRbXD"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n  // Junctions are the tracks with more than one predecessor\n  all j: Junction | \n    some p1, p2: Track | p1 in ^succs.j and p2 in ^succs.j and p1 != p2\n}",
-                    "ids": [
-                        "2aLSy5T4zSY5zgPeB"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall j : Junction| not ( one ( ^(succs).j) ) and  not ( no ( ^(succs).j) )\n}",
-                    "ids": [
-                        "Y7mzqpnoYQa2CBprY"
                     ]
                 }
             ]
@@ -1581,16 +1581,16 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  all t: Track | t in Junction iff #(t.succs) >= 2\n\n}",
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  \tall t: Track - Junction | lone t.succs\n  \tall j: Junction | #(j.succs) >= 2\n}",
                     "ids": [
-                        "oHzsSvEDaW3kmdnwA"
+                        "zbxGTzwdkSBfr3Xvh"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  \tall t: Track - Junction | lone t.succs\n  \tall j: Junction | #(j.succs) >= 2\n}",
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n    all t: Track | #(t.succs) > 1 <=> t in Junction\n\n}",
                     "ids": [
-                        "zbxGTzwdkSBfr3Xvh"
+                        "FzzQTPcCrJxj99efS"
                     ]
                 },
                 {
@@ -1602,9 +1602,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n    all t: Track | #(t.succs) > 1 <=> t in Junction\n\n}",
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  all t: Track | t in Junction iff #(t.succs) >= 2\n\n}",
                     "ids": [
-                        "FzzQTPcCrJxj99efS"
+                        "oHzsSvEDaW3kmdnwA"
                     ]
                 }
             ]
@@ -1641,16 +1641,16 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall j:Junction | some t:Track | j in t.succs and some t2:Track | t in t2.succs\n}",
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  \tall j : Junction | some j.~succs.~succs\n}",
                     "ids": [
-                        "uYMhgggvY3tm5deCa"
+                        "6L63sEJkKTvYQBMSN"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  \tall j : Junction | some j.~succs.~succs\n}",
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall j:Junction | some t:Track | j in t.succs and some t2:Track | t in t2.succs\n}",
                     "ids": [
-                        "6L63sEJkKTvYQBMSN"
+                        "uYMhgggvY3tm5deCa"
                     ]
                 }
             ]
@@ -1677,16 +1677,16 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall j : Junction | some e1, e2 : Track | e1 != e2 and e1 != j and e2 != j and j in e1.succs and j in e2.succs\n}",
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t: Junction {\n  \t\tsome disj t1, t2: Track | t not in (t1 + t2) and t in t1.succs and t in t2.succs\n  }\n}",
                     "ids": [
-                        "byQRjHmyPLctWCvkm"
+                        "8j25vo6AqdvwCMvfp"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t: Junction {\n  \t\tsome disj t1, t2: Track | t not in (t1 + t2) and t in t1.succs and t in t2.succs\n  }\n}",
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall j : Junction | some e1, e2 : Track | e1 != e2 and e1 != j and e2 != j and j in e1.succs and j in e2.succs\n}",
                     "ids": [
-                        "8j25vo6AqdvwCMvfp"
+                        "byQRjHmyPLctWCvkm"
                     ]
                 },
                 {
@@ -1698,16 +1698,16 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall j : Junction | some disj p1, p2 : Track | p1 != j and p2 != j and j in p1.succs and j in p2.succs\n}",
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall j : Junction | #(succs.j - j) > 1\n}",
                     "ids": [
-                        "dCZ2pGudnKtDTStJL"
+                        "J9PfykS3qChXzhTYT"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall j : Junction | #(succs.j - j) > 1\n}",
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall j : Junction | some disj p1, p2 : Track | p1 != j and p2 != j and j in p1.succs and j in p2.succs\n}",
                     "ids": [
-                        "J9PfykS3qChXzhTYT"
+                        "dCZ2pGudnKtDTStJL"
                     ]
                 }
             ]
@@ -1719,14 +1719,6 @@
             "elems": [
                 {
                     "entry_count": 2,
-                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t: Track | some t2: Track | some t3: Track| t in Junction iff t != t2 and t in t2.^succs and t != t3 and t in t3.^succs\n}",
-                    "ids": [
-                        "QaB9YBmtScyCHL9Fw",
-                        "6DmLkwfjRdZehZovw"
-                    ]
-                },
-                {
-                    "entry_count": 2,
                     "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  all j : Junction | some succs.j - j\n\n}",
                     "ids": [
                         "JGXNEnsEv3AfkPRCu",
@@ -1734,10 +1726,18 @@
                     ]
                 },
                 {
-                    "entry_count": 1,
-                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t: Track | some t2: Track | t in Junction iff t != t2 and t in t2.^succs\n}",
+                    "entry_count": 2,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t: Track | some t2: Track | some t3: Track| t in Junction iff t != t2 and t in t2.^succs and t != t3 and t in t3.^succs\n}",
                     "ids": [
-                        "zeaE2sdeXuiAfngYC"
+                        "QaB9YBmtScyCHL9Fw",
+                        "6DmLkwfjRdZehZovw"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall j : Junction | some p1, p2 : Track | p1 != j and p2 != j and j in p1.succs and j in p2.succs\n  \n  \tall j : Track | some p1, p2 : Track | p1 != j and p2 != j and j in p1.succs and j in p2.succs implies j in Junction\n}",
+                    "ids": [
+                        "JRDTWdGjGc2DrgKKP"
                     ]
                 },
                 {
@@ -1749,9 +1749,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall j : Junction | some p1, p2 : Track | p1 != j and p2 != j and j in p1.succs and j in p2.succs\n  \n  \tall j : Track | some p1, p2 : Track | p1 != j and p2 != j and j in p1.succs and j in p2.succs implies j in Junction\n}",
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t: Track | some t2: Track | t in Junction iff t != t2 and t in t2.^succs\n}",
                     "ids": [
-                        "JRDTWdGjGc2DrgKKP"
+                        "zeaE2sdeXuiAfngYC"
                     ]
                 },
                 {
@@ -1812,16 +1812,16 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  \tall j : Junction | some j.~succs && not (one j.~succs) && not (j in j.~succs)\n}",
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  \tall j : Junction | #j.~succs > 1\n  \tall j : Junction | j.~succs = j.~succs - j\n}",
                     "ids": [
-                        "ChnchHXYCxp4qMvso"
+                        "ny8FACMrAhX2RKukb"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  \tall j : Junction | #j.~succs > 1\n  \tall j : Junction | j.~succs = j.~succs - j\n}",
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  \tall j : Junction | some j.~succs && not (one j.~succs) && not (j in j.~succs)\n}",
                     "ids": [
-                        "ny8FACMrAhX2RKukb"
+                        "ChnchHXYCxp4qMvso"
                     ]
                 }
             ]
@@ -1873,6 +1873,13 @@
                 },
                 {
                     "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall disj p1, p2, p3 : Track | p3 in p1.succs & p2.succs implies p3 in Junction\n}",
+                    "ids": [
+                        "49Jdua5YB4Xh6ChHc"
+                    ]
+                },
+                {
+                    "entry_count": 1,
                     "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall disj t1,t2,t3 : Track | (t2+t3) in succs.t1 => t1 in Junction\n}",
                     "ids": [
                         "7dMbpto2JprXbRbeK"
@@ -1883,13 +1890,6 @@
                     "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall disj t1, t2, t3 : Track | t1 in succs.t3 and t2 in succs.t3 implies t3 in Junction\n}",
                     "ids": [
                         "XkmzrJFNQ5iW62RjA"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall disj p1, p2, p3 : Track | p3 in p1.succs & p2.succs implies p3 in Junction\n}",
-                    "ids": [
-                        "49Jdua5YB4Xh6ChHc"
                     ]
                 }
             ]
@@ -1909,16 +1909,16 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall p1, p2, j : Track | j in p1.^succs and j in p2.^succs implies j in Junction\n}",
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  all t : Track | (some t1 : Track | t in t1.succs) implies t in Junction\n\n}",
                     "ids": [
-                        "2MNxMZqEFKmzqbRYL"
+                        "XsSxu8K4EBdREhA9F"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  all t : Track | (some t1 : Track | t in t1.succs) implies t in Junction\n\n}",
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall p1, p2, j : Track | j in p1.^succs and j in p2.^succs implies j in Junction\n}",
                     "ids": [
-                        "XsSxu8K4EBdREhA9F"
+                        "2MNxMZqEFKmzqbRYL"
                     ]
                 },
                 {
@@ -1953,16 +1953,16 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t : Junction | some (Track.^succs - t)\n}",
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t : Track | t in Junction implies some (Track.^succs - t)\n}",
                     "ids": [
-                        "DzpY3vhDkgNzLNWTP"
+                        "JaGbgTuiC6kXkncF9"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t : Track | t in Junction implies some (Track.^succs - t)\n}",
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t : Junction | some (Track.^succs - t)\n}",
                     "ids": [
-                        "JaGbgTuiC6kXkncF9"
+                        "DzpY3vhDkgNzLNWTP"
                     ]
                 }
             ]
@@ -2000,9 +2000,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  \tall t: Track | t in Junction <=> some (succs.succs.t)\n}",
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t : Track | some succs.succs.t implies t in Junction\n  \tall e : Junction | some succs.succs.e\n}",
                     "ids": [
-                        "694f685uTQ5TQ2buW"
+                        "7svfmPpNzP8HWoNXP"
                     ]
                 },
                 {
@@ -2014,9 +2014,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t : Track | some succs.succs.t implies t in Junction\n  \tall e : Junction | some succs.succs.e\n}",
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  \tall t: Track | t in Junction <=> some (succs.succs.t)\n}",
                     "ids": [
-                        "7svfmPpNzP8HWoNXP"
+                        "694f685uTQ5TQ2buW"
                     ]
                 }
             ]
@@ -2036,13 +2036,6 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  \n    all t: Track | some (~succs.t) iff (t in Junction) \n}",
-                    "ids": [
-                        "i9DuNusRrAxAegYrA"
-                    ]
-                },
-                {
-                    "entry_count": 1,
                     "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  all t: Track | t in Junction iff #(t.succs) >= 1\n\n}",
                     "ids": [
                         "vYkhZiMfsNw2p5erM"
@@ -2054,6 +2047,13 @@
                     "ids": [
                         "BBhqgez7AJwc2wQs6"
                     ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  \n    all t: Track | some (~succs.t) iff (t in Junction) \n}",
+                    "ids": [
+                        "i9DuNusRrAxAegYrA"
+                    ]
                 }
             ]
         },
@@ -2064,18 +2064,18 @@
             "elems": [
                 {
                     "entry_count": 2,
-                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  \tsome succs.Junction\n  \tall t: Track | #(succs.t) > 0 implies t in Junction\n  \n  \t\n\n}",
-                    "ids": [
-                        "gomR8XqSWqsBtEB8W",
-                        "Wz5hTik5Ezy52afJc"
-                    ]
-                },
-                {
-                    "entry_count": 2,
                     "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  \tsome succs.Junction\n  \tall t: Track | some succs.t implies t in Junction\n  \n  \t\n\n}",
                     "ids": [
                         "cbbHKw9PeLj2hkiT6",
                         "5coLkh6M9SrzffFLg"
+                    ]
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  \tsome succs.Junction\n  \tall t: Track | #(succs.t) > 0 implies t in Junction\n  \n  \t\n\n}",
+                    "ids": [
+                        "gomR8XqSWqsBtEB8W",
+                        "Wz5hTik5Ezy52afJc"
                     ]
                 }
             ]
@@ -2156,20 +2156,6 @@
             "elems": [
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  all j: Junction | some j.succs\n\n}",
-                    "ids": [
-                        "hdHJNQg7NqAiA67LS"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t : Track | (t in Junction) implies some(t.succs)\n}",
-                    "ids": [
-                        "che6uoxs7FHE2WcaK"
-                    ]
-                },
-                {
-                    "entry_count": 1,
                     "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall j: Junction| some sj1,sj2 : j.succs| (sj1 + sj2) in j.succs\n}",
                     "ids": [
                         "TP5mwGovy7SCQT32Z"
@@ -2177,9 +2163,23 @@
                 },
                 {
                     "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  all j: Junction | some j.succs\n\n}",
+                    "ids": [
+                        "hdHJNQg7NqAiA67LS"
+                    ]
+                },
+                {
+                    "entry_count": 1,
                     "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall j : Junction | #(j.succs) >= 1\n}",
                     "ids": [
                         "jD63bihS5JThtpcSE"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t : Track | (t in Junction) implies some(t.succs)\n}",
+                    "ids": [
+                        "che6uoxs7FHE2WcaK"
                     ]
                 }
             ]
@@ -2251,13 +2251,6 @@
             "elems": [
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  \tall t: Track | t in Junction <=> some t2: Track | t in t2.succs.succs and t != t2\n}",
-                    "ids": [
-                        "Nb2afiNxGrPbaLkiE"
-                    ]
-                },
-                {
-                    "entry_count": 1,
                     "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  \tall t: Track | t in Junction <=> some (succs.succs.t - t)\n}",
                     "ids": [
                         "iicFJX8kawpu8s8wB"
@@ -2268,6 +2261,13 @@
                     "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t : Track | some (succs.succs.t-t) implies t in Junction\n  \tall e : Junction | some (succs.succs.e-e)\n}",
                     "ids": [
                         "v8NMPi2hguY9ED6ns"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  \tall t: Track | t in Junction <=> some t2: Track | t in t2.succs.succs and t != t2\n}",
+                    "ids": [
+                        "Nb2afiNxGrPbaLkiE"
                     ]
                 }
             ]
@@ -2437,16 +2437,16 @@
             "elems": [
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  \n  \tall t: Track | t not in t.succs\n  \tall e: Junction | some t1,t2: Track | e in t1.succs and e in t2.succs and \t\tnot(t1 = t2)\n}",
+                    "code": "{\n\tall j : Track | (j in Junction) implies(some t1,t2:Track | t1!=t2 and t1->j in succs and t2->j in succs)\t\n\tall t : Track | not t->t in succs\t\n\n\n}",
                     "ids": [
-                        "E26cTaXpGG7zdsqas"
+                        "pBhy6zb82KuiRLEk9"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\tall j : Track | (j in Junction) implies(some t1,t2:Track | t1!=t2 and t1->j in succs and t2->j in succs)\t\n\tall t : Track | not t->t in succs\t\n\n\n}",
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  \n  \tall t: Track | t not in t.succs\n  \tall e: Junction | some t1,t2: Track | e in t1.succs and e in t2.succs and \t\tnot(t1 = t2)\n}",
                     "ids": [
-                        "pBhy6zb82KuiRLEk9"
+                        "E26cTaXpGG7zdsqas"
                     ]
                 },
                 {
@@ -2562,16 +2562,16 @@
             "elems": [
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t:Track | t in Junction iff some t1,t2:Track | t1 in t.^succs and t2 in t.^succs and t1!=t2 \n}",
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n    all t: Track | #(t.^succs) > 1 <=> t in Junction\n\n}",
                     "ids": [
-                        "PkxiKWyP263zRKsZD"
+                        "NruqfZvsxt3PaPiDz"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n    all t: Track | #(t.^succs) > 1 <=> t in Junction\n\n}",
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t:Track | t in Junction iff some t1,t2:Track | t1 in t.^succs and t2 in t.^succs and t1!=t2 \n}",
                     "ids": [
-                        "NruqfZvsxt3PaPiDz"
+                        "PkxiKWyP263zRKsZD"
                     ]
                 }
             ]
@@ -2583,16 +2583,16 @@
             "elems": [
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t: Track | some t2: Track-t | some t3: Track-t2 | t in Junction iff t != t2 and t in t2.^succs and t != t3 and t in t3.^succs and t2 != t3\n}",
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t:Track | some disj t1,t2:Track | t in Junction iff t1!=t and t in t1.^succs and t2!=t and t in t2.^succs\n}",
                     "ids": [
-                        "5o7srN2SuaZjpk6p6"
+                        "F8ik97DRfbARvnsSX"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t:Track | some disj t1,t2:Track | t in Junction iff t1!=t and t in t1.^succs and t2!=t and t in t2.^succs\n}",
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t: Track | some t2: Track-t | some t3: Track-t2 | t in Junction iff t != t2 and t in t2.^succs and t != t3 and t in t3.^succs and t2 != t3\n}",
                     "ids": [
-                        "F8ik97DRfbARvnsSX"
+                        "5o7srN2SuaZjpk6p6"
                     ]
                 }
             ]
@@ -2619,16 +2619,16 @@
             "elems": [
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  // all j : Junction | some succs.j - j\n  all j : Junction | all disj s1,s2 : Track | s1 in succs.j and s2 in succs.j\n\n}",
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall j : Junction | all disj t1, t2 : Track | (j in t1.succs) and (j in t2.succs)\n}",
                     "ids": [
-                        "xKqR8Qw7eXJ7fqoSS"
+                        "dCggysgNhqhMxgb6T"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall j : Junction | all disj t1, t2 : Track | (j in t1.succs) and (j in t2.succs)\n}",
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  // all j : Junction | some succs.j - j\n  all j : Junction | all disj s1,s2 : Track | s1 in succs.j and s2 in succs.j\n\n}",
                     "ids": [
-                        "dCggysgNhqhMxgb6T"
+                        "xKqR8Qw7eXJ7fqoSS"
                     ]
                 }
             ]
@@ -2655,16 +2655,16 @@
             "elems": [
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall j: Junction | some t: Track | j in t.succs.succs - t\n}",
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  \tall t: Track | t in Junction => some t2: Track | t in t2.succs.succs and t != t2\n}",
                     "ids": [
-                        "BNvA5m63X86oPbPrn"
+                        "wFHoL3MKkvrYLCmsc"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  \tall t: Track | t in Junction => some t2: Track | t in t2.succs.succs and t != t2\n}",
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall j: Junction | some t: Track | j in t.succs.succs - t\n}",
                     "ids": [
-                        "wFHoL3MKkvrYLCmsc"
+                        "BNvA5m63X86oPbPrn"
                     ]
                 }
             ]
@@ -2691,16 +2691,16 @@
             "elems": [
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t1 : Track | t1 in Junction iff all t2,t3 : Track | t1 in t2.succs and t1 in t3.succs\n}",
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  all t : Track | (all t1 : Track | t in t1.succs) iff t in Junction\n\n}",
                     "ids": [
-                        "ohmqX26weJ9KWyWcf"
+                        "R3ESKWtAyzqzFSBD7"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  all t : Track | (all t1 : Track | t in t1.succs) iff t in Junction\n\n}",
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t1 : Track | t1 in Junction iff all t2,t3 : Track | t1 in t2.succs and t1 in t3.succs\n}",
                     "ids": [
-                        "R3ESKWtAyzqzFSBD7"
+                        "ohmqX26weJ9KWyWcf"
                     ]
                 }
             ]
@@ -2748,16 +2748,16 @@
             "elems": [
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall j: Junction | some t: Track | j in (t.succs - j).succs\n}",
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall j:Junction | some t:Track - j | j in t.succs and some t2:Track | t in t2.succs\n}",
                     "ids": [
-                        "uNCNW2BCZumpSGyAA"
+                        "vnC9vtmP5Y4buyAWK"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall j:Junction | some t:Track - j | j in t.succs and some t2:Track | t in t2.succs\n}",
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall j: Junction | some t: Track | j in (t.succs - j).succs\n}",
                     "ids": [
-                        "vnC9vtmP5Y4buyAWK"
+                        "uNCNW2BCZumpSGyAA"
                     ]
                 }
             ]
@@ -2784,16 +2784,16 @@
             "elems": [
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t:Track | #(~succs.t)>1 implies t in Junction\n}",
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t : Track | (#{t.succs}>1) implies t in Junction \n}",
                     "ids": [
-                        "fZFa54uF8Nidxxmqi"
+                        "t9xbQBpkEsZGXc94s"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t : Track | (#{t.succs}>1) implies t in Junction \n}",
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t:Track | #(~succs.t)>1 implies t in Junction\n}",
                     "ids": [
-                        "t9xbQBpkEsZGXc94s"
+                        "fZFa54uF8Nidxxmqi"
                     ]
                 }
             ]
@@ -2862,16 +2862,16 @@
             "elems": [
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t: Track | some disj a, b: Track | t in (a.succs & b.succs) && t in Junction \n}",
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  \tall t : Track | #succs.t > 1 and t in Junction\n}",
                     "ids": [
-                        "NckiXK5ZpQjF3447T"
+                        "MyzdhDsoyinQttW9j"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  \tall t : Track | #succs.t > 1 and t in Junction\n}",
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t: Track | some disj a, b: Track | t in (a.succs & b.succs) && t in Junction \n}",
                     "ids": [
-                        "MyzdhDsoyinQttW9j"
+                        "NckiXK5ZpQjF3447T"
                     ]
                 }
             ]
@@ -2940,16 +2940,16 @@
             "elems": [
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  all t:Track | t in Exit implies one succs.t  \n\n}",
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  all e:Exit | one succs.e\n\n}",
                     "ids": [
-                        "BXySJPbEPTC69vQcA"
+                        "aTMv7C3pWSdmuj2DA"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  all e:Exit | one succs.e\n\n}",
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  all t:Track | t in Exit implies one succs.t  \n\n}",
                     "ids": [
-                        "aTMv7C3pWSdmuj2DA"
+                        "BXySJPbEPTC69vQcA"
                     ]
                 }
             ]
@@ -2961,16 +2961,16 @@
             "elems": [
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  all e:Exit | one succs.e or no succs.e\n\n}",
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  all t:Track | t in Exit implies lone succs.t  \n\n}",
                     "ids": [
-                        "GY7Hw2jGzk9qJQrPe"
+                        "747ztcZYHXkqHsnPD"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  all t:Track | t in Exit implies lone succs.t  \n\n}",
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  all e:Exit | one succs.e or no succs.e\n\n}",
                     "ids": [
-                        "747ztcZYHXkqHsnPD"
+                        "GY7Hw2jGzk9qJQrPe"
                     ]
                 }
             ]

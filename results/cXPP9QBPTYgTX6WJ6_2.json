@@ -3,7 +3,7 @@
     "pred": "this/inv3",
     "entry_count": 1473,
     "group_count": 145,
-    "duration": 66,
+    "duration": 67,
     "scope": 3,
     "groups": [
         {
@@ -512,22 +512,22 @@
                 },
                 {
                     "entry_count": 4,
-                    "code": "{\n\t// Exit tracks are those without successor\n\tno e : Exit | some e.succs\n  \t//all t : Track | no t.succs implies t in Exit\n}",
-                    "ids": [
-                        "TAC36jszZMftKWsPT",
-                        "H5rhA2s9KTo4SqiMw",
-                        "RXRS3iJcSTXvrhTRp",
-                        "4sJYDbo5qLgrFDkLc"
-                    ]
-                },
-                {
-                    "entry_count": 4,
                     "code": "{\n\t// Exit tracks are those without successor\n  \tall t: Track | t in Exit implies #t.succs = 0\n}",
                     "ids": [
                         "cYSwg6osMgTa6gPGT",
                         "2oEEWGHJALdnRJtiC",
                         "KT5x2HfugkcouiNNb",
                         "nCxd6cvY22XJ7CRvX"
+                    ]
+                },
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// Exit tracks are those without successor\n\tno e : Exit | some e.succs\n  \t//all t : Track | no t.succs implies t in Exit\n}",
+                    "ids": [
+                        "TAC36jszZMftKWsPT",
+                        "H5rhA2s9KTo4SqiMw",
+                        "RXRS3iJcSTXvrhTRp",
+                        "4sJYDbo5qLgrFDkLc"
                     ]
                 },
                 {
@@ -552,20 +552,20 @@
                 },
                 {
                     "entry_count": 3,
-                    "code": "{\n\t// Exit tracks are those without successor\n  all t:Track | some(t.succs) implies t not in Exit\n\n}",
-                    "ids": [
-                        "wuv2XuyeWv8TSFjEj",
-                        "RxSh8piPt4ApEoa4C",
-                        "JdrZ5Dt2yXPSW4Wqj"
-                    ]
-                },
-                {
-                    "entry_count": 3,
                     "code": "{\n\t// Exit tracks are those without successor\n\tall t : Exit | no t.succs & Track\n}",
                     "ids": [
                         "39or4XRxcCuXZzE3K",
                         "h7CQ5NSW4K2KN4KeC",
                         "HPYyj5dwgQrCnJL6a"
+                    ]
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Exit tracks are those without successor\n  all t:Track | some(t.succs) implies t not in Exit\n\n}",
+                    "ids": [
+                        "wuv2XuyeWv8TSFjEj",
+                        "RxSh8piPt4ApEoa4C",
+                        "JdrZ5Dt2yXPSW4Wqj"
                     ]
                 },
                 {
@@ -579,10 +579,10 @@
                 },
                 {
                     "entry_count": 2,
-                    "code": "{\n\t// Exit tracks are those without successor\n\tall e : Exit | #e.^succs =<0\n}",
+                    "code": "{\n\t// Exit tracks are those without successor\n\tall e: Exit, t: Track | t not in e.^succs\n}",
                     "ids": [
-                        "BMnnFAiKhgxNYJNM6",
-                        "PbbEJwvjpKYiFbiMA"
+                        "HxWMNoqF2hz69GR9L",
+                        "aB2vpNrGHa4QuM67m"
                     ]
                 },
                 {
@@ -595,14 +595,6 @@
                 },
                 {
                     "entry_count": 2,
-                    "code": "{\n\t// Exit tracks are those without successor\n\tall e: Exit, t: Track | t not in e.^succs\n}",
-                    "ids": [
-                        "HxWMNoqF2hz69GR9L",
-                        "aB2vpNrGHa4QuM67m"
-                    ]
-                },
-                {
-                    "entry_count": 2,
                     "code": "{\n\t// Exit tracks are those without successor\n  \tall t :Exit | no t & t.^succs\n\tall t :Track |  t in Exit implies no t.succs\n}",
                     "ids": [
                         "FewBY7ooRAfBghJ7E",
@@ -610,80 +602,11 @@
                     ]
                 },
                 {
-                    "entry_count": 1,
-                    "code": "{\n\t// Exit tracks are those without successor\n\tall t: Track | t in Exit implies (all t1: Track | t1 not in t.^succs)\n}",
+                    "entry_count": 2,
+                    "code": "{\n\t// Exit tracks are those without successor\n\tall e : Exit | #e.^succs =<0\n}",
                     "ids": [
-                        "3cHisnkCSKt2Z83Gr"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Exit tracks are those without successor\n\tall x : Exit | all t : Track | x in t implies no t.^succs\n}",
-                    "ids": [
-                        "rYrnArt2Rrqh55B8k"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Exit tracks are those without successor\n\tall t : Track | all e : Exit | t in e implies no t.succs\n}",
-                    "ids": [
-                        "KEusHJ3CFfsLY8nAp"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Exit tracks are those without successor\n  all x: Exit  | x.^succs in none\n\n}",
-                    "ids": [
-                        "JqELdC8cysiieGzht"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t//Exit tracks are those without successor\n   //all t:Track | no succs.t implies t in Exit\n  \tall t:Track | no t1:Track | t1 in t.succs and t in Exit  \n}",
-                    "ids": [
-                        "ZdZZ6bs9h5hTQrhMY"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Exit tracks are those without successor\n\tall e : Exit |  no (e&Track).succs \n}",
-                    "ids": [
-                        "ZmBx9TyhNFP77nWoT"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Exit tracks are those without successor\n  \tno t:Exit| #(t.succs)>0\n\n}",
-                    "ids": [
-                        "PtqwKTj2c855jkx8R"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Exit tracks are those without successor\n\tExit = {e: Exit | no e.succs}\n}",
-                    "ids": [
-                        "fKBM2Xg6uHLgFn9JW"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Exit tracks are those without successor\nall e : Track | (e in Exit) implies not(some t:Track | e->t in succs)\n}",
-                    "ids": [
-                        "ZnPWqe8weqjyTDhCe"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Exit tracks are those without successor\n  \tall e : Exit | e in Track and no e.succs\n}",
-                    "ids": [
-                        "CjREoYDhjLYcT2p2E"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Exit tracks are those without successor\n  all t: Track | some t.^succs => t not in Exit\n\n}",
-                    "ids": [
-                        "X8httHhGnaNNaq3S3"
+                        "BMnnFAiKhgxNYJNM6",
+                        "PbbEJwvjpKYiFbiMA"
                     ]
                 },
                 {
@@ -695,65 +618,37 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Exit tracks are those without successor\n\tno Exit->Track & succs\n}",
+                    "code": "{\n\t// Exit tracks are those without successor\n\tall t : Track | all e : Exit | t in e implies no t.succs\n}",
                     "ids": [
-                        "i2oHiBrZY2QGSWqGp"
+                        "KEusHJ3CFfsLY8nAp"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Exit tracks are those without successor\n\tall x: Exit | x in Exit iff (all y: Track | y not in x.^succs)\n}",
+                    "code": "{\n\t// Exit tracks are those without successor\n\tall e : Exit |  no (e&Track).succs \n}",
                     "ids": [
-                        "bWAPxsEbZkwj4b2qJ"
+                        "ZmBx9TyhNFP77nWoT"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Exit tracks are those without successor\n\tall t : Track | all succ : t.succs | t in Exit implies no succ\n}",
+                    "code": "{\n\t// Exit tracks are those without successor\n\tExit = {e: Exit | no e.succs}\n}",
                     "ids": [
-                        "wTBuxy4PKfofDdDC3"
+                        "fKBM2Xg6uHLgFn9JW"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Exit tracks are those without successor\n\tall t : Track | all e : Exit | t in Exit implies no t.succs\n}",
+                    "code": "{\n\t// Exit tracks are those without successor\n  \tall e : Exit | e in Track and no e.succs\n}",
                     "ids": [
-                        "nrX6FxP59k8pvKo5c"
+                        "CjREoYDhjLYcT2p2E"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Exit tracks are those without successor\n\tExit.^succs = none\n}",
+                    "code": "{\n\t//Exit tracks are those without successor\n   //all t:Track | no succs.t implies t in Exit\n  \tall t:Track | no t1:Track | t1 in t.succs and t in Exit  \n}",
                     "ids": [
-                        "dJaiudrtXD35jL4ck"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Exit tracks are those without successor\n\tall t:Track, e:Exit | t in e implies no t.succs and t not in t.succs\n}",
-                    "ids": [
-                        "nqLWQbyXoJjbJhEJW"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Exit tracks are those without successor\n\tall t : Track | t in Exit implies Exit.succs = none\n}",
-                    "ids": [
-                        "AtsmvTft3vaK5N6dz"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Exit tracks are those without successor\n\tall e : Exit | some t : Track | no e.^succs\n}",
-                    "ids": [
-                        "wFZDF9XigA7tiqMND"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t//Exit tracks are those without successor\n   //all t:Track | no succs.t implies t in Exit\n  \tall t:Track | all t1:Track | t1 in t.succs implies t not in Exit  \n}",
-                    "ids": [
-                        "QnrvNccajf5sHFBwA"
+                        "ZdZZ6bs9h5hTQrhMY"
                     ]
                 },
                 {
@@ -772,9 +667,72 @@
                 },
                 {
                     "entry_count": 1,
+                    "code": "{\n\t// Exit tracks are those without successor\n  all x: Exit  | x.^succs in none\n\n}",
+                    "ids": [
+                        "JqELdC8cysiieGzht"
+                    ]
+                },
+                {
+                    "entry_count": 1,
                     "code": "{\n\t// Exit tracks are those without successor\n\tall e: Exit | e in Track and e.succs = none\n}",
                     "ids": [
                         "M5Ne4pnokia8S8GSE"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Exit tracks are those without successor\n\tall t: Track | t in Exit implies (all t1: Track | t1 not in t.^succs)\n}",
+                    "ids": [
+                        "3cHisnkCSKt2Z83Gr"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Exit tracks are those without successor\n  \tno t:Exit| #(t.succs)>0\n\n}",
+                    "ids": [
+                        "PtqwKTj2c855jkx8R"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t//Exit tracks are those without successor\n   //all t:Track | no succs.t implies t in Exit\n  \tall t:Track | all t1:Track | t1 in t.succs implies t not in Exit  \n}",
+                    "ids": [
+                        "QnrvNccajf5sHFBwA"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Exit tracks are those without successor\n  all t: Track | some t.^succs => t not in Exit\n\n}",
+                    "ids": [
+                        "X8httHhGnaNNaq3S3"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Exit tracks are those without successor\n\tall t : Track | all succ : t.succs | t in Exit implies no succ\n}",
+                    "ids": [
+                        "wTBuxy4PKfofDdDC3"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Exit tracks are those without successor\n\tall t : Track | t in Exit implies Exit.succs = none\n}",
+                    "ids": [
+                        "AtsmvTft3vaK5N6dz"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Exit tracks are those without successor\n\tExit.^succs = none\n}",
+                    "ids": [
+                        "dJaiudrtXD35jL4ck"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Exit tracks are those without successor\n  \tall t:Track, t2:Exit, t3:Track| t2 in t implies t3 not in t.succs\n\n}",
+                    "ids": [
+                        "wbBhG9S6mWv2hefi7"
                     ]
                 },
                 {
@@ -786,9 +744,51 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Exit tracks are those without successor\n  \tall t:Track, t2:Exit, t3:Track| t2 in t implies t3 not in t.succs\n\n}",
+                    "code": "{\n\t// Exit tracks are those without successor\n\tno Exit->Track & succs\n}",
                     "ids": [
-                        "wbBhG9S6mWv2hefi7"
+                        "i2oHiBrZY2QGSWqGp"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Exit tracks are those without successor\n\tall t:Track, e:Exit | t in e implies no t.succs and t not in t.succs\n}",
+                    "ids": [
+                        "nqLWQbyXoJjbJhEJW"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Exit tracks are those without successor\n\tall t : Track | all e : Exit | t in Exit implies no t.succs\n}",
+                    "ids": [
+                        "nrX6FxP59k8pvKo5c"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Exit tracks are those without successor\n\tall e : Exit | some t : Track | no e.^succs\n}",
+                    "ids": [
+                        "wFZDF9XigA7tiqMND"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Exit tracks are those without successor\nall e : Track | (e in Exit) implies not(some t:Track | e->t in succs)\n}",
+                    "ids": [
+                        "ZnPWqe8weqjyTDhCe"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Exit tracks are those without successor\n\tall x : Exit | all t : Track | x in t implies no t.^succs\n}",
+                    "ids": [
+                        "rYrnArt2Rrqh55B8k"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Exit tracks are those without successor\n\tall x: Exit | x in Exit iff (all y: Track | y not in x.^succs)\n}",
+                    "ids": [
+                        "bWAPxsEbZkwj4b2qJ"
                     ]
                 }
             ]
@@ -992,22 +992,6 @@
                 },
                 {
                     "entry_count": 10,
-                    "code": "{\n\t// Exit tracks are those without successor\n  all t: Exit | no t.succs\n  all t: Track - Exit | some t.succs\n\n}",
-                    "ids": [
-                        "gu6ytEdEypEbaiioY",
-                        "8n3jCgWgH3rQ9z5L2",
-                        "kuzz7cbtpuvfmtY6E",
-                        "96BL5Mvq6kmPc4b4m",
-                        "hDp67uMTtmepHH9Wv",
-                        "7cMLg9qnLiiv574yu",
-                        "JpyA42DcqDXCdDqmq",
-                        "8HJ5JuQM8tjuhKMDS",
-                        "T96smsQrYcphAuW9t",
-                        "a6BwMTakLtm94mXe4"
-                    ]
-                },
-                {
-                    "entry_count": 10,
                     "code": "{\n\t// Exit tracks are those without successor\n\tExit = Track - succs.Track\n}",
                     "ids": [
                         "AzTm7HCz5Bx5gZcvm",
@@ -1023,18 +1007,19 @@
                     ]
                 },
                 {
-                    "entry_count": 9,
-                    "code": "{\n\t// Exit tracks are those without successor\n  //if no successor then it is an exit track\n  all t: Track| no t.succs implies t in Exit\n  no Exit.succs\n\n}",
+                    "entry_count": 10,
+                    "code": "{\n\t// Exit tracks are those without successor\n  all t: Exit | no t.succs\n  all t: Track - Exit | some t.succs\n\n}",
                     "ids": [
-                        "oBfKJdCNojETWFfyW",
-                        "4P5At9SSggPjozYZQ",
-                        "YPN4Soxqn9hhyd7HF",
-                        "NTNTAXoCb4utXcmcN",
-                        "pow7vG5KW55taSDgJ",
-                        "3jEQbQKZM6xkRZ6tG",
-                        "JKsSJtXZFdJ5Q4Bwz",
-                        "3kaZWS4Qqw5NSBFwt",
-                        "mRBt6AH2pvZ32CKAq"
+                        "gu6ytEdEypEbaiioY",
+                        "8n3jCgWgH3rQ9z5L2",
+                        "kuzz7cbtpuvfmtY6E",
+                        "96BL5Mvq6kmPc4b4m",
+                        "hDp67uMTtmepHH9Wv",
+                        "7cMLg9qnLiiv574yu",
+                        "JpyA42DcqDXCdDqmq",
+                        "8HJ5JuQM8tjuhKMDS",
+                        "T96smsQrYcphAuW9t",
+                        "a6BwMTakLtm94mXe4"
                     ]
                 },
                 {
@@ -1050,6 +1035,21 @@
                         "dCC9Fii8btRXtL9fv",
                         "gvPyGuA3AL5NEpDhx",
                         "TnTCRZhSn9dH5eHXr"
+                    ]
+                },
+                {
+                    "entry_count": 9,
+                    "code": "{\n\t// Exit tracks are those without successor\n  //if no successor then it is an exit track\n  all t: Track| no t.succs implies t in Exit\n  no Exit.succs\n\n}",
+                    "ids": [
+                        "oBfKJdCNojETWFfyW",
+                        "4P5At9SSggPjozYZQ",
+                        "YPN4Soxqn9hhyd7HF",
+                        "NTNTAXoCb4utXcmcN",
+                        "pow7vG5KW55taSDgJ",
+                        "3jEQbQKZM6xkRZ6tG",
+                        "JKsSJtXZFdJ5Q4Bwz",
+                        "3kaZWS4Qqw5NSBFwt",
+                        "mRBt6AH2pvZ32CKAq"
                     ]
                 },
                 {
@@ -1096,14 +1096,14 @@
                 },
                 {
                     "entry_count": 6,
-                    "code": "{\n\t// Exit tracks are those without successor\n  all t:Track | no t.succs implies t in Exit else t not in Exit\n}",
+                    "code": "{\n\t// Exit tracks are those without successor\n  (all t : Track - Exit | some t.succs) and (all e : Exit | no e.succs)\n\n}",
                     "ids": [
-                        "ATzWQ3MS4oBH9yoXA",
-                        "iHa6Fjw6JnReisxoB",
-                        "8HfgJNvWwAtEK3ZJP",
-                        "9hjWbjP7xCZ4LALyx",
-                        "oY9hnAKpayDwbJFj5",
-                        "h2uHGYd38rfFtPdfu"
+                        "8RegeaCFwHtvGuLaw",
+                        "XQEoFQoiXhWZYZSZX",
+                        "mr4BaCKtYJZDdXupo",
+                        "qjej6xqteFWqKw9oz",
+                        "xyRaPYSNRcSt5LCxJ",
+                        "xDC5DrRcQ5ASgCuz6"
                     ]
                 },
                 {
@@ -1120,34 +1120,14 @@
                 },
                 {
                     "entry_count": 6,
-                    "code": "{\n\t// Exit tracks are those without successor\n  (all t : Track - Exit | some t.succs) and (all e : Exit | no e.succs)\n\n}",
+                    "code": "{\n\t// Exit tracks are those without successor\n  all t:Track | no t.succs implies t in Exit else t not in Exit\n}",
                     "ids": [
-                        "8RegeaCFwHtvGuLaw",
-                        "XQEoFQoiXhWZYZSZX",
-                        "mr4BaCKtYJZDdXupo",
-                        "qjej6xqteFWqKw9oz",
-                        "xyRaPYSNRcSt5LCxJ",
-                        "xDC5DrRcQ5ASgCuz6"
-                    ]
-                },
-                {
-                    "entry_count": 4,
-                    "code": "{\n\t// Exit tracks are those without successor\n  // all t: Exit | no t.succs\n  all t: Track | some t.succs <=> t not in Exit\n  // no Exit.succs\n  // some (Track - Exit).succs\n\n}",
-                    "ids": [
-                        "wLW9QE5KKSkcs6YQo",
-                        "A869vbYq5gFfDH3XR",
-                        "TefGGmbMnki696QDL",
-                        "tLg4SefFyDRDNHxCN"
-                    ]
-                },
-                {
-                    "entry_count": 4,
-                    "code": "{\n\t// Exit tracks are those without successor\n  //if no successor then it is an exit track\n  all t: Track| no t.succs implies t in Exit\n  //no Exit.succs\n  \n  all t:Track | t in Exit implies no t.succs\n\n}",
-                    "ids": [
-                        "sASvXttrTD8BKH4Nx",
-                        "gAPSciXbgLSkaCQfN",
-                        "mxXjkucauLrziJkf7",
-                        "M4WM7wMqi49ExfrTT"
+                        "ATzWQ3MS4oBH9yoXA",
+                        "iHa6Fjw6JnReisxoB",
+                        "8HfgJNvWwAtEK3ZJP",
+                        "9hjWbjP7xCZ4LALyx",
+                        "oY9hnAKpayDwbJFj5",
+                        "h2uHGYd38rfFtPdfu"
                     ]
                 },
                 {
@@ -1181,12 +1161,23 @@
                     ]
                 },
                 {
-                    "entry_count": 3,
-                    "code": "{\n\t// Exit tracks are those without successor\n\tall x: Track | x in Exit iff (all y: Track | y not in x.succs)\n}",
+                    "entry_count": 4,
+                    "code": "{\n\t// Exit tracks are those without successor\n  // all t: Exit | no t.succs\n  all t: Track | some t.succs <=> t not in Exit\n  // no Exit.succs\n  // some (Track - Exit).succs\n\n}",
                     "ids": [
-                        "j3XXGemar7NawkRTa",
-                        "hcYrgBzLBh9LRftJj",
-                        "bKjr7mTvXF9B92vAA"
+                        "wLW9QE5KKSkcs6YQo",
+                        "A869vbYq5gFfDH3XR",
+                        "TefGGmbMnki696QDL",
+                        "tLg4SefFyDRDNHxCN"
+                    ]
+                },
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// Exit tracks are those without successor\n  //if no successor then it is an exit track\n  all t: Track| no t.succs implies t in Exit\n  //no Exit.succs\n  \n  all t:Track | t in Exit implies no t.succs\n\n}",
+                    "ids": [
+                        "sASvXttrTD8BKH4Nx",
+                        "gAPSciXbgLSkaCQfN",
+                        "mxXjkucauLrziJkf7",
+                        "M4WM7wMqi49ExfrTT"
                     ]
                 },
                 {
@@ -1208,43 +1199,12 @@
                     ]
                 },
                 {
-                    "entry_count": 2,
-                    "code": "{\n\t// Exit tracks are those without successor\n\t//all t: Exit | no t.succs \n  \tall t: Track | (no t.succs implies t in Exit) and (some t.succs implies t !in Exit)\n  \t//all t: Track - Exit | some t.succs\n  \t//all t: Track | no t.succs implies t in Exit\n}",
+                    "entry_count": 3,
+                    "code": "{\n\t// Exit tracks are those without successor\n\tall x: Track | x in Exit iff (all y: Track | y not in x.succs)\n}",
                     "ids": [
-                        "XrmbgF5P7ks4NHf7j",
-                        "iSm57B7GnYnJkayAf"
-                    ]
-                },
-                {
-                    "entry_count": 2,
-                    "code": "{\n\t// Exit tracks are those without successor\n\tall x: Track | x in Exit iff (all y: Track | y not in x.^succs)\n}",
-                    "ids": [
-                        "sEB3QheBQybtHKxey",
-                        "BCFQPjh5HzRmzHQf7"
-                    ]
-                },
-                {
-                    "entry_count": 2,
-                    "code": "{\n\t// Exit tracks are those without successor\n  all t: Track | no (t.succs) implies one (t & Exit) else (no t & Exit)\n\n}",
-                    "ids": [
-                        "decYJt2a7yttTgza4",
-                        "rrwXCnS7ZkQEPwhut"
-                    ]
-                },
-                {
-                    "entry_count": 2,
-                    "code": "{\n\t// Exit tracks are those without successor\n\tall t : Exit | no t.succs\n  \tall t : Track | no t.succs implies t in Exit\n}",
-                    "ids": [
-                        "TMyLv2kBDjvkPsgjy",
-                        "SfygocPLE9Seyg3uf"
-                    ]
-                },
-                {
-                    "entry_count": 2,
-                    "code": "{\n\t// Exit tracks are those without successor\n\tno e : Exit | some e.succs\n  \tall t : Track | no t.succs implies t in Exit\n}",
-                    "ids": [
-                        "4EdD6LGRLb7adYkGc",
-                        "wmqoNwJuyvtM4gZxr"
+                        "j3XXGemar7NawkRTa",
+                        "hcYrgBzLBh9LRftJj",
+                        "bKjr7mTvXF9B92vAA"
                     ]
                 },
                 {
@@ -1264,31 +1224,43 @@
                     ]
                 },
                 {
-                    "entry_count": 1,
-                    "code": "{\n\t// Exit tracks are those without successor\n  // perguntar alcino \n  all x: Exit | no x.succs\n  \n  all x: Track | no x.succs iff x in Exit\n\n}",
+                    "entry_count": 2,
+                    "code": "{\n\t// Exit tracks are those without successor\n\tno e : Exit | some e.succs\n  \tall t : Track | no t.succs implies t in Exit\n}",
                     "ids": [
-                        "YwGXGdFe9NTp9EZZv"
+                        "4EdD6LGRLb7adYkGc",
+                        "wmqoNwJuyvtM4gZxr"
                     ]
                 },
                 {
-                    "entry_count": 1,
-                    "code": "{\n\t// Exit tracks are those without successor\n    // Todo Exit n\u00e3o tem sucessores\n    all e: Exit, t : Track | no e.succs and (no t.succs implies t in Exit)\n\n    // Se um Track n\u00e3o tem sucessores, ent\u00e3o ele deve ser um Exit\n    all t: Track | no t.succs implies t in Exit\n}",
+                    "entry_count": 2,
+                    "code": "{\n\t// Exit tracks are those without successor\n\t//all t: Exit | no t.succs \n  \tall t: Track | (no t.succs implies t in Exit) and (some t.succs implies t !in Exit)\n  \t//all t: Track - Exit | some t.succs\n  \t//all t: Track | no t.succs implies t in Exit\n}",
                     "ids": [
-                        "6Lii3Jkeo2PmsjXbZ"
+                        "XrmbgF5P7ks4NHf7j",
+                        "iSm57B7GnYnJkayAf"
                     ]
                 },
                 {
-                    "entry_count": 1,
-                    "code": "{\n\t// Exit tracks are those without successor\n\t//all t: Exit | no t.succs\n  \tall t: Track - Exit| some t.succs\n  \tno Exit.succs\n  \tall t:Track | some t.succs <=> t not in Exit\n}",
+                    "entry_count": 2,
+                    "code": "{\n\t// Exit tracks are those without successor\n\tall t : Exit | no t.succs\n  \tall t : Track | no t.succs implies t in Exit\n}",
                     "ids": [
-                        "hTEGk6R5AJnoBvPf6"
+                        "TMyLv2kBDjvkPsgjy",
+                        "SfygocPLE9Seyg3uf"
                     ]
                 },
                 {
-                    "entry_count": 1,
-                    "code": "{\n\t// Exit tracks are those without successor\n\tall t : Track | no (t.succs) implies t in Exit\n  \tall t : Track | some (t.succs) implies not t in Exit\n}",
+                    "entry_count": 2,
+                    "code": "{\n\t// Exit tracks are those without successor\n  all t: Track | no (t.succs) implies one (t & Exit) else (no t & Exit)\n\n}",
                     "ids": [
-                        "dtrFbwBqPgKJMK6ip"
+                        "decYJt2a7yttTgza4",
+                        "rrwXCnS7ZkQEPwhut"
+                    ]
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Exit tracks are those without successor\n\tall x: Track | x in Exit iff (all y: Track | y not in x.^succs)\n}",
+                    "ids": [
+                        "sEB3QheBQybtHKxey",
+                        "BCFQPjh5HzRmzHQf7"
                     ]
                 },
                 {
@@ -1307,16 +1279,16 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Exit tracks are those without successor\n\tall t : Track | (no t.succs implies t in Exit) and \n\tall t : Exit | no t.succs\n}",
+                    "code": "{\n\t// Exit tracks are those without successor\n    all t: Track | (t in Exit implies t.succs = none) and (t.succs = none implies t in Exit)\n}",
                     "ids": [
-                        "7wFdxcC5QEuB7Btqz"
+                        "rEkMGuzTsgR4Mu5mG"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Exit tracks are those without successor\n\tall t:Track | not (t not in Exit <=> no t.succs)\n}",
+                    "code": "{\n\t// Exit tracks are those without successor\n\tall t : Track | (t.succs = none and t in Exit) or (some(t.succs) and t not in Exit)\n}",
                     "ids": [
-                        "KAa2C4G9rD9aag5fR"
+                        "rDfQ2Cpu4LQ9cK5Ge"
                     ]
                 },
                 {
@@ -1328,16 +1300,51 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Exit tracks are those without successor\n\t// all t:Track | not (t not in Exit <=> no t.succs) // xor ?\n  \tall t:Track | t not in Exit => some t.succs\n  \tall t:Track | t in Exit     => no t.succs\n}",
+                    "code": "{\n\t// Exit tracks are those without successor\n    // Todo Exit n\u00e3o tem sucessores\n    all e: Exit, t : Track | no e.succs and (no t.succs implies t in Exit)\n\n    // Se um Track n\u00e3o tem sucessores, ent\u00e3o ele deve ser um Exit\n    all t: Track | no t.succs implies t in Exit\n}",
                     "ids": [
-                        "pwftrLeNjgeQ9rEM9"
+                        "6Lii3Jkeo2PmsjXbZ"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Exit tracks are those without successor\n\tall t : Track | (t.succs = none and t in Exit) or (some(t.succs) and t not in Exit)\n}",
+                    "code": "{\n\t// Exit tracks are those without successor\n\t//all t: Exit | no t.succs\n  \tall t: Track - Exit| some t.succs\n  \tno Exit.succs\n  \tall t:Track | some t.succs <=> t not in Exit\n}",
                     "ids": [
-                        "rDfQ2Cpu4LQ9cK5Ge"
+                        "hTEGk6R5AJnoBvPf6"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Exit tracks are those without successor\n\tall t : Track | (no t.succs implies t in Exit) and \n\tall t : Exit | no t.succs\n}",
+                    "ids": [
+                        "7wFdxcC5QEuB7Btqz"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Exit tracks are those without successor\n\tall t : Track | no (t.succs) implies t in Exit\n  \tall t : Track | some (t.succs) implies not t in Exit\n}",
+                    "ids": [
+                        "dtrFbwBqPgKJMK6ip"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Exit tracks are those without successor\n\tall t:Track | not (t not in Exit <=> no t.succs)\n}",
+                    "ids": [
+                        "KAa2C4G9rD9aag5fR"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Exit tracks are those without successor\n  // perguntar alcino \n  all x: Exit | no x.succs\n  \n  all x: Track | no x.succs iff x in Exit\n\n}",
+                    "ids": [
+                        "YwGXGdFe9NTp9EZZv"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Exit tracks are those without successor\n\t// all t:Track | not (t not in Exit <=> no t.succs) // xor ?\n  \tall t:Track | t not in Exit => some t.succs\n  \tall t:Track | t in Exit     => no t.succs\n}",
+                    "ids": [
+                        "pwftrLeNjgeQ9rEM9"
                     ]
                 },
                 {
@@ -1352,13 +1359,6 @@
                     "code": "{\n\t// Exit tracks are those without successor\n\t// all t:Track | not (t not in Exit <=> no t.succs) // xor ?\n  \tall t:Track | t not in Exit => some t.succs\n  \tall t:Exit | no t.succs\n}",
                     "ids": [
                         "ofFjA3uLaeh7Hv8j4"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Exit tracks are those without successor\n    all t: Track | (t in Exit implies t.succs = none) and (t.succs = none implies t in Exit)\n}",
-                    "ids": [
-                        "rEkMGuzTsgR4Mu5mG"
                     ]
                 },
                 {
@@ -1573,44 +1573,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Exit tracks are those without successor\n\tall t : Track | t in Exit or (no t.succs implies t in Exit)\n}",
-                    "ids": [
-                        "37FCdw2gHM25ZZABo"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Exit tracks are those without successor\n  \tall t : Track | some t.succs or t in Exit\n\n}",
-                    "ids": [
-                        "69WGkKg9rksd9LJfq"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Exit tracks are those without successor\n  all t: Track | (no t.*succs or no t.^succs) implies t in Exit \n  //all e: Exit | no e.^succs\n}",
-                    "ids": [
-                        "jYDFrj9zJGkkba5Pu"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Exit tracks are those without successor\n\tall t : Track |\n  \t\tno t.succs implies t in Exit & Track\n}",
-                    "ids": [
-                        "tXSxhdxiDQX9TiEQi"
-                    ]
-                },
-                {
-                    "entry_count": 1,
                     "code": "{\n\t// Exit tracks are those without successor\n\tall t : Track | some tr : Track| not tr in t.succs implies t in Exit\n}",
                     "ids": [
                         "6bmFJ5fr7g4wwWZ8J"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Exit tracks are those without successor\n\tall t : Track | no t.succs implies t in Exit and (t in Exit implies no t.succs)\n}",
-                    "ids": [
-                        "4pguN36oagbBhcL4r"
                     ]
                 },
                 {
@@ -1622,9 +1587,44 @@
                 },
                 {
                     "entry_count": 1,
+                    "code": "{\n\t// Exit tracks are those without successor\n\tall t : Track | no t.succs implies t in Exit and (t in Exit implies no t.succs)\n}",
+                    "ids": [
+                        "4pguN36oagbBhcL4r"
+                    ]
+                },
+                {
+                    "entry_count": 1,
                     "code": "{\n\t// Exit tracks are those without successor\n  all t : Track |  t.^succs = none => t in Exit\n\n}",
                     "ids": [
                         "H9HTaa7rCztHqasD3"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Exit tracks are those without successor\n  all t: Track | (no t.*succs or no t.^succs) implies t in Exit \n  //all e: Exit | no e.^succs\n}",
+                    "ids": [
+                        "jYDFrj9zJGkkba5Pu"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Exit tracks are those without successor\n  \tall t : Track | some t.succs or t in Exit\n\n}",
+                    "ids": [
+                        "69WGkKg9rksd9LJfq"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Exit tracks are those without successor\n\tall t : Track | t in Exit or (no t.succs implies t in Exit)\n}",
+                    "ids": [
+                        "37FCdw2gHM25ZZABo"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Exit tracks are those without successor\n\tall t : Track |\n  \t\tno t.succs implies t in Exit & Track\n}",
+                    "ids": [
+                        "tXSxhdxiDQX9TiEQi"
                     ]
                 }
             ]
@@ -1744,15 +1744,6 @@
                 },
                 {
                     "entry_count": 3,
-                    "code": "{\n\t// Exit tracks are those without successor\n\tall t :Track | t in Exit iff t.succs not in Track\n}",
-                    "ids": [
-                        "SpDbPRtNEHo7s9e2X",
-                        "GBmZN5wyK8XRLGwap",
-                        "XWTPWgwD3AmpYXTNa"
-                    ]
-                },
-                {
-                    "entry_count": 3,
                     "code": "{\n\t// Exit tracks are those without successor\n\tall t :Track | t in Exit iff t.^succs not in Track\n}",
                     "ids": [
                         "XiwtfAzmiMFhoDkQQ",
@@ -1761,46 +1752,20 @@
                     ]
                 },
                 {
+                    "entry_count": 3,
+                    "code": "{\n\t// Exit tracks are those without successor\n\tall t :Track | t in Exit iff t.succs not in Track\n}",
+                    "ids": [
+                        "SpDbPRtNEHo7s9e2X",
+                        "GBmZN5wyK8XRLGwap",
+                        "XWTPWgwD3AmpYXTNa"
+                    ]
+                },
+                {
                     "entry_count": 2,
                     "code": "{\n\t// Exit tracks are those without successor\n  all e  : Exit | no e.*succs\n  all e  : Exit | no e.*succs\n\n}",
                     "ids": [
                         "ddAwMEfwTruXfnpRr",
                         "6K8EKTtKHqnqkNMX5"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Exit tracks are those without successor\n\n  \tall t:Track | t in Exit implies #t.succs = none\n}",
-                    "ids": [
-                        "JxPoSBKHxv8zRkuqf"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Exit tracks are those without successor\n\tExit = (succs.none)\n}",
-                    "ids": [
-                        "aptPaqwHzKc4iCyfq"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Exit tracks are those without successor\n  all t: Track | t in Exit implies t not in t.*succs\n}",
-                    "ids": [
-                        "BkffWzSx4CPqhpscC"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Exit tracks are those without successor\n  all ex : Exit | no ex.*succs and some Entry\n\n}",
-                    "ids": [
-                        "hLtRxs2zx3BdHuuab"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Exit tracks are those without successor\n\tall e : Exit | no e.succs and (e not in Track)\n}",
-                    "ids": [
-                        "PWj5vGusWn4yNgGvS"
                     ]
                 },
                 {
@@ -1819,9 +1784,44 @@
                 },
                 {
                     "entry_count": 1,
+                    "code": "{\n\t// Exit tracks are those without successor\n  all ex : Exit | no ex.*succs and some Entry\n\n}",
+                    "ids": [
+                        "hLtRxs2zx3BdHuuab"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Exit tracks are those without successor\n\tExit = (succs.none)\n}",
+                    "ids": [
+                        "aptPaqwHzKc4iCyfq"
+                    ]
+                },
+                {
+                    "entry_count": 1,
                     "code": "{\n\t// Exit tracks are those without successor\n\tall x : Exit | all t : Track | x in t implies no t.*succs\n}",
                     "ids": [
                         "aoNt6yxXY79cm6ToP"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Exit tracks are those without successor\n  all t: Track | t in Exit implies t not in t.*succs\n}",
+                    "ids": [
+                        "BkffWzSx4CPqhpscC"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Exit tracks are those without successor\n\tall e : Exit | #e.*succs =<0\n}",
+                    "ids": [
+                        "X2fYcja3AXfZpWCSd"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Exit tracks are those without successor\n\n  \tall t:Track | t in Exit implies #t.succs = none\n}",
+                    "ids": [
+                        "JxPoSBKHxv8zRkuqf"
                     ]
                 },
                 {
@@ -1833,9 +1833,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Exit tracks are those without successor\n\tall e : Exit | #e.*succs =<0\n}",
+                    "code": "{\n\t// Exit tracks are those without successor\n\tall e : Exit | no e.succs and (e not in Track)\n}",
                     "ids": [
-                        "X2fYcja3AXfZpWCSd"
+                        "PWj5vGusWn4yNgGvS"
                     ]
                 },
                 {
@@ -1917,37 +1917,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Exit tracks are those without successor\n\tall t : Track | no t.*succs implies t in Exit and t not in t.succs\n   //all e : Exit | no e.*succs //git\n  // ???\n}",
-                    "ids": [
-                        "oRoZW4nEi8ivftAkd"
-                    ]
-                },
-                {
-                    "entry_count": 1,
                     "code": "{\n\t// Exit tracks are those without successor\n\tall t : Track | no(t.succs) => t in Exit and some(t.succs) => t not in Exit\n}",
                     "ids": [
                         "yhBJrfMkS9GeDvHgG"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Exit tracks are those without successor\n\tall t: Track | no *succs.t implies t in Exit\n}",
-                    "ids": [
-                        "cZLhPrBzKQjwc38JH"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Exit tracks are those without successor\n  all t: Track | (no t.*succs and no t.^succs) implies t in Exit \n  //all e: Exit | no e.^succs\n}",
-                    "ids": [
-                        "SqWumjzHWrpfgaNDL"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Exit tracks are those without successor\n\tall t:Track | all s:t.succs | s not in Track implies t in Exit\n}",
-                    "ids": [
-                        "SxAYJvRHTh8mmtC7Z"
                     ]
                 },
                 {
@@ -1959,6 +1931,13 @@
                 },
                 {
                     "entry_count": 1,
+                    "code": "{\n\t// Exit tracks are those without successor\n  all t: Track | (no t.*succs and no t.^succs) implies t in Exit \n  //all e: Exit | no e.^succs\n}",
+                    "ids": [
+                        "SqWumjzHWrpfgaNDL"
+                    ]
+                },
+                {
+                    "entry_count": 1,
                     "code": "{\n\t// Exit tracks are those without successor\n\tall t : Track, e : Exit | e in t.signals implies no t.succs\n}",
                     "ids": [
                         "CjWQo4hPur4R3358p"
@@ -1966,9 +1945,30 @@
                 },
                 {
                     "entry_count": 1,
+                    "code": "{\n\t// Exit tracks are those without successor\n\tall t: Track | no *succs.t implies t in Exit\n}",
+                    "ids": [
+                        "cZLhPrBzKQjwc38JH"
+                    ]
+                },
+                {
+                    "entry_count": 1,
                     "code": "{\n\t// Exit tracks are those without successor\n  all t : Track |  t.*succs = none => t in Exit\n\n}",
                     "ids": [
                         "oYq52a47eKG2xE6g8"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Exit tracks are those without successor\n\tall t:Track | all s:t.succs | s not in Track implies t in Exit\n}",
+                    "ids": [
+                        "SxAYJvRHTh8mmtC7Z"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Exit tracks are those without successor\n\tall t : Track | no t.*succs implies t in Exit and t not in t.succs\n   //all e : Exit | no e.*succs //git\n  // ???\n}",
+                    "ids": [
+                        "oRoZW4nEi8ivftAkd"
                     ]
                 }
             ]
@@ -2012,16 +2012,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Exit tracks are those without successor\n\tall e : Exit | e not in Track.^(succs)\n}",
+                    "code": "{\n\t// Exit tracks are those without successor\n  \tsuccs.Exit = none\n  \n\n}",
                     "ids": [
-                        "QcXKSHw8wwxrbRLPR"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Exit tracks are those without successor\n  all e : Exit | e not in Track.succs\n}",
-                    "ids": [
-                        "wmZmZobZ9oD853z2k"
+                        "AYaQ9eco32edghonZ"
                     ]
                 },
                 {
@@ -2033,9 +2026,16 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Exit tracks are those without successor\n  \tsuccs.Exit = none\n  \n\n}",
+                    "code": "{\n\t// Exit tracks are those without successor\n\tall e : Exit | e not in Track.^(succs)\n}",
                     "ids": [
-                        "AYaQ9eco32edghonZ"
+                        "QcXKSHw8wwxrbRLPR"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Exit tracks are those without successor\n  all e : Exit | e not in Track.succs\n}",
+                    "ids": [
+                        "wmZmZobZ9oD853z2k"
                     ]
                 }
             ]
@@ -2078,16 +2078,16 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Exit tracks are those without successor\n  \tall t : Track | some (Track - (Track & Exit + Exit)).succs or lone Track\n\tno Exit.succs\n}",
+                    "code": "{\n\t// Exit tracks are those without successor\n  \tall t : Track | some (Track - (Entry & Exit + Exit)).succs or lone Track\n\tno Exit.succs\n}",
                     "ids": [
-                        "4BtMZQHptRag5s6a6"
+                        "RzfQGeaQzTzr4bCmt"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Exit tracks are those without successor\n  \tall t : Track | some (Track - (Entry & Exit + Exit)).succs or lone Track\n\tno Exit.succs\n}",
+                    "code": "{\n\t// Exit tracks are those without successor\n  \tall t : Track | some (Track - (Track & Exit + Exit)).succs or lone Track\n\tno Exit.succs\n}",
                     "ids": [
-                        "RzfQGeaQzTzr4bCmt"
+                        "4BtMZQHptRag5s6a6"
                     ]
                 }
             ]
@@ -2125,16 +2125,16 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Exit tracks are those without successor\n\tall t:Track, e:Exit | no t.succs and t not in t.succs implies t in e\n}",
+                    "code": "{\n\t// Exit tracks are those without successor\n\tall t:Track, e:Exit | no t.^succs and t not in t.succs implies t in e\n}",
                     "ids": [
-                        "YHattkfZH5CGM2G6b"
+                        "aZE5y9vvxsgpN36xE"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Exit tracks are those without successor\n\tall t:Track, e:Exit | no t.^succs and t not in t.succs implies t in e\n}",
+                    "code": "{\n\t// Exit tracks are those without successor\n\tall t : Track | all e : Exit | (no t.succs) implies e in t\n}",
                     "ids": [
-                        "aZE5y9vvxsgpN36xE"
+                        "GgqLLZQxxoP3AFkQT"
                     ]
                 },
                 {
@@ -2153,9 +2153,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Exit tracks are those without successor\n\tall t : Track | all e : Exit | (no t.succs) implies e in t\n}",
+                    "code": "{\n\t// Exit tracks are those without successor\n\tall t:Track, e:Exit | no t.succs and t not in t.succs implies t in e\n}",
                     "ids": [
-                        "GgqLLZQxxoP3AFkQT"
+                        "YHattkfZH5CGM2G6b"
                     ]
                 }
             ]
@@ -2175,14 +2175,6 @@
                 },
                 {
                     "entry_count": 2,
-                    "code": "{\n\t// Exit tracks are those without successor\n  all t : Track | no (t.succs-t) implies one (t & Exit)\n\n}",
-                    "ids": [
-                        "MzRyAff9nbQpfHeEX",
-                        "ayDjBQudSrL2Adk8c"
-                    ]
-                },
-                {
-                    "entry_count": 2,
                     "code": "{\n\t// Exit tracks are those without successor\n  all t:Track-Exit | some t.succs - t\n  \n\n}",
                     "ids": [
                         "2bqJxf9RL3shzf34B",
@@ -2190,17 +2182,11 @@
                     ]
                 },
                 {
-                    "entry_count": 1,
-                    "code": "{\n\t// Exit tracks are those without successor\n  \tall t:Track | (no t.succs or one t.succs and t in t.succs) implies t in Exit\n  \t\n\n}",
+                    "entry_count": 2,
+                    "code": "{\n\t// Exit tracks are those without successor\n  all t : Track | no (t.succs-t) implies one (t & Exit)\n\n}",
                     "ids": [
-                        "5MGkobeLFGixhbkcm"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Exit tracks are those without successor\n  all t : Track | no (t.^succs-t) implies one (t & Exit)\n\n}",
-                    "ids": [
-                        "YoH4zaZiaAFBsJbKH"
+                        "MzRyAff9nbQpfHeEX",
+                        "ayDjBQudSrL2Adk8c"
                     ]
                 },
                 {
@@ -2215,6 +2201,20 @@
                     "code": "{\n\t// Exit tracks are those without successor\n\tall t:Track | no (t.*succs-t) implies t in Exit\n}",
                     "ids": [
                         "qfPQKksPFvWDxAean"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Exit tracks are those without successor\n  all t : Track | no (t.^succs-t) implies one (t & Exit)\n\n}",
+                    "ids": [
+                        "YoH4zaZiaAFBsJbKH"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Exit tracks are those without successor\n  \tall t:Track | (no t.succs or one t.succs and t in t.succs) implies t in Exit\n  \t\n\n}",
+                    "ids": [
+                        "5MGkobeLFGixhbkcm"
                     ]
                 }
             ]
@@ -2243,20 +2243,6 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Exit tracks are those without successor\n\tall t1, t2: Track | t2 not in t1.succs \n}",
-                    "ids": [
-                        "oDsWCffBE4P8pn5u2"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Exit tracks are those without successor\n  Exit in Track implies no succs\n\tall t: Track | no t.*succs implies t in Exit\n\n}",
-                    "ids": [
-                        "M9GWS4nJQ3jN9Hzby"
-                    ]
-                },
-                {
-                    "entry_count": 1,
                     "code": "{\n\t//Exit tracks are those without successor\n   //all t:Track | no succs.t implies t in Exit\n  \tall t:Track | no t1:Track | t1 in t.succs \n}",
                     "ids": [
                         "CvgJcx5k5GSumi2qn"
@@ -2274,6 +2260,20 @@
                     "code": "{\n\t// Exit tracks are those without successor\n  no Track.succs\n\n}",
                     "ids": [
                         "CTXHTFvvyw4cndNEc"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Exit tracks are those without successor\n\tall t1, t2: Track | t2 not in t1.succs \n}",
+                    "ids": [
+                        "oDsWCffBE4P8pn5u2"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Exit tracks are those without successor\n  Exit in Track implies no succs\n\tall t: Track | no t.*succs implies t in Exit\n\n}",
+                    "ids": [
+                        "M9GWS4nJQ3jN9Hzby"
                     ]
                 }
             ]
@@ -2330,9 +2330,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Exit tracks are those without successor\n  all t:Track | t not in t.succs\n  all t:Track-Exit | some t.succs \n  \n\n}",
+                    "code": "{\n\t// Exit tracks are those without successor\n  \tall t:Track | not t in t.succs\n\tall t:Track | (no t.succs) implies (t in Exit)\n}",
                     "ids": [
-                        "Mi8zg2v8skyuGeHd8"
+                        "y3cxSgYgmfGnXoPug"
                     ]
                 },
                 {
@@ -2351,9 +2351,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Exit tracks are those without successor\n  \tall t:Track | not t in t.succs\n\tall t:Track | (no t.succs) implies (t in Exit)\n}",
+                    "code": "{\n\t// Exit tracks are those without successor\n  all t:Track | t not in t.succs\n  all t:Track-Exit | some t.succs \n  \n\n}",
                     "ids": [
-                        "y3cxSgYgmfGnXoPug"
+                        "Mi8zg2v8skyuGeHd8"
                     ]
                 }
             ]
@@ -2382,9 +2382,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Exit tracks are those without successor\n\tExit = {x: Track | x not in univ.succs}\n}",
+                    "code": "{\n\t// Exit tracks are those without successor\n\tall t: Track | t in Exit <=> no succs.t\n}",
                     "ids": [
-                        "YdhEX9GPvpBL4rZRH"
+                        "7MC7yWomPhtxd9ibX"
                     ]
                 },
                 {
@@ -2396,16 +2396,16 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Exit tracks are those without successor\n\tall t: Track | t in Exit <=> no succs.t\n}",
+                    "code": "{\n\t// Exit tracks are those without successor\n  \tall t:Track | t in Exit iff #(succs.t) = 0\n}",
                     "ids": [
-                        "7MC7yWomPhtxd9ibX"
+                        "tQYdm4kmNqwa4sxpC"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Exit tracks are those without successor\n  \tall t:Track | t in Exit iff #(succs.t) = 0\n}",
+                    "code": "{\n\t// Exit tracks are those without successor\n\tExit = {x: Track | x not in univ.succs}\n}",
                     "ids": [
-                        "tQYdm4kmNqwa4sxpC"
+                        "YdhEX9GPvpBL4rZRH"
                     ]
                 }
             ]
@@ -2427,9 +2427,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Exit tracks are those without successor\n  all e : Exit | no e.succs and e in Track.succs\n}",
+                    "code": "{\n\t// Exit tracks are those without successor\n\tall t: Exit | no t.succs\n  \tall t: Exit | some succs.t\n}",
                     "ids": [
-                        "8FvicfZaabPWmbikH"
+                        "qH4S2XXRahYrJsGJj"
                     ]
                 },
                 {
@@ -2441,16 +2441,16 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Exit tracks are those without successor\n\tall t: Exit | no t.succs\n  \tall t: Exit | some succs.t\n}",
+                    "code": "{\n\t// Exit tracks are those without successor\n  \n\tall ex:Exit | ex.succs = none and some succs.ex\n}",
                     "ids": [
-                        "qH4S2XXRahYrJsGJj"
+                        "YjASdXXMaTQrfZpLr"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Exit tracks are those without successor\n  \n\tall ex:Exit | ex.succs = none and some succs.ex\n}",
+                    "code": "{\n\t// Exit tracks are those without successor\n  all e : Exit | no e.succs and e in Track.succs\n}",
                     "ids": [
-                        "YjASdXXMaTQrfZpLr"
+                        "8FvicfZaabPWmbikH"
                     ]
                 }
             ]
@@ -2479,16 +2479,16 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Exit tracks are those without successor\n  \tall t : Track | (t not in t.succs) and (no t.succs and t in Exit)\n\n}",
+                    "code": "{\n\t// Exit tracks are those without successor\n  all t : Track | t in Exit and no t.^succs\n\n}",
                     "ids": [
-                        "T34TfEFyPEKcMDeYo"
+                        "cYvyTCqtZ3btF6YGW"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Exit tracks are those without successor\n  all t : Track | t in Exit and no t.^succs\n\n}",
+                    "code": "{\n\t// Exit tracks are those without successor\n  \tall t : Track | (t not in t.succs) and (no t.succs and t in Exit)\n\n}",
                     "ids": [
-                        "cYvyTCqtZ3btF6YGW"
+                        "T34TfEFyPEKcMDeYo"
                     ]
                 }
             ]
@@ -2509,6 +2509,13 @@
                 },
                 {
                     "entry_count": 1,
+                    "code": "{\n\t// Exit tracks are those without successor\n  all t: Track | some t.^succs => t != Exit\n\n}",
+                    "ids": [
+                        "krMK4Gph8ggLNSwi8"
+                    ]
+                },
+                {
+                    "entry_count": 1,
                     "code": "{\n\t// Exit tracks are those without successor\n  all t: Track | some t.succs => t != Exit\n\n}",
                     "ids": [
                         "ysZoSjf3ezvPGqSEx"
@@ -2519,13 +2526,6 @@
                     "code": "{\n\t// Exit tracks are those without successor\n\tall t: Track | t = Exit implies t.succs = none\n}",
                     "ids": [
                         "xc5JjKcXEyEKsdbpG"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Exit tracks are those without successor\n  all t: Track | some t.^succs => t != Exit\n\n}",
-                    "ids": [
-                        "krMK4Gph8ggLNSwi8"
                     ]
                 }
             ]
@@ -2624,23 +2624,9 @@
             "elems": [
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Exit tracks are those without successor\n\tall t:Track | t.^succs not in Track\n}",
-                    "ids": [
-                        "WiKbt3S9aaatK8YW3"
-                    ]
-                },
-                {
-                    "entry_count": 1,
                     "code": "{\n\t// Exit tracks are those without successor\n  all t : Track | t not in t.*succs\n  all t : Track, e : Exit | e in t implies no t.succs\n  all t : Track, e : Entry, j : Junction | some e+j & t implies some t.succs\n  //all e : Exit | no e.succs\n  \n  \n}",
                     "ids": [
                         "mTsXcCH6YpgafCehZ"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Exit tracks are those without successor\n  all t : Track | t not in t.*succs\n  all t : Track, e : Exit | e not in t implies some t.succs\n  //all e : Exit | no e.succs\n  \n  \n}",
-                    "ids": [
-                        "5csKMEKpWS2XDbtuJ"
                     ]
                 },
                 {
@@ -2659,9 +2645,23 @@
                 },
                 {
                     "entry_count": 1,
+                    "code": "{\n\t// Exit tracks are those without successor\n  all t : Track | t not in t.*succs\n  all t : Track, e : Exit | e not in t implies some t.succs\n  //all e : Exit | no e.succs\n  \n  \n}",
+                    "ids": [
+                        "5csKMEKpWS2XDbtuJ"
+                    ]
+                },
+                {
+                    "entry_count": 1,
                     "code": "{\n\t// Exit tracks are those without successor\n\tall t: Track| no *succs.t\n  \n}",
                     "ids": [
                         "WjfhfM7vBpDjLsPTr"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Exit tracks are those without successor\n\tall t:Track | t.^succs not in Track\n}",
+                    "ids": [
+                        "WiKbt3S9aaatK8YW3"
                     ]
                 }
             ]
@@ -2850,6 +2850,13 @@
                 },
                 {
                     "entry_count": 1,
+                    "code": "{\n\t// Exit tracks are those without successor\n  \tall ex : Exit | ex not in ex.^succs\n  \tall ex : Exit | some t : Track | ex in t.*succs implies no ex.succs\n\n}",
+                    "ids": [
+                        "fu23jLiP9P9YeL6Gb"
+                    ]
+                },
+                {
+                    "entry_count": 1,
                     "code": "{\n\t// Exit tracks are those without successor\n\tall t: Track | t in Exit implies (all t1: Track | t not in t.^succs)\n}",
                     "ids": [
                         "ZPJw57FoPfZwX3c8N"
@@ -2860,13 +2867,6 @@
                     "code": "{\n\t// Exit tracks are those without successor\n  all t: Track | t in Exit implies t not in t.^succs\n}",
                     "ids": [
                         "LjDGbJnzW4Z5hhuyS"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Exit tracks are those without successor\n  \tall ex : Exit | ex not in ex.^succs\n  \tall ex : Exit | some t : Track | ex in t.*succs implies no ex.succs\n\n}",
-                    "ids": [
-                        "fu23jLiP9P9YeL6Gb"
                     ]
                 }
             ]
@@ -2912,6 +2912,13 @@
             "elems": [
                 {
                     "entry_count": 1,
+                    "code": "{\n\t// Exit tracks are those without successor\n\tall t: Track | t in Exit implies no t.succs and t not in Entry\n}",
+                    "ids": [
+                        "umvkrHtD9cnYXraku"
+                    ]
+                },
+                {
+                    "entry_count": 1,
                     "code": "{\n\t// Exit tracks are those without successor\n\tExit.succs = none and\n  \tno Entry & Exit\n}",
                     "ids": [
                         "Fp4NzFEpmJzHGvsF2"
@@ -2922,13 +2929,6 @@
                     "code": "{\n\t// Exit tracks are those without successor\n\tall e : Exit | no e.succs\n  \tno t: Track | t in Entry and t in Exit\n}",
                     "ids": [
                         "fZ4WTWMB8YorJwwod"
-                    ]
-                },
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Exit tracks are those without successor\n\tall t: Track | t in Exit implies no t.succs and t not in Entry\n}",
-                    "ids": [
-                        "umvkrHtD9cnYXraku"
                     ]
                 },
                 {
@@ -2954,13 +2954,6 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Exit tracks are those without successor\n\tall t : Exit | no t.succs & Track-t\n}",
-                    "ids": [
-                        "RjcTnAz53vo6wfhvE"
-                    ]
-                },
-                {
-                    "entry_count": 1,
                     "code": "{\n\t// Exit tracks are those without successor\n\tall ex : Exit, t : Track - ex | t not in ex.succs\n}",
                     "ids": [
                         "zMs2kojzt5fQAmBLs"
@@ -2971,6 +2964,13 @@
                     "code": "{\n\t// Exit tracks are those without successor\n\tall tx, ty: Track |(tx != ty) and tx in Exit => ty not in tx.succs\n}",
                     "ids": [
                         "bAfFRkwu4MmA72F9D"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Exit tracks are those without successor\n\tall t : Exit | no t.succs & Track-t\n}",
+                    "ids": [
+                        "RjcTnAz53vo6wfhvE"
                     ]
                 }
             ]
@@ -2990,16 +2990,16 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Exit tracks are those without successor\n\tall t : Track | all tr : Track | not t in t.succs implies t in Exit\n}",
+                    "code": "{\n\t// Exit tracks are those without successor\n\tall t:Track | t not in succs.t implies t in Exit \n}",
                     "ids": [
-                        "36XipmoiZnFFi2dMm"
+                        "bvD4PEM3HLeRJS6ei"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Exit tracks are those without successor\n\tall t:Track | t not in succs.t implies t in Exit \n}",
+                    "code": "{\n\t// Exit tracks are those without successor\n\tall t : Track | all tr : Track | not t in t.succs implies t in Exit\n}",
                     "ids": [
-                        "bvD4PEM3HLeRJS6ei"
+                        "36XipmoiZnFFi2dMm"
                     ]
                 }
             ]
@@ -3187,9 +3187,9 @@
             "elems": [
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Exit tracks are those without successor\n\n  \tall t:Track | t in Entry implies #t.succs =0\n}",
+                    "code": "{\n\t// Exit tracks are those without successor\n  all t: Track | some t.succs => t not in Entry\n\n}",
                     "ids": [
-                        "ntCSzZ4DzCModKj24"
+                        "kE2XsEd9ZFswNkwWr"
                     ]
                 },
                 {
@@ -3201,9 +3201,9 @@
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Exit tracks are those without successor\n  all t: Track | some t.succs => t not in Entry\n\n}",
+                    "code": "{\n\t// Exit tracks are those without successor\n\n  \tall t:Track | t in Entry implies #t.succs =0\n}",
                     "ids": [
-                        "kE2XsEd9ZFswNkwWr"
+                        "ntCSzZ4DzCModKj24"
                     ]
                 }
             ]
@@ -3275,13 +3275,6 @@
             "elems": [
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Exit tracks are those without successor\n  all t:Track-Exit | some t.succs\n  all t:Track | not t in t.^(succs)\n}",
-                    "ids": [
-                        "PqS2fNBB24CynWtRM"
-                    ]
-                },
-                {
-                    "entry_count": 1,
                     "code": "{\n\t// Exit tracks are those without successor\n  \tall t:Track | t not in t.succs\n\tall t:Track | no t.succs implies t in Exit\n  \tall t:Track | t not in t.^succs\n}",
                     "ids": [
                         "NqtNdLzDvQDqARQrc"
@@ -3292,6 +3285,13 @@
                     "code": "{\n\t// Exit tracks are those without successor\n  \tall t :Track | no t & t.^succs\n\tall t :Track | no t.succs implies t in Exit\n}",
                     "ids": [
                         "t87Se6keYcTvb84fc"
+                    ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Exit tracks are those without successor\n  all t:Track-Exit | some t.succs\n  all t:Track | not t in t.^(succs)\n}",
+                    "ids": [
+                        "PqS2fNBB24CynWtRM"
                     ]
                 }
             ]
@@ -3355,16 +3355,16 @@
             "elems": [
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Exit tracks are those without successor\n  \tall ex : Exit | some t : Track | ex in t.*succs implies no ex.succs\n\n}",
+                    "code": "{\n\t// Exit tracks are those without successor\n  \tall ex : Exit | some t : Track | ex in t.*succs implies no ex.^succs\n\n}",
                     "ids": [
-                        "QHARRYrFmekkkFJxT"
+                        "a4wWxMJKEAm8L5Rkw"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Exit tracks are those without successor\n  \tall ex : Exit | some t : Track | ex in t.*succs implies no ex.^succs\n\n}",
+                    "code": "{\n\t// Exit tracks are those without successor\n  \tall ex : Exit | some t : Track | ex in t.*succs implies no ex.succs\n\n}",
                     "ids": [
-                        "a4wWxMJKEAm8L5Rkw"
+                        "QHARRYrFmekkkFJxT"
                     ]
                 }
             ]
@@ -3391,16 +3391,16 @@
             "elems": [
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Exit tracks are those without successor\n\tall t: Track | t in Exit implies no t.^succs and some e: Entry | e in *succs.t\n}",
+                    "code": "{\n\t// Exit tracks are those without successor\n\tall t: Track | t in Exit implies no t.succs and some Entry & *succs.t\n}",
                     "ids": [
-                        "Dyr8PJpaFJMHsXZSW"
+                        "znsx62pxdWYKmaxrt"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Exit tracks are those without successor\n\tall t: Track | t in Exit implies no t.succs and some Entry & *succs.t\n}",
+                    "code": "{\n\t// Exit tracks are those without successor\n\tall t: Track | t in Exit implies no t.^succs and some e: Entry | e in *succs.t\n}",
                     "ids": [
-                        "znsx62pxdWYKmaxrt"
+                        "Dyr8PJpaFJMHsXZSW"
                     ]
                 }
             ]
@@ -3412,16 +3412,16 @@
             "elems": [
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Exit tracks are those without successor\n  all t : Track, e : Exit | e not in t implies some t.succs - t\n  //all e : Exit | no e.succs\n  \n  \n}",
+                    "code": "{\n\t// Exit tracks are those without successor\n\tall t : Track | all e : Exit | (no t.succs - t) implies e in t\n}",
                     "ids": [
-                        "5n5auT3m7Lwn7Bmo8"
+                        "j3Sbz5GLKkAuLHiCA"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Exit tracks are those without successor\n\tall t : Track | all e : Exit | (no t.succs - t) implies e in t\n}",
+                    "code": "{\n\t// Exit tracks are those without successor\n  all t : Track, e : Exit | e not in t implies some t.succs - t\n  //all e : Exit | no e.succs\n  \n  \n}",
                     "ids": [
-                        "j3Sbz5GLKkAuLHiCA"
+                        "5n5auT3m7Lwn7Bmo8"
                     ]
                 }
             ]
@@ -3469,16 +3469,16 @@
             "elems": [
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Exit tracks are those without successor\n\tTrack  =Junction+ Entry+ Exit \n  \tall t:Track | t in Exit implies t.succs = none\n}",
+                    "code": "{\n\t// Exit tracks are those without successor\n\tTrack = Junction+Entry+Exit\n  \tall e:Exit | no e.succs\n}",
                     "ids": [
-                        "htJXugq8J92opLi8G"
+                        "4CqvswPZBRe3tEput"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Exit tracks are those without successor\n\tTrack = Junction+Entry+Exit\n  \tall e:Exit | no e.succs\n}",
+                    "code": "{\n\t// Exit tracks are those without successor\n\tTrack  =Junction+ Entry+ Exit \n  \tall t:Track | t in Exit implies t.succs = none\n}",
                     "ids": [
-                        "4CqvswPZBRe3tEput"
+                        "htJXugq8J92opLi8G"
                     ]
                 }
             ]
@@ -3490,16 +3490,16 @@
             "elems": [
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Exit tracks are those without successor\n\tall e: Exit, en: Entry|\n  \t\tno e.succs and e!=en\n}",
+                    "code": "{\n\t// Exit tracks are those without successor\n\tall e: Exit, en: Entry|\n  \t\tno e.succs and e not in en\n}",
                     "ids": [
-                        "CYePrbRLbBdwwG2gJ"
+                        "AdTxdwabEWStMbhKL"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Exit tracks are those without successor\n\tall e: Exit, en: Entry|\n  \t\tno e.succs and e not in en\n}",
+                    "code": "{\n\t// Exit tracks are those without successor\n\tall e: Exit, en: Entry|\n  \t\tno e.succs and e!=en\n}",
                     "ids": [
-                        "AdTxdwabEWStMbhKL"
+                        "CYePrbRLbBdwwG2gJ"
                     ]
                 }
             ]
@@ -3577,16 +3577,16 @@
             "elems": [
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Exit tracks are those without successor\n\tsome Exit iff no Exit.succs\n}",
+                    "code": "{\n\t// Exit tracks are those without successor\n  \tno Exit.succs\n  \tExit not in succs.Track\n\n}",
                     "ids": [
-                        "Y6tCxCjYmwxprFn6R"
+                        "RbCZkq36zSZtbKQQ5"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Exit tracks are those without successor\n  \tno Exit.succs\n  \tExit not in succs.Track\n\n}",
+                    "code": "{\n\t// Exit tracks are those without successor\n\tsome Exit iff no Exit.succs\n}",
                     "ids": [
-                        "RbCZkq36zSZtbKQQ5"
+                        "Y6tCxCjYmwxprFn6R"
                     ]
                 }
             ]
@@ -3664,16 +3664,16 @@
             "elems": [
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Exit tracks are those without successor\n\tall e : Exit | not Track in e.succs \n}",
+                    "code": "{\n\t// Exit tracks are those without successor\n\tall et : Exit | Track not in et.succs \n}",
                     "ids": [
-                        "fo6rZ3Z23jR9FpcSC"
+                        "HBHfpPj6Gg42Pp7Zg"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Exit tracks are those without successor\n\tall et : Exit | Track not in et.succs \n}",
+                    "code": "{\n\t// Exit tracks are those without successor\n\tall e : Exit | not Track in e.succs \n}",
                     "ids": [
-                        "HBHfpPj6Gg42Pp7Zg"
+                        "fo6rZ3Z23jR9FpcSC"
                     ]
                 }
             ]
@@ -3706,16 +3706,16 @@
             "elems": [
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Exit tracks are those without successor\n  \tall t: Track | (no t.succs or t in t.succs) => t in Exit\n}",
+                    "code": "{\n\t// Exit tracks are those without successor\n  all t:Track-Exit | some t.succs and t not in t.succs\n  \n\n}",
                     "ids": [
-                        "8QqWCBoN2G3v4giQX"
+                        "mzjerDWzJmqZ8osmG"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Exit tracks are those without successor\n  all t:Track-Exit | some t.succs and t not in t.succs\n  \n\n}",
+                    "code": "{\n\t// Exit tracks are those without successor\n  \tall t: Track | (no t.succs or t in t.succs) => t in Exit\n}",
                     "ids": [
-                        "mzjerDWzJmqZ8osmG"
+                        "8QqWCBoN2G3v4giQX"
                     ]
                 }
             ]
@@ -3725,19 +3725,19 @@
             "group_count": 2,
             "correct": false,
             "elems": [
-                {
-                    "entry_count": 1,
-                    "code": "{\n\t// Exit tracks are those without successor\n\tall t : Exit | no t.succs & Entry\n}",
-                    "ids": [
-                        "WSwZftyobvowxHWp8"
-                    ]
-                },
                 {
                     "entry_count": 1,
                     "code": "{\n\t// Exit tracks are those without successor\n\tall e : Exit, t : Track & Entry | t not in e.succs\n}",
                     "ids": [
                         "67ESZj7k4TkybgnR4"
                     ]
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Exit tracks are those without successor\n\tall t : Exit | no t.succs & Entry\n}",
+                    "ids": [
+                        "WSwZftyobvowxHWp8"
+                    ]
                 }
             ]
         },
@@ -3748,16 +3748,16 @@
             "elems": [
                 {
                     "entry_count": 1,
-                    "code": "{\n\t//Exit tracks are those without successor\n   all t:Track | all t1: t.succs | t1!=t implies t in Exit\n  \t\n\n}",
+                    "code": "{\n\t// Exit tracks are those without successor\n\tall e : Track - Exit | e.succs in e\n}",
                     "ids": [
-                        "YoAK67QpzSTJC4SrL"
+                        "YZjewDywvChDYWRBo"
                     ]
                 },
                 {
                     "entry_count": 1,
-                    "code": "{\n\t// Exit tracks are those without successor\n\tall e : Track - Exit | e.succs in e\n}",
+                    "code": "{\n\t//Exit tracks are those without successor\n   all t:Track | all t1: t.succs | t1!=t implies t in Exit\n  \t\n\n}",
                     "ids": [
-                        "YZjewDywvChDYWRBo"
+                        "YoAK67QpzSTJC4SrL"
                     ]
                 }
             ]
