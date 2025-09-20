@@ -46,6 +46,156 @@
             {
                 "description": "Workers are either human or robots",
                 "pred":"this/inv1"
+            },
+            {
+                "description": "Every workstation has workers and every worker works in one workstation",
+                "pred":"this/inv2"
+            },
+            {
+                "description": "Every component is assembled in one workstation",
+                "pred":"this/inv3"
+            },
+            {
+                "description": "Components must have parts and materials have no parts",
+                "pred":"this/inv4"
+            },
+            {
+                "description": "Humans and robots cannot work together",
+                "pred":"this/inv5"
+            },
+            {
+                "description": "Components cannot be their own parts",
+                "pred":"this/inv6"
+            },
+            {
+                "description": "Components built of dangerous parts are also dangerous",
+                "pred":"this/inv7"
+            },
+            {
+                "description": "Dangerous components cannot be assembled by humans",
+                "pred":"this/inv8"
+            },
+            {
+                "description": "The workstations form a single line between begin and end",
+                "pred":"this/inv9"
+            },
+            {
+                "description": "The parts of a component must be assembled before it in the production line",
+                "pred":"this/inv10"
+            }
+        ]
+    },
+    {
+        "example": "Train station",
+        "model": "sig Track { succs : set Track, signals : set Signal } sig Junction, Entry, Exit in Track {} sig Signal {} sig Semaphore, Speed extends Signal {}",
+        "id": "cXPP9QBPTYgTX6WJ6",
+        "requirements": [
+            {
+                "description": "The station has at least one entry and one exit",
+                "pred": "this/inv1"
+            },
+            {
+                "description": "Signals belong to one track",
+                "pred": "this/inv2"
+            },
+            {
+                "description": "Exit tracks are those without successor",
+                "pred": "this/inv3"
+            },
+            {
+                "description": "Entry tracks are those without predecessors",
+                "pred": "this/inv4"
+            },
+            {
+                "description": "Junctions are the tracks with more than one predecessor",
+                "pred": "this/inv5"
+            },
+            {
+                "description": "Entry tracks must have a speed signal",
+                "pred": "this/inv6"
+            },
+            {
+                "description": "The station has no cycles",
+                "pred": "this/inv7"
+            },
+            {
+                "description": "It should be possible to reach every exit from every entry",
+                "pred": "this/inv8"
+            },
+            {
+                "description": "Tracks not followed by junctions do not have semaphores",
+                "pred": "this/inv9"
+            },
+            {
+                "description": "Every track before a junction has a semaphore",
+                "pred": "this/inv10"
+            }
+        ]
+    },
+    {
+        "example": "Courses",
+        "model": "open util/ordering[Grade] sig Person { teaches : set Course, enrolled : set Course, projects : set Project } sig Professor,Student in Person {} sig Course { projects : set Project, grades : Person -> Grade } sig Project {} sig Grade {}",
+        "id": "iP5JL36afv5KbDKP6",
+        "requirements": [
+            {
+                "description": "Only students can be enrolled in courses",
+                "pred": "this/inv1"
+            },
+            {
+                "description": "Only professors can teach courses",
+                "pred": "this/inv2"
+            },
+            {
+                "description": "Courses must have teachers",
+                "pred": "this/inv3"
+            },
+            {
+                "description": "Projects are proposed by one course",
+                "pred": "this/inv4"
+            },
+            {
+                "description": "Only students work on projects and projects must have someone working on them",
+                "pred": "this/inv5"
+            },
+            {
+                "description": "Students only work on projects of courses they are enrolled in",
+                "pred": "this/inv6"
+            },
+            {
+                "description": "Students work on at most one project per course",
+                "pred": "this/inv7"
+            },
+            {
+                "description": "A professor cannot teach herself",
+                "pred": "this/inv8"
+            },
+            {
+                "description": "A professor cannot teach colleagues",
+                "pred": "this/inv9"
+            },
+            {
+                "description": "Only students have grades",
+                "pred": "this/inv10"
+            },
+            {
+                "description": "Students only have grades in courses they are enrolled",
+                "pred": "this/inv11"
+            },
+            {
+                "description": "Students have at most one grade per course",
+                "pred": "this/inv12"
+            },
+            {
+                "description": "A student with the highest mark in a course must have worked on a project on that course",
+                "pred": "this/inv13"
+            },
+            {
+                "description": "A student cannot work with the same student in different projects",
+                "pred": "this/inv14"
+            },
+            {
+                "description": "Students working on the same project in a course cannot have marks differing by more than one unit",
+                "pred": "this/inv15"
             }
         ]
     }
