@@ -41,7 +41,7 @@ with open(dataset, 'r') as f:
             print(str(req['output tokens']) + ' output tokens used')
 
             # Check syntax (brittle RE)
-            generated_instances = re.findall(r"run \w* \{(?:.|\n)*?expect [0-1]",req['instances'], re.MULTILINE)
+            generated_instances = re.findall(r"run(?: \w*)? \{(?:.|\n)*?expect [0-1]",req['instances'], re.MULTILINE)
             parsed_instances = []
             scope_instances = []
             previous_instances = []
