@@ -11,7 +11,7 @@ with open(sys.argv[1], 'r') as f:
 
 client = OpenAI()
 
-instances = 4
+instances = 3
 llm = "gpt-5-2025-08-07"
 
 with open(sys.argv[2], 'r') as f, open(llm+'_'+sys.argv[2], 'w') as g:
