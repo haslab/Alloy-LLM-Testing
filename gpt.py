@@ -2,8 +2,8 @@ from openai import OpenAI
 import json
 import sys
 
-if len(sys.argv) != 3:
-    print("Usage: python gpt.py <prompt> <dataset>")
+if len(sys.argv) != 4:
+    print("Usage: python gpt.py <prompt> <dataset> <instances>")
     sys.exit(1)
 
 with open(sys.argv[1], 'r') as f:
@@ -11,8 +11,9 @@ with open(sys.argv[1], 'r') as f:
 
 client = OpenAI()
 
-instances = 5
-llm = "gpt-5-2025-08-07"
+instances = int(sys.argv[3])
+llm = "gpt-5-mini-2025-08-07"
+#llm = "gpt-5-2025-08-07"
 
 with open(sys.argv[2], 'r') as f, open(llm+'_'+sys.argv[2], 'w') as g:
     dataset = json.load(f)

@@ -3,8 +3,8 @@ from google.genai import types
 import json
 import sys
 
-if len(sys.argv) != 3:
-    print("Usage: python gemini.py <prompt> <dataset>")
+if len(sys.argv) != 4:
+    print("Usage: python gemini.py <prompt> <dataset> <instances>")
     sys.exit(1)
 
 with open(sys.argv[1], 'r') as f:
@@ -12,7 +12,7 @@ with open(sys.argv[1], 'r') as f:
 
 client = genai.Client()
 
-instances = 3
+instances = int(sys.argv[3])
 llm = "gemini-2.5-pro"
 
 with open(sys.argv[2], 'r') as f, open(llm+'_'+sys.argv[2], 'w') as g:

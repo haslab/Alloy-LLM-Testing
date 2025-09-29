@@ -1,20 +1,17 @@
-import anthropic
+from ollama import generate
 import json
 import sys
+import re
 
 if len(sys.argv) != 4:
-    print("Usage: python claude.py <prompt> <dataset> <instances>")
+    print("Usage: python gpt.py <prompt> <dataset> <instances>")
     sys.exit(1)
 
 with open(sys.argv[1], 'r') as f:
     system_prompt = f.read()
 
-client = anthropic.Anthropic()
-
 instances = int(sys.argv[3])
-
-#llm = "claude-sonnet-4-20250514"
-llm = "claude-opus-4-1-20250805"
+llm = "llama3.1:8b"
 
 with open(sys.argv[2], 'r') as f, open(llm+'_'+sys.argv[2], 'w') as g:
     dataset = json.load(f)
@@ -38,29 +35,17 @@ with open(sys.argv[2], 'r') as f, open(llm+'_'+sys.argv[2], 'w') as g:
             reqs.append(req['description'])
             while True:
                 try:
-                    response = client.with_options(timeout=1000.0).messages.create(
-                        model=llm,
-                        max_tokens=20000,
-                        system=system_prompt,
-                        messages=[
-                            {"role": "user", "content": task}
-                        ],
-                        temperature=0
-                    )
+                    response = generate(model=llm, system=system_prompt, prompt=task)
                 except Exception as e:
                     print(e)
                     continue
                 else:
                     break
-            if response.content[0].text.startswith("```alloy"):
-                result = response.content[0].text[8:-3]
-            else:
-                result = response.content[0].text
+
+            code_blocks = re.findall(r'```alloy(.*?)```', response.response, re.DOTALL)
+            result = '\n'.join(code_blocks)
             req['instances'] = result
-            req['input tokens'] = response.usage.input_tokens
-            req['output tokens'] = response.usage.output_tokens
+            req['input tokens'] = 0
+            req['output tokens'] = 0
+
     json.dump(dataset, g, indent = 4)
-
-
-            
-

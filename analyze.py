@@ -163,3 +163,4 @@ with open(dataset, 'r') as f:
         for req in result[example]:
             current = result[example][req]
             print(f'{current["desc"]}\t{current["total"]}\t{current["input"]}\t{current["output"]}\t{current["generated"]}\t{current["parse"]}\t{current["scope"]}\t{current["previous"]}\t{current["oracle"]}\t{current["misses"]}')
+        print()
