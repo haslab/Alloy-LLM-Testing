@@ -43,7 +43,10 @@ with open(sys.argv[2], 'r') as f, open(llm+'_'+sys.argv[2], 'w') as g:
                     break
 
             code_blocks = re.findall(r'```alloy(.*?)```', response.response, re.DOTALL)
-            result = '\n'.join(code_blocks)
+            if code_blocks:
+                result = '\n'.join(code_blocks)
+            else:
+                result = response.response
             req['instances'] = result
             req['input tokens'] = 0
             req['output tokens'] = 0
