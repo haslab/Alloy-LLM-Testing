@@ -1,6 +1,7 @@
 from openai import OpenAI
 import json
 import sys
+import re
 
 if len(sys.argv) != 4:
     print("Usage: python gpt.py <prompt> <dataset> <instances>")
@@ -49,10 +50,13 @@ with open(sys.argv[2], 'r') as f, open(llm+'_'+sys.argv[2], 'w') as g:
                     continue
                 else:
                     break
-            if response.output_text.startswith("```alloy"):
-                result = response.output_text[8:-3]
+
+            code_blocks = re.findall(r'```alloy(.*?)```', response.output_text, re.DOTALL)
+            if code_blocks:
+                result = '\n'.join(code_blocks)
             else:
                 result = response.output_text
+
             req['instances'] = result
             req['input tokens'] = response.usage.input_tokens
             req['output tokens'] = response.usage.output_tokens

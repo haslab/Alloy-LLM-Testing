@@ -2,6 +2,7 @@ from google import genai
 from google.genai import types
 import json
 import sys
+import re
 
 if len(sys.argv) != 4:
     print("Usage: python gemini.py <prompt> <dataset> <instances>")
@@ -47,10 +48,13 @@ with open(sys.argv[2], 'r') as f, open(llm+'_'+sys.argv[2], 'w') as g:
                     continue
                 else:
                     break
-            if response.text.startswith("```alloy"):
-                result = response.text[8:-3]
+
+            code_blocks = re.findall(r'```alloy(.*?)```', response.text, re.DOTALL)
+            if code_blocks:
+                result = '\n'.join(code_blocks)
             else:
                 result = response.text
+
             req['instances'] = result
             req['input tokens'] = response.usage_metadata.prompt_token_count
             req['output tokens'] = response.usage_metadata.candidates_token_count + response.usage_metadata.thoughts_token_count
