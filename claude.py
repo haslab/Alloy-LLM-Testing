@@ -14,8 +14,8 @@ client = anthropic.Anthropic()
 
 instances = int(sys.argv[3])
 
-llm = "claude-sonnet-4-5-20250929"
-#llm = "claude-opus-4-1-20250805"
+#llm = "claude-sonnet-4-5-20250929"
+llm = "claude-opus-4-1-20250805"
 
 with open(sys.argv[2], 'r') as f, open(llm+'_'+sys.argv[2], 'w') as g:
     dataset = json.load(f)
