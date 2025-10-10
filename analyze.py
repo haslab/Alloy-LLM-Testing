@@ -2,20 +2,16 @@ import json
 import sys
 import re
 
-# check if there is one application parameter
-if len(sys.argv) != 2 and len(sys.argv) != 4:
-    print("Usage: python analyze.py <results> [input cost] [output cost]")
+if len(sys.argv) != 4:
+    print("Usage: python analyze.py <results>.json <input cost> <output cost>")
     sys.exit(1)
 
 generated_instances = 3
 results = sys.argv[1]
+output = results.replace('.json','.tsv')
 
-if len(sys.argv) == 4:
-    input_cost = float(sys.argv[2])/1000000
-    output_cost = float(sys.argv[3])/1000000
-else:
-    input_cost = 0
-    output_cost = 0
+input_cost = float(sys.argv[2])/1000000
+output_cost = float(sys.argv[3])/1000000
 
 import jpype
 import jpype.imports
@@ -26,7 +22,7 @@ from edu.mit.csail.sdg.parser import CompUtil
 from edu.mit.csail.sdg.translator import A4Options, TranslateAlloyToKodkod
 from edu.mit.csail.sdg.alloy4 import A4Reporter
 
-with open(results, 'r') as f:
+with open(results, 'r') as f, open(output, 'w') as out:
     result = {}
     dataset = json.load(f)
     for example in dataset:
@@ -161,6 +157,7 @@ with open(results, 'r') as f:
 
     # Print summary
     print("Requirement\tInput\tOutput\tCost\tTests\tSyntax\tScopes\tPrevious\tValid\t%\tComplete\tWrong\tMisses\t%")
+    out.write("Requirement\tInput\tOutput\tCost\tTests\tSyntax\tScopes\tPrevious\tValid\t%\tComplete\tWrong\tMisses\t%\n")
     input_total = 0
     output_total = 0
     tests_total = 0
@@ -187,6 +184,7 @@ with open(results, 'r') as f:
         for req in result[example]:
             current = result[example][req]
             print(f'{current["desc"]}\t{current["input"]}\t{current["output"]}\t{current["input"]*input_cost+current["output"]*output_cost:.2f}\t{current["generated"]}\t{current["parse"]}\t{current["scope"]}\t{current["previous"]}\t{current["oracle"]}\t{(current["oracle"]/current["generated"])*100:.2f}', end='')
+            out.write(f'{current["desc"]}\t{current["input"]}\t{current["output"]}\t{current["input"]*input_cost+current["output"]*output_cost:.2f}\t{current["generated"]}\t{current["parse"]}\t{current["scope"]}\t{current["previous"]}\t{current["oracle"]}\t{(current["oracle"]/current["generated"])*100:.2f}')
             input_req += current["input"]
             output_req += current["output"]
             tests_req += current["generated"]
@@ -196,13 +194,16 @@ with open(results, 'r') as f:
             valid_req += current["oracle"]
             if current["oracle"] == current["generated"]:
                 print(f'\t1\t{current["wrong"]}\t{current["misses"]}\t{(current["misses"]/current["wrong"])*100:.2f}')
+                out.write(f'\t1\t{current["wrong"]}\t{current["misses"]}\t{(current["misses"]/current["wrong"])*100:.2f}\n')
                 wrong_req += current["wrong"]
                 misses_req += current["misses"]
                 complete_req += 1
                 average_req += (current["misses"]/current["wrong"])*100
             else:
                 print("\t0\t\t\t")
-        print(f'{example} totals\t{input_req}\t{output_req}\t{input_req*input_cost+output_req*output_cost:.2f}\t{tests_req}\t{syntax_req}\t{scopes_req}\t{previous_req}\t{valid_req}\t{(valid_req/tests_req)*100:.1f}\t{complete_req}\t{wrong_req}\t{misses_req}\t{(average_req/complete_req)*100 if complete_req > 0 else 0:.2f}')
+                out.write("\t0\t\t\t\n")
+        print(f'{example} totals\t{input_req}\t{output_req}\t{input_req*input_cost+output_req*output_cost:.2f}\t{tests_req}\t{syntax_req}\t{scopes_req}\t{previous_req}\t{valid_req}\t{(valid_req/tests_req)*100:.1f}\t{complete_req}\t{wrong_req}\t{misses_req}\t{(average_req/complete_req) if complete_req > 0 else 0:.2f}')
+        out.write(f'{example} totals\t{input_req}\t{output_req}\t{input_req*input_cost+output_req*output_cost:.2f}\t{tests_req}\t{syntax_req}\t{scopes_req}\t{previous_req}\t{valid_req}\t{(valid_req/tests_req)*100:.1f}\t{complete_req}\t{wrong_req}\t{misses_req}\t{(average_req/complete_req) if complete_req > 0 else 0:.2f}\n')
         input_total += input_req
         output_total += output_req
         tests_total += tests_req
@@ -215,3 +216,66 @@ with open(results, 'r') as f:
         complete_total += complete_req
         average_total += average_req
     print(f'Totals\t{input_total}\t{output_total}\t{input_total*input_cost+output_total*output_cost:.2f}\t{tests_total}\t{syntax_total}\t{scopes_total}\t{previous_total}\t{valid_total}\t{(valid_total/tests_total)*100:.2f}\t{complete_total}\t{wrong_total}\t{misses_total}\t{(average_total/complete_total) if complete_total > 0 else 0:.2f}')
+    out.write(f'Totals\t{input_total}\t{output_total}\t{input_total*input_cost+output_total*output_cost:.2f}\t{tests_total}\t{syntax_total}\t{scopes_total}\t{previous_total}\t{valid_total}\t{(valid_total/tests_total)*100:.2f}\t{complete_total}\t{wrong_total}\t{misses_total}\t{(average_total/complete_total) if complete_total > 0 else 0:.2f}\n')
+
+# Claude generated function to convert tsv to markdown
+def tsv_to_markdown(input_file, output_file=None):
+    """
+    Convert a tab-separated values file to GitHub Markdown table format.
+    
+    Args:
+        input_file: Path to the TSV file
+        output_file: Optional path to save the markdown table (if None, prints to console)
+    """
+    try:
+        with open(input_file, 'r', encoding='utf-8') as f:
+            lines = [line.rstrip('\n') for line in f.readlines()]
+        
+        if not lines:
+            print("Error: File is empty")
+            return
+        
+        # Split each line by tabs
+        rows = [line.split('\t') for line in lines]
+        
+        # Calculate column widths for better formatting
+        col_widths = []
+        if rows:
+            num_cols = len(rows[0])
+            for col in range(num_cols):
+                max_width = max(len(str(row[col])) if col < len(row) else 0 for row in rows)
+                col_widths.append(max(max_width, 3))  # Minimum width of 3
+        
+        # Build markdown table
+        markdown_lines = []
+        
+        for i, row in enumerate(rows):
+            # Pad cells to column width
+            cells = [str(cell).ljust(col_widths[j]) for j, cell in enumerate(row)]
+            markdown_lines.append('| ' + ' | '.join(cells) + ' |')
+            
+            # Add separator after header row
+            if i == 0:
+                separators = ['-' * width for width in col_widths]
+                markdown_lines.append('| ' + ' | '.join(separators) + ' |')
+        
+        markdown_table = '\n'.join(markdown_lines)
+        
+        # Output results
+        if output_file:
+            with open(output_file, 'w', encoding='utf-8') as f:
+                f.write(markdown_table)
+            print(f"Markdown table saved to: {output_file}")
+        else:
+            print(markdown_table)
+        
+        return markdown_table
+        
+    except FileNotFoundError:
+        print(f"Error: File '{input_file}' not found")
+    except Exception as e:
+        print(f"Error: {e}")
+
+tsv_to_markdown(output, output.replace('.tsv','.md'))
+import os
+os.remove(output)
