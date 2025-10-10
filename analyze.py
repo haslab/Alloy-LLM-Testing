@@ -202,7 +202,7 @@ with open(results, 'r') as f:
                 average_req += (current["misses"]/current["wrong"])*100
             else:
                 print("\t0\t\t\t")
-        print(f'{example} totals\t{input_req}\t{output_req}\t{input_req*input_cost+output_req*output_cost:.2f}\t{tests_req}\t{syntax_req}\t{scopes_req}\t{previous_req}\t{valid_req}\t{(valid_req/tests_req)*100:.1f}\t{wrong_req}\t{misses_req}\t{(average_req/complete_req)*100 if complete_req > 0 else 0:.2f}')
+        print(f'{example} totals\t{input_req}\t{output_req}\t{input_req*input_cost+output_req*output_cost:.2f}\t{tests_req}\t{syntax_req}\t{scopes_req}\t{previous_req}\t{valid_req}\t{(valid_req/tests_req)*100:.1f}\t{complete_req}\t{wrong_req}\t{misses_req}\t{(average_req/complete_req)*100 if complete_req > 0 else 0:.2f}')
         input_total += input_req
         output_total += output_req
         tests_total += tests_req
@@ -214,4 +214,4 @@ with open(results, 'r') as f:
         misses_total += misses_req
         complete_total += complete_req
         average_total += average_req
-    print(f'Totals\t{input_total}\t{output_total}\t{input_total*input_cost+output_total*output_cost:.2f}\t{tests_total}\t{syntax_total}\t{scopes_total}\t{previous_total}\t{valid_total}\t{(valid_total/tests_total)*100:.2f}\t{wrong_total}\t{misses_total}\t{(average_total/complete_total) if complete_total > 0 else 0:.2f}')
+    print(f'Totals\t{input_total}\t{output_total}\t{input_total*input_cost+output_total*output_cost:.2f}\t{tests_total}\t{syntax_total}\t{scopes_total}\t{previous_total}\t{valid_total}\t{(valid_total/tests_total)*100:.2f}\t{complete_total}\t{wrong_total}\t{misses_total}\t{(average_total/complete_total) if complete_total > 0 else 0:.2f}')
