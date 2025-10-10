@@ -21,9 +21,21 @@
 | Model | Tests | Syntax | Scopes | Previous | Valid | % | Cost |
 | ------ | ----- | ------ | ------ | -------- | ----- | - | ---- |
 | [GPT-5](gpt-5-2025-08-07_200925_few3.md) | 258 | 255 | 255 | 252 | 247 | 96% | $3.56 |
-| [Gemini 2.5 Pro]() | 258 | 248 | 220 | 212 | 210 | 81% | $2.78 |
-| [Claude Opus 4.1]() | 258 | 258 | 258 | 202 | 197 | 76% | $5.55 |
-| [GPT-5 Mini]() | 258 | 188 | 183 | 179 | 174 | 67% | $0.53 |
+| [Gemini 2.5 Pro](gemini-2.5-pro_210925_few3.md) | 258 | 248 | 220 | 212 | 210 | 81% | $2.78 |
+| [Claude Opus 4.1](claude-opus-4-1-20250805_210925_few3.md) | 258 | 258 | 258 | 202 | 197 | 76% | $5.55 |
+| [GPT-5 Mini](gpt-5-mini-2025-08-07_290925_few3.md) | 258 | 188 | 183 | 179 | 174 | 67% | $0.53 |
+
+## RQ4: Characterization of invalid test cases
+
+## RQ5: Effectiveness at detecting incorrect specifications
+
+| Size | Complete | Wrong | Missed | Mean % |
+| ---- | -------- | ----- | ------ | ------ |
+| [1 pos, 1 neg]() | 41 | 5579 | 2202 | 38.10% |
+| [2 pos, 2 neg]() | 34 | 4617 | 814 | 17.02% |
+| [3 pos, 3 neg](gpt-5-2025-08-07_200925_few3.md) | 36 | 4387 | 524 | 9.91% |
+| [4 pos, 4 neg]() | 35 | 5121 | 444 | 7.44% |
+| [5 pos, 5 neg]() | 35 | 4809 | 348 | 6.43% |
 
 # Scripts
 
