@@ -1,3 +1,15 @@
+# Results
+
+## RQ1: Influence of prompt design
+
+| Prompt | Tests | Syntax | Scopes | Previous | Valid | % | Cost |
+| ------ | ----- | ------ | ------ | -------- | ----- | - | ---- |
+| [Few-shot](gpt-5-2025-08-07_200925_few3.md) | 258 | 255 | 255 | 252 | 247 | 96% | $3.56 |
+| [One-shot](gpt-5-2025-08-07_200925_one3.md) | 258 | 226 | 208 | 206 | 205 | 79% | $3.69 |
+| Zero-shot | 258 | 137 | 120 | 119 | 118 | 46% | $4.20 |
+
+# Scripts
+
 ## Semantic grouping of entries
 
 Script `semantic_grouping.py` groups together all entries of an Alloy4Fun database that have been submitted to given challenges. Entries are grouped when semantically equivalent according to the Alloy solver (i.e., equivalence within a certain scope). Since the solver is called to compare entries, this may take some time.
