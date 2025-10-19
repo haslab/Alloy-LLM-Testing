@@ -138,8 +138,12 @@ def checkEquiv(entry, original, pred, errors, warns, groups, scope):
     for f in world.getAllFunc():
         if f.label == pred:
             if len(f.getBody().findAllFunctions()) != 0:
-                warns.append(entry)
-                continue
+                for x in list(f.getBody().findAllFunctions()):
+                    if x.label.split("/")[0] == "this":
+                        warns.append(entry)
+                        print(x.label)
+                        continue
+                    
 
             normalized = str(ExprNormalizer.normalize(f.getBody()))
             ps = f.getBody().pos()
