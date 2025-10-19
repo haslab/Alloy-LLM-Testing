@@ -1,20 +1,17 @@
-from google import genai
-from google.genai import types
+from ollama import generate
 import json
 import sys
 import re
 
 if len(sys.argv) != 4:
-    print("Usage: python gemini.py <prompt> <dataset> <instances>")
+    print("Usage: python gpt.py <prompt> <dataset> <instances>")
     sys.exit(1)
 
 with open(sys.argv[1], 'r') as f:
     system_prompt = f.read()
 
-client = genai.Client()
-
 instances = int(sys.argv[3])
-llm = "gemini-2.5-pro"
+llm = "llama3.1:8b"
 
 with open(sys.argv[2], 'r') as f, open(llm+'_'+sys.argv[2], 'w') as g:
     dataset = json.load(f)
@@ -38,28 +35,20 @@ with open(sys.argv[2], 'r') as f, open(llm+'_'+sys.argv[2], 'w') as g:
             reqs.append(req['description'])
             while True:
                 try:
-                    response = client.models.generate_content(
-                        model=llm,
-                        config=types.GenerateContentConfig(system_instruction=system_prompt,temperature=0,seed=0), 
-                        contents=task
-                    )
+                    response = generate(model=llm, system=system_prompt, prompt=task)
                 except Exception as e:
                     print(e)
                     continue
                 else:
                     break
 
-            code_blocks = re.findall(r'```alloy(.*?)```', response.text, re.DOTALL)
+            code_blocks = re.findall(r'```alloy(.*?)```', response.response, re.DOTALL)
             if code_blocks:
                 result = '\n'.join(code_blocks)
             else:
-                result = response.text
-
+                result = response.response
             req['instances'] = result
-            req['input tokens'] = response.usage_metadata.prompt_token_count
-            req['output tokens'] = response.usage_metadata.candidates_token_count + response.usage_metadata.thoughts_token_count
+            req['input tokens'] = 0
+            req['output tokens'] = 0
+
     json.dump(dataset, g, indent = 4)
-
-
-            
-

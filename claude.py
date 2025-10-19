@@ -1,9 +1,10 @@
 import anthropic
 import json
 import sys
+import re
 
-if len(sys.argv) != 3:
-    print("Usage: python claude.py <prompt> <dataset>")
+if len(sys.argv) != 4:
+    print("Usage: python claude.py <prompt> <dataset> <instances>")
     sys.exit(1)
 
 with open(sys.argv[1], 'r') as f:
@@ -11,9 +12,9 @@ with open(sys.argv[1], 'r') as f:
 
 client = anthropic.Anthropic()
 
-instances = 3
+instances = int(sys.argv[3])
 
-#llm = "claude-sonnet-4-20250514"
+#llm = "claude-sonnet-4-5-20250929"
 llm = "claude-opus-4-1-20250805"
 
 with open(sys.argv[2], 'r') as f, open(llm+'_'+sys.argv[2], 'w') as g:
@@ -52,10 +53,12 @@ with open(sys.argv[2], 'r') as f, open(llm+'_'+sys.argv[2], 'w') as g:
                     continue
                 else:
                     break
-            if response.content[0].text.startswith("```alloy"):
-                result = response.content[0].text[8:-3]
+            code_blocks = re.findall(r'```alloy(.*?)```', response.content[0].text, re.DOTALL)
+            if code_blocks:
+                result = '\n'.join(code_blocks)
             else:
                 result = response.content[0].text
+
             req['instances'] = result
             req['input tokens'] = response.usage.input_tokens
             req['output tokens'] = response.usage.output_tokens

@@ -1,9 +1,10 @@
 from openai import OpenAI
 import json
 import sys
+import re
 
-if len(sys.argv) != 3:
-    print("Usage: python gpt.py <prompt> <dataset>")
+if len(sys.argv) != 4:
+    print("Usage: python gpt.py <prompt> <dataset> <instances>")
     sys.exit(1)
 
 with open(sys.argv[1], 'r') as f:
@@ -11,8 +12,9 @@ with open(sys.argv[1], 'r') as f:
 
 client = OpenAI()
 
-instances = 3
-llm = "gpt-5-2025-08-07"
+instances = int(sys.argv[3])
+llm = "gpt-5-mini-2025-08-07"
+#llm = "gpt-5-2025-08-07"
 
 with open(sys.argv[2], 'r') as f, open(llm+'_'+sys.argv[2], 'w') as g:
     dataset = json.load(f)
@@ -48,10 +50,13 @@ with open(sys.argv[2], 'r') as f, open(llm+'_'+sys.argv[2], 'w') as g:
                     continue
                 else:
                     break
-            if response.output_text.startswith("```alloy"):
-                result = response.output_text[8:-3]
+
+            code_blocks = re.findall(r'```alloy(.*?)```', response.output_text, re.DOTALL)
+            if code_blocks:
+                result = '\n'.join(code_blocks)
             else:
                 result = response.output_text
+
             req['instances'] = result
             req['input tokens'] = response.usage.input_tokens
             req['output tokens'] = response.usage.output_tokens
