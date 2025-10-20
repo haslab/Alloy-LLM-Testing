@@ -1,12 +1,12 @@
 # Data
 
-- [`requirements.json`](./requirements.json): all requirements for which specifications were asked, along with pointers to the Alloy4Fun database to retrieve oracles. Each entry consists of the following:
+- [`requirements.json`](./requirements.json): all requirements for which instances were generated, along with pointers to the Alloy4Fun database to retrieve oracles. Each entry consists of the following:
    - `example`: its description
    - `model`: the declaration of its structure in Alloy
-   - `id`: the id of the model in the Alloy4Fun database containing the oracles
+   - `id`: the identifier of the model in the Alloy4Fun database containing the oracles
    - `requirements`: the list of requirements for this model, containing a `description` in natural language and the `pred` encoding its oracle
 - [`prompt_zero.txt`](./prompt_zero.txt), [`prompt_one.txt`](./prompt_one.txt), and [`prompt_few.txt`](./prompt_few.txt): prompts for the generation of valid/invalid instances from requirements
-- [`models_20250916.json.gz`](`./models_20250916.json.gz`): a snapshot of the Alloy4Fun database for the selected exercises
+- [`models_20250916.json.gz`](./models_20250916.json.gz): a snapshot of the Alloy4Fun database for the selected exercises
 - [`alloytools.jar`](./alloytools.jar): snapshot of AlloyTools, used to parse and execute Alloy models and commands
 - [`prepare`](./prepare): directory containing scripts to retrieve oracles and incorrect submissions from Alloy4Fun database and merge into `requirements.json`. It contains:
    - `semantic_grouping.py`: a script to perform grouping of the entries
