@@ -154,7 +154,7 @@ Where `<prompt>` is a header prompt to be passed to the LLM, `<dataset>` is the 
 
 ### Results
 
-The script was run for some combinations of LLMs (GPT-5, GPT5 Mini, Gemini 2.5 Pro, Claude Opus 4.1), the provided prompts (`prompt_zero.txt`, `prompt_one.txt` and `prompt_few.txt`), and number of instances (from 1 to 5).
+The script was run for some combinations of LLMs (GPT-5, GPT5 Mini, Gemini 2.5 Pro, Claude Opus 4.1), the provided prompts (`prompt_zero.txt`, `prompt_one.txt` and `prompt_few.txt`), and number of instances (from 1 to 5), for the requirements in [`dataset.json`](prepare/results/dataset.json).
 
 For instance, for GPT-5, few-shot prompt and 3 instances, the following command should be run:
 
@@ -162,4 +162,4 @@ For instance, for GPT-5, few-shot prompt and 3 instances, the following command 
 python3 gpt.py prompt_few.txt dataset.json 3
 ```
 
-The results of the generation process are collected in [execute/results](execute/results).
+The results of the generation process are collected in [execute/results](execute/results), where each requirement in the JSON is extended by a field `instances` constaining the generated instances. 
