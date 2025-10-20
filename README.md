@@ -18,7 +18,9 @@
    - `gpt.py`: script for GPT-5 and GPT-5 Mini
    - `llama.py`: script for Llama 3.1
    - `results`: a folder with the pre-calculated results for the scripts
-
+- [`analysis`](./analysis): directory analysis scripts to process the LLM-generated instances
+   - `analysis.py`: script for testing syntactic and semantic correctness of generated instances, as well as diversity
+   - `results`: a folder with the pre-calculated results for the scripts
 
 # Results
 
