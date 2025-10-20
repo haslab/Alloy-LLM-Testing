@@ -1,0 +1,589 @@
+{
+    "original": "cXPP9QBPTYgTX6WJ6",
+    "cmd": "inv7",
+    "pred": "this/inv7",
+    "entry_count": 335,
+    "semantic_count": 38,
+    "syntactic_count": 78,
+    "scope": 3,
+    "groups": [
+        {
+            "entry_count": 208,
+            "syntactic_count": 15,
+            "correct": true,
+            "elems": [
+                {
+                    "entry_count": 140,
+                    "code": "{\n\t// The station has no cycles\n\tall t: Track | t not in t.^succs\n\n}"
+                },
+                {
+                    "entry_count": 32,
+                    "code": "{\n\t// The station has no cycles\n\tno t : Track | t in t.^succs\n}"
+                },
+                {
+                    "entry_count": 8,
+                    "code": "{\n\t// The station has no cycles\n    all t: Track | not t in t.^succs\n}"
+                },
+                {
+                    "entry_count": 8,
+                    "code": "{\n\t// The station has no cycles\n  \tall t : Track | no(t.^succs & t)\n\n}"
+                },
+                {
+                    "entry_count": 7,
+                    "code": "{\n\t// The station has no cycles\n    no ^succs & iden\n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// The station has no cycles\n\tall t : Track | all t1:Track | (t1 in t.succs => t not in t1.^succs) \n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// The station has no cycles\n  \tall t : Track | no (t.^succs & t)\n\tall t : Track | no (succs.t & t)\n\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The station has no cycles\n  all t : Track | all t1 : Track | t1 in t.^(succs) implies t not in t1.succs\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The station has no cycles\n\tall t:Track | (t & t.^succs = none)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The station has no cycles\n\tall t : Track | all t1:Track | (t1 in t.succs => t not in t1.^succs) and t not in t.succs\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The station has no cycles\n\tall t1, t2: Track | t1 in t2.succs implies t2 not in t1.^succs\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The station has no cycles\n\tall t:Track | not t in t.^(succs)\n\tall t:Track | not t in (^succs).t\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The station has no cycles\n  \tno t: Track | t -> t in ^succs\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The station has no cycles\n  all t:Track | (t.^succs-t)=t.^succs\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The station has no cycles\n\tall t: Track | t not in t.^succs\n\tall t: Track | t not in t.succs\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 36,
+            "syntactic_count": 11,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 24,
+                    "code": "{\n\t// The station has no cycles\n  \tall t:Track | t not in t.*(succs) \n\n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// The station has no cycles\n\tall t:Track | not t in t.*succs\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The station has no cycles\n\tall t:Track | some t.succs <=> t not in Exit\n\tall t:Track | some succs.t <=> t not in Entry\n\tall t1, t2: Track | succs.t1 not in t2.succs\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The station has no cycles\n\tall t : Track | t.succs not in t.*succs\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The station has no cycles\n\tall t : Track | t.succs not in t.^succs\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The station has no cycles\n  all t:Track | (t.*succs-t)=t.*succs\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The station has no cycles\n  all t : Track | no (t & t.*succs)\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The station has no cycles\n  \tno t: Track | t -> t in *succs\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The station has no cycles\n\tall t:Track | some t.succs <=> t not in Exit\n\tall t:Track | some succs.t <=> t not in Entry\n\tall t1, t2: Track | succs.2 not in t1.succs\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The station has no cycles\n\tno t : Track | t in t.*succs\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The station has no cycles\n\tall t:Track | some t.succs <=> t not in Exit\n\tall t:Track | some succs.t <=> t not in Entry\n\tall t1, t2: Track | succs.t2 not in t1.succs\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 27,
+            "syntactic_count": 6,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 15,
+                    "code": "{\n\t// The station has no cycles\n  \tall t:Track | t not in t.succs \n\n}"
+                },
+                {
+                    "entry_count": 6,
+                    "code": "{\n\t// The station has no cycles\n\tall t:Track | not t in t.succs\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// The station has no cycles\n\tno t: Track | t in t.succs\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// The station has no cycles\n\tall t : Track | no t & t.succs\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The station has no cycles\n  \tall t : Track | no (t.succs & t)\n\tall t : Track | no (succs.t & t)\n\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The station has no cycles\n\tall t : Track | some t1:Track | (t1 in t.succs => t not in t1.^succs) and t not in t.succs\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 10,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 9,
+                    "code": "{\n\t// The station has no cycles\n\t\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The station has no cycles\n  \tTrack in Track.*succs\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 6,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 5,
+                    "code": "{\n\t// The station has no cycles\n\tall t1: Track, t2: Track | t2 not in t1.^succs\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The station has no cycles\n    all t1, t2: Track | t1 not in t2.^succs\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 4,
+            "syntactic_count": 2,
+            "correct": true,
+            "elems": [
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// The station has no cycles\n\tno t : Track-Entry-Exit | t in t.^succs\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The station has no cycles\n\tall t : Track-Entry-Exit | t not in t.^succs\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 3,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// The station has no cycles\n\tall t : Track | some t1:Track | t1 in t.succs => t not in t1.^succs\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The station has no cycles\n\tall t : Track | some t1:Track | t1 in t.succs => t not in t1.*succs\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 3,
+            "syntactic_count": 3,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The station has no cycles\n  all t : Track | all t1 : Track | t1 in t.succs implies t not in t1.succs\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The station has no cycles\n\tall t : Track | t not in t.succs\n  \tall disj t1, t2 : Track | t1 in t2.succs implies t2 not in t1.succs \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The station has no cycles\n\tall t1, t2: Track | t1 in t2.succs implies (t1.succs.succs & t2.succs) = none\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 3,
+            "syntactic_count": 3,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The station has no cycles\n  all t1,t2:Track | t1 in Entry and t2 in Exit implies t1 != t2 \n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The station has no cycles\n  all t1:Entry, t2:Exit | t1 != t2 \n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The station has no cycles\n  \n  all t :  Track | not (t in Entry and t in Exit )\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 3,
+            "syntactic_count": 3,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The station has no cycles\n\tall t: Exit | all t2: Entry | t2 not in t.succs\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The station has no cycles\n  no Entry & Exit.succs\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The station has no cycles\n  \tno (Exit.succs & Entry)\n\tno (succs.Entry & Exit)\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// The station has no cycles\n  \tTrack in Track.^succs\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// The station has no cycles\n\tall t: Track | one e: Entry | one ex: Exit | e in t.^succs and ex in t.^succs\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// The station has no cycles\n  \tTrack not in Track.^succs\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The station has no cycles\n\tall disj t1, t2 : Track | t1 not in t2.^succs iff t2 in t1.^succs \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The station has no cycles\n\tall disj t1, t2 : Track | t1 not in t2.*succs iff t2 in t1.*succs \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The station has no cycles\n  \tTrack not in Track.*succs\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The station has no cycles\n\tall t : Exit | no t.succs\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The station has no cycles\n\tall ex : Exit | no e : Entry | e in ex.^succs\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The station has no cycles\n\tall t : Track | t.^succs != t.succs\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The station has no cycles\n\tall t : Track | t.*succs != t.succs\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The station has no cycles\n\tall t : Entry | t not in t.succs\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The station has no cycles\n\tall t : Entry | t not in t.^succs\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The station has no cycles\n\tall t : Track | t not in t.succs\n  \tall t : Track | t in Entry.*succs\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The station has no cycles\n\tall t: Track | t in t.succs\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The station has no cycles\n\tall e: Entry | no e.succs\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The station has no cycles\n  \n  all en:Entry,ex:Exit| ex not in succs.en and en not in ex.*succs\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The station has no cycles\n  \n  all en:Entry,ex:Exit| ex not in en.succs\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The station has no cycles\n  \n  all t:Track | Entry not in t.*(succs) \n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The station has no cycles\n\tno disj t1, t2 : Track | t1 in t2.succs\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The station has no cycles\n\tall disj t1, t2: Track | t1 in t2.succs implies (t1.succs & t2.succs) = none\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The station has no cycles\n\tall disj t1, t2: Track | t1 in t2.succs iff (t1.succs & t2.succs) = none\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The station has no cycles\n\tall t1, t2: Track | t1 in t2.succs iff (t1.succs & t2.succs) = none\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The station has no cycles\n\tall t1, t2: Track | t1 in t2.succs implies (t1.succs & t2.succs) = none\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The station has no cycles\n\tall t : Track | not t.succs in t\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The station has no cycles\n\tall t: Track | one e: Entry | one ex: Exit | e in t.succs and ex in t.succs\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The station has no cycles\n\tall t: Track | one e: Entry | one ex: Exit | t != e and t != ex and e in t.^(succs) and ex in t.^(succs)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The station has no cycles\n\tno t : Track-Entry-Exit | t in t.*succs\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The station has no cycles\n\tall t : Track | (t not in Exit and t not in Entry and t not in Junction)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The station has no cycles\n  \tall e : Exit, en : Entry | (en.succs in e) and (succs.e in en)\n\n}"
+                }
+            ]
+        }
+    ]
+}

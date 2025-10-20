@@ -1,0 +1,1732 @@
+{
+    "original": "x3JXgWhJ3uti5Dzxz",
+    "cmd": "inv6",
+    "pred": "this/inv6",
+    "entry_count": 1216,
+    "semantic_count": 71,
+    "syntactic_count": 306,
+    "scope": 3,
+    "groups": [
+        {
+            "entry_count": 728,
+            "syntactic_count": 50,
+            "correct": true,
+            "elems": [
+                {
+                    "entry_count": 145,
+                    "code": "{\n\t// Influencers post every day.\n\tall d : Day, i : Influencer | d in i.posts.date\n}"
+                },
+                {
+                    "entry_count": 127,
+                    "code": "{\n\t// Influencers post every day.\n    all i: Influencer | i.posts.date = Day\n\n}"
+                },
+                {
+                    "entry_count": 106,
+                    "code": "{\n\t// Influencers post every day.\n  \n  all d: Day | all i: Influencer | some p: i.posts | p.date = d\n\n}"
+                },
+                {
+                    "entry_count": 89,
+                    "code": "{\n\t// Influencers post every day.\n  all i: Influencer | Day in i.posts.date\n\n}"
+                },
+                {
+                    "entry_count": 44,
+                    "code": "{\n\t// Influencers post every day.\n\tall d: Day { \n      all i: Influencer {\n        some p: Photo {\n          p in i.posts and p.date = d\n          }\n        }\n      }\n}"
+                },
+                {
+                    "entry_count": 32,
+                    "code": "{\n\t// Influencers post every day.\n\tall i : Influencer, d : Day | some i.posts & date.d\n}"
+                },
+                {
+                    "entry_count": 20,
+                    "code": "{\n\t// Influencers post every day.\n  \n\n\n  \n\n\n \n    \n \n     all d : Day | Influencer in posts.date.d\n}"
+                },
+                {
+                    "entry_count": 19,
+                    "code": "{\n\t// Influencers post every day.\n  all d:Day , i:Influencer | some p:Photo | (p in i.posts) and (d in p.date) \n\n}"
+                },
+                {
+                    "entry_count": 16,
+                    "code": "{\n\t// Influencers post every day.\n  all i: Influencer, d: Day | some i.posts.date & d\n}"
+                },
+                {
+                    "entry_count": 15,
+                    "code": "{\n\t// Influencers post every day.\n  \t\n\tall i : Influencer |\n  \t\tall d : Day |\n  \t\t\tsome p : i.posts | d in p.date \n\n}"
+                },
+                {
+                    "entry_count": 10,
+                    "code": "{\n     // Influencers post every day.\n  \n     \n     \n  \n     \n     \n \n     \n     \n \n     all x : Influencer, d : Day | some x.posts & date.d\n \n     \n \n     all d : Day | Influencer in posts.date.d\n\n     \n     \n\n     \n \n     all x : Influencer | Day in x.posts.date\n\n     \n     \n\n}"
+                },
+                {
+                    "entry_count": 9,
+                    "code": "{\n\t// Influencers post every day.\n  all x: User | x in Influencer implies all y: Day | some z: Photo| x -> z in posts and z->y in date\n\n}"
+                },
+                {
+                    "entry_count": 8,
+                    "code": "{\n\t// Influencers post every day.\n\tall i : Influencer , d : Day | some p : Photo | i->p in posts and p->d in date \n}"
+                },
+                {
+                    "entry_count": 7,
+                    "code": "{\n\t// Influencers post every day.\n  \tall i: Influencer | no (Day - i.posts.date)  \n\n}"
+                },
+                {
+                    "entry_count": 6,
+                    "code": "{\n\t// Influencers post every day.\n  \tall i:Influencer, d:Day | some p:Photo | p in date.d and p in i.posts\n\t\n}"
+                },
+                {
+                    "entry_count": 6,
+                    "code": "{\n\t// Influencers post every day.\n\t(all u: Influencer|\n  \t(u.posts).date & Day = Day)\n}"
+                },
+                {
+                    "entry_count": 5,
+                    "code": "{\n\t// Influencers post every day.\n\n    all x : User | x in Influencer implies all d : Day | some z : Photo | z in x. posts and d in z.date\n}"
+                },
+                {
+                    "entry_count": 5,
+                    "code": "{\n\t// Influencers post every day.\n\tall i : Influencer, d : Day | some p : Photo | i in posts.p and p in date.d \n}"
+                },
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// Influencers post every day.\n\tall u: User |\n  \t\tu in Influencer implies (all d: Day | some p: u.posts | p.date = d)\n}"
+                },
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// Influencers post every day.\n\tall u : User, d : Day | u in Influencer implies some (u.posts.date & d)\n}"
+                },
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// Influencers post every day.\n\tall x : User | x in Influencer implies all d : Day | some z : Photo | x in posts.z and z in date.d\n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Influencers post every day.\n  \tall i: Influencer | (no d:Day | d not in i.posts.date)\n\n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Influencers post every day.\n  all i: Influencer | all d: Day | some d2: i.posts.date | d2=d\n\n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Influencers post every day.\n\tall i:Influencer, d:Day | i in posts.date.d\n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Influencers post every day.\n    all u: User | u in Influencer implies (all d: Day | d in u.posts.date)\n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n  \tall x: Influencer, d: Day | some p: Photo | x -> p in posts and p.date = d\n\t// Influencers post every day.\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Influencers post every day.\n\tall i : Influencer | i . posts . date in Day and Day in i . posts . date \n  \n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Influencers post every day.\n\talways(all i: Influencer| no d: Day| d not in i.posts.date)\n\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Influencers post every day.\n\tall d: Day, i: Influencer| some p: i.posts | p->d in date\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Influencers post every day.\n  all i:Influencer, d:Day | some dx:Day | d in i.posts.date and not dx not in i.posts.date\n\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Influencers post every day.\n\tall i: Influencer | \n  \t\ti.posts.date = Day and all ipd:i.posts.date |\n  \t\tipd not in i.posts.date-ipd\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Influencers post every day.\n\tall i:Influencer, d: Day | some p:Photo | (p in i.posts and p.date = d) or \n  \t\t\t\t\t\t\t\tsome a:Ad | (a in i.posts and a.date = d)\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Influencers post every day.\n  \tall d : Day, u : User | u in Influencer implies d in u.posts.date\n\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Influencers post every day.\n\tall d : Day | all i : Influencer | some p : i.posts | p.date in d\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n  \tall i : Influencer, d : Day | some p : Photo | i in posts.p and p in date.d\n \t\n  \tall i : Influencer, d : Day | some (i.posts & date.d)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n  \tall i : Influencer, d : Day | some p:Photo | i in posts.p and d in p.date \n  \n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t\n  \t// Influencers post every day\n  \t\n\t\n  \n  \tInfluencer -> Day in posts.date\n  \t\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n     // Influencers post every day.\n  \n     \n     \n  \n     \n     \n \n     \n     \n \n     all x : Influencer, d : Day | some x.posts & date.d\n \n     \n\n     \n     \n\n     \n \n     all x : Influencer | Day in x.posts.date\n\n     \n     \n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n     // Influencers post every day.\n  \n     \n     \n  \n     \n     \n \n     \n     \n \n    \n \n     \n \n     all d : Day | Influencer in posts.date.d\n\n     \n     \n\n     \n \n     all x : Influencer | Day in x.posts.date\n\n     \n     \n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n  \tall i : Influencer, d : Day | some p : Photo | i in posts.p and p.date = d\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n\tall d : Day | all i : Influencer | Influencer in posts.date.d\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n\tall i : Influencer, d : Day | some i.posts.date <: d \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n\tall i : Influencer, d : Day | i.posts.date = Day\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n\t\n  \tall x : Influencer, d : Day | some x.posts & date.d\n \n    all x : Influencer, d : Day | x in posts.date.d\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n  \tall u : User | u in Influencer implies ( u.posts.date = Day )\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n  \tall i : Influencer | all d : Day | some p : Photo | i->p in posts and d in p.date \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n  \tno i: Influencer | i.posts.date != Day\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\nall x : User | x in Influencer implies \n all d : Day | some z : Photo | x in posts.z and z->d in date\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n     // Influencers post every day.\n  \n     \n     \n  \n     \n     \n \n     \n     \n \n     all x : Influencer, d : Day | some x.posts & date.d\n \n     \n \n     all d : Day | Influencer in posts.date.d\n\n     \n     \n\n     all x : Influencer, d : Day | d in x.posts.date\n \n     all x : Influencer | Day in x.posts.date\n\n     \n     \n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n  all u : User, d : Day | u in Influencer implies some p : Photo | u in posts.p and p in date.d\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 90,
+            "syntactic_count": 31,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 28,
+                    "code": "{\n\t// Influencers post every day.\n  \n\n}"
+                },
+                {
+                    "entry_count": 19,
+                    "code": "{\n\t// Influencers post every day.\n  all i: Influencer | i.posts.date in Day\n}"
+                },
+                {
+                    "entry_count": 5,
+                    "code": "{\n\t// Influencers post every day.\n\tall i : Influencer | all p : i.posts | p.date in Day\n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Influencers post every day.\n  \tall i: Influencer | lone d: Day | i.posts.date = d\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Influencers post every day.\n\tall ip : Influencer.posts | ip.date in Day\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Influencers post every day.\n  all i : Influencer | i.posts.date in User.posts.date\n\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Influencers post every day.\n  \tall d:Day, i:Influencer | d in i.posts implies some dz:Day | d != dz\n\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Influencers post every day.\n\tall i: Influencer | all d: Day | posts.i in d\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Influencers post every day.\n  \t\t\t\n  \tall i: Influencer | all d: Day | lone ds: Day | (i.posts.date = ds) and ds in d  \n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Influencers post every day.\n  \tall i: Influencer | all d: i.posts.date | d in Day\n\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Influencers post every day.\n  \t\t\t\n  \tall i: Influencer | lone d1, d2: Day | i.posts.date = d1 and i.posts.date = d2\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Influencers post every day.\n\tall u: User |\n  \t\tu in Influencer implies u.posts.date - Day = none\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n\t\n  \t\n  all p: Photo, i: Influencer | posts.i in Day implies posts.i in Day.next\n  \n  \n  \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n  Influencer.posts.date in Day\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n\tall i: Influencer | posts.i in Day\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n\tall d : Day, i: Influencer | posts.i in date.d \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n  all d: Day, i: Influencer | d.date in i.posts.date \n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n\tall p: Photo| one p.date\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n\tall i:Influencer | posts.i in Day.next \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n  \tall i : Influencer, p : i.posts | some p -> Day\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n  \tall dx:Day, dy:Day, i:Influencer | dx in i.posts and dy in i.posts implies dx != dy\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n\tall i:Influencer | posts.i in Day.next \n  \t\n  all p: Photo, i: Influencer | posts.i in Day.next\n  \n  \n  \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n\tno (Influencer.posts.date - Day)\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n  all i:Influencer, p:i.posts, dx:p.date | dx in p implies some dy:p.date | dy != dx\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n  all i:Influencer, p:i.posts, dx:p.date, dy:p.date | dx != dy iff dx in p and dy in p\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t\n  \t// Influencers post every day\n  \t\n\t\n  \n  \t\n  \n  \t\n  \n  \tsome Day & Influencer => (\n      Influencer -> Influencer & iden in posts.date.~date.~posts and\n  \t  Day -> Day & iden in ~date.~(Influencer <: posts).(Influencer <: posts).date )\n  \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n\tall i : Influencer | no (i.posts.date-Day) \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n  all d: Day | d.date in Influencer.posts.date \n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n\t\n  \t\n  all p: Photo, i: Influencer | posts.i in Day.next\n  \n  \n  \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n\tall p: Photo| lone p.date\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n\tall p: Photo| some p.date\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 68,
+            "syntactic_count": 32,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 23,
+                    "code": "{\n\t// Influencers post every day.\n  all d: Day, i: Influencer | i.posts.date in d\n\n}"
+                },
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// Influencers post every day.\n  all d : Day, i : Influencer | all p : i.posts | p.date = d\n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Influencers post every day.\n\tall ip : Influencer.posts | ip.date = Day\n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Influencers post every day.\n\tall d:Day | Influencer.posts.date in d\n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Influencers post every day.\n\tall i : Influencer, p : i.posts\n  \t\t| Day in p.date\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Influencers post every day.\n  \tall i: Influencer | all d: Day | all p: i.posts.date | d in p\n\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Influencers post every day.\n\tall u : User | (u in Influencer) implies all p : u.posts | p.date = Day  \n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Influencers post every day.\n\tall ip : Influencer.posts | Day in ip.date\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Influencers post every day.\n\tall d : Day, i: Influencer | i.posts in date.d \n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Influencers post every day.\n\tall i: Influencer | all p: i.posts | all d: Day | d in p.date\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n  // Influencers post every day.\n  \n  all i : Influencer, p : Photo, d : Day | p in i.posts implies p.date = d\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n  all u:Influencer | all p:u.posts | (p not in none) implies p.date&Day = Day\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n  all u:Influencer | all p:u.posts | (p != none) implies p.date&Day = Day\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n  \tall pid:Influencer.posts.date, d:Day | d in pid\n  \n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n  \tall i : Influencer, d : Day, p : Photo | p in i.posts implies d in p.date\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n\tall u: User, d:Day | u in Influencer implies u.posts in date.d\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n  all u:Influencer | all p:u.posts | p.date&Day = Day\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n\tall ip: Influencer.posts.date, d:Day | ip in d and ip not in Influencer.posts.date - ip\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n  all i: Influencer, disj d1,d2: Day | i.posts in Day \n  \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n\tall u: User | u in Influencer implies \n  \t\tall disj d1,d2:Day | u.posts in date.d1 and u.posts in date.d2 and d1!=d2 \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n  \tall pid:Influencer.posts.date, d:Day | pid in d\n  \n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n  all i: Influencer, disj d1,d2: Day |  i.posts in date.d1 and i.posts in date.d2\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n\tall ip: Influencer.posts.date, d:Day | ip = d and ip not in Influencer.posts.date - ip\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n  all i : Influencer, p : Photo | p in i.posts implies no d : Day | p.date!= d\n  \n\t// Influencers post every day.\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n\tall u: User, d:Day | u in Influencer implies \n  \t\tall disj d1,d2:Day | u.posts in date.d1 and u.posts in date.d2 and d1!=d2 \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n  \n  all i : Influencer , p : Photo, d : Day \t| i.posts in date.d\n  \n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n\tall i : Influencer | all p : Photo | i -> p in posts implies all d : Day | p -> d in date\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n  \t\n\n  \t\n  \n  all i:Influencer, x,y:i.posts| Day in  x.date\n  \n  \n  \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n  \tall i : Influencer, p : i.posts | lone p -> Day\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n\tall u : User, d : Day, p : u.posts | u in Influencer implies  d in p.date\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n  \tall i: Influencer | all p: Photo | all d:Day |\n  \ti.posts.date in d\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n\tall x:Influencer, y:Photo, z:Day {x->y in posts implies y->z in date}\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 61,
+            "syntactic_count": 31,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 22,
+                    "code": "{\n\t// Influencers post every day.\n  all d:Day, i:Influencer | d in i.posts\n\n}"
+                },
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// Influencers post every day.\n\tall i : Influencer | Day in i.posts\n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Influencers post every day.\n\tall i:Influencer, d:Day | d in posts.i\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Influencers post every day.\n \tall i : Influencer, d : Day | some (posts.i & date.d)\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Influencers post every day.\n  \tall i: Influencer | all d: Day | one (i.posts & d)\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Influencers post every day.\n  \t\n  \tall x: Influencer | x.posts = Day\n\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Influencers post every day.\n\tall i : Influencer | all d : Day | some i.posts & d\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n  all u : User, d : Day | u in Influencer implies u in posts.d\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n\tall u : Influencer, d : Day |\n  \t\tone p : Photo |\n  \t\t\tp in u.posts and p in d.date\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n  \tall x: Influencer, d: Day | x -> d in posts\n\t// Influencers post every day.\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n\tall i : Influencer | Day in i.date.posts\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n\n  \n  all i : Influencer, d : Day | some z : Photo | z in i.posts and i in date.d\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n\tall d : Day | Influencer in posts.Day\n  \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n\tall i : Influencer | Day in posts.i \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n  \tall i : Influencer, d : Day | d in i.date\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n  \tall i : Influencer | all d : Day | d in date.i.posts\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n  all i:Influencer, d:Day | some dx:Day | d in i.posts and not dx not in i.posts.date\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n\t\n\tall i : Influencer, d : Day | some p : Photo | i.posts & p.date = d\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n\tall d : Day | Influencer in posts.d\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n\tall x : Influencer, y : Day | some z : Photo | z->y in date and x->y in posts\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n  all u : User, d : Day | u in Influencer implies d in posts.u\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n\tall i : Influencer | Day in posts.i.date\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n  \tall x: Influencer, d: Day | some p : Photo  | d in Photo and x -> p in posts\n\t// Influencers post every day.\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n\t\n  \tall i : Influencer |\n  \t\tall d : Day |\n  \t\t\tsome p : i.posts | d in i.posts\n\t\t\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n\n    all d: Day, i: Influencer | d in date.posts.i\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n  \tall dx:Day, dy:Day, i:Influencer | dx in i.posts and dy in i.posts and dx != dy\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n  \tall x: Influencer, d: Day | d -> x in posts\n\t// Influencers post every day.\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n\tall i : Influencer, d : Day | some (i.date & d)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n\tall d:Day,i:Influencer | some p : i.posts| i.date = d\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n  all i:Influencer, d:Day | some dx:Day | d in i.posts and not dx not in i.posts\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n\tall i : Influencer, d : Day | some i.posts <: d \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 39,
+            "syntactic_count": 11,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 10,
+                    "code": "{\n\t// Influencers post every day.\n    Influencer.posts.date = Day\n\n}"
+                },
+                {
+                    "entry_count": 8,
+                    "code": "{\n\t// Influencers post every day.\n  all d: Day | d in (Influencer.posts).date\n\n}"
+                },
+                {
+                    "entry_count": 6,
+                    "code": "{\n\t// Influencers post every day.\n  \n\n\n  \n\n\n \n    \n \n     Day in Influencer.posts.date\n }"
+                },
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// Influencers post every day.\n  \tall d : Day| some i : Influencer| d in i.posts.date\n\n}"
+                },
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// Influencers post every day.\n  \n\n\n  \n\n\n \n    \n \n     all d : Day | some Influencer.posts & date.d\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Influencers post every day.\n  no Day - Influencer.posts.date\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n  all d : Day | some (d & Influencer.posts.date )\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n\tall d:Day | some p: Influencer.posts | p.date = d\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n  \t(Influencer <: posts.date) in Influencer some -> Day \n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n\tall d : Day | some p : Influencer.posts | p.date in d\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n  \n  all d: Day | some i: Influencer | some p: i.posts | p.date = d\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 32,
+            "syntactic_count": 19,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 10,
+                    "code": "{\n\t// Influencers post every day.\n\tall d: Day | all i: Influencer | i.posts in d\n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Influencers post every day.\n\tall i : Influencer | i.posts in Day\n  \t\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t\n  all i: Influencer, x,z: i.posts | x.date != z.date \n  \n  \n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Influencers post every day.\n\tall d:Day | Influencer.posts in d\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n  \tall i : Influencer, p : Photo | p in i.posts implies (all ip : i.posts | ip in p.date)\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n\tall i : Influencer, p: Photo | p in i.posts implies (all d : Day | p in d.date)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n  all i:Influencer, p:i.posts, dx:p.date, dy:p.date | dx != dy\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n  all i:Influencer, d:Day, z:Photo | z in i.posts iff d in i.date.posts\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n  all d : Day, ip : Influencer.posts | d in ip\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n  \t\n\n  \t\n  \n  all i:Influencer, p: Photo, x,y:i.posts |  x.date!=y.date  \n  \n  \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n  all i:Influencer, p:i.posts, dx:p.date, dy:p.date | dx in p and dy in p and dx != dy\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n  \t\n\n  \t\n  \n  all u:User,i:Influencer, p: Photo, x,y:i.posts |  x.date!=y.date  \n  \n  \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n\tall i: Influencer | all d : Day | i.posts in d.posts\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n  \t\n\n  \t\n  \n  all i:Influencer, x,y:i.posts |  x.^date!=y.^date  \n  \n  \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n\tall i: Influencer | all d: Day | i.posts in Day\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n\tall i : Influencer | all p : i.posts | p in Day\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n  \t\n\n  \t\n  \n  all i:Influencer, x,y:i.posts |  date.x!=date.y  \n  \n  \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n  all i:Influencer, p:i.posts, dx:p.date, dy:p.date | dx not in p implies p not in i.posts\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n\tall i : Influencer, p: Photo | p in i.posts implies (all d: Day | p in i.date)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 19,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 18,
+                    "code": "{\n\t// Influencers post every day.\n    all i: Influencer | all d: Day|  i.posts.date = d\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n\tall i: Influencer, d:Day | i.posts.date = d and all ipd:i.posts.date| ipd not in i.posts.date-ipd\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 15,
+            "syntactic_count": 10,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Influencers post every day.\n  \n\n\n  \n\n\n \n    \n \n     Influencer in posts.date.Day\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Influencers post every day.\n\tall i : Influencer | some i.posts\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Influencers post every day.\n\t all i: Influencer | some d: Day | some p: i.posts | p.date = d\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Influencers post every day.\n  \n\n\n  \n\n\n \n    \n \n     all x : Influencer | some x.posts & date.Day\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n\tall u : Influencer | some d : Day | some u.posts & date.d \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n  \n\n\n  \n\n\n \n    \n \n     all x : Influencer | x in posts.date.Day\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n\tall i : Influencer | some d : Day | d in i.posts.date\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n  all i : Influencer | some i.posts.date\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n  \tall x: Influencer | some p : Photo | x -> p in posts\n\t// Influencers post every day.\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n  all x:Influencer | x.posts.date & Day != none\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 13,
+            "syntactic_count": 5,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 6,
+                    "code": "{\n\t// Influencers post every day.\n  all u: Influencer, d: Day, p: Photo | p in u.posts and d in p.date \n\n}"
+                },
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// Influencers post every day.\n  \tall i : Influencer |\n        all d : Day | \n            all p : Photo | p in i.posts and p.date = d\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n\n    all x : User | x in Influencer implies all d : Day | all z : Photo | z in x. posts and d in z.date\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n\tall x : User | x in Influencer implies \n\t all d : Day | all z : Photo | x->z in posts and z->d in date\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n  all d : Day, i : Influencer | i.posts = date.d\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 12,
+            "syntactic_count": 10,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Influencers post every day.\n  \tall u : User | all p : Photo.date | u in Influencer implies p in u.posts\n  \n\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Influencers post every day.\n\tall p: Photo, i: Influencer | p.date in i\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n  \tall i: Influencer, p: Photo | some (i.posts & date.p)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n\tall p: Photo| Influencer in p.date\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n  all d : Day, i : Influencer | i.posts.date = date.d\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n\tall i : Influencer, p: Photo, d: Day | p in i.posts and p in i.date\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n  \n    \n\tall i : Influencer | Photo = i.posts.date\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n\tall p: Photo| some p.date and Influencer in p.date\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n  all i : Influencer, d : Day, p : Photo | p in i.posts & d\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n  \tall u : User | all p : Photo | u in Influencer implies p.date in u.posts\n  \n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 10,
+            "syntactic_count": 5,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// Influencers post every day.\n\tall i : Influencer | all d : Day | one p : i.posts | p.date = d\n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Influencers post every day.\n  all u: Influencer | all d: Day | one p: Photo | p.date = d && p in u.posts\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n\tall i: Influencer | all d: Day | one p: Photo | p in i.posts and d in p.date}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n  \tall x: Influencer, d: Day | one p: Photo | x -> p in posts and p.date = d\n\t// Influencers post every day.\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n\tall u : Influencer, d : Day |\n  \t\tone p : Photo |\n  \t\t\tp in u.posts and p in date.d\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 10,
+            "syntactic_count": 10,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n\tno Influencer\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n\tall d, Day, i: Influencer | some p: i.posts | p.date = d \n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n  all u:User| u in Influencer implies u in posts.Day\n  \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n  \tall x: Influencer | one d: Day| x -> d in posts\n\t// Influencers post every day.\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n\tall i: Influencer | Day - i.posts.date = 0\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n  all x : Influencer | some y: Photo | all z: Day | y in date.z and y in posts.x\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n\tall i: Influencer | some d: Day | d in i.posts\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n  all x : Influencer | some y: Photo | all z: Day | y in z.date and y in x.posts\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\nall i: Influencer| all u: User | i in u.posts\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n\tall i : Influencer | some date.posts.i\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 8,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 7,
+                    "code": "{\n\t// Influencers post every day.\n\tall d: Day | some i: Influencer | i.posts.date in d\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n\tall d : Day | some i : Influencer | i.posts->d in date\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 8,
+            "syntactic_count": 6,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Influencers post every day.\n\tall x : User | x in Influencer implies (all d : Day | some p : Photo | x->p in posts implies p->d in date)\n\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Influencers post every day.\n\tall i : Influencer | all d : Day | some p : Photo | i->p in posts implies p->d in date\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n  all d : Day | all i : Influencer | some p: Photo | p in i.posts implies p.date in d\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n\tall d : Day | all i : Influencer | some p : Photo | p in i.posts implies d = p.date\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n  all i:Influencer, d:Day | some z:Photo | z in i.posts implies d in i.posts.date\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n\tall d : Day | all i : Influencer | some p : Photo | p in i.posts implies d in p.date\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 6,
+            "syntactic_count": 4,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Influencers post every day.\n  all i: Influencer, d: Day | some i.posts.date\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n  \t all i: Influencer, d: Day | some i.posts\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n  \tall x: Influencer, d: Day | some p : Photo  | x -> p in posts and d in Day\n\t// Influencers post every day.\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n  \tall x: Influencer, d: Day | some p : Photo  | x -> p in posts\n\t// Influencers post every day.\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 6,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 5,
+                    "code": "{\n\t// Influencers post every day.\n\tall i:Influencer, d: Day | some p:Photo, a:Ad | (p in i.posts and p.date = d) or \n  \t\t\t\t\t\t\t\t\t\t\t\t\t(a in i.posts and a.date = d)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n\tall i:Influencer, d: Day | some p:Photo, a:Ad | (p in i.posts and p.date = d) or \n  \t\t\t\t\t\t\t\tsome a:Ad | (a in i.posts and a.date = d)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 5,
+            "syntactic_count": 4,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Influencers post every day.\n  \tall i: Influencer | some p : Photo | all a : Day | p in i.posts and a in p.date\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n  all x : Influencer | some y: Photo | all z: Day | y in date.z and y in x.posts\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n  all u:  User | u in Influencer implies some p : Photo | all d : Day | u in posts.p and p in date.d\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n  all x : Influencer | some y: Photo | all z: Day | y->z in date and y in x.posts\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 5,
+            "syntactic_count": 4,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n    // Influencers post every day.\n  \tall i: Influencer | all d: Day | some p: Photo | p.date = d\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n  \tall i:Influencer, d:Day | some p:Photo | p in date.d\n\t\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n  \tall i : Influencer | all d : Day | some date.d\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n  \tall i:Influencer, d:Day | some p:Photo | d in p.date\n\t\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 4,
+            "syntactic_count": 3,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Influencers post every day.\n  all i : Influencer | all d : Day | lone p : Photo | d in p.date and p in i.posts\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t\n  all i: Influencer, x,z: i.posts | x != z implies x.date != z.date \n  \n  \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n  \tall i : Influencer, d : Day | lone p:Photo | i in posts.p and d in p.date \n  \n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 3,
+            "syntactic_count": 3,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n  all i:Influencer, d:Day, z:Photo | z in i.posts implies d in i.posts.date\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n  all i:Influencer, d:Day, z:Photo | z in i.posts implies not some dx:Day | dx not in i.posts.date\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n  all i:Influencer, d:Day, z:Photo | z in i.posts and d in i.posts.date implies not some dx:Day | dx not in i.posts.date\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 3,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Influencers post every day.\n  \tall d: Day | d in Influencer.posts\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n  \n  all d: Day | some i: Influencer | some p: i.posts | p & p.date = d\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 3,
+            "syntactic_count": 3,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n\tall i: Influencer | all disj p1, p2: Photo | p1 in i.posts and p2 in i.posts implies p1.date = p2.date\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n  \t\tall i: Influencer | lone d1, d2: Day | d1 in i.posts.date and d2 in i.posts.date \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n  \t\tall i: Influencer | lone d1, d2: Day | d1 in i.posts.date and d2 in i.posts.date and d1!=d2\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 3,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Influencers post every day.\n  \tall d : Day, i: Influencer | date.d in i.posts\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n  \tall u : User | all p : Photo | u in Influencer implies p in u.posts\n  \n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 3,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Influencers post every day.\n  \n\n\n  \n\n\n \n    \n \n     some Influencer.posts & date.Day\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n\t\n  Day & Influencer.posts.date != none\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 3,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Influencers post every day.\n  all d : Day | lone posts.date.d & Influencer\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n  \tall d : Day | lone i : Influencer| d in i.posts.date\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n  all d: Day, i: Influencer | (i.posts.date++i.sees.date) in d\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n  all d: Day, i: Influencer | (i.posts.date+i.sees.date) in d\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Influencers post every day.\n  all d : Day, i : Influencer | i.posts.date = d\n  all d : Day, p : Photo | p.date in d\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t\n  \t// Influencers post every day\n  \t\n\t\n  \n  \t\n  \n  \t\n  \n  \tInfluencer -> Influencer & iden = (posts.date).~date.~posts\n  \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n\t\n  \tall d : Day | some Influencer implies some date.d & Influencer.posts\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n  \tsome Influencer => (Influencer <: posts.date) in Influencer some -> Day \n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Influencers post every day.\n  all d : Day | one date.d\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n  \n  all i : Influencer , p : Photo, d : Day \t| some i.posts & date.d\n  \n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n  // Influencers post every day.\n  \n  all i : Influencer, p : Photo, d : Day | some p : i.posts | p.date = d\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n  all u:User, d:Day | (some p: Photo | p in u.posts and d in p.date)\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n  \tall u : User, d :Day | some p : Photo | u in posts.p and p in date.d\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Influencers post every day.\n  all d : Day | lone posts.date.d\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Influencers post every day.\n  \t\n\n  \tall i: Influencer, p: Photo| one d1: Day, d2:Day | some posts.i implies posts.d1!=posts.d2\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n\tall u: Influencer, disj d1,d2:Day|some i:u.posts | i in d1 and i in d2 implies d1!=d2\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n\tall u: Influencer, disj d1,d2:Day|some i:u.posts | i in date.d1 and i in date.d2 implies d1!=d2\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n\tall d: Day | all i: Influencer | i.posts.date not in d\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n\tall p: Photo| p.date in Influencer\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n\tall d: Day | some i: Influencer | some i.posts.date\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n  all i : Influencer | i.posts.date = User.posts.date\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n  all d : Day, i : Influencer | i.posts.date = d\n  all d : Day, p : Photo | p in d\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n\tall d:Day | some p: Photo | Influencer.posts in p\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n  all d : Day | some i : Influencer | some p: Photo | p in posts.i implies p.date in d\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n  all d : Day | all i : Influencer | some p: Photo | p in posts.i implies p.date in d\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n  \tall d : Day | posts.date.d in Influencer\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n  \tall d : Day, i: Influencer | some posts.date.d \n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n  \tall d : Day | some posts.date.d \n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t\n  \t// Influencers post every day\n  \t\n\t\n  \n  \t\n  \n  \t\n  \n  \tInfluencer -> Influencer = (posts.date).~date.~posts\n  \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t\n  \t// Influencers post every day\n  \t\n\t\n  \n  \t\n  \n  \t\n  \n  \tInfluencer -> Influencer & iden = posts.date.~date.~posts\n  \tDay -> Day & iden = ~date.~posts.posts.date\n  \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t\n  \t// Influencers post every day\n  \t\n\t\n  \n  \t\n  \n  \t\n  \n  \tInfluencer -> Influencer & iden in posts.date.~date.~posts\n  \tDay -> Day & iden in ~date.~posts.posts.date\n  \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t\n  \t// Influencers post every day\n  \t\n\t\n  \n  \t\n  \n  \t\n  \n  \tsome date + posts => (\n      Influencer -> Influencer & iden in posts.date.~date.~posts and\n  \t  Day -> Day & iden in ~date.~posts.posts.date)\n  \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t\n  \t// Influencers post every day\n  \t\n\t\n  \n  \t\n  \n  \t\n  \n  \tsome Day => (\n      Influencer -> Influencer & iden in posts.date.~date.~posts and\n  \t  Day -> Day & iden in ~date.~posts.posts.date)\n  \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t\n  \t// Influencers post every day\n  \t\n\t\n  \n  \t\n  \n  \t\n  \n  \tsome Day => (\n      Influencer -> Influencer & iden in posts.date.~date.~posts and\n  \t  Day -> Day & iden in ~date.~(Influencer <: posts).(Influencer <: posts).date )\n  \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t\n  \t// Influencers post every day\n  \t\n\t\n  \n  \t\n  \n  \t\n  \n  \tsome Day and some Influencer => (\n      Influencer -> Influencer & iden in posts.date.~date.~posts and\n  \t  Day -> Day & iden in ~date.~(Influencer <: posts).(Influencer <: posts).date )\n  \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t\n  \t// Influencers post every day\n  \t\n\t\n  \n  \t\n  \n  \t\n  \n  \tsome Day and some Influencer => (\n      Influencer -> Influencer & iden = (Influencer <: posts).date.~date.~(Influencer <: posts) and\n  \t  Day -> Day & iden in ~date.~(Influencer <: posts).(Influencer <: posts).date )\n  \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n  all d : Day | some u : Influencer | u.posts.date = d\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n\tposts in Influencer -> some Photo.date\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n\tall d : Day | some i : Influencer | i.posts.date->d in date\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n  all i:Influencer, d:Day | some z:Photo | z in i.posts implies d in i.date\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n  all i:Influencer, d:Day, z:Photo | z in i.posts iff d in i.posts.date\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n  all i:Influencer, d:Day, z:Photo | z in i.posts and d in i.posts.date\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n     // Influencers post every day.\n  \n     \n     \n  \n     \n     \n \n     \n     \n \n     all x : Influencer, d : Day | some x.posts & date.d\n \n     \n \n     all d : Day | Influencer in posts.date.d\n\n     \n     Influencer in posts.date.Day\n\n     \n \n     all x : Influencer | Day in x.posts.date\n\n     \n     \n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n\tall u : Influencer, d : Day|\n  \t\tone p : Photo | \n  \t\t\tp in u.posts implies p.date = d\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n  \tall i: Influencer | #i.posts = #Day\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n  \n  all i : Influencer , p : Photo, d : Day \t| i.posts in p && i.posts in date.d\n  \n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n\tall i: Influencer | all disj p1, p2: Photo | p1 in i.posts and p2 in i.posts implies p1.date = p2.date.next\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n\tall i : User-Influencer, d : Day | some z : Photo | i->z in posts and z->d in date\n  \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n\tall d : Day | all i : Influencer | some p : Photo |d = p.date implies p in i.posts\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n\tall d : Day | some p : Influencer.posts | p.date = Day\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n\tall i : Influencer, p1, p2 : Photo | p1 != p2 implies p1 in i.posts and p2 in i.posts\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n  \tall u : User, d :Day | some p : Photo | u in Influencer implies u in posts.p and p in date.d\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Influencers post every day.\n  all i: Influencer, disj d1,d2: Day |  some date.d1 and some date.d2\n\n}"
+                }
+            ]
+        }
+    ]
+}

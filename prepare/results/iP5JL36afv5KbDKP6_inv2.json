@@ -1,0 +1,676 @@
+{
+    "original": "iP5JL36afv5KbDKP6",
+    "cmd": "inv2",
+    "pred": "this/inv2",
+    "entry_count": 786,
+    "semantic_count": 35,
+    "syntactic_count": 105,
+    "scope": 3,
+    "groups": [
+        {
+            "entry_count": 680,
+            "syntactic_count": 37,
+            "correct": true,
+            "elems": [
+                {
+                    "entry_count": 184,
+                    "code": "{\n\t// Only professors can teach courses\n    all p : Person | some p.teaches implies p in Professor\n}"
+                },
+                {
+                    "entry_count": 111,
+                    "code": "{\n\t// Only professors can teach courses\n\tteaches in Professor -> Course\n}"
+                },
+                {
+                    "entry_count": 59,
+                    "code": "{\n\t// Only professors can teach courses\n  all c: Course | teaches.c in Professor\n}"
+                },
+                {
+                    "entry_count": 53,
+                    "code": "{\n\t// Only professors can teach courses\n  \tall c: Course | all p:Person | c in p.teaches implies p in Professor\n\n}"
+                },
+                {
+                    "entry_count": 49,
+                    "code": "{\n\t// Only professors can teach courses\n  \tall p : Person-Professor | no p.teaches\n  \t\n\n}"
+                },
+                {
+                    "entry_count": 43,
+                    "code": "{\n\t// Only professors can teach courses\n    teaches.Course in Professor\n}"
+                },
+                {
+                    "entry_count": 25,
+                    "code": "{\n\t// Only professors can teach courses\n\tall p : Person | all c : Course | p in teaches.c implies p in Professor\n}"
+                },
+                {
+                    "entry_count": 24,
+                    "code": "{\n\t// Only professors can teach courses\n  \tall p : Person | (p.teaches != none) implies p in Professor\n\n}"
+                },
+                {
+                    "entry_count": 21,
+                    "code": "{\n\t// Only professors can teach courses\n  no (Person - Professor).teaches\n\n}"
+                },
+                {
+                    "entry_count": 21,
+                    "code": "{\n\t// Only professors can teach courses\n\tall p1 : Person | all c1 : Course | p1->c1 in teaches implies p1 in Professor\n}"
+                },
+                {
+                    "entry_count": 15,
+                    "code": "{\n\t// Only professors can teach courses\n\tall c: Course | all t: teaches.c | t in Professor\n}"
+                },
+                {
+                    "entry_count": 14,
+                    "code": "{\n\t// Only professors can teach courses\n  \tall p: Person | p not in Professor implies no p.teaches\n\n}"
+                },
+                {
+                    "entry_count": 9,
+                    "code": "{\n\t// Only professors can teach courses\n\tall p: teaches.Course | p in Professor\n}"
+                },
+                {
+                    "entry_count": 8,
+                    "code": "{\n\t// Only professors can teach courses\n  \tall p: Person-Professor | all c: Course | c not in p.teaches\n}"
+                },
+                {
+                    "entry_count": 6,
+                    "code": "{\n\t// Only professors can teach courses\n    all p : Person | p in teaches.Course implies p in Professor\n\n}"
+                },
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// Only professors can teach courses\n    all x : Person | (some c : Course | x in teaches.c ) implies x in Professor\n\n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Only professors can teach courses\n   all p: Person - Professor | no c: Course | p in teaches.c\n\n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Only professors can teach courses\n\tall p : Person - Professor | all c : Course | p not in teaches.c\n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Only professors can teach courses\n  \tteaches.Course = teaches.Course & Professor\n  \t\n\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Only professors can teach courses\n\tall c : Course | c.~teaches in Professor\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Only professors can teach courses\n  all p : Person | p not in Professor implies (p.teaches = none)\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Only professors can teach courses\n\tall p: Person - Professor | p.teaches = none\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Only professors can teach courses\n\tall p : Person | (some p.teaches) implies p in Professor\n\n\t\n\tteaches in Professor -> Course\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Only professors can teach courses\n  \tno(teaches.Course-Professor)\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Only professors can teach courses\n\tall p : Person | (some c : Course | p in teaches.c) implies p in Professor\n\n\tall p : Person | some p.teaches implies p in Professor\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Only professors can teach courses\n\tCourse.~teaches in Professor\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only professors can teach courses\n\n  all p : Person | some p.teaches implies some  p & Professor \n  \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only professors can teach courses\n\tall p: Person | #p.teaches > 0 implies p in Professor\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only professors can teach courses\n  \tall p: Person | (some c : Course | c in p.teaches) implies p in Professor\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only professors can teach courses\n\tall p :Person|(some c:Course|p->c in teaches) implies p in Professor\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only professors can teach courses\n\tall c: Course |\n  \t\tteaches.c - Professor = none\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only professors can teach courses\n   all p: Person | p in Professor or no p.teaches\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only professors can teach courses\n  all p : Person - Professor | #(p.teaches) = 0\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only professors can teach courses\n\tall p:Person,c:Course | no((p-Professor) & teaches.c)  \n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only professors can teach courses\n\tall p:Person, c:Course | c in p.teaches implies some prf:Professor | prf in p\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only professors can teach courses\n\tall c : Course | no (teaches.c & Person-Professor)\n\t\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only professors can teach courses\n  all p : Person | (not p in Professor) implies no p.teaches\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 25,
+            "syntactic_count": 11,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 12,
+                    "code": "{\n\t// Only professors can teach courses\n\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Only professors can teach courses\n\tall p: Person | p in Professor implies p.teaches in Course\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Only professors can teach courses\n  all p: Person, c: Course | (p in c.teaches) implies (p in Professor)\n\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Only professors can teach courses\n   all p: Person - Professor | no c: Course | p in c.teaches\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only professors can teach courses\n   teaches in  Person -> Course\n  \t\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only professors can teach courses\n\t\n\t\n\n       Course.teaches in Professor \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n  // Only professors can teach courses\n  all t: Professor | some t.teaches implies t in Professor\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only professors can teach courses\n  \tall p : Person, c : Course | p -> c in enrolled implies p in Person\n  \n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only professors can teach courses\n  \tall p : Person, c : Course | p -> c in teaches implies p in Person\n  \n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only professors can teach courses\n\tall p: Professor | p.teaches in Course\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only professors can teach courses\n  all c : Course | all p: c.teaches | p in Professor\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 15,
+            "syntactic_count": 4,
+            "correct": true,
+            "elems": [
+                {
+                    "entry_count": 10,
+                    "code": "{\n\t// Only professors can teach courses\n\tall s: Student | (no s.teaches)\n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Only professors can teach courses\n  \n  all p: Person | (p in Student) implies no p.teaches \n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only professors can teach courses\n\tno Student.teaches\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only professors can teach courses\n  all p : Person | some p.teaches implies no Student & p\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 11,
+            "syntactic_count": 6,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 5,
+                    "code": "{\n\t// Only professors can teach courses\n\tall p : Person | some p.teaches implies p in Student\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Only professors can teach courses\n\t\n\t\n\n        teaches in Student -> Course\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only professors can teach courses\n\tall p : Person, c : Course | p -> c in teaches implies p in Student\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only professors can teach courses\n\tall p: Person | \n        p.teaches != none implies p in Student\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only professors can teach courses\n\tall p : Person, c : Course| p in teaches.c implies p in Student\n  \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only professors can teach courses\n  all p:Person-Student | all c:Course | c not in p.teaches\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 6,
+            "syntactic_count": 3,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// Only professors can teach courses\n    all c : Course | c in  Professor.teaches \n   \n  \t\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only professors can teach courses\n    all c : Course | c in  (some Professor.teaches) \n   \n  \t\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only professors can teach courses\n    all c : Course | c in  (lone Professor.teaches) \n   \n  \t\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 4,
+            "syntactic_count": 3,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Only professors can teach courses\n  all p: Person | p.teaches in Professor\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only professors can teach courses\n  \tall p : Person | (some p.teaches) implies p in Course \n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only professors can teach courses\n\tall c : Course | all p : Person.teaches & Course | p in Professor\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 4,
+            "syntactic_count": 3,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Only professors can teach courses\n  \tall p: Person | p in Professor implies (some p.teaches)\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only professors can teach courses\n      all p : Person | p in Professor implies some p.teaches and no (p - Professor).teaches\n\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only professors can teach courses\n  all p : Person | p.teaches = none implies p not in Professor\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 3,
+            "syntactic_count": 3,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only professors can teach courses\n\tall p : Person | (some p.enrolled) implies p in Professor\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only professors can teach courses\n\tno (Person - Professor).enrolled\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only professors can teach courses\n\t\n  \tall p: Person, c: Course | p in enrolled.c implies p in Professor\n  \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only professors can teach courses\n  \tall p: Person-Professor | p.teaches not in Course\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only professors can teach courses\n\tall p: Person | p.teaches in Course iff p in Professor\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Only professors can teach courses\n\tall p : Person | some c : Course | p.teaches in c implies p in Professor\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only professors can teach courses\n\tall p :Person|all c:Course|p.teaches in c implies p in Professor\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only professors can teach courses\n\tall p :Person|(some c:Course|p.teaches in c) implies p in Professor\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only professors can teach courses\n  all p : Person | some c: Course| c in p.teaches implies p in Professor\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only professors can teach courses\n\tall p : Person | some c : Course | p in teaches.c implies p in Professor\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only professors can teach courses\n  all p : Person | some c: Course| p not in Professor implies (c.teaches = none)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only professors can teach courses\n  all p : Person | some c: Course| p not in Professor implies c not in c.teaches\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Only professors can teach courses\n  all teachers : Person.teaches | Student not in teachers\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only professors can teach courses\n  \tall p: Person | (some c : Course | c in p.teaches) <=> p in Professor\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only professors can teach courses\n  \tall p: Person| (p in Professor) iff (p.teaches!= none)\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only professors can teach courses\n\tPerson -> Person.teaches in Professor -> Course\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only professors can teach courses\n\tall p:Person | some teaches implies p in Professor\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only professors can teach courses\n\tall p : Professor | p not in Student implies p.teaches != none\n  \tall pe: Person | pe not in Student implies pe.teaches != none\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only professors can teach courses\n\t\n  \tall p : Person - Student | some p.teaches\n \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only professors can teach courses\n\tall p : Professor | p not in Student implies p.teaches != none\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only professors can teach courses\n\tall p : Professor | p not in Student implies p.teaches != none\n\tall s : Student | s not in Person implies s.teaches = none\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Only professors can teach courses\n  all p : Person | some p.teaches implies Professor in p\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only professors can teach courses\n\tall c: Course | Student not in teaches.c\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only professors can teach courses\n  all p:Person |\n  \tsome t:p.teaches |\n  \t\tt in Course implies p in Professor\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only professors can teach courses\n  \tall p: Person-Professor | some c: Course | c not in p.teaches\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only professors can teach courses\n\tno (Student-Professor).teaches\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only professors can teach courses\n\tall p :Person|(all c:Course|p.teaches in c) implies p in Professor\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only professors can teach courses\n  all p : Person | some c: Course| c not in p.teaches implies p not in Professor\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only professors can teach courses\n  all p : Person | some c: Course| p not in Professor implies (p.teaches = none)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only professors can teach courses\n   no p: Person | p in Student and p in Professor\n \n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only professors can teach courses\n\t\n\t\n\n       Professor in Course.teaches\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only professors can teach courses\n\tall p : Person | no p.enrolled implies p in Professor\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only professors can teach courses\n\t\n  \tall p : Person - Professor | some p.teaches\n \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only professors can teach courses\n  \tall p: Person | one  Professor implies (some p.teaches)\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only professors can teach courses\n  \tall disj p, p1: Person| (p in Professor) iff (p.teaches!= none) and (p1 not in Professor) iff (p1.teaches!=none)\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only professors can teach courses\n\tall p : Professor | p not in Student implies p.teaches != none\n  \tall pe: Person | pe in Student implies pe.teaches = none\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only professors can teach courses\n\tall p : Professor | p not in Student implies p.teaches != none\n  \tall pe: Person | pe.teaches = none\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only professors can teach courses\n\tall p: Person, c: Course | c in p.teaches iff p in Professor\n}"
+                }
+            ]
+        }
+    ]
+}

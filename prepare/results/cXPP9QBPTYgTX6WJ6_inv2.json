@@ -1,0 +1,1015 @@
+{
+    "original": "cXPP9QBPTYgTX6WJ6",
+    "cmd": "inv2",
+    "pred": "this/inv2",
+    "entry_count": 580,
+    "semantic_count": 56,
+    "syntactic_count": 153,
+    "scope": 3,
+    "groups": [
+        {
+            "entry_count": 336,
+            "syntactic_count": 18,
+            "correct": true,
+            "elems": [
+                {
+                    "entry_count": 162,
+                    "code": "{\n\t// Signals belong to one track\n  all s: Signal | one t: Track | s in t.signals\n}"
+                },
+                {
+                    "entry_count": 126,
+                    "code": "{\n  // Signals belong to one track\n  all s: Signal | one signals.s\n}"
+                },
+                {
+                    "entry_count": 20,
+                    "code": "{\n\t// Signals belong to one track\n\tsignals in ( Track one ->  Signal)\n}"
+                },
+                {
+                    "entry_count": 8,
+                    "code": "{\n\t// Signals belong to one track\n    all s: Signal | one s.~signals\n}"
+                },
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// Signals belong to one track\n\tall s : Signal | one t : Track | t->s in signals\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Signals belong to one track\n  all s:Signal | #(signals.s) = 1\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Signals belong to one track\n\tall s : Signal| one t : Track | t in signals.s\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Signals belong to one track\n\tall disj t1,t2: Track | no (t1.signals & t2.signals)\n  \tall s:Signal | s in Track.signals\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Signals belong to one track\n  \tSignal = {s: Signal | #signals.s = 1}\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Signals belong to one track\n  all s: Signal | some Track.signals & s\n  all t: Track | no t.signals & (Track - t).signals \n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Signals belong to one track\n  \tall s: Signal | some t: Track | s in t.signals\n  \n  \tall s: Signal, t1,t2: Track | ( s in t1.signals and s in t2.signals ) implies \t   t1 = t2 \n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Signals belong to one track\n    signals.~signals in iden\n  \tSignal in Track.signals\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Signals belong to one track\n  all s:Signal | s in Track.signals and #(signals.s) = 1\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Signals belong to one track\n\t\n  \tall s : Signal | s in Track.signals\n  \n  \t\n  \tall disj t1,t2 : Track | no t1.signals & t2.signals\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Signals belong to one track\n\tall s : Signal | #s.(~signals) = 1\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Signals belong to one track\n  \tall s : Signal | some t : Track | t->s in signals\n\tall s : Signal, t1,t2:Track | (t1->s in signals and t2->s in signals) implies t1=t2 \n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Signals belong to one track\n  Signal in Track.signals\n  all track, track2: Track | track != track2 implies no track.signals & track2.signals\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Signals belong to one track\n  all s: Signal | s in Track.signals\n  all s: Signal, t1, t2: Track | s in t1.signals and s in t2.signals => t1 = t2\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 33,
+            "syntactic_count": 20,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 5,
+                    "code": "{\n\t// Signals belong to one track\n\tall t1, t2 : Track | all s : Signal | s in t1.signals and s in t2.signals implies t1=t2\n}"
+                },
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// Signals belong to one track\n\tall s: Signal | lone signals.s\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Signals belong to one track\n  all s:Signal | all disj t1,t2:Track | s in t1.signals implies s not in t2.signals\n\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Signals belong to one track\n\tall t : Track | no(t.signals & (Track-t).signals)\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Signals belong to one track\n\tall disj t, s: Track | no (s.signals & t.signals)\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Signals belong to one track\n    signals.~signals in iden\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Signals belong to one track\n  \tall t1,t2 : Track, s : Signal | s in t1.*signals and s in t2.*signals implies t1 = t2\n\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Signals belong to one track\n\tall s,s1 : Signal | all t,t1 : Track | s in t.signals and s1 in t1.signals and s = s1 => t = t1\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Signals belong to one track\n  all s: Signal, disj t1, t2: Track | s in t1.signals implies not s in t2.signals \n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Signals belong to one track\n  no s:Signal | some disj t1,t2:Track | s in t1.signals and s in t2.signals\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Signals belong to one track\n\tall t: Track, s: Signal | s in t.signals implies s not in (Track - t).signals \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Signals belong to one track\n\tall disj t1,t2:Track | #(t1.signals & t2.signals) = 0 \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Signals belong to one track\n    all s: Signal, t1, t2: Track | s in t1.signals and t1 != t2 implies s not in t2.signals\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Signals belong to one track\n  all disj t1,t2 :Track | (t1.signals & t2.signals) = none\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Signals belong to one track\n\tall t: Track, s: Signal | s in t.signals implies s not in ((Track - t) <: Track).signals \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Signals belong to one track\n  all track, track2: Track | track != track2 implies no track.signals & track2.signals\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Signals belong to one track\n  all s:Signal | #(signals.s) < 2\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Signals belong to one track\n  all i,j:Track, s:Signal | i->s in signals and j->s in signals implies i=j\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Signals belong to one track\n\tall s : Signal | lone t : Track |  s in t.signals\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Signals belong to one track\n\tsignals in ( Track lone-> Signal)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 31,
+            "syntactic_count": 10,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 9,
+                    "code": "{\n\t// Signals belong to one track\n\tall s : Signal | s in Track.signals\n}"
+                },
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// Signals belong to one track\n\tall s:Signal| some signals.s\n}"
+                },
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// Signals belong to one track\n\tall s : Signal | one Track.signals & s\n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Signals belong to one track\n\n\n\tSignal in Track.signals\n\n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Signals belong to one track\n\tTrack.signals = Signal \n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Signals belong to one track\n\tuniv.signals = Signal\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Signals belong to one track\n\tall s:Signal | some t : Track | s in t.signals\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Signals belong to one track\n\tall s : Signal | some t : Track | t->s in signals\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Signals belong to one track\n\tSignal = ~signals.univ\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Signals belong to one track\n  \tno s:Signal| all t:Track| s not in t.signals\n\t\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 23,
+            "syntactic_count": 13,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 6,
+                    "code": "{\n\t// Signals belong to one track\n\tall s : Signal | one t : Track | s in t\n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Signals belong to one track\n\tall s : Signal | one (s.signals)\n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Signals belong to one track\n  all s : Signal | one t: Track | s in signals.t\n\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Signals belong to one track\n\tall s : Signal | s in Track\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Signals belong to one track\n  \n  \tall s : Signal | one t : Track | s in s.signals\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Signals belong to one track\n  all s:Signal | one succs.s\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Signals belong to one track\n  all s : Signal | one t: Track | t in s\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Signals belong to one track\n  all s : Signal | s.*signals in Track\n  \n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Signals belong to one track\n\tall s: Signal | one t: Track | t in s.signals\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Signals belong to one track\n  \tall s : Signal | one t : Track | s in Track\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Signals belong to one track\n\n\t#signals.Signal = 0 \n\tSignal in Track.signals\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Signals belong to one track\n\tall s: Signal | s in signals.s\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Signals belong to one track\n  all s : Signal | one t : Track | s in succs.t\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 18,
+            "syntactic_count": 8,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 11,
+                    "code": "{\n\t// Signals belong to one track\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Signals belong to one track\n\t\tall t: Track | all s:Signal | s in t.signals => not (s not in t.signals)\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Signals belong to one track\n  all s : Signal | s.^signals in Track\n  \n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Signals belong to one track\n\tall t: Track | lone signals.t\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Signals belong to one track\n\tall s : Signal | all t : Track | s in t.signals => s not in (Track.signals - t.signals)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Signals belong to one track\n\tall s : Signal | s in Track => one Track\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Signals belong to one track\n  all t : Track | all s : Signal |lone (s & t.signals)\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Signals belong to one track\n  all t : Track | lone sem : Semaphore, speed : Speed | sem+speed = t.signals\n  \n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 17,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 16,
+                    "code": "{\n\t// Signals belong to one track\n\t\tone t: Track | all s:Signal | s in t.signals \n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Signals belong to one track\n    one t: Track | t.signals = Signal\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 15,
+            "syntactic_count": 4,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 10,
+                    "code": "{\n\t// Signals belong to one track\n\tone(signals.Signal)\n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Signals belong to one track\n\tone t: Track | some t.signals\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Signals belong to one track\n  all s : Signal | lone signals.s\n  #signals.Signal =1\n\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Signals belong to one track\n\n  #signals.Signal =1\n\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 11,
+            "syntactic_count": 4,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 8,
+                    "code": "{\n\t// Signals belong to one track\n\tall t : Track | all s : Signal | s in t.signals\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Signals belong to one track\n  all t : Track | all s : Signal | one (s & t.signals)\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Signals belong to one track\n\tall s:Signal, t:Track | t -> s in signals\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Signals belong to one track\n  all t:Track | all s: Signal | s in t.^signals \n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 7,
+            "syntactic_count": 4,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// Signals belong to one track\n\tall t: Track | one signals.t\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Signals belong to one track\n  signals in Track one -> Track\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Signals belong to one track\n  all t1,t2 :Track | t1 != t2 and (t1.signals & t2.signals) = none\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Signals belong to one track\n  all t : Track | one s : Signal | s in t\n  \n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 7,
+            "syntactic_count": 4,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Signals belong to one track\n  all t: Track | one t.signals\n\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Signals belong to one track\n  all t : Track | one s : Signal | s in t.signals\n  \n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Signals belong to one track\n\tall t : Track | one s : Signal | t -> s in signals\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Signals belong to one track\n\tsignals in Track -> one Signal\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 6,
+            "syntactic_count": 5,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Signals belong to one track\n  \tall t1, t2 : Track | no (t1.signals & t2.signals)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Signals belong to one track\n\t\tall t: Track | all s:Signal | s in t.signals => s not in t.signals\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Signals belong to one track\n  all t1,t2 :Track | (t1.signals & t2.signals) = none\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Signals belong to one track\n  all s: Signal, t: Track | s in t.signals implies not s in t.^signals \n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Signals belong to one track\n  \tall t1,t2 : Track, s : Signal | s in t1.signals implies s not in t2.signals\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 5,
+            "syntactic_count": 3,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Signals belong to one track\n  all t : Track | no (t.signals & t.^succs.signals)\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Signals belong to one track\n  \tall t1,t2 : Track, s : Signal | (s in t1.signals or s in t1.^succs.signals) implies (s not in t2.signals or s not in t2.^succs.signals)\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Signals belong to one track\n  all t : Track | disj[t.signals, (t.^succs).signals]\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 5,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Signals belong to one track\n\n\t#signals.Signal = 0 or #signals.Signal = 1\n\tSignal in Track.signals\n\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Signals belong to one track\n\tSignal in Track.signals\n  \tlone signals.Signal\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 5,
+            "syntactic_count": 4,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Signals belong to one track\n\tone(signals.Track)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Signals belong to one track\n\tone t : Track | t in Signal\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Signals belong to one track\n\tone t: Track | t in t.signals\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Signals belong to one track\n  \tone Signal.signals\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 4,
+            "syntactic_count": 3,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Signals belong to one track\n\tall s:Signal, t:Track | s -> t in signals\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Signals belong to one track\n\tall s : Signal, t : Track | s in t\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Signals belong to one track\n\tall s:Signal, t:Track | s in signals.t\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 3,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Signals belong to one track\n\n#signals.Signal =1\n  Signal in Track.signals\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Signals belong to one track\n\tSignal in Track.signals\n  \tone signals.Signal\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 3,
+            "syntactic_count": 3,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Signals belong to one track\n  one t : Track | all s: Signal | s in signals.t\n  \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Signals belong to one track\n\tone t : Track | all s : Signal | s in t\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Signals belong to one track\n\tone t : Track | Signal in  t\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 3,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Signals belong to one track\n\tsome t : Track | all s : Signal | s in t.signals\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Signals belong to one track\n  all t : Track | no (t.signals & t.^(succs.signals))\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Signals belong to one track\n  all t : Track | no (t.signals & t.succs.signals)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Signals belong to one track\n  \tno {s: Signal | #signals.s = 2}\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Signals belong to one track\n  all t : Track | lone sem : Semaphore, speed : Speed | sem in t.signals and speed in t.signals\n  \n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Signals belong to one track\n  all t : Track | lone sem : Semaphore, speed : Speed | sem+speed in t.signals\n  \n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Signals belong to one track\n  \tone signals.iden\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Signals belong to one track\n\tall t: Track | t.signals not in t.^succs.signals \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Signals belong to one track\n\tall t: Track | t.^signals not in t.^succs.signals \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Signals belong to one track\n\tall s: Signal | one Track\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Signals belong to one track\n  all s : Signal | one t : Track | s = t.signals\n  \n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Signals belong to one track\n  \tno s:Signal| all t:Track| s not in t.signals\n\tno disj t1,t2:Track| t1.signals in t2.signals\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Signals belong to one track\n\tSignal = univ.signals\n  \tTrack = signals.univ\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Signals belong to one track\n\tSignal in Track.signals\n  \tTrack in signals.Signal\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Signals belong to one track\n  \tall t : Track | some t.signals\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Signals belong to one track\n\tall t: Track | some s: Signal | s in t.signals\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Signals belong to one track\n\tsignals in ( Track -> lone Signal)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Signals belong to one track\n\tsignals in ( Track lone-> some Signal)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Signals belong to one track\n\tsignals in ( Track one -> some Signal)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Signals belong to one track\n\tSignal = univ.signals\n  \tTrack = signals.univ\n    some Signal\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Signals belong to one track\n\tall t1: Track, t2: Track | some s: Signal | !(s in t1.signals && s in t2.signals)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Signals belong to one track\n\tall s: Signal | one Track.signals\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Signals belong to one track\n\n\t#signals.Signal > 0 \n\tSignal in Track.signals\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Signals belong to one track\n  \tall t1,t2 : Track, s : Signal | (s in t1.signals or s in t1.^succs.signals) implies (s not in t2.signals or s not in t2.^succs.signals)\n  \tall s : Signal | some t : Track | s in t.signals\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Signals belong to one track\n  \tall t1,t2 : Track, s : Signal | (s in t1.signals or s in t1.^succs.signals) implies (s not in t2.signals or s not in t2.^succs.signals)\n  \tsome s : Signal | some t : Track | s in t.signals\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Signals belong to one track\n  \tall t1,t2 : Track, s : Signal | s in t1.*signals and s in t2.*signals iff t1 = t2\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Signals belong to one track\n  all s:Signal | some disj t1,t2:Track | s in t1.signals implies s not in t2.signals\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Signals belong to one track\n  some t:Track | t.signals=Signal and no (Track - t).signals \n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Signals belong to one track\n\tall s : Signal | one t : Track | s in Track.signals\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Signals belong to one track\n\tall t: Track | t.signals not in t.succs.signals \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Signals belong to one track\n  \tone t: Track | all s: Signal | s = t.signals\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Signals belong to one track\n  \tone t: Track | all s: Signal | t.signals in s\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Signals belong to one track\n  one s: Signal | s in Track.signals\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Signals belong to one track\n    all s: Signal | one Track.succs\n\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Signals belong to one track\n  all t: Track | t.signals not in (Track - t).signals \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Signals belong to one track\n  one t:Track | all s:t.signals | s in t\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Signals belong to one track\n  one t:Track | all s:t.signals | s in t.signals\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Signals belong to one track\n  all t:Track | all s: Signal | s in t.signals or s in t.^succs.signals\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n  all s : Signal | all disj t, t1 : Track | s in t.signals and  (s not in t1.signals)\n\t// Signals belong to one track\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Signals belong to one track\n\tall t: Track, s: Signal | no (Signal - Track.signals) and s in t.signals implies s not in ((Track - t) <: Track).signals\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": true,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Signals belong to one track\n\tall t: Track, s: Signal | no (Signal - Track.signals) and (s in t.signals implies s not in ((Track - t) <: Track).signals)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Signals belong to one track\n\tno disj t1,t2:Track| t1.signals in t2.signals\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Signals belong to one track\n  \tall s:Signal| one t:Track| s in t.signals\n\tno disj t1,t2:Track| t1.signals in t2.signals\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Signals belong to one track\n\tone t:Track | one t.signals\n}"
+                }
+            ]
+        }
+    ]
+}

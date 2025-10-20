@@ -1,0 +1,1209 @@
+{
+    "original": "iP5JL36afv5KbDKP6",
+    "cmd": "inv14",
+    "pred": "this/inv14",
+    "entry_count": 578,
+    "semantic_count": 54,
+    "syntactic_count": 205,
+    "scope": 3,
+    "groups": [
+        {
+            "entry_count": 280,
+            "syntactic_count": 45,
+            "correct": true,
+            "elems": [
+                {
+                    "entry_count": 125,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall disj a, b : Student | lone a.projects & b.projects\n}"
+                },
+                {
+                    "entry_count": 45,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall s:Student,s1:Student | s!=s1 implies lone (s.projects & s1.projects) \n}"
+                },
+                {
+                    "entry_count": 21,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall s: Student | all s2 : Student - s | lone (s.projects & s2.projects)\n}"
+                },
+                {
+                    "entry_count": 13,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall disj s1, s2: Student | #(s1.projects & s2.projects) < 2\n}"
+                },
+                {
+                    "entry_count": 6,
+                    "code": "{\n\n  all disj s1,s2 :Student,\n      p1,p2: Project|   \n  \t\tp1+p2 in (s1.projects & s2.projects) => p1=p2\n// A student cannot work with the same student in different projects\n\n}"
+                },
+                {
+                    "entry_count": 5,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n\n   all disj s1, s2 : Student | lone pr : Project | pr in s1.projects and pr in s2.projects\n \n\t\n\n}"
+                },
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n\n        all s1, s2 : Student | all p1, p2 : Project |\n\t s1!=s2 and \n\t   s1->p1 in projects and s2->p1 in projects and s1->p2 in projects and s2->p2 in projects\n\t  implies p1 = p2\n \n\t\n\n}"
+                },
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall disj s1, s2: Student | all p1, p2: Project | p1 in s1.projects and p1 in s2.projects and p2 in s1.projects and p2 in s2.projects => p1 = p2\n}"
+                },
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n  \tall disj s1, s2 : Student, disj p1, p2 : Project | (p1 in s1.projects and p1 in s2.projects) implies (p2 not in s1.projects or p2 not in s2.projects)\n\n}"
+                },
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n\n        all disj s1, s2 : Student | lone pr : Project | pr in (s1.projects & s2.projects)\n \n\t\n\n}"
+                },
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n  all disj s1,s2: Student | #(s1.projects & s2.projects) <= 1 \n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall s1, s2 : Student | (s1 != s2) implies #(s1.projects & s2.projects) <=1\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n  all s: Student , p: s.projects | all s1: Student-s | p in s1.projects => one s.projects & s1.projects \n\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall s1, s2 : Student | lone p : Project | s1 != s2  and p in s1.projects and p in s2.projects \n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n\n        all disj s1, s2 : Student | all p1, p2 : Project |\n\t    s1->p1 in projects and s2->p1 in projects and s1->p2 in projects and s2->p2 in projects\n\t   implies p1 = p2\n \n\t\n\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n  \tall s1,s2 :Student | all p1:s1.projects | all p2:s2.projects |\n  \t\t\tp1 = p2 and s1 != s2 implies all rest:s1.projects-p1 | rest not in s2.projects-p1 \n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall disj s1, s2 : Student | all pr1, pr2 : Project | \n  \ts1 in projects.pr1 and s2 in projects.pr1 and \n    s1 in projects.pr2 and s2 in projects.pr2 implies pr1 = pr2\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n  all disj s, s1 : Student | all  p : Project | (p in s.projects and p in s1.projects) implies no p1 : Project | p != p1 and p1 in s.projects and p1  in s1.projects\n\t// A student cannot work with the same student in different projects\n\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\tall s1,s2 : Student, p1,p2 : Project | (not s1=s2 and not p1=p2 and s1->p1 in projects and s2->p1 in projects and s1->p2 in projects) implies (not s2->p2 in projects)\t\n\n\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n  \tall disj s1, s2: Student | all disj p1, p2: Project | p1 in s1.projects and p1 in s2.projects and p2 in s1.projects implies p2 not in s2.projects\n\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n  \tall disj s1, s2 : Student, disj p1, p2 : Project | (p1 in s1.projects and p1 in s2.projects) implies not (p2 in s1.projects and p2 in s2.projects)\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n\t\n  \tall s1,s2 : Student | s1->s2 not in iden implies lone s1.projects & s2.projects\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n     all s : Student, p : s.projects, s1 : (Student<:projects).p | s1!=s implies no (s1.projects&s.projects)-p\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall s1,s2 : Student | all p1,p2 : Project |\n  \t(s1->p1 in projects and s2->p1 in projects and s1!=s2 and p1!=p2) implies\n  \t( (s1->p2 not in projects) or (s2->p2 not in projects) )\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall s, s1: Student | all p, p1: Project | s != s1 and p != p1 and ( p in s.projects and p in s1.projects) implies (p1 not in s.projects or p1 not in s1.projects)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n  \n  all s1, s2: Student | lone p: Project | \n  \t\t(s1 != s2 and \n  \t\ts1->p in (Person<:projects) and\n  \t\ts2->p in (Person<:projects))\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n  all s1,s2: Student | s1 != s2 implies (#(s1.projects & s2.projects) < 2)\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n  all s1, s2 : Student | all p1, p2 : Project | p1 in s1.projects and p2 in s1.projects and p1 in s2.projects and s1 != s2 and p1 != p2 implies p2 not in s2.projects\n  \n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall disj s1, s2 : Student | lone pr : Project | s1->pr in projects and s2->pr in projects \n\n\t\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall s1,s2 : Student | all p1 : s1.projects| s1 != s2 and\n  \t\t\t\tp1 in s2.projects =>  all p2 : s1.projects-p1 | p2 not in s2.projects\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n  \tall s,s2 : Student, p : Project | s!=s2 and p in s.projects&s2.projects implies no p2 : Project | p!=p2 and p2 in s.projects&s2.projects\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n\n        all disj s1, s2 : Student | all disj p1, p2 : Project |\n\t    s1->p1 in projects and s2->p1 in projects and s1->p2 in projects and s2->p2 in projects\n\t   implies p1 = p2\n \n\t\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall s1, s2: Student |all p1, p2: Project |( p1 != p2 and s1 != s2 and p1 in s1.projects and p1 in s2.projects) implies p2 not in s1.projects or p2 not in s2.projects\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall p : Project, disj s1,s2:Student | lone s1.projects&s2.projects\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall s : Student, s2 : Student-s, p : Project, p2 : Project-p | (s->p in projects and s2->p in projects) implies (not (s2->p2 in projects and s->p2 in projects))\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n\n        all disj s1, s2 : Student | all disj p1, p2 : Project |\n\t  s1->p1 in projects and s2->p1 in projects and s1->p2 in projects implies not s2->p2 in projects\n\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall s1,s2 : Student | lone p1 : s1.projects | s1 != s2 and p1 in s2.projects\n  \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n\n\tall s1 : Student | all s2 : Student | all p1 : Project | all p2 : Project | s1->p1 in projects and s2->p1 in projects and s1->p2 in projects and s1!=s2 and p1!=p2 implies not s2->p2 in projects\n\n\t\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n\n\t    all s1, s2: Student, p1, p2: Project |\n        ((s1 != s2) and (p1 in s1.projects & s2.projects) and (p1 != p2)) implies\n            not(p2 in s1.projects & s2.projects)\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall disj s1, s2 : Student | all pr1, pr2 : Project | s1 in projects.pr1 \n  \tand s2 in projects.pr1 and s1 in projects.pr2 and s2 in projects.pr2 \n  \timplies pr1 = pr2\n  \n  \tall disj s1, s2 : Student | lone s1.projects & s2.projects\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n  all s1, s2: Student, p: Project | \n  \t\t(s1 != s2 and \n  \t\ts1->p in (Person<:projects) and\n  \t\ts2->p in (Person<:projects)) implies\n  \t\tone p1: Project | s1->p1 in (Person<:projects) and s2->p1 in (Person<:projects)\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall disj s1, s2: Student | all p1, p2: Project | p1 in (s1.projects & s2.projects) and p2 in (s1.projects & s2.projects) => p1 = p2\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall disj p1, p2:Student | no disj d1, d2:Project | d1 in p1.projects and d2 in p1.projects and d1 in p2.projects and d2 in p2.projects\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n  \tall s1,s2:Student | not s1=s2 implies lone (s1.projects & s2.projects)\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall disj s,s1 : Student, disj p,p1: Project | p in s.projects and p in s1.projects and p1 in s.projects and p1 in s1.projects implies p = p1\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 115,
+            "syntactic_count": 28,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 61,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n\n\t\n\t\n        \n\n\tall s1 : Student | all s2 : Student | lone (s1.projects & s2.projects)\n\n}"
+                },
+                {
+                    "entry_count": 12,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall s1, s2: Student | lone (s1 & s2).projects\n}"
+                },
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall s1, s2: Student | #(s1.projects & s2.projects) < 2\n}"
+                },
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall s1, s2: Student, p1, p2: Project | p1 in s1.projects and p2 in s1.projects and p1 in s2.projects and p2 in s2.projects => p1 = p2\n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall x, y: Student | #(x.projects & y.projects) <= 1\n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n\n   all  s1, s2 : Student | lone pr : Project | pr in s1.projects and pr in s2.projects\n \n\t\n\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\n  all s1,s2 :Student , p1: s1.projects & s2.projects, p2:Project-p1 | p2 not in s1.projects & s2.projects\n// A student cannot work with the same student in different projects\n\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall s1, s2: Student |all p1, p2: Project | p1 != p2 and p1 in s1.projects and p1 in s2.projects implies p2 not in s1.projects or p2 not in s2.projects\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\n  all s1,s2 :Student,\n      p1,p2: Project|   \n  \t\tp1+p2 in s1.projects & s2.projects => p1=p2\n// A student cannot work with the same student in different projects\n\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall s1, s2: Student | lone p: Project | p in s1.projects & s2.projects\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall s,s1 : Student, disj p,p1: Project | p in s.projects and p in s1.projects and p1 in s.projects and p1 in s1.projects implies p = p1\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall s1, s2: Student | all p1, p2: Project | p1 in (s1.projects & s2.projects) and p2 in (s1.projects & s2.projects) => p1 = p2\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n\n        all s1, s2 : Student | all p1, p2 : Project |\n\t \n\t   s1->p1 in projects and s2->p1 in projects and s1->p2 in projects and s2->p2 in projects\n\t  implies p1 = p2\n \n\t\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall s1, s2: Student | all disj p1, p2: Project | p1 in (s1.projects & s2.projects) => p2 not in (s1.projects & s2.projects)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n     all s : Student, p : s.projects, s1 : (Student<:projects).p | no (s1.projects&s.projects)-p\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall s1: Student | no s2: Student | #(s1 & s2).projects > 1\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n  all s, e : Student | all p1, p2 : Project | p1 != p2 and (p1 in s.projects and p1 in e.projects) implies not (p2 in s.projects and p2 in e.projects)\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n  all s1, s2 : Student | lone (s1.projects & s2.projects) -s1 -s2\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall s1,s2 : Student,p : Project | p in ( s1.projects & s2.projects ) \n    implies \n    (all p2: Project | p2 in ( s1.projects & s2.projects ) implies p = p2)\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall s1:Student, s2:Student| some(s1.projects) and some (s2.projects) implies lone(s1.projects & s2.projects)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n  \tall s1,s2 :Student | all p1:s1.projects | all p2:s2.projects |\n  \t\t\tp1 = p2 implies all rest:s1.projects-p1 | rest not in s2.projects-p1 and s1 != s2\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall s1 : Student | all s2 : Student | one (s1.projects & s2.projects) or no ( s1.projects & s2.projects)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n\n\tall s1 : Student | all s2 : Student | all p1 : Project | all p2 : Project | s1->p1 in projects and s2->p1 in projects and s1->p2 in projects and p1!=p2 implies not s2->p2 in projects\n\n\t\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n  \n  all p1,p2 : Student | all p : Project | p in p1.projects and p in p2.projects implies no pr : Project - p | pr in p1.projects and pr in p2.projects\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall x1, x2: Student | all disj p1, p2: Project |\n  \t\tp1 in x1.projects and\n  \t\tp1 in x2.projects and\n  \t\tp2 in x1.projects implies p2 not in x2.projects\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall s1, s2: Student | #({p: Project | p in (s1.projects & s2.projects)}) <=1  \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall s : Student | all disj p, p2 : s.projects | no (Person <: projects).p & (Person <: projects).p2\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall s: Student, p1, p2: Project | p1 != p2 implies \n        (p1 in s.projects and p2 in s.projects) implies no s2: Student | p1 in s2.projects and p2 in s2.projects\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 38,
+            "syntactic_count": 20,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 6,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall disj s1: Student, s2: Student | all disj p1: Project, p2: Project | ((p1 in s1.projects) && (p1 in s2.projects)) implies !( (p2 in s1.projects) && (p2 in s2.projects) )\n}"
+                },
+                {
+                    "entry_count": 5,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n  all s,s1: Student | no(s.projects & s1.projects)\n\n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n  all s1, s2 : Student | all p1, p2 : Project | p1 in s1.projects and p2 in s1.projects and p1 in s2.projects implies p2 not in s2.projects\n\n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n  \tall s1, s2 : Student, p1, p2 : Project | (p1 in s1.projects and p1 in s2.projects) implies (p2 not in s1.projects and p2 not in s2.projects)\n\n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n  \tall s1, s2 : Student, p1, p2 : Project | (p1 in s1.projects and p1 in s2.projects) implies (p2 not in s1.projects or p2 not in s2.projects)\n\n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n  \tall s1,s2 :Student | all p1:s1.projects | all p2:s2.projects |\n  \t\t\tp1 = p2 implies s1.projects-p1 not in s2.projects -p1 and s1 != s2\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall s1,s2: Student, p: s1.projects, ap: Project | p in s2.projects and ap in s1.projects implies ap not in s2.projects\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall disj s1: Student, s2: Student | all disj p1: Project, p2: Project | ((p1 in s1.projects) && (p1 in s1.projects)) implies !( (p2 in s1.projects) && (p2 in s2.projects) )\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall s1 : Student | no s2 : Student | s2 in projects.(s1.projects)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n  \tall s1,s2 :Student | all p1:s1.projects | all p2:s2.projects |\n  \t\t\tp1 = p2 implies s1.^projects-p1 not in s2.^projects-p1 and s1 != s2\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n\n\tall s1 : Student | all s2 : Student | all p1 : Project | all p2 : Project | s1->p1 in projects and s2->p1 in projects and s1->p2 in projects implies not s2->p2 in projects\n\n\t\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall s1,s2: Student, p: s1.projects, ap: Project | ap in s1.projects implies ap not in s2.projects\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall s: Student, p: s.projects, ap: Project | ap in s.projects implies ap not in (Person <: projects).p.projects\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall s: Student, p: s.projects, ap: Project | ap in s.projects implies ap not in (Student <: projects).p.projects\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall s1, s2: Student, p1, p2: Project | p1 in (s1.projects & s2.projects) => p2 not in (s1.projects & s2.projects)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall s1,s2 : Student | all p1,p2 : Project | p1 in s1.projects and p1 in s2.projects implies p2 not in s1.projects\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall s1, s2: Student | no (s1 & s2).projects\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t\n\tall s1, s2 : Student , p1, p2: Project | (p1 in s1.projects and p1 in s2.projects) implies (p2 in s2.projects implies not p2 in s1.projects )\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall s1,s2 : Student | all p1,p2 : Project | p1 in s1.projects and p1 in s2.projects implies p2 not in s1.projects or p2 not in s2.projects\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall p1,p2: Project, s1,s2: Student | s1+s2 in (Person <: projects).p1 implies\n  s1+s2 not in (Person <: projects).p2\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 25,
+            "syntactic_count": 16,
+            "correct": true,
+            "elems": [
+                {
+                    "entry_count": 5,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n\n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall disj s1, s2: Student | lone (s1 & s2).projects\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n    // A student cannot work with the same student in different projects\n\tall s1, s2: Student, pr1, pr2: Project | s1 != s2 and pr1 != pr2 and s1 in pr1 and s2 in pr1 and s1 in pr2 implies not s2 in pr2\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall s: Student | no disj p1, p2: s.projects | p1 != p2 and p1 in p2.projects\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall s1, s2: Student, p1, p2: Project | p1 in s1.enrolled and p2 in s2.enrolled => p1 = p2 \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall disj s1, s2: Student | no (s1 & s2).projects\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall s1,s2:Student | all p1:s1.projects | all p2:s2.projects | s1 != s2 and p1 = p2 implies all proj:s1.projects-p1 | proj not in p2.projects-p1\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall s,s1: Student | lone(s.projects.grades[s] & s1.projects.grades[s1])\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\nall s1, s2: Student, p1, p2: Project, c: Course | \n    (p1 in s1.projects.enrolled and p2 in s2.projects.enrolled) implies (s1 != s2 or p1 != p2)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n  all s: Person, p: s.projects | lone (Person-s).projects & p \n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall disj s1, s2: Student | #(s1 & s2).projects <= 2\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall disj s1, s2: Student, p1, p2: Project | p1 in s1.enrolled and p2 in s2.enrolled => p1 = p2 \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall s1,s2 : Student | all p1 : s1.projects | all p2 : s2.projects | lone p1 & p2\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall disj s1, s2: Student | #(s1 & s2).projects < 2\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall p1,p2:Person, w1,w2: Project | p1 != p2 and w1 != w2 and w1 in p1.projects and w1 in p2.projects implies not (p2 in w2 and p1 in w2)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall s1, s2: Student | lone Person<:(s1 & s2).projects\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 15,
+            "syntactic_count": 14,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n    all s1, s2: Student, p1, p2 : Project | s1 != s2 and p1 in s1.projects and p1 in s2.projects implies ( p2 in s1.projects and p2 not in s2.projects or p2 in s2.projects and p2 not in s1.projects)\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall s, s1: Student | all p, p1: Project | s != s1 and ( p in s.projects and p in s1.projects) implies (p1 not in s.projects or p1 not in s1.projects)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n  \tall disj s1, s2: Student | all p1, p2: Project | p1 in s1.projects and p1 in s2.projects and p2 in s1.projects implies p2 not in s2.projects\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall disj s1,s2 : Student | all p1,p2 : Project | p1 in s1.projects and p1 in s2.projects implies p2 not in s1.projects or p2 not in s2.projects\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n\n            all disj s1, s2 : Student | all pr : Project | \n           not (pr in s1.projects and pr in s2.projects)\n\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n\n  \tall s,s2: Student | s != s2 implies lone s.projects & s2.projects\n  \n  \tall s,s2: Student | s != s2 implies no (s.projects & s2.projects)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n    // A student cannot work with the same student in different projects\n    all s1, s2: Student, p1, p2: Project |\n        s1 != s2 and p1 in s1.projects and p1 in s2.projects implies \n            (p2 in s1.projects and p2 not in s2.projects)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall disj s1,s2 : Student | all p1,p2 : Project | p1 in s1.projects and p1 in s2.projects implies p2 not in s1.projects\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n  all s1, s2 : Student | all p1, p2 : Project | p1 in s1.projects and p2 in s1.projects and p1 in s2.projects and s1 != s2 implies p2 not in s2.projects\n  \n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall disj s1,s2 : Student | no s1.projects  & s2.projects\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall p1,p2 : Student | all c1: Project |\n      (p1!=p2 and p1->c1 in projects and p2->c1 in projects) implies \n       (all c2 : Project | p1->c2 in projects implies p2->c2 not in projects)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n  \tall disj s1, s2 : Student, p1, p2 : Project | (p1 in s1.projects and p1 in s2.projects) implies not (p2 in s1.projects and p2 in s2.projects)\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n  all s,s1: Student | s!=s1 implies no (s.projects & s1.projects)\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n  all s: Student, p: s.projects | no (Student-s).projects & p \n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 15,
+            "syntactic_count": 6,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 10,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall s1:Student, s2:Student| s1!=s2 and lone(s1.projects & s2.projects)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n  all s: Student, s2: Student| no(s.projects & s2.projects) and s != s2\n\t// A student cannot work with the same student in different projects\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall s1,s2 : Student | s1 != s2 and s1.projects not in s2.projects\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall x : Student, y : Student | one p : Project | x != y and p in x.projects and p in y.projects \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall s1, s2 : Student | s1.projects != s2.projects \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n\n\tall s1, s2: Student | not s1.projects in s2.projects\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 8,
+            "syntactic_count": 3,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n  \tall s1,s2 : Student | s1 != s2 implies one (s1.projects & s2.projects)\n\n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall disj s1, s2 : Student | one (s1.projects & s2.projects)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n  all s : Student, col : Student - s | one (s.projects & col.projects)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 7,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 7,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall s : Student | all s1 : Student | one (s.projects & s1.projects)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 6,
+            "syntactic_count": 6,
+            "correct": true,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n\n        all s1, s2 : Student | all p1, p2 : Project | s1->p1 in projects and s2->p1 in projects and s1->p2 in projects and s1!=s2 and p1!=p2 implies not s2->p2 in projects\n\t\n\n\tall p : Person, disj x,y : p.projects | no ((Person <: projects).x & projects.y) - p\n\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall p1,p2: Project, s1,s2: Person | (s1+s2 in (Person <: projects).p1 and s1!=s2 and p1!=p2) implies s1+s2 not in (Person <: projects).p2\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall p1,p2:Person, w1,w2: Project | p1 != p2 and w1 != w2 and w1 in p1.projects and w1 in p2.projects \n  \t\t\t\t\t\t\t\t\t\timplies ((p1.projects - w1) & (p2.projects - w1) = none )\n  \t\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall p : Person, disj x,y : p.projects | no ((Person <: projects).x & projects.y) - p\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall p1,p2:Person, w1,w2: Project | p1 != p2 and w1 != w2 \n  \t\t\t\t\t\t\t\t\t\tand w1 in p1.projects and w1 in p2.projects \n  \t\t\t\t\t\t\t\t\t\t\timplies not (w2 in p2.projects and w2 in p1.projects)\n  \t\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n  all p1:Person | all p2:Person-p1 | all pr1:Project | all pr2:Project - pr1  | pr1 in p1.projects and pr1  in p2.projects and pr2 in p1.projects and pr2 in p2.projects implies pr1 = pr2\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 5,
+            "syntactic_count": 5,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n  all s: Student, s2: Student, p: Project| (s & s2) in (projects.p) and some p2: Project | not(s-> p in projects) or not(s2-> p in projects)\n\t// A student cannot work with the same student in different projects\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n  all s: Student, s2: Student, p: Project| (s & s2) in (projects.p) and some p2: Project | not(s-> p2 in projects) or not(s2-> p2 in projects)\n\t// A student cannot work with the same student in different projects\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n  \tall s1, s2 : Student, p1, p2 : Project | s1 != s2 and (p1 in s1.projects and p1 in s2.projects and p2 in s1.projects and p2 in s2.projects => p1 = p2)\n    \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n  all s: Student, s2: Student, p: Project| (s & s2) in (projects.p) and  no(s.projects & s2.projects)\n\t// A student cannot work with the same student in different projects\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n    all s1, s2: Student, p: Project | s1 != s2\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 5,
+            "syntactic_count": 5,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall disj s1, s2: Student | all p1, p2: Project | p1 in s1.projects and p1 in s2.projects and p1 in s1.projects and p2 in s2.projects => p1 = p2\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall disj s1,s2:Student | all disj p1,p2:Project | p1 in s1.projects and p2 in s2.projects and p2 in s1.projects implies p2 not in s2.projects\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall s1, s2: Student | s1 != s2 implies no p1, p2: s1.projects | p1 != p2 and p2 in s2.projects\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall s : Student, s2 : Student-s, p : Project, p2 : Project-p | (s->p in projects and s2->p in projects) implies (not s2->p2 in projects)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n  \tall disj s1, s2 : Student, disj p1, p2 : Project | (p1 in s1.projects and p1 in s2.projects) implies (p2 not in s1.projects and p2 not in s2.projects)\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 3,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall s : Student | one s.projects & s.^(projects)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall s : Student | one s.projects & s.*(projects)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 3,
+            "syntactic_count": 3,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n  all disj s, s1 : Student | all disj p , p1 : Project | (p in s.projects and p in s1.projects) implies ( p1 in s.projects and p1 not in s1.projects) \n\t// A student cannot work with the same student in different projects\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall s : Student, s2 : Student-s, p : Project, p2 : Project-p | (s->p in projects and s2->p in projects) implies (not s2->p2 in projects and s->p2 in projects)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n    // A student cannot work with the same student in different projects\n    all s1, s2: Student, p1, p2: Project |\n        s1 != s2 and p1 != p2 and p1 in s1.projects and p1 in s2.projects implies \n            (p2 in s1.projects and p2 not in s2.projects)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 3,
+            "syntactic_count": 3,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall x,y : Project | all a,b : (Person<:projects).x | a in projects.y implies b not in projects.y\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall p1,p2: Project, s1,s2: Person | s1+s2 in (Person <: projects).p1 implies\n  s1+s2 not in (Person <: projects).p2\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall x,y : Project | all a,b : (Person<:projects).x | a in projects.y iff b not in projects.y\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 3,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall p1,p2: Project, s1,s2: Person | s1+s2 in (Person <: projects).p1 and s1!=s2 implies s1+s2 not in (Person <: projects).p2\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n  all s: Person, p: s.projects | no (Person-s).projects & p \n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n  all p: Person, p2: Person| no(p.projects & p2.projects) and p in Student and p2 in Student\n\t// A student cannot work with the same student in different projects\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n  all p: Person, p2: Person| no(p.projects & p2.projects) and (p & p2) in Student\n\t// A student cannot work with the same student in different projects\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall s1,s2 : Student | lone p1 : s1.projects | s1 != s2 and p1 not in s2.projects\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n    all s1 : Student, s2 : Student | lone (s1.projects - s2.projects)\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall disj s1,s2:Student | lone p:Project |\n  \t\tp in s1.projects and p in s2.projects implies (all p2:Project | p2 in s1.projects implies not p2 in s2.projects)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n  \n  all p1,p2 : Student | some p : Project | p in p1.projects and p in p2.projects implies no pr : Project - p | pr in p1.projects and pr in p2.projects\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall s1, s2 : Student | \n    some p1 : Project | (p1 in s1.projects and p1 in s2.projects)\n    implies no p2 : Project | \n    p2 != p1 and (p2 in s1.projects and p2 in s2.projects)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n  all disj s, s1 : Student | all  p : Project | (p in s.projects and p in s1.projects) implies no p1 : Project | p != p1 and p1 in s.projects and p1 not in s1.projects\n\t// A student cannot work with the same student in different projects\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n  all disj s, s1 : Student | all  p  : Project | (p in s.projects and p in s1.projects) implies no p1 : Project | p1 in s.projects and p1 not in s1.projects\n\t// A student cannot work with the same student in different projects\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall s1,s2 : Student | some p1,p2 : s1.projects | s1 != s2 and p1 in s2.projects and p2 in s2.projects implies p1 = p2\n  \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall s1,s2 : Student | some p1,p2 : s1.projects | p1 in s2.projects and p2 in s2.projects implies p1 = p2\n  \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n  all s1, s2 : Student | some p : Project | p in (s1.projects & s2.projects) implies p not in (s1.projects & s2.projects) - p\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n  \t\n\tall s1,s2: Student | some p1,p2: Project | ( p1 in s1.projects + s2.projects) and ( p2 in s1.projects + s2.projects) implies p1 = p2\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall s1, s2: Student, p1, p2: Project | p1 in s1.projects and p2 in s2.projects => p1 = p2 \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n  \t\n\tall s1,s2: Student | all p1,p2: Project | ( p1 in s1.projects + s2.projects) and ( p2 in s1.projects + s2.projects) implies p1 = p2\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n  \tall disj s1,s2 : Student | lone(s1.projects & s1.projects)\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n  all s,s1: Student | no(s.enrolled.projects & s1.enrolled.projects)\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n    \n    all disj c1,c2:Course | no (c1.grades & c2.grades)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n  \tall s1,s2 :Student | all p1:s1.projects | all p2:s2.projects | p1 = p2 and s1 != s2 implies s1.projects-p1 not in s2.projects -p1\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n  all s: Student, p: s.projects | no (Person-s).projects & p \n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n  all s: Person, p: s.projects | one (Person-s).projects & p \n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n  all s: Person | one (Person-s).projects & s.projects \n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n  all s: Person | lone (Person-s).projects & s.projects \n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall disj s1, s2: Student | lone s1.projects.~(Course <: projects) & s2.projects.~(Course <: projects)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n  all s: Student, s2: Student, c: Course| no(s.projects & s2.projects) and s != s2\n\t// A student cannot work with the same student in different projects\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n  all p: Person, p2: Person| no(p.projects & p2.projects) implies (p & p2) in Student\n\t// A student cannot work with the same student in different projects\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall disj s1,s2:Student | one p:Project |\n  \t\tp in s1.projects and p in s2.projects implies (all p2:Project | p2 in s1.projects implies not p2 in s2.projects)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall s1: Student | some s2: Student | lone (s1 & s2).projects\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tsome s1: Student | some s2: Student | lone (s1 & s2).projects\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall s1, s2: Student | one (s1 & s2).projects\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n  \tall s1, s2: Student, p1, p2: Project | (p1 in (s1.enrolled).projects and p1 in (s2.enrolled).projects and p2 in (s1.enrolled).projects and p2 in (s2.enrolled).projects) implies p1=p2\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall disj s1, s2: Student | #(s1.projects & s2.projects) > 2\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall disj s1,s2:Student | one p1:Project | all p2:Project | p1 in s1.projects and p2 in s2.projects and p2 in s1.projects implies p2 not in s2.projects\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall disj s1,s2:Student | one p1:Project | all p2:Project | p1 != p2 and p1 in s1.projects and p2 in s2.projects and p2 in s1.projects implies p2 not in s2.projects\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall disj s1,s2:Student | one p1:Project | all p2:Project | p1 != p2 and p1 in s1.projects and p1 in s2.projects and p2 in s1.projects implies p2 not in s2.projects\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall disj s1, s2: Student | some p:s1.projects | p not in s2.projects\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall s1, s2: Student | #({p: Project | p in (s1.projects & s2.projects) and p not in (s1.teaches.projects + s2.teaches.projects)}) <=1  \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": true,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall s : Student | all disj p, p2 : s.projects | no ((Person <: projects).p & (Person <: projects).p2) - s\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall disj s, t : Student | lone (s.enrolled & t.enrolled)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall s1,s2 : Student | all p : s1.projects | lone pro : Project | p in s2.projects implies pro in s1.projects and pro in s2.projects\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall s1, s2: Student, disj p1, p2: Project | p1 in s1.enrolled and p2 in s2.enrolled\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall disj s1, s2: Student, p1, p2: Project | p1 in s1.projects and p2 in s2.projects => p1 = p2 \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall disj s1, s2: Student, p1, p2: Project |\n  \t\tsome p: s1.projects | p in s2.projects implies s1.projects - p != s2.projects - p\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n\tall p1,p2:Person, w1,w2: Project | p1 != p2 and w1 != w2 \n  \t\t\t\t\t\t\t\t\t\tand w1 in p1.projects and w1 in p2.projects implies (p1.projects - w1 & p2.projects - w1 = none )\n  \t\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n  \tall s1, s2: Student, c1, c2: Course, p1, p2: Project | s1 in enrolled.c1 and s2 in enrolled.c1 and s1 in enrolled.c2 and s2 in enrolled.c2 and p1 in c1.projects and p2 in c2.projects and p1 in s1.projects and p2 in s2.projects implies c1 = c2 and p1 = p2\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A student cannot work with the same student in different projects\n  \tall s1, s2: Student, c: s1.enrolled & s2.enrolled | lone (s1.projects & s2.projects & c.projects)\n}"
+                }
+            ]
+        }
+    ]
+}

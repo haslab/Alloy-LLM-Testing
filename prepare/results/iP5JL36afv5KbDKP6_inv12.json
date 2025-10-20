@@ -1,0 +1,1543 @@
+{
+    "original": "iP5JL36afv5KbDKP6",
+    "cmd": "inv12",
+    "pred": "this/inv12",
+    "entry_count": 751,
+    "semantic_count": 92,
+    "syntactic_count": 222,
+    "scope": 3,
+    "groups": [
+        {
+            "entry_count": 286,
+            "syntactic_count": 17,
+            "correct": true,
+            "elems": [
+                {
+                    "entry_count": 176,
+                    "code": "{\n\t// Students have at most one grade per course\n\tall s : Student, c : Course | lone c.grades[s] \n}"
+                },
+                {
+                    "entry_count": 29,
+                    "code": "{\n\t// Students have at most one grade per course\n\tall s : Student, c : Course | lone g : Grade | s->g in c.grades\n}"
+                },
+                {
+                    "entry_count": 14,
+                    "code": "{\n\t// Students have at most one grade per course\n\t all s : Student | all c : Course |\n\t   lone g : Grade | c->s->g in grades\n\n\t\n\n  \t\n\t\n}"
+                },
+                {
+                    "entry_count": 14,
+                    "code": "{\n\t// Students have at most one grade per course\n\tall s:Student  | all c:Course | lone g:Grade | s in c.grades.g\n}"
+                },
+                {
+                    "entry_count": 10,
+                    "code": "{\n\t// Students have at most one grade per course\n\tall s: Student, c: Course | lone g: Grade | g in c.grades[s]\n}"
+                },
+                {
+                    "entry_count": 8,
+                    "code": "{\n\tall c : Course, g1,g2 : Grade, s : Student | (c->s->g1 in grades and c->s->g2 in grades) implies (g1=g2)\n\n}"
+                },
+                {
+                    "entry_count": 7,
+                    "code": "{\n\t// Students have at most one grade per course\n\tall c: Course, s: Student, g1,g2: Grade | s->g1 in c.grades and s->g2 in c.grades => g1 = g2 \n}"
+                },
+                {
+                    "entry_count": 7,
+                    "code": "{\n\t// Students have at most one grade per course\n\tall s: Student | all c: Course | #c.grades[s] < 2\n}"
+                },
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// Students have at most one grade per course\n\tall s: Student | all c: Course | all g1, g2: Grade | g1 in c.grades[s] and g2 in c.grades[s] => g1 = g2\n}"
+                },
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// Students have at most one grade per course\n  all c:Course | all s:Student | lone s <: c.grades \n\n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Students have at most one grade per course\n\t\n  \tall s : Student, c : Course, g : Grade | s->g in c.grades implies (one g1 : Grade | s->g1 in c.grades)\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Students have at most one grade per course\n\tall s: Student, c: Course |\n  \t\tlone (s->Grade) & c.grades\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Students have at most one grade per course\n\tall c:Course | all s:Student | lone g:c.grades[s] | g != none\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Students have at most one grade per course\n  all s:Student | all c:Course | #{c.grades[s]} <=1\n\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Students have at most one grade per course\n\tall s : Student , c : Course | lone (c->s->Grade) & grades \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students have at most one grade per course\n\tall c : Course | all s : Student | lone c.grades[s] & Grade \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n    // Students have at most one grade per course\n    all s : Student, c : Course |\n        lone g1, g2 : Grade | g1 in c.grades[s] and g2 in c.grades[s] and g1 != g2\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 125,
+            "syntactic_count": 61,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 18,
+                    "code": "{\n\t// Students have at most one grade per course\n\tall s:Student, c:Course | lone c.grades.s\n}"
+                },
+                {
+                    "entry_count": 12,
+                    "code": "{\n\t// Students have at most one grade per course\n  all s : Student , c : s.enrolled | lone (c.grades).s\n\n}"
+                },
+                {
+                    "entry_count": 6,
+                    "code": "{\n\t// Students have at most one grade per course\n\n}"
+                },
+                {
+                    "entry_count": 5,
+                    "code": "{\n\t// Students have at most one grade per course\n\tall s:Student, c:Course | lone g : Grade | g in c.grades.s\n\n}"
+                },
+                {
+                    "entry_count": 5,
+                    "code": "{\n\t// Students have at most one grade per course\n\t\n    all p : Student, c : Course | lone c.grades.Grade & p\n  \n}"
+                },
+                {
+                    "entry_count": 4,
+                    "code": "{\n    // Students have at most one grade per course\n    all s: Student, c: Course | lone s.grades[c]\n}"
+                },
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// Students have at most one grade per course\n\t(all s: Student| lone Course.grades.s)\n}"
+                },
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// Students have at most one grade per course\n\t\n  all p : Student, c : p.enrolled | lone c.grades.Grade & p\n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Students have at most one grade per course\n\tall s : Student | lone(s.enrolled.grades.s) \n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Students have at most one grade per course\n  \tall s: Student | all c: Course | c in s.enrolled implies\n\t\t#(c.grades.Grade & s) <=1\n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Students have at most one grade per course\n\tall s : Student, c : Course | lone g : Grade | c.grades[s] = g\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Students have at most one grade per course\n\tall s : Student | all c : s.enrolled | lone g : c.grades.Grade | s in g \n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Students have at most one grade per course\n\tall s : Student | all c : Course | some (s.enrolled & c) implies one (c.grades.Grade & s) or no (c.grades.Grade & s)\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Students have at most one grade per course\n\tall p1 : Person | all c1 : Course | all g1 : Grade|\n  \t#(c1->p1->g1 & grades) <= 1\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Students have at most one grade per course\n\tall s : Student , c : Course | lone (c->s)->Grade.grades \n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Students have at most one grade per course\n  \tall s : Student, c : s.enrolled | lone p1 : c.grades.Grade | p1 = s\n\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Students have at most one grade per course\n\tlone Course.grades.Person\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Students have at most one grade per course\n\tall s:Student, c:s.enrolled | #(s & c.grades.Grade) < 2\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Students have at most one grade per course\n\tall s: Student, c: Course | c in s.enrolled implies lone c.grades.s\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students have at most one grade per course\n\t\n   \tall s :Student, c : Course | #(s & c.grades.Person) <= 1\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students have at most one grade per course\n\tall s: Student | all g1, g2: Grade | all c: Course | \n  \t\t#grades.s <= 1\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students have at most one grade per course\n  \tall c: Course, s: Student, g1,g2: Grade | some Student\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students have at most one grade per course\n  \tall s: Student | all c: Course | c in s.enrolled implies\n\t\t#(c.grades.Grade & s) <2\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students have at most one grade per course\n\tall s: Student, c: Course | lone c.grades.Student\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students have at most one grade per course\n\tall s: Student, c: Course | c in s.enrolled implies lone c.grades.Person\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students have at most one grade per course\n\tall s: Student | all c: Course | all g: Grade | lone s & c.grades.g\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students have at most one grade per course\n\tall s: Student, c: Course |\n  \t\t#( s & c.grades.Grade) <= 1\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students have at most one grade per course\n\tall s : Student , c : Course | lone (c->s).grades \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n  \tall s: Student, c: Course | lone s.(c.grades) implies lone g: Grade | c -> s -> g in grades \n\t// Students have at most one grade per course\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students have at most one grade per course\n\tall s: Student | all c: Course | #c->s.grades <= 1\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students have at most one grade per course\n\tall s: Student, c: Course, g1, g2: Grade | g1 = c.grades[s] and g2 = c.grades[2] => g1 = g2\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students have at most one grade per course\n  \tall s : Student, c : s.enrolled | lone s.grades.Grade\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students have at most one grade per course\n\tall s : Student, g : Grade, c : Course | lone (s->g & c.grades)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students have at most one grade per course\n\tall s: Student, c: s.enrolled | #(c.grades.Grade & s) <= 1\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students have at most one grade per course\n\tall s: Student | all g: Grade | all c: Course | \n  \t\t#grades.c->s <= 1\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students have at most one grade per course\n\tall s: Student, c: Course | lone s.grades\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students have at most one grade per course\n  \t\n  \tall s: Student, c: Course | lone g: Grade | s->c->g in grades\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students have at most one grade per course\n\tall s:Student, c:Course | lone g : Grade | g in c.grades.Grade \n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students have at most one grade per course\n\tall s:Student | lone grades[s]\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students have at most one grade per course\n  \tall s : Student, c : s.enrolled | lone Course.grades.s\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students have at most one grade per course\n   all s : Student | all c : s.enrolled | all p : c.enrolled | p in Student\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students have at most one grade per course\n\t\n  \tall x: Student | lone (Course->x).grades\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students have at most one grade per course\n\tall s: Student, c: Course, g1, g2: Grade | g1 = c.grades[s] and g2 = c.grades[s] => g1 = g2\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students have at most one grade per course\n  \tall p : Person, g : Grade, c : Course | lone p.(g.grades)\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students have at most one grade per course\n\tall s : Student | lone(s.enrolled.grades.Grade & s) \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n    all s: Student, c: Course | c.enrolled = s => lone g: Grade | g = c.grades[s]\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students have at most one grade per course\n\tall s : Student , c : s.enrolled |\n  \t\tlone c.(s.grades)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students have at most one grade per course\n\tall s : Student | all c : s.enrolled | lone g : Grade | \n\t\tg in c.grades.s \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students have at most one grade per course\n  \tall s: Student, c: Course, g1, g2: Grade | c in s.enrolled and s->c->g1 in grades and s->c->g2 in grades implies g1=g2\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students have at most one grade per course\n\tall s: Student | no s.grades & s.grades\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students have at most one grade per course\n  \tall s: Student | all c: Course | c in s.enrolled implies\n\t\t#(c.grades.Person & s) <=1\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students have at most one grade per course\n\tall c : Course, ps:c.grades.Grade| lone enrolled.c&ps\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students have at most one grade per course\n\tall s: Student, c: s.enrolled | #(c.grades & s.grades) <= 1\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students have at most one grade per course\n\tall x: Student | all c: Course | all g: Grade | \n  \t\tlone c->x->g\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students have at most one grade per course\n  \t\n  \tall s: Student, g: Grade | lone (s.grades.g & s.enrolled)\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students have at most one grade per course\n\tall c: Course | lone c.grades.Person\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students have at most one grade per course\n\tall c : Course | all p : c.grades.Grade | lone p\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students have at most one grade per course\n\tall s: Student, c: s.enrolled | #(c.grades.s) <= 1\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students have at most one grade per course\n\tall s: Student |\n  \t\t#grades.s <= 1\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students have at most one grade per course\n  \tall s: Student | all c: Course | c in s.enrolled implies\n\t\t#(c.grades.s) <=1\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students have at most one grade per course\n\tall p1 : Person | all c1 : Course | all g1 : Grade|\n  \t#(c1->p1->g1) <= 1\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 116,
+            "syntactic_count": 13,
+            "correct": true,
+            "elems": [
+                {
+                    "entry_count": 83,
+                    "code": "{\n\t// Students have at most one grade per course\n  all s : Student , c : s.enrolled | lone s.(c.grades)\n\n}"
+                },
+                {
+                    "entry_count": 8,
+                    "code": "{\n\t// Students have at most one grade per course\n\tall c : Course, s : Student | c in s.enrolled => lone c.grades[s]\n}"
+                },
+                {
+                    "entry_count": 8,
+                    "code": "{\n\t// Students have at most one grade per course\n  \t\n  \n  \tall s : Student | all c : s.enrolled | lone g : Grade | s->g in c.grades\n\n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Students have at most one grade per course\n\tall p1 : Student | all c1 : Course |\n  \t(p1->c1 in enrolled) implies (lone g1 : Grade | c1->p1->g1 in grades) \n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Students have at most one grade per course\n\tall s : Student | all c : Course | some (s.enrolled & c) implies one s.(c.grades) or no s.(c.grades)\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Students have at most one grade per course\n\tall s:Student, c:Course | c in s.enrolled implies \n  \t\t\t\tno disj g1,g2:Grade | g1 in s.(c.grades) and g2 in s.(c.grades)\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n  // Students have at most one grade per course\n  all s: Student, c: Course | \n    c in s.enrolled implies lone g: Grade | s->g in c.grades\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Students have at most one grade per course\n\tall s:Student, c:s.enrolled |  #(c.grades[s]) < 2\n  \n  \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students have at most one grade per course\n  \tall c: Course, g: Grade, s:Student | \n  \t\tc in s.enrolled implies lone (s.(c.grades))\n\t\t\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students have at most one grade per course\n\tall s:Student | all c:Course |\n  \t\tc in s.enrolled implies lone g:Grade | g in s.(c.grades)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students have at most one grade per course\n\tall s: Student | all c: s.enrolled |\n  \t\t#( s.(c.grades) ) <= 1\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students have at most one grade per course\n  \tall s: Student, c: Course, g1, g2: Grade | c in s.enrolled and c->s->g1 in grades and c->s->g2 in grades implies g1=g2\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students have at most one grade per course\n\t\n  all s: Student, c: Course |\n        c in s.enrolled implies #(c.grades[s]) <= 1\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 19,
+            "syntactic_count": 5,
+            "correct": true,
+            "elems": [
+                {
+                    "entry_count": 8,
+                    "code": "{\n\t// Students have at most one grade per course\n\tall course: Course, person: Person | lone grade: Grade | person->grade in course.grades\n}"
+                },
+                {
+                    "entry_count": 8,
+                    "code": "{\n\t// Students have at most one grade per course\n\tall p : Person, c : Course | lone p.(c.grades)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students have at most one grade per course\n  \tall p : Person, g : Grade, c : Course | lone p.(c.grades)\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students have at most one grade per course\n\tall c : Course | c.grades in Person -> lone Grade\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students have at most one grade per course\n  all c: Course | all s: c.grades.Grade | one g: Grade | s->g in c.grades\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 15,
+            "syntactic_count": 5,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 10,
+                    "code": "{\n\t// Students have at most one grade per course\n\tall p: Student | all c: Course | (one c.grades[p])\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Students have at most one grade per course\n\tall s : Student, c : Course | one g : Grade | s -> g in c.grades\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students have at most one grade per course\n\tall s:Student | all c:Course | one g:Grade | s in c.grades.g\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students have at most one grade per course\n  \t\n  \tall s: Student, c: Course | one g: Grade | c->s->g in grades\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students have at most one grade per course\n\tall c : Course , s : Student | #c.grades[s] = 1\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 14,
+            "syntactic_count": 10,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// Students have at most one grade per course\n  all s: Student , c: Course | one c.grades.s\n\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Students have at most one grade per course\n\tall s:Student | all c:Course | one g:Grade | g in c.grades.s\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students have at most one grade per course\n  all s: Student , c: Course | one c.grades.Student\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students have at most one grade per course\n\tall c: Course | all s: Student | one (s.enrolled.grades.s) \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students have at most one grade per course\n  all s: Student, c: Course | one g: Grade | s in enrolled.c implies (one c.grades)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students have at most one grade per course\n    all s : Student | all c : Course | one (s.enrolled.grades.Person & ( c.grades.Person))\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students have at most one grade per course\n\tall s : Student, c : Course | one(grades.Course)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students have at most one grade per course\n\tall s : Student, c : Course | one(grades.c.s)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students have at most one grade per course\n\tall s : Student, c : Course | one(grades.Course.s)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students have at most one grade per course\n  all s: Student, c: Course | lone g: Grade | c in s.enrolled implies c.grades.s in g\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 13,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 12,
+                    "code": "{\n\t// Students have at most one grade per course\n\t\n\t\n\n\t\n\n\tall s : Student | lone s.(Course.grades)\n\n  \t\n\t\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students have at most one grade per course\n\t\n  \tall x: Student | lone g: Grade | x in Course.grades.g\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 9,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 7,
+                    "code": "{\n\t// Students have at most one grade per course\n\tall s : Student | lone(s.enrolled.grades) \n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Students have at most one grade per course\n    all s: Student, c: Course | lone s.enrolled.grades\n\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 8,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 6,
+                    "code": "{\n\t// Students have at most one grade per course\n\t\n\t\n\n\t\n\n\tlone Student.(Course.grades)\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Students have at most one grade per course\n\t\n\t\n\n\tall s : Student, c : Course | lone s.(c.grades)\n\n\tlone Student.(Course.grades)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 7,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 6,
+                    "code": "{\n\t// Students have at most one grade per course\n  all s:Student | all c:s.enrolled | one s.(c.grades)\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students have at most one grade per course\n   all s: Student | all c: s.enrolled | #(s.(c.grades)) = 1 \n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 7,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 5,
+                    "code": "{\n\t// Students have at most one grade per course\n  all s : Student | all c : s.enrolled | lone c.grades\n\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Students have at most one grade per course\n  all s: Student, c: Course | s in enrolled.c implies (lone c.grades)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 6,
+            "syntactic_count": 4,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Students have at most one grade per course\n\tall p:Student | all c:Course | all g1,g2:Grade | p->g2 in c.grades and p->g2 in c.grades implies g1=g2\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students have at most one grade per course\n\tall s1,s2 : Student | all c : Course | s1 in c.grades.Grade and s2 in c.grades.Grade implies s1 != s2 \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students have at most one grade per course\n\tall p:Person | all c:Course | all g1,g2:Grade | p in Student and p->g2 in c.grades and p->g2 in c.grades implies g1=g2\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students have at most one grade per course\n\tall s1,s2 : Student | s1 in Course.grades.Grade and s2 in Course.grades.Grade implies s1 != s2 \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 6,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// Students have at most one grade per course\n  \tall c: Course, s: Student | lone c.grades\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Students have at most one grade per course\n\tall s : Student , c : Course | lone s->c.grades \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 6,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 6,
+                    "code": "{\n\t// Students have at most one grade per course\n\t\n\t\n\n\t\n  all c : Course | lone c.grades.Grade\n\n\t\n\t\n\t\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 5,
+            "syntactic_count": 4,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Students have at most one grade per course\n\tall s : Student | all c : Course | some (s.enrolled & c) implies one (c.grades.Grade & s)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students have at most one grade per course\n\t\n  all p : Student, c : p.enrolled | one c.grades.Grade & p\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students have at most one grade per course\n\tall s:Student, c:s.enrolled | #(s & c.grades.Grade) = 1\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students have at most one grade per course\n  \tall s : Student, c : s.enrolled | one p1 : c.grades.Grade | p1 = s\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 5,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// Students have at most one grade per course\n\tall s: Student | lone(s.(s.enrolled.grades))\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students have at most one grade per course\n\tall s : Student, c : s.enrolled | lone s.(s.enrolled.grades)\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 4,
+            "syntactic_count": 3,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Students have at most one grade per course\n\tone Course.grades.Person\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students have at most one grade per course\n  one g : Grade | g in Course \n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students have at most one grade per course\n  one g : Grade | g in Course.grades.Student \n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 4,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Students have at most one grade per course\n  \tall c : Course | all p : Student | lone g : Grade | c in p.enrolled implies p->g in c.grades\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students have at most one grade per course\n\tall s: Student | all c: Course | c in s.enrolled and lone s.(c.grades)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 3,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Students have at most one grade per course\n    all s : Student, c : Course | lone (s.enrolled.grades - c.grades)\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 3,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Students have at most one grade per course\n  \tall p : Person , c : Course | one p.(c.grades)\n  \t\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 3,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Students have at most one grade per course\n\tall s: Student, c: Course | c in s.enrolled implies lone c.grades.Grade\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students have at most one grade per course\n\tall s:Student, c:s.enrolled | #(c.grades.Grade) < 2\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 3,
+            "syntactic_count": 2,
+            "correct": true,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Students have at most one grade per course\n\tall p : Person | all c : p.enrolled | lone(p.(c.grades))\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students have at most one grade per course\n\tall p : Person, c : Course | p->c in enrolled implies lone p.(c.grades)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 3,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Students have at most one grade per course\n\tall s : Student | one Course.grades.s\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students have at most one grade per course\n  all s : Student | one g : Grade | g in Course.grades.s \n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 3,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Students have at most one grade per course\n\t\n  all c : Course , p : Person | one ( c.grades.p)\n  \n  \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n  all c: Course, p: Person | \n      lone g: Grade | \n       g -> p -> c in grades implies c -> p -> g in grades and p in Student\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Students have at most one grade per course\n\tall c: Course | lone c.grades\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Students have at most one grade per course\n\tall s : Student | lone g : Grade | all c : Course | c.grades[s] = g\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students have at most one grade per course\n\tall s : Student, c : Course |\n  \t\tsome s.(c.grades)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students have at most one grade per course\n\tall c: Course | all s: Student | \n  \t\tone (c.grades.Grade & s) \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Students have at most one grade per course\n\t\n  all c : Course , g : Grade | one ( c.grades.g) \n  \n  \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students have at most one grade per course\n\tall p:Person | all c:Course | all g1,g2:Grade | p->g2 in c.grades and p->g2 in c.grades implies g1=g2\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students have at most one grade per course\n  all c: Course | all g1, g2: Person.(c.grades) | \n  \t\t(g1 != g2) \n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students have at most one grade per course\n\tall p : Person, c : Course | p->c in enrolled implies one g : Grade | p->g in c.grades\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students have at most one grade per course\n\tall p : Person, c : Course | p->c in enrolled implies one p.(c.grades)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Students have at most one grade per course\n\tall c : Course | c.grades.Grade in enrolled.c\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Students have at most one grade per course\n\tall c : Course,g:Grade | lone c.grades.g\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students have at most one grade per course\n  all s: Student, c: Course | one g: Grade| s in enrolled.c implies s->g in c.grades\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students have at most one grade per course\n\tall s: Student | all c: Course | c in s.enrolled and one s.(c.grades)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students have at most one grade per course\n  all s: Student, c: Course | one g: Grade| (s->g in c.grades) implies (lone c.grades)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students have at most one grade per course\n  all s: Student, c: Course | one g: Grade| (s->g in c.grades) implies (one c.grades)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students have at most one grade per course\n\t\n\t\n\n\t\n\n\tall c : Course | lone Student.(c.grades)\n\n  \t\n\t\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students have at most one grade per course\n  \tall p : Person, g1,g2 : Grade, c : Course | p.(c.grades) in g1 and p.(c.grades) in g2 implies g1 = g2\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students have at most one grade per course\n\tall p : Professor | all c : p.enrolled | lone(p.(c.grades))\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students have at most one grade per course\n    all s : Student, c : Course | lone (s.enrolled.grades & c.grades)\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students have at most one grade per course\n  \tall s : Student | all c : grades.Grade.s | lone(c.grades)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students have at most one grade per course\n  all c : Course | lone c.grades & Student.enrolled.grades\n  \n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students have at most one grade per course\n\tall s1, s2 : Student, c : Course | some s1.(c.grades) and some s2.(c.grades) implies s1 = s2\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students have at most one grade per course\n  \tall s : Student, c : s.enrolled | one c.grades.Grade \n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students have at most one grade per course\n\tall s : Student | one(s.enrolled.grades) \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students have at most one grade per course\n  all s : Student | all c : s.enrolled | lone c.grades\n  \n  all c : Course | all per : Person | lone g : Grade | per->g in c.grades\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\tall s : Student | (grades.Grade).s in s.enrolled\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students have at most one grade per course\n\tall s : Student | lone g : Grade | all c : s.enrolled | c.grades[s] = g\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students have at most one grade per course\n\tall s : Student, c : Course | one (c.grades.Grade)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students have at most one grade per course\n\tall s : Student, g : Grade, c : Course | lone s->g => s->g in c.grades\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students have at most one grade per course\n    one s: Student, c: Course | lone s.enrolled.grades\n\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students have at most one grade per course\n    some s: Student, c: Course | lone s.enrolled.grades\n\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": true,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students have at most one grade per course\n\tgrades in Course -> Student -> lone Grade\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n  all c : Course | lone g : Grade | all p : Person | \n\t c -> p -> g in grades implies p in Student\n\t// Students have at most one grade per course\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n  some c : Course | lone g : Grade | all p : Person | \n\t c -> p -> g in grades implies p in Student\n\t// Students have at most one grade per course\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n  all c : Course | all p : Person | lone g : Grade |\n\t c -> p -> g in grades implies p in Student\n\t// Students have at most one grade per course\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students have at most one grade per course\n  \tall s : Student, c : Course | one s->c.grades\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students have at most one grade per course\n\tCourse.grades in Student -> lone Grade\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students have at most one grade per course\n\t\n  all c : Course , p : Person | one ( c.grades)\n  \n  \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students have at most one grade per course\n\t\n  all c : Course  | one ( c.grades)\n  \n  \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students have at most one grade per course\n  \tall c: Course, g: Grade | lone (enrolled.c & c.grades.g) \n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students have at most one grade per course\n\tall c: Course | all s: Student | one (s.enrolled.grades.Grade) \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students have at most one grade per course\n  \tall s: Student | all c: Course | c in s.enrolled implies\n\t\t#(c.grades.Grade & s) <1\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students have at most one grade per course\n\tall c : Course, s:Student| lone c.grades.Grade \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students have at most one grade per course\n\tall s: Student | all g: Grade | all c: Course | \n  \t\t#grades->c->s <= 1\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students have at most one grade per course\n\tall s: Student | all g: Grade | one c: Course | \n  \t\t#(c->s->g & grades) <=  1\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students have at most one grade per course\n\tall s: Student | all g: Grade | all c1, c2: Course | \n  \t\tc1->s->g in grades and c2->s->g in grades\n  \t\t\timplies c1 = c2\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students have at most one grade per course\n\t\n    all c : Course | lone g : Grade | all s : Student | s in c.grades.g\n  \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students have at most one grade per course\n  all s: Student | lone (Course.grades.Grade)\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students have at most one grade per course\n\tall p:Student | some c:Course | all g1,g2:Grade | p->g2 in c.grades and p->g2 in c.grades implies g1=g2\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students have at most one grade per course\n all x: Student | some (x.enrolled.grades)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students have at most one grade per course\n\tall s:Student, c:s.enrolled | #(s & c.grades.Grade) >1\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n   all c : Course | all s : Student| lone c.grades[s] implies c in s.enrolled\n\t// Students have at most one grade per course\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students have at most one grade per course\n\tall p : Person | one Course.grades.p\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students have at most one grade per course\n\tone Course.grades.Grade\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students have at most one grade per course\n  all c:Course | lone g:Grade |all p:Person |  c->p->g in grades\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students have at most one grade per course\n\tall s: Student, g: Grade, c: s.enrolled | s->g in c.grades\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students have at most one grade per course\n\t\n\tlone (Student <: Course.grades)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students have at most one grade per course\n  all s : Student | lone s.enrolled.grades.Grade\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students have at most one grade per course\n  all s:Student | #(s.(Course.grades)) = 1\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students have at most one grade per course\n  all s:Student|one c:Course | lone s.(Course.grades)\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students have at most one grade per course\n  all s:Student|one c:Course | lone s.(c.grades)\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students have at most one grade per course\nCourse.grades.Grade in enrolled.Course\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students have at most one grade per course\n  all c:Course | one c.grades.Person\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t\n\tall c: Course | one g: Grade | c.grades.g in enrolled.c\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t\n\tall c: Course | one g: Grade | c.grades.g in Student\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students have at most one grade per course\n  all s: Student, c: Course | s in enrolled.c implies (one c.grades)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students have at most one grade per course\n\tall c : Course | all p : c.grades.Grade | lone p.enrolled.grades\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students have at most one grade per course\n\tall c : Course | all p : c.grades.Grade | lone p.enrolled.grades and p in Student\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students have at most one grade per course\n  all s: Student, c: Course | lone g: Grade| (s->g in c.grades) implies (lone c.grades)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students have at most one grade per course\n  all s: Student, c: Course | lone g: Grade | c.grades.g in enrolled.c\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students have at most one grade per course\n  all  c: Course | lone g: Grade | c.grades.g in enrolled.c\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students have at most one grade per course\n  all s: Student, c: Course | lone g: Grade | c in s.enrolled implies g in c.grades.s\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students have at most one grade per course\n\tlone Person.(Course.grades)\n}"
+                }
+            ]
+        }
+    ]
+}

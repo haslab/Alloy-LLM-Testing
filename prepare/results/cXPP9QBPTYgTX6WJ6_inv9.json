@@ -1,0 +1,2881 @@
+{
+    "original": "cXPP9QBPTYgTX6WJ6",
+    "cmd": "inv9",
+    "pred": "this/inv9",
+    "entry_count": 768,
+    "semantic_count": 206,
+    "syntactic_count": 357,
+    "scope": 3,
+    "groups": [
+        {
+            "entry_count": 206,
+            "syntactic_count": 23,
+            "correct": true,
+            "elems": [
+                {
+                    "entry_count": 135,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n  \tall t : Track | no (Junction&t.succs) implies no (Semaphore&t.signals)\n\n}"
+                },
+                {
+                    "entry_count": 9,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n  all t: Track | (t.succs & Junction) = none implies (t.signals & Semaphore) = none\n\n}"
+                },
+                {
+                    "entry_count": 9,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t: Track | \n  \t\t(no j: Junction | j in t.succs) implies (no s: Semaphore | s in t.signals)\n}"
+                },
+                {
+                    "entry_count": 9,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t : Track |  no t.succs & Junction implies no s : Semaphore | s in t.signals\n}"
+                },
+                {
+                    "entry_count": 5,
+                    "code": "{\n    // Tracks not followed by junctions do not have semaphores\n      \n  all t:Track | (all t1:t.succs | t1 not in Junction) implies no (t.signals & Semaphore)\n  \t\n\n}"
+                },
+                {
+                    "entry_count": 5,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n  \tall t: Track | t not in succs.Junction implies no (Semaphore & t.signals) \n\n}"
+                },
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t : Track - succs.Junction |\n  \t\tno t.signals & Semaphore\n}"
+                },
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n  \tall t : Track |  some (Semaphore&t.signals) implies  some (Junction&t.succs)\n\n}"
+                },
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tno ((Track - (succs.Junction)).signals :> Semaphore)\n}"
+                },
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t: Track | no(t.succs & Junction) implies no(t.signals & Semaphore)\n\tall t: Track | no(t.succs) implies no(t.signals & Semaphore)\n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n  \tall t: Track | ((no t2: Track | t2 in t.succs) or (no j: Junction | j in t.succs)) => no s: Semaphore | s in t.signals\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n  all t: Track | \n  \t\t(no nex: t.succs | nex in Junction) \n\t\timplies \n\t\t(no sign: t.signals | sign in Semaphore)\n\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tno {t: Track | no t.succs & Junction }.signals & Semaphore\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n  all x: Track | no (Junction & x.succs)\n  \t\t\t\t implies x.signals & Semaphore = none \n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n    // Tracks not followed by junctions do not have semaphores\n    all t: Track |\n        (no j: Junction | j in t.succs) implies no s: t.signals | s in Semaphore\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t : Track, s : Semaphore | no t.succs & Junction implies s not in t.signals\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n  all t: Track - Junction.~succs | no s: Semaphore | s in t.signals\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\t\n  \tall t: Track | no (t.succs & Junction) implies no t.signals :> Semaphore\n  \t\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\nall e : Track |  (not (some j : Junction|j in e.succs)) implies (all s : Semaphore | s not in e.signals)}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t,t1 : Track | no (t.succs & Junction) implies no (t.signals & Semaphore)\t\n }"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n  all x: Track | \n    no {j: Junction | x->j in succs} implies no x.signals & Semaphore\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t: Track | no t.succs & Junction implies all s:Semaphore| s not in t.signals\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n    all t: Track | not some Junction & t.succs => not some Semaphore & t.signals \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 36,
+            "syntactic_count": 6,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 25,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n  \tall t : Track | Junction not in t.succs implies Semaphore not in t.signals\n\n}"
+                },
+                {
+                    "entry_count": 6,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t: Track, j: Junction {\n      \n      j not in t.succs => Semaphore not in t.signals\n    }\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t : Track | not Junction in t.succs implies not Semaphore in t.signals\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t: Track, j: Junction {\n      \n      \n      t not in j.~succs => Semaphore not in t.signals\n    }\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n  \tall t : Track | Junction not in t.succs implies not (Semaphore in t.signals)\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t : Track | Semaphore in t.signals implies Junction in t.succs\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 36,
+            "syntactic_count": 10,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 11,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t : Track | t.succs not in Junction => no (Semaphore & t.signals)\n}"
+                },
+                {
+                    "entry_count": 8,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t: Track, s: Semaphore | t.succs not in Junction implies s not in t.signals\n}"
+                },
+                {
+                    "entry_count": 7,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t : succs.(Track-Junction) | no t.signals & Semaphore\n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t : Track | t.succs not in Junction implies (no s : Semaphore | s in t .signals)\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n  \tall t: Track | (some s: Semaphore | s in t.signals) implies t.succs in Junction\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n    // Tracks not followed by junctions do not have semaphores\n      all t:Track | all t1:t.succs | t1 not in Junction implies no (t.signals & Semaphore)\n  \n  \t\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n  \tall t : Track | not(t.succs in Junction) implies no(t.signals & Semaphore)\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t:Track | all s:t.signals| t.succs not in Junction implies s not in Semaphore\n  \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n  \tall t1, t2: Track | t2 in t1.succs and (some s: Semaphore | s in t1.signals) implies (t2 in Junction)\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t,t1 : Track | (t1 in t.succs and t1 not in Junction) implies no (t.signals & Semaphore)\t\n }"
+                }
+            ]
+        },
+        {
+            "entry_count": 32,
+            "syntactic_count": 13,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 8,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t:Track|all j :Junction| j not in t.succs implies no s:Semaphore| s in t.signals\n}"
+                },
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t: Track, s: Semaphore, j: Junction | j not in t.succs => s not in t.signals\n}"
+                },
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\t(all t: Track|all j: Junction| j not in t.succs implies no t.signals & Semaphore)\n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t: Track, j: Junction|\n  \t\tj not in t.succs implies (all s: t.signals | s not in Semaphore)\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t : Track| all j: Junction | not (j in t.succs ) implies no (t.signals & Semaphore)\t\n   \t\n\n  \n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n  all t : Track | Junction not in t.succs implies no(t.signals & Semaphore)\n\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n  all x: Track | Junction not in x.succs implies x.signals & Semaphore = none \n\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t: Track | all j: Junction | (j not in t.succs or no t.succs) => no s: Semaphore | s in t.signals\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall j : Junction | all t : Track | j not in t.succs implies not (some s:Semaphore | t->s in signals)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n  \tall t : Track, j : Junction | no t.succs & j => no s : Semaphore | s in t.signals\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t: Track | all j:Junction| j not in t.succs implies all s:Semaphore| s not in t.signals\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t:Track, j:Junction, s:t.signals | j not in t.succs implies s not in Semaphore\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t: Track, s: Semaphore | Junction not in t.succs => s not in t.signals\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 23,
+            "syntactic_count": 7,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 13,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t : Track | t.succs not in Junction => t.signals not in Semaphore\n}"
+                },
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n  \tall t : Track | not(t.succs in Junction) implies not(t.signals in Semaphore)\n\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t : Track | t.succs not in Junction implies not (t.signals in Semaphore)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n  \tall t : Track | (some t.succs and not(t.succs in Junction)) implies not(t.signals in Semaphore)\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t: Track | no t.succs or t.succs not in Junction implies t.signals not in Semaphore\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t: Track | all s: t.succs | s not in Junction implies t.signals not in Semaphore\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n    all t : Track | (some t.succs and t.succs not in Junction) implies (t.signals not in Semaphore)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 21,
+            "syntactic_count": 15,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 6,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n    no t: Junction, s: Semaphore | t in t.^signals\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n    all t: Track - Junction, s: Semaphore | t not in t.signals\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n    all t: Track - Junction, s: Semaphore | no s.signals\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n    no t: Track - Junction, s: Semaphore | t in s.^signals\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n  all t : Track, s : Semaphore | t.*succs not in Junction implies s not in signals.t \n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n    no t: Track - Junction, s: Semaphore | t in t.signals\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n    no t: Junction, s: Semaphore | t in s.^signals\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n    all t: Track - Junction | no s: Semaphore | s in signals.t\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n  all t : Track | Junction not in t.succs implies no(t.signals & Semaphore) and no(t.succs) implies no(t.signals & Semaphore)\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n  \tall t: Track | (some s: Semaphore | s in t.succs) implies t.succs in Junction\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t : Track | no Junction & t.succs implies no Semaphore & t.succs\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n    no t: Track - Junction, s: Semaphore | s in s.signals\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t: Track | no(t.succs & Junction) or no(t.succs) implies no(t.signals & Semaphore)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n    all t: Track - Junction | no s: Semaphore | t in s.signals\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 18,
+            "syntactic_count": 5,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 11,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n  all t: Track | no Junction & t.^succs => no t.signals & Semaphore\n\n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t: Track|\n  \t\t(no j: Junction | j in t.^succs) implies (no s: t.signals | s in Semaphore)\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t:Track | no (t.^succs & Junction) implies no t.signals & Semaphore\n\n  \tall t:Track | no t.succs implies no t.signals & Semaphore\n  \n  \t\n  \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n  all t: Track | some t.signals & Semaphore => some Junction & t.^succs\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t: Track|\n  \t\t(no j: Junction | j in t.^succs) implies (all s: t.signals | s not in Semaphore)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 15,
+            "syntactic_count": 5,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 5,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t: Track | {\n      Junction in t.succs => Semaphore in t.signals\n      Junction not in t.succs => Semaphore not in t.signals\n    }\n}"
+                },
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t: Track | Junction not in t.succs iff Semaphore not in t.signals\n}"
+                },
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t: Track | Junction in t.succs <=> Semaphore in t.signals\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t: Track | Junction in t.succs => Semaphore in t.signals else Semaphore not in t.signals\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n  all t: Track | not Semaphore in t.signals iff not Junction in t.succs \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 12,
+            "syntactic_count": 4,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 8,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n  all t : Track | no (succs.t & Junction) implies no (Semaphore & t.signals)\n  \n  \n\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n    // Tracks not followed by junctions do not have semaphores\n    all t: Track | (t not in Junction.succs) implies (no t.signals & Semaphore)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n  \n  all t: Track | no t.~succs & Junction => no t.signals & Semaphore\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n    all t: Track | t !in Junction.succs implies t.signals & Semaphore = none\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 11,
+            "syntactic_count": 6,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t: Track, j: Junction|\n  \t\tj not in t.^succs implies (all s: t.signals | s not in Semaphore)\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t: Track, j: Junction, s: Semaphore | j not in t.^succs implies s not in t.signals\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t:Track, j:Junction, s:t.signals | j not in t.^succs implies s not in Semaphore\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n  \tall t : Track, j : Junction | j not in t.^succs => no s : Semaphore | s in t.signals\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n  all t : Track | Junction not in t.^succs implies no(t.signals & Semaphore)\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n  all t : Track, j : Junction | not j in t.^succs implies all s : Semaphore | s not in t.signals\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 11,
+            "syntactic_count": 3,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 8,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t: Track | t.^succs not in Junction implies t.signals not in Semaphore\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t:Track | t.signals in Semaphore => t.^succs in Junction\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t:Track | t.^succs not in Junction implies t.signals not in Semaphore\n  \tall t:Track | t.succs not in Junction implies t.signals not in Semaphore\n  \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 10,
+            "syntactic_count": 7,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t : succs.Junction | no t.signals & Semaphore \n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n  \t\n\t\n  all t : Track| t.succs != none and some(t.succs & Junction) implies no(t.signals & Semaphore)\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n  \t\n\t\n  all t : Track| some(t.succs & Junction) implies no(t.signals & Semaphore)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t1,t2:Track| t2 in t1.succs and t2 in Junction implies (all s:Signal|t1->s in signals implies s not in Semaphore)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t: Track |  some t.signals & Semaphore => no Junction & t.succs\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t: Track | \n  \t\t(some j: Junction | j in t.succs) implies\n\t\t\t(no s: Semaphore | s in t.signals)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n  all x: Track | not (Junction & x.succs = none) \n  \t\t\t\t implies x.signals & Semaphore = none \n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 9,
+            "syntactic_count": 8,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n    // Tracks not followed by junctions do not have semaphores\n    all t: Track - Junction | no t.signals & Semaphore\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t: Track, s: Semaphore | t not in Junction implies s not in t.signals\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n    no t: Track - Junction, s: Semaphore | s in t.signals\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n    no t: Track - Junction, s: Semaphore | s in t.^signals\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\nall t:Track-Junction, s:Semaphore | t->s not in signals\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t : Track - Junction | no s : t.signals | s in Semaphore\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n    all t: Track - Junction | no s: Semaphore | s in t.signals\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n    all t: Track - Junction | no s: Semaphore | t in signals.s\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 9,
+            "syntactic_count": 3,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n    all t: Track | no(t.succs & Junction) <=> no(t.signals & Semaphore)\n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\t\n  all t : Track |(t.succs & Junction) = none iff (Semaphore & t.signals) = none \n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\t\n  all t : Track |no (t.succs & Junction) iff no s: Semaphore | s in t.signals\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 9,
+            "syntactic_count": 3,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 7,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t: Track, s: Semaphore | t.^succs not in Junction implies s not in t.signals\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t:Track | all s:t.signals| t.^succs not in Junction implies s not in Semaphore\n  \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t:Track | t.^succs not in Junction implies no t.signals & Semaphore\n\n  \n  \n  \t\n }"
+                }
+            ]
+        },
+        {
+            "entry_count": 6,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 5,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t: Track | Junction not in t.*succs => Semaphore not in t.signals\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n  all t: Track | Junction not in t.*succs implies Semaphore not in t.*signals\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 6,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 5,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t: Track | \n  \t\tno j: Junction | j in t.succs implies no s: Semaphore | s in t.signals\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t: Track | no j: Junction | j in t.succs => no (t.signals & Semaphore)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 7,
+            "syntactic_count": 5,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t : Track | some(t.succs & Junction) implies some(t.signals & Semaphore)\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t: Track |  no t.signals & Semaphore => no Junction & t.succs\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t: Track | \n  \t\t(some j: Junction | j in t.succs) implies\n\t\t\t(some s: Semaphore | s in t.signals)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\tall t: Track | some t.succs & Junction => some s: Semaphore | s in t.signals\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n  \t\n\t\n all t : (succs.Junction) | some(t.signals & Semaphore)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 5,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 5,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n  \tall t:Track | all t1: t.succs | t1 in Junction implies some (t1.signals & Semaphore) \n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 5,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n  \tall t: Track | no j: Junction | (j in t.succs or no t.succs) => no s: Semaphore | s in t.signals\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n  \tall t: Track | no j: Junction | (j in t.succs or t.succs = none) => no s: Semaphore | s in t.signals\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 5,
+            "syntactic_count": 3,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n  all t : Track | succs.t not in Junction implies no (Semaphore & t.signals)\n  \n  \n\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t : (Track-Junction).succs | no t.signals & Semaphore\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n  all t : Track | t not in Junction implies no (Semaphore & t.succs.signals)\n  \n  \n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 5,
+            "syntactic_count": 1,
+            "correct": true,
+            "elems": [
+                {
+                    "entry_count": 5,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n  \tall t: Track, s: Semaphore | some j: Junction | (j not in t.succs) implies (s not in t.signals)\n\t\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 5,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t: Track, j: Junction | {\n      j in t.succs => Semaphore in t.signals\n      j not in t.succs => Semaphore not in t.signals\n    }\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t: Track | all j: Junction | j not in t.succs iff Semaphore not in t.signals\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 5,
+            "syntactic_count": 3,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t: Track | (t.succs not in Junction) implies no(t.signals & Semaphore)\n\tall t: Track | no(t.succs) implies no(t.signals & Semaphore)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t : Track | (no t.succs or t.succs not in Junction) implies no s : t.signals | s in Semaphore\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t: Track | (t.succs not in Junction or no t.succs) => no s: Semaphore | s in t.signals\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 5,
+            "syntactic_count": 5,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\n  \tall t : Track | no (t.*(succs) & Junction) implies no (t.signals & Semaphore)\t\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t:Track| Junction & t.*succs =none \n  \t\t\t\timplies (Semaphore & t.signals = none)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t:Track| no( Junction & t.*succs )\n  \t\t\t\timplies (Semaphore & t.signals = none)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\n  all t : Track | \n    (all j : Junction | j not in t.*(succs)) implies \n    (all s : Semaphore | s not in t.signals)\n\n  \t\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n  all t : Track | t not in Junction and no t.^succs & Junction implies no s : Semaphore | s in t.signals\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 4,
+            "syntactic_count": 3,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n    all t: Track - Junction | no t.signals -> Semaphore\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n    all t: Track - Junction, s: Semaphore | no t.^signals\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n    all t: Track - Junction, s: Semaphore | no t.signals\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 4,
+            "syntactic_count": 4,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t: Track | all s: t.succs | s not in Junction implies Semaphore not in t.signals\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t : Track | t.succs not in Junction => Semaphore not in t.signals\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n  \tall t : Track | not(t.succs in Junction) implies not(Semaphore in t.signals)\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n  \tall t: Track | (all s: Semaphore | s in t.signals) implies (t.succs in Junction)\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 4,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t:Track | t.^succs not in Junction implies no t.signals & Semaphore\n\n  \tall t:Track | no t.succs implies no t.signals & Semaphore\n  \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 4,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t: Track | Junction not in t.^succs => Semaphore not in t.signals\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t: Track, j: Junction {\n      \n      j not in t.^succs => Semaphore not in t.signals\n    }\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 4,
+            "syntactic_count": 4,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n  \tall t : Track, j : Junction | j not in t.*succs => no s : Semaphore | s in t.signals\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t: Track, j: Junction, s: Semaphore | j not in t.*succs => s not in t.signals\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t : Track | all j: Junction |all s: Signal | j not in t.*(succs) and s in t.signals implies s not in Semaphore\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n  all t : Track | Junction not in t.*succs implies no(t.signals & Semaphore)\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 4,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t:Track | some j:Junction | j not in t.succs => (no s : Semaphore | s in t.signals)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t: Track | some j: Junction | (j not in t.succs or no t.succs) => no s: Semaphore | s in t.signals\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 3,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t : Track | t.succs in Junction implies one (t.signals & Semaphore)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 3,
+            "syntactic_count": 3,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t : Track | t.succs not in Junction <=> no (t.signals & Semaphore)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t : Track | t.succs not in Junction <=> (no s : Semaphore | s in t .signals)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n  \tall t: Track | (some s: Semaphore | s in t.signals) iff t.succs in Junction\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 3,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t1, t2: Track, s : Signal - Semaphore| t2 in t1.^succs and t2 not in Junction implies t2->Speed in signals \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t1, t2: Track | t2 in t1.^succs and t2 not in Junction implies t2->Speed in signals \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 3,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t:Track | all s:t.signals| t.succs not in Junction and t not in Junction implies s not in Semaphore\n  \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 3,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t: Track | some j: Junction | {\n      j not in t.succs => Semaphore not in t.signals\n  \t}\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 3,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t: Track | some succs.t implies (succs.t not in Junction => no t.signals)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t: Track | succs.t not in Junction => no t.signals\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 3,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t: Track | Junction in t.succs => Semaphore in t.signals\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 3,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t: Track | no t.succs & Junction implies t.signals not in Semaphore\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t:Track | t.signals in Semaphore => t in succs.Junction\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 3,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t:Track| no t1:Track | t1 in Junction and t1 in t.*succs \n  \t\t\t\timplies (Semaphore & t.signals = none)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 3,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n  all t : Track | no (succs.t & Junction) iff no (Semaphore & t.signals)\n  \n  \n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 3,
+            "syntactic_count": 3,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t: Track | t not in Junction.*(Junction -> Track)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall j : Junction | some s : Semaphore | s in j.*succs\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n    no t: Junction | no s: Semaphore | t in s.signals\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n    // Tracks not followed by junctions do not have semaphores\n      all t:Track | all t1:t.succs | not t1 in Junction implies some (t1.signals & Semaphore)\n  \n  \t\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n    // Tracks not followed by junctions do not have semaphores\n      all t:Track | all t1:t.succs | t1 not in Junction implies some (t1.signals & Semaphore)\n  \n  \t\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t : Entry | t.succs not in Junction => no (Semaphore & t.signals)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t : Entry | all t1: t.succs| t1 not in Junction => no (Semaphore & t.signals)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t : Entry | (all t1: t.succs| t1 not in Junction) => no (Semaphore & t.signals)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t : Entry | no t.succs & Junction => no (Semaphore & t.signals)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t: Track, j: Junction | t.^succs not in Junction implies t.^signals not in Semaphore\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t: Track, j: Junction | t.^succs not in Junction implies t.signals not in Semaphore\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t: Track | no(t.succs & Junction) or no(t.succs) implies no(t.signals & Semaphore)\n\tall t: Track | no(t.succs) implies no(t.signals & Semaphore)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t: Track | (t.succs not in Junction) or no(t.succs) implies no(t.signals & Semaphore)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n  all t : Track, j : Junction | t not in Junction and j not in t.^succs implies all s : Semaphore | s not in t.signals\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n  all t : Track, j : Junction | t not in Junction and not j in t.^succs implies all s : Semaphore | s not in t.signals\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t:Track|all j:Junction| all s:Semaphore | j not in t.^succs => s not in t.^succs.signals\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t:Track|all j:Junction| all s:Semaphore | j not in t.^succs => s not in t.succs.signals\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t: Track | no t.succs & Junction implies no s:Semaphore| s not in t.signals\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n  \tall t: Track | ((no t2: Track | t2 in t.succs) or (no j: Junction | j in t.succs)) => no s: Semaphore | s not in t.signals\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n  \tall t : Track, j : Junction | t.succs != j => no s : Semaphore | s in t.signals\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n  all t: Track | no Junction & t.^succs <=> no t.signals & Semaphore\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t: Track |  no t.signals & Semaphore => no Junction & t.^succs\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t:Track | some s:t.signals, j:Junction | j in t.^succs implies s in Semaphore\n  \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t:Track, j:Junction  | some s:t.signals| j not in t.^succs implies s not in Semaphore\n  \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t:Track | all s:t.signals| t.^succs not in Junction and t not in Junction implies s not in Semaphore\n  \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t:Track | t.^succs not in Junction implies t.signals not in Semaphore\n  all t:Track | no t.succs implies t.signals not in Semaphore\n  \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t:Track | t.^succs not in Junction implies no t.signals & Semaphore\n\n  \tall t:Track | no t.succs implies no t.signals & Semaphore\n  \tall t:Track | some s:t.signals | t.^succs in Junction implies s in Semaphore\n  \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t : Track - Junction | not t.signals in Semaphore\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t : Track - Junction | t.signals not in Semaphore\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t : Track | no j : t.succs | j in Junction implies no t.signals & Semaphore\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t : Track | no j : t.succs | no s : t.signals| j in Junction and s in Semaphore\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t : Track | all s: Signal | s in t.signals implies t in Junction\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n    all t: Track - Junction| no t.^signals\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t : Track | all j: Junction | all s: Signal | s in t.signals and j in t.succs implies t in Junction\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t : Track | all j: Junction | all s: Signal | (s in t.signals and j in t.succs ) implies t in Junction and s in Semaphore\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t : Track | no t.succs and t not in Junction implies no (t.signals & Semaphore)\t\n  \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t : Track | Semaphore in t.succs.signals & t.signals implies some t.succs & Junction\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t : Track | Semaphore in t.succs.signals implies some t.succs & Junction\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall j : Junction | Semaphore in (succs.j).signals \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t : Track | t.succs not in Junction implies no t.signals\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t: Track | t not in Entry implies ((succs.t not in Junction) => (no t.signals))\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t: Track | Junction in t.succs implies Semaphore not in t.signals\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\nall disj x,y:Track| y not in Junction and x->y in succs implies no s:Semaphore| x->s in signals\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n  \tall disj t1, t2 : Track | t2 in t1.succs and t2 not in Junction implies all s : Semaphore | s not in t1.signals\n  \n   \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t : Track | t.succs not in Junction iff (not t.signals in Semaphore)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t:Track | t.signals in Semaphore <=> t.succs in Junction\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t:Track | t.signals in Semaphore => t.*succs in Junction\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t : Track | t.*succs not in Junction implies t.signals not in Semaphore\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t:Track | t not in Junction.succs => t.signals not in Semaphore\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t:Track | t.signals in Semaphore => t in Junction.succs\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n  \tno Junction => no Semaphore\n\tall t:Track-Junction, j:Junction | j->t in ^succs => t.signals not in Semaphore\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n  \tno Junction => no Semaphore\n\tall disj t:Track | t not in Junction.^succs => no t.signals & Semaphore\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n  all t : Track, s : Semaphore | t.*succs not in Junction implies s not in t.signals\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n    // Tracks not followed by junctions do not have semaphores\n      all t:Track | all t1:t.succs | t1 not in Junction implies no (t1.signals & Semaphore)\n  \n  \t\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t : Track | t.succs in Junction => t.signals not in Semaphore\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t : Track | t.succs not in Junction and t not in t.succs => t.signals not in Semaphore\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t : Track | t.succs not in Junction iff no t.signals\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t : Track | t.^succs not in Junction iff no t.signals\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t : Track | t.*succs not in Junction iff no t.signals\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall track: Track | Junction in track.succs implies all signal: track.signals | signal not in Semaphore\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t: Track | no s: Semaphore | t.succs not in Junction implies s not in t.signals\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t: Track | no s: Semaphore | t.succs not in Junction implies s in t.signals\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t: Track, s: Semaphore | t.^succs not in Junction implies t.signals not in Semaphore\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t: Track, s: Semaphore | t not in Junction or t.^succs not in Junction implies s not in t.signals\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t: Track, s: Semaphore | t.succs not in Junction implies t.signals not in Semaphore\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t: Track | t not in Junction and t.succs not in Junction implies t.signals not in Semaphore\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t: Track, j: Junction | t.succs != j implies t.signals not in Semaphore\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n     all t: Track, j: Junction | no s: Semaphore | t in t.^succs and j in t.^succs implies s not in j.signals\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t: (Track-Entry-Exit) | (t.succs not in Junction) implies no(t.signals & Semaphore)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t:Track|all j :Junction| j not in t.succs iff no s:Semaphore| s in t.signals\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t:Track|all j :Junction| j not in t.succs iff all t1:Track | no s:Semaphore| s in t1.signals\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t : Track | t not in Junction and no t.succs & Junction implies no s : Semaphore | s in t.signals\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t:Track | no t.succs & Junction implies some t.signals & Semaphore\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n  all t : Track | (Junction not in t.succs or t in Entry and t in Exit) implies no(t.signals & Semaphore)\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n  \tall disj t1, t2 : Track | t2 in t1.succs and t2 not in Junction implies Semaphore not in t1.signals\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n  \tall disj t1, t2 : Track | t2 in t1.succs and t2 not in Junction implies all s : Signal | s in Semaphore and s not in t1.signals\n  \n   \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n  \tall disj t1, t2 : Track | t2 in t1.succs and t2 not in Junction implies some s : Signal | s in Semaphore and s not in t1.signals\n  \n   all t : Track | no (t.succs & Junction) implies no (Semaphore & t.signals)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n  \tall disj t1, t2 : Track | t2 in t1.succs and t2 not in Junction implies no s : Signal | s in Semaphore and s not in t1.signals\n  \n   all t : Track | no (t.succs & Junction) implies no (Semaphore & t.signals)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t : Track | t.succs not in Junction iff Semaphore not in t.signals\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n    // Tracks not followed by junctions do not have semaphores\n    all t: Track | no j: Junction | (j in t.^succs or no t.succs) => no s: Semaphore | s in t.signals\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n    // Tracks not followed by junctions do not have semaphores\n    all t: Track | no j: Junction | (j in t.*succs or no t.succs) => no s: Semaphore | s in t.signals\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t : Track | t.succs in Junction implies lone (t.signals & Semaphore)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n  \tall t : Track, j : Junction | no t.succs & Junction => no s : Semaphore | s in t.signals\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n  \t\n\tall t : Track, j : Junction | t.*succs != j => no s : Semaphore | s in t.signals\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n  \t\n\tall t : Track, j : Junction, suc : t.succs | suc != j => no s : Semaphore | s in t.signals\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n  all t: Track | some t.signals & Semaphore => no Junction & t.^succs\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n    all t: Track - Junction, s: Semaphore | t in t.signals\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall j:Junction | some t:Track | t in j.succs => no s:Semaphore | s in t.signals\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall j:Junction | all t:Track | t in j.succs => no s:Semaphore | s in t.signals\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t: Track, j: Junction, s: Semaphore | {\n      j in t.succs => s in t.signals\n      j not in t.succs => s not in t.signals\n    }\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t: Track | {\n      Junction in t.^succs => Semaphore in t.signals\n      Junction not in t.^succs => Semaphore not in t.signals\n    }\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t: Track, j: Junction {\n      \n      \n      t not in Junction.~succs => Semaphore not in t.signals\n    }\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t: Track | some j: Junction | no s: Semaphore {\n      j not in t.succs => s in t.signals\n  \t}\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t: Track, j: Junction|\n  \t\tj not in t.^succs implies (some s: t.signals | s not in Semaphore)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t: Track, j: Junction|\n  \t\tt not in Entry and t not in Exit and j not in t.^succs implies (all s: t.signals | s not in Semaphore)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t : Track | no Semaphore & t.signals iff t.succs in Junction\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tno t : Track | some t.succs & Junction implies some Semaphore & t.signals\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\n  all t : Track | t.succs in Junction iff t.signals not in Semaphore\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\n  all t : Track, s:Signal | Track - Junction in t.^succs implies s not in Semaphore\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\n  all t : Track, s:Signal | Track - Junction in t.^succs implies Semaphore not in (Track - Junction).signals\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\n  all t : Track - Junction, s:Signal | t in Track.^succs implies Semaphore not in (Track - Junction).signals\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t1, t2: Track, s : Signal | t2 in t1.^succs and t2 not in Junction implies t2->s in signals and s not in Semaphore\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t1, t2: Track, s : Signal - Semaphore| t2 in t1.^succs and t2 not in Junction and t2->s in signals \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t1, t2: Track | Junction not in t1.^succs implies t1->Speed in signals \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t : succs.Track - succs.Junction | no t.signals & Semaphore \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t : Track | t in Junction implies t.succs.signals in Semaphore\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\t\n  all t : Track |(Semaphore & t.signals) = none iff Junction not in t.succs \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\t\n  all t : Track |(t.succs & Junction) = none iff Semaphore not in t.signals \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t:Track, j:Junction| some s:t.signals | j in t.succs implies s in Semaphore\n  \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t:Track, j:Junction| some s:t.signals | j in t.^succs implies s in Semaphore\n  \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t:Track, j:Junction| some s:t.signals | j in t.*succs implies s in Semaphore\n  \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t:Track | some s:t.signals, j:Junction | j not in t.^succs implies s not in Semaphore\n  \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t:Track | some s:t.signals| t.^succs not in Junction implies s not in Semaphore\n  \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t:Track | all s:t.signals| (t.^succs & t) not in Junction implies s not in Semaphore\n  \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t:Track | all s:t.signals| t.succs not in Junction or t not in Junction implies s not in Semaphore\n  \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\t\n  \tall t:Track | no t.succs implies t.signals not in Semaphore\n  \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t:Track | t.*succs not in Junction implies no t.signals & Semaphore\n\n  \tall t:Track | no t.succs implies no t.signals & Semaphore\n  \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t:Track | t.^succs not in Junction implies no t.signals & Semaphore\n\n  \tall t:Track | no t.succs implies no t.signals & Semaphore\n  \n  \tall t:Track | some s:t.signals | some (t.^succs & Junction) implies s in Semaphore\n  \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t: Track | one j: Junction | j not in t.succs implies (Semaphore not in t.signals)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t: Track| some j: Junction, s: Semaphore| j not in t.succs implies s not in t.signals\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tsome t: Track| all j: Junction, s: Semaphore| j not in t.succs implies s not in t.signals\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t: Track | !(Junction in t.succs implies Semaphore in t.signals)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\nall t: Track | no j: Junction, s: Semaphore | j in t.succs implies s in t.signals\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\nall t: Track | no j: Junction| no s: Semaphore | j in t.succs implies s in t.signals\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n  all x: Track | Junction in x.succs iff x.signals & Semaphore = none \n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t : Track - Junction | no s : t.signals | not s in Semaphore\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t : Track | t.succs not in Junction implies no s : t.signals | s not in Semaphore\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t : Track | no j : t.succs | no s : t.signals| j in Junction implies s in Semaphore\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t : Track | no j : t.succs | j in Junction implies not t.signals in Semaphore\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall j : Junction | no j.signals\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t : Track | all j: Junction | all s: Signal | (s in t.signals ) implies (t in Junction and s in Semaphore)\n  \n  \t\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t : Track | all s: Signal | (s in t.signals ) implies (t in Junction and s in Semaphore)\n  \n  \t\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t : Track | all j: Junction | all s: Signal | (j in t.succs ) implies (s in t.signals and t in Junction and s in Semaphore)\n  \n  \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t : Track | all j: Junction | all s: Signal | (j in t.succs ) implies (s in j.signals and t in Junction and s in Semaphore)\n  \n  \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t : Track | all j: Junction | all s: Signal | (j in t.succs ) implies (s in j.signals and s in Semaphore)\n  \n  \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t : Track | all j: Junction | all s: Signal | (j not in t.succs ) implies (s in j.signals and s not in Semaphore)\n  \n  \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t : Track | all j: Junction | all s: Signal | (no t.succs ) implies (s in j.signals and s not in Semaphore)\n  \n  \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t : succs.(Track-Junction) + Entry | no Semaphore & t.signals\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t : succs.(Track-Junction) + Entry + Exit| no Semaphore & t.signals\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t : succs.(Track-Junction) +  Exit| no Semaphore & t.signals\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t : Track | ( no t.succs and t in Entry or t in Exit) implies no (t.signals & Semaphore)\t\n  \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t : Track |all j : Junction | no (t.succs) implies no (t.signals & Semaphore)\t\n }"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t : Track | Semaphore in t.succs.signals  implies t.succs in Junction\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t: Track | some succs.t => (succs.t not in Junction and no t.signals)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t: Track | all j: Junction | (j not in succs.t) implies no (t.signals & Semaphore)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n  \n  all t : Track | t.succs not in Junction implies (t.succs).signals not in Semaphore \n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n  \tall t: Track | ( no ( t.succs & Junction ) ) implies no t.signals\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t : Track-Exit | Junction not in t.succs implies Semaphore not in t.signals\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tno t: Track | \n        \n  \t\tJunction not in t.succs implies Semaphore not in t.signals\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n  all t : Track | t.succs in Junction => Speed not in t.signals  \n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n  all t : Track | Junction in t.succs => Speed not in t.signals  \n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n  all t : Track | Junction not in t.succs => Speed not in t.signals  \n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t : Track | some j: Junction |all s: Signal | j not in t.*(succs) and s in t.signals implies s not in Semaphore\n  \n  \t\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t,t1 : Track |( t1 not in t.succs and t1 not in Junction) implies no (t.signals & Semaphore)\t\n }"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t,t1 : Track | not (t1 in t.succs and t1 not in Junction) implies no (t.signals & Semaphore)\t\n }"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n  all t: Track | not Semaphore in t.signals iff not Junction in succs.t \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n  all t: Track | no s: Semaphore | not Junction in t.signals implies s in t.signals\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n  all t: Track | no s: Semaphore | not Junction in t.succs implies s in t.signals\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\nall disj x,y:Track, s:Semaphore | y in Junction and x->y in succs implies x->s in signals\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\nall disj x,y:Track-Exit, s:Semaphore | y in Junction and x->y in succs implies x->s in signals\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\nall disj x,y:Track, s:Semaphore | y in Junction and x->y in succs implies x->s in signals else x->s not in signals\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\nall disj x,y:Track| y in Junction and x->y in succs implies no s:Semaphore| x->s in signals\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t : Track | some s : t.succs | s not in Junction implies t.signals not in Semaphore\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t : Track | some s : t.succs | s not in Junction implies no (t.signals & Semaphore)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t:Track, j:Junction | t->j in succs => t.signals not in Semaphore\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n  \tno Junction => no Semaphore\n\tall t:Track, j:Junction | t->j in succs => t.signals not in Semaphore\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n  \tno Junction => no Semaphore\n\tall t:Track, j:Junction | j->t in succs => t.signals not in Semaphore\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n  \tno Junction => no Semaphore\n\tall t:Track-Junction, j:Junction | j->t in succs => t.signals not in Semaphore\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n  \t\n\tall t:Track-Junction, j:Junction | j->t in ^succs => t.signals not in Semaphore\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n  \tno Junction => no Semaphore\n\tall disj t:Track, j:Junction | j->t in ^succs => t.signals not in Semaphore\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n  \tno Junction => no Semaphore\n\tall disj t:Track, j:Junction | j->t not in ^succs => t.signals not in Semaphore\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n  \tno Junction => no Semaphore\n\tall disj t:Track | t not in Junction.^succs => t.signals not in Semaphore\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n  \tno Junction => no Semaphore\n\tall t:Track | t not in ^succs.Junction => no t.signals & Semaphore\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": true,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n  \tno Junction => no Semaphore\n\tall t:Track | t not in succs.Junction => no t.signals & Semaphore\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t:Track| no t1:Track | t1 in Junction and t1 in t.^succs \n  \t\t\t\timplies (Semaphore & t.signals = none)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t:Track| no t1:Track | t1 in Junction and t1 in t.*succs \n  \t\t\t\tiff (Semaphore & t.signals = none)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t:Track| no t1:Track | t1 in Junction and t1 in t.succs \n  \t\t\t\timplies (Semaphore & t.signals = none)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall j : Junction | some j.succs.signals & Semaphore\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t : Track | some t.succs & Junction implies some t.succs.signals & Semaphore  \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t : Track | no (t.succs & Junction) implies no t.signals - Semaphore\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t : Track | no (Junction & t.succs) => no Semaphore\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Tracks not followed by junctions do not have semaphores\n\tall t: Track | some j: Junction, s: Signal | j not in t.succs implies s not in t.signals\n}"
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,2948 @@
+{
+    "original": "iP5JL36afv5KbDKP6",
+    "cmd": "inv7",
+    "pred": "this/inv7",
+    "entry_count": 1163,
+    "semantic_count": 187,
+    "syntactic_count": 407,
+    "scope": 3,
+    "groups": [
+        {
+            "entry_count": 262,
+            "syntactic_count": 24,
+            "correct": true,
+            "elems": [
+                {
+                    "entry_count": 161,
+                    "code": "{\n\t// Students work on at most one project per course\n  all s: Student, c: Course | lone s.projects & c.projects\n}"
+                },
+                {
+                    "entry_count": 24,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s: Student, c: Course |\n\t\tlone p: Project | p in s.projects and p in c.projects\n}"
+                },
+                {
+                    "entry_count": 13,
+                    "code": "{\n\t// Students work on at most one project per course\n\n  \tall s: Student | all c: Course  | #s.projects & c.projects <= 1\n}"
+                },
+                {
+                    "entry_count": 11,
+                    "code": "{\n\t// Students work on at most one project per course\n  \tall s:Student,c:Course| lone p:c.projects | p in s.projects \n  \t\n\n}"
+                },
+                {
+                    "entry_count": 9,
+                    "code": "{\n    all s : Student, c : Course | lone pr : Project | pr in (c.projects & s.projects)\n \n// Students work on at most one project per course\n}"
+                },
+                {
+                    "entry_count": 8,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s: Student | all p1, p2: Project | all c: Course | p1 in s.projects and p2 in s.projects and p1 in c.projects and p2 in c.projects => p1 = p2\n}"
+                },
+                {
+                    "entry_count": 5,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s: Student | all p1,p2: Project | all c:Course |\n  \t(s->p1 in projects and s->p2 in projects and c->p1 in projects and c->p2 in projects) implies p1=p2\n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Students work on at most one project per course\n\t all s : Student | all c : Course | lone pr : Project | c in projects.pr and s in projects.pr\n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Students work on at most one project per course\n\t all s : Student | all c : Course | lone pr : Project | c->pr in projects and s->pr in projects\n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s : Student | all c : Course | lone p : s.projects | p in c.projects\n\n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s : Student, c : Course| lone p : Project | p in s.projects and c in projects.p\n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall c: Course, student: Student, p1, p2: c.projects | p1 in student.projects and p2 in student.projects => p1 = p2\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s: Student | all c : Course | all p1,p2 : s.projects | p1 in c.projects and p2 in c.projects => p1=p2\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s : Student | all c : Course | no (s.projects & c.projects) or one (s.projects & c.projects)\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Students work on at most one project per course\n  all s: Student, c: Course |\n    all p1, p2: s.projects & c.projects | p1 = p2\n\n\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Students work on at most one project per course\n  all s: Student | all p1,p2: s.projects | \n  \t\tall c1 : (Course<:projects).p1, c2: (Course<:projects).p2 | c1=c2 implies p1=p2\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s: Student | all p1, p2 : Project | (p1+p2) in s.projects and (some c: Course | p1 in c.projects and p2 in c.projects) implies p1 = p2\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n\n\tall s:Student | all c:Course | lone pr:Project | pr in c.projects and s in projects.pr\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n\tno s : Student | some c : Course | #(c.projects & s.projects) > 1\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n\t\n  \tall p : Project, s : Student, c : Course | (s->p in projects and c->p in projects) implies (all p1 : Project-p | c->p1 in projects implies s->p1 not in projects)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s:Student | all c:Course | no disj p1,p2:Project | p1 in s.projects and p2 in s.projects and p1 in c.projects and p2 in c.projects\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s:Student, c:Course | #(s.projects & c.projects)<2\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n  all s: Student, c: Course | lone p: Project | p in s.projects & c.projects\n  \n  all s: Student, c: Course| lone p: Project | (p in s.projects) and (p in c.projects)\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s: Student |\n  \t\tno disj p1, p2: s.projects |\n  \t\t\tsome c: Course |\n  \t\t\t\tp1 in c.projects and p2 in c.projects\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 237,
+            "syntactic_count": 23,
+            "correct": true,
+            "elems": [
+                {
+                    "entry_count": 124,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s : Student, c : s.enrolled | lone s.projects & c.projects\n}"
+                },
+                {
+                    "entry_count": 32,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s : Student | all c : s.enrolled | lone p : s.projects | p in c.projects\n}"
+                },
+                {
+                    "entry_count": 13,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s : Student, c : Course, p1,p2 : Project | c in s.enrolled and p1 in c.projects and p2 in c.projects and p1 in s.projects and p2 in s.projects implies p1 = p2\n}"
+                },
+                {
+                    "entry_count": 11,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall x : Student, c : Course | c in x.enrolled implies (lone p : Project | p in c.projects and p in x.projects)\n}"
+                },
+                {
+                    "entry_count": 10,
+                    "code": "{\n\t// Students work on at most one project per course\n  \t\n  \t\n  \tall s:Student| all c:Course | c in s.enrolled implies lone (s.projects & c.projects)\n  \t\n\n}"
+                },
+                {
+                    "entry_count": 9,
+                    "code": "{\n\t// Students work on at most one project per course\n  \tall s:Student | all en: s.enrolled | lone proj: en.projects | proj in s.projects\n}"
+                },
+                {
+                    "entry_count": 7,
+                    "code": "{\n\t// Students work on at most one project per course\n  \tall s : Student | all c : s.enrolled | lone p : Project | p in c.projects and p in s.projects\n\n}"
+                },
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s : Student | all c : s.enrolled | lone p : Project | p in c.projects and s in projects.p\n}"
+                },
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s : Student, c : s.enrolled | # (s.projects & c.projects) <=1\n}"
+                },
+                {
+                    "entry_count": 4,
+                    "code": "{\n    // Students work on at most one project per course\n    all s: Student, c: Course | \n        (c in s.enrolled) implies #(s.projects & c.projects) <= 1\n}"
+                },
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s: Student | all c: s.enrolled | #(s.projects & c.projects) < 2\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s:Student, c:Course | lone proj:Project |\n  \t\tc in s.enrolled and proj in c.projects and proj in s.projects\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s: Student | all c: s.enrolled | all c_p1, c_p2: c.projects |\n  \t\tc_p1 in s.projects and c_p2 in s.projects implies c_p1 = c_p2\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Students work on at most one project per course\n      all s : Student | all c : Course | lone j : Project | s->j in projects and s->c in enrolled and c->j in projects \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n  all s: Student, c: Course |\n    \n    s -> c in enrolled implies\n    \n    lone p: Project | p in c.projects and p in s.projects\n// Students work on at most one project per course\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n    all student: Student, course: Course | lone project: student.projects | project in course.projects and course in student.enrolled\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n  \tall s:Student | all disj pr1, pr2:Project | all c: Course | \n  \tpr1 in s.projects and pr2 in s.projects and pr1 in c.projects and c in s.enrolled implies pr2 not in c.projects\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s: Student | all c: s.enrolled | all p1,p2: s.projects | p1 in c.projects and p2 in c.projects implies p1 = p2\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s: Student |all c: s.enrolled | #({p: Project | p in s.projects and p in c.projects}) <=1 \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n  \tall c : Course, s : Student | c in s.enrolled implies (lone p : Project | p in c.projects & s.projects)\n\n\t\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall x: Student | all c: Course | all disj p1, p2: Project |\n  \t\tp1 in c.projects and\n  \t\tp2 in c.projects and\n  \t\tc in x.enrolled implies\n  \t\t\tnot (p1 in x.projects and p2 in x.projects)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n  \tall s : Student, c : s.enrolled | some s.projects&c.projects implies one s.projects&c.projects\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n  \tall s: Student | all c: s.enrolled, p1,p2: Project | \n  \t\tp1 in c.projects and p2 in c.projects and p1 in s.projects and p2 in s.projects => p1 = p2\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 72,
+            "syntactic_count": 43,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 17,
+                    "code": "{\n\t// Students work on at most one project per course\n\n}"
+                },
+                {
+                    "entry_count": 5,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s:Student | lone (Person <: projects).s \n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Students work on at most one project per course\n    all s: Student | lone s.projects.enrolled\n\n\n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s: Student, p: s.projects | #(p & s.enrolled.projects) <= 1\n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall c: Course , p: c.projects | all s: (Person <: projects).p |\n  s not in ((Course <:c.projects) - p)\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s: Student| all p: s.projects | #((p.~enrolled)) <= 1\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Students work on at most one project per course\n  all s: Student, c: Course | \n  lone p: Project | p in enrolled[s] and p in projects[c]\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Students work on at most one project per course\n  all s:Student | lone s.projects.projects\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n  \tall p:Person, c:Course | lone p:c.projects | p in p.projects\n  \t\t\t\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n  all s : Student | all p : Project | lone p & s\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n  \n  all s : Student, c : s.projects | one c\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s : Student | all c : s.enrolled | lone p : Project | p in c\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s: Student, c: Course | lone p: Project | p in c.projects and s in p.projects.^enrolled\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s: Student, c: Course | lone p: Project | p in c.projects and s in p.projects.enrolled\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s:Student, c:Course | lone s.projects <: Person & c.projects <: Course\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n  \tall s : Student | lone p : Project | s.projects = p \n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n  \n  all s : Student | one  s.enrolled implies ( lone s.(Course <: projects)  ) \n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n  all s : Student | all p : Project | once(p in s.projects) or not(p in s.projects)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n  \tall s : Student | all p : s.projects | lone c : s.enrolled.projects | p in c.projects\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s: Student | all disj p1, p2: s.enrolled.projects | no (p1&p2&s.projects)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n\t\n  \tall c: Course | lone (enrolled.c & c.(Course<:projects))\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s : Student, p,p2 : s.projects, c : s.enrolled |\n  \t\tp in c implies not p2 in c\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s : Student | lone p : Project | p in p.projects\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s: Student, c : s.enrolled, p : s.projects | lone( c.projects & p)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall p : Person | all pr1, pr2 : Project | p in Student and pr1 in p.enrolled and pr2 in p.enrolled implies pr1 = pr2\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s: Student, c: Course | lone p: Project | p in c.projects and s in p.projects\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n    all s: Student, c : s.enrolled | lone p: Project | p in c.projects and s in p.projects \n    \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n  \tall s : Student | all c : Course | lone p : Project | \n  \t\t(c.projects & s.projects) = p \n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s: Student, p: s.projects | lone p & (Course <: projects).p\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n  \n  all s: Student |  lone pr: Project | pr in enrolled[s] and pr in projects[Course]\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s: Student | all p1, p2: Project | ((p1 in s.projects) and (p2 in s.projects)) implies ((p1 = p2) or (no ((p1 & Course) & (p2 & Course))))  \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s : Student | lone p : Project | p in s.enrolled\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n  \t(Course <: projects).~enrolled in Project lone -> set Course\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n  all p : Student, c : Course | lone p : Project | p in p.projects and p in c .projects\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall c: Course , p: c.projects | all s: (Person <: projects).p |\n  s not in (c.projects <: Course  - p)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t\n  all s:Student, c:Course, p:Project | c in s.enrolled and p in s.projects and p in c.projects implies lone p\n  \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n  \n  all s : Student | some  s.enrolled implies ( lone s.(Course <: projects)  ) \n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n  \tall s: Student, c: Course |\n  \t\ts in c.enrolled implies \n        \tlone p: Project | p in s.projects && p in c.projects\n\t\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n  \tall s : Student | all p : s.projects | lone c : s.enrolled.projects | p in c\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n  \n  all s : Student | lone (s.(Person <: projects) & s.enrolled )  \n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n  \tall s: Student, c: Course | lone (s.(Person <: projects) & c.(Person <: projects))\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n  \tall s : Student | all c: s.enrolled.projects | lone(c)\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n  \tall p:Person |\n  \t\tall c:Course |\n  \t\t\tall proj:p.projects |\n  \t\t\t\tlone c.projects&proj\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 54,
+            "syntactic_count": 13,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 29,
+                    "code": "{\n\t// Students work on at most one project per course\n  all s : Student | lone  s.projects & s.enrolled.projects\n\n}"
+                },
+                {
+                    "entry_count": 7,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s : Student | lone p : s.projects | p in s.enrolled.projects\n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s: Student | #(s.enrolled.projects & s.projects) <=1\n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s: Student | lone p: s.enrolled.projects | s in Student and p in s.projects\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Students work on at most one project per course\n  \tall s : Student | lone p : Project | p in s.projects and p in s.enrolled.projects\n\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s : Student | lone pr : Project | pr in (s.projects & s.enrolled.projects)\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s: Student | lone p: s.enrolled.projects | p in s.projects\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n  \tenrolled.projects & Student <: projects in Student -> lone Project\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s:Student, c:Course | lone s.projects & s.enrolled.projects\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s : Student, c : Course | lone pr : Project | pr in (s.enrolled.projects & s.projects)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s: Student | all c_p1, c_p2: s.enrolled.projects |\n  \t\tc_p1 in s.projects and c_p2 in s.projects implies c_p1 = c_p2\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s: Student |#({p: Project | p in s.projects and p in s.enrolled.projects}) <=1 \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s: Student | all p1, p2: s.projects | p1 in s.enrolled.projects and p2 in s.enrolled.projects implies p1 = p2\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 40,
+            "syntactic_count": 8,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 15,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s : Student | all c : s.enrolled | one(s.projects & c.projects)\n}"
+                },
+                {
+                    "entry_count": 14,
+                    "code": "{\n\t// Students work on at most one project per course\n\t\n  \tall s: Student, c: s.enrolled | one p: s.projects | p in c.projects\n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Students work on at most one project per course\n  \t\n  \t\n  \tall s:Student| all c:Course | c in s.enrolled implies one (s.projects & c.projects)\n  \t\n\n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t\n  \tall s : Student, c : Course | c in s.enrolled implies \n   (one p : Project | p in c.projects and p in s.projects )\n\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Students work on at most one project per course\n  \tall s:Student | all en: s.enrolled | one proj: en.projects | proj in s.projects\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s : Student |all c : s.enrolled | #s.projects & c.projects = 1\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n  all s: Student, c: Course |\n  s -> c in enrolled implies \n  one p: Project | s -> p in projects and c -> p in projects\n\t// Students work on at most one project per course\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n  all s: Student, c: Course |\n    \n    s -> c in enrolled implies\n    \n    one p: Project | p in c.projects and p in s.projects\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 35,
+            "syntactic_count": 8,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 18,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s: Student | all c: s.enrolled | lone c.projects\n}"
+                },
+                {
+                    "entry_count": 9,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s : Student | all c : s.enrolled | lone p : Project | p in c.projects\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Students work on at most one project per course\n  all s:Student, c:s.enrolled | lone s->c.projects\n\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Students work on at most one project per course\n  all s : Student, c : Course | lone p : Project | c in s.enrolled and p in c.projects\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n  all s : Student, c : Course |c in s.enrolled implies (lone p : Project | p in c.projects)\n\t// Students work on at most one project per course\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n\t all s : Student | all c : Course | lone pr : Project | c in projects.pr and s in enrolled.c\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s : Student | no c : Course | some p1, p2 : Project | p1 != p2 and p1 in c.projects and p2 in c.projects and c in s.enrolled\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n  \tall s : Student | all c : Course | c in s.enrolled implies #(c.projects) <= 1\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 34,
+            "syntactic_count": 3,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 22,
+                    "code": "{\n\t// Students work on at most one project per course\n  \tall s: Student | lone s.enrolled.projects \n}"
+                },
+                {
+                    "entry_count": 8,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s : Student | lone p : Project | p in s.enrolled.projects\n}"
+                },
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// Students work on at most one project per course\n  all s:Student, c:Course | lone s.enrolled.projects\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 25,
+            "syntactic_count": 6,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 11,
+                    "code": "{\n\t// Students work on at most one project per course\n  all s : Student, c:Course | one(s.projects & c.projects) \n\n}"
+                },
+                {
+                    "entry_count": 7,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s: Student, c: Course |\n\t\tone p: Project | p in s.projects and p in c.projects\n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s: Student | all c: Course | one p: c.projects | p in s.projects\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s : Student | all c : Course | one p : s.projects | p in c.projects\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s : Student, c : Course | one proj : Project | \n  \t\t\tproj in (c.projects & s.projects)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n  all s: Student, c: Course |\n  \n  one p: Project | s -> p in projects and c -> p in projects\n\t// Students work on at most one project per course\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 22,
+            "syntactic_count": 6,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 13,
+                    "code": "{\n\t// Students work on at most one project per course\n\n        \n\n        all s : Student | lone s.projects\n}"
+                },
+                {
+                    "entry_count": 5,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s : Student | lone p : Project | p in s.projects\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s:Student | #(s.projects) <=1\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall p : Person | all pr1, pr2 : Project | p in Student and pr1 in p.projects and pr2 in p.projects implies pr1 = pr2\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n    all s : Student | #s.projects<2\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n  all s: Student | lone p: Project | s in projects.p\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 13,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 9,
+                    "code": "{\n\t// Students work on at most one project per course\n  \tall s: Student | one s.enrolled.projects  \n}"
+                },
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s : Student | one p : Project | p in s.enrolled.projects\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 12,
+            "syntactic_count": 5,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s : Student | all c : s.enrolled | one p : Project | c.projects=p\n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s : Student | all c : s.enrolled | one p : Project | p in c.projects\n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s : Student | all c : s.enrolled | one( c.projects)\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s: Student | all c: Course | c in s.enrolled implies (one p:Project| p in  c.projects)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n  \tall s : Student | all c : Course | c in s.enrolled implies #(c.projects) = 1\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 11,
+            "syntactic_count": 7,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s : Student | one (s.projects & s.enrolled.projects)\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s: Student | one c:s.enrolled.projects | one proj:s.projects | c = proj \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s: Student | one p: s.enrolled.projects | p in s.projects\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s : Student | one s.projects <: s.enrolled.projects\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s : Student | one p : s.projects | p in s.enrolled.projects\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s: Student | one p: Project | p in s.projects and p in s.enrolled.projects\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s: Student | #(s.enrolled.projects & s.projects) = 1\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 10,
+            "syntactic_count": 3,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 5,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s : Student | one p : Project | p in s.projects\n}"
+                },
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// Students work on at most one project per course\n  \tall s: Student | one (s.projects)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n\tStudent<:projects in Student -> one Project\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 10,
+            "syntactic_count": 6,
+            "correct": true,
+            "elems": [
+                {
+                    "entry_count": 5,
+                    "code": "{\n\t// Students work on at most one project per course\n  \t\n\tall s: Student, disj p1, p2: s.projects | Course <: projects.p1 != projects.p2\n  \t\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s : Student | all disj p1,p2 : s.projects | Course<:projects.p1 != Course<:projects.p2\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n  \t\n\tall s : Student, p1, p2: Project | p1 in s.projects and p2 in s.projects and p1 != p2 => not Course <: projects.p1 = projects.p2\n  \t\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n\n  \tall s : Student, disj p1,p2 : Project {\n\t\tp1 in s.projects and p2 in s.projects\n      \timplies\n      \t(Course <: projects).p1 != (Course <: projects).p2\n    }\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n  \t\n\tall s : Student, disj p1, p2: s.projects | not Course <: projects.p1 = projects.p2\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n  \t\n\tall s : Student, p1, p2: Project | p1 in s.projects and p2 in s.projects and not p1 = p2 => not Course <: projects.p1 = projects.p2\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 8,
+            "syntactic_count": 3,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Students work on at most one project per course\n  \t\n  \t\n  \t\n  \tall s:Student, c:Course | one pr:Project | c in s.enrolled and pr in c.projects and pr in s.projects\n\n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n  all s: Student, c: Course | s -> c in enrolled and one p: Project | s -> p in projects and c -> p in projects\n\t// Students work on at most one project per course\n\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Students work on at most one project per course\n      all s : Student | all c : Course | one j : Project | s->j in projects and s->c in enrolled and c->j in projects   \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 8,
+            "syntactic_count": 4,
+            "correct": true,
+            "elems": [
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall p : Person | all c : p.enrolled | lone(p.projects & c.projects)\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall p: Person | all c: p.enrolled | lone projj: p.projects | projj in c.projects\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Students work on at most one project per course\n  \n  \n  \n    \n  all c : Course | all mitglied : enrolled.c | lone (c.projects & mitglied.projects)\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s : Person, c:s.enrolled, p1,p2: s.projects | p1 in c.projects and p2 in c.projects implies p1 = p2\n  \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 8,
+            "syntactic_count": 4,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 5,
+                    "code": "{\n\t// Students work on at most one project per course\n  \tall s: Student | some s.projects\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s : Student | some p : Project | p in s.projects\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n  \tall s : Student | s.projects != none\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s:Student | #(s.projects) > 0\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 7,
+            "syntactic_count": 6,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Students work on at most one project per course\n\t\n  \tall s:Student, c : Course | #s.projects&c.projects <= 0 \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall c: Course , p: c.projects, s1,s2: Student |\n  s1 in (Person <: projects).p and s2 in (Person <: projects).p implies s1!=s2\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall c: Course, student: Student, p1, p2: c.projects | p1 in student.projects and p2 in student.projects => p1 != p2\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t\nall x:Student | all p1,p2:x.projects, c:Course | p1 in c.projects and p2 in c.projects implies p1!=p2\n  \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n  \t\tall x : Student, p1,p2 : Project, c1,c2 : Course | (x->p1 in projects and x->p2 in projects and c1->p1 in projects and c2->p2 in projects ) implies(not c1=c2)\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n  \tall s:Student | all pr1, pr2:Project | all c: Course | \n  \tpr1 in s.projects and pr2 in s.projects and pr1 in c.projects implies pr2 not in c.projects\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 7,
+            "syntactic_count": 7,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n  \t\n\tall s : Student, p1, p2: Project | p1 in s.projects and p2 in s.projects => not Course <: projects.p1 = projects.p2\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n  \t\n\tall s : Student, p1, p2: s.projects | not Course <: projects.p1 = projects.p2\n  \t\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall disj s : Student , p,p1 : s.projects | p.(~projects).teaches not in p1.(~projects).teaches\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s : Student , p : Project | s.projects in p.enrolled and lone p.enrolled\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n  \tall s : Student | s.projects in s.enrolled\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n  all s : Student, p : s.projects | one c : Course | c in p \n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n  \t\n\tall s: Student, p1, p2: s.projects | Course <: projects.p1 != projects.p2\n  \t\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 7,
+            "syntactic_count": 7,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s : Student | one (s.projects).projects\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s: Student | one c:s.enrolled | one proj:s.projects | c = s  \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n  \n  all s : Student | one (s.projects).enrolled \n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n  \tall s: Student | some s.projects.(Course<:projects)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n  \tall s : Student | one (Course <: projects).s\n\t\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n  \tall s : Student | some c : Course | one p : c.projects | s in p\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s: Student | one c:s.enrolled | one proj:s.projects | c = proj \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 6,
+            "syntactic_count": 4,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s: Student, pj: Project, c1, c2: Course | pj in s.projects and pj in c1.projects and pj in c2.projects => c1 = c2\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s:Student , p:s.projects | lone (Course<:projects).p\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s : Student , p : Project| p in s.projects implies lone (Course<:projects).p\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s : Student, p : s.projects | lone c : Course | p in c.projects \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 6,
+            "syntactic_count": 5,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Students work on at most one project per course\n  \tall s:Student | all c:s.enrolled | lone (s.projects) \n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s: Student | all c: s.enrolled | #(s.projects & s.projects) < 2\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n  all s: Student, c: Course | s in enrolled.c implies lone s.projects \n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n  \t\n  \tall s : Student | all c : s.enrolled |\n  \t\tlone pr : Project |\n  \t\t\tpr in s.projects\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n all s:Student | all c:Course | all p1,p2:Project | p1 in s.projects and  p2 in s.projects and c in s.enrolled implies p1 = p2\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 5,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 5,
+                    "code": "{\n\t\n  \tall s:Student , proj:s.projects | one c:Course | proj in c.projects implies c.projects - proj not in s.projects\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 5,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// Students work on at most one project per course\n  \tlone (Student.enrolled.projects)\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n  \tlone (Course.projects & Student.enrolled.projects)\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 5,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s : Student, p : s.projects | one c : Course | p in c.projects \n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s:Student , p:s.projects | one (Course<:projects).p\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 5,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// Students work on at most one project per course\n  \tall s : Student | lone(Course.projects & s.projects)\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s : Student| lone p : Project | p in s.projects and some (Course<:projects).p\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 4,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall p : Person | all c : p.enrolled | one(p.projects & c.projects)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall p: Person | all c: p.enrolled | one projj: p.projects | projj in c.projects\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 4,
+            "syntactic_count": 3,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Students work on at most one project per course\n  \t~enrolled.projects in Course -> lone Project\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n  all c : Course |  #(enrolled.c.projects) =< 1\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n  all c : Course | lone enrolled.c.projects\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 4,
+            "syntactic_count": 3,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Students work on at most one project per course\n\n        \n\n        \n\n        \n\n        all s : Student, c : Course | some (c.projects & s.projects)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s : Student, c : Course | #(s.projects & c.projects) >= 1\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s:Student | all c:Course |  #(s.projects & c.projects) > 0\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 4,
+            "syntactic_count": 4,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n  \tall s: Student | all c: s.enrolled | c.projects = 1\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n    all s : Student | all c : s.enrolled | one p : s.projects | c in p.projects\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s : Student |all c : s.enrolled | s.projects & c.projects = 1\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s : Student | all c1 : Course | all c2 : Course | (c1 in s.enrolled and c2 in s.enrolled) implies c1 != c2\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 4,
+            "syntactic_count": 3,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Students work on at most one project per course\n  \tall s : Student |\n  \t\tall c : s.enrolled |\n  \t\t\tsome p : s.projects | p in c.projects\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s:Student | all c: s.enrolled| #(s.projects & c.projects) > 0\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n  \tall s: Student | (all c : s.enrolled | some (c.projects &  s.projects) )  \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 4,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s : Student | some c : Course | lone(s.projects &  c.projects)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s : Student | some c : Course | lone p : c.projects | p in s.projects\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 4,
+            "syntactic_count": 3,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s: Student | all c: Course | lone c.projects \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n  all s:Student, c:Course | lone s->c.projects\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s : Student | all c : Course | lone p : c.projects | p in c.projects\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 3,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s : Student, disj p1, p2 : Project | \n  \t\t\t(p1 in s.projects and p2 in s.projects and\n  \t\t\t(Course:>projects.p1 in s.enrolled) and \n            (Course:>projects.p2 in s.enrolled)) implies p1 = p2 \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s : Student, p1, p2 : Project | \n  \t\t\t((p1 in s.projects and p2 in s.projects) and\n  \t\t\t(Course:>projects.p1 in s.enrolled) and \n            (Course:>projects.p2 in s.enrolled)) implies p1 = p2 \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 3,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s : Student | all c : Course | c in s.enrolled implies ((one pro : Project | pro in c.projects and pro in s.projects) or (all pro: Project | pro in c.projects and pro not in s.projects))\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s : Student | all c : Course | c in s.enrolled implies (one pro : Project | pro in c.projects and pro in s.projects) or (all pro: Project | pro in c.projects and pro not in s.projects)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 3,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s : Student | all c : Course | ((one pro : Project | pro in c.projects and pro in s.projects) or (all pro: Project | (pro in c.projects) and not (pro in s.projects)))\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s : Student | all c : Course | ((one pro : Project | pro in c.projects and pro in s.projects) or (all pro: Project | pro in c.projects and pro not in s.projects))\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 3,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Students work on at most one project per course\n  \t\n  \n  \tlone Course.projects & Student.projects\n\n\t\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 3,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Students work on at most one project per course\n    lone enrolled.projects\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 3,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Students work on at most one project per course\n  all s:Student | some s.enrolled.projects\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n\n  \tall s: Student | some p: Project | p in s.enrolled.projects\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 3,
+            "syntactic_count": 3,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s: Student | all p1, p2: s.enrolled.projects | no (p1&p2&s.projects)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall x: Student | all c: Course | all p1, p2: Project |\n  \t\tp1 in c.projects and\n  \t\tp2 in c.projects and\n  \t\tc in x.enrolled implies\n  \t\t\tnot (p1 in x.projects and p2 in x.projects)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n  \tall s:Student | all pr1, pr2:Project | all c: Course | \n  \tpr1 in s.projects and pr2 in s.projects and pr1 in c.projects and c in s.enrolled implies pr2 not in c.projects\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 3,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s: Student | one sCourse : s.enrolled | \n  \t\t#(sCourse.projects & s.projects) <=1\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s: Student | one c: s.enrolled | all p1, p2: s.projects | p1 in c.projects and p2 in c.projects implies p1 = p2\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 3,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s : Person | lone (s.projects & s.enrolled.projects)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n  \t\n    Person <: projects & (enrolled.projects) in Person -> lone Project\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 3,
+            "syntactic_count": 2,
+            "correct": true,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall p : Person, c : Course | lone p.projects & c.projects\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n  all c : Course | all disj x, y : c.projects | no ((Person<:projects).x & (Person<:projects).y)\n  \n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 3,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s : Student, p1, p2: Project | not Course <: projects.p1 = projects.p2\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 3,
+            "syntactic_count": 3,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s : Student , p : Project | p in s.projects and lone enrolled.p\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s : Student , p : Project | p in s.projects and lone p.enrolled\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n  all s : Student | all p : Project | once(p in s.projects)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 3,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s:Student | all c: Course | lone p: Project | c in s.enrolled and p in c.projects implies p in s.projects\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 3,
+            "syntactic_count": 3,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n  \tall s: Student | all proj:s.projects | one c:s.enrolled | proj in c.projects\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n    all student: Student, project: student.projects | one course: Course | project in course.projects and course in student.enrolled\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s : Student, p : Project | (p in s.projects) implies (one c : s.enrolled | p in c.projects)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 3,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s : Student | some c : s.enrolled | lone s.projects & c.projects\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s : Student | some c : s.enrolled | lone p : s.projects | p in c.projects\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 3,
+            "syntactic_count": 3,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n  all p:Person, c : p.enrolled | lone p: Project | p in c.projects\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n  \n    \n  all c : Course | all mitglieder : enrolled.c | lone (c.projects)\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall p : Person | all c : Course | c in p.enrolled implies lone c.projects \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Students work on at most one project per course\n\t\n  \n  \tall s : Student, c : Course | one s.enrolled.projects and one c.projects\n   \n  \t\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s: Student, p: s.enrolled |\n  \t\t(s.projects not in p.projects) or (one proj: s.projects | proj not in p.projects - proj)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s:Student|all p1,p2:Project|all c:Course|p1 in s.projects and p2 in s.projects implies p1=p2\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s : Student | s.projects in s.enrolled.projects\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s: Student, p: s.projects | one p & s.enrolled.projects\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall p : Person | all pr : Project | some c : Course | p in Student and c in p.enrolled and pr in p.projects implies pr in c.projects\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s : Student | all p : s.projects | some c : Course | p in c.projects implies no p2 : c.projects | p != p2 implies p2 in s.enrolled\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s : Student | all p : s.projects | some c : Course | p in c.projects implies no p2 : c.projects | p != p2 implies not p2 in s.enrolled\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s : Student , c : Course| s.projects in c.projects\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s : Student | all p : s.projects | no c : Course | p in c.projects implies no p2 : c.projects | p != p2 implies p2 in s.enrolled\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Students work on at most one project per course\n  \tall c: Course | lone c.projects\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s:Student | lone p:Project | all c:Course |\n  \t\tc in s.enrolled implies p in s.projects and (p in c.projects)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n  \tall s : Student | some c : s.enrolled | one p : s.projects | p in c.projects\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s : Student | some c : s.enrolled | one s.projects & c.projects\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s : Student | Person <: projects in s.projects one -> Course\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s : Student | Person <: projects in s one -> Course\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s : Student | some c : Course | one p : c.projects | p in s.projects\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s : Student | some c : Course | one(s.projects &  c.projects)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 2,
+            "correct": true,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall disj p1, p2: Project | (Course <: projects.p1) = (Course <: projects.p2) implies no (Person <: projects.p1) & (Person <: projects.p2)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall p : Person | all p2 : p.projects | no p3 : p.projects | p2 != p3 and (Course <: projects).p2 = (Course <: projects).p3\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Students work on at most one project per course\n  \tall s: Student, c : Course | lone p: Project | s->p in projects implies s->c in enrolled\n  \t\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n      lone ((projects & (Person->Project)) & (enrolled.(projects & (Course->Project))))\n\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n\tlone (enrolled.projects & (Person <: projects))\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n    all s : Student | one e : s.enrolled | all p : s.projects | e in p.projects\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s: Student | one c: s.enrolled | s.projects in c\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n  all s:Student | all c:s.enrolled | #(s.projects) = 1\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s : Student | all c : s.enrolled | one (s.projects)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Students work on at most one project per course\n  \tall s : Student | all c : Course | lone p : Project | c in s.enrolled implies p in s.projects\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n\t  all s : Student | some Course.projects  & s.projects\n\n  \n  \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s:Student | some c:Course |  #(s.projects & c.projects) > 0\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Students work on at most one project per course\n\t  all s : Student | one (Course <: projects).(s.projects) \n\n  \n  \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall c : Course | lone p : c.projects | p in c.(~enrolled).projects\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n  \t\n    \n    ~enrolled.projects & Course <: projects in Course -> lone Project\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n  all s: Student, c: Course | one p: Project | p in s.enrolled.projects \n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n\t\n  \n  \tall s : Student, c : Course | one s.enrolled.projects\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n    lone Student<:enrolled.projects\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n\tPerson <: projects in (Student -> lone Project)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s: Student | all disj p1, p2: s.projects | one c : s.enrolled | p1 in c.projects iff p2 not in c.projects\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n  \t\n  \n  all s : Student, c : Course | c in s.enrolled implies one s.enrolled.projects\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n  all s : Student | one c : Course | s.projects in c \n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n  \tall s:Student | all pr1, pr2:Project | one c: Course | \n  \tpr1 in s.projects and pr2 in s.projects and pr1 in c.projects and c in s.enrolled implies pr2 not in c.projects\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall p :Project | (Person<:projects).p in enrolled.projects.p\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s : Student | lone p : Project | all c : Course | c in s.enrolled implies p in c.projects\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n  \tone (Person <: projects).{p:Project, c:Course | c->p in projects}\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s : Student | some c : Course | c in s.enrolled => lone(s.enrolled.projects - s.projects)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s : Student | some c : Course | c in s.enrolled => \t\t\t\t\t\t\t\tlone(s.enrolled.projects & s.projects)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s : Student | all c : s.enrolled | lone (s.enrolled.projects - \t\t\t\t\tc.projects)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s : Student | all c : s.enrolled | lone(s.projects - c.projects)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s: Student | all c: Course | lone(c.projects & s.enrolled.projects)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n  all s:Student | some s.enrolled\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n  enrolled in Student -> Course\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n  all s:Student, c:s.enrolled | lone s->c->(Course<:projects)\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n  all s:Student | lone s.enrolled\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n  all s:Student | lone enrolled.projects\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n  all s:Student | lone enrolled->(s.projects)\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n  \n  \n  \n    \n  all c : Course | all mitglieder : enrolled.c | lone (Person<:projects).(c.projects)\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall c : Course | one c.projects\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n  \tall s : Student, c : s.enrolled | lone c.projects and lone s.projects\n  \t\n    \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t\n  \tall s:Student,proj:s.projects|some c:Course | proj in c.projects implies c.projects - proj not in s.projects\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s : Student | all disj p1,p2 : Project | Course<:projects.p1 != Course<:projects.p2\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s : Student, c : Course | one c.projects implies s in enrolled.c\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s : Student, c : Course | lone c.projects implies s in enrolled.c\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s: Student | lone c: s.enrolled.projects | s.projects in c\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s : Person - Professor | all c : s.enrolled | one p : s.projects | p in c.projects \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s : Person - Professor | all c : s.enrolled | lone(s.projects & c.projects)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s: Student, c : s.enrolled, p : s.projects | lone( c + p)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s: Student, c : s.enrolled, p : s.projects | lone( c.projects + p)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n  \tall s : Student | all c : Course | lone p : Project | c in s.enrolled implies\n  \t\t((c.projects & s.projects) = p)\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n  \tall s : Student, c : Course | one p : Project | c in s.enrolled implies\n  \t\t((c.projects & s.projects) = p)\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s:Student, c:Course | one s.projects <: Person & c.projects <: Course\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": true,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s : Student, p1, p2 : s.projects | \n  \t\t\t(Course:>projects.p1 = Course:>projects.p2 and\n  \t\t\tCourse:>projects.p1 in s.enrolled and \n            Course:>projects.p2 in s.enrolled) implies p1 = p2 \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n\n\tall s: Student | one p: Project | s.projects in p\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n    \n   all s : Student, c : Course, p1 : Project | c in s.enrolled and lone c.projects\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n    \n   all s : Student, c : Course | c in s.enrolled and lone c.projects\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n  \tenrolled.projects in Student -> lone Project\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n  \tone enrolled.projects & Student <: projects\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall p : Person | one pr : Project | p in Student and pr in p.enrolled\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall p : Person | all pr1, pr2 : Project | some c : Course | p in Student and pr1 in p.projects and pr2 in p.projects and pr1 in c.projects and pr2 in c.projects implies pr1 = pr2\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall p : Person | one pr : Project | some c : Course | p in Student and c in p.enrolled implies pr in p.projects\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall p : Person | one pr : Project | some c : Course | p in Student and c in p.enrolled and pr in p.projects implies pr in c.projects\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall p : Person | all pr : Project | one c : Course | p in Student and c in p.enrolled and pr in p.projects implies pr in c.projects\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall c : Course | one p : Project | p in c.projects\n  \tall s : Person | all p : Project | some c : Course | s in Student and c in s.enrolled and p in s.projects implies p in c.projects\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n  \tall s : Person | some p : Project | all c : Course | s in Student and c in s.enrolled and p in s.projects implies p in c.projects\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n  \tall s : Person | some p : Project | all c : Course | s in Student and c in s.enrolled and p in c.projects implies p in s.projects\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n  \tall s : Student | one p : Project | p in Course.projects and p in s.projects \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n   no disj s1, s2: Student, c: Course | s1.projects & c.projects & s2.projects != none\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall x : Student, c : Course | lone p : Project | p in x.projects and c in x.enrolled implies p in c.projects\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\nall x : Student, p1,p2 : Project, c1,c2 : Course | (x->p1 in projects and x->p2 in projects and c1->p1 in projects and c2->p2 in projects ) implies(c1=c2)\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s : Student | no c : Course | some p1, p2 : Project | p1 != p2 implies p1 in c.projects and p2 in c.projects and c in s.enrolled\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": true,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n  all s : Student | all p : s.projects | some c : Course | p in c.projects and (one (s.projects & c.projects))\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n  \tall s : Student | lone c : s.enrolled | one p : s.projects | p in c.projects\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n  all s : Student | all pro : Project | all c : Course | (pro in c.projects and pro in s.projects) implies c in s.enrolled\n\tall s : Student | all c : Course | c in s.enrolled implies ((one pro : Project | pro in c.projects and pro in s.projects) or (all pro: Project | pro in c.projects and pro not in s.projects))\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s : Student , p : Project| p in s.projects and lone (Course<:projects).p\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s: Student | lone p: Project | all c: Course | p in c.projects and p in s.projects\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s : Person | all c : Course | ((one pro : Project | pro in c.projects and pro in s.projects) or (all pro: Project | (pro in c.projects) and not (pro in s.projects)))\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s : Student , p : Project | s.projects in p and lone p.enrolled\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s : Student | s.projects = s.enrolled.projects\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n  \tall s: Student | some (Course.projects)\n  \t\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n  \tall s: Student | lone (Course.projects)\n  \t\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n  \tall s: Student | one (Course.projects)\n  \t\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n  \tlone Course.projects\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n  \tCourse.projects & Student.projects = Project\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n  \t(Student.enrolled.projects) in Student.projects\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n  \tlone ((Student.enrolled.projects)&(Student.projects))\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n  \tlone ((Student.enrolled.projects)+(Student.projects))\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n  all s: Student, c: Course | s -> c in enrolled and some p: Project | s -> p in projects and c -> p in projects\n\t// Students work on at most one project per course\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s:Student | one p:Project | some c:Course |\n  \t\tp in s.projects implies (p in c.projects and c in s.enrolled)\n  \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s:Student | lone p:Project | some c:Course |\n  \t\tp in s.projects implies (p in c.projects and c in s.enrolled)\n  \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s:Student | lone p:Project | all c:Course |\n  \t\tc in s.enrolled implies p in s.projects\n  \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s:Student | lone p:Project | all c:Course |\n  \t\tc in s.enrolled and p in s.projects implies p in c.projects\n  \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n    all student: Student, project: student.projects | lone course: Course | project in course.projects and course in student.enrolled\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s : Student | some c : s.enrolled | one s.projects\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n\tPerson<:projects in Student -> one Project\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n\t#Student<:projects <= 1\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n\tlone Student<:projects\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n\tCourse <: projects in Course one -> one Student\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s : Student, c : Course | one pr : Project | pr in s.projects implies (c in s.enrolled and pr in c.projects)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s : Student| some c : Course | one pr : Project | pr in s.projects implies (c in s.enrolled and pr in c.projects)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s : Student, c : Course | lone pr : Project | pr in s.projects implies (c in s.enrolled and pr in c.projects)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s: Student | all p1, p2: s.enrolled.projects | p1 != p2 \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s: Student | one c: Course | c in s.enrolled implies\n  \t\t#(c.projects & s.projects) <=1\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s: Student | all p1, p2: s.projects | one (s.projects & s.enrolled.projects)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s: Student | all c_p: s.enrolled.projects | one (s.projects & c_p)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n  \tall s : Student, c : Course | one p : Project | p in c.projects and p in s.projects implies c in s.enrolled\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n  \tall s : Student, c : Course | lone p : Project | p in c.projects and p in s.projects implies c in s.enrolled\n  \n  \t\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n all s:Student | all c:Course | all p1,p2:Project | p1 in s.projects and  p2 in s.projects and c in s.enrolled implies p1 in c.projects and p2 in c.projects and p1 = p2\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s: Student| all p: s.projects | #(s.enrolled.projects) <= 1\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s:Student | some c: s.enrolled| #(s.projects & c.projects) > 0\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall p: Project | all c: Course | one s: Student | c in s.enrolled and p in c.projects and p in s.projects\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall p: Project | all c: Course | one s: Student | c in s.enrolled and lone s.projects }"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n\t    all s: Student | all c: Course| c in s.enrolled and lone p: c.projects | p in s.projects\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n  all c : Course | some enrolled.c.projects\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": true,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n  \tall s : Student, c : Course | #(s.projects & c.projects) <= 1\n\tall s : Student, disj p1, p2: s.projects | not Course <: projects.p1 = projects.p2\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n  all s:Person,c:Course | s in Student && lone (s.projects & c.projects)\n   \n  \n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n  one s : Student | all p : Project | once(p in s.projects) or not(p in s.projects)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s : Student | lone pr : Project | pr in (s.projects + s.enrolled.projects)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s : Student, c : Course | lone pr : Project | pr in (s.projects + c.projects)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n  all p:Person, c: p.enrolled, p1,p2 : p.projects | not (p1 in c.projects and p2 in c.projects)\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t\nall x:Person | all p1,p2:x.projects, c:Course | p1 in c.projects and p2 in c.projects implies p1!=p2\n  \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s : Student | all p1,p2 : s.projects | one c : Course | p1 in c.projects and p2 in c.projects implies p1 = p2\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s:Student | all c: Course | c in s.enrolled and lone p: Project | p in c.projects implies p in s.projects\n  \n \n  \n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall c : Course | some s : Student | one p : c.projects | p in s.projects\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n\tno s : Student | some c : Course | lone c.projects & s.projects \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": true,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall s: Student | all p1, p2: Project | p1 != p2 and p1 in s.projects and p2 in s.projects => some c1, c2: Course | p1 in c1.projects and p2 in c2.projects and c1 != c2  \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n  \tall s : Student | s not in Professor and  all c : Course | c in s.enrolled implies #(c.projects) <= 1\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n  \t\n    all s : Student, pr : s.projects | (Course <: projects).pr in s.enrolled\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n  all s: Student | one p: Project | s.projects in s.enrolled.projects\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n  all s: Student, c: Course | lone p: Project | c in s.enrolled implies p in s.projects & c.projects\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n\tall p : Person | all c : Course | c in p.enrolled implies one c.projects \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n\t\n\tall p: Student, c: Course| one y: Project | p in enrolled.c implies y in p.projects \n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students work on at most one project per course\n\t\n\tall p: Student, c: Course| one y: Project | p in enrolled.c implies y in p.projects and c.projects in p.enrolled \n\n}"
+                }
+            ]
+        }
+    ]
+}

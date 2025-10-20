@@ -1,0 +1,2367 @@
+{
+    "original": "x3JXgWhJ3uti5Dzxz",
+    "cmd": "inv1",
+    "pred": "this/inv1",
+    "entry_count": 3035,
+    "semantic_count": 120,
+    "syntactic_count": 379,
+    "scope": 3,
+    "groups": [
+        {
+            "entry_count": 1612,
+            "syntactic_count": 49,
+            "correct": true,
+            "elems": [
+                {
+                    "entry_count": 744,
+                    "code": "{\n\t// Every image is posted by one user.\n  all p: Photo | one (posts.p)\n\t\n}"
+                },
+                {
+                    "entry_count": 578,
+                    "code": "{\n\t// Every image is posted by one user.\n\tall p: Photo | one u: User | p in u.posts\n}"
+                },
+                {
+                    "entry_count": 59,
+                    "code": "{\n\t// Every image is posted by one user.\n\tposts in User one -> Photo\n  \n}"
+                },
+                {
+                    "entry_count": 56,
+                    "code": "{\n\t// Every image is posted by one user.\n\t\n  \t\n  \tall y : Photo | one x : User | x -> y in posts\n}"
+                },
+                {
+                    "entry_count": 37,
+                    "code": "{\n\t// Every image is posted by one user.\n\tall y : Photo | some x : User | x -> y in posts\n  \n    all x,z:User, y:Photo | x -> y in posts and z -> y in posts implies x=z\n}"
+                },
+                {
+                    "entry_count": 31,
+                    "code": "{\n\t// Every image is posted by one user.\n\t\n  \t\n  \t\n  \t\n  \tall y : Photo | one x : User | x in posts.y\n}"
+                },
+                {
+                    "entry_count": 11,
+                    "code": "{\n\t// Every image is posted by one user.\n\tall y : Photo | some x : User | x -> y in posts\n  \tall x,z : User, y : Photo | x -> y in posts and z -> y in posts implies x = z\n  \n  \tall y : Photo | one x : User | x -> y in posts\n  \n  \tall y : Photo | one x : User | x in posts.y\n  \n  \tall y : Photo | one posts.y\n}"
+                },
+                {
+                    "entry_count": 9,
+                    "code": "{\n    all p: Photo | one p.~posts\n}"
+                },
+                {
+                    "entry_count": 8,
+                    "code": "{\n\t// Every image is posted by one user.\n  \n    \n    \n  \n  \tall y : Photo | some x : User | x in posts.y\n    all x,z:User, y:Photo | x in posts.y and z in posts.y implies x=z\n\n}"
+                },
+                {
+                    "entry_count": 7,
+                    "code": "{\n\t// Every image is posted by one user.\n\tall p : Photo |#(p.~posts)=1\n    \n    \n}"
+                },
+                {
+                    "entry_count": 6,
+                    "code": "{\n\t// Every image is posted by one user.\n  \n    \n    \n  \n  \t\n    \n\n    all y : Photo | some posts.y\n    all y : Photo | lone posts.y \n\n}"
+                },
+                {
+                    "entry_count": 5,
+                    "code": "{\n\t// Every image is posted by one user.\n\tall disj u1, u2: User | no (u1.posts & u2.posts)\n\tnot some p: Photo | no posts.p\n}"
+                },
+                {
+                    "entry_count": 5,
+                    "code": "{\n\t// Every image is posted by one user.\n  all i : Photo | one u : User | one p : u.posts | p = i\n\t\n}"
+                },
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// Every image is posted by one user.\n\tall y : Photo | some x : User | x -> y in posts \n    \n\tall y : Photo | some x : User | x in posts.y \n\tall y : Photo | some x : User | y in x.posts \n  \t\n  \tall x, z : User, y : Photo | x -> y in posts and z -> y in posts implies x = z\n\n  \n\tall y : Photo | one x : User | x -> y in posts\n  \n  \n \tall y : Photo | one posts.y\n  \n}"
+                },
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// Every image is posted by one user.\n  \n\t\n     \n  \n  User.posts = Photo and all x : Photo | lone posts.x\n}"
+                },
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// Every image is posted by one user.\n  \tall disj u, v: User | no (u.posts & v.posts)\n  \tall p: Photo | p in User.posts\n\t\n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Every image is posted by one user.\n  \talways(all p:Photo| one u: User| p in u.posts)\n\t\n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Every image is posted by one user.\n\tall disj u1, u2: User | no (u1.posts & u2.posts)\n\t\n  \tall p:Photo | one posts.p\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n  all p : Photo | one u:User | one (p & u.posts)\n\t// Every image is posted by one user.\n\t\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Every image is posted by one user.\n\tall disj x, y: User | x.posts & y.posts = none\n    Photo in User.posts\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Every image is posted by one user.\n\t\n  \t all p : Photo | one u : User | p in u.posts\n  \n  \t all p : Photo | one u : User | u in posts.p\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Every image is posted by one user.\n  \n  \t\n  \tall i : Photo | some u : User | u -> i in posts\n  \n  \t\n\tall i : Photo, u1, u2 : User | i in u1.posts and i in u2.posts implies u1 = u2\n  \n  \t\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Every image is posted by one user.\n  all p: Photo | p in User.posts and #posts.p = 1\n\t\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Every image is posted by one user.\n\tall p : Photo | (some u : User | p in u.posts) and (lone posts.p)\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n    all p : Photo | #({u : User | p in u.posts}) = 1\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n\tall y: Photo | some x: User | x->y in posts\n  \tall x,y : User, z: Photo | x in posts.z and y in posts.z implies x=y\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n  \n  \n  all p: Photo | one u: User | p in u.posts\n  \n  \n  \n  \n  \n  \n  all p: Photo | one u: User | u->p in posts\n\t\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n  \t\n  \tall p : Photo | one u : User | u -> p in posts\n  \n  \tall p : Photo | one u : User | u in posts.p\n  \n  \tall p : Photo | one posts.p\n\t\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n\tall p, u: Photo | one posts.u\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n  \n\t\n\t\n\t// \n\tall y : Photo | some x : User | x -> y in posts\n \t\n\n\t\n\t// \n\t\n\n\t\n\t// \n\t\n\n    \n    \n    all y : Photo | one posts.y \n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n// Every image is posted by one user.\n    all y: Photo | some x: User | x->y in posts\n    all x,y : User, z: Photo | x->z in posts and y->z in posts implies x=y\n    \n    \n    all x,y : User, z: Photo | x in posts.z and y in posts.z implies x=y\n    \n    \n    all y: Photo | some posts.y\n    all y: Photo | lone posts.y\n    \n    \n    all y:Photo | one posts.y\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n\t(all p: Photo| one User & posts.p)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n\t\n  \n  \n  \n  all y : Photo | some x : User | x -> y in posts\n  all x, z : User, y : Photo | x -> y in posts and z -> y in posts implies x=z\n  \n  \n  //\n  \n  \n  \n  //\n  all y : Photo | one x : User | x in posts.y\n  \n  \n  \n  all y : Photo | one posts.y\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n  all p : Photo | some u : User | posts.p = u\n\n  \n\t\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n \tall x : Photo, y,z : User | y->x in posts and z->x in posts implies y = z\n  \tall x : Photo | some y: User | y->x in posts\n\t\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n\tall p : Photo | some u : User | p in u.posts\n  \tall p : Photo | lone posts.p\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n\t\n  \n  \n  \n  all y : Photo | some x : User | x -> y in posts\n  all x, z : User, y : Photo | x -> y in posts and z -> y in posts implies x=z\n  \n  \n  //\n  \n  \n  \n  //\n  \n  \n  \n  \n  all y : Photo | one posts.y\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n\t\n  \n  \n  \n  all p : Photo | some posts.p\n  all p : Photo | one posts.p\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n  \n  \t\n  \tall i : Photo | some u : User | i in u.posts\n  \n  \t\n\tall x, z: User, y:Photo | x -> y in posts and z -> y in posts implies x=z\n  \n  \t\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n  \n  \t\n  \tall i : Photo | some u : User | u -> i in posts\n  \n  \t\n\tall i : Photo, u1, u2 : User | i in u1.posts and u2 -> i in posts implies u1 = u2\n  \n  \t\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n\tall disj u1, u2 : User |\n\t\tu1.posts & u2.posts = none\n  \n  \tall p : Photo | p in User.posts\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n\t\n     ~posts in Photo -> one User\n  \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n  \n  \tall i : Photo | one posts.i\n  \tall i : Photo | one u : User | i in u.posts\n\t\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n   all p: Photo | one posts.p\n\t// Every image is posted by one user.\n   all p: Photo | lone u: User | p in u.posts \n\t\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n\n  Photo = User.posts\n\n  all x, y : User | x != y implies no (x.posts & y.posts)\n\n\n\n\n\t\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n  \n  \t\n  \tall i : Photo | some u : User | u -> i in posts\n  \n  \t\n  \tall i : Photo, u1, u2 : User | i in u1.posts and i in u2.posts implies u1 = u2\n  \n  \t\n  \tall i : Photo | one posts.i\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n\t\n  \tall p: Photo | one u : User | u in posts.p\n  \n  \tall p: Photo | one posts.p\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n\t\n    all p : Photo| some u : User | p in u.posts\n    all disj u1, u2 :User | u1.posts & u2.posts = none\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n  \tall p: Photo | p in User.posts\n  \tall u: User, p: Photo | p in u.posts implies \n  \t\tno u1: User | u != u1 and p in u1.posts\n\t\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 457,
+            "syntactic_count": 31,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 418,
+                    "code": "{\n\t// Every image is posted by one user.\n\t\n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Every image is posted by one user.\n\tall u : User | lone posts.u\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Every image is posted by one user.\n\tall p : Photo, u : User | (one p -> u)\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Every image is posted by one user.\n\tposts.Photo in User\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Every image is posted by one user.\n  all x: Photo | lone x.posts\n\t\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Every image is posted by one user.\n\tall u:User, disj p1,p2:u.posts | p1 != p2\n\t\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Every image is posted by one user.\n\tall ph : Photo, u : User| ph in u.posts implies u in posts.ph \n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Every image is posted by one user.\n\tall ph : Photo, u : User| ph in posts.u implies ph in u.posts \n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Every image is posted by one user.\n\tlone User.~posts\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n\tall p: Photo, u: User | lone (p & u)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n\tall u : User, disj p1,p2 : Photo | p1 != p2\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n\tall u : User, p : Photo | lone(u.posts & p)\n\t\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n\tall ph : Photo, u : User | posts.ph = u implies ph in u.posts\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t\n\tall u : User.posts | u not in u.sees\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n\tall u1, u2 : User | u1 != u2 implies no (u1.date & u2.posts)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n  // Every image is posted by one user.\n\tall x: Photo | all u,y:User | x in u.posts and y in u.posts implies x=y\n\t\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n\tall p, u: Photo | lone posts.u & p\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n\tall ph : Photo, u1,u2 : User | u1 = ph.posts implies u2 != posts.ph  \t\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n\tall disj x, y : Photo | no (x.posts & y.posts)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n  all p : Photo, u1,u2 : User | p in posts.u1 implies p not in posts.u2\n\t\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n\tall ph : Photo, u : User| ph in posts.u implies u in posts.ph \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n\tall p : Photo, u : User | (one u -> p)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n  // Every image is posted by one user.\n  all p: Photo | lone (User.posts & p)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n\tall p: Photo, u: User | lone (p.posts)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n\tall disj x, y: User.posts | x & y = none\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n\tall u:User, p:Photo | lone (u.posts & posts.p)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n\tall u1,u2 : User | u1 != u1 implies no (u1.posts & u2.posts)\n\t\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n\tall u: User | lone u.~posts\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n    (posts.Photo & User) in User\n\t\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n\tall ph : Photo, u1,u2 : User | u1 = ph.posts implies u2 != ph.posts  \t\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n  Ad.posts in User.posts\n\n\n\t\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 252,
+            "syntactic_count": 18,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 84,
+                    "code": "{\n\t// Every image is posted by one user.\n  all p : Photo | some u : User | p in u.posts\n\t\n}"
+                },
+                {
+                    "entry_count": 59,
+                    "code": "{\n\t// Every image is posted by one user.\n  \tall p: Photo | p in User.posts\n\t\n}"
+                },
+                {
+                    "entry_count": 45,
+                    "code": "{\n\t// Every image is posted by one user.\n   \n   all p: Photo | some u: User | u->p in posts\n   \n  \n}"
+                },
+                {
+                    "entry_count": 16,
+                    "code": "{\n\t// Every image is posted by one user.\n\tall p : Photo | one p & User.posts\n}"
+                },
+                {
+                    "entry_count": 15,
+                    "code": "{\n\t// Every image is posted by one user.\n\tall x : Photo | some posts.x\n}"
+                },
+                {
+                    "entry_count": 12,
+                    "code": "{\n\t// Every image is posted by one user.\n\tPhoto in User.posts\n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Every image is posted by one user.\n\tPhoto = User.posts\n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Every image is posted by one user.\n  \tall p : Photo  | some u : User | u in posts.p\n\t\n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Every image is posted by one user.\n\tall p : Photo | some p & User.posts\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Every image is posted by one user.\n\tPhoto&(User.posts) = Photo\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Every image is posted by one user.\n  all p: Photo | p in User.posts and p not in Influencer\n\n\t\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Every image is posted by one user.\n  \tposts in User some -> set Photo\n\t\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n  all p : Photo | p in User.posts or p in Influencer.posts\n\t\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n\tno Photo-User.posts\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n\tall disj x, y: User.posts | x & y = none\n    Photo in User.posts\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n  all i : Photo | i in User.posts - User\n\t\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n\tPhoto in User.posts and Ad in User.posts\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n\tall p: Photo | User.posts = Photo\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 145,
+            "syntactic_count": 21,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 44,
+                    "code": "{\n\t// Every image is posted by one user.\n\tall x : Photo | lone posts.x\n}"
+                },
+                {
+                    "entry_count": 24,
+                    "code": "{\n\t// Every image is posted by one user.\n  \tall disj u, v: User | no (u.posts & v.posts)\n\t\n}"
+                },
+                {
+                    "entry_count": 18,
+                    "code": "{\n\t// Every image is posted by one user.\n\tall img : Photo | lone user : User | img in user.posts\n}"
+                },
+                {
+                    "entry_count": 14,
+                    "code": "{\n\t// Every image is posted by one user.\n\tall u1, u2: User | u1 != u2 implies no (u1.posts & u2.posts)\n}"
+                },
+                {
+                    "entry_count": 11,
+                    "code": "{\n\t// Every image is posted by one user.\n\tposts in User lone -> Photo\n\t\n}"
+                },
+                {
+                    "entry_count": 7,
+                    "code": "{\n\t// Every image is posted by one user.\n\tall p : Photo | all u1,u2 : User | (p in u1.posts) and (p in u2.posts) implies u1 = u2\n}"
+                },
+                {
+                    "entry_count": 7,
+                    "code": "{\n\t// Every image is posted by one user.\n\t\n  all x,z: User, y:Photo | x->y in posts and z -> y in posts implies x = z\n}"
+                },
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// Every image is posted by one user.\n\tall disj u1, u2 : User |\n\t\tu1.posts & u2.posts = none\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Every image is posted by one user.\n\tall disj u1,u2:User | u1!=u2 implies no (u1.posts & u2.posts)\n\t\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Every image is posted by one user.\n  all disj u1, u2: User, p: Photo | p in u1.posts implies p not in u2.posts\n\t\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Every image is posted by one user.\n  \tall u: User, p: Photo | p in u.posts implies \n  \t\tno u1: User | u != u1 and p in u1.posts\n\t\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n  all u:User, p:Photo , others:User-u |\n \t\tp in u.posts && p in u.posts implies p not in others.posts\n\t\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n  all u:User, p:Photo , others:User-u |\n \t\tp in u.posts implies p not in others.posts\n\t\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n  all p : Photo, u1,u2 : User |  u1 in posts.p and u2 in posts.p implies u1 = u2\n\t\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n\tall p : Photo, u : User | lone posts.p\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n  \tall p : Photo | lone u : User | u in posts.p \n\t \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n  no disj u1,u2: User | (u1.posts & u2.posts) != none \n\t\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n  all p : Photo, u1,u2 : User |  p in u1.posts and p in u2.posts implies u1 = u2 and p in User.posts\n\t\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n  all u:User, p:Photo , others:User-u |\n \t\tp in User.posts && p in u.posts implies p not in others.posts\n\t\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n  all u1,u2:User, p:Photo | u1!=u2 implies no (u1.posts & u2.posts)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n  all disj u, u1 : User | no p : Photo | \n   p in u.posts and p in u1.posts\n\t// Every image is posted by one user.\n\t\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 61,
+            "syntactic_count": 8,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 48,
+                    "code": "{\n\t// Every image is posted by one user.\n  \tall p: Photo, u: User | p in u.posts\n\t\n}"
+                },
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// Every image is posted by one user.\n  \tall p : Photo, u : User | u->p in posts\n\t}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Every image is posted by one user.\n\tall p : Photo, u: User | one p & u.posts\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Every image is posted by one user.\nUser->Photo in posts\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Every image is posted by one user.\n  all p: Photo, u: User | always p in u.posts\n\t\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n\tall u: User | all p: Photo | p in u.^posts\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n  all p: Photo, u: User |  p in u.posts and one u\n\t\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n\tall p : Photo, u: User | some p & u.posts\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 58,
+            "syntactic_count": 32,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 13,
+                    "code": "{\n\t// Every image is posted by one user.\n  all x: Photo | one x.posts\n\t\n}"
+                },
+                {
+                    "entry_count": 5,
+                    "code": "{\n\t// Every image is posted by one user.\n  all p: Photo | some u: User | p in posts.u\n\t\n}"
+                },
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// Every image is posted by one user.\n  all x:Photo|some y:User | x->y in posts\n\t\n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Every image is posted by one user.\n  all p : Photo | p in p.posts\n\t\n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Every image is posted by one user.\n\tall p: Photo | one u: User | p in posts.u\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Every image is posted by one user.\n  all p : Photo | one x : User | p->x in posts\n\t\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Every image is posted by one user.\n\tall p : Photo | one posts.User\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Every image is posted by one user.\n\tposts in Photo -> one User\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n    all i: Photo | one u : User | u in i.posts\n\t\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n  all image: Photo | one user: User | image in user.posts\n  all image: Photo | one u1: User, u2: User | image in u1.posts && image in u2.posts => u1 != u2\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n  all x : Photo | one ~posts.x\n\t// Every image is posted by one user.\n\t\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n\tall p, u: Photo | one u.posts\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n\tall p: Photo | some u: User | u in p.posts\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n\tall p : Photo | some p & posts.User\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n  all p : Photo | p in User.posts\n  all p : Photo, u1,u2 : User | p in u1.posts implies p not in u2.posts\n\t\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n\tall p: Photo | one u: User | u.posts = 1\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\tno Photo\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n\tall disj u0,u1: User | no (u0.posts &  u1.posts)\n  \tall p: Photo | one u:User | one posts.p & u.posts\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n\tall p, u: Photo | one u.posts & p\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n  all x: Photo | x in User\n\t\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n    all p: Photo | p in p.^posts\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\tall p: Photo | p in User.posts and posts.p = 1\n\t// Every image is posted by one user.\n\t\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n\tall p : Photo | p in p.~posts\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n  all p : Photo | one u : User | u.posts = u\n\t\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n  all image: Photo | one user: User | image in user.posts\n  all image: Photo | one u1: User, u2: User | image in u1.posts and image in u2.posts and u1 != u2\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n    all p: Photo | one date.p\n\t\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n  all image: Photo | one user: User | user in image\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n  all i:Photo | #i.posts=1\n\t\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n  \tall p: Photo | some u: User | { p in u.posts }\n  \tno u1, u2: User, p: Photo | {p in u1.posts and p in u2.posts}\n\t\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n  Photo in posts.User\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n  all p : Photo |one u : User| p in u\n\t\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n\tall p, u: Photo | one posts.u & p\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 34,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 34,
+                    "code": "{\n\t// Every image is posted by one user.\n\tall p: Photo | one u: User | u.posts = p\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 24,
+            "syntactic_count": 6,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 9,
+                    "code": "{\n\t// Every image is posted by one user.\n  all u : User | lone u.posts\n\t\n}"
+                },
+                {
+                    "entry_count": 6,
+                    "code": "{\n\t// Every image is posted by one user.\n\tall p:Photo, u:User | lone u.posts\n\t\n}"
+                },
+                {
+                    "entry_count": 6,
+                    "code": "{\n\t// Every image is posted by one user.\n  all u: User | lone p: Photo | p in u.posts\n\t\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n\tposts in User -> lone Photo\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n\tall x : User | lone ~posts.x\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n  // Every image is posted by one user.\n  all u: User |\n    all p1, p2: u.posts | p1 = p2\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 24,
+            "syntactic_count": 4,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 16,
+                    "code": "{\n\t// Every image is posted by one user.\n  \tone u : User | all p : Photo | p in u.posts\n\t\n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Every image is posted by one user.\n  \tone u : User | all p : Photo | u in posts.p\n\t\n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Every image is posted by one user.\n\tone u : User | u.posts = Photo\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Every image is posted by one user.\none u:User| Photo in u.posts\n\t\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 23,
+            "syntactic_count": 11,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 9,
+                    "code": "{\n  // Every image is posted by one user.\n  all disj u1 : User, u2 : User | no (u1.posts & u2.posts)\n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Every image is posted by one user.\n  all disj u1: User, u2: User | #(u1.posts & u2.posts) = 0\n\t\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Every image is posted by one user.\n\tall i: Photo, m1,m2: User | m1->i in posts implies m2->i not in posts\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Every image is posted by one user.\n  all p : Photo, u1,u2 : User | p in u1.posts implies p not in u2.posts\n\t\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n\tall u1, u2: User | no p: Photo | p in u1.posts and p in u2.posts\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n  // Every image is posted by one user.\n  all disj u1 : User, u2 : User | disj[u1.posts, u2.posts]\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n\tall ph : Photo, u : User| ph in u.posts implies u in ph.posts\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n  \tall p: Photo, u1,u2: User | p in u1.posts implies not p in u2.posts\n\t\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n\tall ph : Photo, u1,u2 : User| ph in u1.posts implies u2 not in posts.ph\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n  \tposts in Photo lone -> User\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n\tall disj u0,u1: User | no (u0.posts &  u1.posts)\n  \tall p: Photo | no posts.p\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 21,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 20,
+                    "code": "{\n\t// Every image is posted by one user.\n\tall p : Photo | one User.posts\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n\tall p:Photo | one User.posts -> p\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 17,
+            "syntactic_count": 11,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 5,
+                    "code": "{\n\t// Every image is posted by one user.\n\tall u : User | one posts.u\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Every image is posted by one user.\n \tposts in User one -> User\n\t\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\tno User\n\t\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n  all u1, u2 : User | u1.posts != u2.posts\n\t\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n\tall u: User | one u.~posts\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n\tno u,s :User | u.posts = s.posts\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n\tall u: User | some posts.u\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t\n\tall u : User | u.posts - Photo not in u.follows.posts\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n  all u:User | #posts.u=1\n\t\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n\tall u: User | one Photo.posts\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n\tall u: User | one User.~posts\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 16,
+            "syntactic_count": 3,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 9,
+                    "code": "{\n\t// Every image is posted by one user.\n  \tall p : Photo | lone User.posts\n\t\n}"
+                },
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// Every image is posted by one user.\n\tlone Photo & (User.posts)\n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Every image is posted by one user.\n\tall p : Photo | lone User.posts + Influencer.posts\n\t\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 13,
+            "syntactic_count": 3,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 11,
+                    "code": "{\n\t// Every image is posted by one user.\n\tone p: Photo, u: User | p in u.posts\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n\t\n  \tone ~posts\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n \t\n  \t\n  \tone posts\n\t\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 12,
+            "syntactic_count": 5,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 6,
+                    "code": "{\n\t// Every image is posted by one user.\n  all x : Photo | some y : User | all z: User | y->x in posts\tand y=z\n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Every image is posted by one user.\n  \n  \t\n  \tall i : Photo | some u : User | i in u.posts\n  \n  \t\n\tall i : Photo | all u1, u2 : User | (i in u1.posts && i in u1.posts) implies u1 = u2\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n  \n  \t\n  \tall i : Photo | some u : User | u -> i in posts\n  \n  \t\n\tall i : Photo | all u1, u2 : User | i in u1.posts and i in u1.posts implies u1 = u2\n  \n  \t\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n  all image: Photo | one user: User | image in user.posts\n  all image: Photo | one u1: User, u2: User | image in u1.posts && image in u2.posts => u1 = u2\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n\tall p : Photo | p in User.posts and one User\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 12,
+            "syntactic_count": 5,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 5,
+                    "code": "{\n\t// Every image is posted by one user.\n  all u : User | one u.posts\n\t\n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Every image is posted by one user.\n\tposts in User -> one Photo\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Every image is posted by one user.\n  all u:User | #u.posts=1\n\t\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n    all u:User | one p:Photo | p in u.posts\n\t\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t\n\tall u : User | one Photo & u.posts\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 11,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 9,
+                    "code": "{\n\t// Every image is posted by one user.\n  one (posts.Photo)\n\t\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Every image is posted by one user.\n\tone u: User | some p: Photo | p in u.posts\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 10,
+            "syntactic_count": 7,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 3,
+                    "code": "{\n  // Every image is posted by one user.\n  all user: User | some photo: Photo | photo in user.posts\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Every image is posted by one user.\n    User in posts.Photo\n\t\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n    (posts.Photo & User) in User and User in posts.Photo\n\t\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n\tall u: User | some u.posts\n \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n    (posts.Photo & User) in User and User in (posts.Photo & User)\n\t\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n \t\n  \t\n  \tposts.Photo = User\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n    posts.Photo in User and User in posts.Photo\n\t\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 10,
+            "syntactic_count": 10,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n\tall p:Photo, u:User | p in posts.u\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n\t\n  \tall p: Photo, u: User | one (p & u) \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n\t\n  \tall p: Photo, u: User | one (p.posts & u.posts) \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n  all x : Photo, y : User {\n  \tx -> y in posts\n  }  \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n  all p : Photo, u1,u2 : User | p in u1.posts and p not in u2.posts\n\t\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n\tall p : Photo , u : User | # (posts.u)=1\n\t\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n  all p : Photo, u1,u2 : User | u1 in posts.p and u2 not in posts.p\n\t\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n\t\n  \tall p: Photo, u: User | one (p & u).posts\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n\tall p : Photo | all u : User | p in u\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n\t\n  \tall p: Photo, u: User | one posts.(p & u) \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 7,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 7,
+                    "code": "{\n\t// Every image is posted by one user.\n\tall p: Photo | some u: User | u.posts = p\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 6,
+            "syntactic_count": 5,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Every image is posted by one user.\n  all p : Photo | lone User\n\t\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n  all u:User, p:Photo , others:User-u |\n \tp in u.posts && p not in others.posts\n\t\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n\tall p: Photo | lone User->p\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n  all u:User, p:Photo , o:User-u|\n \t(p in u.posts) && (p in u.posts implies p not in o.posts)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n  all disj u1, u2 : User |\n  all p : Photo |\n  p in u1.posts && no u1.posts & u2.posts\n\t\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 6,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 5,
+                    "code": "{\n\t// Every image is posted by one user.\n\tlone posts.Photo\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n\tall u: User | lone posts.Photo\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 6,
+            "syntactic_count": 5,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Every image is posted by one user.\n  one Photo.posts\n  \n\t\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n    some (Photo & User.posts) and no posts.Photo\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n\tsome none\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t\n\tone u : User |  u.posts not in u.posts\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n\tone posts.User\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 6,
+            "syntactic_count": 3,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// Every image is posted by one user.\n  all p : Photo | one User\n\t\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n  all p:Photo | one u:User | one p->u\n\t\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n  all p : Photo | one User -> p\n\t\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 5,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t\n\tall u : User | u.posts not in u.sees\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t\n\tall u : User | not u.posts in u.sees\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 5,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 5,
+                    "code": "{\n\t// Every image is posted by one user.\n\tall img : Photo, ad : Ad | img in User.posts and ad in User.posts\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 5,
+            "syntactic_count": 3,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Every image is posted by one user.\n\tall p:Photo , u:User| u.posts in p\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n\tall p:Photo, up:User.posts | up = p \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n  \tall p : Photo | User.posts in p\n\t\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 5,
+            "syntactic_count": 5,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n\teq[#User.posts,1]\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n\t\n  \tone (User.posts & Photo)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n  some p: Photo | one User.posts\n\t\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n\t\n  \tone ~posts.User\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n\tone p: Photo |  p in User.posts\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 5,
+            "syntactic_count": 3,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n  all photo: posts.Photo | one User\n\t// Every image is posted by one user.\n\t\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Every image is posted by one user.\n\tall p : Photo | p in User.posts implies one User\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n\tall u: User | posts in u lone -> Photo\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 4,
+            "syntactic_count": 3,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Every image is posted by one user.\n\tall img : Photo, ad : Ad | img in User.posts or ad in User.posts\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n\tPhoto in User.posts or Ad in User.posts\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n  Ad in User.posts\n\n\n\t\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 4,
+            "syntactic_count": 3,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Every image is posted by one user.\n  all p: Photo | (p in User.posts) and (p not in Influencer.posts)\n\n\t\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n  all p: Photo | (p in User.posts) \n  all p: Photo | (p not in Influencer.posts)\n\n\t\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n  User.posts = Photo\n  all i : User.posts| i not in Influencer.posts\n\n  \n\n\n\n\n\t\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 4,
+            "syntactic_count": 3,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Every image is posted by one user.\n\tall u1, u2: User, p: Photo | (p in u1.posts and p in u2.posts) <=> u1 = u2\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n\tall p:Photo, u: User| p in u.posts and all other: User -u | p not in other.posts\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n \tall x : Photo, y,z : User | y->x in posts and z->x in posts implies y = z\n  \tall x : Photo, y: User | y->x in posts\n\t\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 4,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Every image is posted by one user.\n    some (Photo & User.posts)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n\tsome User.posts\n \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 4,
+            "syntactic_count": 3,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Every image is posted by one user.\n  all p: Photo, disj u: User, i: Influencer |  p in u.posts or p in i.posts\n\t\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n  all p:Photo, u:User, i:Influencer | p in u+i.posts\n\t\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n  all p: Photo, disj u: User, i: Influencer |  p in u.posts or p in i.posts and (one u or one i)\n\t\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 4,
+            "syntactic_count": 3,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Every image is posted by one user.\n  all p: Photo |all u: User | u.posts != none implies p in u.posts\n\t\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n  all p: Photo |all u: User | u.posts != none implies always p in u.posts\n\t\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n  all p: Photo, u: User | #u.posts>0 implies p in u.posts\n\t\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 4,
+            "syntactic_count": 3,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Every image is posted by one user.\n\tall photo : Photo,user : User | one user.posts\n\t\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n\tall p : Photo , u : User | # (~posts.u)=1\n\t\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n\tall p:Photo , u:User | one p implies one u.posts\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 4,
+            "syntactic_count": 3,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Every image is posted by one user.\n  \tall disj u, v: User | u.posts not in v.posts\n\t\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n  all u1 : User, u2 : User - u1 | u1.posts not in u2.posts\n\t\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n  \tall disj u1,u2: User | not u1.posts in u2.posts\n\t\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 3,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Every image is posted by one user.\n\tall u1, u2: User | u1 != u2 implies u1.posts != u2.posts\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n  all u1 : User, u2 : User - u1 | u1.posts != u2.posts\n\t\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 3,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Every image is posted by one user.\n\tall p : Photo, u : User, i : Influencer | lone u.posts & i.posts\n\t\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n\tall u : User, i: Influencer | lone (u.posts & i.posts)\n\t\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 3,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Every image is posted by one user.\n  \tone u : User | all p : Photo | p in posts.u\n\t\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n  \tone u : User | all p : Photo | u in posts.u\n\t\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 3,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t\n\tone u : User |  u.posts not in u.sees\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 3,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Every image is posted by one user.\n\tall u: User | one posts.Photo\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 3,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Every image is posted by one user.\n  \tall p : Photo | some User.posts\n\t\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 3,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Every image is posted by one user.\n  all p: Ad, u:User | p in u.posts\n\n\t\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n  \n\tall u:User,p:Photo, a:Ad | u -> p in posts || u -> a in posts  \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 3,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Every image is posted by one user.\n\tall ph: Photo | one u: User | ph in u.sees\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n    all p: Photo | one sees.p\n\t\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 3,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Every image is posted by one user.\n\tone p: Photo | one posts.p\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 3,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Every image is posted by one user.\n  \tone u : User | all p : Photo | u.posts in p \n\t\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Every image is posted by one user.\n\tall u1, u2 : User | u1 != u2 implies no (u1.posts.date & u2.posts.date)\n\t\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Every image is posted by one user.\n\tall u : User, disj p1,p2 : u.posts | p1.date != p2.date\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n  all i:Photo | some u: User | one u->i\n\t\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n  all i:Photo | some u: User | one i->u\n\t\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Every image is posted by one user.\n\tposts in User lone -> some Photo\t\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Every image is posted by one user.\n  Photo - Ad in (User-Influencer).posts\n\n\n\t\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n  all i : Photo - Ad | i in User.posts\n\n  \n\n\n\n\n\t\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n  Photo - Ad in User.posts\n\n\n\t\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Every image is posted by one user.\n  \tall x: Photo, u: User | one posts.x\n\t\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t\n\tone u : User | u.posts - Photo in u.follows.posts\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n  \tone u : User | all p : Photo | posts.u in u\n\t\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n    Photo in User.posts\n  \tPhoto in Influencer.posts\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n  all p : Photo | p in User.posts and p in Influencer.posts\n\t\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n\tall p : Photo | lone (Influencer.posts)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n    lone (Photo & User.posts) or lone (Photo & Influencer.posts) \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n  lone u: User, p: Photo | p in u.posts\n\t\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n\tlone ~posts\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Every image is posted by one user.\n  one u: User, p: Photo, a: Ad | p in u.posts or a in u.posts\n\t\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Every image is posted by one user.\n\tall ph : Photo, u : User | ph in User.posts\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Every image is posted by one user.\n\tall p:Photo , u: User  | u.posts = p\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n  all x,y : User-Influencer | no (x.posts & y.posts)\n\t// Every image is posted by one user.\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n  \t\n  \tposts in Photo one -> one User\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n\tposts in Photo some -> one User\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n  \tall p : Photo | let u = {u : User | p in u.posts } | no u2 : User, inf : \t\t\t\t\tInfluencer | p in u2.posts or p in inf.posts and ( u = u2 or inf = u)\n\t\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n  \tall p : Photo | let U = {u : User | p in u.posts } | no u2 : User, inf : \t\t\t\t\tInfluencer | p in u2.posts or p in inf.posts\n\t\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Every image is posted by one user.\n\tposts in User lone -> one Photo\t\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n\tone u: User | all p: Photo | lone u.posts\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n  // Every image is posted by one user.\n  one u: User | lone u.posts\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n  all u : User | lone Photo\n\t\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n  all u : User | one Photo\n\t\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n  all p : Photo | some u : User, u2 : User - u | p in u.posts and no u2.posts\n\t\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n  all u1 : User | some u2 : User - u1 | u1.posts not in u2.posts\n\t\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n  some u1 : User | all u2 : User - u1 | u1.posts not in u2.posts\n\t\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n\tall u1, u2: User | u1 != u2 implies lone (u1.posts & u2.posts)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n\tall u1, u2: User | u1 != u2 implies one (u1.posts & u2.posts)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n\tall disj u0,u1: User | no (u0.posts &  u1.posts)\n  \tall p: Photo | one u:User | no posts.p\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n  all p:Photo, u:User, i:Influencer | p in u.posts and p in i.posts\n\t\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n  all p:Photo | one u1:User | one u2:User | (p in u1.posts) implies (p not in u2.posts)\n\t\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n  all p:Photo | one u1:User | all u2:User | (p in u1.posts) implies (p not in u2.posts)\n\t\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n\tall u : User, i: Influencer | one (u.posts & i.posts)\n\t\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n\tall ph : Photo, u1,u2 : User | u1 = posts.ph implies u2 != posts.ph  \t\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n\tall p : Photo | one posts.Photo\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n\tall u : User, i: Influencer | lone u.posts\n\t\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n\tall u : User, i: Influencer | lone (u.posts + i.posts)\n\t\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n\tall u : User, disj p1,p2 : Photo | p1.date != p2.date\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n  all u:User, p:Photo , others:User-u |\n \t\t(p in u.posts && p not in others.posts) or p in others.posts\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n\tall p : Photo | some u : User - Influencer | p in u.posts\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n\tall p : Photo | one u : User | p in u.follows.posts\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n    all u:User | one p:Photo | u.posts in p\n\t\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n  \t\n\tPhoto in User.posts\n  \tall u : User | lone u.posts\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n  // Every image is posted by one user.\n  some u: User | lone u.posts\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n  \tall p: Photo | lone sees.p\n\t\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n\tposts in User one -> some Photo\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n  Photo - Ad in (User-Influencer).posts\n  Ad not in User.posts\n\n\n\n\t\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n  Photo - Ad in (User-Influencer).posts\n  (User-Influencer).posts in Photo -Ad\n  \n\n\n\n\n\t\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n  all i : Photo - Ad | i in User.posts and i not in Influencer.posts\n\n  \n\n\n\n\n\t\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n  all i : User.posts| i not in Influencer.posts\n\n  \n\n\n\n\n\t\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n  User.posts = Photo-Ad\n  all i : User.posts| i not in Influencer.posts\n\n  \n\n\n\n\n\t\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n \t\n  \t\n  \tall x : Photo | one posts.x\n  \tone posts.Photo\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t\n\tall u : User | u.posts not in u.follows.posts\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t\n\tall u : User | u.posts - Ad in u.follows.posts\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t\n\tone u : User |  u.sees not in u.posts\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n\tall u: User | some posts.Photo\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n    some (Photo & User.posts) and (all x: Photo | one posts.x)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n  lone u: User, p: Photo, a: Ad | p in u.posts or a in u.posts\n\t\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n  all p: Photo |one disj u: User, i: Influencer |  p in u.posts or p in i.posts \n\t\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n  all p: Photo | one posts\n\t\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n\tone posts.Photo || one posts.Ad\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n\tall u : User, p : Photo | some u.posts\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n\tall i : Influencer, u : User | \n  \t\ti != u implies i in u.follows\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n  all p: Photo | all ad:Ad |  p in User.posts and ad in User.posts\n  no disj u1,u2: User | (u1.posts & u2.posts) != none \n\t\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n  all disj x,y : User-Influencer | no (x.posts & y.posts)\n\t// Every image is posted by one user.\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n\tsome disj a, b: User | no (a.posts & b.posts)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n  \n\tall u:User,p:Photo, a:Ad | u -> p in posts && u -> a in posts  \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n  \n\tsome p:Photo| all u:User | p in u.posts  \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n\tlone u: User | all i: Photo | i in u.posts\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n\tlone p : Photo | one posts.p\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n\tsome p : Photo | one posts.p\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n\tall p : Photo | one u : User | u.posts in p\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n  one Photo one User\n\t\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n\tposts in User lone -> lone Photo\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every image is posted by one user.\n\tone u: User | all p: Photo | some u.posts\n}"
+                }
+            ]
+        }
+    ]
+}

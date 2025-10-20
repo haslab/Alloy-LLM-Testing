@@ -1,0 +1,1753 @@
+{
+    "original": "iP5JL36afv5KbDKP6",
+    "cmd": "inv10",
+    "pred": "this/inv10",
+    "entry_count": 882,
+    "semantic_count": 82,
+    "syntactic_count": 292,
+    "scope": 3,
+    "groups": [
+        {
+            "entry_count": 483,
+            "syntactic_count": 57,
+            "correct": true,
+            "elems": [
+                {
+                    "entry_count": 96,
+                    "code": "{\n\t// Only students have grades\n\tCourse.grades.Grade in Student\n}"
+                },
+                {
+                    "entry_count": 40,
+                    "code": "{\n\t// Only students have grades\n  all c : Course | all g : Grade | c.grades.g in Student\n}"
+                },
+                {
+                    "entry_count": 39,
+                    "code": "{\n\t// Only students have grades\n\tall c: Course, p: Person, g: Grade| p->g in c.grades implies p in Student\n}"
+                },
+                {
+                    "entry_count": 35,
+                    "code": "{\n\t// Only students have grades\n\tall p : Course.grades.Grade | p in Student\n}"
+                },
+                {
+                    "entry_count": 35,
+                    "code": "{\n\t// Only students have grades\n  \tall p1 : Person | all c1 : Course | all g1 : Grade|\n  \t(c1->p1->g1 in grades) implies (p1 in Student)\n  \t\n\n}"
+                },
+                {
+                    "entry_count": 34,
+                    "code": "{\n\t// Only students have grades\n  \tall c:Course | (c.grades.Grade) in Student\n\t\n}"
+                },
+                {
+                    "entry_count": 33,
+                    "code": "{\n\t// Only students have grades\n\t\n  \tall p: Person | all c: Course | (some c.grades[p]) implies p in Student\n}"
+                },
+                {
+                    "entry_count": 23,
+                    "code": "{\n\t// Only students have grades\n\tCourse.grades in Student -> Grade\n}"
+                },
+                {
+                    "entry_count": 16,
+                    "code": "{\n\t// Only students have grades\n\tall g:Grade | all p:Person |  (p->g in Course.grades) implies p in Student\n}"
+                },
+                {
+                    "entry_count": 15,
+                    "code": "{\n\t// Only students have grades\n\tall c: Course | all p : Person | c.grades[p] != none => p in Student \n}"
+                },
+                {
+                    "entry_count": 14,
+                    "code": "{\n\t// Only students have grades\n  \tall p:Person | all c:Course| all g:Grade | g in c.grades[p] implies p in Student  \n\n}"
+                },
+                {
+                    "entry_count": 8,
+                    "code": "{\n\t// Only students have grades\n  all p : (Person-Student) | p not in Course.grades.Grade \n\n}"
+                },
+                {
+                    "entry_count": 7,
+                    "code": "{\n\t// Only students have grades\n\tall p:Person | all c:Course | all g:Grade | p in c.grades.g implies p in Student\n}"
+                },
+                {
+                    "entry_count": 7,
+                    "code": "{\n\t// Only students have grades\n  \tall c: Course | all g : c.grades.Grade | g in Student\n\n}"
+                },
+                {
+                    "entry_count": 6,
+                    "code": "{\n\t// Only students have grades\n\tall c: Course | c.grades in Student -> Grade\n}"
+                },
+                {
+                    "entry_count": 5,
+                    "code": "{\n\t// Only students have grades\n  grades in Course -> Student -> Grade\n}"
+                },
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// Only students have grades\n  \tall p : Person, c : Course| p not in Student implies no c.grades[p]\n\n}"
+                },
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// Only students have grades\n    no (Person-Student) & Course.grades.Grade\n\n}"
+                },
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// Only students have grades\n\tall p: Person | all g: Grade | g in Course.grades[p] => p in Student\n}"
+                },
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// Only students have grades\n  \tno (Course.grades.Grade - Student)\n\n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Only students have grades\n  \t\n    \n    \n  \n  \tall s : Person | all c : Course |\n  \t\ts in c.grades.Grade implies s in Student  \n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Only students have grades\n  \tall c: Course | all p: (Person - Student) | no c.grades[p]\n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Only students have grades\n\tall pe: Person | pe not in Student implies pe not in Course.grades.Grade \n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Only students have grades\n    Student <: Course.grades = Course.grades \n  \t\n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Only students have grades\n\tall p : Person | some Course.grades[p] implies p in Student\n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Only students have grades\n    \n    all p: Person - Student | no g: Grade | p in Course.grades.g\n\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Only students have grades\n\tall p : Person | p in Course.grades.Grade implies p in Student\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Only students have grades\n\t\n  \tall curso : Course | curso.grades.Grade = curso.grades.Grade & Student\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Only students have grades\n\tall p: Person, c: Course | (some g : Grade | p->g in c.grades) implies p in Student  \n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Only students have grades\n    no (Person - Student).(Course.grades)\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Only students have grades\n\tall c : Course | all p : Person | some (c.grades.Grade & p) implies p in Student \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n\tall p: Person | p not in Student => no Course.grades[p]\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n  \tall c : Course | all g : Grade | c.grades.g in Student\n\tCourse.grades.Grade in Student\n  \t\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n\tall p: Person, c: Course, g: Grade | p not in Student => p->g not in c.grades\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n  \tno (grades.Course.Grade - Student)\n\tCourse.grades.Grade in Student\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n\tno (Course.grades - Student -> Grade)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n\t\n    \n    all p: Person - Student | all g: Grade | p not in Course.grades.g\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n\t\n  \tCourse.grades in Student->univ\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n    all c : Course | all g : Grade | all p : Person | c->p->g in grades implies p in Student\n  \n    all c : Course | all g : Grade | all p : Person | p in c.grades.g implies p in Student\n    \n    all c : Course | all g : Grade | c.grades.g in Student\n\n\tCourse.grades.Grade in Student\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n\tall p : Person | all c : Course | all g : c.grades[p] | p in Student  \n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n\t~(Course.grades) in Grade -> Student\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n  all p: Person-Student, g: Grade | no c: Course | p->g in c.grades\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n\tall c: Course | all g: Grade | c.grades.Grade in Student\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n    all c : Course | all g : Grade | all p : Person | c->p->g in grades implies p in Student\n\n    all c : Course | all g : Grade | c.grades.g in Student\n\n\tCourse.grades.Grade in Student\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n  all p: Person | some (p <: Course.grades) implies p in Student\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n    all p: Person - Student | no g: Grade | p -> g in Course.grades\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n  \tall g : Grade | Course.(grades.g) in Student\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n\t\n  \tall c: Course | c.grades in Student->univ\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n\tall p:Person-Student | all c:Course | c.grades[p] = none\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n\tall g : Course.grades.Grade | some g & Student\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n  \tno (Course.grades.Grade - Student)\n\tCourse.grades.Grade in Student\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n\tall p : Person | all c : Course | all g : c.grades[p]| g in c.grades[p] implies p in Student  \n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n  \tCourse.grades.univ in Student\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n\tall c : Course, g : Grade, p : Person | c->p->g in grades implies p in Student\n  \tall c : Course, g : Grade | c.grades.g in Student\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n\tall c : Course, g : Grade, p : Person | c.grades.g in Student\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n  all g : Grade | no (Person-Student) & Course.grades.g\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n\tall c: Course | all p: Person | #p.(c.grades) > 0 implies p in Student\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 162,
+            "syntactic_count": 71,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 33,
+                    "code": "{\n\t// Only students have grades\n\t\n}"
+                },
+                {
+                    "entry_count": 14,
+                    "code": "{\n\t// Only students have grades\n\tall c: Course | all p: c.grades.Person | p in Student\n}"
+                },
+                {
+                    "entry_count": 12,
+                    "code": "{\n\t// Only students have grades\n\tall c: Course, p: Person | p in c.grades.Person implies p in Student\n\n}"
+                },
+                {
+                    "entry_count": 7,
+                    "code": "{\n\t// Only students have grades\n\tall p : Person | some(p.grades) => p in Student\n}"
+                },
+                {
+                    "entry_count": 7,
+                    "code": "{\n\t// Only students have grades\n  Course.grades.Person in Student\n\n}"
+                },
+                {
+                    "entry_count": 5,
+                    "code": "{\n\t// Only students have grades\n    all p: Professor | no p.grades\n\n\n}"
+                },
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// Only students have grades\n  \tall p : Professor, c : Course | no c.grades.p\n\n}"
+                },
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// Only students have grades\n\tall c : Course | (c.grades).Person in Student\n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Only students have grades\n\tno grades[Professor]\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Only students have grades\n\tall c: Course | no c.grades.Person & Professor\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Only students have grades\n\tall pe: Person | pe not in Student implies pe not in Course.grades.Person \n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Only students have grades\n\tall p:Person | all c:Course | some g:Grade |\n  \t\tg in c.grades.p implies p in Student\n  \t\t\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Only students have grades\n  \tno grades.Professor \n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Only students have grades\n\t\n  \tno (Person - Student).grades\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Only students have grades\n  all p: Person-Student | no c: Course | p in c.grades.Person\n\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Only students have grades\n\tall p:Person | all c:Course | all g:Grade |\n  \t\tg in c.grades.p implies p in Student\n  \t\t\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Only students have grades\n\tall p : Person, c : Course | p -> c in c.grades => p in Student\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Only students have grades\n  \tall c : Course , p : Person - Student | p not in (c.grades).p\n\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Only students have grades\n\tall c : Course, p : Project |\n  \t\t(c.grades).p in Student\n  \t\t\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Only students have grades\n\tall g: Grade | all c: Course | all x: c.grades[g] | x not in Professor\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n  all c : Course | all p: c.grades.Person | p in Person - Professor\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n    all p: Person, c: Course | some c.grades.p implies p not in Student\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n  all p: Person | \n    (some c: Course | p in c.grades.Person) implies p in Student\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n   all p : Professor | no Course.grades.p\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n  \tno p : Person-Student | some p.grades\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n\tall p : Course.grades.Person | p in Student\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n\tall pe: Person | pe not in Student implies no Course.grades.Person & pe\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n  \tall p : Person , g : Grade | some grades[p,g] implies p in Student \n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t\n  all s: Student, c: Course , g: Grade | s->g in c.grades implies s in Student\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n  \tall c : Course, p : Professor , g:Grade | no grades[p,g]  \n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n  all c : Course, p : Person | p in c.grades.Person => Person in Student\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t\n\tall c: Course | all p : Person | no (c.grades.p & Professor) \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n  \tno (Professor <: grades)\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n\tall c: Course | all p: Person | some (c.grades.Person & p) implies p in Student\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n  all c : Course | all p: c.grades.Person | p in Student and p not in Professor\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n\tall p: Person | all c: Course | all x: c.grades[p] | lone x\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n  \tno Course.grades.Professor \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n\tall p1 : Person | all c1 : Course | all g1 : Grade|\n  \t(p1->c1->g1 in grades) implies (p1 in Student)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n  \tno p : Person-Student | some grades.p\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n    all p: Person | some Course.grades.p implies p not in Student\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n   all c : Course | no c.grades.Person\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n    // Only students have grades\n  all p: Professor | all c: Course | not (p->c in c.grades)\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n\tall c : Course | c.grades[0] = c.grades[0]-Professor\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n  \n  all c : Course, p : Person , g : Grade | g -> p -> g  in grades implies p in Student \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n    all p: Person | some Course.grades.p implies p in Student\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n  \tall p:Person | one grades[p] implies p in Student  \n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n  \tall c : Course, p : Person, g:Grade | some grades[p,g] implies p in Student \n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n  all c : Course | all p: c.grades.Person | p = Student \n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n    all p: Person | no p.grades or p in Student\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n  all p : Person, c : Course | p in grades.Grade.c implies p in Student\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n\tall c : Course | c.grades[1] = c.grades[0]-Professor\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n\tall p: Person | all c: Course | all x: c.grades[p] | one x\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n  \tall p : Person , c : Course | some (c.grades).p implies p not in Professor\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n\tall c : Course, p : Person | p in c.grades.p => p in Student\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n\tall p: Person, c: Course | (some g : Grade | p->c in c.grades) implies p in Student\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{ \n\t// Only students have grades\n\tall c: Course | all p: Person | some c.grades.p implies p in Student\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n    \n    all p: Person, g: Grade, c: Course |\n            g in p.(enrolled.projects).(c.grades) implies p in Student\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n  all g : Grade | no (Person-Student).grades.g\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n  \tall p : Professor, g : Grade | no grades[p,g]  \n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n\t\n\tall c: Course | all s: Student | c.grades.s in Grade\n\t  \n \t\n \t\n\t\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n  \tall p : Professor, g : Grade | no p.grades.g  \n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n\tall c : Course | (c.grades).Course in Student\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n\tall p:Person | all c:Course | some g:Grade |\n  \t\tg in c.(p.grades) implies p in Student\n  \t\t\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n\tall c : Course | (grades.Grade).c in Student\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n  no Course.grades.(Person-Student)\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n\tall c : Course | some c.grades implies c.grades.Person in Student\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n  all p: Person-Student | no c: Course | p in c.grades[Grade]\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n\tall g:Grade | all p:Person | some (grades.(p->g)) implies p in Student\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n  \tall c : Course, p : Professor , g:Grade | p not in grades[p,g]  \n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n  \tPerson.enrolled.grades.Person in Student\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n  \tno (grades.Course.Grade - Student)\n\t\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 29,
+            "syntactic_count": 14,
+            "correct": true,
+            "elems": [
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// Only students have grades\n\tno Professor & Course.grades.Grade  \n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Only students have grades\n\tall c : Course.grades.Grade | no c & Professor\n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n    // Only students have grades\n    no p: Professor, g: Grade | p->g in Course.grades\n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Only students have grades\n\tall p: Professor, c : Course | no g: Grade | p->g in c.grades\n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Only students have grades\n\tno Course.grades[Professor]\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Only students have grades\n\tall p : Professor | p not in (Course.grades.Grade) \n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Only students have grades\n  \tall p : Professor, c : Course | no p.(c.grades)\n\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Only students have grades\n  \tall p : Person , c : Course | some p.(c.grades) implies p not in Professor\n\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Only students have grades\n    no (Professor <: Course.grades) \n  \t\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n\tall c: Course | no Professor.(c.grades)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n  \tall p : Person , c : Course | p in Professor implies no p.(c.grades) \n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n\tall c: Course | no (c.grades.Grade & Professor) \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n\tCourse.grades & Professor->Grade = none->none\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n\tall p: Person | all c: Course | all x: c.grades[p] | p not in Professor\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 20,
+            "syntactic_count": 14,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// Only students have grades\n\tall c : Course | all p : Person.(c.grades) | p in Student\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Only students have grades\n   all c : Course | no Person->c.grades\n\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Only students have grades\n\tno Course.grades\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Only students have grades\n\tall p: Person | all c: Course | all x: c.grades[p] | x in Student\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n  \tStudent <: grades = grades\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n\tall p: Course.grades[Person] | p in Student \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n  all c : Course | all p: Person.(c.grades) | p = Student \n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n  \tall c : Course |  no c.grades\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n\tall p: Person | all c: Course | all x, y: c.grades[p] | x in Student\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n\tall p: Person | all c: Course | all x, y: c.grades[p] | y in Student\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n\tall c : Course | Person.(c.grades) in Student\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n\tall c: Course | c.grades in Person -> Student\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n  \tgrades :> Student = grades\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n  all c : Course | all p: Person.(c.grades)| p in Student and p not in Professor  \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 13,
+            "syntactic_count": 7,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Only students have grades\n\tall p : Person | all c : p.enrolled | some c.grades implies p in Student\n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Only students have grades\n\tall p : Person | some p.enrolled.grades => p in Student\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Only students have grades\n  \tno p : Person-Student | some p.enrolled.grades\n\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Only students have grades\n\tall p : Person - Student | #p.enrolled.grades = 0 \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n\tall p : Person - Student | #p.enrolled.grades = 0 and \n  \t(no #p.enrolled.grades[p] or no p.enrolled.grades )\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n\tall p : Person - Student | #p.enrolled.grades = 0 and \n  \tno p.enrolled.grades[p]\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n\tall p : Person - Student | no p.enrolled.grades\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 12,
+            "syntactic_count": 3,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 9,
+                    "code": "{\n\tall p: Person | some c: Course | (p -> c) in c.grades implies p in Student\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Only students have grades\n\tall p:Person | some c:Course | all g:Grade |\n  \t\tg in c.grades.p implies p in Student\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n    all p: Person | some c: Course | p in c.grades.1 implies p in Student\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 9,
+            "syntactic_count": 4,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Only students have grades\n\tall c: Course | all p: Person | p->Grade in c.grades implies p in Student\n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Only students have grades\n\tall p : Person, c : Course | \n\t\tsome g : Grade | (p -> g) in c.grades implies p in Student\n  \t\t\n\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Only students have grades\n\tall p:Person | all c:Course | some g:Grade |\n  \t\tg in p.(c.grades) implies p in Student\n  \t\t\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n  \tall c:Course, p:Person | some g:Grade | p in c.grades.g implies p in Student\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 7,
+            "syntactic_count": 3,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// Only students have grades\n\n\t\n\t\n\n\t\n\t\n\n\t\n\n\t\n  all p : Person | some p.(p.enrolled.grades) implies p in Student\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Only students have grades\n  all p : Person, c : Course | c in p.enrolled and c.grades[p] != none implies p in Student\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n  \tall p:Person | all c:p.enrolled | some c.grades[p] implies p in Student  \n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 7,
+            "syntactic_count": 6,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Only students have grades\n  \tall p : Person | all g : Grade | p->g in Course.grades => p in Student\n  \n  \tsome grades.(Person->Grade)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n\tGrade in Student.enrolled.grades.Student\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n  \tall p : Person | all g : Grade | p->g in Course.grades => p in Student\n  \n  \tsome grades.(Person->Grade).Person\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n  \tall p : Person | all g : Grade | p->g in Course.grades => p in Student\n  \n  \tsome Person.(grades.(Person->Grade))\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n  \tall c : Grade | c in Student\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n\tall grade : Grade | one student : Person & Student | some course :student.enrolled | grade in course.grades.Grade\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 6,
+            "syntactic_count": 5,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Only students have grades\n  \n  all c : Course, s: Student | some c.grades.Person & s \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n    all s: Student | s.grades = Course->Grade\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n  \tall c : Course | Student in c.grades.Person\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n  \tall c : Course | all s: Student |  s in c.grades[s]\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n  \n  all c : Course, s: Student | some ((c.grades).Student & s )\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 6,
+            "syntactic_count": 4,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Only students have grades\n\tall c: Course | all p : Person | c.grades[p] in Grade => p in Student\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n  all p: Person-Student | no c: Course | p not in c.grades[Grade]\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n\tall p: Person | all g: Grade | all c: Course | \n  \t\tsome c->p->g implies p in Student\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n  all p: Person-Student | no c: Course | p not in (c.grades).Person\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 6,
+            "syntactic_count": 4,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Only students have grades\n\tall s:Student | all c:Course | all g:Grade | s in c.grades.g \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\n\tall c : Course | all g : Grade | all s : Student |  c->s->g in grades\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n    // Only students have grades\n  all s: Student | all c: Course |  s->Grade in c.grades\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t\n  all s: Student, c: Course , g: Grade | s->g in c.grades\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 6,
+            "syntactic_count": 6,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n  all p : Person, c : Grade | p in Student implies some c.grades[p]\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n  all p : Person | p in Student implies some p.grades\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n\tall p:Student | some grades.p\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n\tall p : Student | p in p.enrolled.grades.Person\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n  all p: Person | \n    (some c: Course | p in c.grades.Person) iff p in Student\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n\tall p: Person |\n\t\t(p in Student) => (some c: Course | p in c.grades.Person)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 5,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 5,
+                    "code": "{\n\t// Only students have grades\n\tall s : Person | all g : Grade|  s in Student and s->g in Course.grades\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 4,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Only students have grades\n\tall c: Course | all p: Professor-Student | all g:Grade| p->g not in c.grades\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n    // Only students have grades\n    no p: Professor-Student, g: Grade | p->g in Course.grades\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 4,
+            "syntactic_count": 3,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Only students have grades\n\tall g:Grade | all p:Person | some (grades.(g->p)) implies p in Student\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n  no Course.grades->(Person-Student)\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n\tall c : Course, p : Person | some(c.grades) implies p in Student\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 4,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Only students have grades\n\tall c: Course, p: Person | c not in p.enrolled implies no p.(c.grades)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n\tall p : Person, c : Course | some p.(c.grades) implies c in p.enrolled\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 4,
+            "syntactic_count": 4,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n\tall p : Person - Student | #p.enrolled.grades + #p.teaches.grades = 0 \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n\tall p : Person - Student | #p.enrolled.grades = 0 and #p.teaches.grades = 0\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n\tall p : Person | some (p.enrolled.grades + p.teaches.grades) => p in Student\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n\tall p : Person | all c : p.enrolled+p.teaches | some c.grades implies p in Student\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 4,
+            "syntactic_count": 3,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Only students have grades\n\tall p : Person - Student | #p.enrolled.grades = 0 and \n  \tno #p.enrolled.grades[p]\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\nall p:Person, g:Grade| (Person<:grades).g in enrolled implies p in Student}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n\tall g:Grade | all p:Person | some (p->g) implies p in Student\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 3,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Only students have grades\n\tall c: Course | all p: Professor-Student |some g:Grade| p->g not in c.grades\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 3,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n    // Only students have grades\n  all p: Professor | all c: Course | not (p->Grade) in c.grades\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n\tall c: Course | all p: Professor |some g:Grade| p->g not in c.grades\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 3,
+            "syntactic_count": 3,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n\tall s : Person | all g : Grade|  s in Student implies s->g in Course.grades\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n  \t\n  \tall s : Student, g : Grade | some  c : Course |\n\t\ts in c.grades.g  \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n\tall s : Student | all g : Grade| s->g in Course.grades\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 3,
+            "syntactic_count": 3,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n  all p: Person-Student | no c: Course | no g: Grade | g in c.grades[p]\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n  all p: Person-Student | no c: Course | no c.grades[p]\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n  all p: Person-Student | no c: Course | p not in c.grades.Grade\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 3,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Only students have grades\n  all s: Student, c: Course , g: Grade | s in enrolled.c implies s->g in c.grades\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t\n  all s: Student, c: Course , g: Grade | s in enrolled.c implies s->g in c.grades and s in Student\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 3,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Only students have grades\n\tall s: Student, c: Course | some s.enrolled.grades\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 3,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n  \n  all p : Person | some c : Course, g : Grade | c->p->g in grades implies p in Student\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n  \n\tall p:Person | some c:Course, g:Grade | g in c.grades[p] implies p in Student\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Only students have grades\n\tall p : Person, c : Course | some g : Grade | grades[p,g] in Student and grades[p,g] not in Professor\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n   all p : Professor | no Course.grades->p\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n  \tall c : Course | all p : Professor | no c.grades\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Only students have grades\n\t\n  \tall p : Person  | all c : p.enrolled | some g : Grade | p->g in c.grades implies p in Student\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Only students have grades\n\t\n  \tall pr : Professor | all class : pr.enrolled+pr.teaches | no g : Grade | pr->g in class.grades\n  \n\n  \t\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Only students have grades\n\tall p:Student | some p.enrolled.grades\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Only students have grades\n\tall p : Person | all c : Course | one c.grades[p] => p in Student  \n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n\tall p : Student.(Course.grades) | p in Student\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n\tall p: Person | all c: Course | all x: c.grades[p] | p not in Student\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n  all s: Student, c: Course | some c.grades[s]\n\t// Only students have grades\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n\tall c: Course | all p : Person | c.grades[p] = none => p not in Student \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n\tStudent & (Course.grades).Grade = Student\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n  \t\n  \tall s : Student |\n\t\ts in Course.grades.Grade  \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n\tall c: Course | all p: Person-Professor | all g:Grade | p->g not in c.grades\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n\tall c: Course, p: Person, g:Grade | p->g in c.grades => p in Professor\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n    all p: Person | some g: Grade | p->g in Course.grades implies p in Student\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n\t\n  \tall p: Person | p->Grade in Course.grades implies p in Student\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n\tall p: Person | #p.enrolled.grades > 0 implies p in Student\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n\tno p : Person - Student | #p.enrolled.grades > 0 \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n\tall c: Course | some (c.grades.Person & Student) \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n  \n  all c : Course | some c.grades.Person \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n   Professor not in Course.grades.Person\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n  all g : Grade | Professor not in g\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n\tall p: Person | all c: Course | lone c.grades[p]\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n\t\n  \tall p: Person | all c: Course | some c.grades[p]\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n\tall p : Person, c : Course, g : Grade | p.(c.grades) in g implies p in Student and p not in Professor\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n\tall p : Person, c : Course | some g : Grade | p.(c.grades) in g implies p in Student and p not in Professor\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n\tall p : Person, c : Course | some g : Grade | p.(c.grades) in g implies p not in Professor\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n\tall p : Person, c : Course | some g : Grade | p.(c.grades) in g implies c in p.enrolled and p not in Professor\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n    all c : Course, s : Student | (s.enrolled.grades in c.grades)\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n\tall c : Course | some p : Person | some (c.grades[p]) => p in Student\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n    all p: Person | p in Professor or p in Student\n    all s: Student | s.grades = Course->Grade\n    all p: Professor | no p.grades\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n\n  \t\n\n\tall c: Course, g: Grade | some p: Person | c.grades[p] = g implies p in Student\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n\tall p : Person | one(p.enrolled.grades[p]) implies p in Student\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n\tall p : Person | lone(p.enrolled.grades[p]) implies p in Student\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n\tall pe : Person | (pe.teaches.grades.Grade = none) and (pe.enrolled.grades.Grade != none)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n\t\n  \tall pr : Professor | all class : pr.enrolled+pr.teaches | no g : Grade | pr->g in class.grades\n  \n  \tall p : Person  | all c : p.enrolled | some g : Grade | p->g in c.grades implies p in Student\n  \t\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n\t\n  \tall pr : Professor | all class : pr.teaches | no g : Grade | pr->g in class.grades\n  \n\n  \t\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n\t\n  \tall pr : Professor | all class : pr.enrolled | no g : Grade | pr->g in class.grades\n  \n\n  \t\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n\tall p:Student, c:Course, g:Grade | some c.grades.g\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n\n\tall c: Course, g: Grade | some p: Person | g in c.grades[p] implies p in Student\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n\n\tall c: Course, g: Grade | one p: Person | g in c.grades[p] implies p in Student\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n  all p: Person |\n\t\t(p in Student implies some c: p.enrolled | c.grades[p] in Grade) and\n\t\t(p in Professor implies no c: p.teaches | some pe: c.enrolled | c.grades[pe] in Grade)\n\n  \n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n\tsome s : Person | all g : Grade|  s in Student and s->g in Course.grades\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n\tall s: Student, c: Course | some c.grades\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n\tall c : Course | c.grades.first in Student\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n\tall c: Course | all p: Professor-Student | lone g:Grade | p->g not in c.grades\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n    // Only students have grades\n  all s: Student | all c: Course | not (s->Grade) in c.grades\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n    // Only students have grades\n  all s: Person | all c: Course | not (s->Grade) in c.grades\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n  \n \tall p : Person - Student | all c : p.enrolled | some grades.c\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n  \n \tall s : Student | all c : s.enrolled | some grades.c\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\nall p:Person, g:Grade| (Course<:grades).g in enrolled implies p in Student}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n  all c: Course | grades in c -> Student -> Grade\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n  all x : Person | some (x.enrolled.grades) \n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n\tall c: Course, p: Person| some g:Grade |p->g in c.grades => p in Student - Professor\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n\tall c: Course, p: Person, g:Grade |p->g in c.grades => p in Student - Professor\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n  \tall p: Person, g: Grade, pr: Project |\n  \t\tp->pr in projects implies (p in Student and some enrolled.grades)\n  \t\t\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n\tall c : Course | some (c.grades.Grade & Student)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n\tall p: Person | #p.enrolled.grades > 0 implies p in Student\n\tall p: Person | one g: Grade | g in p.enrolled\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t\n  all s: Student, c: Course , g: Grade | s in enrolled.c implies s->g in c.grades\n  \n  all c: Course, g: Grade, p: Person | p->g in c.grades implies p in Student\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t\n  all s: Person, c: Course , g: Grade | s in enrolled.c implies s->g in c.grades and s in Student\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n\tno p : Person - Student | #p.enrolled.grades > 0 and #p.teaches.grades > 0\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n\tall c : Course | all p : Person | p in c.grades.Grade implies p = Student\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n\tall c : Course | all p : Person | (p not in Professor and p in c.grades.Grade ) implies p = Student\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Only students have grades\n\tall c : Course | all p : Person | (p in Professor and p in c.grades.Grade ) implies p = Student\n}"
+                }
+            ]
+        }
+    ]
+}

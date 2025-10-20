@@ -1,0 +1,1551 @@
+{
+    "original": "dyj49tEp7j6aWAQQX",
+    "cmd": "inv4",
+    "pred": "this/inv4",
+    "entry_count": 772,
+    "semantic_count": 80,
+    "syntactic_count": 245,
+    "scope": 3,
+    "groups": [
+        {
+            "entry_count": 393,
+            "syntactic_count": 47,
+            "correct": true,
+            "elems": [
+                {
+                    "entry_count": 223,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\tall c: Component | some c.parts\n    all m: Material | no m.parts\n}"
+                },
+                {
+                    "entry_count": 31,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\tall c : Component | some c.parts\n\tno Material.parts\n}"
+                },
+                {
+                    "entry_count": 17,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n  \tall c:Component| some p:Product| p in c.parts\n  \tall m:Material| no p:Product| p in m.parts\n\n}"
+                },
+                {
+                    "entry_count": 15,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n    all m : Material | no m.parts\n    all c : Component | some c.parts\n}"
+                },
+                {
+                    "entry_count": 11,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\tall c: Component | #(c.parts) > 0\n  \n  \tall m: Material | #(m.parts) = 0\n}"
+                },
+                {
+                    "entry_count": 9,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n      all p: Product | (p in Component implies some p.parts) and (p in Material implies no p.parts)\n\n\n}"
+                },
+                {
+                    "entry_count": 9,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\tall c : Component | c.parts != none\n  \tall c : Material | c.parts = none\n}"
+                },
+                {
+                    "entry_count": 6,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\tall p : Product | p in Component  implies some p.parts\n  \tall m : Product | m in Material implies no m.parts\n}"
+                },
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\t(all c : Component | some c.parts) and (all m : Material | none = m.parts)\n}"
+                },
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\t // Components must have parts\n    all c: Component | some p: Product | p in c.parts\n\n    \n    all m: Material | no m.parts\n}"
+                },
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\tall c:Component | some p:c.parts | p in Product\n  \tall m:Material | all p:m.parts | p not in Product\n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\tno c : Component | c.parts = none\n  \n  \tno Material.parts\n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\tall p: Product | some p.parts iff p in Component\n  \tall p: Product | no p.parts iff p in Material\n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\tall c: Component | some p: Product | p in c.parts\n  \n  \tall m: Material | all p: Product | p not in m.parts\n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n  all p : Product | #(p.parts)>0 implies p in Component else p in Material\n\t// Components must have parts and materials have no parts\n\n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n  \tall c:Component | some p: Product | p in c.parts\n  \tall m: Material | m.parts = none\n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n    all p: Product | (p in Component implies p.parts != none) and (p in Material implies p.parts = none)\n\n\n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\tall m : Material | all p : Product | p not in m.parts\n  \tall c : Component | some p : Product | p in c.parts\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\tall m:Material | m.parts = none\n  \tall c:Component | some (c.parts)\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n  \tall p:Product | p in Material implies no p.parts\n  \tall p:Product | p in Component implies some p.parts\n\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n  all m: Material | m.parts = none\n  all c: Component | c.parts != none\n  \n\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n  \t(all c: Component | some c.^(parts )) and (all m: Material | no m.^(parts))\n\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\tall m: Material | #m.parts = 0\n  \tall c: Component | #c.parts > 0\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\t(all p: Product|\n  \t(p in Material and no p.parts) or (p in Component and some p.parts))\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n  \tall c : Component | some p : Product | p in c.parts\n  \tall m : Material | all p : Product | not (p in m.parts)\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n  \tno m: Material | some m.parts\n  \tall c: Component | some c.parts\n\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\tall c : Component | some p : Product | c->p in parts\n\tall p1,p2 : Product  | p1->p2 in parts implies p1 in Component \n\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n  \t(parts in (Component -> some Product))\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n  \tMaterial.parts = none\n  \tall x: Component | some x.parts\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\tall p: Product | p in Component implies some p.parts\n  \tall p: Product | no p.parts iff p in Material\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\tall p : Product | p in Component implies some p.parts else no p.parts\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\tall p: Product {\n  \t\tp in Material implies p.parts = none\n      \tp in Component implies some q: Product | q in p.parts\n  \t}\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\tall p : Product | #p.parts = 0 iff p in Material \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n    (parts in Component -> some Product) and (all m: Material | no m.parts)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\tall p: Product | some p.parts implies p in Component else p in Material\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n  \tall c : Component | some(c.parts)\n\tno (Material <: parts)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\tall p: Material |\n  \t\tp.parts = none \n  \n  \tall p: Component |\n  \t\tsome (p.parts)\n  \n  \tProduct = Material + Component\n  \t\t\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\tall c:Component | #c.parts > 0\n  \tall m:Material | no m.parts\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\tparts in Component -> some Product\n    no Material.parts\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\tall p : Product | some p.parts implies p in Component\n  \tall p : Product | no p.parts implies p in Material\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\tparts in ( {Product - Material} -> some Product )\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n  \n\tall p : Product | #(p.parts)>0 implies p in Component else p in Material\n  \n  \tall c : Component | some c.parts\n  \tall m : Material | no m.parts\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\tall c : Component | #(c.parts) >= 1\n  \t#(Material.parts) = 0\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\tall c: Component, m: Material | no m.parts and some c.parts\n  \tall c : Component | some c.parts\n  \tall m :Material | no m.parts\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n  \t\n\t\n  \t(parts.Product) = Component\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n  all p : Product | (#(p.parts)>0 implies p in Component) and (#(p.parts)=0 implies p in Material)\n\t// Components must have parts and materials have no parts\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n    all c: Component | some c.parts\n    all m: Material | not some m.parts\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 59,
+            "syntactic_count": 8,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 38,
+                    "code": "{\n  // Components must have parts and materials have no parts\n  all c: Component, m: Material | some c.parts and no m.parts\n}"
+                },
+                {
+                    "entry_count": 9,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\tall c : Component, m : Material | #(c.parts)>0 and #(m.parts)=0\n}"
+                },
+                {
+                    "entry_count": 7,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n  \tall c : Component | all m : Material | c.parts != none and m.parts = none\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\t\tall c : Component , m : Material | some c.^parts and no m.parts \n  \t\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\tall c:Component, m:Material | #c.parts > 0 and m.parts = none\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\tall c : Component, m : Material | #(c.parts) >= 1  and #(m.parts) = 0\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\tall c : Component, m : Material | #c.parts > 0 and no m.parts \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\t // Components must have parts\n    all c: Component, m : Material | some p : Product | p in c.parts and no m.parts\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 48,
+            "syntactic_count": 10,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 30,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\tall c: Component | some c.parts and all m: Material | no m.parts\n}"
+                },
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\tall c: Component | c.parts != none and all m: Material | m.parts = none\n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\tall c : Component | some p : Product | p in c.parts and all c : Material | no p : Product | p in c.parts\n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n  \tall c : Component | some c.parts and no Material.parts\n\n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\tall c: Component | c.parts != none and all m: Material | no m.parts\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\tall c : Component | some p : Product | p in c.parts and no c : Material | some p : Product | p in c.parts\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n  \tall c : Component | some c.parts and none = Material.parts\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n  \tall c : Component | some c.parts and all m : Material | none =  m.parts\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t\n\tall c: Component | c.parts != none and no m: Material | m.parts != none\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n  \tall c : Component | some c.parts and all mat : Material | #mat.parts = 0\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 44,
+            "syntactic_count": 20,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 18,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n  \tall p : Product | #(p.parts)>0 implies p in Component and #(p.parts)=0 implies p in Material\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\tall p: Product |\n  \t\tp in Material implies no p.parts and \n  \t\tp in Component implies some p.parts\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\tall p: Product | p.parts in Product implies p in Component\n  \tand p.parts not in Product implies p in Material\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n  \tall p : Product | p in parts.p implies p in Component and #(p.parts)=0 implies p in Material\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\tall p: Product |\n  \t\tsome p.parts implies p in Component and\n  \t\t\tno p.parts implies p in Material \n  \t\t\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\tall p : Product | #p.parts = 0 implies p in Material and #p.parts != 0 implies p in Component\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\tall o: Component | some o\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\tall p:Product | p in Material implies not one p.parts and p in Component implies some p.parts\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\tall disj p, p2 : Product | (p in Material implies p2 not in p.parts) or (p in Component implies p2 in p.parts)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\tall p:Product | p in Component and p in p.parts implies p not in Material\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\tall p: Product | some p2: Product | (p in Component implies p2 in p.parts) or (p in Material implies p2 not in p.parts)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n \t\n  \tall c: Component | c.*parts in Product\n  \t\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n  all p: Product | p in Component => some p.parts or p in Material => no p.parts \n  \n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n  all p: Product | p in Component => some p.parts and p in Material => no p.parts \n  \n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\tall p: Product |\n  \t\tp in Material implies no p.parts and \n  \t\tp in Component implies some (p.parts - p)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\tall p, p2 : Product | (p in Material implies p2 not in p.parts) or (p in Component implies p2 in p.parts)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\t\n  \tall p : Product | some p.parts implies p in Component or no p.parts implies p in Material\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n  all p: Product | p in Component implies p.parts != none or p in Material implies p.parts = none\n  \n\t// Components must have parts and materials have no parts\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\tall p: Product |\n  \t\tp in Material implies no p.parts and \n  \t\tp in Component implies (some p2: Product |\n  \t\t\t\t\t\t\t\t\tp2 != p and p2 in p.parts)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 23,
+            "syntactic_count": 15,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 5,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\tall p:Product | some p.parts implies p in Component \n\n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n  all p : Product | #(p.parts)>0 implies p in Component\n\t// Components must have parts and materials have no parts\n\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\tall m : Material | no m.parts\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\tall p: Product | all p2: Product | p in Material implies p2 not in p.parts\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\tall p:Product | all pt:p.parts | pt not in Product implies p in Material\n  \tall p:Product | all pt:p.parts | pt in Product implies p in Component\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\t\n  \tall m:Material | all p:m.parts | p not in Product\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n  \tMaterial.parts = none\n  \tProduct.parts = Component.parts\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\tall m : Material | m.parts = none\n \t\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\tall p: Material | no p.parts\n \tall p: Component | p.parts in Product\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n  \tparts in Component -> set Product\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\tno (Product.parts - Component.parts) and no (Material.parts)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n  \tMaterial.parts = none\n  \tProduct.parts in Component.parts\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\tno (Material.parts)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\tall p:Product | p.^parts not in Product implies p in Material\n  \tall p:Product | all pt:p.parts | pt in Product implies p in Component\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\t(Product.parts = Component.parts) and no (Material.parts)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 20,
+            "syntactic_count": 5,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 13,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\tall o: Component | some o.parts\n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n  \tall c:Component | some p: Product | p in c.parts\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\tall c : Component | c.parts != none\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\tall p:Product | p in Component implies some p.parts\n  \t\n  \t\n  \t\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\tall p: Product | some p2: Product | p in Component implies p2 in p.parts\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 19,
+            "syntactic_count": 7,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 12,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\t(some Component.parts) and (no Material.parts)\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\tno ( Product - Component).parts and some (Product - Material).parts\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\tMaterial.parts = none\n  \tComponent.parts != none\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\tsome (Product & Component).parts and no (Product & Material).parts \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\tComponent.parts not = none\n  \n  \tno Material.parts\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n  some(Component.parts) and Material.parts = none\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\tsome(Component <: parts) and no (Material <: parts)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 10,
+            "syntactic_count": 6,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\tall p: Material | p.parts not in Product\n  \tall p: Component | p.parts in Product\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\tall c:Component | c.parts in Product\n  \tall m:Material | m.parts not in Product\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n  \t(all c: Component | some c.*(parts )) and (all m: Material | no m.*(parts))\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\tall m:Material |\n  \t\tm.parts not in Product.parts\n  \n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n  \tall c : Product | c.^parts in Product implies c in Component\n  \tall prod:Product | prod.^parts not in Product implies prod in Material\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\tall p:Product | p.^parts not in Product implies p in Material\n  \tall p:Product | p.^parts in Product implies p in Component\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 9,
+            "syntactic_count": 7,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\tall p : Product | p in Component and some p.parts\n  \tall m : Product | m in Material and no m.parts\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\tall p : Product |\n    ((p in Component iff #(p.parts)>0) and (p in Component iff #(p.parts)=0))\n  \t\n  \t\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n \tall p:Product | p not in p.*parts\n  \t\n  \t\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n \tall p:Product | p not in p.*parts\n  \tall c: Component | c.^parts in (Product - c)\n  \tall m: Material  | m.parts not in (Product)  \t\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\tall p, p2 : Product | (p in Material implies p2 not in p.parts) and p != p2\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\tall p : Product | (p in Component and p not in Dangerous) and some p.parts\n  \tall m : Product | m in Material and no m.parts\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\tall p : Product | (p in Component or p in Dangerous) and some p.parts\n  \tall m : Product | m in Material and no m.parts\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 8,
+            "syntactic_count": 6,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\tall m:Material |\n  \t\tm.parts not in Product.parts\n  \n  \tall c:Component |\n  \t\tsome p:Product.parts |\n  \t\t\tp in c.parts\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\tall c:Component | some p:c.parts | p in Product\n  \tall m:Material | one p:m.parts |p not in Product\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n  \t(all c: Component | some c.^(parts )) and (all m: Material | no m.*(parts))\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n  \tall c : Product | some p: c.parts | p in Product implies c in Component\n  \tall prod:Product | prod.parts not in Product implies prod in Material\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\tall p:Product | all pt:p.parts | pt not in Product implies p in Material\n  \tall p:Product | some pt:p.parts | pt in Product implies p in Component\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n  \tall c : Product | some p: c.parts | p in Product implies c in Component\n  \tall prod:Product | all p:prod.parts | p not in Product implies prod in Material\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 8,
+            "syntactic_count": 6,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\tall c : Component , m : Material | #c.parts > 0 and m.parts = 0\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n  \tall c: Component | c.parts in Product and no m: Material | m.parts in Product\n\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n  all c : Component | c.parts in Product and all m : Material | m.parts not in Product\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\tall c:Component | all m:Material | c.parts in Product and m.parts not in Product\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n  all c : Component , m : Material | #(c.parts) > 0 && #(m.parts) < 0\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n  all c : Component , m : Material | #(c.parts) > 0 && #(c.parts) < 0\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 6,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 6,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n  \n\t\n  \t\n  \tall c: Component | c.parts in (Product - c)\n  \tall m:Material | m.parts not in (Product)\n  \t\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 6,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 5,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\tall c: Component, m:Material | some p:Product | p in c.parts and p not in m.parts\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\tall c : Component, m : Material | some p : Product | c in parts.p and m not in parts.p \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 5,
+            "syntactic_count": 5,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\tall c: Component | c.parts != none and all m: Material | m not in Product.parts\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n  \tall c : Component | some c.parts and all m : Material | no parts.m\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\tall c: Component | c.parts != none and all m: Material | m in Product - Product.parts\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\tall c: Component | c.parts != none and all m: Material | parts.m = none\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\tall c: Component | c.parts != none and all m: Material | no parts.m\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 5,
+            "syntactic_count": 4,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\tall p:Product | p.parts in (Component-Material)\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\tall p:Product | p.parts in Component \n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n  \tall c : Component, p : Product | p.parts in Component\n  \tall m : Material, p : Product | m not in p.parts\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n  no parts.Material\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 5,
+            "syntactic_count": 3,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n \t\n  \tall c: Component | c.*parts in (Product - c)\n  \t\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\tall c : Component | some p : Product | p in c.parts \n  \tall c : Component , p : Product | not p in c.parts \n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\tall p : Product |\n  ((p in Component implies #(p.parts)>0) and (p in Component implies #(p.parts)=0))\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 5,
+            "syntactic_count": 3,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n  all c : Component | some parts.c\n  \n  all m : Material | no parts.m\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n  \tall c : Component | c in Product.parts\n  \tall m : Material | m !in Product.parts\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n  \tall c: Component | #(c & Product.parts) != 0\n  \tall m:Material | #(m & Product.parts) = 0\n  \t\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 4,
+            "syntactic_count": 4,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\t\tall c : Component , m : Material | some c implies  some c.*parts and some  m implies no m.parts \n  \t\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\tall c : Component, m : Material | #(c.parts) >= 0  and no m.parts\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\tall c : Component, m : Material | #(c.parts) >= 0  and #(m.parts) = 0\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\t\tall c : Component , m : Material | some c.*parts and no m.parts \n  \t\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 4,
+            "syntactic_count": 3,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n  all c: Component, m: Material | #c.parts>0 and #m.parts =0 and c not in c.parts\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n    all c : Component, m : Material | (some c.parts iff c not in c.parts) and no m.parts\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\tall c:Component, m:Material | c.parts != none and c not in c.parts and m.parts = none\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 3,
+            "syntactic_count": 3,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\tall c : Component | some c.parts\n\tno Product.parts\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n  all c: Component |\n\t\tsome c.parts and\n\t\tno c.parts\n\n\tall m: Material |\n\t\tno m.parts\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n  \t(all c:Component | some c.parts ) and (all p:Product | no p.parts )\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 3,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n  \tall c:Component | some p: Product | p in c.parts\n  \tall c:Material | some p: Product | p not in c.parts\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\tall m : Material | some p : Product | p not in m.parts\n  \tall c : Component | some p : Product | p in c.parts\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 3,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\tall p : Product, m : Material, c : Component | p in c.parts and p not in m.parts\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n  all c : Component, m : Material, p : Product | c in parts.p and not m in parts.p\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 3,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n  \tno (iden & parts) and parts in (Component -> some Product)\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n  all c: Component | #c.parts > 0 and c not in c.parts\n\n  \n  all m: Material | #m.parts = 0\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 3,
+            "syntactic_count": 3,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\t\n  \t \n  \n  \tall c: Component, p: Product | p in c.parts\n  \t all m: Material, p: Product | not p in m.parts\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\tall p : Product | parts.p = Component\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\tall p, p2 : Product | (p in Material implies p2 not in p.parts) and (p in Component implies p2 in p.parts)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 3,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\tall c: Component, p: Product | c in p.parts\n  \t all m: Material, p: Product | not m in p.parts\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\t\n  \t \n  \n  \tall c: Component, p: Product | c in p.parts\n  \t all m: Material, p: Product | m not in p.parts\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 3,
+            "syntactic_count": 3,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\t\n  \t \n  \n  \tall c: Component | c in c.parts\n  \t all m: Material | m not in m.parts\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\tall c: Component | c in c.parts\n  \t all m: Material | not m in m.parts\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\t\n  \t \n  \n  \tall c: Component, p: Product | c in p implies c in p.parts\n  \t all m: Material, p: Product | m in p implies m not in p.parts\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\tsome (Product & Component - Product & Dangerous).parts and no (Product & Material - Product & Dangerous).parts \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\tsome (Product & Component - Dangerous).parts and no (Product & Material - Dangerous).parts \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\tall c : Component, m : Material | some p : Product | p in parts.c and p not in parts.m\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\tall c : Component, m : Material | some p : Product | c in p.parts and m not in p.parts \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\tall c: Component, m: Material | c in parts.c and m not in parts.m\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\tall c: Component, m: Material | c in c.parts and m not in m.parts\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n  \n\tall c : Component, m : Material, p : Product | one p2 : Product | c not in c.parts and p not in m.parts and p2 in c.parts\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n  \n\tall c : Component, m : Material, p : Product | one p2 : Product | c not in c.parts and c not in parts.c and p not in m.parts and p2 in c.parts\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n  all p : Product | (p not in p.parts and p not in parts.p) and #(p.parts)>0 implies p in Component \n\t// Components must have parts and materials have no parts\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n  all p : Product | p not in p.parts and #(p.parts)>0 implies p in Component \n\t// Components must have parts and materials have no parts\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n  \tno (iden & parts) and parts in (Component -> set Product)\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n  \tparts in (Component -> set Product -iden)\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\tall c : Component, m : Material, p : Product | one p2 : Product | p not in m.parts and p2 in c.parts\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\tall c : Component | all m : Material | one c.parts and no m.parts\t\t\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\t\n    Product not in Material.parts\n  \tProduct in Component.parts\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\tall p: Product| (p = Component implies #(p.parts)>0 and p not in p.parts) and\n  \t(p = Material implies p.parts = none)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\tall p: Product| (p = Component implies p.parts != none and p not in p.parts) and\n  \t(p = Material implies p.parts = none)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\tall c : Component, m : Material | lone c.parts and no m.parts\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\tall c : Component | all m : Material | some c.parts - c and no m.parts\t\t\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n  \t#(Component & Product.parts) != 0\n  \t#(Material & Product.parts) = 0\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n  no parts.Material\n  some parts.Component\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n  no parts.Material\n  all c:Component | some c.parts\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n  \tall c : Component | some c.parts\n  \tall m : Material | m !in Product.parts\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n  \tall p : Product | p.parts in Component\n  \tall p : Product | not p.parts in Material\n  \t\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\tall p:Product | p.parts in Component and p.parts not in Material\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\tall p : Product | p in Component implies some parts else no parts\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\tall c: Component | some parts\n  \tall m: Material | not some parts\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\tall c:Component, x: Workstation, p:Product | c in workstation.x implies (c in parts.p and Material not in parts.p)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\tall p:Product | p in Material implies not one p.parts\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\tno p:Product | p.parts in Material\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n  \tall c : Component | some(c.parts)\n\tsome(Component <: parts) and no (Material <: parts)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\tall c : Component | c.parts != none\n  \tall c : Material | c.parts != none\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n  \tall c: (Material + Component) | (c in Material) implies some c.parts else no c.parts\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\tall c : Component, m : Material | some p : Product | c in parts.p and m in parts.p \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n  all c : Component | one p : Product | all m : Material | p in c.parts and p not in m.parts\n\t// Components must have parts and materials have no parts\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n  all c : Component | one p : Product | all m : Material | p in c.parts and p not in m.parts and c not in c.parts and m not in m.parts\n\t// Components must have parts and materials have no parts\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n  \n\t\n  \n  \tall c : Component | some Component.parts\n  \tall m : Material | no Material.parts\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n  \tall c : Product | some p: c.parts | p in Product implies c in Component\n  \tall prod:Product | one p:prod.parts | p not in Product implies prod in Material\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\tall c : Component, m : Material | some c.parts\n    all m : Material | no m.parts\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\tall c : Component| one wt :Workstation | wt in c.workstation\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n  \tall c: Component | c.parts in (Product - c)\n  \tall m:Material | m.parts not in (Product - m)  \t\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n  \tall c: Component | c.^parts in (Product - c)\n  \tall m: Material  | m.parts not in (Product)  \t\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n \tall p:Product | p not in p.^parts\n  \t\n  \t\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n \t\n  \tall c: Component | c.^parts in (Product - c)\n  \t\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n \tall p:Product | p.parts in (Product-p)\n  \t\n  \t\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n  \t#(Component & Product.parts) != 0\n  \t#(Material & Product.parts) != 0\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\tall c : Component | all m : Material | some c.parts - c and no m.parts - m\t\t\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n  \tall c : Component, p : Product | p.parts in c\n  \tall m : Material, p : Product | m not in p.parts\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\tall c:Component, m:Material | some p:Product | p in p.parts and p not in m.parts\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\tall c:Component, m:Material | some p:Product | p in p.parts and p not in m.parts\n  \tall c:Component | some p: Product | c.parts = p\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\tall c:Component, m:Material | some p:Product | p in p.parts and p not in m.parts\n  \tall c:Component | some p: Product | p in c.parts\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\tall c: Component | some c.parts\n  \tall m: Material | one m.parts\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\tall p: Product, c: Component, m: Material |\n  \t\tsome c.parts implies no m.parts\n  \t\t\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n  \n  all c : Component | c-> c in parts\n  all m : Material | no m.parts\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n  \n  all c : Component | (some c1 : Component | c-> c1 in parts)\n  all m : Material | no m.parts\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n  \n  all c : Component | (some c : Component | c-> c in parts)\n  all m : Material | no m.parts\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\tall p: Product | some p2: Product | p != p2 and (p in Component implies p2 in p.parts) or (p in Material implies p2 not in p.parts)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\tall p: Product | some p2: Product | p in Material implies p2 not in p.parts\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\tall disj p, p2 : Product | p in Material implies p2 not in p.parts\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\tall p: Product| (p = Component implies p.parts != none) and\n  \t(p = Material implies p.parts = none)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n  all c : Component, m : Material | some c.parts\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\tall c: Component | all m: Material | c in c.parts and no m.parts\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n  some Component.parts and no Material.parts and all c:Component| c not in c.parts \n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components must have parts\n  all c: Component | lone(c.parts)\n  \n  all m: Material | no m.parts \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\tall c:Component, m:Material | c.parts != none and m.parts = none\n  \tall c:Component | c not in c.parts\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components must have parts and materials have no parts\n\tall p: Material |\n  \t\tp.parts = none \n  \n  \tall p: Component |\n  \t\tsome (p.parts - p)\n  \n  \tProduct = Material + Component\n  \t\t\n}"
+                }
+            ]
+        }
+    ]
+}

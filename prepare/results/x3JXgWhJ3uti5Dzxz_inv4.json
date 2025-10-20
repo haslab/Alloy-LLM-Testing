@@ -1,0 +1,3412 @@
+{
+    "original": "x3JXgWhJ3uti5Dzxz",
+    "cmd": "inv4",
+    "pred": "this/inv4",
+    "entry_count": 1969,
+    "semantic_count": 151,
+    "syntactic_count": 586,
+    "scope": 3,
+    "groups": [
+        {
+            "entry_count": 994,
+            "syntactic_count": 129,
+            "correct": true,
+            "elems": [
+                {
+                    "entry_count": 244,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n  all u: User | some u.posts & Ad implies u.posts in Ad\n\n}"
+                },
+                {
+                    "entry_count": 69,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\t\n\n\t\n\t\n  \t\n\tall u : User, a : u.posts | a in Ad implies u.posts in Ad\n\n}"
+                },
+                {
+                    "entry_count": 60,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n  \tall u: User| all a: Ad |a in u.posts implies u.posts in Ad\n  \n        \n\n}"
+                },
+                {
+                    "entry_count": 42,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall u: User | ((some p: u.posts | p in Ad) => u.posts in Ad)\n}"
+                },
+                {
+                    "entry_count": 40,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall u : posts.Ad | u.posts in Ad\n}"
+                },
+                {
+                    "entry_count": 35,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall u : User, p : Photo | p in u.posts and p in Ad implies u.posts in Ad \n}"
+                },
+                {
+                    "entry_count": 34,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\t\n\n\tall u : User | (some a : u.posts | a in Ad) implies (all p : u.posts |  p in Ad)\n}"
+                },
+                {
+                    "entry_count": 27,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n  all u: User | (some a: Ad | a in u.posts) implies (all a: u.posts | a in Ad)\n\n}"
+                },
+                {
+                    "entry_count": 24,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n  \n    all x:User | (some y:Photo | x->y in posts and y in Ad) implies\n           (all z:Photo | x->z in posts implies z in Ad)\n\n}"
+                },
+                {
+                    "entry_count": 22,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n  \tall u: User | all disj p1: u.posts, p2: u.posts | (p1 in Ad) implies (p2 in Ad)\n\t\n}"
+                },
+                {
+                    "entry_count": 21,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads.\n\tall u: User | some u.posts & Ad implies all p : u.posts | p in Ad\n\n}"
+                },
+                {
+                    "entry_count": 21,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n  \n    \n    \n\n    \n    \n\n    \n \n     all x:User | x in posts.Ad implies x.posts in Ad\n \n \t\n\n}"
+                },
+                {
+                    "entry_count": 19,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall u : User | (some a : Ad | a in u.posts) implies (u.posts in Ad)\n}"
+                },
+                {
+                    "entry_count": 18,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall u: User | (u.posts in Ad) or (u.posts in Photo - Ad)\n}"
+                },
+                {
+                    "entry_count": 15,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads.\n  \tall u : User | some (u.posts & Ad) implies ((u.posts & Ad) = u.posts)\n\n}"
+                },
+                {
+                    "entry_count": 14,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n  \n    \n    \n\n     all x:User | (some y:Photo | x in posts.y and y in Ad) implies\n                            (all z:Photo | x in posts.z implies z in Ad)\n\n\n \t\n\n}"
+                },
+                {
+                    "entry_count": 13,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\t\n\n\t\n\tall u : User, a : u.posts | a in Ad implies (all p : u.posts |  p in Ad)\n}"
+                },
+                {
+                    "entry_count": 13,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall a :Ad, u :User | a in u.posts => (all p : u.posts | p in Ad)\n}"
+                },
+                {
+                    "entry_count": 10,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n  all u : User | (u.posts in Ad or no (u.posts & Ad))\n}"
+                },
+                {
+                    "entry_count": 9,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads.\n  \tall u : User | (some a : Ad | u->a in posts) implies\n  \t(all p  : Photo | u->p in posts implies p in Ad)\n\n\n}"
+                },
+                {
+                    "entry_count": 9,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall u : User, p : Photo | p in (Ad & u.posts) implies u.posts in Ad\n}"
+                },
+                {
+                    "entry_count": 8,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall u : User, a : Photo | (a in Ad and a in u.posts) implies all a : u.posts | a in Ad\n}"
+                },
+                {
+                    "entry_count": 8,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall u: User, a: Ad, p: u.posts | (a in u.posts) implies (p in Ad)\n}"
+                },
+                {
+                    "entry_count": 7,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n  \tall u: User | some u.posts & Ad => no u.posts & (Photo-Ad)\n}"
+                },
+                {
+                    "entry_count": 7,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n  all u : User | (some y : Ad | y in u.posts) implies (all p: Photo | p in u.posts implies p in Ad)\n}"
+                },
+                {
+                    "entry_count": 7,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall a : Ad | (posts.a).posts in Ad\n}"
+                },
+                {
+                    "entry_count": 7,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall u: User {\n  \t\t(some p: Photo | (p in u.posts) and (p in Ad))\n  \t\t\timplies u.posts in Ad\n  }\n}"
+                },
+                {
+                    "entry_count": 5,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall u : User | some u.posts <: Ad implies u.posts <: Ad = u.posts\n}"
+                },
+                {
+                    "entry_count": 5,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads.\n    all u: User |\n        (all p: u.posts | p in Ad) or (no p: u.posts | p in Ad)\n}"
+                },
+                {
+                    "entry_count": 5,
+                    "code": "{\n  // If a user posts an ad then all its posts should be labeled as ads. \n  all u: User| some (Ad & u.posts) implies (no u.posts - Ad)\n\n}"
+                },
+                {
+                    "entry_count": 5,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n  \tall u : User , p : Photo , p1 : Photo | u -> p in posts and p in Ad \n  \t\timplies u -> p1 in posts implies p1 in Ad\n\n}"
+                },
+                {
+                    "entry_count": 5,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n    all a: Ad, u:User | u in posts.a implies (u.posts  in Ad)\n\n}"
+                },
+                {
+                    "entry_count": 5,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\t\n\tall u:User | (some p:Photo | p in Ad and p in u.posts) implies (all p1:Photo | p1 in u.posts implies p1 in Ad)\n}"
+                },
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n  \tall u : User, a : Ad | a in u.posts implies all b : Photo | b in u.posts implies b in Ad\n\n}"
+                },
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n   all u: User | ( some p: Photo | p in u.posts & Ad ) implies u.posts in Ad\n\n}"
+                },
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall u : User | u.posts = u.posts & Ad or no u.posts & Ad\n}"
+                },
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n  all u: User | u.posts & Ad = none or u.posts in Ad\n\n}"
+                },
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads.\n  \tall a : Ad, u : posts.a | no u.posts - Ad\n}"
+                },
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n  all u : User, a : Ad | u->a in posts implies u.posts in Ad\n\n}"
+                },
+                {
+                    "entry_count": 4,
+                    "code": "{\n    // If a user posts an ad then all its posts should be labeled as ads. \n  \n    \n    \n\n     all x : User | (some y : Photo | y in x.posts & Ad)\n       implies (all z : Photo | x->z in posts implies z in Ad)\n\n    \n    \n\n    \n    \n\n    \n \n    \n \n    \n}"
+                },
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n  \tall p1, p2: Photo, u: User | p1 in Ad and p1 in u.posts and p2 in u.posts implies p2 in Ad\n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n  \tall u : User | #(u.posts & Ad) > 0 implies u.posts in Ad\n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall u : User | \n        (some p : Photo | p in u.posts and p in Ad) => (u.posts = u.posts & Ad)\n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n  all x:User | x.posts & Ad != none implies x.posts in Ad\n\n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads.\n  \tall u: User | all disj p, q: u.posts | p in Ad implies q in Ad\n\n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\n\t\n  \tall u: User, a: Ad| some u.posts and a in u.posts implies u.posts in Ad\n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads.\n  all u : User | all a : Ad | all p : Photo | a in u.posts and p in u.posts implies p in Ad\n\n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\t\n  \tall a : Ad, x : posts.a | no x.posts & Photo-Ad\n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall u: User, a: Ad | a in u.posts => no (u.posts - Ad) \n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n    all u : User, a : Ad | a in u.posts implies u.posts in Ad\n    \n    all u : User | (some u.posts & Ad) implies u.posts in Ad\n  \n   \n    \n\t// If a user posts an ad then all its posts should be labeled as ads. \n\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tposts.Ad.posts in Ad\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads.\n  all x : User, y,z: Photo | y in x.posts and y in Ad implies x.posts in Ad\n\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n    all a: Ad, u:User | u in posts.a implies no (u.posts - Ad)\n\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall u : User, p : u.posts | p in Ad implies not some p1 : u.posts | p1 not in Ad\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n  \tall u:User | (not no (u.posts & Ad)) implies (u.posts & Ad = u.posts)\n\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n   all u: User, a: Ad, p: (Photo - Ad) | a in u.posts implies p not in u.posts\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\tall x: User, y: Ad, z: Photo | (x -> y in posts ) implies (x -> z in posts implies z in Ad)\n  \n\t// If a user posts an ad then all its posts should be labeled as ads. \n\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\t\n  \tall u : User | all p : u.posts | some (p & Ad) implies (u.posts in Ad)\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall u: User | (some p: Photo | p in Ad and p in u.posts) => (all p: u.posts | p in Ad)\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n  all x : User | all y : Photo | (x in posts.y) and (y in Ad) implies (all z : Photo | (x in posts.z) implies (z in Ad))\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n    all a: Ad, u:User | some (Ad & u.posts) implies u.posts in Ad\n\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n  \tall u : User | no (u.posts - Ad) || u.posts =u.posts - Ad\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall u : User | all p : u.posts | p in Ad implies (no u.posts-Ad)\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n  all u: User,  p: Photo | (p in Ad and p in u.posts) => all p2: Photo | p2 in u.posts => p2 in Ad\n\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads.\n\n\tall u: User | (some p: Photo | p in u.posts & Ad)\n\t\timplies (all z: Photo | z in u.posts implies z in Ad)\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads.\n\tall u: User | some Ad & u.posts iff (some u.posts and u.posts in Ad)\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads.\n  \tall u1: User | all p1: Photo | all p2: u1.posts| (p1 in u1.posts and p1 in Ad) implies  p2 in Ad\n\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall a : Ad, u: posts.a | u.posts = (u.posts & Ad)\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall u : posts.Ad | all p : u.posts | p in Ad\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n  \tall u: User, p: u.posts |\n  \tp in Ad implies #(u.posts & Ad) = #(u.posts)\n\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n  \n\t\n  \n  all a: Ad | no posts.a.posts - Ad\n  \n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall u : User | none != u.posts & Ad => u.posts = Ad & u.posts\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall u:User | (some p: Photo | u -> p in posts and  p in Ad) implies\n\t(u.posts in Ad)\n\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n  no posts.Ad.posts & (Photo - Ad)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall u : User | (some a : Photo | u in posts.a and a in Ad) implies (all p : u.posts |  p in Ad)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall u : User | \n        (some p : u.posts | p in Ad) => (u.posts = u.posts & Ad)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads.\n  \t\n\tall u: User | no u.posts or (some Ad & u.posts iff u.posts in Ad)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall u : User, p : Photo | p in u.posts and p in Ad => u.posts in Ad\n  all u : User | all p : u.posts | p in Ad implies u.posts in Ad\n  \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n  \tall u : User | all pa : u.posts & Ad | all p : u.posts | #(pa) > 0 implies p in Ad\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n// If a user posts an ad then all its posts should be labeled as ads. \n  \n    \n    \n\n    \n    \n\n   \n \n    \n \n    all x : User, z : x.posts | (some x.posts & Ad) implies z in Ad\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n    (posts & User -> Ad).Ad <: posts in User -> Ad\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall x : User, y,z: Photo | x->y in posts and x->z in posts and y in Ad implies z in Ad\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads.\n  \tall u: User, p1, p2: Photo | p1 in u.posts and p2 in u.posts implies (p1 in Ad and p2 in Ad) or (p1 not in Ad and p2 not in Ad)\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n  \tall u : User | (some p : Photo | u in posts.p and p in Ad) implies \n  \t(all p1 : Photo | u in posts.p1 implies p1 in Ad)\n  \n\tall u : User | some (u.posts & Ad) implies u.posts in Ad\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads.\n  all u:User , p:u.posts |\n  \tp in Ad implies u.posts-p in Ad\n\t\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n  \tall u : User, p : Photo | u->p in posts and p in Ad implies u.posts in Ad\n\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n  \talways(all u: User | (some p: u.posts | p in Ad) implies \n  \t\t(all ph: u.posts | ph in Ad))\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n  \tall u : User | all p : u.posts | #(u.posts & Ad) > 0 implies p in Ad\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads.\n  \tall u: User | ( Ad - u.posts ) != Ad  implies u.posts in Ad\n  \t\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads.\n  all a: Ad, u: User | a in u.posts => no u.posts & (Photo - Ad)\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n    \n  \tposts.Ad <: posts in User -> Ad\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall u:User | not (Ad & u.posts = none) implies u.posts in Ad\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n  \n  all x : User | (some y : Ad | y in x.posts) \n    implies (all z : Photo | x->z in posts implies z in Ad)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall u: User | all p : u.posts | p in Ad implies u.^posts in Ad\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads.\n  \n  all u : posts.Ad | u.posts in Ad\n  all u : User | (some u.posts & Ad) implies u.posts in Ad\n  \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall u : User, p: u.posts,a : Ad | a in u.posts implies p in Ad \n    all u:User | #u.posts&Ad > 0 implies u.posts in Ad\n\tall u: User,p:Photo,a:Ad | p in u.posts and a in u.posts implies p in Ad\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \nall u: User | all p: u.posts | p in Ad or no u.posts & Ad\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall u : User | (u.posts in Ad) or (u.posts-Ad = u.posts)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall u: User| all ad: Ad | once ad in u.posts implies after (always u.posts in Ad)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n  \tall u : User, a : Photo | (some add : Ad | u->add in posts) implies\n  \t\t(all p : Photo | u->p in posts implies p in Ad)\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall u:User,p:u.posts| (p & Ad != none ) implies u.posts in Ad\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall u : User | \n  \t\tall p : u.posts |\n  \t\t\tp in Ad implies (u.posts & Ad) = u.posts\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\tall u : User, p : u.posts |\n  \t\t(p & Ad) != none implies (all ps : u.posts | ps in Ad)\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall a : Ad | all u : posts.a | all a2 : u.posts | a2 in Ad\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads.\n  all u: User, a: Ad | \n\t(some a: Ad | a in u.posts) => all posts: u.posts | posts in Ad \n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n            all x: User | ((x in (posts.Ad)) implies (no (x.posts & (Photo - Ad))))\n\n\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads.\n  \tall u1: User | all p1: Photo | all p2: u1.posts| (p1 in u1.posts and p1 in Ad) implies  p2-p1 in Ad\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall u:User | all ad:Ad | ad in u.posts implies \n  \t\tno p:Photo | p in u.posts and p not in Ad\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n  all u : User | all p : u.posts |\n  \t(p in Ad) <=> (some p2 : u.posts | p2 in Ad)\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n all u: User | all p1, p2: Photo | (p1 in u.posts and p1 in Ad) implies (p2 in u.posts implies p2 in Ad)\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall x:User, y:Ad, z:Photo {x->y in posts and x->z in posts implies z in Ad}\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall u:User | u.posts in Ad or  (Ad & u.posts) in none\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall u: User, p: Photo | u->p in posts and p in Ad implies all post : u.posts | post in Ad\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n  \tall u : User | (some a : Ad | u in posts.a) implies (all p : u.posts | p in Ad)\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall u:User |  no disj p1, p2:Photo | p1 in u.posts and p2 in u.posts and p1 in Ad and p2 not in Ad\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n// If a user posts an ad then all its posts should be labeled as ads. \n  \n    \n    \n\n    \n    \n\n   \n \n    \n \n    all x : User, z : Photo | (some x.posts & Ad)\n       implies (x in posts.z implies z in Ad)\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads.\n  \tall u: User, p: Photo | p in u.posts and p in Ad implies (\n      \t#(u.posts - Ad) = 0)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n  \tall u : User |  u.posts&Ad = none or u.posts&Ad = u.posts\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads.\nall u : User | (some p: Photo | u-> p in posts and p in Ad) implies (all p:u.posts | p in Ad)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads.\n    all u : User | (some u.posts & Ad)\n\t\timplies (all p : Photo | u->p in posts implies p in Ad)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n  all u: User | (all p: u.posts | p in Ad) or (all p: u.posts | p not in Ad)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall x : User | (some x.posts & Ad) implies (all z : Photo | z in x.posts implies z in Ad)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n    all x : User, z : Photo | z in Ad and x->z in posts implies (all p : Photo | x->p in posts implies p in Ad ) \n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads.\n  \n  all u : User | all p : u.posts | p in Ad implies u.posts in Photo - (Photo - Ad)\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall user : User | all post : user.posts | post in Ad or all post : user.posts | post not in Ad\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads.\n  all u: User | (some ad:Ad | ad in u.posts) => no (u.posts) - Ad\n\n  \n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads.\n    all u : User | (some u.posts & Ad)\n\t\timplies (all p : Photo | u->p in posts implies p in Ad)\n\t\n\t\n\tall u : User | (some u.posts & Ad) implies u.posts in Ad\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n  all u : User, p: Photo | (some y : Ad | y in u.posts) implies ( p in u.posts implies p in Ad)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n  \tall u: User | (some p: Photo | (u in posts.p) and (p in Ad))\n\timplies (all z : Photo | u in posts.z implies z in Ad)\n\n\tall x : User | (some y : Photo | x->y in posts and y in Ad) \n   \timplies (all z : Photo | x->z in posts implies z in Ad)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 205,
+            "syntactic_count": 69,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 57,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n  \n\n}"
+                },
+                {
+                    "entry_count": 13,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads.\n  all i: Influencer | i.posts in Ad implies i.posts in Ad\n\n}"
+                },
+                {
+                    "entry_count": 10,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n  all u : User | u.posts in Ad or u.posts !in Ad\n}"
+                },
+                {
+                    "entry_count": 8,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads.\n  \tall u: User | u.posts in Ad || u.posts in Photo\n\n}"
+                },
+                {
+                    "entry_count": 7,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall u: User | (u.posts in Ad) implies ((u.posts & Photo) = (u.posts & Ad))\n}"
+                },
+                {
+                    "entry_count": 7,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n  all u : User, p : Photo | u in posts.p and p in Ad implies p in Ad\n\n}"
+                },
+                {
+                    "entry_count": 7,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\t\n\tall u: User | all p: u.posts | p in Ad implies p in u.posts\n\n}"
+                },
+                {
+                    "entry_count": 5,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\t\n\n\t\n\t\n  \tall u : User, a : u.posts | a in Ad implies a in Ad\n}"
+                },
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads.\n  all u:User | (some (u.posts - Photo)) implies Photo not in u.posts\n\n}"
+                },
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n  \n  all u : User | (some p : posts.u | p in Ad) implies (all p : posts.u | p in Ad)\n}"
+                },
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall u: User | (u.posts in Ad) implies (all p: u.posts | p in Ad)\n}"
+                },
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n  \tall u : User | all p : u.posts | some pa : u.posts | pa in Ad implies p in Ad\n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads.\n  \tall u: User | all p: u.posts | p in Ad || p not in Ad\n\n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads.\n  \tall u:User | (some(u.posts-Photo)) implies (u.posts-Ad)=none\n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n  \n\tall u : User, p : u.posts & Ad | p in Ad\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall u : User, p : u.posts ,a : Ad | Ad in p implies p = Ad\n\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\tall x: User, y, z: Ad | (z in Ad and x -> z in posts ) implies (x -> y in posts implies y in Ad)\n\n  \n\t// If a user posts an ad then all its posts should be labeled as ads. \n\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\tall x : User, y,z : Ad | z in Ad and x -> y in posts implies y in Ad\n  \n\t// If a user posts an ad then all its posts should be labeled as ads. \n\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads.\n  all u : User, p : u.posts | (no p-Ad) or p=p-Ad\n\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads.\n  \tall u:User | some(u.posts-Photo) implies (u.posts in Ad)\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n  \tall u:User | all p: u.posts | u.posts in Ad implies p in Ad\n\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall a : Ad, u : User | a in u.posts => a in Ad\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\t\n  \tall u : User, p : u.posts | p in Ad or p in Photo - Ad\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n  \n\tall u : User, a : u.posts & Ad | a in u.posts\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall u : User, p : Photo | p in u.posts and p in Ad => p in Ad\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\t  all u: User, p: u.posts & Ad, p: u.posts - Ad | p'.date = p.date\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n  all u : User | (u.posts-Ad)=none or (u.posts-Photo)=none\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads.\n  \tall u: User | always(\n  \t\t\tno(u.posts & Ad) and after #(u.posts & Ad) = 1 implies \n      \t\tafter u.posts in Ad\n      \t\t)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads.\n  \n  all u : User | all p : u.posts | p in Ad implies u.posts not in (Photo - Ad)\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n  \n  \n  \n  \n  all u : User | no u.posts - Ad or u.posts not in Ad\n  \n  \n  \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n  \tall u:User | all p: u.posts | all ph : Photo | ph in Ad and ph in p implies p in Ad\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n    all x : User, z : Photo | z in Ad implies (x->z in posts implies z in Ad) \n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall u : User | u.posts in Ad implies no (u.posts & (Photo - Ad))\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n  all u : User | (all y : Photo | u in posts.y and y in Ad) implies\n(all z : Photo | u in posts.z implies z in Ad)\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n  \tall u : User | all p : u.posts | #(p & Ad) > 0 implies p in Ad\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n  \tall u : User | (some a : Ad | u in a.posts) implies (all p : u.posts | p in Ad)\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads.\n  all u:User | some(u.posts-Photo) implies not some(u.posts-Photo)\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall u: User | all p: u.posts | p in Ad implies always p in Ad\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n  all u : User | some (posts.u & Ad) => posts.u in Ad \n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall u:User |\n\t\t(some p:Ad | p in posts.u) => (all p:Photo | p in posts.u => p in Ad)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall u: User | not u in (posts.Photo & posts.Ad) - u\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n  \tall u:User | all p: u.posts | u.posts = Ad implies p in Ad\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall u : User, p : u.posts  | p = Ad implies Ad in p\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n all u:User | \n (all p : Photo | p in Ad and p in u.posts) implies \n all p1 : Photo | p1 in u.posts and p1 in Ad\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads.\n  \n  \tall u : User | u.posts in Ad or not (u.posts in Ad)\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n  all u: User | (some a: Ad | a in u.posts) implies (all a: u.posts | a in u.posts)\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall u : User | u.posts not in Ad implies ~posts.u not in Ad\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n all u : User, p : Photo | u in p.posts and p in Ad implies p in Ad\n  \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n  all u : User | some (u.posts & Ad) => posts.u in Ad \n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n  no a : Ad | some u : User | a in u.posts and all a2 : u.posts | not a2 in Ad\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n  all u : User, a : Ad| some p : Photo | u in posts.a implies u in posts.p and p in Ad\n  \n  \n\n\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n  all u : User | all p : u.posts |\n  \t(p in Ad) => (some p2 : u.posts | p2 in Ad)\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\tall x : User, y,z : Ad | z in Ad and x -> z in posts and x -> y in posts implies y in Ad\n  \n\t// If a user posts an ad then all its posts should be labeled as ads. \n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n  \tall u : User, p1, p2 : Photo | p1 in posts.u and p1 in Ad implies p2 in Ad\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads.\n  all u: User, p: Photo | p in Ad and p in u.posts implies p.posts in Ad\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall u : User, p : u.posts | p = Ad implies p in Ad\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n  all u : User | posts.u in (posts.u & Ad) => posts.u in Ad \n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n  all u : User | (posts.u in Ad)\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads.\n  all u: User | (u.posts) - Photo in Ad => no ((u.posts) - Photo)\n  \n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall u: User, p: Photo | (p in u.posts and p in Ad) =>  (p in u.posts implies p in Ad)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall u : User | (u.posts = Ad) implies u.posts = Ad\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall x:User, y:Ad, z:Photo {x->y in posts and z->y in posts implies z in Ad}\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n  all u : User | some (u.posts - Photo) implies Photo not in u.posts - Photo\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall u: User | (u.posts in Ad) implies ((u.posts in Photo) <=> (u.posts in Ad))\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n  all u : User | (u.posts-Ad)=none or not u.posts in Ad\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\t\n\tall u: User, p: Photo | (p in u.posts and p in Ad) implies (p in u.posts)\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads.\n  \n  all u : User| posts.u in Ad implies posts.u in Ad\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n  all u:User, up:u.posts | some p:Photo | (p in u.posts and p in Ad) implies up in Ad\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall p : Photo | p in Ad implies p in Photo\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 87,
+            "syntactic_count": 19,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 36,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall u : User | some ad : Ad | ad in u.posts implies u.posts in Ad \n}"
+                },
+                {
+                    "entry_count": 17,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\n  \tall u: User | some a : Ad | a in u.posts => (all p : u.posts | p in Ad)\n}"
+                },
+                {
+                    "entry_count": 7,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads.\n  all u: User | some a: Ad | a in u.posts => all p: Photo | p in u.posts => p in Ad\n\n}"
+                },
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall u: User | some a: Ad | a in u.posts => u.posts = Ad\n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads.\n  all u : User | some a : Ad | all p : Photo | a in u.posts and p in u.posts implies p in Ad\n  \n\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall u: User | some a: Ad | Ad in u.posts => u.posts in Ad\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n  \tall u : User | some p : Ad | u -> p in posts implies u.posts in Ad\n\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall u : User | some a : Ad | a in u.posts implies u.posts = u.posts & Ad\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall u : User | some p : Ad | one p & u.posts => all p1 : u.posts | some p3 : Ad | p3 = p1\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall u: User | some a: Ad | all p:Photo | a in u.posts implies (p in u.posts implies p in Ad )\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n    // If a user posts an ad then all its posts should be labeled as ads. \n  \n    \n    \n\n    \n    \n\n    \n    \n\n    \n    \n\n    \n \n    \n \n    \n  all u : User | some a : Ad | a in u.posts implies no u.posts-Ad\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n  all u: User | some p : Ad | all p1 : u.posts | p in u.posts implies p1 in Ad \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads.\n  \tall u: User | some ad: Ad | ad in u.posts => no p: Photo - Ad | p in u.posts\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall u : User | some p : Ad | p in u.posts => all p1 : u.posts | p1 = p1 & Ad\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall u: User | some a: Ad {\n      a in u.posts => u.posts = Ad else\n      Ad not in u.posts\n  \t}\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall u:User | some ad:Ad | ad in u.posts implies \n  \t\tno p:Photo | p in u.posts and p not in Ad\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n  all u: User | some p : Ad | all p1 : u.posts | p in Ad and p in u.posts implies p1 in Ad \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall u : User | some p : Ad | (p in u.posts) => all p1 : u.posts | some p3 : Ad | p3 = p1\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads.\n  \tall u : User | some a : Ad | u->a in posts implies\n  \tall p  : Photo | u->p in posts implies p in Ad\n\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 72,
+            "syntactic_count": 20,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 17,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall u:User | some p:Photo | p in Ad and p in u.posts implies u.posts in Ad\n}"
+                },
+                {
+                    "entry_count": 11,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads.\n  all x: User| some y: Photo | x -> y in posts and y in Ad implies all z: Photo | x-> z in posts implies z in Ad\n}"
+                },
+                {
+                    "entry_count": 8,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall u : User| some p : Photo | u in posts.p and p in Ad\n  implies all z : Photo | u in posts.z implies z in Ad\n  \n}"
+                },
+                {
+                    "entry_count": 5,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall u : User | some p : Photo | p in u.posts and p in Ad => all p : Photo | p in u.posts => p in Ad\n}"
+                },
+                {
+                    "entry_count": 5,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads.\n  \tall x : User | some y : Photo | (x->y in posts and y in Ad) implies (all p : Photo | x->p in posts and p in Ad)\n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall u : User | some p : Photo | u->p in posts and p in Ad implies u.posts in Ad\n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n  all x : User | some y : Photo | (x in posts.y) and (y in Ad) implies (all z : Photo | (x in posts.z) and (z in Ad))\n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n   all u: User | some p: Photo | p in u.posts & Ad implies u.posts in Ad\n\n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n all u : User | some p : Photo | u in posts.p and p in Ad implies p in Ad\n  \n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads.\n  \n  \tall u : User | some p : Photo | p in u.posts and p in Ad implies u.posts & Ad = u.posts\n\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall u : User | some a : Photo | u in posts.a and a in Ad implies all p : u.posts | p in Ad\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall u: User|some p:Photo | some u.posts and p in Ad implies u.posts in Ad\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n  all u: User | some p: Photo | (u in posts.p) and (p in Ad) implies u.posts in Ad\n   implies (all z : Photo | z in u.posts implies z in Ad)\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n  all u: User | some p: Photo | (u in posts.p) and (p in Ad) implies u.posts in Ad\n   implies (all z : Photo | z in posts.u implies z in Ad)\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n  all u: User | some p: Photo | (u in posts.p) and (p in Ad) implies u.posts in Ad\n   implies (all z : Photo | u in posts.z implies z in Ad)\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\t\n\tall u:User | some p:Photo | p in Ad and p in u.posts implies all p1:Photo | p1 in u.posts and p1 in Ad\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n  all u: User | some p: Photo | (u in posts.p) and (p in Ad)\n    implies (all z : Photo | z in u.posts implies z in Ad)\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall u : User | some p : Photo | p in u.posts and p in Ad => p in u.posts => p in Ad\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n  all u : User | some p : Photo | u in posts.p and p in Ad implies u in posts.p and p in Ad\n  \n  \n\n\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall u : User | some p : Photo |\n  \t\t( p in Ad & u.posts ) implies ( all p2 : Photo |\n  \t\t\tp2 in u.posts implies p2 in Ad )\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 69,
+            "syntactic_count": 28,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 18,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n  \n\tall u: User, p: u.posts | p in Ad\n  \n}"
+                },
+                {
+                    "entry_count": 15,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n  all u : User | u.posts in Ad\n}"
+                },
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads.\n  all x : User, y: Photo | y in x.posts implies y in Ad\n\n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall u : User | all i : Photo | i in (Ad + u.posts) implies  u.posts in Ad\n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads.\n  \tall u:User | some (u.posts+Ad) implies no  u.posts-Ad\n\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n  \tall u: User |\n    (u.posts & Ad) = u.posts\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall u : User | posts.u in Ad implies u.posts in Ad\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\t\n  \tall u : User, p : u.posts | p in (Photo & Ad)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads.\n  \n  \tall u : User | u.posts in Ad or u.posts in none\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall u: User | (u.posts in Ad) implies (u.posts in Photo) <=> (u.posts in Ad)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall u : User | u.posts in Ad or u.posts in Ad\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall u : User, p : Photo-Ad | u in posts.p implies p in Ad\n  \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n  all u : User, a : Photo | u->a in posts implies u.posts in Ad\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads.\n  all u : User, p : u.posts | no p-Ad\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n  all u: User | all p: u.posts | u.posts in Ad and p in Ad\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n  \n  \n  \n  \n  all u : User | no u.posts - Ad or u.posts in Ad\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n  all p: User.posts | no p - Ad \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \nall u: User |\n    (all p: u.posts | p in Ad) or\n    (no p: u.posts | p !in Ad)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n  all u: User | some u.posts - Ad => no u.posts - Ad\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads.\n  \n  \tall u : User | all p : u.posts | p in Ad or u.posts = none\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads.\n  \n  all u: User |\n  \tall p: Photo |\n  \t\t(p in u.posts implies (p in Ad or p in Ad))\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall u: User | some u.posts => all p: u.posts | p in Ad\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n  \tUser.posts in Ad \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall u : User, p : Photo | p in u.posts  => u.posts in Ad\n  \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n  \tall x: User, y: Photo | x.posts & Ad = x.posts\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads.\n    all u : User, p : Photo | u -> p in posts implies p in Ad\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n  all u : User | u.posts in Ad or (u.posts & Ad) = 0\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n    all u: User | some u.posts implies (all p: Photo | p in u.posts implies p in Ad)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 51,
+            "syntactic_count": 14,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 24,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n  \t\n  \tall u:User | Ad in u.posts implies u.posts in Ad\n\n}"
+                },
+                {
+                    "entry_count": 6,
+                    "code": "{\n  // If a user posts an ad then all its posts should be labeled as ads. \n  all u: User| Ad in u.posts => all p: u.posts | p in Ad\n\n}"
+                },
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall u : User | u->Ad in posts implies u.posts in Ad\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall u: User | once (Ad in u.posts) implies always (u.posts = Ad)\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall u:User | u.posts in Ad or Ad not in u.posts \n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads.\n  \tall u:User | (Ad in u.posts) implies ((u.posts-Ad)=none)\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n  all u: User | Ad in u.posts => no u.posts - Ad\n\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall u: User, p: u.posts | Ad in u.posts implies p in Ad\n\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n  \t\n  \tall u:User | all p: Photo | Ad in u.posts implies u.posts in Ad\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall u: User | Ad in u.posts implies always (u.posts = Ad)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall u : User | Ad in u.posts implies u.posts <: Ad = u.posts\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall u : User | Ad in u.posts implies u.posts = u.posts & Ad\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall u : User | all p : Photo | Ad in u.posts implies u.posts = u.posts & Ad\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n      // If a user posts an ad then all its posts should be labeled as ads.\n    all u: User | Ad in u.posts =>  #(u.posts - Ad) = 0\n\n  }"
+                }
+            ]
+        },
+        {
+            "entry_count": 50,
+            "syntactic_count": 13,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 23,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\t\n\n\t\n\t\n  \t\n\tall u : User | some a : u.posts | a in Ad implies u.posts in Ad\n\n}"
+                },
+                {
+                    "entry_count": 11,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n  all u : User | some y : u.posts | y in Ad implies all v : u.posts | v in Ad\n\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads.\n  \n  all u : User | some p : u.posts | p in Ad implies u.posts not in Photo - Ad\n\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads.\n  \tall u: User | some a: Photo | ( a in u.posts and a in Ad ) iff ( u.posts in Ad ) \n  \t\n\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall u : User | some p : u.posts | p = Ad => all p1 : u.posts | p1 = Ad\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads.\n  \n  all u : User | some p : u.posts | p in Ad implies posts.u in Ad\n\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n  \tall u : User | some p : u.posts | p in Ad implies p in Ad\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n  \tall u : User | some pa : u.posts | all p : u.posts | #(pa & Ad) > 0 implies p in Ad\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall u: User | some u.posts\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n  \t\n  \tall u : User | some a : u.posts | u.posts in Ad implies a in Ad\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall u: User | some up: u.posts| all ups: u.posts | up in Ad implies (ups in Ad)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads.\n\tall u : User | u.posts in Ad implies u.posts not in (Photo - Ad)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall u: User | some p: u.posts | p in Ad implies always p in Ad\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 18,
+            "syntactic_count": 15,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall u: User | all p: u.posts | p in Ad <=> u in p.posts\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall u : User, p : Photo, a : Ad | u in posts.a implies u not in posts.p\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall u: User | not u in (posts.Photo & posts.Ad)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tno posts.Ad\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tno posts.Ad or (some posts.Ad and no posts.Photo)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n    all u: User, ad: Ad | ad in u.posts implies posts.u = Ad\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall u:User | all a:Ad | a in u.posts implies no (u.posts & Photo)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n  \tall u:User  | u.posts in (Photo-Ad) \n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n  all u : User, p : Photo | (p in Ad and p in u.posts) implies\n                            u.*posts in Ad\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n  \tall u : User |  u.posts&Ad = none\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n  no a : Ad | some u : User, a2 : Ad | u->a in posts and u->a2 in posts\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n  \tall u : User | all p : u.posts | p not in Ad\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n  // If a user posts an ad then all its posts should be labeled as ads. \n  all a: Ad | posts.a in Ad\n  \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n  all u : User, a : Ad | a in u.posts => u.posts - Ad = 0\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall u:User | some (u.posts & Ad) implies no (u.posts & Photo)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 17,
+            "syntactic_count": 7,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 5,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall u: User | some(u.posts & Ad) implies (u.posts = Ad)\n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n    all u: User, ad: Ad | ad in u.posts implies u.posts = Ad\n\n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall u: User, ad: Ad | ad in u.posts implies after always (u.posts = Ad)\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads.\n  \n  all u: User, p: Photo | (p in u.posts and p in Ad) implies (u.posts=Ad)\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall u: User, ad: Ad | ad in u.posts implies always (u.posts = Ad)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n    all a: Ad, u:User | u in posts.a implies u.posts = Ad\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall u: User| all ad: Ad | once ad in u.posts implies after (always u.posts = Ad)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 16,
+            "syntactic_count": 7,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 6,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads.\n  \tall u : User | (one u.posts & Ad) implies u.posts in Ad\n\n}"
+                },
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall u: User | (one p: u.posts | p in Ad) => u.posts in Ad\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n    \n    all u : User | \n        (one p: u.posts | p in Ad) implies (all p: u.posts | p in Ad)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads.\n  \tall u : User | (one a : Ad | u->a in posts) implies\n  \t(all p  : Photo | u->p in posts implies p in Ad)\n\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall u:User, p:u.posts |\n  \t\t(one a:u.posts | a in Ad) implies p in Ad\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall u : User | (one a: Ad | a in u.posts) => u.posts in Ad\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads.\n  all u : User | one (u.posts & Ad) implies u.posts = (u.posts & Ad)\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 15,
+            "syntactic_count": 4,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 12,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall u:User | one up: u.posts | up in Ad implies u.posts in Ad\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall u:User | one up: u.posts | up in Ad iff u.posts in Ad\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n  \talways(all u: User|one p: u.posts| p in Ad implies \n  \t\t(all ph: u.posts| ph in Ad))\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n  \tall u : User | one pa : u.posts | all p : u.posts | #(pa & Ad) > 0 implies p in Ad\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 15,
+            "syntactic_count": 13,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall u : User | no (u.posts & Ad) and some (u.posts' & Ad) and after u.posts in Ad\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall u : User | u not in Influencer and no (u.posts & Ad) and eventually one (u.posts & Ad) and after u in Influencer\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n  all u : User | (u.posts - Ad) = 0 or (u.posts & Ad) = 0\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall u: User | not u in (posts.Photo & posts.Ad) + u\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall u : User | (no (u.posts & Ad) or no u.posts) and eventually one (u.posts & Ad) and after u.posts in Ad\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall u : User | (no (u.posts & Ad) or no u.posts) and eventually one (u.posts & Ad) and after u in Influencer\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads.\n  \tall u: User | u.posts in Ad && u.posts not in Ad\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall u : User | u not in Influencer and no (u.posts & Ad) and one (u.posts' & Ad) and after u in Influencer\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads.\n  \n  all u : User | some a : u.posts-Ad | all q : u.posts | q in Ad\n  \n  \n  \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads.\n  \n  all u : User | some p : posts.u | p in Ad implies posts.u in Ad\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall u : User | no (u.posts & Ad) and eventually one (u.posts & Ad) and after u.posts in Ad\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall u : User | no (u.posts & Ad) and eventually one (u.posts & Ad) and after always u.posts in Ad\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall u : User | no (u.posts & Ad) and eventually one (u.posts & Ad) and after u in Influencer\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 14,
+            "syntactic_count": 8,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 5,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall x: User | (some y: Photo | x->y in posts and y in Ad) implies \n  all z: Photo | x->z in posts and z in Ad  \n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n all u:User | \n (some p : Photo |p in Ad and p in u.posts) implies \n all p1 : Photo| p1 in u.posts and p1  in Ad\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n  \tall u: User | (some a: Ad | a in u.posts) implies (all p: Photo | p in Ad and p in u.posts)\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n  \tall u : User, a : Ad | \n  \t\ta in u.posts implies (all p : Photo | p in u.posts and p in Ad)\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall x: User | all f: Photo | (f in x.posts and f in Ad) implies (all fs: Photo | fs in x.posts and fs in Ad)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n  all u : User, a : Ad, p : Photo | u in posts.a implies u in posts.p and p in Ad\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n  all x : User | all y : Photo | (x in posts.y) and (y in Ad) implies (all z : Photo | (x in posts.z) and (z in Ad))\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads.\n  \tall u : User | all a : Ad | u->a in posts implies\n  \tall p  : Photo | u->p in posts and p in Ad\n\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 14,
+            "syntactic_count": 4,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 8,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n  \tall x: User | some y: Ad | y in x.posts implies (all z: Photo | z in x.posts and z in Ad) \n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads.\n  \tall u : User | some a : Ad | u->a in posts implies\n  \tall p  : Photo | u->p in posts and p in Ad\n\n\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n  \tall u: User | some a: Ad | a in u.posts implies (all p: Photo | p in Ad)\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n  all u: User | some p : Ad | all p1 : Photo | p in u.posts implies p1 in Ad \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 13,
+            "syntactic_count": 3,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 7,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall u : User, p : u.posts | Ad in p implies p = Ad\n}"
+                },
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall x:User, y:x.posts | some z:Ad | z in y implies y in Ad\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n  \tall u : User | all p : u.posts  | Ad in p implies p in Ad\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 13,
+            "syntactic_count": 8,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 6,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall u : User, p : Photo | p in Ad implies u.posts in Ad\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads.\n  \n  all u: User |\n  \tall p: Photo |\n  \t\t(p in Ad implies all post: u.posts | post in Ad ) \n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n    all x : User, z : Photo | z in Ad implies (all y : Photo | x->y in posts implies y in Ad) \n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall u : User | some  Ad implies u.posts in Ad\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n  \tall u:User, p: Photo | some u.posts and p in Ad implies u.posts in Ad\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall u: User | (some p: Photo | p in Ad) => (all p: u.posts | p in Ad)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall u: User | all a: Ad | u.posts in Ad\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall u: User | (some p: Photo | p in Ad) => (u.posts in Ad)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 12,
+            "syntactic_count": 6,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall u : User | some pa : u.posts & Ad | #pa > 0 implies (all p : u.posts | p in Ad)\n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n  \tall u:User | some ad: Ad & u.posts | u.posts in Ad \n\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n  \tall u : User | some a : u.posts & Ad | #a > 0 implies u.posts in Ad\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads.\n  all u: User| some (u.posts & Ad) and (u.posts in Ad)\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall u : User | some a : u.posts&Ad | all p : u.posts | p in Ad\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall u: User | some p: Photo | (p in u.posts) and (p in Ad) and (u.posts in Ad)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 12,
+            "syntactic_count": 11,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall u: User | u.posts in Ad implies (u.posts not in Ad)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n  \tall u : User | some p : u.posts | p not in Ad\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads.\n  \n  all u : User | some p : u.posts | p in Ad implies u.posts not in Photo - (Photo - Ad)\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall u: User | (u.posts in Ad) implies !(u.posts in Photo)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall u: User | {\n      u.posts in Ad and u.posts not in Photo or\n      \tu.posts in Photo and u.posts not in Ad\n  \t}\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall u: User | {\n      u.posts in Ad => u.posts not in Photo else\n      \tu.posts in Photo and u.posts not in Ad\n  \t}\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall u: User | (u.posts in Ad) implies ((u.posts & Photo) != (u.posts & Ad))\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads.\n  \tall u: User | u.posts in Photo implies u.posts not in Ad\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall u : User | (u.posts not in Ad) or (~posts.u not in Ad)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall u : User | u.posts not in Ad and (~posts.u not in Ad)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall u: User | (u.posts in Ad) implies (u.posts not in Photo)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 12,
+            "syntactic_count": 4,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 5,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall user: User | one post: Photo | post in user.posts and post in Ad => user.posts in Ad\n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall u : User | one p : Photo | p in (Ad & u.posts) implies u.posts in Ad\n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall u : User | one p : Photo |\n  \t\tp in Ad and p in u.posts implies all p2 : Photo |\n  \t\t\tp2 in u.posts implies p2 in Ad\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall u : User | one p : Photo |\n  \t\t( p in Ad & u.posts ) implies ( all p2 : Photo |\n  \t\t\tp2 in u.posts implies p2 in Ad )\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 10,
+            "syntactic_count": 4,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 5,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads.\n  all u:User | Ad in u.posts implies (Photo not in u.posts)\n\n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n  all u : User | Ad in u.posts implies not Photo in u.posts\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n  all u : User | not (Ad in u.posts and Photo in u.posts)\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n  all u : User | Photo in u.posts implies not Ad in u.posts\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 10,
+            "syntactic_count": 4,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 6,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall user: User | one ad: Ad | ad in user.posts => user.posts in Ad\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall u : User | one a : Ad | a in u.posts implies all p :u.posts | p in Ad\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads.\n\t\n  \tall u : User | one a : Ad | u->a in posts implies (all p : Photo | u->p in posts implies p in Ad)\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall u:User | one a:Ad | a in u.posts implies (all p:Photo | p in u.posts implies p in Ad) \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 9,
+            "syntactic_count": 5,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n  \tall u: User| all a: Ad |a in u.posts implies all p: u.posts| p in a\n  \n        \n\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall u : User, a : Ad | some u.posts & a implies u.posts in a\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n  \tall u: User| all a: Ad |a in u.posts implies u.posts in a\n  \n        \n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall u: User, ad: Ad, p: u.posts | ad in u.posts implies p in ad\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\n\t\n  \tall u: User, a: Ad| some u.posts and a in u.posts implies u.posts in a\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 9,
+            "syntactic_count": 7,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall u : User | some p : u.posts | p in Ad  \n  \t\n  \t\n\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \nall u: User | some p: Photo | (u in posts.p) and (p in Ad) implies u.posts in Ad\n\n  all x : User | (some y : Photo | x->y in posts and y in Ad) \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n all x : User | (some y : Photo | x->y in posts and y in Ad) \n    \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall u:User | some y:Photo | (y in u.posts and y in Ad)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall u : User | some p : Ad | p in u.posts \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall u: User | u in (posts.Photo & posts.Ad)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n  all u: User | some Ad & u.posts \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 8,
+            "syntactic_count": 5,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads.\n  \tall u:User | (Ad!=none and Ad in u.posts) implies (u.posts in Ad)\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n    all a: Ad, u:User | Ad in u.posts implies u.posts in Ad\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall u : User | some Ad and Ad in u.posts implies u.posts <: Ad = u.posts\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall u: User, ad: Ad, p: u.posts | Ad in u.posts implies p in Ad\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads.\n  \tall u:User | (Ad!=none and Ad in u.posts) implies ((u.posts-Ad)=none)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 7,
+            "syntactic_count": 4,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall u: User | one p: Photo | ((p in Ad and p in u.posts) and u.posts in Ad)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall u: User | one p: Photo | ((p in u.posts & Ad) and u.posts in Ad)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall u : User | (no (u.posts & Ad) or u.posts in Ad) and eventually one (u.posts & Ad) and after always u.posts in Ad\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall u : User | eventually one (u.posts & Ad) and after u.posts in Ad\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 6,
+            "syntactic_count": 5,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall u : User, p : u.posts | Ad in p implies u.posts = Ad\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\t\n  \t\n  \tall u : User | all p : u.posts | some a :  Ad | p = a implies u.posts in Ad\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall u : User | (some x : u.posts | Ad in x) implies (all p : u.posts | p in Ad) \n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall u : User, p: u.posts | Ad in p implies (all x: u.posts | x = Ad)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n  \tall u: User | all up: u.posts | Ad in up implies u.posts in Ad\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 5,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n  \tall u :User, p: Photo | some y: Ad | y in u.posts implies( p in u.posts implies p in Ad)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n  \tall u :User, p: Photo | some y: Ad | y in u.posts and p in u.posts implies( p in u.posts implies p in Ad)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 5,
+            "syntactic_count": 5,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n  \tall u : User, a : Photo, add : Ad | u->add in posts implies\n  \t\ta in Ad\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n  \tall u : User, p1, p2 : Photo | p1 in u.posts and p1 in Ad implies p2 in Ad\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n  \tall u: User, a: Ad | a in u.posts implies (all p: Photo | p in Ad)\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads.\n  \t some posts.Ad => all p : Photo | p in Ad\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\tall u:User, p:Photo | some (u.posts & Ad) implies p in Ad \n\t// If a user posts an ad then all its posts should be labeled as ads. \n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 5,
+            "syntactic_count": 4,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n  all x : User | all y : Photo | (x in posts.y) and (y in Ad) \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall u: User | all p: Photo | (p in u.posts) and (p in Ad) and (u.posts in Ad)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n  \tall p1:Photo,p2:Photo,u:User | p1 in Ad and p1 in u.posts\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n  all u: User | all p : Photo | p in u.posts and p in Ad \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 4,
+            "syntactic_count": 3,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall u : User | no sees.Ad\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall u : User | no sees.Ad or (some sees.Ad and no sees.Photo)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tno sees.Ad or (some sees.Ad and no sees.Photo)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 4,
+            "syntactic_count": 3,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall u : User | lone p : Ad | p in u.posts implies u.posts in Ad\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall u:User | lone a:Ad | a in u.posts implies (all p:u.posts | p in Ad) \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n  all u: User, p: Photo | lone a: Ad | a in u.posts implies u.posts in Ad\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 3,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n  \n\tall u : User, a : u.posts & Ad | a in u.sees\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 3,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads.\n    all user : User | some Ad and some user.follows.posts\n \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 3,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n  all u: User | (some sup: u.posts |Ad in sup) implies (all up:u.posts| Ad in up)\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall u : User, i : Photo | u->i in posts and i = Ad implies all i : Photo | u->i in posts implies i = Ad\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 3,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n  all u : User | u.posts in Ad iff u in Influencer\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 3,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall a : Ad | not some u : User | a in u.posts implies all a2 : u.posts | a2 in Ad\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n  no a : Ad | some u : User | a in u.posts implies all a2 : u.posts | a2 in Ad\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 3,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall u: User, p:Photo | some ad: Ad | ad in u.posts implies p in u.posts and p in Ad\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 3,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall u : User | one p : Photo | p in Ad implies u.posts in Ad\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 3,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tsome u : User |  ( u.posts in Ad ) implies u.posts in Ad    \t\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n  // If a user posts an ad then all its posts should be labeled as ads.\n  some u: User | all p: u.posts | (p in Ad) implies (p in u.posts)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 3,
+            "syntactic_count": 3,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall u: User | \n  \t\tsome p: u.posts | some a: Ad | {\n      \t\ta in p => p in Ad\n    }\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall u: User | \n  \t\tsome p: u.posts | {\n      \t\tAd in p => p in Ad\n    }\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall u: User | \n  \t\tsome p: u.posts | some a: Ad | {\n      \t\ta in p => u.posts in Ad\n    }\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 3,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall x : User | Ad in x.posts   \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\t\n \tall u: User | u -> Ad in posts \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 3,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 3,
+                    "code": "{\n all u:User | some p : Photo |p in Ad implies all p1:Photo| p1 in u.posts and p1 in Ad\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 3,
+            "syntactic_count": 3,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall u: User | no u.posts\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads.\n  all u: User | (u.posts) - Photo in Ad => no p: Photo| p in u.posts\n  \n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads.\n  all u : User, p : u.posts | no p-Ad \n  all u: User, p : u.posts | p in p-Ad\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 3,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n  \tsome a : Ad | a in User.posts implies User.posts in Ad\n  \t\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 3,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tsome u: User | some a: Ad | a in u.posts => u.posts in Ad\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads.\n  \tsome u : User | some a : Ad | u->a in posts implies u.posts in Ad\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 3,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n  \tsome a : Ad | all u :User | a in u.posts implies u.posts in Ad\n  \t\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n  \tsome p : Ad | all t : Photo, x : User | x->p in posts and x->t in posts implies t in Ad \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 3,
+            "syntactic_count": 3,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall x:User | some y:Ad | y in x.posts implies all z: x.posts | y = z  \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall u : User | some a : Ad | a in u.posts implies (all x: u.posts| x in a)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n  \t\n  \tall u : User | some a : Ad | \n  \t\ta in u.posts implies u.posts in a \n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 3,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall u : User | (some x : u.posts | x in Ad) implies (all p : u.posts | p = Ad) \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall u : User, ad : Ad | ad in u.posts implies(all p : u.posts | p = Ad)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 3,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\n\tone u: User| all a:Ad | u in posts.a  implies u.posts in Ad \n   \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\n\tone u: User| all a:Ad | u->a in posts implies u.posts in Ad \n   \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 3,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads.\n    all user : User | user.sees in Ad + user.follows.posts\n \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\t\n  all u: User, a: Photo | u in sees.a implies a in Ad or \n  some u1: User | u1 in posts.a and u in follows.u1\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 3,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n  \tall u : User | some p : Photo | u in posts.p and p in Ad implies \n  \tall p1 : Photo | u in posts.p1 implies p1 in Ad\n  \n\tall u : User | some (u.posts & Ad) implies u.posts in Ad\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n  \tall u: User | (some p: Photo | (u in posts.p) and (p in Ad))\n\t\timplies (all z : Photo | u in posts.z implies z in Ad)\n\n\n\tall u: User | some p: Photo | (u in posts.p) and (p in Ad)\n\t\timplies (all z : Photo | u in posts.z implies z in Ad)\n\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\tall u:User, p:Photo | some (u.posts & Ad) implies p in Ad else p not in Ad\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n  all u:User, up:u.posts | one p:Photo | p in u.posts and p in Ad implies up in Ad\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n  all u:User, p:Photo | (p in Ad and p in u.posts) implies u.posts in Ad else u.posts not in Ad\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads.\n  \tall u : User | all a : Ad | u->a in posts and\n  \tall p  : Photo | u->p in posts implies p in Ad\n\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n  \tall u: User | all p: Photo | p in Ad implies u.posts = Ad\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall u: User | some Ad & u.posts iff u.posts in Ad\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\n  \n  some x: User, y:Photo |  y in x.posts and y in Ad  implies (all z:Photo | z in x.posts implies z in Ad)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tsome u:User | some y:Photo | (y in u.posts and y in Ad) implies u.posts in Ad\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n  \tall u: User |Ad in u.posts iff u.posts in Ad\n  \n        \n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n  \tall u : User | Ad in u.posts iff no (u.posts - Ad)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall user : User | #user->Ad = 0 or #user->Ad = #user->Photo\n  \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n  all u: User |\n  all disj p1, p2: Photo |\n  p1 in Ad implies p2 in Ad\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads.\n  \n  all u : User | all p : u.posts | p in Ad implies u.posts not in Photo - (Photo - Ad)\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n  no a : Ad | some u : User | a in u.posts and all a2 : u.posts | a2 in Ad\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n  all a : Ad | some u : User | no a2 : Ad | u->a in posts implies u->a2 in posts\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads.\n  \tno Ad\n\tall u: User | no u.posts or (some Ad & u.posts iff u.posts in Ad)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n  all a : Ad | some u : User, a2 : Ad | u->a in posts implies u->a2 in posts\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n  all a : Ad | some u : User | all a2 : posts.u | u->a in posts implies a2 in Ad\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n  all a : Ad | some u : User | u->a in posts implies all a2 : u.posts | a2 in Ad\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n  all a : Ad | some u : User | all a2 : u.posts | u->a in posts implies a2 in Ad\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall u : User, p: u.posts | one o: u.posts | (o in u) implies (p = Ad)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall u : User, p: u.posts | one o: u.posts| (o = Ad) implies (p = Ad)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall u : User, p : u.posts , a : Ad | a in p implies p = Ad\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall u : User, p: u.posts | p in Ad implies (p = Ad)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall u : User, p: u.posts | Ad in p implies (p != Photo)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall u : User | Ad in u.posts implies all p : u.posts | p = Ad\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads.\n  all u: User | some ad:Ad | ad in u.posts => no (u.posts) - Ad else no u.posts\n  \n  \n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall u : User | some a : u.posts+Ad | all p : u.posts | p in Ad\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\tall x : User, y,z : Ad | z in Ad and x -> z in posts implies x -> y in posts and y in Ad\n \n  \n\t// If a user posts an ad then all its posts should be labeled as ads. \n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n  all u: User |\n  \t(some u.posts & Ad) implies (u.posts & Ad) = Ad\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall u:User | some a:Ad | a in u.posts implies no (u.posts & Photo)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads.\n  \tall u: User | some ad: Ad | ad in u.posts => no p: Photo | p in u.posts\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tno posts.Ad or no (posts.Photo - posts.Ad)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tno posts.Ad or (some posts.Ad and no (posts.Photo - posts.Ad))\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads.\n  \tall u : User | (some ad : Ad | ad in u.posts) implies (all u2 : User | u2.posts in Ad)\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads.\n  \tsome (Ad & User.posts) implies User.posts in Ad\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall u: User | lone p: Photo | (p in u.posts) and (p in Ad) and (u.posts in Ad)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall u: User | lone a: u.posts & Ad | u.posts in Ad\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n  \tAd in User.posts implies  User.posts in Ad\n  \t\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall u : User, ad : Ad | ad in u.posts implies(all p : Photo | p in u.posts and p = Ad)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n  \tall u: User| all a: Ad |a in u.posts implies all p: Photo| u.posts in p\n  \n        \n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\t\n  \tnot Photo in Ad\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\t\n  all u: User, a: Photo | u in sees.a implies a in Ad or \n  some u1: User, a: Photo | u1 in posts.a and u in follows.u1\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n    all u : User | u.sees in Ad or no (u.sees & Ad)\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n  all u : User, a : Ad | a in u.posts => lone (u.posts - Ad)\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n  \tall u: User| some a: Ad |a in u.posts iff u.posts in a\n  \n        \n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n  \tall u: User| all a: Ad |a in u.posts iff u.posts in a\n  \n        \n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads.\n  all i: Influencer | i.posts in Ad implies i.posts = Ad\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n  all u:User | one p:Photo | p in u.posts and p in Ad implies u.posts in Ad else u.posts not in Ad\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads.\n  \tsome u : User | u->Ad in posts implies u.posts in Ad\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n    some u : User | some a : u.posts | a in Ad implies u.posts in Ad  \t\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n  all u: User | some a: Ad | all p : Photo | p in Ad \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads.\n   all u : User | one p : u.posts| (p in Ad) implies (p in u.posts )\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads.\n    all user : User | some Ad - user.posts and some user.follows.posts\n \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads.\n    all user : User | some Ad or some user.follows.posts\n \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\t(all u : User | some p : Photo | p in u.posts and p in Ad) => (all p : Photo, u : User | p in u.posts => p in Ad)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads.\n    all user : User | user.sees in Ad and some user.follows.posts\n \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads.\n  all u: User, ad: Ad | (ad in u.sees) => (no u1: User | u1.posts & ad != ad)\n\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads.\n  \tall u : User | Ad in u.sees implies u.sees in Ad\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads.\n  \tall u : User | some a : Ad | a in u.sees implies u.sees in Ad\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n  all u:User | (u.posts in Ad) => u.posts = Ad \n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall u : User | #u->Ad=1\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall user : User | #user->Ad = 0 or #user->Ad = #user.posts\n  \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n  \tall u : User, a : Photo | one add : Ad | u->add in posts implies\n  \t\ta in Ad\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall u : User | one p : Ad | p in u.posts implies all p1 : Photo | p1 in Ad\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads.\n  \tno Ad\n\tall u: User | (some Ad & u.posts) iff (u.posts in Ad)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tlone u:User | some y:Photo | (y in u.posts and y in Ad) implies u.posts in Ad\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n  all u: User | (some sup: u.posts |Ad in u.posts) implies (all up:u.posts| Ad in up)\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall u : User | u not in u.follows\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n  // If a user posts an ad then all its posts should be labeled as ads.\n  one u: User | all p: u.posts | (p in Ad) implies (p in u.posts)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n  all u: User |\n  all disj p1, p2: Photo | {\n    p1 in u.posts \n    p2 in u.posts\n    p1 in Ad implies p2 in Ad\n  }\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n  some (User.posts & Ad) implies User.posts = Ad\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n  \tall x,y : Photo | x in Ad implies y in Ad\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n  \t\n  \t\n\n  \tall u: User, b: Photo | one a: Photo-Ad| u -> a in posts and u -> b in posts implies b in Ad \n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads.\n    all u : User, p : Photo-Ad | one posts.p implies p in Ad\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n  no a : Ad | some u : User, a2 : Ad | u->a in posts implies u->a2 in posts\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n  all x : User, y : x.sees | y in Ad\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n  all u : User | Ad in u.posts and not Photo in u.posts\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n  \tall u : User | some a : Ad |\n  \t\ta in u.sees implies u.posts in Ad\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n  \tall u : User, a : Ad |\n  \t\ta in u.sees implies u.posts in Ad\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n    all a: Ad, u:User | u in posts.a implies u in Influencer\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \nall u:User | lone u.posts&Ad implies u.posts in Ad\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads.\n  \t some u : User | u.posts in Ad => all p : Photo | posts.p in Ad\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n  \tall u :User, p: Photo | one y: Ad | y in u.posts implies p in u.posts\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n  \tall u :User, p: Photo, y: Ad | y in u.posts implies p in u.posts\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall u : User, p : u.posts  | p = Ad \n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall u : User | (one x : u.posts | x in Ad) implies (all p : u.posts | p = Ad) \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads.\n\t\n  \tsome u : User | one a : Ad | u->a in posts implies (all p : Photo | u->p in posts implies p in Ad)\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall u : User | all p : u.posts | Ad in p \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n  \tone u : User | some a : u.posts | a in Ad implies (all p : u.posts | p in Ad)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall u: User | some a: Ad | {\n      a in u.posts => u.posts in Ad else u.posts not in Ad\n    }\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n  \tall x: User | some z: Ad | (x in Influencer and z in x.posts) implies (all z: Photo | z in x.posts and z in Ad)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n  \tall x: User | some z: Ad | (z in x.posts) implies (all z: Photo | x in Influencer and z in x.posts and z in Ad)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall u:User | one a:Ad | a in u.posts implies no (u.posts & Photo)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tno sees.Ad or (some sees.Ad and no (sees.Photo - sees.Ad))\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall u : User, p : u.posts | Ad in p implies (all z : Photo | z = Ad)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall u : User | u in Influencer and after always u.posts in Ad\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n  \tall u:User | (no (u.posts & Ad)) implies (u.posts & Ad = u.posts)\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall u : User, p: Photo | one posts.p-Ad\n  \n  \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall u : User, p: Photo-Ad | one posts.p\n  \n  \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall u : User| some p : Photo-Ad | u in posts.p implies p in Ad\n  \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall u : User | one a : Ad | a in u.posts implies u.posts = Ad \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n  \tsome a : Ad | all u :User | some u.posts & Ad implies u.posts in Ad\n  \t\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall u:User | u.posts in Ad or lone (Ad & u.posts) \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n  \n  all u : User | all p : u.posts | one a : Ad |\n  \ta in u.posts implies p in Ad\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n  \n  all u : User | all p : u.posts | one a : Ad |\n  \ta in p implies p in Ad\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n  \tall u : User | one ad : Ad | ad in u.posts implies (all p : Photo | p in u.posts and p = Ad)\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall u : User | some a : Ad | a in u.posts implies u.posts = u.posts + Ad\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n  all u : User |one  p : Photo | u in posts.p and p in Ad implies p in Ad\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n  all u: User, p: Photo | lone a: Ad | a in u.posts implies Ad in p\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n  all u: User, p: Photo | lone a: Ad | a in u.posts implies a in p\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads.\n  \tall a: Ad | one u: User | (u.posts = a) => (u.posts in Ad)\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tall u:User | lone p: u.posts | p in Ad => u.posts in Ad\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\tsome u : User | (u.posts in Ad)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\t\n    Photo in Ad\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n  \tall u:User, p: Photo | one u.posts and p in Ad implies u.posts in Ad\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// If a user posts an ad then all its posts should be labeled as ads. \n\n\tone u: User| all p: Photo | #u.posts>0 and p in Ad implies u.posts in Ad \n}"
+                }
+            ]
+        }
+    ]
+}

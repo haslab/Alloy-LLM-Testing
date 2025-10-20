@@ -1,0 +1,4003 @@
+{
+    "original": "x3JXgWhJ3uti5Dzxz",
+    "cmd": "inv8",
+    "pred": "this/inv8",
+    "entry_count": 1259,
+    "semantic_count": 268,
+    "syntactic_count": 529,
+    "scope": 3,
+    "groups": [
+        {
+            "entry_count": 414,
+            "syntactic_count": 69,
+            "correct": true,
+            "elems": [
+                {
+                    "entry_count": 67,
+                    "code": "{\n  // A user only sees ads from followed or suggested users.\n  all u: User | (u.sees & Ad) in (u.follows.posts + u.suggested.posts)\n}"
+                },
+                {
+                    "entry_count": 50,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  all u : User | all a : Ad | (a in u.sees) implies (a in (u.follows.posts + u.suggested.posts))\n\n}"
+                },
+                {
+                    "entry_count": 27,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall user: User, ad: Ad | ad in user.sees => ad in user.follows.posts or ad in user.suggested.posts\n}"
+                },
+                {
+                    "entry_count": 16,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u : User | (u.sees & Ad) in (u.follows + u.suggested).posts\n}"
+                },
+                {
+                    "entry_count": 15,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u: User | all us: u.sees | us in Ad implies us in u.follows.posts + u.suggested.posts\n}"
+                },
+                {
+                    "entry_count": 15,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  \n\n\n\n\n\n\n\n\n\n\n    all x : User | x.sees & Ad in x.(follows+suggested).posts\n}"
+                },
+                {
+                    "entry_count": 14,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  all u:User, a:Ad | a in u.sees implies (a in u.suggested.posts or a in u.follows.posts)\n\n}"
+                },
+                {
+                    "entry_count": 13,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  \tall u : User, a : Ad | a in u.sees implies\n  \t\t(some f : User | (f in u.follows or f in u.suggested) and a in f.posts) \n\n}"
+                },
+                {
+                    "entry_count": 11,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u : User, p : Ad & u.sees |\n\t\tp in (u.follows + u.suggested).posts\n}"
+                },
+                {
+                    "entry_count": 10,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  all u : User, a : Ad | a in u.sees implies\n  \t(some f: u.follows | a in f.posts) or\n\t(some s: u.suggested | a in s.posts)\n\n}"
+                },
+                {
+                    "entry_count": 10,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u : User, a : Ad | a in u.sees implies a in (u.follows+u.suggested).posts\n}"
+                },
+                {
+                    "entry_count": 10,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u:User | u.sees-(Photo-Ad) in u.follows.posts+u.suggested.posts\n}"
+                },
+                {
+                    "entry_count": 10,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\n  \tall u: User | all a: u.sees & Ad | a in ( u.follows.posts + u.suggested.posts)\n}"
+                },
+                {
+                    "entry_count": 9,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u : User | (u.sees & Ad) in (Ad & (u.follows.posts + u.suggested.posts)) \n}"
+                },
+                {
+                    "entry_count": 8,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  \tall x: User, y: Ad | y in x.sees implies (some z: x.follows + x.suggested | y in z.posts)\n}"
+                },
+                {
+                    "entry_count": 8,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  \tall u:User | (u.sees&Ad) in (u.follows.posts & Ad + u.suggested.posts & Ad) \n\n}"
+                },
+                {
+                    "entry_count": 8,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  all u : User | all p : u.sees | p in Ad implies p in (u.follows + u.suggested).posts\n\n}"
+                },
+                {
+                    "entry_count": 7,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u : User, p : Photo |\n  \t\tp in Ad and p in u.sees implies p in u.follows.posts + u.suggested.posts\n}"
+                },
+                {
+                    "entry_count": 7,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u: User, p: u.sees | p in Ad implies p in u.follows.posts or p in u.suggested.posts\n}"
+                },
+                {
+                    "entry_count": 7,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u: User | all us: u.sees | us in Ad implies (us in u.follows.posts or us in u.suggested.posts)\n}"
+                },
+                {
+                    "entry_count": 6,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  \n  all u : User, a : u.sees & Ad | a in (u.follows).posts or a in (u.suggested).posts\n\n}"
+                },
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  \tall u: User, a: Ad|\n  \ta in u.sees => a in u.suggested.posts or a in u.follows.posts\n\n}"
+                },
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  all a: Ad | all u1: User | (a in u1.sees) implies some u2 : User | a in u2.posts and u2 in {u1.suggested + u1.follows}\n\n}"
+                },
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall x : User, y : Ad | x->y in sees implies (some z : User | z->y in posts and (x->z in follows or x->z in suggested))\n}"
+                },
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u : User, p : u.sees & Ad | p in u.(follows+suggested).posts\n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\nall u:User, a:Ad | u->a in sees implies a in u.follows.posts or a in u.suggested.posts\n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n  // A user only sees ads from followed or suggested users.\n\n  \n  \n\n  all x : User, y : Photo | x->y in sees and y in Ad implies \n    (some z : User | z in posts.y and (z in x.follows or z in x.suggested))\n\n\n\n\n\n\n\n\n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t\nall u: User, a: Ad | a in u.sees implies (some u.follows.posts & a + u.suggested.posts & a)\n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  \tall u : User , a : Ad |\n  \t\ta in u.sees implies (u in follows.posts.a or u in suggested.posts.a)\n  \n  \n  \t\t\n\n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u : User | Ad & u.sees in Ad & (u.follows + u.suggested).posts\n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  \n\n\n  all u:User | no u.sees & (Ad - u.(follows+suggested).posts)\n  \n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u : User | all a : Ad | a in u.sees implies some (u.follows + u.suggested).posts & a\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  \n\n\n  all u:User | no u.sees & (Ad - u.follows.posts - u.suggested.posts)\n  \n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u: User | all p: u.sees | p not in ((Ad) - (u.follows.posts + u.suggested.posts))\n }"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  \tall u: User, p: u.sees |\n\tp in Ad implies (some f: u.follows | p in f.posts) or (some s: u.suggested | p in s.posts)\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  all u : User | no (Ad - (u.follows + u.suggested).posts) & u.sees\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u: User, p:Photo | (p in u.sees and p in Ad) implies (p in u.follows.posts or p in u.suggested.posts)\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u: User | {p: u.sees | p in Ad} in (u.follows.posts + u.suggested.posts)\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n  // A user only sees ads from followed or suggested users.\n\n\n\n  all x : User, y : Photo | x->y in sees and y in Ad implies \n    (some z : User | z->y in posts and (x->z in follows or x->z in suggested))\n\n\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u : User , a : Ad| a in u.sees implies (some(posts.a & u.follows) or some(posts.a & u.suggested))  \n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u : User, a : Ad | \n    a in u.sees implies (some f : User | f in u.follows and a in f.posts) \n                       or (some s : User | s in u.suggested and a in s.posts)\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n  // A user only sees ads from followed or suggested users.\n  all x : User, y : Photo | \n    x->y in sees and y in Ad implies \n    (some z : User | y in z.posts and (x->z in follows or x->z in suggested))\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  \tall u : User | all p : Photo | p in Ad and p in u.sees implies p in u.follows.posts or p in u.suggested.posts\n\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u: User | no (u.sees & (Ad - (u.follows.posts + u.suggested.posts)))\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  \n  all u:User | u.sees in ((Photo-Ad) + (Ad & u.(follows+suggested).posts))\n\n  \n  \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n  // A user only sees ads from followed or suggested users.\n  all u : User | \n    all ad : u.sees & Ad | some poster : User | ad in poster.posts and (poster in u.follows or poster in u.suggested)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u : User, p : Ad |\n  \t\t(u.sees & Ad) in (u.follows.posts + u.suggested.posts)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u : User, a : Ad | u in sees.a implies some u2 : posts.a | u2 in u.follows or u2 in u.suggested\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t\n  all u : User |\n    all p : u.sees | \n      p in Ad implies some x : User | p in x.posts and (x in u.follows or x in u.suggested)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t\n\tall u: User | \n\t\tall p: Ad | p in u.sees implies ( some u.follows & p.(~posts) or some u.suggested & p.(~posts) )\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u : User | u.sees :> Ad in u.follows.posts+u.suggested.posts :> Ad\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall a: Ad, u: sees.a | some u2 : u.(follows+suggested) | a in u2.posts \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\t\n\n  all u: User, p: Photo |\n  p in u.sees and p in Ad implies\n    some poster: User | p in poster.posts and (poster in u.follows or poster in u.suggested)\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n     all a : Ad, x : sees.a | a in x.(follows+suggested).posts\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n     all a : Ad, x : sees.a | x in (follows+suggested).posts.a\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  \n  \tall u : User | all p : u.sees | p not in Ad or p in u.follows.posts or p in u.suggested.posts\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\nall user:User |\nall postseen:user.sees|\npostseen in Ad =>\n(\npostseen in user.(follows+suggested).posts\n  \n  \n  \n  \n  \n)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u : User | u.sees&Ad in u.(follows+suggested).posts&Ad\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  \tall x: User, p: Ad | p in x.sees implies (some y: User | (y in x.follows or y in x.suggested) and p in y.posts)\n\tall u : User | (u.sees & Ad) in u.follows.posts + u.suggested.posts\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n     // A user only sees ads from followed or suggested users.\n  \n     \n     \n\n     \n     \n\n     \n\n     \n\n     \n\n     all x : User | x.sees & Ad in x.(follows+suggested).posts\n\n     \n\n     \n\n     all a : Ad | sees.a in (follows+suggested).posts.a\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\t\n  \tall u : User, a : Ad | u in sees.a implies a in (u.follows.posts + u.suggested.posts)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall x: User, y: Photo | y in x.sees and y in Ad implies y in (x.follows + x. suggested).posts\n  \t\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  \tsees :> Ad in follows.posts + suggested.posts\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  \tall u: User, a: Ad | a in u.sees implies some ((u.follows + u.suggested) & posts.a)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u : User, a : Ad | u in sees.a implies some u2 : User | u2 in posts.a and (u2 in u.follows or u2 in u.suggested)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n  all u : User, a : Photo | \n    a in Ad and a in u.sees implies \n    (some u1 : User | u1 in u.follows and a in u1.posts) or \n    (some u2 : User | u2 in u.suggested and a in u2.posts)\n\t// A user only sees ads from followed or suggested users.\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  \tall u:User|\n  \t\tall p:Photo|\n  \t\t\tp in Ad and p in u.sees implies (some f:u.follows |\n  \t\t\t\tp in f.posts) ||( some s:u.suggested | p in s.posts)\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u : User | u.sees :> Ad in u.(follows+suggested).posts :> Ad\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n     all a : Ad | sees.a in (follows+suggested).posts.a\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 87,
+            "syntactic_count": 30,
+            "correct": true,
+            "elems": [
+                {
+                    "entry_count": 15,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u : User, a : u.sees & Ad | posts.a in u.follows + u.suggested \n}"
+                },
+                {
+                    "entry_count": 15,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  all u : User | posts.(u.sees & Ad) in (u.follows + u.suggested)\n}"
+                },
+                {
+                    "entry_count": 8,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  \n\n\n\n\n\n\n\n\n\n\n     all a : Ad, x : sees.a |  posts.a in x.(follows+suggested)\n}"
+                },
+                {
+                    "entry_count": 7,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  all u: User, a: Ad | (\n    a in u.sees implies posts.a in u.follows + u.suggested\n  )\n}"
+                },
+                {
+                    "entry_count": 5,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u1,u2 : User, a : Ad | a in u1.sees and a in u2.posts implies u2 in u1.follows or u2 in u1.suggested\n}"
+                },
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall x : User, y : Photo | x->y in sees and y in Ad implies \n(all z : User | z->y in posts implies x->z in follows or x->z in suggested)\n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\n  all u : User, p : Photo | u in sees.p and p in Ad implies \n  (all u1 : User | u1 in posts.p implies u in follows.u1 or u in suggested.u1)\n  \n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\tall x,y: User, a: Ad | y -> a in posts and x -> a in sees implies ( x -> y in follows or x -> y in suggested )  \n \n\t// A user only sees ads from followed or suggested users.\n\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  \tall u1, u2 : User, y : Ad | (y in u2.posts and y in u1.sees) implies (u1 in follows.u2 or u1 in suggested.u2)\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u1,u2: User | all p : u1.sees | p in u2.posts and p in Ad implies u2 in u1.follows + u1.suggested\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u:User, p:Ad | p in u.sees implies (all u2:User | p in u2.posts implies u2 in u.follows or u2 in u.suggested)\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  \t(all u: User, ad: Ad| ad in u.sees implies ad.~posts in (u.follows + u.suggested))\n\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u1, u2 : User, p : Ad | (p in u1.sees and p in u2.posts) implies (u2 in u1.follows or u2 in u1.suggested)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\t\n  \tall u,y : User, a : (Ad & y.posts) |\n  \t\t(a in u.sees) implies (y in u.suggested + u.follows)\n  \t\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  all u: User | posts.(u.sees & Ad) in u.(follows + suggested)\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  \n\n\n\n\n\n\n\n\n\n\n     all a : Ad | no x : User | x in sees.a and not (posts.a in x.(follows+suggested))\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  all u : User, p : User, a : Ad | a in p.posts and a in u.sees implies p in u.suggested or p in u.follows\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall a : Ad, u : User | u -> a in sees implies all u2 : posts.a | u -> u2 in follows or u -> u2 in suggested\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u1,u2: User | all p : u1.sees | p in u2.posts and p in Ad implies u2 in u1.follows or u2 in u1.suggested\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u : User | posts.(u.sees <: Ad) in u.suggested + u.follows\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall x, y : User | some ((x.sees & Ad) & y.posts) implies (y in x.follows or y in x.suggested)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u : User, a : Ad | a in u.sees implies (all u2 : User | a in u2.posts implies (u2 in u.follows or u2 in u.suggested))\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  \tall u1, u2 : User, a : Ad |\n  \t(u2 in posts.a and u1 in sees.a) implies (u1 in follows.u2 or u1 in suggested.u2)\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  \t\n  \tall a : Ad, u : posts.a | sees.a in follows.u + suggested.u \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  \tall u : User | all s : u.sees | s in Ad implies posts.s in (u.follows + u.suggested)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  \n  \tall x : User, y : Photo | y in x.sees & Ad implies \n    (all z : User | z in posts.y implies z in x.follows + x.suggested)\n  \n\tall u : User, p : u.sees & Ad | posts.p in (u.follows + u.suggested)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  \n\n\n\n\n\n\n\n\n\n\n     all a : Ad | no x : sees.a | not (posts.a in x.(follows+suggested))\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  \n    \n    \n\n\n    \n    \n\n\n    \n\n  \n    all x:User, y: x.sees & Ad | posts.y in x.(follows+suggested)\n\n \n  \n  \n  \n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  all u, u2: User, a: Ad |\n  \ta in u.sees && a in u2.posts => u2 in u.follows + u.suggested\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  all u , y: User, a : Ad | a in y.posts implies not (a in u.sees) or (y in u.follows or y in u.suggested)\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 51,
+            "syntactic_count": 13,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 33,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  \n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u:User | u.sees-(Photo) in u.follows.posts+u.suggested.posts\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\t\n  \tall u:User, u2:u.sees&Ad.posts | u2 in u.follows+u.suggested\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  all u: User, a: Ad |\n  \ta in u.sees => a.posts in u.follows + u.suggested\n\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\t\n  \tall u : User, ad : Ad | ad in u.sees implies (ad.posts in u.suggested or ad.posts in u.follows)\n  \n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  \tall u : User | u.sees.posts & Ad in (u.follows.posts & Ad) + (u.suggested.posts & Ad)\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u: User | u.sees not in ((Ad + u.posts) - (u.follows.posts + u.suggested.posts)) or u.sees in univ\n }"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  \tall u:User, a:Ad| a in u.sees implies ((posts.u in u.follows) or (posts.u in u.suggested))\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  \tall u : User | u.sees.posts & Ad in u.follows.posts + u.suggested.posts\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  \tall u1, u2 : User |\n  \tall a : Ad |\n  \t(a in posts.u2 and u1 in sees.a) implies (u2 in follows.u1 or u2 in suggested.u1)\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\t\n  \tall u:User, u2:(u.sees&Ad) | u2.posts in u.follows+u.suggested\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  \tall u1, u2 : User |\n  \tall a : Ad |\n  \ta in posts.u2 and u1 in sees.a implies u2 in follows.u1 or u2 in suggested.u1\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  all u: User | (u.sees & Ad).posts in (u.follows & u.suggested)\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 44,
+            "syntactic_count": 13,
+            "correct": true,
+            "elems": [
+                {
+                    "entry_count": 18,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u: User | u.sees in (u.follows.posts + u.suggested.posts)\n}"
+                },
+                {
+                    "entry_count": 5,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  all u : User | u.sees in (u.follows + u.suggested).posts  \n\n}"
+                },
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\t all u: User, p: Photo |\n        (p in u.sees) => (p in u.follows.posts || p in u.suggested.posts)\n}"
+                },
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u : User | all p : u.sees | p in u.follows.posts or p in u.suggested.posts\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  \tall u : User | all s : u.sees | some poster : u.follows + u.suggested | s in poster.posts\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u : User, a : u.sees | some posts.a&(u.follows + u.suggested)\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u : User | all p : u.sees | p in u.follows.posts + u.suggested.posts\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u : User, a : u.sees | some u2 : posts.a | u2 in u.follows or u2 in u.suggested\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u : User, p : Photo |\n  \t\tp in u.sees implies p in u.follows.posts or p in u.suggested.posts\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u : User | u.sees in u.(follows + suggested).posts\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u : User, p : Photo |\n  \t\tp in u.sees implies p in (u.follows.posts + u.suggested.posts)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u:User | all p:Photo | p in u.sees implies p in u.suggested.posts or p in u.follows.posts\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u : User, a : u.sees | some u2 : posts.a | u2 in (u.follows + u.suggested)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 30,
+            "syntactic_count": 9,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 9,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\t\n  \tall u : User |\n  \t\tall a : Ad |\n  \t\t\ta in u.sees iff\n  \t\t\t\t(some y : User | (y in u.follows + u.suggested) and a in y.posts)\n\n}"
+                },
+                {
+                    "entry_count": 8,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n    all u:User | (Ad & (u.follows.posts + u.suggested.posts)) = (Ad & u.sees)\n}"
+                },
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  all u : User | (u.sees & Ad) = (u.follows.posts & Ad) + (u.suggested.posts & Ad)\n\n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u : User, a : Ad |\n\t    a in u.sees iff\n\t      \tsome y : User | \n\t      \t\t(y in u.follows or y in u.suggested) and a in y.posts\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  all u : User | (u.follows.posts + u.suggested.posts) <: Ad = u.sees  <: Ad\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n    all u:User, a:Ad |  (u.sees & Ad) = (u.follows.posts + u.suggested.posts) & Ad\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u : User | (u.sees & Ad) = ((u.follows + u.suggested).posts & Ad)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  \n  all a : Ad | sees.a = follows.posts.a + suggested.posts.a\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u: User | all a: Ad | a in u.sees iff a in (u.follows + u.suggested).posts\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 28,
+            "syntactic_count": 6,
+            "correct": true,
+            "elems": [
+                {
+                    "entry_count": 9,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  all x: User, a: Ad | a in x.sees implies posts.a in x.follows or posts.a in x.suggested\n\n}"
+                },
+                {
+                    "entry_count": 6,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u : User, ad : Ad | ad in u.sees implies (posts.ad in u.follows  or posts.ad in u.suggested )\n  \n\n}"
+                },
+                {
+                    "entry_count": 5,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u: User | all a: u.sees & Ad | (posts.a in u.follows) or (posts.a in u.suggested)\n}"
+                },
+                {
+                    "entry_count": 5,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u : User, p : u.sees | (p in Ad) implies (posts.p in u.follows) or (posts.p in u.suggested) \n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u : User | all a : Ad | a in u.sees implies (a.(~posts) in u.follows or \t a.(~posts) in u.suggested)\n  \t\n  \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u: User |\n  \t\tall p: u.sees |\n  \t\t\tp in Ad implies\n  \t\t\t\t(posts.p in u.follows or\n  \t\t\t\tposts.p in u.suggested)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 27,
+            "syntactic_count": 19,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u : User, a : Ad | a in u.sees implies a in u.follows+u.suggested\n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  \tall x:User | x.sees-(Photo-Ad) in x.follows + x.suggested\n\n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall x: User | x.sees & Ad in x.follows + x. suggested\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  all u,v : User | all a : Ad | (a in u.sees) implies (a in v.posts and (v in u.follows or v in u.suggested) and u != v) \n\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  all u: User, a: Ad |\n        a in u.sees => (some u.follows & a.posts or some u.suggested & a.posts) \n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u : User | u.sees & Ad = (follows.u + u.suggested) & Ad\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n    all u : User | all p : u.sees | p in Ad implies p in u.suggested or p in u.follows\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u : User | (u.sees & Ad) = ((u.follows+u.suggested) & Ad)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  all u : User.sees & Ad | u = follows.u.posts & Ad + follows.u.sees & Ad\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u : User, a : Ad | a in u.sees => a in u.follows or a in u.suggested\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall x: User | x.sees & Ad in x.(follows + suggested)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u : User , p : sees.Ad |\n\t\tp in (u.follows + u.suggested).posts\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n   all u: User | u.sees & Ad in posts.(u.follows + u.suggested)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  \n\n\n\n\n\n\n\n\n\n\n     all a : Ad | no x : User | x in sees.a\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u:User|all a : Ad| a in u.sees iff a in u.follows or a in u.suggested \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  all u : User.sees & Ad | u = u.follows.posts & Ad + u.sees & Ad\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u : User | u.sees & Ad in (u.follows.posts + u.suggested.posts).sees & Ad\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  \tall u: User | u.sees & Ad in (u.suggested & u.follows)\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u : User | all ph : u.sees | ph in Ad implies ph in (u.follows + u.suggested)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 24,
+            "syntactic_count": 6,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 7,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u : User | u.sees in Ad & ( u.follows.posts + u.suggested.posts)\n}"
+                },
+                {
+                    "entry_count": 6,
+                    "code": "{\n\tall x: User, p: Photo | x -> p in sees implies (p in Ad and \n   some y: User | y -> p in posts and (x -> y in follows or x -> y in suggested))\n\t// A user only sees ads from followed or suggested users.\n\n}"
+                },
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  all u : User | u.sees in Ad & (u.follows + u.suggested).posts    \n\n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  \tall u:User | u.sees in (u.follows.posts & Ad + u.suggested.posts & Ad) \n\n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u: User, p: Photo | (p in u.sees) implies \n\t\t(p in Ad and (p in u.follows.posts or p in u.suggested.posts))\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  all u: User | all s: u.sees | s in Ad and s in (u.follows + u.suggested).posts\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 24,
+            "syntactic_count": 1,
+            "correct": true,
+            "elems": [
+                {
+                    "entry_count": 24,
+                    "code": "{\n     // A user only sees ads from followed or suggested users.\n  \n     \n     \n\n     \n     \n\n     \n\n     \n\n     \n\n     all x : User | x.sees & Ad in x.(follows+suggested).posts\n\n     all a : Ad, x : sees.a | posts.a in x.(follows+suggested)\n\n     \n     \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 20,
+            "syntactic_count": 11,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 7,
+                    "code": "{\n      all u: User, p: Photo | (p in u.sees) implies ((p in Ad) or (p in u.follows.posts) or (p in u.suggested.posts))\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\nall u: User, p: Photo |\n        p in u.sees implies (\n            p in Ad or (some f: u.follows | p in f.posts) or (some s: u.suggested | p in s.posts)\n        )\n\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u : User, p : Photo | \n        p in u.sees implies (p in Ad or (some f: u.follows | p in f.posts) or (p in u.suggested.posts))\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  \n  all u : User | u.sees - Ad in (u.follows.posts + u.suggested.posts)\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  \n  all u : User, a : u.sees - Ad | a in (u.follows).posts or a in (u.suggested).posts\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u : User | u.sees-Ad in u.(suggested+follows).posts\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  all u : User, p : Photo | p in u.sees implies (p in Ad or some f: u.follows | p in f.posts) or some s: u.suggested | p in s.posts\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n    all u: User, a : u.sees-Ad | a in u.follows.posts + u.suggested.posts\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u: User | u.sees in (u.follows.posts + u.suggested.posts + Ad)\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u : User | u.sees in Ad + u.follows.posts + u.suggested.posts\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n  // A user only sees ads from followed or suggested users.\n  all u: User | all p: u.sees | (p in Ad) or (p in u.follows.posts) or (p in u.suggested.posts)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 17,
+            "syntactic_count": 5,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 5,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u: User | u.sees = ((u.follows.posts + u.suggested.posts) & Ad)\n}"
+                },
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  \tall u : User | u.sees = (u.follows.posts & Ad)  + (u.suggested.posts & Ad)\n\n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  all u : User | (u.follows.posts + u.suggested.posts)  <: Ad = u.sees\n\n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t\n  all u : User |\n    u.sees = { p : Ad | some x : User | p in x.posts and (x in u.follows or x in u.suggested) }\n\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  \tall u: User | u.sees = ((u.suggested + u.follows).posts & Ad)\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 15,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 15,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  all u : User | u.sees = u.follows.posts + u.suggested.posts\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 12,
+            "syntactic_count": 8,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  \tall u: User | ((u.suggested + u.follows).posts & Ad) in u.sees\n\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  all u : User | (u.follows.posts + u.suggested.posts) <: Ad in u.sees\n\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n    all u:User | (Ad & (u.follows.posts + u.suggested.posts)) in (Ad & u.sees)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  all u : User | (u.follows.posts + u.suggested.posts) <: Ad in u.sees <: Ad\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n    all u:User | (Ad & (u.follows.posts + u.suggested.posts)) in u.sees\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  all u : User | u.sees = u.follows.posts & Ad + u.suggested.posts & Ad + u.sees\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u: User, p: u.follows.posts + u.suggested.posts, a: p & Ad | a in u.sees\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  all a: Ad, x, y: User | (y->a in posts and (y in x.follows or y in x.suggested)) implies x->a in sees\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 12,
+            "syntactic_count": 7,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 3,
+                    "code": "{\n    // A user only sees ads from followed or suggested users.\n  \tall u: User | all a: Ad | a in u.follows.posts or a in u.suggested.posts\n\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\t  all u: User, p: Photo |\n    (p in Ad) =>\n      (p in u.follows.posts) or (p in u.suggested.posts)\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall a : Ad, u : User | a in u.follows.posts + u.suggested.posts\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\t\n  \tall ad: Ad, u: User| ad in (u.follows + u.suggested).posts\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n    all u: User, p: Photo | p in Ad implies p in u.follows.posts + u.suggested.posts\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u : User | Ad in u.follows.posts + u.suggested.posts\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u: User | no (Ad - u.follows.posts - u.suggested.posts)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 10,
+            "syntactic_count": 7,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  all u: User | (u.sees & Ad) in (u.follows.posts & u.suggested.posts)\n\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n    all u : User, p : u.sees | p in Ad implies p in (u.follows.posts & u.suggested.posts)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u : User, p : Photo | p in Ad and p in u.sees implies p in (u.follows.posts & u.suggested.posts)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  all u : User, p : Photo | p in u.sees & Ad implies p in u.follows.posts & u.suggested.posts\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  all u : User | all s : u.sees | s in Ad implies (s in u.follows.posts and s in u.suggested.posts)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n    all u : User | u . sees & Ad in (u . follows . posts & u . suggested . posts) & Ad \n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  all u : User, p : Ad | p in u.sees implies p in u.follows.posts & u.suggested.posts\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 10,
+            "syntactic_count": 3,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 7,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  \tall u : User | u.sees  & Ad = (u.follows.posts + u.suggested.posts) \n\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u:User | u.sees-(Photo-Ad) = u.follows.posts+u.suggested.posts\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  all u : User | (u.follows.posts + u.suggested.posts) = u.sees <: Ad\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 10,
+            "syntactic_count": 7,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u: User | (posts.(u.sees & Ad) - u) in (u.follows + u.suggested)\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall x, z : User| all p : Photo | x != z and z in posts.p and x in sees.p and (x not in follows.z and x not in suggested.z) implies p not in Ad\n  \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  \tall u : User, p : Photo | u in sees.p and p in Ad implies (all z : User | z!=u and z in posts.p implies u in follows.z or u in suggested.z)\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\t\n  all x : User, z : User, p : Photo |\n    x != z and p in z.posts and p in x.sees implies \n        (z in x.follows or z in x.suggested or p not in Ad)\n  \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u1,u2:User, a:Ad | u2 in posts.a and a in u1.sees and u1!=u2 \n  \t\timplies u2 in u1.follows or u2 in u1.suggested \n  \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  \tall disj u1, u2 : User, p : Ad | p in u2.posts and p in u1.sees implies u2 in u1.follows or u2 in u1.suggested \n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall disj x, y : User | some ((x.sees & Ad) & y.posts) implies (y in x.follows or y in x.suggested)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 7,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 7,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u: User, s: u.sees | all u1: u.follows, u2: u.suggested | (s in u1.posts) or (s in u2.posts)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 7,
+            "syntactic_count": 5,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tUser.sees in Ad\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  all u : User | u.sees in Ad \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n    all u: User, a : u.sees-Ad | a in u.follows + u.suggested\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  \tall u: User | u.sees in Ad + (u.suggested & u.follows)\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u : User | u.sees in Ad + u.follows + u.suggested\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 7,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 5,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  \n\n\n\n\n\n\n\n\n\n\n     all a : Ad | posts.a in sees.a.(follows+suggested)\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall a: Ad | posts.a in sees.a.follows + sees.a.suggested\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 6,
+            "syntactic_count": 4,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  \tall u: User | all p: u.posts | p not in u.sees\n  \tall u: User | ((u.suggested + u.follows).posts & Ad) in u.sees\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  \tall u: User | all p: u.posts | p not in u.sees\n  \tall u: User | all a: ((u.suggested + u.follows).posts & Ad) | a in u.sees\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  all u : User | (u.posts & u.sees = none) and ((u.follows.posts + u.suggested.posts) <: Ad ) in u.sees\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  all u : User | (u.posts & u.sees = none) and (u.follows.posts <: Ad in u.sees) and (u.suggested.posts <: Ad in u.sees)\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 6,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 6,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  all u: User, a: Ad | some f: u.follows| some s: u.suggested| a in u.sees implies (a in f.posts or a in s.posts)\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 6,
+            "syntactic_count": 4,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  all u: User, a: Ad | all f: u.follows| all s: u.suggested| a in u.sees implies (a in f.posts or a in s.posts)\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  all u: User | all f,s: User | all ad: Ad | f in u.follows and s in u.suggested and (ad in u.sees) implies (ad in f.posts or ad in s.posts)\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  \tall u: User, s: u.sees, f: u.follows, ss: u.suggested |\n    s in Ad implies s in f.posts or s in ss.posts\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  all u:User, a:Ad, f:u.follows, s:u.suggested |a in u.sees \n  \t\timplies \na in f.posts or a in s.posts \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 5,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  all u : User | (u.follows.posts + u.suggested.posts) in Ad\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  all u : User | (u.follows.posts + u.suggested.posts) - u in Ad\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 5,
+            "syntactic_count": 3,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u : User | all a : Ad | (a in u.sees) implies (a in u.follows.posts or a in u.suggested)\n\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u : User, a : Ad | a in u.sees implies a in u.follows.posts or a in u.suggested\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u : User | all a : Ad | (a in u.sees) implies( a in u.follows.posts)\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 5,
+            "syntactic_count": 3,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  all a: Ad, x, y: User | x->a in sees implies (y->a in posts and (y in x.follows or y in x.suggested))\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u:User, u2:User, a:Ad | a in u.sees implies a in u2.posts and u2 in u.follows + u.suggested\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  all u,v : User | all a : Ad | (a in u.sees) implies (a in v.posts and (v in u.follows or v in u.suggested)) \n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 5,
+            "syntactic_count": 3,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u: User, seg: u.follows | u != seg implies Ad in seg.sees or Ad in u.suggested\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u: User, seg: u.follows | u != seg implies Ad in seg.sees or Ad in seg.suggested\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u: User, seg: u.follows, ad: Ad | u != seg implies ad in seg.sees or ad in u.suggested\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 5,
+            "syntactic_count": 3,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  all u : User | u.sees = u.follows.posts + u.suggested.posts & Ad\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u : User | u.sees = u.follows.posts+u.suggested.posts :> Ad\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u : User | u.sees = u.follows.posts+u.suggested.posts <: Ad\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 5,
+            "syntactic_count": 3,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n    all u: User, su: User |\n        su in u.suggested =>\n            su not in u.follows and\n            some f: u.follows | su in f.follows\n\n\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n    all u: User, su: User |\n        su in u.suggested =>\n            su not in u.follows and\n            some f: User | f in u.follows && su in f.follows\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n    all u: User, su: User |\n    all u: User, su: User |\n        su in u.suggested =>\n            su not in u.follows and\n            some f: User | f in u.follows and su in f.follows\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 5,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 5,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u1:User, p:Photo | u1.sees in Ad implies posts.p in u1.follows or posts.p in u1.suggested\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 5,
+            "syntactic_count": 3,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  all x : User, y : Photo | x->y in sees and y in Ad implies some z: User | x->z in follows or x->z in suggested\n  }"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  all x : User, y : Ad | x->y in sees implies (some z: User | x->z in follows or x->z in suggested)\n }"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u: User | all a: Ad | a in u.sees implies (some u2: User | u2 in u.suggested or u2 in u.follows)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 4,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  all u : User | (u.follows.posts & u.suggested.posts) in Ad\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  all u : User | (u.follows.posts & u.suggested.posts - u) in Ad\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 4,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  all u : User | (u.follows.posts + u.suggested.posts - u.posts) in Ad\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 4,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  all u : User | u.posts not in u.sees and ((u.follows.posts + u.suggested.posts) <: Ad ) in u.sees\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  \tall u: User | u.posts not in u.sees\n  \tall u: User | ((u.suggested + u.follows).posts & Ad) in u.sees\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 4,
+            "syntactic_count": 3,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  all u: User | all a : Ad | (a in u.sees) and (a in u.suggested.posts or a in u.follows.posts)\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\tall x: User, a: Ad | x -> a in sees and some y: User | y -> a in posts and (x -> y in follows or x -> y in suggested)\n\t// A user only sees ads from followed or suggested users.\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\tall x: User, a: Ad | some y: User | y -> a in posts and ( x -> y in follows or x -> y in suggested ) and x -> a in sees \n \n\t// A user only sees ads from followed or suggested users.\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 4,
+            "syntactic_count": 3,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  \tall u1, u2 : User, y : Ad | y in u2.posts and y in u1.sees implies u2 in follows.u1 or u2 in suggested.u1  \n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  \tall u1, u2 : User, y : Ad | (y in u2.posts and y in u1.sees) implies (u2 in follows.u1 or u2 in suggested.u1)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  \tall u1, u2 : User |\n  \tall a : Ad |\n  \t(u2 in posts.a and u1 in sees.a) implies (u2 in follows.u1 or u2 in suggested.u1)\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 4,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  \n  all u : User | (u.follows.posts + u.suggested.posts) in u.sees & Ad\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 4,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  \t\n\tall u : User | all ad : Ad | ad in u.sees implies posts.ad in (u.follows & u.suggested)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  all u: User, ad : Ad | ad in u.sees => (posts.ad in u.follows and posts.ad in u.suggested)\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 4,
+            "syntactic_count": 4,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u : User | u.sees & Ad in (u.follows + u.suggested).sees & Ad\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u : User, a : Ad | a in u.sees => a in u.follows.sees or a in u.suggested.sees\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u : User, p : Photo | \n        p in u.sees and p in Ad implies (some f: u.follows | p in f.sees) or (p in u.suggested.sees)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u : User, p : Ad | \n\tp in u.sees implies (p in u.follows.sees or p in u.suggested.sees)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 4,
+            "syntactic_count": 3,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u : User | some a : Ad | u -> a in sees implies a in u.follows.posts or a in u.suggested.posts\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u : User |some a : Ad |a in u.sees implies a in u.follows.posts+ u.suggested.posts\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  all u : User | some a : Ad | a in u.sees implies some f : u.follows + u.suggested | a in f.posts\n \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 3,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  all u : User | (u.follows.posts & u.suggested.posts - u.posts) in Ad\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 3,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  \n  all u : User | u.sees - Ad - u.posts in (u.follows.posts + u.suggested.posts )\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  \n  all u : User | (u.sees- u.posts)  - Ad in (u.follows.posts + u.suggested.posts )\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 3,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  \n  all u:User | u.sees = (Photo-Ad) + (Ad & (u.follows.posts + u.suggested.posts))\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  \n  all u:User | u.sees = ((Photo-Ad) + (Ad & u.(follows+suggested).posts))\n\n  \n  \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 3,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\t\n  \tall ad: Ad, u: User| ad in u.follows + u.suggested\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 3,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  all u: User, a: Ad | (\n    a in u.sees implies posts.a in u.follows\n  )\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 3,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 3,
+                    "code": "{\n  // A user only sees ads from followed or suggested users.\n  all u: User, p: Photo | (p in Ad implies (p in u.sees and some f: u.follows | p in f.posts or some s: u.suggested | p in s.posts)) and (p not in Ad implies p in u.sees and p in u.follows.posts)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 3,
+            "syntactic_count": 3,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n   all u: User | some Ad & (u.sees - u.posts) implies u.follows.posts in Ad and u.suggested.posts in Ad\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n   all u: User | some Ad & u.sees & (Photo - u.posts)  implies u.follows.posts in Ad and u.suggested.posts in Ad\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n   all u: User | some Ad & u.sees - u.posts implies u.follows.posts in Ad and u.suggested.posts in Ad\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 3,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n   all u : User | ( u.sees & Ad ) in u.follows.posts or ( u.sees & Ad )  in u.suggested.posts\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u:User | u.sees-(Photo-Ad) in u.follows.posts or u.sees-(Photo-Ad) in u.suggested.posts\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 3,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u: User | u.sees not in ((Ad + u.posts) - (u.follows.posts + u.suggested.posts)) or u.sees in none\n }"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u: User | u.sees not in ((Ad + u.posts) - (u.follows.posts + u.suggested.posts)) or u.sees = none\n }"
+                }
+            ]
+        },
+        {
+            "entry_count": 3,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u: User | u.sees not in ((Ad + u.posts) - (u.follows.posts + u.suggested.posts))\n }"
+                }
+            ]
+        },
+        {
+            "entry_count": 3,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u: User | u.sees not in (Ad - (u.follows.posts + u.suggested.posts))\n }"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u: User | u.sees not in (Ad - u.follows.posts & Ad - u.suggested.posts)\n }"
+                }
+            ]
+        },
+        {
+            "entry_count": 3,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u: User | (posts.(u.posts & Ad) - u) in (u.follows + u.suggested)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 3,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u: User, p: u.follows.posts + u.suggested.posts | p in u.sees => (u in Ad) and u not in u.posts\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u: User, p: u.follows.posts + u.suggested.posts | p in u.sees => u in Ad\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 3,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u : User | u.sees & Ad = u.follows + u.suggested\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u : User | u.sees & Ad = (follows.u + u.suggested)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 3,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u : User |some a : Ad |a in u.sees implies a in u.follows.posts+ u.suggested.posts-u.posts\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u : User | some a : Ad | u -> a in sees implies a in u.follows.posts - u.posts or a in u.suggested.posts - u.posts\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 3,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  \tall u : User, p : Photo | u in sees.p and p in Ad implies all z : User | z!=u and z in posts.p implies u in follows.z or z in suggested.u\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall disj u1,u2: User, p: Ad| u2 in posts.p and u1 in sees.p  implies u2 in u1.follows or u2 in suggested.u1 \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  \n  all u : User | (u.follows.posts + u.suggested.posts) in u.sees & Ad - u.posts\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u:User| u in u.follows and Ad in u.posts implies some u.sees or\n  \tu in u.suggested and Ad in u.suggested.posts implies some u.sees\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  \tall u: User | ((u.suggested + u.follows).posts) in u.sees\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  \n  all u: User | u.follows.posts in u.sees and u.suggested.posts in u.sees\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n     all a : Ad | a in (sees.a).(follows+suggested).posts\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall x: User, y: Photo | y in x.sees and y in Ad implies posts.y = x.follows + x. suggested\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  \n  \n  all u : User | all s : u.sees - Ad | one posts.s & u.follows or one posts.s & u.suggested\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  \tall u : User | u.sees.posts & Ad = u.follows.posts & Ad+ u.suggested.posts & Ad\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  all u : User | u.sees = u.follows.posts & u.suggested.posts\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  all u:User | u.sees in Ad implies (u.sees in u.suggested.posts or u.sees in u.follows.posts)\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  all u:User | u.sees in Ad implies u.sees in u.suggested.posts or u.sees in u.follows.posts\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u : User | Ad in u.sees implies Ad in u.follows.posts + u.suggested\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  \tall u : User, a : Ad | a in u.sees implies posts.a in a.follows or posts.a in a.suggested \n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  \tall u : User, a : Ad | a in u.sees iff posts.a in a.follows or posts.a in a.suggested \n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u : User, a:u.sees & Ad | posts.a in u.follows - u.suggested\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u:User|all a : Ad| a in u.sees iff a in u.follows.posts or a in u.suggested.posts \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tsome u:User | u.sees in u.follows.posts + Ad or u.sees in u.suggested.posts + Ad\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  \tall u: User, s: u.sees, f: u.follows, ss: u.suggested|\n  \ts in Ad implies s in f or s in ss\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u : User | u.follows.posts+u.suggested.posts :> Ad = u.sees :> Ad\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u : User | u.follows.posts+u.suggested.posts <: Ad = u.sees <: Ad\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n    all u: User, p: Photo |\n        (p in Ad or (p in u.follows.posts or p in u.suggested.posts)) implies p in u.sees\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n  // A user only sees ads from followed or suggested users.\n  all u: User, p: Photo | p in u.sees implies (p in u.follows.posts or p in u.follows.suggested.posts)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n  \tall x,y,z: User, p: Photo | (x -> p in sees implies p in Ad and y -> p in posts) or (x -> z in follows and z -> y in follows and x -> y in suggested and y -> p in posts)\n\t// A user only sees ads from followed or suggested users.\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\tall x: User, p: Photo | x -> p in sees implies p in Ad and some y: User | y -> p in posts implies (x -> y in follows or x -> y in suggested)\n\t// A user only sees ads from followed or suggested users.\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\tall x: User, p: Photo | p in Ad and x -> p in sees and some y: User | y -> p in posts and (x -> y in follows or x -> y in suggested)\n\t// A user only sees ads from followed or suggested users.\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\tall x: User, p: Photo | some y: User | p in Ad and y -> p in posts and ( x -> y in follows or x -> y in suggested ) and x -> p in sees \n \n\t// A user only sees ads from followed or suggested users.\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  \t\n  \tall a : Ad, u : posts.a | sees.a = follows.u + suggested.u \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 2,
+            "correct": true,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u : User, a : Ad \n  \t|a in u.sees implies a in u.follows.posts+u.suggested.posts-u.posts\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  \n  all a : Ad | sees.a in (follows.posts.a + suggested.posts.a - posts.a)\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u : User | u.sees in Ad + u.follows.posts \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n    all x: Photo-Ad, u:User | u in sees.x implies x in u.follows.posts\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n   all u: User | some Ad & u.sees implies u.follows.posts in Ad and u.suggested.posts in Ad\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 2,
+            "correct": true,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n      all x: User | posts.(x.sees) in (x.follows + x.suggested)\n\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  \tall u: User, p: Photo |\n  \t\tp in u.sees implies posts.p in (u.follows + u.suggested)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u: User, Ad: Ad | Ad in u.follows.posts or Ad in u.suggested.posts implies Ad in u.sees\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u:User, a:Ad | a in u.sees implies posts.Ad in u.follows or posts.Ad in u.suggested\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n    all u : User, seg : u.follows |\n        u != seg implies \n            all ad : Ad | \n                ad in u.sees implies \n                    (ad in seg.sees or ad in u.suggested)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n    all u : User, seg : u.follows |\n        u != seg implies \n            all ad : Ad | \n                ad in u.sees implies \n                    (ad in seg.sees or ad in seg.suggested)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  all u:User | u.sees = u.follows.posts + (u.follows.follows - u.follows - u).posts\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  all u:User, a:Ad, f:u.follows, s:u.suggested | a in f.posts and a in s.posts \n  \t\timplies a in u.sees\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  all u:User, a:Ad | a in u.follows.posts and a in u.suggested.posts \n  \t\timplies a in u.sees\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  \nall u: User, a: Ad | all f: u.follows| all s: u.suggested| a in f.posts or a in s.posts implies a in u.sees\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  all u: User | some f,s: User | all ad: Ad | f in u.follows and s in u.suggested and (ad in u.sees) implies (ad in u.follows.posts or ad in s.follows.posts)\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  all u: User | some f,s: User | all ad: Ad | f in u.follows and s in u.suggested and (ad in u.sees) implies (ad in u.follows.posts or ad in u.follows.posts)\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u : User | u.sees in Ad & u.follows.posts + u.suggested.posts\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n \t\n  \t\n  all u,z : User, a : Ad |\n  \ta in u.sees iff\n  \t\t(z in u.follows or z in u.suggested) and a in z.posts and z != u\n  \n  \n  \n  \n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n \t\n  \t\n  all u : User, a : Ad | some z : u.follows + u.suggested |\n  \ta in u.sees iff\n  \t\ta in z.posts and z != u\n  \n  all u : User | some y : User | some a : y.posts |\n  \ta in Ad and a in u.sees implies \n  \t\t(y in u.follows or y in u.suggested)\n  \t\n  \n \n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u : User | u.sees in (Ad & u.follows.posts & u.suggested.posts)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n    all user : User | user.sees in (user.follows.posts & Ad & user.suggested.posts & Ad)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u : User | u.sees = (Ad & u.follows.posts & u.suggested.posts)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u : User | u.sees = (u.follows.posts & u.suggested.posts <: Ad)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u : User | all s : (u.sees & Ad) | s = u.follows.posts + u.suggested.posts\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall x: User, y: Photo | y in x.sees and y in Ad implies y = (x.follows + x. suggested).posts\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  \tall u1, u2 : User, y : Ad | (y in u2.posts and y in u1.sees) implies (u1 in follows.u2 or u2 in suggested.u1)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  all u,u1 : User, a : Ad | u1 in posts.a and u in sees.a implies u in follows.u1 or u1 in suggested.u\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n \tall u : User, p : Photo | u in sees.p and p in Ad implies some z : User | z in posts.p implies u in follows.z or z in suggested.u\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 2,
+            "correct": true,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  all u : User, a : Ad |\n    a in u.sees and a in Ad implies (some u2 : u.follows | a in u2.posts or some u3 : u.suggested | a in u3.posts)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n    all u: User | all a: Ad | a in u.sees implies (some f: u.follows | a in f.posts or a in (u.suggested).posts)\n\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": true,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u : User | u.sees in (u.follows.posts + u.suggested.posts & Ad)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  all u : User | sees.(u.sees & Ad) in (u.follows + u.suggested)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  \n  all u: User, f : u.follows, s: u.suggested | u.sees in f or u.sees in s\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u : User | some u.sees + Ad\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  all u : User | u not in u.follows\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  all u : User | (u.follows.posts & u.suggested.posts + u.posts) in Ad\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  \n  all u : User | (u.follows.posts + u.suggested.posts) in Ad implies u.sees = (u.follows.posts + u.suggested.posts)\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  \n  all u : User | (u.follows.posts + u.suggested.posts & u.posts) in Ad\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  \n  all u : User | u.posts - (u.follows.posts + u.suggested.posts) in Ad\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  \n  all u : User | (u.follows.posts + u.suggested.posts + u.follows.follows.posts) = u.sees\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  \n  all u : User | (u.follows.posts + u.suggested.posts + u.follows.follows.posts - u.posts) = u.sees\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  \n  all u : User | u.sees - Ad in (u.follows.posts + u.suggested.posts - u.posts)\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  \n  all u : User | (u.follows.posts + u.suggested.posts) - u.posts in u.sees & Ad\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  \n  all u : User | (u.follows.posts  - u.posts) in u.sees & Ad\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  \n  all u : User | (u.follows.posts + u.suggested.posts) in (u.posts & Ad)\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  all u : User | (u.follows.posts + u.sees.posts) in Ad\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  all u : User | (u.follows.posts + u.sees.posts - u.posts) in Ad\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  all u : User, p : Ad - u.posts| (u.follows.posts + u.suggested.posts) in p\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  all u : User | (u.follows.posts + u.suggested.posts) - u.posts <: Ad in u.sees\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  all u : User | ((u.follows.posts + u.suggested.posts) <: Ad in u.sees) and no u.posts\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  all u : User | ((u.follows.posts + u.suggested.posts) <: Ad in u.sees) and u.sees not in u.posts\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  all u : User | (u.posts & u.sees = none) and ((u.follows.posts + u.suggested.posts)) in u.sees\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  all u : User | (u.posts & u.sees = none) and ((u.follows.posts + u.suggested.posts) <: Ad ) = u.sees <: Ad\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  all u : User | (u.posts & u.sees = none) and ((u.follows.posts + u.suggested.posts) ) = u.sees <: Ad\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  all u : User | (u.posts & u.sees = none) and ((u.follows.posts <: Ad = u.sees) or (u.suggested.posts <: Ad = u.sees))\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  all u : User | (u.posts & u.sees = none) and ((u.follows.posts <: Ad = u.sees <: Ad) or (u.suggested.posts <: Ad = u.sees))\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  all u : User | (u.posts & u.sees = none) and ((u.follows.posts <: Ad = u.sees <: Ad) or (u.suggested.posts <: Ad = u.sees <: Ad))\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  all u : User | (u.posts & u.sees = none) and u.sees = (u.follows.posts + u.suggested.posts)\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  all a: Ad | some u1: User| a in u1.sees implies some u2 : User | a in u2.posts and u2 in {u1.suggested + u1.follows}\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  \tall u: User | all p: u.posts | p not in u.sees\n  \tall u: User | Ad - ((u.suggested + u.follows).posts & Ad) not in u.sees\n  \tall u: User | ((u.suggested + u.follows).posts & Ad) in u.sees\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  all u: User, a: Ad | some f: u.follows| some s: u.suggested| a in u.sees implies (f.posts in Ad or s.posts in Ad)\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  all u: User, a: Ad | some f: u.follows| some s: u.suggested| a in u.sees iff (a in f.posts or a in s.posts)\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  \nall u: User, a: Ad | some f: u.follows| some s: u.suggested| a in f.posts or a in s.posts implies a in u.sees\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  all u: User, a: Ad | all f: u.follows| some s: u.suggested| a in u.sees implies (a in f.posts or a in s.posts)\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  all u: User, a: Ad | some f: u.follows| all s: u.suggested| a in u.sees implies (a in f.posts or a in s.posts)\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall ad: Ad, u: User| ad in u.sees implies all v: u.follows + u.suggested - u | ad in v.posts\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\t\n  \tall ad: Ad, u: User| ad in (u.follows + u.suggested).sees\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\t\n  \tall ad: Ad, u: User| ad in (u.follows + u.suggested - u).posts\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  \n\n\n\n\n\n\n\n\n\n\n     all a : Ad | posts.a in sees.a[follows+suggested]\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u1,u2 : User, a : Ad | a in u1.sees implies u2 in u1.follows or u2 in u1.follows.follows\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u1,u2 : User, a : Ad | a in u1.sees and a in u2.posts implies u2 in u1.follows or u2 in u1.follows.follows\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall x: User, y: Photo | y in x.sees and y in Ad implies y.posts = x.follows + x. suggested\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  all u : User | all a : Ad | a in u.sees => (some u : User | a in u.posts => a in u.suggested or a in u.follows) \n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u : User | all us : u.sees | us in Ad implies (us in u.follows or us in u.suggested.posts)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  \tall u : User | u.sees.posts & Ad = u.follows.posts + u.suggested.posts\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  \tall u: User | u.sees = follows.u.posts + u.suggested.posts\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  \n  all u : User | u.sees = (Photo-Ad) + (Ad & u.follows.posts)\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  \tall u : User, a : Ad | a in u.sees iff posts.a in u.follows or posts.a in a.suggested \n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  \tall u : User, a : Ad | a in u.sees iff posts.a in u.follows or posts.a in u.suggested \n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u : User, a : u.sees & Ad | posts.a in u.follows + u\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u : User | all p : u.sees | p in u.follows.posts\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": true,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u: User, p: u.sees | p in u.follows.posts or p in u.suggested.posts iff p in Ad \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  \tall u : User, ad : Ad | (ad in u.sees) implies (ad in follows.u.posts) or (ad in suggested.u.posts)\n  \n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  all u: User | some a : Ad | (a in u.sees) and (a in u.suggested.posts or a in u.follows.posts)\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  all p : User.sees & Ad | p in User.follows.posts or p in User.suggested.posts \n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  all p : User.sees & Ad | p in User.follows.posts \n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u : User | u.sees in (Ad & (u.follows.posts + u.follows.follows.posts))\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  all u: User | Ad in u.sees iff Ad in u.follows.posts or Ad in u.suggested.posts\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u : User | some a: Ad| a in u.follows.posts \n\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u : User | all a : Ad | a in u.sees\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u:User | u.sees in u.follows.posts + Ad or u.sees in u.suggested.posts + Ad\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tone u:User | u.sees in u.follows.posts + Ad or u.sees in u.suggested.posts + Ad\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tsome u:User | u.sees in follows.u.posts + Ad or u.sees in suggested.u.posts + Ad\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  \tall u : User | all p : Photo | p in Ad and p in u.follows or p in u.suggested\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  \tall u : User | all p : Photo | p in Ad and p in u.follows.posts or p in u.suggested.posts\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u: User | no (Ad - u.follows.posts - u.suggested.posts) - u.sees\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  all u: User| all x: u.follows| all  g : u.suggested| u.sees = (x.posts + u.posts)\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  all u: User| all x: u.follows| all g : u.suggested| u.sees = (x.posts + g.posts)\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  all u: User| all x: u.follows.posts| all  g: u.suggested.posts| Ad in u.sees => Ad in x or Ad in g\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n    all u: User | all p: Photo | p in u.sees => (p in u.follows.posts + u.suggested.posts => Ad in p)\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n    // A user only sees ads from followed or suggested users.\n    all u: User, p: Photo |\n        (p in Ad && some u1: u.follows | p in u1.posts) ||\n        (p in Ad && some u1: u.suggested | p in u1.posts) ||\n        (p not in Ad && some u1: u.follows | p in u1.posts)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  all u : User - Influencer, p : Photo | p in u.sees & Ad implies p in u.follows.posts & u.suggested.posts\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  all u : User - Influencer, p : Photo | p in u.sees implies (p in Ad or some f: u.follows | p in f.posts) or some s: u.suggested | p in s.posts\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  all u : User | (Ad - (u.follows + u.suggested).posts) not in u.sees\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  \n  all a : Ad | sees.a = follows.posts.a + suggested.posts.a + posts.a\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  \n  all a : Ad | sees.a = follows.posts.a + suggested.posts.a - posts.a\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  all u : User | some a : Ad | a in u.sees implies some f : u.follows + u.suggested | u != f implies a in f.posts \n \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  all u : User | some a : Ad | a in u.sees implies some f : u.follows + u.suggested | u != f and a in f.posts \n \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": true,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  all u : User, a : Ad | a in u.sees implies some f : u.follows + u.suggested | u != f and a in f.posts \n \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u1,u2: User | all p : u1.sees | p in u2.posts implies p in Ad and (u2 in u1.follows or u2 in u1.suggested)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  \tall u : User, us : User.sees | some f : u.follows, s : u.suggested | us in Ad implies us in f.posts or us in s.posts\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall ad: Ad, u1, u2: User | ad in u1.posts implies u2 in u1.follows or u2 in u1.suggested\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u : User, a : Ad | a = u.follows.posts or a = u.suggested.posts\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u : User | u.sees = u.follows.posts or u.sees = u.suggested.posts\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n    all u : User | u . sees & Ad in (u . follows . posts & u . suggested . posts) - u .posts\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u : User | u.sees & Ad = (follows.u + u.suggested).sees & Ad\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u : User | u.sees & Ad in (follows.u + u.suggested).sees & Ad\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n  \tall x,y,z: User, p: Photo | x -> p in sees implies (p in Ad and y -> p in posts) or (x -> z in follows and z -> y in follows implies x -> y in suggested and y -> p in posts)\n\t// A user only sees ads from followed or suggested users.\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\tall x: User, a: Ad | x -> a in sees and one y: User | y -> a in posts and (x -> y in follows or x -> y in suggested)\n\t// A user only sees ads from followed or suggested users.\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\tall x: User, a: Ad | x -> a in sees and some y: User | y -> a in posts implies (x -> y in follows or x -> y in suggested)\n\t// A user only sees ads from followed or suggested users.\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\tall x: User, p: Photo | x -> p in sees implies p in Ad and one y: User | y -> p in posts implies ( x -> y in follows or x -> y in suggested)\n\t// A user only sees ads from followed or suggested users.\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\tall x: User, p: Photo | x -> p in sees implies p in Ad and some y: User | y -> p in posts and ( x -> y in follows or y -> x in suggested)\n\t// A user only sees ads from followed or suggested users.\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\tall x: User, p: Photo | some y: User | y -> p in posts and ( x -> y in follows or x -> y in suggested ) and x -> p in sees implies p in Ad \n \n\t// A user only sees ads from followed or suggested users.\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\tall x,y: User, a: Ad | y -> a in posts and ( x -> y in follows or x -> y in suggested ) and x -> a in sees \n \n\t// A user only sees ads from followed or suggested users.\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u : User |some a : Ad |a in u.sees implies a in u.follows or a in u.suggested\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  \tall u1, u2 : User, y : Ad | y in u2.posts and y in u1.sees implies u2 in follows.u1 or u2 in suggested.u1 or u2 in Influencer\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  \tall u1, u2 : User, y : Ad | y in u2.posts and y in u1.sees implies (u2 in follows.u1 or u2 in suggested.u1) and u1!=u2  \n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  \tall a : Ad, u : sees.Ad | a in (u.follows.posts + u.suggested.posts)\n  \n  \t\t\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n    all u:User, a:Ad | Ad in u.sees implies Ad in (u.follows.posts + u.suggested.posts)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n    all u:User, a:Ad |  (u.sees & Ad) = (u.follows.posts + u.suggested.posts)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\t\n  \tall u : User |\n  \t\tall a : Ad |\n  \t\t\ta in u.sees iff\n  \t\t\t\t(some y : User | y in u.follows or y in u.suggested and a in y.posts)\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n  // A user only sees ads from followed or suggested users\n  all u : User, a : Ad |\n    a in u.sees iff \n      some y : User | \n        y in (u.follows & u.suggested) and a in y.posts\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u: User | (u.sees in u.follows.posts) or (u.sees in u.suggested.posts)\n }"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u: User | u.sees in (Ad - u.follows.posts & Ad - u.suggested.posts)\n }"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u: User | u.sees not in (Ad - u.follows.posts + Ad - u.suggested.posts)\n }"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n  // A user only sees ads from followed or suggested users.\n  all u: User | all a: Ad | a in u.sees implies some u.follows + u.suggested & posts.a\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u : User | u.sees & Ad = u.follows || u.sees & Ad = u.suggested\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u : User | some u2 : posts.(u.sees) | u2 in u.follows or u2 in u.suggested\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u: User | some ad: Ad | ad in u.sees implies (some f: User | u in f.follows or u in f.suggested and ad in f.posts)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u: User {\n\t\tu.follows.posts & Ad in u.sees\n\t\tu.suggested.posts & Ad in u.sees\n\t\t(Ad - u.follows.posts & Ad - u.suggested.posts & Ad) not in u.sees\n\t} \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  all u : User | (u.follows+ u.suggested) in posts.(u.sees & Ad)\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u: User | posts.(u.posts & Ad) in (u.follows + u.suggested)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u: User | (posts.(u.posts & Ad) - u) = (u.follows + u.suggested)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": true,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u : User, p : Photo | p in u.sees implies (posts.p in u.follows or posts.p in u.suggested)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u: User | all s: u.sees | u.sees in Ad implies s in (u.follows + u.suggested).posts\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u1,u2:User, a:Ad | u2 in posts.Ad and a in u1.sees \n  \t\timplies u2 in u1.follows or u2 in u1.suggested and u1!=u2 \n  \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u1,u2:User, a:Ad | u2 in posts.Ad and a in u1.sees and u1!=u2 \n  \t\timplies u2 in u1.follows or u2 in u1.suggested \n  \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u1:User, a:Ad | \n  \t\ta in u1.sees iff\n   \t\t\t(posts.a in u1.follows or posts.a in u1.suggested)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u: User, seg: u.follows | u != seg implies Ad in seg.posts or Ad in u.suggested\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  \tall u : User, a : Ad, u2 : User.follows + User.suggested| a in u.sees implies (a in u2.posts)\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  all u:User | u.sees = u.follows.posts + (u.follows.follows - u.follows - u).posts & Ad\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  all u:User | \n  \tu.sees = (u.follows.posts + (u.follows.follows - u.follows - u).posts) & Ad\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n  all u : User, a : Photo| a in Ad and a in u.sees implies (some u1: User | u1 in u.follows and a in u.posts) or (some u2: User | u2 in u.suggested and a in u2.posts)\n  \n\t// A user only sees ads from followed or suggested users.\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\n  all u, u1 : User, p : Photo |  u != u1 and u in follows.u1 or u1 in suggested.u\n  \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\n  all u, u1 : User, p : Photo |  u != u1 and u in follows.u1 or u1 in suggested.u implies p in Ad\n  \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u : User | u.sees & Ad in follows.u.posts + u.suggested.posts\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  \t\n  \tall u: User | u.sees & Ad = ( u.follows.posts + u.suggested.posts + Influencer.posts ) & Ad\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall a: Ad | lone u: sees.a.follows + sees.a.suggested | Ad in u.sees\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall a: Ad | lone u: sees.a.follows + sees.a.suggested - posts.a | Ad in u.sees\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n      all x: User | (sees in (x.follows + x.suggested)->Ad)\n\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n          all x: User | (sees.Ad in (x.follows + x.suggested))\n\n\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n          all x: User | (sees.Ad in (x.follows + x.suggested + x))\n\n\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  all u: User | all f,s: User | all ad: Ad | f in u.follows and s in u.suggested and (ad in u.sees) implies (ad in u.follows.posts or ad in s.follows.posts)\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  all u: User | all f,s: User | all ad: Ad | u != f and u != s and f in u.follows and s in u.suggested and (ad in u.sees) implies (ad in f.posts or ad in s.posts)\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n \t\n  \t\n  all u : User, a : Ad, z : u.follows + u.suggested |\n  \ta in u.sees iff\n  \t\ta in z.posts and z != u\n  \n  \n \n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n \t\n  \t\n  all u : User, a : Ad | some z : u.follows + u.suggested |\n  \ta in u.sees iff\n  \t\ta in z.posts and z != u\n  \n  \n \n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n \t\n  \t\n  \n  \n  \n  \n  all u : User | some y : User | some a : y.posts |\n  \ta in Ad and a in u.sees implies \n  \t\t(y in u.follows or y in u.suggested)\n  \n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n \t\n  \t\n  \n  \n  \n  \n  all u : User | some y : User | some a : y.posts |\n  \ta in Ad and u != y and a in u.sees implies \n  \t\t(y in u.follows or y in u.suggested)\n  \n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u : User | u.sees not in (u.follows.posts & u.suggested.posts & Photo - Ad)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u, u2: User | all a: Ad | a in u.sees implies a in u2.posts and u2 in u.follows or u2 in u.suggested\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u, u2: User | all a: Ad |( u != u2 and a in u.sees) implies a in u2.posts and u2 in u.follows or u2 in u.suggested\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u:User, a:Ad| u.sees in a implies ((posts.a in u.follows) or (posts.a in u.suggested))\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u : User, p : Ad | \n  \tu.sees = u.follows & u.suggested \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u : User, p : Photo | \n\tp in u.sees implies (p in u.follows.sees or p in u.suggested.sees)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u : User, p : Photo | \n\t p in u.sees implies (p in u.follows.sees or p in u.suggested.sees or p in Ad)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n    all u: User, su: User |\n        su in u.suggested =>\n            su not in u.follows and\n            some f: User | f in u.follows.follows and su not in f.follows\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n   all u: User, su: User |\n        su in u.suggested =>\n            su not in u.follows and\n            some f: User | f in u.follows.follows and su in f.follows\n\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n     all u: User, su: User |\n        su in u.suggested =>\n            su not in u.follows and\n            some f: User | f in (u.follows.follows - u.follows) && su in f.follows\n\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  \tall disj u1, u2: User, p: Ad | p in u1.sees implies (\n      p in u2.posts and (u2 in u1.follows or u2 in u1.suggested))\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  \tall p: Photo | p in User.posts\n  \tall disj u1, u2: User, p: Ad | p in u1.sees implies (\n      p in u2.posts and (u2 in u1.follows or u2 in u1.suggested))\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  \tall p: Ad | p in User.posts\n  \tall disj u1, u2: User, p: Ad | p in u1.sees implies (\n      p in u2.posts and (u2 in u1.follows or u2 in u1.suggested))\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  \tall p: Ad | p in User.posts\n  \tall p: Photo, u: User | p in u.posts implies p not in u.sees\n  \tall disj u1, u2: User, p: Ad | p in u1.sees implies (\n      p in u2.posts and (u2 in u1.follows or u2 in u1.suggested))\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  \tall p: Ad | p in User.posts\n  \tall p: Ad, u: User | p in u.posts implies p not in u.sees\n  \tall disj u1, u2: User, p: Ad | p in u1.sees implies (\n      p in u2.posts and (u2 in u1.follows or u2 in u1.suggested))\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall x, z : User| some p : Photo | x != z and (x in follows.z or x in suggested.z) implies p not in Ad\n  \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall x, z : User| some p : Photo | x != z and z in posts.p and x in sees.p\n  \n  \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall x, z : User| some p : Photo | x != z and z in posts.p and x in sees.p and (x in follows.z or x in suggested.z) implies p not in Ad\n  \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall x, z : User| all p : Photo | x != z and z in posts.p and x in sees.p and (x in follows.z or x in suggested.z) implies p not in Ad\n  \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u : User | some a : Ad | u -> a in sees implies a in u.follows.posts - u.posts or a in u.suggested.posts\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  all u,u1 : User, a : Ad | u != u1 and u in sees.a iff u in follows.u1 or u1 in suggested.u\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  all u,u1 : User, a : Ad | (u != u1 and u in sees.a) iff (u in follows.u1 or u1 in suggested.u)\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  all u,u1 : User, a : Ad | u in sees.a iff u != u1 and u in follows.u1 or u1 in suggested.u\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  all u,u1 : User, a : Ad | u1 in posts.a and u in sees.a iff u != u1 and u in follows.u1 or u1 in suggested.u\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n \tall u : User, p : Photo | u in sees.p and p in Ad implies (some z : User | z in posts.p implies u in follows.z or u in suggested.z)\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  all u : User | Ad & u.sees = u.follows & Ad + u.suggested + Ad\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  all u : User | Ad & u.follows.posts not in u.sees\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  all u : User | Ad & u.follows.posts + u.posts not in u.sees\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n  all u : User | u.sees & Ad = u.follows.posts & Ad + u.suggested & Ad\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u, u1: User | Ad in u.sees iff u!=u1 and u->u1 in follows or u->u1 in suggested\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u : User | u.sees in (u.follows.posts & Ad)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A user only sees ads from followed or suggested users.\n\tall u : User | u.sees in  ( u.suggested.posts & Ad)\n}"
+                }
+            ]
+        }
+    ]
+}

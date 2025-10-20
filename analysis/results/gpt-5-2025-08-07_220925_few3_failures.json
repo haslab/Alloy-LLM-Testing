@@ -1,0 +1,31 @@
+{
+    "Photo sharing social network": {
+        "this/inv3": {
+            "valid": [
+                "run Neg1 {\n    -- Negative: The user does not see the ad (Pa), violating that ads are visible to everyone.\n    some disj U : User | some disj Pa : Photo | some disj D : Day {\n        User = U\n        Influencer = none\n        Photo = Pa\n        Ad = Pa\n        Day = D\n\n        date = Pa->D\n        posts = U->Pa\n\n        follows = none->none\n        sees = none->none\n        suggested = none->none\n    }\n} for 1 User, 1 Photo, 1 Day expect 0"
+            ]
+        }
+    },
+    "Production line": {
+        "this/inv6": {
+            "valid": [
+                "run Pos3 {\n    some disj WB, WE : Workstation | some disj H, R : Worker | some disj P1, P2 : Product {\n        // Positive: two components point to each other as parts (no self-parts). Begin has a human, end has a robot; no mixing at a workstation.\n        Workstation = WB + WE\n        begin = WB\n        end = WE\n        succ = WE->WB\n\n        Worker = H + R\n        Human = H\n        Robot = R\n        workers = WB->H + WE->R\n\n        Product = P1 + P2\n        Component = P1 + P2\n        Material = none\n        Dangerous = P2\n        parts = P1->P2 + P2->P1\n        workstation = P1->WB + P2->WE\n    }\n} for 2 Workstation, 2 Worker, 2 Product expect 1"
+            ]
+        },
+        "this/inv7": {
+            "parse": [
+                "run Pos1 {\n    some disj WB, WE : Workstation | some disj HU1, HU2 : Worker | some disj M1 : Material | some disj C1 : Component {\n        Workstation = WB + WE\n        begin = WB\n        end = WE\n\n        Worker = HU1 + HU2\n        Human = HU1 + HU2\n        Robot = none\n\n        Product = M1 + C1\n        Material = M1\n        Component = C1\n        Dangerous = M1 + C1\n\n        workers = WB->HU1 + WE->HU2\n        succ = none\n        parts = C1->M1\n        workstation = C1->WB\n    }\n} for 2 Workstation, 2 Worker, 2 Product expect 1",
+                "run Neg1 {\n    some disj WB, WE : Workstation | some disj HU1, HU2 : Worker | some disj M1 : Material | some disj C1 : Component {\n        Workstation = WB + WE\n        begin = WB\n        end = WE\n\n        Worker = HU1 + HU2\n        Human = HU1 + HU2\n        Robot = none\n\n        Product = M1 + C1\n        Material = M1\n        Component = C1\n        Dangerous = M1\n\n        workers = WB->HU1 + WE->HU2\n        succ = none\n        parts = C1->M1\n        workstation = C1->WB\n    }\n} for 2 Workstation, 2 Worker, 2 Product expect 0"
+            ]
+        }
+    },
+    "Courses": {
+        "this/inv9": {
+            "valid": [
+                "run Neg1 {\n    some disj P1,P2 : Person | some disj C1 : Course | some disj PR1 : Project | some disj G1,G2 : Grade {\n        Person = P1 + P2\n        Professor = P1 + P2\n        Student = P2\n        Course = C1\n        Project = PR1\n        Grade = G1 + G2\n\n        teaches = P1->C1\n        enrolled = P2->C1\n        Person <: projects = P2->PR1\n        Course <: projects = C1->PR1\n        grades = none->none->none\n        Grade <: next = G1->G2\n\n        // Negative: P1 (professor) teaches C1 while P2 (also a professor, and a student) is enrolled in C1, so a professor teaches a colleague; all other listed requirements still hold and no professor teaches herself.\n    }\n} for 2 Person, 1 Course, 1 Project, 2 Grade expect 0",
+                "run Neg2 {\n    some disj P1,P2,P3 : Person | some disj C1,C2 : Course | some disj PR1,PR2 : Project | some disj G1,G2 : Grade {\n        Person = P1 + P2 + P3\n        Professor = P1 + P2\n        Student = P2 + P3\n        Course = C1 + C2\n        Project = PR1 + PR2\n        Grade = G1 + G2\n\n        teaches = P1->C1 + P2->C2\n        enrolled = P2->C1 + P3->C2\n        Person <: projects = P2->PR1 + P3->PR2\n        Course <: projects = C1->PR1 + C2->PR2\n        grades = none->none->none\n        Grade <: next = G1->G2\n\n        // Negative: P1 (professor) teaches C1 while colleague P2 (also a professor, and a student) is enrolled in C1, so a professor teaches a colleague; all other constraints are satisfied and no professor teaches herself.\n    }\n} for 3 Person, 2 Course, 2 Project, 2 Grade expect 0",
+                "run Neg3 {\n    some disj P1,P2,P3 : Person | some disj C1 : Course | some disj PR1,PR2 : Project | some disj G1,G2,G3 : Grade {\n        Person = P1 + P2 + P3\n        Professor = P1 + P2\n        Student = P2 + P3\n        Course = C1\n        Project = PR1 + PR2\n        Grade = G1 + G2 + G3\n\n        teaches = P1->C1\n        enrolled = P2->C1 + P3->C1\n        Person <: projects = P2->PR1 + P3->PR2\n        Course <: projects = C1->PR1 + C1->PR2\n        grades = none->none->none\n        Grade <: next = G1->G2 + G2->G3\n\n        // Negative: P1 (professor) teaches C1 while colleague P2 (also a professor, and a student) is enrolled in C1, so a professor teaches a colleague; all other requirements hold and no professor teaches herself.\n    }\n} for 3 Person, 1 Course, 2 Project, 3 Grade expect 0"
+            ]
+        }
+    }
+}

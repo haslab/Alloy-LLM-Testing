@@ -1,0 +1,3926 @@
+{
+    "original": "dyj49tEp7j6aWAQQX",
+    "cmd": "inv10",
+    "pred": "this/inv10",
+    "entry_count": 831,
+    "semantic_count": 289,
+    "syntactic_count": 473,
+    "scope": 3,
+    "groups": [
+        {
+            "entry_count": 63,
+            "syntactic_count": 6,
+            "correct": true,
+            "elems": [
+                {
+                    "entry_count": 35,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c : Component, p : c.parts & Component | c.workstation in p.workstation.^succ\n}"
+                },
+                {
+                    "entry_count": 16,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall a, b: Component | a in b.parts implies (b.workstation in a.workstation.^succ)\n}"
+                },
+                {
+                    "entry_count": 5,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c : Component | all comp : c.parts | comp in Component => c.workstation in comp.workstation.^succ\n}"
+                },
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n  all c: Component, p: Component |\n    p in c.parts implies c.workstation in p.workstation.^succ\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n  \tall c: Component | all p: parts.c | p.workstation in c.workstation.^succ\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c: Component | all p: c.parts | p in Material or c.workstation in p.workstation.^succ\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 42,
+            "syntactic_count": 21,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 15,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\n}"
+                },
+                {
+                    "entry_count": 5,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c : Component | all p : c.parts| c.workstation in Workstation and p.workstation in Workstation\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c: Component, p: c.parts | p not in c.workstation.*succ\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\t\tall c:Component | no (workstation.c.workstation.*(succ) & c.^parts)\n  }"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c: Component, p: c.parts | Workstation in c.workstation => (p in Material or Workstation in c.workstation)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c: Component | all p: c.parts | c in Component \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c : Component | c.^(parts.workstation :> Component) in succ.(c.workstation) \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n    all c: Component | some c.workstation implies (all p: Product | p in c implies some p.workstation or p in Material)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c : Component | all p : c.parts| p.workstation in Workstation implies c.workstation in Workstation\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c:Component, ws:Workstation | c in ws implies once #(c.parts) >0\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c : Component, w : Workstation| c in workstation.w implies c.^(parts) in (workstation.(*(succ).w)).^(parts)\n \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c : Component | all p : c.parts| c in Workstation implies p.workstation in Workstation\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c : Component, w : c.workstation, p : c.parts | workstation.p in ^succ.w\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c: Component | c.workstation in (c.*parts).workstation.*succ\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c : Component | all p : c.parts| c.workstation in Workstation implies p.workstation in Workstation\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n    all c: Component | some c.workstation implies (all p: Product | p in c implies some p.workstation)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c : Component | c in Component.parts implies c not in end\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\t\tall c:Component | no (c.workstation.*(succ) & c.^parts)\n  }"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n  // The parts of a component must be assembled before it in the production line\n  all c:Component | some (c.workstation.parts & Component) => c.workstation.*succ in c.parts.workstation.*succ\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n  all c: Component | (\n    let prevWs = c.workstation.^(~succ) | c = c\n  )\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c : Component | all p : c.parts| p.workstation in Workstation \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 39,
+            "syntactic_count": 28,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c: Component | all p: c.parts | p in succ.{c.workstation}\n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n    \n    \n    all c : Component | \n        all p : c.parts | \n            some wsPart, wsComponent : Workstation | \n                p in wsPart.(workstation) and \n                c in wsComponent.(workstation) and\n                wsPart in wsComponent.^succ\n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c : Component| (c.parts) in ( ^(succ).(c.workstation) )\n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n  all c: Component, p: Product | p in c.parts implies p in c.^workstation\n\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n      // The parts of a component must be assembled before it in the production line\n  all c: Component | \n    all p: c.parts | \n      (some c.parts implies p in c.^succ)\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n  \tall c: Component | all parts: c.parts | some w: Workstation | parts in w\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c: Component | \n    all p: c.parts | p in c.succ\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c:Component | all p: c.parts | p in (^workstation.c)\n  \t\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c: Component | \n    all p: c.parts | p in succ.c\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n    \n    \n    all c : Component, p : c.parts | (one w : Workstation |  p in workstation.w and c in workstation.w ) \n\n\tall c : Component, p : c.parts | c in p.succ \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n    all c: Component, p: Product | p in c.parts implies p in begin.*succ and c in p.^succ\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n  all c: Component, p: c.parts | p in Workstation.^succ\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n    \n    \n    all c : Component, p : c.parts | \n        one w : Workstation | \n            p in w.workstation and \n            c in w.workstation\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c : Component | all p : c.parts| p.workstation in Workstation and c in Workstation\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n    \n    \n    all c : Component, p : c.parts | \n        one w: Workstation | \n            p in workstation.w and \n            c in workstation.w and \n            c in (p.workstation).^succ\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c:Component | c.parts in (^workstation.c)\n  \t\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c:Component | all p: c.parts | p in ^succ.(c.workstation)\n  \t\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n  all c : Component | all p : c.parts | c in p.^succ\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n      all c: Component |\n        all p: c.parts |\n            \n            some w1: Workstation, w2: Workstation |\n                p in w1.workers and c.workstation = w2.workers and w1.succ = w2\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c: Component | \n    all p: c.parts | p in c.^succ\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n    \n    \n    all c : Component, p : c.parts | \n        some wsPart, wsComponent : Workstation | \n            p in wsPart.workstation and \n            c in wsComponent.workstation and \n            wsComponent in wsPart.^succ\n \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n  \n  all c: Component, p: c.parts |\n    one ws: c.workstation |  \n    p in ws.^succ  \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n  all c : Component | all p : c.parts | one c.workstation & p.^succ\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c: Component | \n\t\t\n\t\tall p: c.parts |\n\t\t\t\n\t\t\tone ws1: Workstation, ws2: Workstation |\n\t\t\t\tp in ws1.workers and c in ws2.workers and ws1 in ws2.^succ\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c: Component, p: c.parts |\n  \t\tp in c.workstation.^(~succ)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n    \n    \n    all c : Component, p : c.parts | \n        some wsPart, wsComponent : Workstation | \n            p in workstation.wsPart and \n            c in workstation.Component and \n            wsComponent-> wsPart in succ\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c: Component | \n        all p: c.parts | \n            p in c.(parts & ^(workstation.~succ).parts) \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n    \n    \n    all c : Component, p : c.parts | \n        one w: Workstation | \n            p in workstation.w and \n            c in workstation.w and \n            p in (c.workstation).^succ\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 35,
+            "syntactic_count": 7,
+            "correct": true,
+            "elems": [
+                {
+                    "entry_count": 22,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\t\n    all c : Component, p : c.parts | \n  \t\tp.workstation in (^succ).(c.workstation)\n  \n  \n}"
+                },
+                {
+                    "entry_count": 6,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c : Component | c.parts.workstation in ^succ.(c.workstation) \n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c: Component, p: c.parts |\n  \t\tp.workstation in c.workstation.^(~succ)\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c : Component | c.^(parts.workstation) in ^succ.(c.workstation) \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c : Component | c.^(Component <: parts.workstation) in ^succ.(c.workstation) \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c : Component | c.parts.workstation in c.workstation.^(~succ)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c: Component, p: c.parts |\n\t\tp in Component implies p.workstation in c.workstation.~^succ\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 25,
+            "syntactic_count": 5,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 19,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c: Component | all p: c.parts | c.workstation in p.workstation.^succ\n }"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c : Component , w : c.workstation |\n  \t\tc.parts in workstation.(^succ.w)\n  \t\t\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n  all c: Component, p: Product |\n    p in c.parts implies c.workstation in p.workstation.^succ\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c: Component, w: c.workstation | all p: c.parts | w in p.workstation.^succ\n }"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c: Component | all c_parts: c.parts |\n  \t\tsome c.workstation implies\n  \t\t\tc.workstation in c_parts.workstation.^succ\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 18,
+            "syntactic_count": 4,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 12,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c : Component | c.workstation in c.parts.workstation.^succ\n}"
+                },
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c : Component | c.workstation in (c.parts & Component).workstation.^succ\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c : Component | c.workstation in (c.parts - Material).workstation.^succ\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n  // The parts of a component must be assembled before it in the production line\n  all c:Component | c.workstation.*succ in c.parts.workstation.^succ\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 18,
+            "syntactic_count": 6,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 10,
+                    "code": "{\n    // The parts of a component must be assembled before it in the production line\n    all c: Component, p: c.parts | p.workstation in c.workstation.~succ\n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c : Component | c.^(parts.workstation) in succ.(c.workstation) \n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c : Component, p : c.parts |\n  \t\tp.workstation in succ.(c.workstation)\n  \t\t\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n  \tall c: Component, p: Component |\n  \t\tp in c.parts => p.workstation in c.workstation.~succ\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c: Component, p: c.parts |\n\t\tp in Component implies p.workstation in c.workstation.~succ\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c : Component | c.^((parts :> Component).workstation) in succ.(c.workstation) \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 17,
+            "syntactic_count": 8,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 5,
+                    "code": "{\n  // The parts of a component must be assembled before it in the production line\n  all c:Component | some (c.parts & Component) => c.workstation in c.parts.workstation.^succ\n\n}"
+                },
+                {
+                    "entry_count": 4,
+                    "code": "{\n  // The parts of a component must be assembled before it in the production line\n  all c:Component | some (c.parts & Component) => c.workstation.*succ in c.parts.workstation.^succ\n\n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c: Component | c.workstation in c.parts.workstation.^succ or c.parts in Material\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n  // The parts of a component must be assembled before it in the production line\n  all c:Component | no c.parts or some (c.parts & Component) => c.workstation.*succ in c.parts.workstation.^succ\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c: Component | #(c.parts - Material) != 0 implies c.workstation in \tc.parts.workstation.^succ \n         \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n  // The parts of a component must be assembled before it in the production line\n  all c:Component | some (c.parts & Component) => c.workstation.*succ in c.parts.^workstation.^succ\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c : Component | some(c.parts&Component) implies c.workstation in (c.parts&Component).workstation.^succ\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c : Component, p : c.parts & Component | c.workstation in c.parts.workstation.^succ\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 16,
+            "syntactic_count": 5,
+            "correct": true,
+            "elems": [
+                {
+                    "entry_count": 8,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c: Component | all p: c.parts.workstation | c.workstation in p.^succ\n }"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n  \tall c:Component | all prt:c.parts | \n  \t\tall ws:prt.workstation | c.workstation in ws.^succ\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall x: Component, w : x.workstation, y: x.parts & Component | y.workstation in ^succ.w\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n  \tall c: Component | \n \tall p: c.parts | \n    all wsC: c.workstation |\n  \tall wsP: p.workstation |\n          wsC in wsP.^succ \n  }"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n  all c: Component, w: Workstation | w in c.workstation implies ( c.parts.workstation in ^(succ).w)\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 15,
+            "syntactic_count": 2,
+            "correct": true,
+            "elems": [
+                {
+                    "entry_count": 13,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c1,c2 : Component | all w1,w2 : Workstation | \n  \tw1 in c1.workstation and w2 in c2.workstation and c2 in c1.^(parts) implies\n  \tw1 in w2.^(succ)\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\nall c1,c2 : Component,w1,w2:Workstation | ((c2->w2 in workstation)and(c1->w1 in workstation)and(c2 in (^parts).c1)) implies (w1 in ^succ.w2)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 15,
+            "syntactic_count": 4,
+            "correct": true,
+            "elems": [
+                {
+                    "entry_count": 8,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\t\tall c:Component | no (workstation.(c.workstation.*(succ)) & c.^parts)\n  }"
+                },
+                {
+                    "entry_count": 5,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n  \n\tall c:Component | no (workstation.(c.workstation.^succ + c.workstation) & c.^parts)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\t\n  \tall w : Workstation, s : w.*succ, c : workstation.w, p : c.^parts | p in Component implies p not in workstation.s\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c : Component | no(c.^parts.workstation & (c.workstation + c.workstation.^succ))\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 13,
+            "syntactic_count": 5,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 5,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n  all c : Component | c.parts.workstation in c.workstation.^succ\n}"
+                },
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c: Component | all p: c.parts | p.workstation in c.workstation.^succ\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n  \tall c1,c2 : Component | c1 in c2.parts implies c1.workstation in c2.workstation.^succ\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c : Component | all comp : c.parts | comp in Component => comp.workstation in c.workstation.^succ\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n  all c: Component, p: Component |\n        p in c.parts implies p.workstation in c.workstation.^succ\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 11,
+            "syntactic_count": 4,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 8,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\t\n  \tall c : Component, p : c.parts, ws1 : p.workstation, ws2 : c.workstation | ws1 in ws2.^succ\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n  all c1, c2 : Component | all w1, w2 : Workstation | w1 in c1.workstation and w2 in c2.workstation and c2 in c1.parts implies w2 in w1.^succ\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\t  all c: Component, ws_part, ws_comp: Workstation |\n        ws_comp in c.workstation and ws_part in (c.parts).workstation implies ws_part in ws_comp.^succ\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall x: Component, w : x.workstation, y: x.parts & Component | y.workstation in (w.^succ)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 9,
+            "syntactic_count": 5,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c: Component, p: c.parts |\n        all ws: c.workstation, wsPart: p.workstation |\n            wsPart in ws.(~succ) \n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c: Component, w: c.workstation | all p: c.parts | p.workstation in succ.w\n }"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n  \tall c:Component | all prt:c.parts | \n  \t\tall ws:prt.workstation | c.workstation in ws.succ\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c : Component | all w : c.parts.workstation | c.workstation in w.succ\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c: Component |\n        all p: c.parts - Material|\n            all wsPart: p.workstation, wsComp: c.workstation |\n                wsPart in wsComp.(~succ) or wsPart = none\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 9,
+            "syntactic_count": 8,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\t\n    all c : Component, p : c.parts | \n  \t\tp.workstation in (^succ).c.workstation\n  \n  \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\n\tall disj c : Component, p : Product | p in c.parts implies (p in Material or p.workstation in (c.workstation.*succ - c.workstation.^succ - c.workstation))\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c : Component | c.parts.workstation in c.~(*succ) \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c: Component, p: c.parts | p.workstation in (p.^succ & c.workstation)\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c: Component | all p: c.parts | p.workstation in c.^~workstation\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c : Component | c.parts.workstation in c.*(~succ) \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c:Component | all p:c.parts | all w:p.workstation | c in w.^succ\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c:Component, ws:Workstation | ws in (c.parts).workstation implies before ws in (c.workstation & c.workstation.^succ)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 9,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 6,
+                    "code": "{\n  // The parts of a component must be assembled before it in the production line\n  all c:Component | c.workstation in c.parts.workstation.*succ \n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n  // The parts of a component must be assembled before it in the production line\n  all c:Component | c.workstation.*succ in c.parts.workstation.*succ\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 8,
+            "syntactic_count": 5,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n  all c: Component | all p: c.parts | \n        some ps, pc: Workstation | \n            ps in p.workstation and \n            pc in c.workstation and \n            ps in pc.^succ\n\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n    \n    \n    all c : Component | \n        all p : c.parts | \n            some wsPart, wsComponent : Workstation | \n                p in (workstation).wsPart and \n                c in (workstation).wsComponent and\n                wsPart in wsComponent.^succ\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n  all c: Component | all p: c.parts |\n        some pc, pp: Workstation |\n            pc in c.workstation and \n            pp in p.workstation and\n            pp in pc.^succ\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall p: Product, c: Component | p in c.parts implies some ws1, ws2: Workstation |\n      ws1 in p.workstation and ws2 in c.workstation and ws1 in ws2.^succ\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n  all c: Component, p: Product |\n        p in c.parts implies some p.workstation & c.workstation.^succ\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 8,
+            "syntactic_count": 7,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall a, b: Component | a in b.parts implies b in a.workstation.^succ\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c : Component | c in Component.parts implies c in begin\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall x: Component, y: x.parts & Component | y in succ.(x.workstation)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c1, c2: Component | c2 in c1.parts => c2 in c1.workstation.~^succ\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c1, c2: Component | c2 in c1.parts => c2 in c1.workstation.^~succ\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n  // The parts of a component must be assembled before it in the production line\n  all c:Component | some (c.parts & Component) => c.parts.workstation.*succ not in c.workstation.*succ\n  no (Component.workstation & Component.parts.workstation)\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c1, c2: Component | c2 in c1.parts => c2 in c1.workstation.*~succ\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 8,
+            "syntactic_count": 7,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n  all c: Component | let\n\t\tws = c.workstation,\n\t\tprevParts = (ws.succ.parts - c.parts) | \n\t\tprevParts not in ws.parts\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n  all c: Component | (\n    let prevWs = c.workstation.^(~succ) | c != c\n  )\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c: Component | c in (c.^parts - Material).workstation.^succ\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n  all c1 : Component, c2 : Component  | c1.parts in c2.^parts implies c1.workstation not in c2.workstation.^succ and c1.workstation != c2.workstation\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n  all c1 : Component, c2 : Component  | (c1.parts in c2.^parts implies c1.workstation not in c2.workstation.^succ) and (c1.workstation != c2.workstation)\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c1, c2: Component | c2 in c1.*parts => c2 in c1.workstation.^~succ\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c: Component | c in c.^parts.workstation.^succ\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 8,
+            "syntactic_count": 4,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 4,
+                    "code": "{\n    \n    \n    all c : Component , p : c.parts | \n            some wsPart, wsComponent : Workstation | \n                p in workstation.wsPart and \n                c in workstation.wsComponent and\n                wsComponent in wsPart.^succ\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c : Component| (c.parts) in workstation.( ^(succ).(c.workstation) )\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c: Component | (all p: c.parts | p in workstation.(^succ.(c.workstation)))\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c:Component | c.parts in c.workstation.^(~succ).~workstation\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 7,
+            "syntactic_count": 4,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c : Component | some(c.parts)\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c:Component, ws:Workstation | c.parts in ws implies before c in ws\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n    all c: Component | c.parts not in c.workstation.^succ\n\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n    all c: Component | c.parts not in c.workstation.^succ.parts\n\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 7,
+            "syntactic_count": 4,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 3,
+                    "code": "{\n  // The parts of a component must be assembled before it in the production line\n  all c:Component | some (c.parts & Component) => c.workstation in  c.parts.workstation.*succ\n\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c: Component | #(c.parts - Material) != 0 implies c.workstation in \tc.parts.workstation.*succ \n         \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c: Component | c.workstation in c.parts.workstation.*succ or c.parts in Material\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n  // The parts of a component must be assembled before it in the production line\n  all c:Component | some (c.parts & Component) => c.workstation.*succ in c.parts.workstation.*succ\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 7,
+            "syntactic_count": 3,
+            "correct": true,
+            "elems": [
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c: Component | c.^parts.workstation in ^succ.(c.workstation)\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c : Component , p : c.^parts |\n  \t\tp.workstation in ^succ.(c.workstation)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c1, c2: Component | c2 in c1.^parts => c2.workstation in c1.workstation.^~succ\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 7,
+            "syntactic_count": 5,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n    all c: Component | some c.workstation implies before(all p: Product | p in c.^parts implies some p.workstation or p in Material)\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n    all c: Component | some c.workstation implies before(all p: Product | p in c.^parts implies p.workstation = end and p.workstation != begin or p in Material)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c:Component, ws:Workstation | ws in c.workstation implies before ws in ((c.parts).workstation  & c.workstation.^succ)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n    all c: Component | some c.workstation implies before(all p: Product | p in c.^parts implies (some p.workstation and no p.workstation.workers) or p in Material)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n  // The parts of a component must be assembled before it in the production line\n  all c:Component | c.workstation.*succ in c.parts.workstation.*succ && no (c.workstation.*succ & c.parts.workstation.*succ)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 6,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 6,
+                    "code": "{\n  // The parts of a component must be assembled before it in the production line\n  all c:Component | some (c.parts & Component) => c.workstation in c.^parts.workstation.^succ\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 6,
+            "syntactic_count": 4,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c: Component, p: c.parts |\n        some ws: c.workstation, wsPart: p.workstation |\n            wsPart in ws.(~succ) \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c: Component | (all p: c.parts | p in workstation.(succ.(c.workstation)))\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c: Component, p: c.parts |\n        some ws: c.workstation, wsPart: p.workstation |\n            ws in wsPart.succ \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n    \n    \n    all c : Component, p : c.parts | \n        some wsPart, wsComponent : Workstation | \n            p in workstation.wsPart and \n            c in workstation.wsComponent and \n            wsComponent in wsPart.succ\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 5,
+            "syntactic_count": 3,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n  \n\tall c:Component | no (workstation.(c.workstation.^succ) & c.^parts)\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n  \n\tall c:Component | no (workstation.(c.workstation.^succ + c) & c.^parts)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c : Component | no(c.^parts.workstation & c.workstation.^succ)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 5,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 5,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c : Component, p : (c.parts) | no( c.workstation.succ & p.workstation.succ)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 5,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 5,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c: Component | one ws1: Workstation | ws1 in c.workstation => all p: c.parts | one ws2: Workstation | ws2 in p.workstation\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 5,
+            "syntactic_count": 3,
+            "correct": true,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c : Component | c.~parts in Component implies (parts.c).workstation in c.workstation.^succ \n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c : Component | parts.c in Component implies c.~parts.workstation in c.workstation.^succ \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c : Component | c.~parts in Component implies c.~parts.workstation in c.workstation.^succ \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 5,
+            "syntactic_count": 3,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c: Component, p: c.parts | c.workstation in p.workstation.*succ\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c: Component | all p: c.parts | c.workstation.*succ in p.workstation.*succ\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n  all p: Product, c: Component | p in c.parts => c.workstation in p.workstation.*succ\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 5,
+            "syntactic_count": 4,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c: Component, p: (c.parts & Component) | c.workstation in p.workstation.*succ\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c: Component | all p: c.parts & Component | c.workstation.*succ in p.workstation.*succ\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n  \tall c: Component, p: Component |\n  \t\tp in c.parts => c.workstation in p.workstation.*succ\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n  all p: Component, c: Component | p in c.parts => c.workstation in p.workstation.*succ\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 5,
+            "syntactic_count": 5,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall p: Component, c: Component | p in c.parts implies some ws1, ws2: Workstation |\n      ws1 in p.workstation and ws2 in c.workstation and ws1 in ws2.^succ\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c: Component | \n\t\tall p: c.parts |\n\t\t\tp in Component implies \n\t\t\t\tlet ws1 = p.workstation, ws2 = c.workstation |\n\t\t\t\tsome w1: ws1, w2: ws2 | w1 in w2.^succ\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\t\n    all c : Component, p : c.parts & Component | \n        some ws : c.workstation, wp : p.workstation |\n            wp in ws.^succ\n  \n  \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n  all c: Component, p: Component |\n        p in c.parts implies some p.workstation & c.workstation.^succ\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c: Component |\n\t\tall p: c.parts |\n\t\t\tlet ws1 = p.workstation, ws2 = c.workstation |\n\t\t\t\tp not in Material implies (\n\t\t\t\t\tsome w1: ws1, w2: ws2 | w1 in w2.^succ\n\t\t\t\t)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 4,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c: Component | all p: c.parts | p.workstation not in c.workstation.^succ\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 4,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\t\n  all c : Component | c.workstation != begin => all c1 : parts.c & Component | c1.workstation = end\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 4,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\t\n  all c : Component | one c.workstation implies (all c1 : (^parts).c & Component | c1.workstation != c.workstation)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 4,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\t\n  all c : Component | c.workstation != end implies (all c1 : (^parts).c & Component | c1.workstation = begin)\n  \n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\t\n  all c : Component | c.workstation != begin => all c1 : c.^parts & Component | c1.workstation = end\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 4,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\nall c : Component |\n      all p : c.parts |\n          some w : Workstation\n            |\n              p.workstation in w.^succ and w in c.workstation\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 4,
+            "syntactic_count": 1,
+            "correct": true,
+            "elems": [
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c: Component | all p: c.parts & Component { \n    \tc.workstation.*succ in p.workstation.*succ\n      \tp.workstation.*succ not in c.workstation.*succ\n    }\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 4,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n  all c : Component | (c.parts.workstation) not in (c.workstation.^succ)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c: Component | some p: c.parts | p.workstation not in c.workstation.^succ\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 4,
+            "syntactic_count": 1,
+            "correct": true,
+            "elems": [
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c : Component | c.workstation not in c.parts.workstation and no (c.parts.workstation & c.workstation.^succ)\n  \n  \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 4,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n  all c : Component |no c.parts.workstation & c.workstation.^succ\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n  all c1 : Component, c2 : Component  | c1 in c2.parts implies no c1.workstation & c2.workstation.^succ\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 4,
+            "syntactic_count": 3,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c : Component | all p : c.parts | c.workstation in p.workstation\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c : Component | all parts : c.parts | c.workstation in parts.*workstation\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c : Component | all p : c.parts | c.workstation in p.^workstation\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 4,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n    all c : Component | c.workstation in c.parts.workstation.succ\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 4,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c: Component | c.^parts.workstation != none implies c.workstation in c.^parts.workstation.^succ\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 4,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\n    all c: Component | all p: c.parts | c.workstation in p.workstation.succ\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 4,
+            "syntactic_count": 3,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c : Component | c.parts.workstation in c.workstation.*(~succ) \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c: Component, p: c.parts |\n\t\tp in Component implies p.workstation in c.workstation.*~succ\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c : Component | c.parts.workstation in *succ.(c.workstation) \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 3,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\t\n  all c : Component | c.workstation != end => all c1 : parts.c & Component | no c1.workstation\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 3,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\t\n  all c : Component | one c.workstation.succ => (all c1 : parts.c & Component | c1.workstation = begin)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 3,
+            "syntactic_count": 3,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\t\n  \n  all c : Component | (some p : c.parts & Component | p.workstation != end) implies c.workstation = begin\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\t\n  \n  all c : Component | c.workstation != begin => all p : c.parts & Component | p.workstation = end\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\t\n  all c : Component | c.workstation != end => all c1 : parts.c & Component | c1.workstation = begin\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 3,
+            "syntactic_count": 3,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\n  all c : Component | parts.c in c.^workstation\n  \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\n  all c : Component | parts.c in c.workstation.^succ.parts\n  \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\n  all c : Component | parts.c in c.workstation.^succ\n  \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 3,
+            "syntactic_count": 3,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c : Component | all comp : c.parts | comp.workstation in c.parts.workstation.^succ\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c : Component | all comp : c.parts | c.parts.workstation in c.parts.workstation.^succ\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c : Component | all comp : c.parts | comp in Component => comp.workstation in c.parts.workstation.^succ\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 3,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c: Component | c.workstation in (c.^parts).workstation.^succ\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 3,
+            "syntactic_count": 1,
+            "correct": true,
+            "elems": [
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c:Component | all p:c.^parts.workstation | c.workstation not in p and c.workstation in p.^succ\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 3,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c : Component, w : Workstation| c in workstation.w implies c.^(parts) in (workstation.(^(succ).w)).^(parts)\n \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 3,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c : Component | c.parts.workstation not in c.workstation.^succ or lone Workstation or no c.parts\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c : Component | no c.parts or c.parts.workstation not in c.workstation.^succ or lone Workstation or no c.parts\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 3,
+            "syntactic_count": 2,
+            "correct": true,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\n\tall disj c : Component, p : Product | p in c.parts implies (p in Material or p.workstation not in (c.workstation.^succ + c.workstation))\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c : Component | all p : c.parts | p in Component implies p.workstation not in c.workstation + c.workstation.^succ\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 3,
+            "syntactic_count": 3,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c:Component | c.workstation != none implies c.parts != none\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\t\n  all c : Component | no c.parts => no c.workstation\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c:Component, ws:Workstation | ws in c.workstation implies once #(c.parts) >0\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\t\n  all c : Component | all c1 : c.parts & Component | one c1.workstation and c1.workstation != end => no c.workstation\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\t\n  all c : Component | all c1 : c.^parts & Component | one c1.workstation and c1.workstation != end => no c.workstation\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\t\n  all c : Component | c.workstation != end => all c1 : parts.c & Component | c1.workstation != c.workstation and c1.workstation = begin\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\t\n  all c : Component | (one c.workstation.succ => (all c1 : parts.c & Component | c.workstation != c1.workstation and (c1.workstation = begin)))\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\t\n  all c : Component | one c.workstation implies all c1 : c.^parts & Component | c1.workstation = end \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\t\n  all c : Component | c.workstation != begin implies (all c1 : (^parts).c & Component | c1.workstation != c.workstation)\n  \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\n    all c: Component | all p: c.parts | ((c.workstation in p.workstation.succ) or (c.workstation in end and p.workstation in begin)) or c.workstation = p.workstation\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\t\n  all c : Component | (one c.workstation) implies (all c1 : (^parts).c & Component | no c1.workstation or c1.workstation = begin)\n  \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n    all c : Component | c.workstation not in begin implies no c.parts.workstation\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\t\n  all c : Component | some c.workstation => all c1 : parts.c & Component | c1.workstation = begin or no c1.workstation\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall p: Component, c: Component | p in c.*parts => c.workstation in p.workstation.^succ\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 2,
+            "correct": true,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n    all c: Component | (c.parts.workstation & c.workstation.*succ) = none\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c: Component, p: c.parts | p not in workstation.(c.workstation.*succ)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n  // The parts of a component must be assembled before it in the production line\n  all c:Component | some (c.parts & Component) => c.workstation.*succ in c.parts.workstation\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n  // The parts of a component must be assembled before it in the production line\n  all c:Component | some (c.parts & Component) => c.workstation.*succ in c.parts.^workstation\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n  // The parts of a component must be assembled before it in the production line\n  all c:Component | some (c.parts & Component) => c.workstation.^succ in c.parts.workstation.^succ\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n  // The parts of a component must be assembled before it in the production line\n  all c:Component | no c.parts or some (c.parts & Component) => c.parts.workstation not in c.workstation\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n  // The parts of a component must be assembled before it in the production line\n  all c:Component | no c.parts or some (c.parts & Component) => c.parts.^workstation not in c.workstation\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n  // The parts of a component must be assembled before it in the production line\n  all c:Component | some (c.parts & Component) => c.parts.workstation.^succ not in c.workstation.*succ\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n  // The parts of a component must be assembled before it in the production line\n  all c:Component | no c.parts or some (c.parts & Component) => c.parts.workstation.^succ not in c.workstation.*succ\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n  // The parts of a component must be assembled before it in the production line\n  all c:Component | some (c.parts & Component) => c.parts.workstation.*succ not in c.workstation.*succ\n  Component.workstation != Component.parts.workstation\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n  // The parts of a component must be assembled before it in the production line\n  all c:Component | some (c.parts & Component) => c.parts.workstation.*succ not in c.workstation.*succ\n  Component.workstation not in Component.parts.workstation\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n  // The parts of a component must be assembled before it in the production line\n  all c:Component | some (c.parts & Component) => c.parts.workstation.*succ not in c.workstation.*succ\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n  \tall a,b : Component | b in a.parts implies a.workstation in ^succ.workstation.b\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n  // The parts of a component must be assembled before it in the production line\n  all c1,c2:Component | c1 in c2.parts => c2.workstation in c1.workstation.^parts\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c: Component | one ws1: Workstation | ws1 in c.workstation => all p: c.parts | one ws2: Workstation | ws2 in p.workstation or p in Material\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n  // The parts of a component must be assembled before it in the production line\n  all c:Component | some (c.parts & Component) => c.workstation in c.*parts.workstation.^succ\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c: Component | c.workstation in c.*parts.workstation.^succ or c.parts in Material\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c : Component | c.parts.workstation in c.workstation \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tno Workstation\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c : Component | parts.c in Component implies c.~parts.workstation in c.workstation.succ \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n  // The parts of a component must be assembled before it in the production line\n  all c: Component, p: c.parts, ws_c: c.workstation, ws_p: p.workstation |\n    ws_p in end and ws_p in ws_c.^succ\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c: Component, p: c.parts | p.workstation in (begin.^succ & c.workstation)\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c : Component | all p : c.parts & Component | p.workstation in (begin.succ.*succ & c.workstation)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c1, c2: Component | c2 in c1.^parts => c2 in c1.workstation.^~succ\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n  all p: Product | all parts: p.parts | some w: Workstation | parts in w\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c : Component |\n  \t\tc.parts in workstation.(*succ.(c.workstation))\n  \t\t\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c: Component | (all p: c.parts | p in workstation.(*succ.(c.workstation)))\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c : Component | c.parts.workstation not in c.workstation.^succ or lone Workstation\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c : Component | no c.parts or c.parts in Material or c.parts.workstation not in c.workstation.^succ or lone Workstation\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c:Component, ws:Workstation | ws in c.workstation implies ws in ((c.parts).workstation  & (c.parts).workstation.^succ)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c:Component, ws:Workstation | ws in c.workstation implies once ws in ((c.parts).workstation  & (c.parts).workstation.^succ)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n  \tall p : Product | all main : Product | p in main.^(parts.parts) implies  \t\t\tmain.workstation in p.*(succ)\n  \n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n  \tall p : Product | all main : Product | p in main.^(parts.parts) implies  \t\t\tmain.workstation in p.^(succ.succ)\n  \n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c : Component | c.workstation in c.(~parts).workstation.*(~succ) implies c.(~parts) in Component\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c : Component |  c.(~parts).workstation.^(~succ)-c in c.workstation.~succ-c implies \t c.(~parts) in Component\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c : Component |  c.(~parts).workstation.^(~succ) in c.workstation.~succ implies \t c.(~parts) in Component\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c : Component |  c.workstation in c.parts.workstation.succ or c.parts = none\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c: Component | #c.parts != 0 implies c.workstation in c.parts.workstation.*succ \n         \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n    \n    all c: Component, p: Product |\n        p in c.parts implies \n            \n            all ws1: Workstation, ws2: Workstation |\n                ws1 in p.workstation and ws2 in c.workstation and ws1 != ws2 implies ws1 in ws2.^succ\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c: Component | c.^parts.workstation != none implies c.workstation in c.^parts.workstation.succ\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": true,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n  \tall c: Component | all p: c.^parts | p.workstation != none implies\n  \t\tc.workstation in p.workstation.^succ\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c: Component |\n  \t\tall p: c.parts |\n  \t\t\t(some ws1, ws2: Workstation | ws2 = c.workstation \n  \t\t\tand ws1 in p.workstation  and ws2 = ws1.^succ)\n\t\t\t\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n \n  \t\n\tall c: Component |\n  \t\tall p: c.parts |\n  \t\t\t(some ws1, ws2: Workstation | ws2 = c.workstation \n  \t\t\tand ws1 in p.workstation  and ws1 in ws2.^succ)\n\t\t\t\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c : Component | c.^(Component <: parts. Component <:workstation) in ^succ.(c.workstation) \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n    all c: Component | some c.workstation implies (all p: Product | p in c.^parts implies no p.workstation)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n    all c: Component | some c.workstation implies (all p: Product | p in c.^parts implies no p.workstation or p in Material)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n    all c: Component | some c.workstation implies (all p: Product | p in c.^parts implies p.workstation = end or p in Material)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n    all c: Component | some c.workstation implies (all p: Product | p in c.^parts implies some p.workstation)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c: Component | all p: c.parts | some c.workstation implies some p.workstation\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 2,
+            "correct": true,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\t\tall c: Component | all p: c.parts & Component | some (c.workstation & p.workstation.^succ)\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c: Component | (all p: c.parts & Component | p in workstation.(^succ.(c.workstation)))\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c: Component | c.workstation in (c.^parts).workstation.*succ\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c: Component | c.workstation in (c.*parts).workstation.^succ\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": true,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n  all c : Component |c.parts.workstation in (begin.*succ - c.workstation.*succ)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c: Component, w: c.workstation | all p: c.parts | w in p.^succ\n }"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c : Component | none = (c.workstation).workers => none = (c.workstation).succ\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c : Component | c.workstation in (c.parts & Component).workstation.^succ and c.workstation not in (c.parts & Component).workstation\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c : Component | c.^parts in workstation.^succ.(c.workstation)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c : Component | (c.parts + c.workstation) in (c.parts + c.workstation.succ)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c : Component | no(parts.c.workstation & c.workstation.^succ)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\t\n  all c : Component | c.workstation != begin => some c.parts\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\t\n  all c : Component | (c.parts & Component).workstation != end => no c.workstation\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\t\n  all c : Component | all c1 : c.parts & Component | one c1.workstation => no c.workstation\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\t\n  all c : Component | (one c.workstation.succ => (all c1 : parts.c & Component | no c1.workstation))\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\t\n  all c : Component | (c.workstation != end => (all c1 : parts.c & Component | no c1.workstation or c1.workstation = begin))\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\t\n  all c : Component | (c.workstation != end => (all c1 : parts.c & Component | c.workstation != c1.workstation and (no c1.workstation or c1.workstation = begin)))\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\t\n  all c : Component | (one c.workstation.succ => (all c1 : parts.c & Component | c.workstation != c1.workstation and (no c1.workstation or c1.workstation = begin)))\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\t\n  all c : Component, c1 : parts.c & Component | (one c.workstation.succ and c1.workstation = begin) or (c.workstation = end and c1.workstation != begin)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\t\n  all c : Component, c1 : parts.c & Component | (one c.workstation.succ and no c1.workstation) or (c.workstation = end and c1.workstation != begin)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\t\n  all c : Component, c1 : parts.c & Component | (one c.workstation.succ and no c1.workstation) or (no c.workstation and one c1.workstation)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\t\n  all c : Component, c1 : parts.c & Component | (one c.workstation.succ and c1.workstation = begin) or (no c.workstation and one c1.workstation)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\t\n  all c : Component, c1 : parts.c & Component | (one c.workstation.succ and c1.workstation = begin) or (c.workstation = end and one c1.workstation)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\t\n  all c : Component, c1 : parts.c & Component | (one c.workstation.succ and c.workstation != begin and c1.workstation = begin) or (c.workstation = end and one c1.workstation)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\t\n  all c : Component | c.workstation = begin => all c1 : c.parts & Component | c1.workstation = begin or no c1.workstation\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\t\n  all c : Component | c.workstation = begin => all c1 : parts.c & Component | c1.workstation = begin or no c1.workstation\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\t\n  all c : Component | some c1 : c.parts & Component | some c1.workstation implies no c.workstation\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\t\n   all c: Component | {\n        all p: c.parts | {\n            all w1, w2: c.workstation |\n                w1 in w2.succ implies p.workstation in w2\n        }\n    }\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\t\n  all c : Component | one c.workstation implies (all c1 : (^parts).c & Component | c1.workstation = end)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\t\n  all c : Component | one c.workstation implies (all c1 : (^parts).c & Component | c1.workstation = end and c1.workstation != begin)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\t\n  \n  all c : Component | c.workstation != begin => all p : c.parts & Component | p.workstation in end\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\t\n  \n  all c : Component | some p : c.parts & Component | p.workstation != end implies c.workstation = begin\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\t\n  all c : Component | (c.workstation in Workstation - end) implies (all c1 : (^parts).c & Component | c1.workstation = begin)\n  \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\t\n  all c : Component | (one c.workstation) implies (all c1 : (^parts).c & Component | c1.workstation = begin)\n  \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\t\n  all c : Component | (one c.workstation) implies (all c1 : (^parts).c & Component | no c1.workstation)\n  \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\n    all c: Component | all p: c.parts | (c.workstation in p.workstation.succ) or (c.workstation in begin and p.workstation in end)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\n    all c: Component | all p: c.parts | (c.workstation in p.workstation.succ) or (c.workstation in end and p.workstation in begin)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c : Component| (c.parts) in (workstation.( ^(succ).(c.workstation) )).parts\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n    all c: Component | not c.parts.workstation in c.workstation.*succ\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n  \tno c: Component | c.workstation in c.parts.workstation.^succ\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n  \tall c: Component | all p: parts.c | c.workstation in p.workstation.^succ\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n    all c : Component | c.workstation not in begin implies c.parts.workstation in end\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\t(all c: Component|\n  \tc.parts.workstation in end iff c.workstation in begin)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall p: Component, c: Component | p in c.*parts => c.workstation in p.workstation.*succ\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\n  all c: Component | \n    all p: c.parts | \n      (p = c or p in c.^succ)\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c: Component | all wsfromParts:c.^parts.workstation.^succ | c.workstation in wsfromParts\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c: Component | all wsfromParts:c.^parts.workstation.^succ | c.workstation in wsfromParts-c.workstation\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c:Component | all p:c.parts | c.workstation not in p.^workstation\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c:Component | all p:c.^parts.workstation | c.workstation not in p\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c : Component | Workstation in *succ.c.workstation \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c : Component | Workstation in *succ.(c.workstation) \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c : Component | c.^parts.workstation not in (begin + end)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c:Component | lone ws:c.^parts.workstation | c.workstation in ws\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n  // The parts of a component must be assembled before it in the production line\n  all c:Component | c.parts.workstation.*succ in c.workstation.*succ\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n  // The parts of a component must be assembled before it in the production line\n  all c:Component | c.workstation.succ in c.parts.workstation.*succ \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n  // The parts of a component must be assembled before it in the production line\n  all c:Component | c.workstation not in c.parts.workstation.*succ \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n  // The parts of a component must be assembled before it in the production line\n  all c:Component | no (c.workstation.*succ & c.parts.workstation.*succ)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n  // The parts of a component must be assembled before it in the production line\n  all c:Component | some (c.parts & Component) => c.workstation.^succ in c.parts.workstation.*succ\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n  // The parts of a component must be assembled before it in the production line\n  all c:Component | some (c.parts & Component) => c.workstation.*succ in c.*parts.workstation\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n  // The parts of a component must be assembled before it in the production line\n  all c:Component | some (c.parts & Component) => c.workstation.*succ in c.^parts.workstation\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n  // The parts of a component must be assembled before it in the production line\n  all c:Component | no c.parts or some (c.parts & Component) => c.workstation not in c.parts.workstation.^succ\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n  // The parts of a component must be assembled before it in the production line\n  all c:Component | some (c.parts & Component) => c.parts.workstation.*succ not in c.workstation\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n  // The parts of a component must be assembled before it in the production line\n  all c:Component | some (c.parts & Component) => c.workstation in c.parts.workstation\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n  // The parts of a component must be assembled before it in the production line\n  all c:Component | some (c.parts & Component) => c.workstation in c.parts.workstation.^succ && c.workstation not in c.parts.workstation\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c: Component | c.workstation not in begin\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c: Component | some c.parts implies c.workstation not in begin\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c: Component | some c.parts implies c.workstation in end\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n  all c1, c2 : Component | all w1, w2 : Workstation | w1 in c1.workstation and w2 in c2.workstation and c2 in c1.^parts implies w2 in w1.^succ\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c: Component | Workstation in c.workstation => all p: c.parts | Workstation in c\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c: Component | one ws1: Workstation | ws1 in c.workstation => all p: c.^parts | one ws2: Workstation | ws2 in p.workstation or p in Material\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c: Component | one ws1: Workstation | ws1 in c.workstation => all p: c.*parts | one ws2: Workstation | ws2 in p.workstation or p in Material\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c: Component | (c.workstation in Workstation) => all p: c.parts | p in Material or some ws: Workstation | ws in p.workstation\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c: Component | (Workstation in c.workstation) => all p: c.parts | p in Material or some ws: Workstation | ws in p.workstation\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c: Component | one ws: Workstation | ws in c.workstation => all p: c.^parts | p in Material or one ws: Workstation | ws in p.workstation\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c: Component | one ws: Workstation | ws in c.workstation => all p: c.*parts | p in Material or one ws: Workstation | ws in p.workstation\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c: Component | one ws: Workstation | ws in c.workstation => all p: c.parts | ws in p.workstation.^succ\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c: Component | one ws: Workstation | ws in c.workstation => all p: c.parts | ws in p.workstation.^succ or p in Material\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c1, c2: Component | all w1, w2: Workstation | w1 in c1.workstation and w2 in c2.workstation and c2 in c1.^parts => w1 in w1.^succ\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": true,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall disj c1, c2 : Component | all w1, w2 : Workstation| w1 in c1.workstation and w2 in c2.workstation and c2 in c1.^parts implies w1 in w2.^succ \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tsome Component.parts\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c : Component | c in Component.parts implies end not in c.workstation\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c : Component | parts.c in Component implies c.~parts.workstation in c.workstation.~succ \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c1, c2: Component | c1 in c2.parts implies some ws: c1.workstation | ws in c2.workstation.*(succ)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n      all c: Component, p: c.parts | one ws1, ws2: c.workstation | ws1 in p.workstation and ws2 in c.workstation and ws1 in ws2.^succ\n\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c: Component, p: c.parts | p.workstation in c.workstation.succ\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c: Component, p: c.parts | c.workstation.succ in p.workstation\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c: Component, p: c.parts | c.workstation.succ in p.workstation.succ\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n  \tall c: Component, p: Component |\n  \t\tp in c.^parts => p.workstation in c.workstation.~succ\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n  \tall c: Component, p: Component |\n  \t\tp in c.^parts => p.workstation in c.workstation.succ\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": true,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n  all c : Component | all p : (c.parts & Component) | one c.workstation & p.workstation.^succ\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c : Component | c.workstation = begin or c.workstation in c.parts.workstation.^succ\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": true,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall disj c1, c2 : Component | c2 in c1.parts implies c1.workstation in c2.workstation.^succ\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c: Component | all p : c.parts | some ws:Workstation |\n  \t\tws in p.workstation\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n  \t// The parts of a component must be assembled before it in the production line\n  \tall c: Component, p: c.parts, ws_c: c.workstation, ws_p: p.workstation |\n    \tws_p in ws_c.^succ and ws_p in begin.^succ and ws_c in begin.^succ\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n  \t// The parts of a component must be assembled before it in the production line\n  \tall c: Component, p: c.parts, ws_c: c.workstation, ws_p: p.workstation |\n    ws_p in ws_c.^succ and ws_p in begin.^succ and ws_c in end.^succ\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n  \t// The parts of a component must be assembled before it in the production line\n  \tall c: Component, p: c.parts, ws_c: c.workstation, ws_p: p.workstation |\n    ws_p in ws_c.^succ and ws_c in end.^succ\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n  \t// The parts of a component must be assembled before it in the production line\n  \tall c: Component, p: c.parts, ws_c: c.workstation, ws_p: p.workstation |\n    ws_p in ws_c.^succ and ws_p in end.^succ\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n  \t// The parts of a component must be assembled before it in the production line\n  \tall c: Component, p: c.parts, ws_c: c.workstation | one ws_e : end |\n    ws_e in ws_c.^succ \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n  \t// The parts of a component must be assembled before it in the production line\n  \tall c: Component, p: c.parts, ws_p: p.workstation | one ws_e : end |\n    ws_e in ws_p.^succ \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c: Component, p: c.parts | p.workstation in (p.workstation.^succ & c.workstation)\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c: Component, p: c.parts | p.workstation in (begin.*succ & c.workstation)\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\t\n    all c : Component, p : c.parts | \n        some ws : c.workstation, wp : p.workstation |\n            wp not in ws.^succ\n  \n  \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\t\n    all c : Component, p : c.parts & Component | \n  \t\tsome c.workstation & p.workstation\n  \n  \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\t\n    all c : Component, p : c.parts & Component | \n  \t\tc.workstation = p.workstation\n  \n  \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n    \n    all c : Component | \n        all p : c.parts | \n            p.workstation in c.workstation.~succ and\n            \n            c.workstation in p.workstation.succ\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c: Component | all c_parts: c.parts | \n  \t\tsome c.workstation implies some (c_parts.workstation & end)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c: Component | all c_parts: (c.parts & Component) | \n  \t\tsome c.workstation implies some (c_parts.workstation & end)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c: Component | all c_parts: (c.parts & Component) | \n  \t\tsome c.workstation implies \n  \t\t\tsome (c_parts.workstation & end) and no (c_parts.workstation & begin)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": true,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n    // The parts of a component must be assembled before it in the production line\n    all c: Component | \n        all p: c.parts & Component |  \n            some ws1, ws2: Workstation | {\n                p.workstation = ws1    \n                c.workstation = ws2    \n                ws1 in ws2.^~succ      \n            }\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n  all c: Component | all p: c.parts |\n        lone ps: Workstation | \n            ps in p.workstation and \n            lone pc: Workstation | \n                pc in c.workstation and \n                ps in pc.^succ\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n  all c: Component, w: Workstation | w in c.workstation implies ( c.parts.workstation in *(succ).w)\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c : Component, p : c.*parts | c.workstation in p.workstation.^succ\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n    \n    \n    all c : Component, p : c.parts | \n        some wsPart, wsComponent : Workstation | \n            p in workstation.wsPart and \n            c in workstation.wsComponent and \n            wsComponent-> wsPart in succ\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n    \n    \n    all c : Component, p : c.parts | \n        one w : Workstation | \n            p in workstation.w and \n            c in workstation.w\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n    \n    \n    all c : Component, p : c.parts | (one w : Workstation |  p in workstation.w and c in workstation.w)\n\n\tall c : Component, p : c.parts | c in p.*succ \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c : Component | c.parts.workstation not in c.workstation.succ\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c : Component | no c.parts or c.parts in Material or c.parts.workstation not in (c.workstation + c.workstation.^succ) or lone Workstation\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c : Component | (no c.parts or c.parts in Material or c.parts.workstation not in (c.workstation + c.workstation.^succ) or lone Workstation) and one c.workstation\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c : Component | (no c.parts or c.parts in Material or no (c.parts.workstation & (c.workstation + c.workstation.^succ)) or lone Workstation) and one c.workstation\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c : Component | (no c.parts or c.parts in Material or no (c.parts.workstation & c.workstation.^succ) or lone Workstation) and one c.workstation\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c: Component | all p: c.parts | all w: c.workstation | w in p.workstation.succ or c.workstation = p.workstation\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c: Component | all p: c.parts | p in Component \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c:Component, ws:Workstation | c.parts in c implies before c in ws\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c:Component, ws:Workstation | ws in c.workstation implies once ws in (c.parts).workstation\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c:Component, ws:Workstation | ws in c.workstation implies once ws in ((c.parts).workstation  & c.workstation.^succ)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c:Component, ws:Workstation | ws in (c.parts).workstation implies ws in (c.workstation  & c.workstation.^succ)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c:Component, ws:Workstation | (ws in (c.parts).workstation) or (ws in (c.parts).workstation.^succ) implies before ws in (c.workstation & c.workstation.^succ)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c:Component, ws:Workstation | ws in ((c.parts).workstation & (c.parts).workstation.^succ) implies before ws in c.workstation\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c:Component, ws:Workstation | c.parts in Component and ws in (c.parts).workstation implies ws in (c.workstation & c.workstation.^succ) \n  }"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c:Component, ws:Workstation | c.parts in Component and ws in (c.parts).workstation and ws in (c.parts).workstation implies ws in c.workstation \n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c:Component, ws:Workstation | ws in (c.parts).workstation and ws in (c.parts).workstation.^succ implies ws in c.workstation \n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\t  all c: Component, ws: Workstation, p: c.parts | ws in p.workstation or ws in p.workstation.^succ implies ws in c.workstation\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n  // The parts of a component must be assembled before it in the production line\n  all c: Component, p: c.parts&Component |\n    all ws_part: p.workstation, ws_c: c.workstation |\n      ws_part in begin.^succ and ws_part in ws_c.^succ\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\n\tall disj c1, c2 : Component | c2 in c1.parts implies c2.workstation in (c1.workstation.*succ - c1.workstation.^succ) \t\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\n\tall disj c1, c2 : Component | c2 in c1.parts implies c2.workstation in (c1.workstation.*succ - c1.workstation.^succ - c1.workstation) \t\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c : Component | all p : c.parts | p in Component implies p.workstation not in c.^workstation\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n  \tall p : Product | all main : Product | p in main.^(parts.parts) implies  \t\t\tmain.workstation in p.workstation.^(succ.succ)\n  \n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c:Component | one c.workstation \n\t\t\t\t\timplies\n\t\t\t\t\t(all p:c.^parts | one p.workstation) \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": true,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c:Component | one c.workstation \n\t\t\t\t\timplies\n\t\t\t\t\t(all p:Component & c.^parts | c.workstation in p.workstation.^succ) \n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c : Component , p : ^parts.c |\n  \t\tp.workstation in ^succ.(c.workstation)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c : Component , p : parts.c |\n  \t\tp.workstation in ^succ.(c.workstation)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c: Component | c.^parts.workstation in ^succ.c.workstation\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c : Component, p : c.parts | c.workstation in ^succ.(c.workstation)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall x: Component, w : x.workstation, y: x.parts & Component | y.workstation in (w.succ)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n  all c1 : Component, c2 : Component  | c1.parts in c2.^parts implies c1.workstation not in c2.workstation.^succ\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n  all c1 : Component, c2 : Component  | c1.parts in c2.parts implies c1.workstation not in c2.workstation.succ\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n  all c1 : Component, c2 : Component  | c1 in c2.parts implies c1.workstation not in c2.workstation.succ\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n  all c1 : Component, c2 : Component  | c1 in c2.parts implies c1.workstation not in c2.workstation.^succ\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n  all c1 : Component, c2 : Component  | c1 in c2.parts implies c1.workstation not in c2.workstation.^succ and (c1 != c2)\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n  some c1 : Component | all c2 : c1.^succ | some p : c2.parts |  p in c1 \n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": true,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\nall c1 : Component, c2 : Component  | c1 in c2.parts implies some w : Workstation | \n    w in c1.workstation.^succ and c2.workstation = w\n\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n  all c1 : Component , c2 : Component | c1 in c2.parts implies c2.workstation in c1.workstation.succ\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c : Component | c.(~parts).workstation in c.workstation.~succ \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c : Component | c.workstation in c.(~parts).workstation.*(~succ)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c : Component | c.workstation in c.(~parts).workstation.*(~succ) iff c.(~parts) in Component\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c : Component | c.workstation in c.(~parts).workstation.^(~succ) implies \t c.(~parts) in Component\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c : Component |  c.(~parts).workstation.^(~succ)-c.workstation in c.workstation.~succ-c.workstation implies \t c.(~parts) in Component\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c : Component |  c.workstation in c.parts.workstation.succ or c.parts.workstation = \tnone\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tsome c: Component, p: c.parts |\n        some ws: c.workstation, wsPart: p.workstation |\n            wsPart in ws.(~succ)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall m:Material | all c:Component | m in c.parts and c.workstation = none\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall m:Material | some c:Component | m in c.parts and c.workstation = none\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall m:Material | m in Component.parts\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c: Component | c.parts.workstation != none implies c.workstation in c.parts.workstation.^succ\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c: Component | c.^parts.workstation != none implies c.workstation in c.parts.workstation.^succ\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c: Component | c.^parts.workstation != none implies \n  \t\tc.^parts.workstation.^succ in c.workstation.^~succ\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c: Component | c.^parts.workstation != none implies\n  \t\tc.workstation in c.^parts.workstation.*succ\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": true,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall disj c1, c2:Component | c2 in c1.parts \n  \t\t\t\t\t\t\t\t\timplies c2 in c1.workstation.^(~succ).~workstation\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c: Component |\n  \t\tall p: c.parts |\n  \t\t\t(some ws: Workstation | ws in p.workstation and ws not in end)\n\t\t\tand (some ws1: Workstation | ws1 in c.workstation and ws1 in end  )\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c: Component |\n  \t\tall p: c.parts |\n  \t\t\t(some ws: Workstation | ws in p.workstation )\n\t\t\tand (some ws1: Workstation | ws1 in c.workstation and ws1 in end  )\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c: Component |\n  \t\tall p: c.parts |\n  \t\t\t(#p.workstation > 0 implies (some ws: Workstation | ws in p.workstation)\n\t\t\tand some ws2: Workstation | ws2 in end and ws2 in c.workstation\n)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c: Component |\n  \t\tall p: c.parts |\n  \t\t\t(some ws1, ws2: Workstation | ws1 in end and ws1 in c.workstation and\n  \t\t\t(#p.workstation > 0 implies ws2 in p.workstation) )\n\t\t\t\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c: Component |\n  \t\tall p: c.parts |\n  \t\t\t(some ws1, ws2: Workstation | ws2 = c.workstation \n  \t\t\tand ws1 in p.workstation and ws2 in end and ws2 = ws1.^succ)\n\t\t\t\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n  \tall m: Material | m.parts = none\n  \t\n\tall c: Component |\n  \t\tall p: c.parts |\n  \t\t\t(some ws1, ws2: Workstation | ws2 = c.workstation \n  \t\t\tand ws1 in p.workstation  and ws2 = ws1.^succ)\n\t\t\t\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n  \tall m: Material | m.parts = none\n  \t\n\tall c: Component |\n  \t\tall p: c.parts |\n  \t\t\t(some ws1, ws2: Workstation | ws2 = c.workstation \n  \t\t\tand ws1 in p.workstation  and ws2 in ws1.^succ)\n\t\t\t\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n \n  \t\n\tall c: Component |\n  \t\tall p: c.parts |\n  \t\t\t(some ws1, ws2: Workstation | ws2 = c.workstation \n  \t\t\tand ws1 in p.workstation  and ws1 = ws2.^succ)\n\t\t\t\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n \tall m: Material | #m.parts = 0\n  \t\n\tall c: Component |\n  \t\tall p: c.parts |\n  \t\t\t(some ws1, ws2: Workstation | ws2 = c.workstation \n  \t\t\tand ws1 in p.workstation  and ws1 in ws2.^succ)\n\t\t\t\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n \tall m: Material | #m.parts = 0\n  \t\n\tall c: Component |\n  \t\tall p: c.parts |\n  \t\t\t(some ws1, ws2: Workstation | ws2 = c.workstation \n  \t\t\tand ws1 in p.workstation  and ws1 in ws2.*succ)\n\t\t\t\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n  \t\n\tall c: Component |\n  \t\tall p: c.parts |\n  \t\t\t(some ws1, ws2: Workstation | \n  \t\t\t\tp not in Material implies (\n  \t\t\t\tws2 = c.workstation and ws1 in p.workstation  and ws1 in ws2.*succ))\n\t\t\t\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": true,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall c: Component | \n\t\tall p: c.parts |\n\t\t\tp in Component implies \n\t\t\t\t(some disj ws1, ws2: Workstation |\n  \t\t\t\t\tws1 in p.workstation and ws2 in c.workstation and ws2 in ws1.^succ)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n    all c: Component | some c.workstation implies all p: Product | some p.workstation\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n    all c: Component | some c.workstation implies (all p: Product | p in c.^parts implies some p.workstation or p in Material)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n    all c: Component | some c.workstation implies (all p: Product | p in c.^parts implies p.workstation = end - begin or p in Material)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n    all c: Component | some c.workstation implies (all p: Product | p in c.^parts implies p.workstation = end and p.workstation != begin or p in Material)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall p : Product | all p : p.parts | (p in Component implies (some ws : p.workstation.^~succ | ws in p.workstation)) \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall p : Product | all p : p.parts | (p in Component implies (some ws : p.workstation.*~succ | ws in p.workstation)) \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall p : Product | all pp : p.parts | (pp in Component implies (some ws : p.workstation.*~succ | ws in pp.workstation)) \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": true,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// The parts of a component must be assembled before it in the production line\n\tall p : Product | all pp : p.parts | (pp in Component implies (some ws : p.workstation.^~succ | ws in pp.workstation)) \n}"
+                }
+            ]
+        }
+    ]
+}

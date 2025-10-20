@@ -1,0 +1,1767 @@
+{
+    "original": "dyj49tEp7j6aWAQQX",
+    "cmd": "inv8",
+    "pred": "this/inv8",
+    "entry_count": 602,
+    "semantic_count": 108,
+    "syntactic_count": 250,
+    "scope": 3,
+    "groups": [
+        {
+            "entry_count": 226,
+            "syntactic_count": 49,
+            "correct": true,
+            "elems": [
+                {
+                    "entry_count": 41,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n\tall c: (Component & Dangerous) | no c.workstation.workers & Human\n}"
+                },
+                {
+                    "entry_count": 38,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n  all c: Component | c in Dangerous implies no (c.workstation.workers & Human)\n}"
+                },
+                {
+                    "entry_count": 21,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n\t\n  \t\n\tall o: Component, h: Human | (o in Dangerous) implies (h not in o.workstation.workers)\n}"
+                },
+                {
+                    "entry_count": 11,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n\tno Dangerous.workstation.workers & Human\n}"
+                },
+                {
+                    "entry_count": 7,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n  \tall c: Component | c in Dangerous => no h: Human | h in c.workstation.workers\n\n}"
+                },
+                {
+                    "entry_count": 7,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n  all c: Component & Dangerous | all x : c.workstation | no (x.workers & Human)\n\n}"
+                },
+                {
+                    "entry_count": 6,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n\tno ((Dangerous&Component).workstation.workers & Human)\n}"
+                },
+                {
+                    "entry_count": 5,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n\tall d:Dangerous | all wws:d.workstation.workers | wws not in Human\n}"
+                },
+                {
+                    "entry_count": 5,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n\tall c: Component & Dangerous | (no h: Human | h in (c.workstation).workers)\n}"
+                },
+                {
+                    "entry_count": 5,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n\tno Dangerous.workstation & workers.Human\n}"
+                },
+                {
+                    "entry_count": 5,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n    all  d : Dangerous, h : Human | h not in d.workstation.workers \n\n}"
+                },
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n\tno (Component & Dangerous).workstation & workers.Human\n}"
+                },
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n\tall h : Human , ws : Workstation, c : Component | c in Dangerous and ws in c.workstation implies h not in ws.workers\n}"
+                },
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n\tall c : Component | some(c&Dangerous) implies no(c.workstation.workers&Human) \n}"
+                },
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n \tall c : Component, w: Workstation, h:Human | (c in Dangerous and c->w in workstation) implies (not w->h in workers)\n\n}"
+                },
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n  all c : Component , h : Human | c in Dangerous implies not h in c.workstation.workers\n\n}"
+                },
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n     all d : Dangerous, wo : Workstation, h : Human | \n        d in workstation.wo implies h not in wo.workers\n\n}"
+                },
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n\tall c : Component & Dangerous | none = (c.workstation).workers & Human\n\t\n}"
+                },
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n\tall c:Component | c in Dangerous implies (c.workstation.workers & Human = none)\n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n\tall ws: Workstation, h: Human, c: Component|\n  \t\t(h in ws.workers) and (c in Dangerous) implies\n\t\t\tws not in c.workstation\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n  all c : Component | (c in Dangerous) implies (all h:Human | h not in c.workstation.workers)\n\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n\tall d:Dangerous| all w:Workstation | w in d.workstation => no h:Human | h in w.workers\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n    all d: Dangerous, ws: Workstation | \n        ws in d.workstation implies no ws.workers & Human\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n\tall c : Component | all wo : c.workstation | all w : wo.workers | c in Dangerous implies w !in Human\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n\tall c: Component | c in Dangerous implies #(c.workstation.workers & Human) = 0 \n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n\tall c : Component | all wst : c.workstation | c in Dangerous implies wst.workers = wst.workers-Human\n  \n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n\tall c : Component, h : Human, wo : Workstation | c in workstation.wo and c in Dangerous implies h not in wo.workers\n  \n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n\tall c : Component | c in Dangerous => all worker : c.workstation.workers | worker not in Human\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n  \tall h: Human | all c: Component | all cWorkers: c.workstation.workers | c in Dangerous implies h not in cWorkers\n\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n    workers.Human & Dangerous.workstation = none\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n\tall w : Workstation | (some d : Dangerous | d in workstation.w) implies no w.workers & Human\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n\tall c: Component & Dangerous | Human - (c.workstation).workers = Human\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n  all c: Component, wst: Workstation, h: Human | c in Dangerous implies h not in c.workstation.workers\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n  \tall c: Component | all wk: Workstation |  \n  \t( c in Dangerous and wk in c.workstation ) implies no ( wk.workers & Human ) \n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n\tall d: Dangerous | all ws: d.workstation | no h:Human | h in ws.workers\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n\tno c: Dangerous, ws: c.workstation | some w: ws.workers | w in Human\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n  \n  all h : Human | all d : Dangerous  |  no (d.workstation & workers.h)\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n  all c:Component & Dangerous, h:Human | no ((c.workstation).workers & h)  \n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n  \tno c: Component & Dangerous | some c.workstation.workers & Human\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n\tall c: Dangerous | no w: c.workstation.workers | w in Human\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n    \n    all c : Component, ws : Workstation| c in Dangerous => no c.workstation.workers & Human\n  \t\n  \t\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n\tall c : Component, h : Human, ws : c.workstation | c in Dangerous implies h not in ws.workers\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n\tall ws : Workstation, h : Human, d : Dangerous | ws in d.workstation implies h not \t   in ws.workers\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n\tno d: (Dangerous & Component) | \n  \t\t(some ws: Workstation | (ws in d.workstation and \n          (some h: Human | h in ws.workers)))\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n\tall c : Component & Dangerous , ws : c.workstation , h : Human |  h not in ws.workers  \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t\n\tall c : Dangerous , h : Human | not h in c.workstation.workers \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n\tall d : Dangerous, w : d.workstation.workers | no(w & Human)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n  all c: Dangerous | all ws: c.workstation | no w: ws.workers | w in Human\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n  all d : Dangerous, w : Workstation, h : Human | some (w & d.workstation) => no (w.workers & h)  \n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 75,
+            "syntactic_count": 16,
+            "correct": true,
+            "elems": [
+                {
+                    "entry_count": 32,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n  all c:Component | (c in Dangerous) implies (c.workstation.workers in Robot)\n\n}"
+                },
+                {
+                    "entry_count": 19,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n\tall d : Dangerous | d.workstation.workers in Robot\n}"
+                },
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n  \t(Dangerous.workstation.workers) in Robot\n\n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n  all c : Component | all ws: Workstation, w : Worker| c in Dangerous  and (w in ws.workers and ws in c.workstation) implies w in Robot\n\t// Dangerous components cannot be assembled by humans\n\n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n  \tall c: Component | all ws: c.workstation | c in Dangerous implies ws.workers in Robot\n\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n  all x:Dangerous | x.workstation.workers - Robot = none\n\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n\tall d : Dangerous | d in Component implies d.workstation.workers in Robot\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n\nall c : Component | c in Dangerous implies all w : c.workstation | w.workers in Robot\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n\tall c: Component, wk: Worker | c in Dangerous and wk in c.workstation.workers implies wk in Robot\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n\tall d : Component , w : d.workstation.workers| d in Dangerous implies w in Robot\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n\tall c : Component | c in Dangerous implies no c.workstation.workers - Robot\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n\tall cp: ( Component & Dangerous ) | no (cp.workstation.workers & Human)\n  all d: Dangerous | no (d.workstation.workers - Robot)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n\tall c : Component | some c & Dangerous implies ( (c.workstation).workers in Robot)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n\tall c: Component | c in Dangerous implies all w: c.workstation.workers | w in Robot\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n\t\n  all d: Dangerous | no (d.workstation.workers - Robot)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n\tall d : Dangerous & Component, w : d.workstation |\n  \t\tw.workers in Robot\n  \t\t\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 47,
+            "syntactic_count": 34,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 7,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n    \n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n\tall c : Component, w : c.workstation.workers | no(c&Human)\n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n    // Dangerous components cannot be assembled by humans\n    all ws: Workstation |\n        (some c: ws.workstation | c in Dangerous) implies (no h: ws.workers | h in Human)\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n     all d : Dangerous, wo : Workstation | \n        d in wo.(Component <: workstation) implies no h : Human | h in wo.workers\n\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n     all d : Dangerous, wo : Workstation, h : Human | \n        d in wo.workstation implies  h not in wo.workers\n\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n    all c : Component | c in Dangerous implies no workers.workstation.c & Human\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n  all c: Component| c in Dangerous implies c.workers in Human\n  \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n\tall d: Dangerous, h: Human | h not in d.parts\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n\tall d: Dangerous, h: Human | h not in Dangerous.parts\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n    \n    all c : Component, ws : Workstation| c in Dangerous & c.workstation.workers => no ws.workers & Human\n  \t\n  \t\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n \tall d:Dangerous | no d.workstation & Human\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n\tno (Dangerous & (Component & Workstation.workers & Human))\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n    all  d : Dangerous, h : Human | h not in d.workstation \n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n  all c:Component | (c in Dangerous) implies ((workstation.c).workers in Human)\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n    \n    all c : Component, ws : Workstation | c in Dangerous and c in ws => no ws.workers & Human\n  \t\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n\tno workstation.(Component & Dangerous) & workers.Human\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n\tall c: Component & Dangerous | (no h: Human | h in (workstation.c).workers)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n  \n  \n  all c:Component | all work: c.workers | c in Dangerous implies Human not in work\n  \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n\tall c : Component, h : Human, wo : Workstation | c in workstation.wo and c in Dangerous implies h not in workers.wo\n  \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n    \n    all c : Component, ws : Workstation | c in Dangerous and c in ws.workstation => no ws.workers & Human\n  \t\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n\tall x: workstation.parts.Dangerous | x.workers not in Human\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n  all c: Component, p: Product, h: Human | p in Dangerous implies (not h in c.workstation) \n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n\tall d : Dangerous, w : d.workstation | no(d.workers & Human)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n\tno (Human & Dangerous)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n\tall c:Component, h:Human | c in Dangerous implies not h in c.workstation\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n    all d : Dangerous | no workers.workstation.d & Human\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n\tall c : Component & Dangerous | c in Component\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n  all c: Component, wst: Workstation, h: Human | c in Dangerous implies h not in c.workstation \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n  all c : Component | c in Dangerous implies no Human & workers.c\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\nall h: Human | no h.~workers.workstation & Component & Dangerous\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n\tno workstation.Dangerous & workers.Human\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n\tall c : Component, w : c.workstation.workers | c not in Human\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n\tall c:Component | c in Dangerous implies no Human & c.workstation \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n  \tall c:Component, h:Human|\n  \tc in Dangerous  => h not in c.workstation\n  \t\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 44,
+            "syntactic_count": 4,
+            "correct": true,
+            "elems": [
+                {
+                    "entry_count": 33,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n  \tall c: Component | c in Dangerous implies c.workstation.workers not in Human\n\n}"
+                },
+                {
+                    "entry_count": 6,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n  all c:Component | (c in Dangerous) implies not(c.workstation.workers in Human)\n\n}"
+                },
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n    all c : Component & Dangerous | c.workstation.workers not in Human\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n\tall c: Component | (c.workstation.workers in Human) implies (c not in Dangerous)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 12,
+            "syntactic_count": 3,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 10,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n\tall o: Component | (o in Dangerous) implies (Human not in o.workstation.workers)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n  all c : Component & Dangerous | Human not in c.workstation.workers\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n  all c: Component | c in Dangerous implies not Human in c.workstation.workers\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 11,
+            "syntactic_count": 5,
+            "correct": true,
+            "elems": [
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n        all c : Component | all x : c.workstation | c in Dangerous implies x.workers not in Human\n\n\n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n\tall d:Dangerous | all ws:d.workstation | ws.^workers not in Human\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n\tall d:Dangerous | all ws:d.workstation | ws.workers not in Human\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n  \tall ws: Workstation, c: Component | ws.workers in Human and c in Dangerous => ws not in c.workstation\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n  \tall d : Dangerous, w : Workstation | w in d.workstation implies w.workers not in Human\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 9,
+            "syntactic_count": 3,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 7,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n  \tall d:Dangerous| d.workstation.workers not in Human\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n  \tall d : Dangerous | d.^workstation.workers not in Human\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n\tall d : Dangerous | d in Component and d.workstation.workers not in Human\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 8,
+            "syntactic_count": 4,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n  all c:Component | (c in Dangerous) implies (c.workstation.workers in Human)\n\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n  all x:Dangerous | x.workstation.workers - Human = none\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n\tall c: Component, wk: Worker | c in Dangerous and wk in c.workstation.workers implies wk in Human\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n\tall c : Component | all wst : c.workstation | c in Dangerous implies no wst.workers-Human\n  \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 7,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 5,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n\tall o: Component | (o in Dangerous) implies (Robot in o.workstation.workers)\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n\tall c : Component, r : Robot | c in Dangerous implies r in c.workstation.workers\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 5,
+            "syntactic_count": 1,
+            "correct": true,
+            "elems": [
+                {
+                    "entry_count": 5,
+                    "code": "{\n    // Dangerous components cannot be assembled by humans\n    all c: Component, w: Workstation | c in Dangerous and c.workstation = w implies no w.workers & Human\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 5,
+            "syntactic_count": 4,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n  \t\n  all c:Component| c.workers in Human implies c in Dangerous\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n  \t\n  all c:Component| c.workers in Human iff c in Dangerous\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n  all c: Component| c in Dangerous implies c.workers in Human\n  all c:Component| c.workers in Human implies c in Dangerous\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n\tall c : Component | c in Dangerous \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 5,
+            "syntactic_count": 4,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n\tall c: Component, ws: Workstation |\n  \t\tws.workers in Human => c not in Dangerous\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n        all w : Workstation, c : Component | c in Dangerous implies w.^workers not in Human\n\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n        all w : Workstation, c : (Component & Dangerous) | w.workers not in Human\n\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n        all w : Workstation, c : Component | c in Dangerous implies w.workers not in Human\n\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 5,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n  \n  \n  all c:Component | all work: c.workstation | c in Dangerous implies Human not in work.workers\n  \n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n\tall d:Dangerous, ws:Workstation | ws in d.workstation implies Human not in ws.workers\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 5,
+            "syntactic_count": 5,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n  all c: Component, h: Human, ws: Workstation | c in Dangerous implies (not h in ws.workers) \n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n  all h : Human | all c : Component | c in Dangerous implies no workers.h\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n  all c : Component, w: Workstation | c in Dangerous implies (not some h : Human | w->h in workers)\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n\tall c : Component, w : Workstation | c in Dangerous implies no (w.workers & Human)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n  all c: Component, p: Product, h: Human, ws: Workstation | c in Dangerous implies (not h in ws.workers) \n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 4,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n  all c: Component | some c.parts & Dangerous => no c.workstation.workers & Human\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n  all c : Component, p : c.parts | p in Dangerous implies no (c.workstation.workers & Human)\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 4,
+            "syntactic_count": 3,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n  all h : Human, p : Product | p in Dangerous implies no workers.h\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n\tall d:Dangerous, ws:Workstation | no ws.workers & Human\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n  all h : Human, wo: Workstation, p : Product | p in Dangerous implies no workers.h\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 3,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n  all c: Component| all w: Worker| c in Dangerous iff w in Human\n  \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 3,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n\tall o: Component | (o in Dangerous) implies (Robot in o.workstation.workers)\n  \tall o: Component | (o in Dangerous) implies (Human not in o.workstation.workers)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n\t\n  \tall o: Component | (o in Dangerous) implies ((Human not in o.workstation.workers) and (Robot in o.workstation.workers))\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 3,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n\tall x: Workstation | workstation.x in (Component & Dangerous) implies x.workers not in Human\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n\tall x: Workstation | workstation.x in Dangerous implies x.workers not in Human\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 3,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n    workers.Human & Dangerous.parts.workstation = none\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n\tno Dangerous.parts.workstation.workers & Human \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 3,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n  all c : Component | no c.workstation.workers & Human\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n\tno Component.workstation.workers & Human\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 3,
+            "syntactic_count": 3,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n\tall c: Component, h: Human|\n  \t\t(c in Dangerous) implies (some p: h.workstation | p not in c.workstation)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n\tall c: Component | (c in Dangerous) implies all w: Worker | w in Worker - Human\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n\tall c: Component |\n  \t\t(c in Dangerous) implies (all h: Human | some p: h.workstation | p not in c.workstation)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 3,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n  \tall d:Dangerous| Human not in d.workstation.workers\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n\tall d : Dangerous | not Human in d.workstation.workers\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 3,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n\tall c : Component | c in Dangerous implies no (c.workstation.workers)\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 3,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n\tall c: Component | all r: Robot | all w: Workstation |( c in Dangerous and w in c.workstation )implies r in w.workers\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n  \n  \n  all c:Component | all work: c.workstation | c in Dangerous implies Robot in work.workers\n  \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 3,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{ \n\t// Dangerous components cannot be assembled by humans\n\tall c: Component | all wo: Workstation |all p: Product | all w: Worker| p in Dangerous and p in c.parts and wo in c.workstation and w in wo.workers implies w in Robot\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n\tall c : Component | some c.parts & Dangerous implies c.workstation.workers in Robot\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n\tall o: Component | (o in Dangerous) implies (Human not in workstation.o)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n\tall o: Component | (o in Dangerous) implies (Human not in o.workstation)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n  \n  \n  all c:Component | all work: c.workstation | Human not in work.workers implies c in Dangerous \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n  \n  \n  all c:Component | all work: c.workstation | c in Dangerous iff Human not in work.workers and Robot in work.workers\n  \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n    all w : Workstation, c : Component | c in Dangerous implies w.workers in Robot\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n        all w : Workstation, c : (Component & Dangerous) | w.workers in Robot\n\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n  \tHuman not in Dangerous.workers\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n  \tHuman not in (parts.Dangerous).workers\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n  \t(parts.Dangerous).workers not in Human\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n  \t((Dangerous.workstation).workers) not in Human\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n  all c: Component| all w: Worker| w in Human implies c in Dangerous\n  \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n  \tall c : Component | no h : Human | c in Dangerous => h in c.workstation\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n\tall c: Component | some wo: Workstation | (c in Dangerous implies wo.workers not in Human)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n  \tHuman not in Dangerous.workstation.workers\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n  \tHuman not in Dangerous.workstation.^workers\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n  \tall d: Dangerous | d in Component and d.workstation.workers in Robot\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": true,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n  all c:Component | c in Dangerous implies not (c.workstation.workers & Robot = none) \n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n\tall c : Component, w : Workstation, r : Robot | c in Dangerous implies w.workers in r\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n\tall p: Product, ws: Workstation | some h: Human |\n  \t\th in ws.workers => p not in Dangerous\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n\tall p: Product, ws: Workstation | some h: Human |\n  \t\t(h in ws.workers) and (ws in p.workstation) => (p not in Dangerous)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n      all h: Human, c: Dangerous | h in c.workstation\n\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n\tall d : Dangerous | no Human \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n\tall c: Component | c.workstation.workers in Robot\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n\tall c : Component | all ws : c.workstation | ws.workers in Robot\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n\tall c: Component | c in Dangerous => (c.workstation.workers & Human) = 0\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n  all c: Component, wst: Workstation | c in Dangerous implies wst.workers in c.workstation and wst.workers not in Human \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n  // Dangerous components cannot be assembled by humans\n  all w: Workstation | Dangerous in workstation.w.parts implies no w.workers & Human\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n  all c: Component| all w: Worker| c in Dangerous implies w in Human\n  \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n\t\n  \t\n\tall o: Component, h: Human | some r: Robot | (o in Dangerous) implies (h not in o.workstation.workers)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n  \n  \n  all c:Component | all work: c.workstation | c in Dangerous iff Human not in work.workers\n  \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n  \n  \n  all c:Component | some work: c.workstation | Human not in work.workers implies c in Dangerous \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n  \n  \n  some c:Component | all work: c.workstation | c in Dangerous implies Human not in work.workers\n  \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n  \n  \n  all c:Component | all work: c.workstation | c in Dangerous implies Human not in work.workers and Robot in work.workers\n  \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n  \n  \n  all c:Component | all work: c.workstation | c in Dangerous iff Robot in work.workers\n  \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n  \n  \n  all c:Component | some work: c.workstation | c in Dangerous iff (Human not in work.workers and Robot in work.workers)\n  \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n  \n  \n  all c:Component | some work: c.workstation | c in Dangerous iff no Human & work.workers\n  \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": true,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n  \n  \n  all c:Component | some work: c.workstation | c in Dangerous implies no Human & work.workers\n  \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n  all c:Component, w:Workstation | Dangerous in c.^parts implies w.workers not in Human \n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n  all c:Component, w:Workstation | Dangerous in c.^parts implies Human not in w.workers \n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n  all c:Component, w:c.workstation | Dangerous in c.^parts implies Human not in w.workers \n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n\tall c: Component | (c in Dangerous) implies all w: Worker | w in Robot\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n  no d:Dangerous | no (Human & (d.^parts & Component).workstation.workers)\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n\t(all c: Component|\n  \tc in Dangerous and c.workstation not in\t(workers.Human))\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n\t(all c: Component|\n  \tc in Dangerous and c.workstation not in (Workstation - workers.Human))\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n\t(all c: Component|\n  \tc in Dangerous and c.workstation not in (Workstation - workers.Robot))\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n\t(all c: Component|all ws: Workstation|\n  \tc in Dangerous and c.workstation in ws and no ws.workers & Human)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": true,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n\t(all c: Component|all ws: Workstation|\n  \tc in Dangerous and c.workstation in ws implies no ws.workers & Human)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n  \tall c:Component | (c in Dangerous) implies (c.workstation in Robot)\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n\tall p : Product, ws : Workstation | ws.workers in Robot implies p in Dangerous\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n\tall p : Product, ws : Workstation | p in Dangerous implies ws.workers in Robot  \n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n\tall p : Product, ws : Workstation | p in Dangerous and ws.workers in Robot  \n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n    all c:Dangerous | some (c.workstation.workers & Human)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n\tall c : Component | c in Dangerous iff no Human & c.workstation.workers\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n\tall c : Component | c in Dangerous iff c.workstation.workers in Robot\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n\tall c : Component | (c.^parts in Dangerous) implies Robot in c.workstation.workers\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n\tall c : Component | (c.^parts in Dangerous) implies c.workstation.workers in Robot\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": true,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n\tall c : Component | one ws : c.workstation | c in Dangerous implies (ws.workers = ws.workers-Human)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n  \tall c : Component | no h : Human | c in Dangerous => h in c.workstation.workers\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n\tall c : Component, ws : Workstation | (c.parts & Dangerous) not in (ws.workers & Human)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n  \tall  d: Dangerous | some w : Workstation| w = d.workstation and w.workers not in Human\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n  \tall c: Dangerous | no w: Worker | w in Human and c.workstation in w\n\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n\tall d: Dangerous | Human not in Dangerous.parts\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n\t\n  \tall c: Component, h: Human | c in Dangerous => Human not in c.workstation.workers\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n\tall ws: Workstation, h: Human|\n  \t\t(h in ws.workers) implies (some c: Component |c->ws in workstation implies c not in Dangerous)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n\t\n  \tno h : Human | h not in (Dangerous.workstation).workers \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n\tall d:Dangerous, ws:Workstation |  Human not in ws.workers implies ws in d.workstation\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n\tall d:Dangerous, ws:Workstation | ws in d.workstation and Human not in ws.workers\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n  \tall c: Component | c in Dangerous implies c.workstation.workers != Human\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n\tall c : Component | Dangerous in c implies\n  no Human & c.workstation.workers\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n\tall c : Component, w : Workstation, r : Robot | c = Dangerous implies w.workers in r\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n\tall c : Component, w : Workstation.workers | c in Dangerous implies Robot in w.workers\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n\tall c: Component, ws: Workstation | some h: Human |\n  \t\th in ws.workers => c not in Dangerous\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n\tall c: Component, ws: Workstation | some h: Human |\n  \t\t(h in ws.workers and ws in c.workstation) => (c not in Dangerous)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n\tall ws: Workstation | some h: Human, c: Component |\n  \t\t(h in ws.workers and ws in c.workstation) => (c not in Dangerous)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n\tall ws: Workstation, h: Human | some c: Component |\n  \t\t(h in ws.workers and ws in c.workstation) => (c not in Dangerous)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n\tall c: Component | all p: Product | all w: Worker| p in Dangerous and p in c.parts implies w in Robot\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{ \n\t// Dangerous components cannot be assembled by humans\n\tall c: Component | all wo: Workstation |some p: Product | all w: Worker| p in Dangerous and p in c.parts and wo in c.workstation and w in wo.workers implies w in Robot\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n\tall ws : Workstation | some d : (Component & Dangerous) | ws in d.workstation implies Human not in ws.workers\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n\tall ws : Workstation | some d : Dangerous | ws in d.workstation implies Human not in ws.workers\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n\tall ws : Workstation | some d : Dangerous | ws in d.workstation implies ws.workers not in Human\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n  \tall c : Component, h : Human | (c.workstation in Human) iff (c in Dangerous)\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n  \tall c : Component, h : Human | (c.workstation.workers in Human) iff (c in Dangerous)\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n  \tall c : Component, h : Human | (c.workstation.workers not in Human) iff (c in Dangerous)\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n  all c: Component, p: Product, h: Human, ws: Workstation | p in Dangerous implies (not h in ws.workers) \n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n  all c: Component, p: Product, h: Human, ws: Workstation | c->p in parts and p in Dangerous implies (not h in ws.workers) \n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n\tall c : Component, h : Human, wo : Workstation | c in workstation.wo\n  \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n  all c : Component | Dangerous in c implies Human not in c.workstation\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n  all c : Component | Dangerous in c implies Human not in c.workstation.workers\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n  all c: Component, wst: Workstation | c in Dangerous implies wst.workers not in c.workstation \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Dangerous components cannot be assembled by humans\n\tall c : Component | c in Dangerous => c.workstation.workers = Human\n}"
+                }
+            ]
+        }
+    ]
+}

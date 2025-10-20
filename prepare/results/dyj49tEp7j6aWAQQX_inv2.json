@@ -1,0 +1,2725 @@
+{
+    "original": "dyj49tEp7j6aWAQQX",
+    "cmd": "inv2",
+    "pred": "this/inv2",
+    "entry_count": 1329,
+    "semantic_count": 94,
+    "syntactic_count": 514,
+    "scope": 3,
+    "groups": [
+        {
+            "entry_count": 450,
+            "syntactic_count": 46,
+            "correct": true,
+            "elems": [
+                {
+                    "entry_count": 123,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall ws: Workstation | some ws.workers\n  \tall w: Worker | one ws: Workstation | w in ws.workers\n}"
+                },
+                {
+                    "entry_count": 99,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall w: Workstation | some w.workers\n    all w: Worker | one workers.w\n}"
+                },
+                {
+                    "entry_count": 70,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall ws: Workstation | some w: Worker | w in ws.workers\n  \tall w: Worker | one ws: Workstation | w in ws.workers\n}"
+                },
+                {
+                    "entry_count": 14,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tworkers in (Workstation one -> some Worker)\n}"
+                },
+                {
+                    "entry_count": 12,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall w: Workstation | some w.workers and all w: Worker | one workers.w\n}"
+                },
+                {
+                    "entry_count": 10,
+                    "code": "{\n    // Every workstation has workers and every worker works in one workstation\n    all w: Workstation | some w.workers and all wr: Worker | one wr.~workers\n}"
+                },
+                {
+                    "entry_count": 9,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall ws : Workstation | some w : Worker |\n  \t\tws -> w in workers\n  \tall w : Worker | one ws : Workstation |\n  \t\tws -> w in workers\n}"
+                },
+                {
+                    "entry_count": 8,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall ws:Workstation | some ws.workers and all w2:Worker | one ws2:Workstation | w2 in ws2.workers\n}"
+                },
+                {
+                    "entry_count": 7,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall w: Worker | one ws:Workstation | w in ws.workers\n  \tall ws:Workstation | some w:Worker | w in ws.workers\n}"
+                },
+                {
+                    "entry_count": 6,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n    workers in Workstation one -> Worker\n    all w : Workstation | some w.workers\n}"
+                },
+                {
+                    "entry_count": 6,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall w: Workstation | some w.workers\n  \tall u: Worker | one u.~workers\n}"
+                },
+                {
+                    "entry_count": 6,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n  \tall wo : Worker | one workers.wo\n  \tall wok : Workstation | some wok.workers\n\t\n}"
+                },
+                {
+                    "entry_count": 5,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall ws : Workstation | some ws.workers\n\tall w : Worker | one ws : Workstation | ws in workers.w\n}"
+                },
+                {
+                    "entry_count": 5,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n  all ws: Workstation | #ws.workers>0 and all p: Worker | one ws: Workstation | p in ws.workers\n\n}"
+                },
+                {
+                    "entry_count": 5,
+                    "code": "{\n\tall ws:Workstation | some w:Worker| w in ws.workers\n  \tall w:Worker| one ws:Workstation| ws in workers.w\n}"
+                },
+                {
+                    "entry_count": 5,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall ws:Workstation | #(ws.workers) > 0 \n  \tall w:Worker | one ws:Workstation | w in ws.workers\n}"
+                },
+                {
+                    "entry_count": 5,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n  all w: Workstation | some w.workers and all wr1, wr2: Workstation, wr: Worker | wr in wr1.workers and wr in wr2.workers => wr1 = wr2 and all ww : Worker | ww in Workstation.workers\n\n}"
+                },
+                {
+                    "entry_count": 5,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall ws:Workstation | some w:Worker | w in ws.workers and all w2:Worker | one ws2:Workstation | w2 in ws2.workers\n}"
+                },
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tworkers.Worker = Workstation and all worker : Worker | one workers.worker\n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall wo : Workstation | some w : Worker | wo in workers.w\n  \n  all w : Worker | one wo : Workstation | wo in workers.w\n  \n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n  all ws : Workstation | ws.workers != none\n  all w: Worker | one ws: Workstation | w in ws.workers\n\n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall w : Worker | one ws : Workstation | w in ws.workers \n  \tall ws : Workstation | some ws.workers\n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n  \tsome Worker\n\tall u: Worker , w : Workstation | one workers.u and some w.workers\n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall x: Workstation | x.workers != none\n  \tall x: Worker | one workers.x\n\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall w : Workstation | some worker : Worker | worker in w.workers\n  \tall w : Worker | (one wo : Workstation | wo -> w in workers)\n\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n    all s: Workstation | some s.workers\n    all w: Workstation.workers | one workers & (Workstation -> w)\n \tWorkstation.(workers & (Workstation -> Worker)) = Worker\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall ws: Workstation | some ws.workers \n  \n  \tall w: Worker | one ws: Workstation | one ws.workers & w\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall Wor : Workstation | #(Wor.workers) >= 1\n\tall w : Worker | one workers.w\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall ws:Workstation| some w:Worker | w in ws.workers\n  \tand all w1:Worker | one workers.w1\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall s : Workstation | #(s.workers)>0\n  \tall w : Worker | #(w.~workers)=1\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\t\n  \tall x: Workstation | some x.workers\n  all y: Worker| #workers.y=1\n\t\n  \n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall w : Workstation | some w.workers\n  \tall w : Worker | one w & (Workstation.workers)\n  \tall w : Worker , wo : Workstation | w in wo.workers implies w not in (Workstation - wo).workers\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n  all ws : Workstation | some w : ws.workers | ws in workers.w and all w1 : Worker | one ws1 : Workstation | w1 in ws1.workers\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall w : Workstation | some x : Worker | w->x in workers\n\tall x : Worker | some w : Workstation | w->x in workers\n\tall x : Worker, w1,w2 : Workstation | (w1->x in workers and w2->x in workers) implies (w1=w2)\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\t(all ws: Workstation|\n  \t#ws.workers > 0) and (all w: Worker| one workers.w)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall w: Workstation | some w.workers\n  \tall disj x, y : Workstation | no (x.workers & y.workers)\n  \tall k: Worker | k in Workstation.workers\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall w : Workstation| #w.workers > 0 and\n  \tall w : Worker | #(w.~workers) = 1\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n    all s: Workstation | some s.workers\n    Workstation.workers = Worker\n    all disj x, y: Workstation | x.workers & y.workers = none \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall ws: Workstation | some ws.workers and all w: Worker | one ws: Workstation | one ws.workers & w\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n  \tsome Workstation and some Worker and \n    (all w : Workstation | some w.workers) and \n\t(no Worker - Workstation.workers) and\n    (all disj w1, w2 : Workstation | no (w1.workers & w2.workers)) \n\t// Every workstation has workers and every worker works in one workstation\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall w : Workstation| some w.workers\n  \tall w : Worker | one s : Workstation | s->w in workers \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall ws:Workstation | (some w:Worker | w in ws.workers) and all w1:Worker | one workers.w1\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n  all ws : Workstation | ws.workers!= none and\n  all w: Worker | one ws : Workstation |w in ws.workers \n\t// Every workstation has workers and every worker works in one workstation\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall ws: Workstation | some w: Worker | w in ws.workers\n\tall w: Worker | one ws: Workstation | w in ws.workers\n\tall sw: Workstation.succ | sw.workers in Worker\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\t\n  \tall x: Workstation | some x.workers\n  all y: Worker, x: Workstation| #workers.y=1\n\t\n  \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n  all wr: Workstation | #wr.workers >= 1\n  all w: Worker | one wr: Workstation | w in wr.workers\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 117,
+            "syntactic_count": 79,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 7,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall k: Workstation | some k.workers\n  \tall w: Worker, k1: Workstation, k2: Workstation | (w not in k1.workers) and (w not in k2.workers)\n}"
+                },
+                {
+                    "entry_count": 7,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n  all wst : Workstation | some wst.workers and one workers.wst \n\n}"
+                },
+                {
+                    "entry_count": 6,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall ws: Workstation | some ws.workers\n  \tall w: Worker | one ws: Workstation | w in ws\n}"
+                },
+                {
+                    "entry_count": 6,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall wo : Workstation | some  wo.workers\n  \tall w : Worker | one w.workers\n}"
+                },
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n  \tall ws : Workstation | one ws.workers and all w : ws.workers | w in Worker and w in ws\n}"
+                },
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t(all wor:Workstation | some wor.workers) and\n\t(all w:Worker | one w.workstation)\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall k: Workstation | some k.workers\n  \tall w: Worker | some w.succ\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall k: Workstation | some k.workers\n  \tall w: Worker | all disj k1: Workstation, k2: Workstation | (w in k1.workers) implies (w not in k2.workers)\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall w: Workstation| some wo: Worker | wo in w\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall ws : Workstation | some ws.workers\n  \tworkers in Worker one -> Workstation\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tsome Workstation.workers && one Worker.workers\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall w : Workstation | some w.workers and one w.~workers\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall ws : Workstation | some w : Worker | w in workers.ws\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\t\n  \tall x: Workstation | some x.workers\n  all y: Worker, x: Workstation  | #workers.x=1\n\t\n  \n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall w : Workstation | #(w.workers) > 1\n  \n  \tall w : Worker | one w.workstation\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\t(all wor: Workstation | some w:Worker | w in wor) and \n\t(all w:Worker| one wor:Workstation| w in wor)\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall w: Workstation| some wo: Worker | w.workers = wo and (wo in Workstation) \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall ws : Workstation | some wks : ws.workers | wks not in (Workstation.workers - ws)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall wo : Workstation | some wo.workers \n \tall w : Worker | one workers.parts\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\n    all s: Workstation | s.workers != none\n    all w: Worker | one w.workstation\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n  \tall x : Workstation | some x.workers\n    all x : Worker | some y,x: Workstation | x in y.workers and x not in x.workers \n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tworkers.Worker = Workstation and ~workers.workers = iden\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall ws : Workstation |\n\t\tone ws.workers and\n\t\tall w : Worker | w in Worker and w in Workstation\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall wo : Workstation | some w : Worker | wo in workers.w\n  \tall w : Worker | one wo : Workstation | w in workers.wo\n  \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall ws: Workstation | ws.workers & Worker != none\n    all w: Worker | one w.workstation\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n  \tall w: Workstation | some workers.w\n  \tworkers in Workstation one -> Worker \n  \n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\n    all s: Workstation | s.workers != none\n    all w: Worker | w in Workstation\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n  \t\n  \t\n  \t\n\n\t// Every workstation has workers and every worker works in one workstation\n  \tall w: Workstation | #(w.workers) > 0 and #(w.workers & Human) > 0\n\n  \t\n  \tall disj w1, w2: Workstation | #(w1.workers & w2.workers) = 0\n\n\t\n  \tno w: Worker | lone ws: Workstation | w in ws.workers\n\n  \t\n  \tall w: Worker | some ws: Workstation | w in ws.workers\n\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall ws: Workstation | some ws.workers\n  \tall wk: Worker | wk in Workstation\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tsome Workstation.workers and one Workstation.~workers\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall wo : Workstation | some workers.wo\n  all w : Worker | one wo : Workstation | w in workers.wo\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall w : Worker | some s : Workstation | w in s\n  \tsome w : Worker | all s : Workstation | w in s\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall ws : Workstation |\n\t\tone ws.workers and\n\t\tall w : Worker | w in Worker and w in workers.ws\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall ws:Workstation | ws.workers != none\n  \tall w:Workstation | all  ws:Workstation | w in ws.workers\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall ws : Workstation | some wks : ws.workers | no wks\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n  \tall s: Workstation | some s.workers && all w: Worker | one w.workstation\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n  all workstation: Workstation | some workstation.workers\n  all worker: Worker | one worker & workers.Workstation\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall ws : Workstation | some ws.workers\n  \tworkers in Worker one -> Workstation.workers\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tsome Workstation.workers\n    all w : Worker | one x : Workstation| w in workers.x\n  \n    \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tWorkstation.workers not = none\n  \n  \tWorker in workers.Workstation\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tsome Workstation.workers\n  \tall x: Worker | one workstation.x\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall w : Workstation | some x : Worker | w->x in workers\n\tall x : Worker | some w : Workstation | w->x in workers\n\tall x : Worker, w1,w2 : Workstation | (w1->x in workers) implies (not w2->x in workers)\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall w0:Worker | w0 in Workstation.workers\n  \tone w1:Workstation | w1 in Worker\n  \t\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall k: Workstation | some k.workers\n  \tall w: Worker | some succ.w\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall work: Workstation | some w: Worker | w in work.workstation\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\t\n  \tall x: Workstation | some x.workers\n  all y: Worker, x: Workstation  | y in x.workers implies one workers.x\n  \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall x: Workstation | some(x.workers)\n    all x: Worker | x in Workstation.workers\n  \tall x,x1:Workstation | x.workers & x1.workers = none\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall w : Workstation | some w.workers\n  \tworkers in Worker -> one Workstation\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall ws:Workstation | ws.workers != none\n  \tall w:Workstation | one ws:Workstation | w in ws.workers\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall w : Workstation | one wo : Worker | #(w) > 0 and wo in w\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall ws : Workstation | (some workers.ws)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall x: Workstation, y: Worker | some x.workers\n  \n\t\n\tall x: Workstation | one y: Worker | y -> x in workers \n\n  \t\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall ws: Workstation | some ws.workstation\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n  all w : Workstation | some w.workers\n  all w : Worker | some ws : Workstation | w in ws\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall ws : Workstation | some w : Worker | #(ws.workers)>0 and w in ws \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall w : Workstation | some w.workers\n  \tall w : Worker | some workstation.w\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n    all ws: Workstation | ws.workers != none and all w: ws.workers | w in Worker and w = ws\n\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n  \tall x : Workstation | some x.workers\n    all x : Worker | some y,x: Workstation | x in y.workers  \n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\n    all s: Workstation | s.workers != none\n    all w: Worker | one workstation.w\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall wo : Workstation | some w : Worker | w in workers.wo\n  \tall w : Worker | one wo : Workstation | w in workers.wo\n  \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n  all ws : Workstation | some w : ws.workers | ws in workers.w and all w1 : Worker | one ws1 : w.workstation | w in ws1.workers\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n  \t\n  \t\n  \t\n\n\t// Every workstation has workers and every worker works in one workstation\n  \tall w: Workstation | #(w.workers) > 0 \n\n  \t\n  \tall disj w1, w2: Workstation | #(w1.workers & w2.workers) = 0\n\n\t\n  \tno w: Worker | lone ws: Workstation | w in ws.workers\n\n  \t\n  \tall w: Worker | some ws: Workstation | w in ws.workers\n\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n  \tall x : Workstation | some Worker \n    all x : Worker | x in Workstation\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall ws: Workstation | some ws.workers\n  \tall ws: Workstation | all w, v : ws.workers | w != v\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall ws: Workstation | some ws.workers\n  \tall w: Worker | one ws: Workstation | w in workers.Worker\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n    // Every workstation has workers and every worker works in one workstation\n    all w: Workstation | some w.workers and all wr: Worker | one wr.workstation\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall w: Workstation | some w.workers\n  \tall w: Worker | some (workers.w & w)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n    all w1,w2 : Workstation | w1.workers not in w2.workers\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall ws : Workstation | some w : Worker | ws in w\n  \tall w : Worker | one ws : Workstation | w in ws \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n  all w: Workstation | some w.workers and all wr1, wr2: Worker | wr1 in w.workers and wr2 in w.workers => wr1 = wr2 and all w: Worker | w in w.workers\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n  \t\n  \t\n  \t\n\n\t// Every workstation has workers and every worker works in one workstation\n  \tall w: Workstation | #(w.workers) > 0 \n\n  \t\n  \tall disj w1, w2: Workstation | #(w1.workers & w2.workers) = 0\n\n\t\n  \tno w: Worker | lone ws: Workstation | w in ws.workers\n\n  \t\n  \tall w: Worker | some ws: Workstation | w in ws.workers\n  \n  \n  \tno w: Worker, ws1, ws2: Workstation | w in ws1.workers and w in ws2.workers and ws1 \t!= ws2\n\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n  all w:Workstation | some w.workers\n  all x,y:Workstation | no (x.workers & y.workers)\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall w0:Worker | w0 in Workstation.workers\n  \tone w1:Workstation | w1 in Workstation.workers\n  \t\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n  all w : Workstation | one workers.w\n  all x : Worker | x in Workstation\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall w : Workstation | some w.workers and ~workers.workers = iden\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall ws: Workstation | some w: ws.workers | w.workstation = ws\n    all w: Worker | lone w.workstation\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall w : Workstation | some worker : Worker | worker in w.workers\n  \tall w : Worker | one ww : Workstation | w in ww\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall w : Workstation | some w.workers and all ws : Worker | one w1 : Workstation | ws in w1 \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall ws : Workstation | some w : Worker | w in ws\n  \tall w : Worker | one ws : Workstation | ws in w \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 100,
+            "syntactic_count": 35,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 14,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\t(all w : Workstation | some w.workers) and (all w1 : Worker | w1 in Workstation.workers)\n}"
+                },
+                {
+                    "entry_count": 13,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall w: Workstation | some w.workers\n    all w: Worker | some workers.w\n}"
+                },
+                {
+                    "entry_count": 12,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\t(all w : Workstation | some w.workers) and (all w1 : Worker | one w1 & Workstation.workers)\n}"
+                },
+                {
+                    "entry_count": 10,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n  \tall x : Workstation | some x.workers\n    all x : Worker |  some y: Workstation | x in y.workers\n\n}"
+                },
+                {
+                    "entry_count": 9,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall w : Workstation | some wo : Worker | wo in w.workers\n  \tall wo : Worker | some w : Workstation | wo in w.workers\n}"
+                },
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall x: Workstation | x.workers != none\n  \tall x: Worker | x in Workstation.workers\n\n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall w : Workstation| some w.workers\n  \tWorker in Workstation.workers \n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall ws:Workstation |\n  \t\tsome w:Worker |\n  \t\t\tw in ws.workers\n  \n  \tall w:Worker |\n  \t\tw in Workstation.workers\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall ws : Workstation | some ws.workers\n  \tall w : Worker | one Workstation.workers <: w\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall w : Worker | w in Workstation.workers \n  \tall ws : Workstation | some ws.workers\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n  all w: Workstation | some w.workers and all wr: Worker | one Workstation.workers  & wr\n\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall w: Workstation | some w.workers && all w: Worker | w in Workstation.workers\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall w: Worker | \n  \t\tone (Workstation.workers & w)\n  \n  \tall ws: Workstation | some ws.workers\n  \n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall w: Worker | some wt: Workstation | w in wt.workers\n    \n    all ws: Workstation | some w: Worker | w in ws.workers\n    \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n  \t(workers.Worker = Workstation) and (Workstation.workers = Worker)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall w : Workstation | some x : Worker | w->x in workers\n\tall x : Worker | some w : Workstation | w->x in workers\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tsome Workstation.workers and no Worker - Workstation.workers\n\tall ws : Workstation | some wkr: ws.workers | wkr not in (Workstation.workers - ws.workers)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n  all w : Workstation | some w.workers\n  all w : Worker | #(Workstation.workers & w) = 1\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n    all s: Workstation | some s.workers\n    \n \tWorkstation.(workers & (Workstation -> Worker)) = Worker\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\t(all w: Workstation | some w.workers) && Workstation.workers = Worker\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall w : Workstation | some w.workers and no Worker - Workstation.workers\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tsome Workstation.workers and no Worker - Workstation.workers\n\tall ws : Workstation, wkr: Worker | some ws.workers and (wkr in ws.workers implies wkr not in (Workstation.workers - ws.workers)) \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall ws: Workstation | some ws.workers\n  \tall wk: Worker | wk in (one Workstation.workers)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall ws : Workstation | some w : Worker | ws in workers.w and all w : Worker | some ws1 : Workstation | w in ws1.workers\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\t(all ws: Workstation|\n  \t#ws.workers > 0) and (all w: Worker| w in Workstation.workers)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall w: Workstation | some w.workers\n  \tall u: Worker | some u.~workers\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall ws:Workstation | #(ws.workers) > 0 \n  \tall w:Worker | some ws:Workstation | w in ws.workers\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\t(all w: Workstation | some w.workers)\n\t&& (all w: Worker | some (Workstation->workers).w)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n  \tall w : Workstation | some w.workers and all t : Worker | some workers.t\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n    workers in Workstation some -> some Worker\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall ws: Workstation | (some w:Worker | w in ws.workers ) and all w1:Worker | (some ws1:Workstation | ws1 in workers.w1) \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall w : Workstation| some w.workers\n  \tall w : Worker | some s : Workstation | s->w in workers \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall w: Worker | some wt: Workstation | w in wt.workers\n    \n    all ws: Workstation | some w: Worker | w in ws.workers\n    \n    no disj w1, w2: Worker | w1 in w1.workers and w2 in w2.workers\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n  \tsome Workstation and some Worker and \n    (all w : Workstation | some w.workers) and \n\t(no Worker - Workstation.workers)\n\t// Every workstation has workers and every worker works in one workstation\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall ws:Workstation| some w:Worker | w in ws.workers\n  \tand all w1:Worker | some ws1:Workstation | ws1 in workers.w1\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 91,
+            "syntactic_count": 24,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 38,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall k: Workstation | some k.workers\n  \t\n}"
+                },
+                {
+                    "entry_count": 22,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n  \tall k: Workstation | some w: Worker | w in k.workers\n\t\n  \t\n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n  \tall s: Workstation | some(s.workers) and all x: s.workers | one  x\n\n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n  all ws : Workstation | ws.workers != none\n\n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall ws : Workstation | #(ws.workers)>0 \n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall wo : Workstation | some w : Worker | wo in workers.w\n  \n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall ws: Workstation | some ws.workers and all w: ws.workers | w in ws.workers\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall ws:Workstation |\n  \t\tsome w:Worker |\n  \t\t\tw in ws.workers\n  \n  \tall w:Worker,ws:Workstation,ows:Workstation-ws |\n  \t\tw in ws.workers implies w not in ows\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\n    all s: Workstation | s.workers != none\n    all w: Worker | lone s : Workstation | w in s\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall ws: Workstation | some w: Worker | w in ws.workers\n    all w: Worker | lone w.workstation\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tworkers.Worker = Workstation \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\n    all s: Workstation | s.workers != none\n    all w: Worker | lone s : Workstation | w in Workstation\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall ws:Workstation |\n  \t\tsome w:Worker |\n  \t\t\tw in ws.workers\n  \n  \tall w:Worker,ws:Workstation |\n  \t\tw in ws.workers implies w not in Workstation-ws \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall ws : Workstation | (some w : Worker | ws -> w in workers)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall w: Workstation | some wk: Worker | wk in w.workers and some workers.wk \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall ws:Workstation | (some w:Worker | w in ws.workers and ws in workers.w)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\t// Every workstation has workers\n    all s: Workstation | s.workers != none\n\n    \n    all w: Worker | lone w.workstation\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n  all ws: Workstation | ws.workers != none && all w: ws.workers | w in Worker && w in ws.workers\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall ws : Workstation | some ws.workers\n  \tall w : Worker | w not in w.~workers\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall ws : Workstation | some wkr: ws.workers | wkr not in (Workstation.workers - ws.workers)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\n    all s: Workstation | s.workers != none\n    all w: Worker | lone w.workstation && w.workstation in Workstation\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall w: Workstation | some worker: Worker | some workers.worker and some w.workers\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall ws:Workstation| some w:Worker | w in ws.workers\n  \tand all w1:Worker | some ws1:Workstation | ws1 in workers.w\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall ws: Workstation | some w: ws.workers |\n    all w: Worker | w.workstation in w.workers\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 62,
+            "syntactic_count": 21,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 16,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall w: Worker, k: Workstation | w in k.workers\n}"
+                },
+                {
+                    "entry_count": 10,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n  \tall w : Worker, ws : Workstation | some ws.workers and w in ws.workers\n\n}"
+                },
+                {
+                    "entry_count": 5,
+                    "code": "{\n  all w : Worker, ws : Workstation | w in ws.workers and ws.workers!= none\n\t// Every workstation has workers and every worker works in one workstation\n\n}"
+                },
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n  \tall w : Worker, ws : Workstation | ws in workers.w\n\n}"
+                },
+                {
+                    "entry_count": 4,
+                    "code": "{\n  all w : Workstation | all w1 : Worker | w1 in w.workers and #(w.workers)>0\n\t// Every workstation has workers and every worker works in one workstation\n\n}"
+                },
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall ws:Workstation, w:Worker | w in ws.workers and ws in workers.w\n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n  \tall w : Worker, ws : Workstation | ws in workers.w and some ws.workers\n\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall w: Worker, ws: Workstation | some ws.workers\n  \tall w: Worker, ws: Workstation | w in ws.workers\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall s: Workstation | all w: Worker | w in s.workers and w in (one s.workers)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\t\n\t\n  all x: Workstation, y: Worker | (no x.workers implies some x.workers) and (y in x.workers)\n  \n  \n  \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n  \tall w : Worker, ws : Workstation | ws in workers.w and succ.w in ws\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall wk : Workstation | all w : Worker | some wk.workers and (w in wk.workers <=> w not in wk.workers.^(succ))\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n  \tall w : Worker, ws : Workstation | ws in workers.w and ws.succ in workers.w\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall s : Workstation, w : Worker | w in s.workers and w in s.workers\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n  all w : Worker , ww : Workstation | some Workstation.workers and w in ww.workers\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n  \tall w:Workstation, wrkr:Worker | w.workers != 0 && wrkr in w.workers\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall w: Worker, wo: Workstation | some w1: Worker| w in wo.workers and some wt: Workstation | w in wt.workers\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n  \tall w : Worker, ws : Workstation | ws in workers.w and w.succ in ws\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n  \tall w : Worker, ws : Workstation | some ws.workers and w in (one ws.workers)\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall ws: Workstation, w: Worker | w in ws.workers and !(ws.workers=none)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall ws: Workstation, w: Worker | ws -> w in workers\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 54,
+            "syntactic_count": 38,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 5,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n  all wst : Workstation , w : Worker| some wst.workers and one workers.wst \n\n}"
+                },
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n  \tall w:Worker, wor:Workstation|\n  \tw in wor\n\n}"
+                },
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall w : Workstation | all w2 : Workstation | all ws : Worker | some w.workers and (ws in w.workers implies ws not in w2.workers)\n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall w : Worker | w in Workstation\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n  all wst : Workstation, w:Worker | some wst.workers and one w.workstation \n\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall w : Worker, W : Workstation | one workers.w and no W.workers\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall w : Worker | some ws : Workstation | w in ws\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n  \tall s: Workstation |all w: Worker| some(s.workers) and one(w.workers)\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall w : Workstation | all worker : w.workers | w in Worker\n  \tall w : Worker | w in Workstation.workers\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall w : Worker, wo : Workstation | one workers.w and some w.workers \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n  \tall w : Worker, ws : Workstation | some ws.workers and ws in w.succ\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall w1,w2 : Workstation | all ws : Worker | some w1.workers and (ws in w1.workers implies ws not in w2.workers) and ws = ws\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall ws: Workstation, w: Worker | one ws1: Workstation | (ws -> w in workers) and w in ws1 \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n  all w : Workstation, u: Worker | some w.workers and u in workers.u\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n  \tall w : Worker, ws : Workstation | ws in w.workers and w in ws.succ\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n  \tall w : Workstation, wo : Worker | some(Worker <: succ).w\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall u: Worker | u = workers.u\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall x: Workstation, y:Worker | y in x.workers and #workers.x = 1  \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n  \t\n  \tall ws: Workstation | ws.workers in ws\n  \tall w: Worker | one ws: Workstation | w in ws.workers\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n  \tall w : Worker, ws : Workstation | ws in workers.w and w in succ.ws\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall w : Worker | (some ws : Workstation | ws in w.succ)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n  \tall w : Workstation, wo : Worker | some(Worker <: workers).w \n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall ws: Workstation, w: Worker | one ws1: Workstation | (ws -> w in workers) and w in ws \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n  \tall w : Worker, ws : Workstation | some ws.workers and w in workers.ws\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall w : Workstation | all ws : Worker | some w.workers and ws in w \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall w : Worker, ws : Workstation | #(ws.workers)>0 and w in ws\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall x: Workstation, y:Worker | y in x.workers and y in workers.x  \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n  all w:Workstation, ws:Worker | ws in w and w.workers in ws\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall w: Worker | one ws: Workstation | w in ws\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n  \tall w : Worker, ws : Workstation | ws in w.workers\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall w: Workstation, w1: Worker | some w.workers and one ~workers.w1\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n  \n  all ws : Workstation , w : Worker | some workers.ws and (one workers.w)\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n  \tall x : Workstation, x : Worker | some x.workers \n    all x : Worker | one y: Workstation | x in y.workers  \n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall ws: Workstation | ws.workers in Worker\n\tall w: Worker | one w.workstation\n\tall sw: Workstation.succ | sw.workers in Worker\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall w1,w2 : Workstation | all ws : Worker | some w1.workers and some w2.workers and (ws in w1.workers implies ws not in w2.workers)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall w : Workstation | all ws : Worker | some w.workers and one w1 : Workstation | ws in w1\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall w : Workstation | all ws : Worker | ws in w and one w2 : Workstation | ws in w2 \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall x: Workstation, y: Worker | y-> x in workers \n\tall x: Workstation, y: Worker | x-> y in workers\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 47,
+            "syntactic_count": 10,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 35,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n  \tall wo: Workstation, wor: Worker | some wo.workers and one workers.wor\n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall w : Workstation, wo : Worker | some w.workers and one wo.~workers \n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall u: Worker , w : Workstation | some Worker iff one workers.u and some w.workers\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n  all ws : Workstation, w:Worker | some ws.workers\n  all w : Worker | one workers.w\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n  \tall x : Workstation, y : Worker | some x.workers and one z: Workstation | y in z.workers \n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall x: Workstation, y:Worker | some x.workers and #workers.y = 1  \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall u: Worker , w : Workstation | some Worker implies one workers.u and some w.workers\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall w : Worker, ws1 : Workstation | one ws2 : Workstation | some ws1.workers and w in ws2.workers\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall w : Worker, W : Workstation | one workers.w and #(W.workers) >= 1\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall ws : Workstation | all w : Worker | one ws1 : Workstation | #(ws.workers)>0 and w in ws1.workers\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 37,
+            "syntactic_count": 16,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 13,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall w:Worker | w in Workstation.workers\n  \t\n}"
+                },
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t\n\t\n\n  \n\tWorkstation.workers = Worker\t\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall w:Worker|some ws:Workstation| w in ws.workers \n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n  \tall ws : Workstation | all w : Worker | ws.workers in Worker && w in Workstation.workers\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall w : Workstation | all worker : w.workers | worker in Worker\n  \tall w : Worker | w in Workstation.workers\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall ws: Workstation | ws.workers in Worker \n  \tand\n  \tall w: Worker | w in Workstation.workers\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall w: Worker | \n  \t\tone Workstation.workers & w\n  \n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall ws: Workstation | ws.workers in Worker and all w: Worker | w in Workstation.workers and all sw: Workstation.succ | sw.workers in Worker\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall w : Workstation | w.workers in Worker\n  \tall w : Worker | w in Workstation.workers\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n  \tWorkstation.workers & Worker = Worker \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n  \tall w : Workstation, wo : Worker | some(Workstation <: workers).wo\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall ws: Workstation | ws.workers in Worker\n\tall w: Worker | some ws: Workstation | w in ws.workers\n\tall sw: Workstation.succ | sw.workers in Worker\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall s : Workstation, w : Worker | w in Workstation.workers and some Workstation.workers\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall s : Workstation, w : Worker | w in Workstation.workers\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tno (Workstation.workers - Worker) and Worker in Workstation.workers\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tno (Workstation.workers - Worker) and all w: Worker | w in Workstation.workers\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 26,
+            "syntactic_count": 12,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 11,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall k: Workstation | some k.workers\n  \tall w: Worker, k: Workstation | w in k.workers\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall ws : Workstation |\n\t\tws.workers != none and\n\t\tall w : Worker | w in Worker and w in ws.workers\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall ws:Workstation | (some w:Worker | w in ws.workers) and (all u:Worker| ws in workers.u)\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall ws : Workstation |\n\t\tsome ws.workers and\n\t\tall w : Worker | w in Worker and w in ws.workers\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall ws: Workstation | some w: Worker | w in ws.workers\n  all ws: Workstation, w: Worker | w in ws.workers\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n  all w: Workstation | some w.workers and all wr: Worker | wr in w.workers\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall ws: Workstation | (some w:Worker | w in ws.workers ) and all w1:Worker | (some ws1:Workstation | ws in workers.w1) \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n  all w: Workstation | some w.workers and all wr: Worker | one wr & w.workers\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall ws:Workstation | #(ws.workers) > 0 \n  \tall w: Worker, ws:Workstation | w in ws.workers\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall ws:Workstation | #(ws.workers) > 0 and all w:Worker | w in ws. workers\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n  all w: Workstation |\n\t\tsome w.workers and\n\t\tall wr1, wr2: Workstation, wr: Worker |\n\t\t\t(wr in wr1.workers <=> wr in wr2.workers) and\n\t\t\tall ww : Worker | ww in Workstation.workers\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tworkers.Worker = Workstation and ~workers = Worker->Workstation\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 24,
+            "syntactic_count": 16,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall w : Workstation | some(w.workers)\n  \tall w : Worker | lone(workers.w)\n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall ws: Workstation | some ws.workers\n  \tall w: Worker | lone ws: Workstation | w in ws.workers \n  \t\n  \n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tworkers in (Workstation lone -> some Worker )\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall ws : Workstation| some w : Worker | w in ws.workers\n  \n  \tall w : Worker | lone ws : Workstation | w in ws.workers\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall ws:Workstation |\n  \t\tsome w:Worker |\n  \t\t\tw in ws.workers\n  \n  \tall w:Worker,ws:Workstation,ows:Workstation-ws |\n  \t\tw in ws.workers implies w not in ows.workers\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n  all w: Workstation | some w.workers and all wr1, wr2: Workstation, wr: Worker | wr in wr1.workers and wr in wr2.workers => wr1 = wr2\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n    all s: Workstation | some s.workers\n    all w: Workstation.workers | one workers & (Workstation -> w)\n \t\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall x: Workstation | some(x.workers)\n    all x: Workstation | all x1: Workstation-x | x.workers & x1.workers = none\n  \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall w: Workstation | some w.workers\n  \tall disj x, y : Workstation | no (x.workers & y.workers)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall w: Workstation | some w.workers\n  \tall disj w1, w2: Workstation, w: Worker | (w in w1.workers and w in w2.workers) => w1 = w2\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall x: Workstation | x.workers != none\n  \tall x: Worker, y: Workstation | x in y.workers implies\n  \t\t\t\t\t\t\t\t\tx not in (Workstation - y).workers\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall w : Workstation | some(w.workers) and all w : Worker | lone(workers.w)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall w : Workstation | some w.workers\n  \tall w : Worker , wo : Workstation | w in wo.workers implies w not in (Workstation - wo).workers\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n  \tall wk : Workstation | some wk.workers\n  \tall w : Worker | all wk,wk2: Workstation | w in wk.workers and w in wk2.workers \timplies wk = wk2\n  \n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n  \tall w: Workstation | #(w.workers) > 0 \n  \tall disj w1,w2: Workstation |  #(w1.workers & w2.workers) = 0\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall w : Workstation | some w.workers and (workers.~workers - iden) = none->none\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 23,
+            "syntactic_count": 8,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 10,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall u: Worker | one w: Workstation | u in w.workers\n}"
+                },
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t\n\t\n\n  \n\tall w : Worker | one workers.w\n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n    workers in Workstation one -> Worker\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall w : Worker | lone x: Workstation | w in x.workers\n  \tall w:Worker | w in Workstation.workers\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall wo : Worker | one wo.~workers \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\t\n\tWorkstation.workers = Worker\n  \tall wk: Worker | one ws: Workstation | wk in ws.workers\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall ws: Workstation | ws.workers in Worker\n\tall w: Worker | one ws: Workstation | w in ws.workers\n\tall sw: Workstation.succ | sw.workers in Worker\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n    \n    all w: Workstation.workers | one workers & (Workstation -> w)\n \tWorkstation.(workers & (Workstation -> Worker)) = Worker\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 21,
+            "syntactic_count": 14,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 6,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\t\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tworkers in (Workstation  -> Worker)\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tno (Workstation.workers - Worker)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall ws: Workstation | no (ws.workers - Worker)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tno ((Workstation.^(succ)).workers - Worker)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tno (Workstation.succ.workers - Worker)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall ws: Workstation, w: Worker | (ws -> w in workers) implies w in ws.workers \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall ws: Workstation | no (Workstation.workers - Worker)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall w: Worker, k: Workstation | one w\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n  \tall w:Workstation | w.workers != 0\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall s : Workstation, w: Worker | s.workers in Worker and workers.w in \tWorkstation\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tno (Workstation.workers.succ - Worker)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall x: Workstation, y:Worker | one workers.x iff one workers.x  \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall w : Worker | some ws : Workstation | w in w\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 14,
+            "syntactic_count": 11,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tsome Workstation.workers\n  \tall w : Worker | w in Workstation.workers\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tsome Workstation.workers and all w: Worker | some s: Workstation | w in s.workers\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n  \tall x : Workstation | some Worker \n    all x : Worker | x in Workstation.workers\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall ws: Workstation | some workers\n  \tall w: Worker | some ws: Workstation | w in ws.workers\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tsome Workstation.workers\n  \tWorker in Workstation.workers\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall wk : Workstation | some workers \n  \tall w : Worker | w in Workstation.workers\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall w : Workstation | some workers\n  \tall w : Worker | some workers.w\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tsome Workstation.workers and no Worker - Workstation.workers\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tWorkstation.workers != none\n  \tall x: Worker | x in Workstation.workers\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tWorkstation.workers = Worker\n  \t#Worker > 0\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tWorkstation.workers not = none\n  \n  \tWorker in Workstation.workers\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 14,
+            "syntactic_count": 12,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall w : Workstation | some w.workers and one ~workers.w\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall w: Workstation | one w.workers\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall x: Workstation, y: Worker | some x.workers\n  \n\tall x: Workstation | one y: Worker | y in x.workers  \n  \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tworkers.Worker = Workstation and #workers.Worker = #~workers\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall ws: Workstation | some ws.workers\n  \tall ws: Workstation | one ws.workers\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n  all s : Workstation | one w: Worker| w in s.workers\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n  all w: Workstation | some w.workers and all wr1, wr2: Worker | wr1 in w.workers and wr2 in w.workers => wr1 = wr2\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall x: Workstation| some x.workers\n  \n\t\n\tall x: Workstation | one y: Worker | x in workers.y\n  \t\t\t\t\t\t\t\t\t\t\n\n  \t\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall x: Workstation, y: Worker | some x.workers\n  \n\t\n\tall x: Workstation | one y: Worker | x in workers.y\n  \t\t\t\t\t\t\t\t\t\t\n\n  \t\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n  \tall ws : Workstation | one ws.workers and all w : workers.ws | w in Worker and w in ws\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall w: Workstation| some wo: Worker | w.workers = wo\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall w : Workstation | some w.workers and (~workers.workers - iden) = none->none\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 13,
+            "syntactic_count": 7,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tsome Workstation.workers\n  \tall x: Worker | one workers.x\n}"
+                },
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tsome Workstation.workers and (all w: Worker | one s: Workstation | w in s.workers)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n  some workers\n  all w: Worker | one workers.w\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall w: Workstation | some workers\n  \tall w: Worker | (one work : Workstation | w in work.workers)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tsome workers\n\tall wk: Worker | #(wk.~workers) = 1\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n  \tsome Workstation.workers\n  \tall w : Worker | one ws : Workstation | ws in workers.w\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall ws: Workstation | some Workstation.workers\n  \n  \tall w: Worker | one ws: Workstation | w in ws.workers\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 13,
+            "syntactic_count": 6,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 5,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall w : Worker | lone wo: Workstation | w in Workstation.workers and w in wo.workers\n}"
+                },
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall w : Worker | lone x: Workstation | w in x.workers\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n    \n    all w: Workstation.workers | one workers & (Workstation -> w)\n    \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tworkers in (Workstation lone -> Worker)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall x: Workstation, y:Worker | y in x.workers implies one workers.y  \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall x: Workstation, y:Worker | some x.workers implies lone workers.y\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 12,
+            "syntactic_count": 7,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 6,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall w: Worker, k: Workstation | some k.workers\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall w : Worker, W : Workstation | #(W.workers) >= 1\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall s: Workstation | all w : Worker | s.workers != none and lone w.workstation\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall ws : Workstation | all w : Worker | #(ws.workers)>0 \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall s: Workstation | all w : Worker | s.workers != none\n  \tall w : Worker | lone w.workstation\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n  all ws : Workstation, w:Worker | some ws.workers && workers.w in Workstation\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall ws : Workstation, wkr: Worker | some ws.workers and (wkr in ws.workers implies wkr not in (Workstation.workers - ws.workers)) \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 12,
+            "syntactic_count": 8,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n  \tall ws: Workstation | ws.workers in Workstation and all w: ws.workers | w in ws\n\n\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n    all w1,w2 : Workstation, t:Worker | (t in w1.workers) implies t not in w2.workers\n\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall ws: Workstation, w: Worker | (ws -> w in workers) implies w -> ws in workers \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n      all ws: Workstation, w: ws.workers | w in ws.workers and w in Workstation\n\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n  all w1,w2 : Workstation | all x : Worker | w1.workers != none and w2.workers != none and x in w1.workers implies x not in w2.workers and w1 != w2\n  \n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n  // Every workstation has workers and every worker works in one workstation\n  (all w: Workstation | no w.workers) and (all w: Worker | no workers.w)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall x: Workstation, y:Worker | some x.workers implies y in workers.y\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall w : Worker, W : Workstation | no workers.w and no W.workers\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 12,
+            "syntactic_count": 4,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 6,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall w : Workstation | some w1 : Worker | w1 in w.workers\n  \tone w : Workstation | all w1 : Worker | w1 in w.workers\n}"
+                },
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall w : Workstation | some w.workers\n  \tone ws : Workstation | all w : Worker | w in ws.workers\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\t\n\tall x: Workstation| some x.workers\n  one x: Workstation| all y: Worker | x in workers.y\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall i : Workstation | some w : Worker | w in i.workers\n  \tone i : Workstation | all w : Worker | i in workers.w\n  \n    \n  \t\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 11,
+            "syntactic_count": 6,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tsome Workstation.workers\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tsome Workstation.workers\n  \tsome workers.Worker\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall w: Workstation | some workers\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n  \n  \tsome w1: Worker | w1 in Workstation.workers \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tsome Workstation.workers and some workers[Workstation]\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall w: Workstation | some worker: Worker | some workers.worker\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 11,
+            "syntactic_count": 5,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 7,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall ws : Workstation |\n\t\tone ws.workers and\n\t\tall w : Worker | w in Worker and w in ws.workers\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall x: Workstation, y: Worker |y in x.workers\n  \n\t\n\tall x: Workstation | one y: Worker | x in workers.y\n  \t\t\t\t\t\t\t\t\t\t\n\n  \t\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n  all w: Workstation | some w.workers and all wr1, wr2: Worker | wr1 in w.workers and wr2 in w.workers => wr1 = wr2 and all wr: Worker | wr in w.workers\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n  all w:Workstation | some ws:Worker | ws in w.workers \n  all ws:Worker, w:Workstation | w.workers in ws\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n  all w : Workstation | one w1 : Worker | all w2 : Worker | w1 in w.workers and w2 in w.workers\n\t// Every workstation has workers and every worker works in one workstation\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 10,
+            "syntactic_count": 4,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 7,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall s : Workstation, w: Worker | some s.workers and some workers.w \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall w : Worker, ws : Workstation | some ws.workers and w in Workstation.workers\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall w: Worker, wo: Workstation | some(wo.workers) and some wt: Workstation | w in wt.workers\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall workstation : Workstation, worker : Worker | some workstation.workers and one Workstation.workers <: worker\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 9,
+            "syntactic_count": 7,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall s: Workstation | all w: Worker | w in s.workers\n  \tall w: Worker | one s: Workstation | w in s.workers\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n  \tall ws : Workstation | all w : Worker | w in ws.workers\n  \tall w : Worker | one ws : Workstation | ws in workers.w\n  \t\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall ws:Workstation, w:Worker | w in ws.workers and one workers.w\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall x: Workstation, y:Worker | y in x.workers and #workers.y = 1  \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall ws: Workstation, w: Worker | one ws1: Workstation | (ws -> w in workers) and w in ws1.workers\n\n    // Every workstation has workers\n   \n\n    \n    \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall w : Worker, ws : Workstation | w in ws.workers\n  \n  \tall w : Worker | lone ws : Workstation | w in ws.workers\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\t (all w: Worker | one (Workstation->workers).w)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 9,
+            "syntactic_count": 6,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\t\n\tall x: Workstation| some x.workers\n  \n  one x: Workstation, y: Worker | y in x.workers implies one y\n  \n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall x: Workstation, y: Worker |y in x.workers\n  \n\t\n\t\n\tone x: Workstation, y: Worker | some x implies y in x.workers\n  \t\t\t\t\t\t\t\t\t\t\n\n  \t\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n  \tall wt : Workstation | one w : Worker | w in wt.workers\n  \tone wt : Workstation | all w : Worker | w in wt.workers\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\t\n\tall x: Workstation, y: Worker| lone x.workers implies y in x.workers\n  \n  one x: Workstation, y: Worker | y in x.workers implies one y\n  \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall x: Workstation, y: Worker |y in x.workers\n  \n\t\n\t\n\tone x: Workstation, y: Worker | x in workers.y\n  \t\t\t\t\t\t\t\t\t\t\n\n  \t\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\t\n\tall x: Workstation, y: Worker| y in x.workers\n  \n  one x: Workstation, y: Worker | y in x.workers implies one y\n  \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 7,
+            "syntactic_count": 4,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n  \tsome w1: Worker | Workstation.workers = w1\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tsome Workstation.workers and lone workers[Workstation]\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tsome Workstation.workers and one workers[Workstation]\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tone w:Worker | w in Workstation.workers\n  \t\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 7,
+            "syntactic_count": 6,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n  \tall w : Worker, ws : Workstation | ws in workers.w and lone ws.workers\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall ws: Workstation, w: Worker | w in ws.workers and ws.workers=w\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n  all w:Workstation, ws:Worker | ws in w.workers and w.workers in ws\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n  \tall w : Worker, ws : Workstation | ws in workers.w and lone ws.workers and lone ws.succ.workers\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n  \tall w : Worker, ws : Workstation | ws in workers.w and ws.workers in w and ws.succ.workers in w\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n  \tall w : Worker, ws : Workstation | ws in workers.w and ws.workers in w\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 7,
+            "syntactic_count": 7,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n \tall ws,ws2:Workstation |some w:Worker| w in ws.workers and w in ws2.workers and ws=ws2 \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall ws : Workstation | some w : Worker | w in ws.workers\n  \tall w : Worker , ws : Workstation , wsa : Workstation - ws | w in ws.workers && w not in wsa.workers\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\t\n\tall x: Workstation| some x.workers\n  \n  one x: Workstation| all y: Worker | y in x.workers implies one y\n  \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\t(all w: Workstation | some w.workers)\n\t&& (all w: Worker | one (Workstation->Worker).w)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n  all w : Workstation | some w.workers\n  all w : Worker | one s : Workstation | w in s implies w not in Workstation-s\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tsome w : Worker | all ws : Workstation | w in ws.workers\n  \n  \tall w : Worker | lone ws : Workstation | w in ws.workers\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\t\n\tall x: Workstation| some x.workers\n  \n  one x: Workstation| some y: Worker | y in x.workers implies one y\n  \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 6,
+            "syntactic_count": 5,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall ws : Workstation | some ws.workers\n\tone Workstation.workers\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n    all w:Workstation | some w.workers\n    one w:Worker | w in Workstation.workers\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall ws : Workstation | #(ws.workers) > 0 \n  \tall w : Worker | #(Workstation.workers) = 1 \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall w : Workstation | some w.workers\n  \tall worker : Worker | lone Workstation.workers\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall w : Worker | lone (Workstation.workers->w)\n  \tall ws : Workstation | some ws.workers\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 5,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tsome Workstation.workers\n  \tone workers.Worker\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tWorkstation.workers not = none\n  \n  \tone workers.Worker\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 4,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall w: Worker |  w in Workstation.workers\n  \tsome w: Worker | lone ws: Workstation | ws.workers = w\n  }"
+                }
+            ]
+        },
+        {
+            "entry_count": 4,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall w : Workstation | #(w.workers) > 1\n  \n    all w: Worker | one work : Workstation | w in work.workers\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 4,
+            "syntactic_count": 3,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\t(all w: Workstation | some w.workers)\n\t&& (all w: Worker | one (Workstation->workers).w)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall ws: Workstation, w: Worker | one ws1: Workstation | (ws -> w in workers) and w in ws1.workers\n\n    // Every workstation has workers\n    all ws: Workstation | some ws.workers \n\n    \n    all w: Worker | one ws: Workstation | w in ws.workers\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n  all ws: Workstation | #ws.workers>0 and all p: Worker | one ws1: Workstation | p in ws.workers\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 4,
+            "syntactic_count": 4,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall w : Workstation | all w2 : Workstation | all ws : Worker | some w.workers and w.workers = ws implies w2.workers != ws\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall x: Workstation, y:Worker | one x.workers iff one workers.x  \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall x: Workstation, y:Worker | some x.workers implies #x.workers > 1 \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall x: Workstation| some x.workers implies #x.workers > 1 \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 4,
+            "syntactic_count": 4,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tone workers\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\t\n\t\n\tone x: Workstation, y: Worker | some x implies y in x.workers\n\n\tall x: Workstation, y: Worker | some y implies one x\n  \n\n  \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tsome workers and one ~workers\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall x: Workstation, y: Worker | some x implies some y\n\t\n\t\n\tone x: Workstation, y: Worker | some x implies y in x.workers\n  \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 4,
+            "syntactic_count": 4,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall x: Workstation, y:Worker | some x.workers implies y in x.workers\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall x: Workstation, y:Worker | some x.workers implies x in workers.y\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall x: Workstation, y:Worker | some x.workers implies x in workers.y and y in x.workers\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\t\n\t\n  all x: Workstation, y: Worker | (some x.workers) iff (y in x.workers)\n  \n  \n  \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 3,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n  \tall x : Workstation | some Worker \n    all x : Worker | one Workstation\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 3,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tworkers in (Workstation one -> one Worker)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall ws: Workstation| one w: Worker |w in ws.workers\n  \tall w: Worker| one ws: Workstation| w in ws.workers\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 3,
+            "syntactic_count": 3,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall ws : Workstation | some wks : ws.workers | no (wks & (Workstation - ws).workers)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n  all ws : Workstation | some w : ws.workers | ws in workers.w and all w1 : Worker | one ws1 : Workstation | w in ws1.workers\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n  \tall ws : Workstation | some w : ws.workers | ws in workers.w and \n  \tall w1 : Worker | one ws : Workstation | ws in workers.w\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 3,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n  \n  all wo : Workstation | (lone w : Worker | wo-> w in workers )\n\n  all w : Worker | (one wo : Workstation | wo -> w in workers)\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall ws : Workstation | lone ws.workers\n  \tall w : Worker | one ws : Workstation | w in ws.workers\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 3,
+            "syntactic_count": 3,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\t\n\t\n\tone x: Workstation, y: Worker | some x implies y in x.workers\n\n\t\n  \n  \tall y: Worker | one x: Workstation | some y implies y in x.workers\n  \n\n  \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall w: Worker | some w2: Worker |  w in Workstation.workers and Workstation.workers = w2\n  \tsome w: Worker | lone ws: Workstation | ws.workers = w\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\t\n\t\n\tone x: Workstation, y: Worker | some x implies y in x.workers\n\n\tall x: Workstation, y: Worker | some y implies one x\n  \n  \tall y: Worker | one x: Workstation | some y implies y in x.workers\n  \n\n  \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n  all w : Workstation | some w.workers\n  all w : Worker | one s : Workstation | w in s.workers implies w not in (Workstation-s).workers\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n  \tall w: Workstation | #(w.workers) > 0 and #(w.workers & Human)  > 0 \n  \tall disj w1,w2: Workstation |  #(w1.workers & w2.workers) = 0\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall ws: Workstation |\n\t\tall w: ws.workers | w in Human + Robot and w in ws.workers\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall w: Workstation, u: Worker | (u in w.workers) implies (u in Human or u in Robot)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tone ws : Workstation | all w : Worker | one ws1 : Workstation | some w1 : Worker | w1 in ws1 and w in ws\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall w : Workstation | one w2 : Workstation | all ws : Worker | some w.workers and ws in w2\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall w: Workstation | some w.workers\n  \tall w: Workstation, u: Worker | (u in w.workers) implies (u in Human or u in Robot)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t\n\tall ws: Workstation | ws.workers != none and all w: ws.workers | w in ws.workers and w in Human + Robot\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n  workers in Workstation some -> one Worker\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall wo: Worker | wo in Workstation.workers\n  \tall w: Workstation | some wo: Worker | w.workers = wo\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n  \n  all ws : Workstation, w : Worker |  one (ws.workers)  and some workers.w \n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall w : Workstation, u: Worker | some w.workers or one workers.u\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n  all ws: Workstation, w: Worker | (ws in ws.succ) implies (w in ws.workers)\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n  all ws: Workstation | #ws.workers>0 and no ws1: Workstation | ws1 != ws and #(ws.workers & ws1.workers) =0\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall x: Workstation, y:Worker | some x.workers and lone workers.y  \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall w : Workstation, we : Worker | some w.workers and lone we.~workers\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall x: Workstation, y:Worker | some x.workers implies one workers.y\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall x: Workstation, y:Worker | some x.workers implies #workers.y=1\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tworkers in (Workstation lone -> one Worker )\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tworkers in (Workstation some -> lone Worker)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall k: Workstation | some k.workers\n  \tsome w: Worker, k1: Workstation, k2: Workstation | (w not in k1.workers) and (w not in k2.workers)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n  \tall wo: Workstation, wor: Worker | some workstation.workers and one workers.wor\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n  \tall wo: Workstation, wor: Worker | one wo.workers and one workers.wor\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n  all w:Workstation | some ws:Worker | ws in w.workers \n  all ws:Worker | one w:Workstation | w.workers in ws\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall s : Workstation, w : Worker | some Workstation.workers\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tsome Workstation.workers\n  \tall w : Human | w in Workstation.workers\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n  \tall w : Worker, ws : Workstation | ws in workers.w and some ws.workers and some ws.succ.workers\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n  \tall w : Worker, ws : Workstation | ws in workers.w and ws.workers in w and some ws.succ.workers\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n  \tall x : Workstation | some Worker \n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\n  all w : Worker, s : Workstation | some s.workers and one workers.w\n  all s : Workstation | s.succ in Workstation-s\n  \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall ws : Workstation |\n\t\tone ws.workers and\n\t\tall w : Worker | w in Worker-Robot and w in ws.workers\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall w : Worker | w in Human or w in Robot\t\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall wk : Workstation | all w : Worker | some wk.workers and (w in wk.workers <=> w not in wk.workers.^(succ)) and (wk not in wk.succ)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall x: Workstation | x.workers != none\n  \tall x: Worker | some y: Workstation | x in y.workers implies\n  \t\t\t\t\t\t\t\t\tx not in (Workstation - y).workers\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall ws: Workstation | ws.workers in Worker\n\tall w: Worker | one Workstation.workers\n\tall sw: Workstation.succ | sw.workers in Worker\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tone ws : Workstation | all w : Worker | one ws1 : Workstation | some w1 : Worker | w1 in ws1.workers and w in ws.workers\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tone ws : Workstation | all w : Worker | all ws1 : Workstation | some w1 : Worker | w1 in ws1.workers and w in ws.workers\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n  \tone ws : Workstation | all w : Worker | w in ws.workers\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n  \tall wt : Workstation | some w : Worker | w in wt.workers\n  \tsome wt : Workstation | all w : Worker | w in wt.workers\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\t\n  \tsome w: Worker | lone ws: Workstation | ws.workers = w\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall w: Worker | some w2: Worker |  w in Workstation.workers and Workstation.workers = w2\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall w: Worker | some w2: Worker | lone w3: Workstation |  w in Workstation.workers and w3.workers = w2\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n  \tall w: Workstation | #(w.workers) > 0 and #(w.workers & Human) > 0 \n  \tall disj w1,w2: Workstation |  #(w1.workers & w2.workers) = 0\n  \tno w: Worker | some ws: Workstation | w not in ws.workers\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n  \tall w: Workstation | #(w.workers) > 0 and #(w.workers & Human) > 0 \n  \tall disj w1,w2: Workstation |  #(w1.workers & w2.workers) = 0\n  \tno w: Worker | lone ws: Workstation | w not in ws.workers\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall w : Workstation | one w2 : Workstation | all ws : Worker | some w.workers and w2.workers = ws\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall w : Worker | lone x:Workstation| w in Workstation.workers\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n  \n  all ws : Workstation, w : Worker | one (ws.workers)\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n  \n  all ws : Workstation, w : Worker |  some (ws.workers)  and one workers.w and some ws.succ\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall ws: Workstation, w: Worker | one ws1: Workstation | (ws -> w in workers) implies w in ws1 \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall w : Workstation | #(w.workers) > 1\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n  all ws: Workstation, w: Worker | (ws in ws.succ) implies (w in ws.workers) \n  all w: Worker | one ws: Workstation | w in ws.workers\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n  all ws: Workstation, w: Worker | (ws in ws.succ) implies (w in ws.workers) \n  all w: Worker | some ws: Workstation | w in ws.workers\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tWorkstation.workers != none implies Workstation.workers = Worker\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tworkers.Worker = Workstation and #workers = #Worker\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tone x: Workstation| one y: Worker | y in x.workers and x in workers.y\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall x: Workstation, y:Worker | one x.workers iff one workers.y  \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall x: Workstation, y:Worker | some x.workers iff one workers.y  \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall x: Workstation| one y: Worker | some x.workers and one workers.y\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall x: Workstation| one y: Worker | x in x.workers implies some x.workers and one workers.y\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every workstation has workers and every worker works in one workstation\n\tall x: Workstation| one y: Worker | x in workers.y implies some x.workers and one workers.y\n}"
+                }
+            ]
+        }
+    ]
+}

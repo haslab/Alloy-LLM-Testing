@@ -1,0 +1,1546 @@
+{
+    "original": "iP5JL36afv5KbDKP6",
+    "cmd": "inv8",
+    "pred": "this/inv8",
+    "entry_count": 931,
+    "semantic_count": 85,
+    "syntactic_count": 235,
+    "scope": 3,
+    "groups": [
+        {
+            "entry_count": 425,
+            "syntactic_count": 49,
+            "correct": true,
+            "elems": [
+                {
+                    "entry_count": 207,
+                    "code": "{\n\t// A professor cannot teach herself\n\tall p: Professor | no (p.teaches & p.enrolled)\n}"
+                },
+                {
+                    "entry_count": 34,
+                    "code": "{\n\t// A professor cannot teach herself\n\tall p: Professor | all c: p.teaches | c not in p.enrolled\n}"
+                },
+                {
+                    "entry_count": 26,
+                    "code": "{\n\t// A professor cannot teach herself\n\tall p : Professor, c : Course | c in p.teaches implies c not in p.enrolled\n}"
+                },
+                {
+                    "entry_count": 18,
+                    "code": "{\n\t// A professor cannot teach herself\n\tall t : Professor | (all te : t.enrolled | te not in t.teaches ) \n}"
+                },
+                {
+                    "entry_count": 16,
+                    "code": "{\n\t// A professor cannot teach herself\n  all p: Professor | p not in enrolled.(p.teaches)\n}"
+                },
+                {
+                    "entry_count": 10,
+                    "code": "{\n\t// A professor cannot teach herself\n\tall t : Professor | t.teaches & t.enrolled = none\n}"
+                },
+                {
+                    "entry_count": 8,
+                    "code": "{\n\t// A professor cannot teach herself\n\tall p: Professor | all c: Course | (p in teaches.c) implies (p not in enrolled.c)\n}"
+                },
+                {
+                    "entry_count": 7,
+                    "code": "{\n\t// A professor cannot teach herself\n  \tall p : Professor , c : p.teaches |\n  \t\tp not in enrolled.c \n\n}"
+                },
+                {
+                    "entry_count": 7,
+                    "code": "{\n    // A professor cannot teach herself\n    no disj p: Professor | p in p.teaches.~enrolled\n}"
+                },
+                {
+                    "entry_count": 6,
+                    "code": "{\n\t// A professor cannot teach herself\n\tall p : Professor | all c : p.teaches | all c1 : p.enrolled | c1 not in c\n}"
+                },
+                {
+                    "entry_count": 6,
+                    "code": "{\n\t// A professor cannot teach herself\n\tall p : Professor, c : Course | c in p.teaches implies not c in p.enrolled\n}"
+                },
+                {
+                    "entry_count": 5,
+                    "code": "{\n\tall p : Professor, c : Course | p->c in teaches implies (not p->c in enrolled) \n\n}"
+                },
+                {
+                    "entry_count": 5,
+                    "code": "{\n\t// A professor cannot teach herself\n\tall p : Professor | all c : Course | not (p in teaches.c and p in enrolled.c)\n\n}"
+                },
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// A professor cannot teach herself\n\tall p:Professor |all t:p.teaches,e: p.enrolled | t not in e\n}"
+                },
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// A professor cannot teach herself\n\tall p: Professor | all teach: p.teaches | all enroll: p.enrolled | no (teach&enroll)\n}"
+                },
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// A professor cannot teach herself\n\tall pr : Professor | no c : Course | c in pr.enrolled and c in pr.teaches\n}"
+                },
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// A professor cannot teach herself\n\tall p : Professor | no c : p.teaches | c in p.enrolled\n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// A professor cannot teach herself\n\tno p: Professor | some (p.enrolled & p.teaches)\n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// A professor cannot teach herself\n\t\n  \tall p : Professor, c : Course | p->c in teaches implies p->c not in enrolled\n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// A professor cannot teach herself\n  all c : Course | all p : Professor |\n not (c in p.teaches and c in p.enrolled)\n  \n\n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// A professor cannot teach herself\n\tall p : Professor, c : Course | c in p.enrolled implies c not in p.teaches\n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// A professor cannot teach herself\n\tall p: Professor | all c: Course | (p in enrolled.c) implies (p not in teaches.c)\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// A professor cannot teach herself\n  \tall p: Professor | p not in p.teaches.~enrolled\n\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// A professor cannot teach herself\n\tall p : Professor | not (p in teaches.(p.enrolled) )\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// A professor cannot teach herself\n    all p : Professor | all c : Course | not (p in teaches.c and p in enrolled.c)\n\n  \n  \tall p : Professor | no (p.teaches & p.enrolled)\n\n\t\n\n\t\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// A professor cannot teach herself\n  \tall p : Professor | no(enrolled.(p.teaches) & p)\n\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// A professor cannot teach herself\n\tall p : Person | all c : Course | p in Professor and c in p.teaches implies c not in p.enrolled\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// A professor cannot teach herself\n\tall p : Professor | p.teaches = p.teaches - p.enrolled\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// A professor cannot teach herself\n  \tall p : Professor, c: p.enrolled | p not in teaches.c\n\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// A professor cannot teach herself\n  all p : Professor | all c : Course | not (p->c in teaches and p->c in enrolled)\n\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// A professor cannot teach herself\n\tall p : Professor | all c : Course | not (p->c in teaches & enrolled)\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// A professor cannot teach herself\n  \tall p: Professor | #(p.teaches & p.enrolled) = 0\n\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// A professor cannot teach herself\n\tall x : Professor | all c : Course | no x.teaches & x.enrolled\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// A professor cannot teach herself\n\tall t : Professor | all c : Course | c not in (t.enrolled & t.teaches)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A professor cannot teach herself\n\tall p : Professor, c : Course | no c : p.teaches | c in p.enrolled\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A professor cannot teach herself\n\tall p: Professor | no c:Course | p->c in teaches and p->c in enrolled\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A professor cannot teach herself\n\tno p: Professor |\n  \t\tsome c: Course |\n  \t\t\tc in p.teaches and p in c.~enrolled\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A professor cannot teach herself\n\tall p:Professor | (no c:Course | p in teaches.c and p in enrolled.c)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A professor cannot teach herself\n \tall p: Professor | all c: Course |\n  \tp->c in enrolled implies p->c not in teaches\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A professor cannot teach herself\n\tno p : Professor | p.enrolled & p.teaches != none\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A professor cannot teach herself\n\tall t : Professor | all cr : t.teaches | t.enrolled = t.enrolled-cr\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A professor cannot teach herself\n\tno p : Professor | some c : Course | c in p.enrolled and c in p.teaches\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A professor cannot teach herself\n\tall p: Professor | not p in p.teaches.~enrolled \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A professor cannot teach herself\n\tno p: Professor |\n  \t\tsome c: Course |\n  \t\t\tc in p.teaches and p in enrolled.c \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A professor cannot teach herself\n\n\t\n\t\n\n\t\n \n\tall p : Professor | no c : Course | p->c in teaches & enrolled\n\n\t\n\n\t\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A professor cannot teach herself\n  all p: Professor | all c: p.teaches | \n  \t\tall s: enrolled.c | p!=s\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A professor cannot teach herself\n  all p : Professor|all c : Course | c in p.teaches implies p not in enrolled.c\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A professor cannot teach herself\n  \tall p : Professor | p not in teaches.(p.enrolled)\n\t\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A professor cannot teach herself\n  \tall p:Professor | not p in enrolled.(p.teaches) \n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 194,
+            "syntactic_count": 46,
+            "correct": true,
+            "elems": [
+                {
+                    "entry_count": 66,
+                    "code": "{\n\t// A professor cannot teach herself\n  all p: Professor | p not in p.teaches\n}"
+                },
+                {
+                    "entry_count": 22,
+                    "code": "{\n\t\n\tno p: Professor | p in p.teaches\n\n}"
+                },
+                {
+                    "entry_count": 17,
+                    "code": "{\n\t// A professor cannot teach herself\n\n}"
+                },
+                {
+                    "entry_count": 9,
+                    "code": "{\n\t// A professor cannot teach herself\n\tall p : Professor | p not in p.^teaches\n }"
+                },
+                {
+                    "entry_count": 7,
+                    "code": "{\n\t// A professor cannot teach herself\n  \tall p : Professor | no(p.teaches & p)\n\n}"
+                },
+                {
+                    "entry_count": 7,
+                    "code": "{\n\t\n  all p : Professor | not p in p.teaches \n  \n}"
+                },
+                {
+                    "entry_count": 6,
+                    "code": "{\n\t// A professor cannot teach herself\n  all p: Professor | p not in teaches.p\n\n}"
+                },
+                {
+                    "entry_count": 5,
+                    "code": "{\n\t// A professor cannot teach herself\n  all p: Professor | p not in enrolled.p.teaches\n}"
+                },
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// A professor cannot teach herself\n  all p: Professor | p not in p.teaches.enrolled\n}"
+                },
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t\n\tall p: Professor, c: Course | p !in c.teaches\n\n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t\n  all p: Professor | no c: Course | p in c.teaches\n\n\n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// A professor cannot teach herself\n  \tno p : Professor | p in teaches.p\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// A professor cannot teach herself\n all p: Professor | all s: Person | p in s.teaches implies p not in s.enrolled\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// A professor cannot teach herself\n  all p1,p2:Professor | p1.teaches in p2.enrolled or p2.teaches in p1.enrolled implies p1 != p2\n\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// A professor cannot teach herself\n\tall p: Person | p in Professor implies p not in p.teaches\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// A professor cannot teach herself\n\tall p : Professor | some p.teaches => p not in p.enrolled\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// A professor cannot teach herself\n\tall p : Professor | not (p in teaches.p)\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// A professor cannot teach herself\n           (iden not in teaches.(~(enrolled)))\n\n\n\n\n\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// A professor cannot teach herself\n\tall p : Professor | p not in p.teaches & p.enrolled\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A professor cannot teach herself\nall p : Professor | all c : p.teaches | not (p in c.grades.Person)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A professor cannot teach herself\n  \tall p : Professor | p.teaches = p.teaches - p\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A professor cannot teach herself\n\tall s : Professor | no(teaches.s & s.enrolled)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A professor cannot teach herself\n  \tall p : Professor | no(enrolled.p.teaches & p)\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A professor cannot teach herself\n\tall p : Professor | not (p in p.enrolled.teaches)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A professor cannot teach herself\n  \t all p : Professor | no c : Course | p in c.teaches and p in c.teaches\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A professor cannot teach herself\n\tall p:Professor , c:Course| (p in teaches.c) implies p not in c\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A professor cannot teach herself\nall p : Professor | all c : p.teaches | not (p in c.enrolled)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A professor cannot teach herself\n\tno (teaches & iden)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A professor cannot teach herself\n  all p:Professor, c:p.teaches |\n  \tp not in c.grades.Person\n  \n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A professor cannot teach herself\nall p : Professor | no c : p.teaches | p in c.grades.Person\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A professor cannot teach herself\n all p: Person | p.enrolled !=none implies p not in p.teaches\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A professor cannot teach herself\n\n\tall p : Professor | not p->p in teaches \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A professor cannot teach herself\n  \tall p:Professor | (p not in p.teaches and p not in p.enrolled) \n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A professor cannot teach herself\n  all p : Professor | no c : p.teaches | p in c.enrolled\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A professor cannot teach herself\n  \tno p : Professor |\n\t\tp in p.teaches & p.enrolled\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A professor cannot teach herself\n\tall p: Professor | all c: Course | c in p.teaches implies c not in c.enrolled\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A professor cannot teach herself\n           no (teaches.(~(enrolled))) or (iden not in teaches.(~(enrolled)))\n\n\n\n\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A professor cannot teach herself\n  all p1,p2:Professor,c:Course | p1.teaches in p2.enrolled or p2.teaches in p1.enrolled implies p1 != p2\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A professor cannot teach herself\n  \tall p : Person | p in p.teaches implies p in Professor\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A professor cannot teach herself\n\tno p : Professor | p in p.^teaches\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A professor cannot teach herself\n  \tall p : Person | p in Professor implies no(p.teaches & p)\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A professor cannot teach herself\n\tno (teaches & enrolled & iden)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A professor cannot teach herself\n\tiden not in teaches\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A professor cannot teach herself\n \tall p: Person | p in p.teaches implies p not in p.enrolled\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A professor cannot teach herself\n  \tall p : Professor, c: p.enrolled | p not in c.teaches\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A professor cannot teach herself\n  \tall p : Professor, c : p.teaches |\n  \t\tp.teaches not in enrolled.c\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 112,
+            "syntactic_count": 23,
+            "correct": true,
+            "elems": [
+                {
+                    "entry_count": 28,
+                    "code": "{\n\t// A professor cannot teach herself\n\tno enrolled&teaches\n}"
+                },
+                {
+                    "entry_count": 18,
+                    "code": "{\n\t// A professor cannot teach herself\n\tall p : Person | no p.teaches & p.enrolled\n}"
+                },
+                {
+                    "entry_count": 14,
+                    "code": "{\n\t// A professor cannot teach herself\n  \tall p : Person, c : Course | c in p.teaches implies c not in p.enrolled\n\n}"
+                },
+                {
+                    "entry_count": 12,
+                    "code": "{\n\t// A professor cannot teach herself\n\tall c : Course | no teaches.c & enrolled.c\n}"
+                },
+                {
+                    "entry_count": 7,
+                    "code": "{\n\t// A professor cannot teach herself\n\tall p : Person | all t : p.teaches | t not in p.enrolled\n}"
+                },
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// A professor cannot teach herself\n  \n  all p : Person |  (p.teaches & p.enrolled = none )\n\n}"
+                },
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// A professor cannot teach herself\n\tall p : Person | all c : p.enrolled | c not in p.teaches\n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// A professor cannot teach herself\n\tno iden & teaches.~enrolled\n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// A professor cannot teach herself\n\tall p: Person | all c: Course | c in p.enrolled implies not c in p.teaches\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// A professor cannot teach herself\n  all p: Professor | no (p.teaches & p.enrolled)\n  no(teaches & enrolled)\n\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// A professor cannot teach herself\n  \n  all p : Professor | p->p not in teaches\n\n\t\n\t\n\n\t\n \n\tno teaches & enrolled\n\n\t\n\n\t\n\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// A professor cannot teach herself\n  \tall pe : Person, teach : pe.teaches, enroll : pe.enrolled |\n  \t\t(teach & enroll) = none\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// A professor cannot teach herself\n\tall p : Person, c : Course | c in p.teaches implies not c in p.enrolled \n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// A professor cannot teach herself\n    all p : Professor | all c : Course | not (p in teaches.c and p in enrolled.c)\n\n  \n  \tall p : Professor | no (p.teaches & p.enrolled)\n\n\t\n\n\tall c : Course | no (teaches.c & enrolled.c)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A professor cannot teach herself\n\tall p: teaches.Course | p not in enrolled.(p.teaches)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A professor cannot teach herself\n\tall p : Person , c : Course | not(c in p.teaches and c in p.enrolled)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A professor cannot teach herself\n\tall p: Person | no c: Course | c in p.enrolled and c in p.teaches\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A professor cannot teach herself\n\tall p : Professor | no (p.teaches & p.enrolled)\n  \n  \tall c : Course | no (teaches.c & enrolled.c)\n  \n  \tno teaches & enrolled\n  \n  \t\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A professor cannot teach herself\n\tall p: Person, c: Course | p in teaches.c implies p not in enrolled.c\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A professor cannot teach herself\n  \tall p : Person, c : Course | c in p.enrolled implies c not in p.teaches \n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A professor cannot teach herself\n  all p1,p2:Person, c:Course| c in p1.teaches implies c not in p1.enrolled\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A professor cannot teach herself\n\tteaches & enrolled = none->none\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A professor cannot teach herself\n\tno (~enrolled).teaches & iden\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 30,
+            "syntactic_count": 3,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 25,
+                    "code": "{\n\t\n\tall p : Professor | p.teaches not in p.enrolled\n}"
+                },
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// A professor cannot teach herself\n\t\n \tall p : Professor | not (p.teaches in p.enrolled) \t\n  \t\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A professor cannot teach herself\n  \tall p:Professor | some c:p.teaches | c not in p.enrolled\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 26,
+            "syntactic_count": 4,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 21,
+                    "code": "{\n\t// A professor cannot teach herself\n\tall p: Professor | p.enrolled not in p.teaches\n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// A professor cannot teach herself\n\tall p : Professor | not p.enrolled in p.teaches\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A professor cannot teach herself\n\tno p : Professor | p.enrolled in p.teaches\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A professor cannot teach herself\n  all p:Professor | some c:p.enrolled | c not in p.teaches\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 12,
+            "syntactic_count": 7,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// A professor cannot teach herself\n\tall p: Professor | no p.teaches\n\n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// A professor cannot teach herself\n  all p :Professor , c: Course | p not in teaches.c \n\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// A professor cannot teach herself\n\tall p : Professor | all c : Course | not (p in teaches.c )\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A professor cannot teach herself\n\n\tno p: Professor | p in p.teaches.~teaches\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A professor cannot teach herself\n\tall p : Professor, c : Course | no (teaches.c & p)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A professor cannot teach herself\n\tall p : Professor | p not in p.teaches.~teaches\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A professor cannot teach herself\n\n\tall p: Professor | not p in p.teaches.~teaches\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 9,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 8,
+                    "code": "{\n\t// A professor cannot teach herself\n\tall p: Professor | p.enrolled != p.teaches\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A professor cannot teach herself\n\tno p : Professor | p.enrolled = p.teaches\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 5,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// A professor cannot teach herself\n\tall p : Professor | all c : Course | not p in enrolled.c\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// A professor cannot teach herself\n\tall p : Person & Professor | no p.enrolled\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 5,
+            "syntactic_count": 5,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A professor cannot teach herself\n\tall p : Professor | (some c : Course | not (p in teaches.c and p in enrolled.c))\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A professor cannot teach herself\n  all p : Professor|some c : Course | c in p.teaches implies p not in enrolled.c\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A professor cannot teach herself\n\tno p : Professor| all c : Course | p in enrolled.c and p in teaches.c\n  \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A professor cannot teach herself\n\tall p:Professor | some c:Course |\n  \t\tc in p.teaches implies not(c in p.enrolled)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A professor cannot teach herself\n\tall p:Professor | some c:Course |\n  \t\tc in p.teaches implies c not in p.enrolled\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 4,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// A professor cannot teach herself\n\tall p:Professor , c:p.teaches| c in p.enrolled\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n  all p : Professor | p.teaches in p.enrolled - p\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 4,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// A professor cannot teach herself\n\tno(Professor.teaches & Professor.enrolled)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 4,
+            "syntactic_count": 4,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n  all p : Professor | p.teaches + p.enrolled = none\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A professor cannot teach herself\n  \t\n \nall p : Professor, c : Course |  p-> c not in teaches and p->c not in enrolled\n\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A professor cannot teach herself\n\tall p : Professor| all c : Course |not p in enrolled.c and not p in teaches.c\n  \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A professor cannot teach herself\n  \t\n \n\nall p : Professor, c : Course | \n        p not in teaches.c and p not in enrolled.c\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 4,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// A professor cannot teach herself\n  \tall p : Person | p.enrolled not in p.teaches\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 3,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// A professor cannot teach herself\n\tall p : Person-Student, c : Course | c in p.teaches implies c not in p.enrolled\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A professor cannot teach herself\n  \n  \tall x : Person - Student | no (x.teaches & x.enrolled)\n  \n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 3,
+            "syntactic_count": 3,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A professor cannot teach herself\n all p: Person | p.enrolled !=none implies p.teaches=none\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A professor cannot teach herself\n all p: Person | p.enrolled !=none implies p.^teaches=none\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A professor cannot teach herself\n all p: Person | p.^enrolled !=none implies p.^teaches=none\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 3,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// A professor cannot teach herself\n\tno(Person.teaches & Person.enrolled)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A professor cannot teach herself\n  \tall c1 : Person.teaches, c2: Person.enrolled | no c1 & c2\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 3,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// A professor cannot teach herself\n            teaches.(~(enrolled)) not in iden\n\n\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A professor cannot teach herself\n        enrolled.(~(teaches)) not in iden\n\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 3,
+            "syntactic_count": 3,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A professor cannot teach herself\n           no (teaches.(~(enrolled))) or (teaches.(~(enrolled)) not in iden)\n\n\n\n\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A professor cannot teach herself\n       some (teaches & enrolled) implies (teaches.(~(enrolled)) not in iden)\n\n\n\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A professor cannot teach herself\n       some (teaches.(~(enrolled))) implies (teaches.(~(enrolled)) not in iden)\n\n\n\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 3,
+            "syntactic_count": 3,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A professor cannot teach herself\n  all p:Professor | not (some g:Grade| (p->g) in p.teaches.grades)\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A professor cannot teach herself\n  \tall p : Professor | p not in p.teaches.grades.Grade\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A professor cannot teach herself\n  \tall p : Professor | no p.teaches.grades[p]\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// A professor cannot teach herself\n\tall p1:Professor, p2:teaches.(p1.teaches)-p1 | no (p1.teaches & p2.enrolled)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A professor cannot teach herself\n\tall p : Person, c : Course | (p in Professor and p in c.teaches) and (p in Student and p in c.enrolled)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A professor cannot teach herself\n\tall p : Person, c : Course | p in c.teaches and p in c.enrolled\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A professor cannot teach herself\n\t\n  \tteaches in Professor -> Student\n  \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A professor cannot teach herself\n\tall p : Person | p.teaches in Person-p\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n  all p: Professor, c: Course | p -> c in teaches and\n  some p2: Professor | p2 -> c in teaches and p != p2\n\t// A professor cannot teach herself\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A professor cannot teach herself\n\tall p : Professor, c : Course | p in teaches.c and p in enrolled.c \n  \n  \tall p : Professor | no (p.teaches & p.enrolled)\n\n\t\n\n\t\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A professor cannot teach herself\n\tall p : Professor, c : Course | p in c.teaches and p in c.enrolled\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// A professor cannot teach herself\n\tno p : Professor | all c : Course | p in teaches.c and p in enrolled.c \n  \n  \tall p : Professor | no (p.teaches & p.enrolled)\n\n\t\n\n\t\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A professor cannot teach herself\n\tall p: Professor | (p.enrolled & p.teaches) = 0\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A professor cannot teach herself\n\tall p:Professor | p in p.teaches\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// A professor cannot teach herself\n\tall p : Professor| all c : Course | p in enrolled.c and p in teaches.c\n  \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 2,
+            "correct": true,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A professor cannot teach herself\n  all p1:Student, c:Course| c in p1.teaches implies c not in p1.enrolled\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A professor cannot teach herself\n\tall s: Student | no c: Course | c in s.enrolled and c in s.teaches\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// A professor cannot teach herself\n\tall p: Person|\n  \t\tsome c: Course | c in p.teaches implies\n\t\t\tc not in p.enrolled\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// A professor cannot teach herself\n\tall p : Professor| all c : Course |not p in enrolled.c and p in teaches.c\n  \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A professor cannot teach herself\n  Professor.enrolled not in Professor.teaches\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t\n\tall p : Professor | enrolled.(p.teaches) & teaches.(p.teaches) = none\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A professor cannot teach herself\n \tall p: Professor | all c: Course |\n  \tp->c in enrolled implies p->c in teaches\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A professor cannot teach herself\n\n  all pr :  Professor, p : Person | p.teaches in Person implies p!=pr \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A professor cannot teach herself\n\tall c : Course | not one teaches.c & enrolled.c\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A professor cannot teach herself\n\tall c : Course | not one teaches.c & enrolled.c & Professor\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A professor cannot teach herself\n\n  all pr :  Professor, c : pr.enrolled | pr.teaches != c\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A professor cannot teach herself\n \tall p: Person, c: Course | p not in teaches.c implies p in Professor\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A professor cannot teach herself\n\tall p1 : Professor | one c : Course | c in p1.teaches implies (c not in p1.enrolled)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A professor cannot teach herself\n\tall p : Professor | all c : p.teaches | p.enrolled not in c\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A professor cannot teach herself\n\tall p : Professor | all c : p.teaches | p.enrolled != c\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A professor cannot teach herself\n  \tall p: Professor | lone (p.teaches & p.enrolled)\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A professor cannot teach herself\n\tall p : Professor | teaches.p=Person-p\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A professor cannot teach herself\n\tall p : Professor | p.teaches=Person-p\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A professor cannot teach herself\n  \tall c:Course | teaches.c not in enrolled.c\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A professor cannot teach herself\n\tall p:Professor, c:Course | p in teaches.c implies (some g:Grade | p not in c.grades.g)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A professor cannot teach herself\n\tall t : Professor | not one (t.enrolled & t.teaches)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A professor cannot teach herself\n  \n  \tall x : Person - Student | x->x in teaches\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A professor cannot teach herself\n  \tall pe : Person | pe.teaches != pe.enrolled \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A professor cannot teach herself\n  one p : Person | p.teaches != p.enrolled\n\t\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A professor cannot teach herself\n\tall p : Professor | all c : Course | not p in enrolled.c\n  \n  \tno teaches & enrolled\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A professor cannot teach herself\n\tall p : Person | some c : Course | p in Professor and c in p.teaches implies c not in p.enrolled\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A professor cannot teach herself\n\tall p : Person | some c : Course | p in Professor and c in p.teaches and c not in p.enrolled\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A professor cannot teach herself\n\tall p : Person | some p.teaches => p not in Student\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A professor cannot teach herself\n\tall p : Professor | some p.teaches => p not in Student\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A professor cannot teach herself\n\tall p : Professor | some p.teaches => p.teaches not in p.enrolled\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A professor cannot teach herself\n\tall p : Professor|some c : Course | p.teaches= c implies not p.enrolled in c\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t\n  all p:Professor | all c: Course | c in p.teaches => all t:Project | t in c.projects => t not in p.projects  \n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A professor cannot teach herself\n\t\n  \tProfessor.teaches != Professor.enrolled\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A professor cannot teach herself\n  all c : Course | one p : Professor |\n not (c in p.teaches and c in p.enrolled)\n  \n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A professor cannot teach herself\n  all c : Course | one p : Person |\n not (c in p.teaches and c in p.enrolled)\n  \n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A professor cannot teach herself\n\tall p1 : Professor | all p2 : Professor - p1 | all c : p1.teaches | p2 not in enrolled.c \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A professor cannot teach herself\n\t\n \tall p : Professor, c : Course | p.teaches not in p.enrolled \t\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A professor cannot teach herself\n  \tall p : Professor | no teaches -> p\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n  all p: Professor, c: Course | p -> c in teaches iff\n  some p2: Professor | p2 -> c in teaches and p != p2\n\t// A professor cannot teach herself\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n  all p: Professor, c: Course | p -> c in teaches implies\n  some p2: Professor | p2 -> c in teaches and p != p2\n\t// A professor cannot teach herself\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n  no p: Professor | p in Student\n  all p: Professor, c: Course | p -> c in teaches implies\n  some p2: Professor | p2 -> c in teaches and p != p2\n\t// A professor cannot teach herself\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n  all c: Course |\n    \n    #c.teaches >= 2\n\t// A professor cannot teach herself\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n  all p: Professor, c: Course | p -> c in teaches and no (p.enrolled) implies\n  some p2: Professor | p2 -> c in teaches and no (p.enrolled) and p != p2 \n\t// A professor cannot teach herself\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n  all p: Professor, c: Course | p -> c in teaches and no(p.enrolled) implies\n  some p2: Professor | p2 -> c in teaches and no(p2.enrolled) and p != p2 \n\t// A professor cannot teach herself\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A professor cannot teach herself\n\tall p : Professor | all c : p.enrolled | p.teaches not in c\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A professor cannot teach herself\n  \tall c1 : Professor.teaches, c2: Student.enrolled | no c1 & c2\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A professor cannot teach herself\n  \n  all p : Person |  (p.teaches & p.enrolled) = 0 \n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": true,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A professor cannot teach herself\n  all s: Student, p: Professor, c: Course | (c in s.enrolled and c in p.teaches) implies p not in s\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A professor cannot teach herself\n\tall p : Person | one c : Course |\n  \t\tno (p.enrolled & p.teaches)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A professor cannot teach herself\n\tnot (all p:Professor, c:Course | c in p.enrolled and c in p.teaches)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A professor cannot teach herself\n\tno p : Professor | no p.teaches & p.enrolled\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A professor cannot teach herself\n  all p : Person | p.teaches not in p.enrolled \n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A professor cannot teach herself\n\tall c1,c2: Course, p1, p2: teaches.c1 | c2 in p1.teaches => c2 not in p2.enrolled\n  \t\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A professor cannot teach herself\n  all p: Professor | all c: Course | p not in teaches.c and p in enrolled.c\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A professor cannot teach herself\n\tall p: Person | some (p.teaches) implies (p in Professor) \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A professor cannot teach herself\n\tall p: Person | some (p.teaches) implies (p in Professor) and no (p.enrolled)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A professor cannot teach herself\n\tiden in teaches.~enrolled\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A professor cannot teach herself\n\tteaches.~enrolled in iden\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": true,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// A professor cannot teach herself\n\tteaches.~enrolled in Professor->Person - iden\n}"
+                }
+            ]
+        }
+    ]
+}

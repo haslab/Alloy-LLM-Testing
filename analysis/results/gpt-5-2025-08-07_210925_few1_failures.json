@@ -1,0 +1,16 @@
+{
+    "Photo sharing social network": {
+        "this/inv3": {
+            "valid": [
+                "run NegativeInstance {\n  some disj U1, U2 : User | some disj Ph1, Ph2 : Photo | some disj D1 : Day {\n    User = U1 + U2\n    Influencer = U1\n\n    Photo = Ph1 + Ph2\n    Ad = Ph2\n\n    Day = D1\n\n    follows = U1->U2\n    suggested = none->none\n\n    posts = U2->Ph1 + U1->Ph2\n\n    sees = U1->Ph2 + U1->Ph1\n\n    date = Ph1->D1 + Ph2->D1\n  }\n} for 2 User, 2 Photo, 1 Day expect 0"
+            ]
+        }
+    },
+    "Courses": {
+        "this/inv9": {
+            "valid": [
+                "run Negative_Instance {\n  some disj P1, P2, S1 : Person | some disj C1 : Course | some disj PR1 : Project | some disj G1, G2 : Grade {\n    // Carriers\n    Person = P1 + P2 + S1\n    Professor = P1 + P2\n    Student = S1\n    Course = C1\n    Project = PR1\n    Grade = G1 + G2\n\n    // Teaching and enrollment\n    Person <: teaches = P1->C1\n    Person <: enrolled = S1->C1\n\n    // Projects (per person and per course)\n    Person <: projects = S1->PR1\n    Course  <: projects = C1->PR1\n\n    // Grades: includes a professor as a graded person (colleague of the teacher), causing the violation\n    Course <: grades = C1->P2->G1\n\n    // Total order on Grade\n    Grade <: next = G1->G2\n  }\n} for 3 Person, 1 Course, 1 Project, 2 Grade expect 0"
+            ]
+        }
+    }
+}

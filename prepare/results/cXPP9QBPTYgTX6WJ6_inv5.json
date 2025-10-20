@@ -1,0 +1,2741 @@
+{
+    "original": "cXPP9QBPTYgTX6WJ6",
+    "cmd": "inv5",
+    "pred": "this/inv5",
+    "entry_count": 836,
+    "semantic_count": 166,
+    "syntactic_count": 392,
+    "scope": 3,
+    "groups": [
+        {
+            "entry_count": 201,
+            "syntactic_count": 46,
+            "correct": true,
+            "elems": [
+                {
+                    "entry_count": 83,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t: Track | #(succs.t) > 1 <=> t in Junction\n}"
+                },
+                {
+                    "entry_count": 16,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  \t\n  \tall t: Track | #(t.~succs) > 1 iff t in Junction\n\n}"
+                },
+                {
+                    "entry_count": 13,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  \tall t : Track | (some e1, e2 : Track | e1 != e2 and t in e1.succs and t in e2.succs) <=> t in Junction \n}"
+                },
+                {
+                    "entry_count": 10,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall j: Track |\n  \t\tj in Junction iff #{t: Track | j in t.succs}>1\n}"
+                },
+                {
+                    "entry_count": 5,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  \n  (all t : Track - Junction | lone succs.t) and (all j : Junction | some disj t1,t2 : Track | j in t1.succs and j in t2.succs) \n\n}"
+                },
+                {
+                    "entry_count": 5,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall x:Track | x in Junction iff some disj x1,x2:Track | x in x1.succs\nand x in x2.succs\n}"
+                },
+                {
+                    "entry_count": 5,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  \tall t: Track | t in Junction implies((not one(succs.t)) and some(succs.t))\n\tall t: Track | ((not one(succs.t)) and some(succs.t)) implies t in Junction\n\n}"
+                },
+                {
+                    "entry_count": 5,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n    Junction = {x: Track | #succs.x > 1}\n\n}"
+                },
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tJunction = {t: Track | some disj t1, t2: Track | t1+t2 in succs.t}\n}"
+                },
+                {
+                    "entry_count": 4,
+                    "code": "{\n    // Junctions are the tracks with more than one predecessor\n      all t:Track | lone succs.t iff t not in Junction\n\n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tJunction = { t: Track | #t.~succs > 1 }\n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n  \tall t : Track | t in Junction iff some disj a,b: succs.t | a in succs.t and b in succs.t\n\t// Junctions are the tracks with more than one predecessor\n\t\n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  \tall t : Track | t in Junction iff some a: succs.t | some succs.t - a\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tJunction = {t : Track | not lone succs.t}\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  \tall t:Track | t in Junction <=>\n  \t(some disj t1,t2:Track | t1->t in succs and t2->t in succs)\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t:Track|t in Junction iff some disj t1,t2:Track | t in t1.succs & t2.succs \n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall j : Junction | some disj t1, t2: Track | j in t1.succs and j in t2.succs\n  \tall t : Track-Junction | lone(succs.t)\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t : Track | some succs.t and not one succs.t implies t in Junction\n\tall t : Junction | some succs.t and not one succs.t\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n    all disj t1,t2 : Track | (t1.succs&t2.succs) in Junction\n  \tall j : Junction | some disj t1,t2 : Track | t1+t2 in succs.j \n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  all t:Track | #(t.~succs) > 1 implies t in Junction\n  all j:Junction | #(j.~succs) > 1\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t: Track | t in Junction iff some disj t2,t3: Track | t in t2.succs and t in t3.succs and t2 != t3\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall j : Junction | some t1, t2: Track | t1 != t2 and j in t1.succs and j in t2.succs\n  \tall t : Track-Junction | lone(succs.t)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  all t: Track | #(succs.t)>=2 implies one (t & Junction) else (no t & Junction)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tJunction = {t: Track | some disj t1, t2: Track | t in t1.succs and t in t2.succs}\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n    // Junctions are the tracks with more than one predecessor\n    all t: Junction | # {t2: Track | t in t2.succs} > 1\n    all t: Track | t !in Junction implies # {t2: Track | t in t2.succs} <= 1\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  all t:Track| t not in Junction implies lone succs.t\n  all j:Junction | #(succs.j)>1\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  \tall j : Junction | #j.~succs > 1\n  \tall t : Track - Junction | lone t.~succs\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n    Junction = { t : Track | some succs.t } - { t : Track | one succs.t }\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  \tall t : Track | \n       (#succs.t > 1 implies t in Junction) and \n       (t in Junction implies #succs.t > 1)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tJunction = { t : Track | #succs.t > 1 }\n  \tJunction = { t : Track | #t.~succs > 1 }\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tJunction = {t: Track | some disj t1, t2: Track | t1++t2 in succs.t}\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t:Track| t in Junction iff some p1,p2 : Track | p1 in succs.t and p2 in succs.t and p1!=p2\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t: Track - Junction | lone succs.t\n  \tall j: Junction | #(succs.j) >= 2\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  all t:Track | #(succs.t) >= 2 implies t in Junction else t not in Junction\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n  \tall t : Track | t in Junction iff some disj a,b: succs.t | a in succs.t\n\t// Junctions are the tracks with more than one predecessor\n\t\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t: Track | t in Junction iff some t.~succs and not one t.~succs\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t: Track | #t.~succs > 1 => t in Junction else t not in Junction\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  \tall t : Track | \n       (#succs.t > 1 implies t in Junction) and \n       (t in Junction implies #succs.t > 1)all t : Track | (#succs.t > 1) iff t in Junction\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t : Track | #(Track & succs.t) > 1 iff (t in Junction)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  all j:Junction | not one(succs.j) and some(succs.j)\n  all t:Track | (not one(succs.t) and some(succs.t)) implies t in Junction\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\tall j : Track | (j in Junction) implies(some t1,t2:Track | t1!=t2 and t1->j in succs and t2->j in succs)\t\n\tall x:Track | (not x in Junction) implies((some t : Track| t->x in succs and all t2:Track| t2!=t implies(not t2->x in succs)) or (all t3:Track| not t3->x in succs))\t\n\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall j:Track | not (lone t:Track | j in t.succs) <=> j in Junction\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  \tall t : Track | (t in Junction) iff not (lone succs.t)\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n    all t: Track | (t in Junction implies (some t1, t2: Track | t1 != t2 and t in t1.succs and t in t2.succs)) and ((some t1, t2: Track | t1 != t2 and t in t1.succs and t in t2.succs) implies t in Junction)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t : Track | lone succs.t iff not t in Junction\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t:Track | (some t2:succs.t | some t3:succs.t | not t3=t2) implies (t in Junction)\n\tall t:Track | (t in Junction) implies (some t2:succs.t | some t3:succs.t | not t3=t2)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 101,
+            "syntactic_count": 29,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 20,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\t\n  \tall t: Junction | #succs.t > 1\n}"
+                },
+                {
+                    "entry_count": 10,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall j: Junction | some disj a, b: Track | j in (a.succs & b.succs) \n}"
+                },
+                {
+                    "entry_count": 10,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n    all j: Junction | #j.~succs > 1 \n}"
+                },
+                {
+                    "entry_count": 7,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall j : Junction | some e1, e2 : Track | e1 != e2 and j in e1.succs and j in e2.succs\n}"
+                },
+                {
+                    "entry_count": 7,
+                    "code": "{\n    all j: Junction | #({t: Track | j in t.succs}) > 1\n}"
+                },
+                {
+                    "entry_count": 5,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  \n  all j : Junction | some disj s1,s2 : Track | s1 in succs.j and s2 in succs.j\n\n}"
+                },
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  \n  \n  all j: Junction | some s1,s2:Track | j in s1.succs and j in s2.succs and not (s1=s2)\n\n}"
+                },
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall j : Junction | not one succs.j and some succs.j\n}"
+                },
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t: Track | (t in Junction) implies #(succs.t) > 1\n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t: Junction {\n  \t\tsome disj t1, t2: Track | t in t1.succs and t in t2.succs\n  }\n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall j: Junction| some pj1, pj2 : (succs.j) | pj1 != pj2\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t:Track| t in Junction implies(some disj t1,t2:Track| t in t1.succs and t in t2.succs)\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t: Junction | some  t1: Track, t2: Track | (t in t1.succs) and (t in t2.succs)\n  \tall t: Junction | #succs.t > 1\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  \tall t: Track | t in Junction implies((not one(succs.t)) and some(succs.t))\n\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t: Track | some t2: Track | some t3: Track | t in Junction iff t in t2.succs and t in t3.succs and t2 != t3\n  \n  \t\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t : Track | lone (succs.t) implies t not in Junction\n  \tall t : Junction | some t1, t2 : Track | t1 in succs.t and t2 in succs.t \n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  all j:Junction | #(succs.j) >= 2\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t : Track | lone (succs.t) implies t not in Junction\n  \tall t : Junction | some t1, t2 : Track | t1 in ^succs.t and t2 in ^succs.t \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t:Track | t in Junction => some t1,t2:Track | t in t1.succs and t in t2.succs and t1 != t2\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t : Track | lone (succs.t) implies t not in Junction\n  \tall t : Junction | some disj t1, t2 : Track | t1 in succs.t and t2 in succs.t \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  \n  \n  \n    all x : Track | some s1,s2: Track | x in s1.succs and x in s2.succs and not(s1=s2) iff x in Junction\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t: Track | t in Junction implies some disj a, b: Track | t in (a.succs & b.succs) \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t : Track | lone (succs.t) => t not in Junction\n  }"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall j : Junction | (not (one succs.j & Track)) and (some succs.j & Track)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\tall j : Track | (j in Junction) implies(some t1,t2:Track | t1!=t2 and t1->j in succs and t2->j in succs)\t\n\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall j : Junction | #(Track & succs.j) > 1\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall j : Junction | some e1, e2 : Track | e1 != e2 and e1 != j and j in e1.succs and j in e2.succs\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  \t\n  \tall j: Junction | #(j.~succs & Track) > 1\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall j: Junction | some disj a, b: Track | a != j && j in (a.succs & b.succs) \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 53,
+            "syntactic_count": 15,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 21,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t: Junction | some succs.t\n}"
+                },
+                {
+                    "entry_count": 10,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t: Track | (t in Junction) implies some(succs.t)\n}"
+                },
+                {
+                    "entry_count": 5,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t: Junction {\n  \t\tsome t1, t2: Track | t in t1.succs and t in t2.succs\n  }\n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  \n  all j : Junction | (some t:Track | t->j in succs) \n\n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall j: Junction | some a, b: Track | j in (a.succs & b.succs) \n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t : Junction | some (Track.succs & t)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t:Track | t in Junction => some t1:Track | t in t1.succs\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  \tall t: Track | t in Junction implies some t.~succs\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t : Junction | some (Track.^succs & t)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t:Track | t in Junction => some t1:Track | t in t1.^succs\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t:Track | t in Junction => some t1,t2:Track | t in t1.succs and t in t2.succs\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  \tall t1: Track | t1 in Junction => some t2, t3: Track | t2.succs = t3.succs and t1 in t2.succs and t1 in t3.succs\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  \tall t: Track | t in Junction implies t in Track.^succs \n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t : Track | (t in Junction) implies (some t1, t2 : Track | t in t1.^succs and t in t2.^succs)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t: Track | t in Junction implies some a, b: Track | t in (a.succs & b.succs) \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 53,
+            "syntactic_count": 18,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 23,
+                    "code": "{\n    // Junctions are the tracks with more than one predecessor\n      all t:Track | some succs.t iff t in Junction\n\n}"
+                },
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  all j : Track | j in Junction iff (some t : Track, tt: Track | j in t.succs && j in tt.succs)\n\n}"
+                },
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  \tall t: Track | t in Junction iff some t.~succs\n\n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  all t : Track | (some t1 : Track | t in t1.succs) iff t in Junction\n\n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tJunction = {t: Track | some succs.t} \n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  \tall t : Track | t in Junction iff t in Track.^succs\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t : Track | t in Junction <=> some (Track.^succs & t)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  \tall t : Track | t in Junction iff t in Track.succs\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t\n\tall t : Track | no(succs.t) => t not in Junction\n  \tall t : Track | some(succs.t) => t in Junction\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t:Track|t in Junction iff some t1,t2:Track | t in t1.succs & t2.succs \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  \tall t:Track | t in Junction <=> t in Track.^(succs)\n  \tall disj t1,t2,t3:Track | t1 in t2.^(succs) && t1 in t3.^(succs) implies t1 in Junction\n\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  \n  all t : Track | (some t1:Track | t1->t in succs ) iff t in Junction\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tJunction = { t : Track | some t.~succs }\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t : Track | some succs.t implies t in Junction\n  \tall e : Junction | some succs.e\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  all t: Track | t in Junction iff (some ^(succs).t)\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t : Track | t in Junction iff #succs.t >= 1\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t : Track | t in Junction <=> some (Track.succs & t)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t : Track | (t in Junction) <=> (some t1, t2 : Track | t in t1.^succs and t in t2.^succs)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 34,
+            "syntactic_count": 14,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 11,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t: Track | #(succs.t) > 1 => t in Junction\n}"
+                },
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  \tall t : Track | (some e1,e2 : Track | e1 != e2 and t in e1.succs and t in e2.succs) implies t in Junction \n}"
+                },
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall disj a, b: Track | (a.succs & b.succs) in Junction\n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  \t\n  \tall t: Track | #(t.~succs) > 1 implies t in Junction\n\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall disj a, b: Track | some (a.succs & b.succs) implies (a.succs & b.succs) in Junction\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  all t:Track | #(succs.t) >= 2 implies t in Junction\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t:Track | (some t2:succs.t | some t3:succs.t | not t3=t2) implies (t in Junction)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t : Track |(#{tr : Track | t in tr.succs}>1)  implies t in Junction \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  all t:Track| t not in Junction implies lone succs.t\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  \n  all t : Track - Junction | lone succs.t\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t :Track | #(succs.t)>=2 implies some (t&Junction)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t : Track, disj a,b : succs.t | a in succs.t iff t in Junction \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t : Track, disj a,b : succs.t | a in succs.t implies t in Junction \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t1,t2, t3 : Track | t1 != t2 and t3 in t1.succs and t3 in t2.succs implies t3 in Junction \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 30,
+            "syntactic_count": 10,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 10,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t: Junction | #(t.succs) > 1\n}"
+                },
+                {
+                    "entry_count": 5,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  all j:Junction | not one(j.succs) and some(j.succs)\n\n}"
+                },
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  all j: Junction | some s1,s2:Track | s1 in j.succs and s2 in j.succs and not (s1=s2)\n\n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall j: Junction| some sj1,sj2 : j.succs| sj1!= sj2\n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  \t\n  \tall t: Junction | #(t.succs) > 1 && #(t.succs) = #t.succs\n\t\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t\n  all t: Track | t in Junction => #t.succs > 1\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall j : Junction | some e1, e2 : Track | e1 != e2 and e1 != j and e1 in j.succs and e2 in j.succs \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  \n  \n  \n    all x : Track | some s1,s2: Track | s1 in x.succs and s2 in x.succs and not(s1=s2) iff x in Junction\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  all j: Junction | not lone j.succs\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall j : Junction | some e1, e2 : Track | e1 != e2 and e1 in j.succs and e2 in j.succs \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 23,
+            "syntactic_count": 3,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 21,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t: Junction | some disj t1: Track, t2: Track | one t1 \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t: Track | some t2: Track | some t3: Track | t in t2.^succs and t in t3.^succs and t2 != t3 implies t in Junction\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 19,
+            "syntactic_count": 16,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  \tall t: Track | t in Junction => some t2: Track | t in (t2.succs - t) and some t3: (t2.succs - t) | t in t3.succs\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t:Track | t in Junction iff #(Track.succs & t)>1\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  \tall t: Track | t in Junction => some t2: Track | t in (t2.succs - t) and some t3: (t2.succs - t) | t in (t3.succs - t)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall j: Junction | some t: Track | j in t.succs.succs - j\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall j : Junction | #(j.*succs - j.^succs) >= 2\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\n  \tall t:Track | some t1:Track | t in Junction iff #(t1.succs & t)>1\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall j: Junction | some t: Track | j in (t.succs - j)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  \tall t: Track | t in Junction <=> some t2: Track | t in (t2.succs - t) and some t3: (t2.succs - t) | t in (t3.succs - t)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  all j : Junction | some succs.j and j not in *succs.j\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t : Track | t in Junction iff some succs.t and t not in *succs.t\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  \tall j : Junction | #(j & Track.succs) > 1\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  \tall j : Junction | #(j & Track.succs) > 1\n  \tall t : Track | #(t & Track.succs) > 1 implies t in Junction\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\n  \tall t:Track | some t1:Track | t in Junction iff t1.succs=t and #t1>1\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall j: Junction | some t: Track | j in (t.succs - j).succs - j\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t1 : Track | t1 in Junction iff all t2,t3 : Track | t2 != t3 and t1 in t2.succs and t1 in t3.succs\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t: Track | t in Junction iff ( all prec: Track | t in prec.succs and #prec > 1) \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 17,
+            "syntactic_count": 7,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 8,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t: Track | some t2: Track | some t3: Track | t in Junction iff t in t2.^succs and t2 != t3 and t in t3.^succs\n}"
+                },
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall j : Junction| not ( lone ( ^(succs).j) )\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall j : Junction | # { t : Track | j in t.^succs} >1 \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t: Track | (t in Junction) implies #(^succs.t) > 1\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall j: Junction | some disj t1, t2: Track | t1 in ^succs.j and t2 in ^succs.j\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall j : Junction| not ( one ( ^(succs).j) ) and  not ( no ( ^(succs).j) )\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n  // Junctions are the tracks with more than one predecessor\n  all j: Junction | \n    some p1, p2: Track | p1 in ^succs.j and p2 in ^succs.j and p1 != p2\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 12,
+            "syntactic_count": 7,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n    all t: Track | #(~succs.t) > 1 <=> t in Junction\n\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n    // Junctions are the tracks with more than one predecessor\n    all t: Track | \n        t in Junction iff some t1, t2: Track | \n            t1 != t2 and t1 in t.succs and t2 in t.succs\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  all j:Junction | not one(j.succs) and some(j.succs)\n  all t:Track | not one(t.succs) and some(t.succs) implies t in Junction\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  \tall t: Track - Junction | lone t.succs\n  \tall j: Junction | #(j.succs) >= 2\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n    all t: Track | #(t.succs) > 1 <=> t in Junction\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  \tall t: Track - Junction | lone t.succs\n  \tall j: Junction | #(j.succs) > 1\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  all t: Track | t in Junction iff #(t.succs) >= 2\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 9,
+            "syntactic_count": 5,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall j: Junction | some t: Track | j in t.succs.succs\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  \tall t: Track | t in Junction => t in Track.succs.succs\n\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  \tall t: Track | t in Junction => some t2: Track | t in t2.succs.succs\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  \tall j : Junction | some j.~succs.~succs\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall j:Junction | some t:Track | j in t.succs and some t2:Track | t in t2.succs\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 8,
+            "syntactic_count": 7,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  \n  \n  all j: Junction | some s1,s2:Track -j  | j in s1.succs and j in s2.succs and not (s1=s2)\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall j : Junction | #(succs.j - j) > 1\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall j : Junction | some disj p1, p2 : Track | p1 != j and p2 != j and j in p1.succs and j in p2.succs\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  \n  all j : Junction | some disj s1,s2 : Track - j | s1 in succs.j and s2 in succs.j\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t: Junction {\n  \t\tsome disj t1, t2: Track | t not in (t1 + t2) and t in t1.succs and t in t2.succs\n  }\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall j : Junction | some disj t,t2 : Track-j | j in t.succs&t2.succs\n  \t\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall j : Junction | some e1, e2 : Track | e1 != e2 and e1 != j and e2 != j and j in e1.succs and j in e2.succs\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 8,
+            "syntactic_count": 6,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  all j : Junction | some succs.j - j\n\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t: Track | some t2: Track | some t3: Track| t in Junction iff t != t2 and t in t2.^succs and t != t3 and t in t3.^succs\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t : Track | (t in Junction) implies (some t1, t2 : Track | t != t1 and t != t2 and t in t1.^succs and t in t2.^succs)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall j : Junction | some p1, p2 : Track | p1 != j and p2 != j and j in p1.succs and j in p2.succs\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t: Track | some t2: Track | t in Junction iff t != t2 and t in t2.^succs\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall j : Junction | some p1, p2 : Track | p1 != j and p2 != j and j in p1.succs and j in p2.succs\n  \n  \tall j : Track | some p1, p2 : Track | p1 != j and p2 != j and j in p1.succs and j in p2.succs implies j in Junction\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 7,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 7,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t : Track | t in Junction <=> some (Track.^succs - t)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 6,
+            "syntactic_count": 5,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall j: Junction | #(succs.j) > 1 and no j & succs.j\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  \tall j : Junction | #j.~succs > 1\n  \tall j : Junction | not (j in j.~succs)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  \tall j : Junction | #j.~succs > 1\n  \tall j : Junction | j.~succs = j.~succs - j\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  \tall j : Junction | some j.~succs && not (one j.~succs) && not (j in j.~succs)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall j: Junction | #(succs.j) > 1 and j not in succs.j\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 6,
+            "syntactic_count": 3,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t : Track | some t.succs implies t in Junction\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t,s: Track | s in t.succs implies t in Junction\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t: Track | #t.succs > 0 implies t in Junction\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 6,
+            "syntactic_count": 4,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  \tall disj a, b, c: Track | a in (b.succs & c.succs) implies a in Junction\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall disj p1, p2, p3 : Track | p3 in p1.succs & p2.succs implies p3 in Junction\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall disj t1,t2,t3 : Track | (t2+t3) in succs.t1 => t1 in Junction\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall disj t1, t2, t3 : Track | t1 in succs.t3 and t2 in succs.t3 implies t3 in Junction\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 6,
+            "syntactic_count": 5,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t: Track | some succs.t implies t in Junction \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall p1, p2, j : Track | j in p1.^succs and j in p2.^succs implies j in Junction\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  \tall t: Track | some t.~succs implies t in Junction\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t : Track | some (Track.^succs & t) implies t in Junction\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  all t : Track | (some t1 : Track | t in t1.succs) implies t in Junction\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 5,
+            "syntactic_count": 3,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t : Junction | some (Track.succs - t)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t : Junction | some (Track.^succs - t)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t : Track | t in Junction implies some (Track.^succs - t)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 5,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 5,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  \tsome succs.Junction\n  \tall t: Track | #succs.t > 1 implies t in Junction\n  \n  \t\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 5,
+            "syntactic_count": 4,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  \tall t : Track | t in Junction iff t in Track.succs.succs\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t : Track | some succs.succs.t implies t in Junction\n  \tall e : Junction | some succs.succs.e\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  \tall t: Track | t in Junction <=> some t2: Track | t in t2.succs.succs\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  \tall t: Track | t in Junction <=> some (succs.succs.t)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 5,
+            "syntactic_count": 4,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  \tall j : Junction | some j.succs\n\tall t : Track | some t.succs implies t in Junction\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  \n    all t: Track | some (~succs.t) iff (t in Junction) \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t : Track | (t in Junction) iff some t.succs\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  all t: Track | t in Junction iff #(t.succs) >= 1\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 4,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  \tsome succs.Junction\n  \tall t: Track | #(succs.t) > 0 implies t in Junction\n  \n  \t\n\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  \tsome succs.Junction\n  \tall t: Track | some succs.t implies t in Junction\n  \n  \t\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 4,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t: Track | (t in Junction) implies some(succs.t)\n  \tall t: Track | t not in t.^succs\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 4,
+            "syntactic_count": 3,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  \tall t: Junction | #(t.^succs) > 1\n\t\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall j: Junction | j in Track && #(j.^succs) > 1\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall j : Junction | (not one j.^succs) and some j.^succs\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 4,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t : Track | (t in Junction) <=> (some t1, t2 : Track | t1 != t2 and t in t1.^succs and t in t2.^succs)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  all t: Track | t in Junction iff #(^succs.t) > 1\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 4,
+            "syntactic_count": 4,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t : Track | (t in Junction) implies some(t.succs)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  all j: Junction | some j.succs\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall j : Junction | #(j.succs) >= 1\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall j: Junction| some sj1,sj2 : j.succs| (sj1 + sj2) in j.succs\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 3,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t : Track | lone (succs.t) => t not in Junction\n  \tall t : Track | some(succs.t) => t in Junction\n }"
+                }
+            ]
+        },
+        {
+            "entry_count": 3,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t: Track | (t in Junction) implies some(succs.t) and t not in ^succs.t\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t : Track | (t in Junction) implies some(succs.t) and t not in t.^succs\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 3,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  all t : Track | (lone t1 : Track | t in t1.succs) iff t in Junction\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t : Track | t in Junction iff lone succs.t\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 3,
+            "syntactic_count": 3,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  \tall t: Track | t in Junction <=> some t2: Track | t in t2.succs.succs and t != t2\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t : Track | some (succs.succs.t-t) implies t in Junction\n  \tall e : Junction | some (succs.succs.e-e)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  \tall t: Track | t in Junction <=> some (succs.succs.t - t)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 3,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  \tall disj t1,t2 : Track | some (t1.succs&t2.succs) implies t1.succs in Junction\n  \t\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 3,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall j : Junction | some disj t,t2 : Track | j in t.succs&t2.succs\n  \tall disj t,t2,j : Track | j in t.succs&t2.succs implies j in Junction\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 3,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t : Track | t in Junction iff some succs.t-t\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t : Track | some (succs.t-t) implies t in Junction\n  \tall e : Junction | some (succs.e-e)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 3,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  \tall t: Track | some disj t1,t2: Track | t in Junction iff (t1 in t2.succs and t in t1.succs and (t!=t1 or t!=t2))\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  \tall t: Track | some disj t1,t2: Track | t in Junction iff (t1 in t2.succs and t in t1.succs)\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 3,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  \tall j : Junction | some succs.j and j not in succs.j\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  \tall j : Junction | some succs.j and no j & j.succs\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 3,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  \tall j : Junction | #succs.j > 1 \n  \tall t : Track - Junction | #succs.t = 1\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall j : Junction | some t1, t2: Track | t1 != t2 and j in t1.succs and j in t2.succs\n  \tall t : Track-Junction | one(succs.t)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 3,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  \tsome succs.Junction\n  \t\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 3,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  all t:Track| t not in Junction implies lone succs.t\n  all j:Junction | some succs.j -j.^(succs)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  all t:Track| t not in Junction implies lone succs.t\n  all j:Junction | some succs.j - j.^(succs) - j\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 3,
+            "syntactic_count": 3,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\tall j : Track | (j in Junction) implies(some t1,t2:Track | t1!=t2 and t1->j in succs and t2->j in succs)\t\n\tall t : Track | not t->t in succs\t\n\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  \n  \tall t: Track | t not in t.succs\n  \tall e: Junction | some t1,t2: Track | e in t1.succs and e in t2.succs and \t\tnot(t1 = t2)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\nall j : Junction | some t1, t2 : Track | t1 != t2 and j in t1.succs and j in t2.succs\nall t : Track | t not in t.succs\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 3,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall j: Track |\n  \t\tj in Track iff some t: Track | j in t.succs\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t : Track | some succs.t\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t: Track | some disj a, b: Track | t in (a.succs & b.succs) implies t in Junction else t not in Junction\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t: Junction | all tr: Track | #(tr.^succs) > 1\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t: Track | some ts: Track-t | t in Junction iff ts in t.^succs\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t: Track | some t2: Track | some t3: Track | t in Junction iff t != t2 and t in t2.^succs and t != t3 and t in t3.^succs and t2 != t3\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  \t\n  \tall t: Track | #(t.^succs) > 1 implies t in Junction\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t:Track | t in Junction iff some t1,t2:Track | t1 in t.^succs and t2 in t.^succs and t1!=t2 \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n    all t: Track | #(t.^succs) > 1 <=> t in Junction\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t: Track | some t2: Track-t | some t3: Track-t2 | t in Junction iff t != t2 and t in t2.^succs and t != t3 and t in t3.^succs and t2 != t3\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t:Track | some disj t1,t2:Track | t in Junction iff t1!=t and t in t1.^succs and t2!=t and t in t2.^succs\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t : Track-Entry-Exit | some(succs.t)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall j : Junction | all disj t1, t2 : Track | (j in t1.succs) and (j in t2.succs)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  \n  all j : Junction | all disj s1,s2 : Track | s1 in succs.j and s2 in succs.j\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall j : Junction | all disj t1, t2 : Track | (j in t1.succs) and (j in t2.succs)\n  \tall j : Track - Junction | lone(j.succs)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  \tall t: Track | t in Junction => some t2: Track | t in t2.succs.succs and t != t2\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall j: Junction | some t: Track | j in t.succs.succs - t\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  \tall t1, t2: Track | t1 in Junction => some t3: t2.succs | t1 in t3.succs\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  all t : Track | (all t1 : Track | t in t1.succs) iff t in Junction\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t1 : Track | t1 in Junction iff all t2,t3 : Track | t1 in t2.succs and t1 in t3.succs\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  \tsome disj t1,t2 : Track | all j: Junction | t1+t2 in succs.j\n  \tall disj t1,t2 : Track | (t1.succs&t2.succs) in Junction\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n \t all disj t1,t2 : Track | (t1.succs&t2.succs) in Junction\n  \tsome disj t1,t2 : Track | all j: Junction | t1+t2 in succs.j\n  }"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n    all disj t1,t2 : Track | (t1.succs&t2.succs) in Junction\n  \tall j : Junction | some disj t1,t2 : Track | t1+t2 = succs.j \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall j: Junction | some t: Track | j in (t.succs - j).succs\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall j:Junction | some t:Track - j | j in t.succs and some t2:Track | t in t2.succs\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t:Track | #(succs.t)>2 implies t in Junction\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t : Track | (#{t.succs}>1) implies t in Junction \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t:Track | #(~succs.t)>1 implies t in Junction\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  \tall t: Track | some t2,t3: Track| t in Junction iff t in (t2.succs & t3.succs)\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  \tall t: Track | some t2,t3: Track| t in Junction iff \n  \t(t in t2.succs and t in t3.succs)\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  \tall t: Track | some disj t1,t2: Track | t in Junction iff (t1 in t2.succs and t in t1.succs and t!=t1 and t!=t2)\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t : Track | some j1, j2 : Track | t in Junction iff j2 in j1.succs and t in j2.succs and t != j1 and t != j2 \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  \tall t: Track | some t1,t2: Track | t in Junction iff (t1 in t2.succs and t in t1.succs and t!=t1 and t!=t2)\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  \tall t : Track | #succs.t > 1 and t in Junction\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t: Track | some disj a, b: Track | t in (a.succs & b.succs) && t in Junction \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t : Track | lone (succs.t) implies t not in Junction\n  \tall t : Junction | some t1, t2 : Track | t1 in t.succs and t2 in t.succs  \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t : Track | lone (succs.t) implies t not in Junction\n  \tall t : Junction | some t1, t2 : Track | t1 in t.^succs and t2 in t.^succs  \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": true,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall e : Track-Entry-Junction | #e.~succs = 1\n  \tall e : Entry | #e.~succs = 0\n  \tall j : Junction | #j.~succs > 1\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  \tall t : Track | (t in Junction) iff not (some succs.t)\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t\n\tall t : Track | no(succs.t) => t in Junction\n  \tall t : Track | some(succs.t) => t  not in Junction\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  all e:Exit | one succs.e\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  all t:Track | t in Exit implies one succs.t  \n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  all t:Track | t in Exit implies lone succs.t  \n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  all e:Exit | one succs.e or no succs.e\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  all t:Track| t not in Junction implies lone succs.t\n  all j:Junction | some succs.j\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  \tno t : Track | t in t.^succs\n\tall j : Junction | some disj t,t2 : Track | j in t.succs&t2.succs\n  \t\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  \tno iden & ^succs\n\tall j : Junction | #succs.j > 1\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  \tall disj a, b, c: Track | c in (b.succs & c.succs) implies c in Junction\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  \tall disj a, b, c: Track | a in (b.succs & c.succs) implies a in Junction else a not in Junction\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t: Track | some disj a, b: Track | t in (a.succs & b.succs) implies t in Junction \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t: Track | some disj a, b: Track | t in (a.succs + b.succs) implies t in Junction else t not in Junction\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t: Track {\n  \t\t(t in Junction) iff (\n      \tsome disj t1, t2: Track | t != t1 and t != t2 and t in t1.succs and t in t2.succs\n      )\n  }\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n    Junction = {x: Track | #{x: Track | x in univ.succs} > 1 }\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t: Junction | all disj t1: Track, t2: Track | (t in t1.succs) and (t in t2.succs)\n  \t\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  \tsome t: Track | t in Junction iff some t.~succs\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t:Track | some succs.t <=> t in Entry\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t:Track | some t.succs <=> t not in Exit\n\tall t:Track | some succs.t <=> t not in Entry\n\t\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t: Junction | all tr: Track | #(tr.succs) > 1\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  all j : Junction | some succs.j and Entry in (*succs).j and Exit in j.*succs\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  \n  some Junction and all j : Junction | some disj s1,s2 : Track | s1 in succs.j and s2 in succs.j\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  \n  (all t : Track - Junction, j : Junction | lone succs.t and some disj t1,t2 : Track | j in t1.succs and j in t2.succs) \n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t\n \tall j: Junction | some j.succs & Junction\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t : Track | (t in Junction) <=> (some t1, t2 : Track | t1 != t2 and t in t1.^succs and t in t2.^succs and t not in t.^succs)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t : Track | (t in Junction) <=> (some t1, t2 : Track | t1 != t2 and t in t1.^succs and t in t2.^succs and t1 not in t2.^succs and t2 not in t1.^succs)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t : Track | (t in Junction) implies (some t1, t2 : Track | t1 != t2 and t in t1.^succs and t in t2.^succs and t1 not in t2.^succs and t2 not in t1.^succs)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t : Track | (t in Junction) implies (some t1, t2 : Track | t in t1.^succs and t in t2.^succs and t1 not in t2.^succs and t2 not in t1.^succs)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tnot ( lone ( ^(succs).Junction) )\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall j : Junction| not ( one ( ^(succs).j) )\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\t(all t: Track - Entry| lone succs.t) and all j : Junction | some disj t1, t2 : Track | j in t1.succs and j in t2.succs\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall x: Track | x in Junction iff (all disj y, z: Track | y in succs.x and z in succs.x)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t: Track | some t2: Track | t in Junction iff t in t2.^succs\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t: Track | some t2: Track | one t3: Track | t in Junction iff t in t2.^succs and t in t3.^succs and t2 != t3\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  \tsome succs.Junction\n  \tall t: Track | (some succs.t and succs.t!= t )implies t in Junction\n  \n  \t\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  \tsome succs.Junction\n  \tall t: Track | (some succs.t and t not in succs.t) implies t in Junction\n  \n  \t\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t: Track | (t in Junction) implies some(succs.t)\n  \tall t: Track | t not in t.^succs\n  \tall t: (Track-Entry-Exit) | some(t.succs)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n    all t: Track | #(t.*succs) > 1 <=> t in Junction\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  all t:Track | t in Junction iff t not in Entry or t not in Exit\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  all t:Track | t in Junction iff t in Track.^succs and t not in Exit\n\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t:Track | t in Junction iff some t1,t2:Track | t1!=t and t in t1.^succs and t2!=t and t in t2.^succs and t1!=t2 \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t:Track | some disj t1,t2:Track | t in Junction iff t in t1.^succs and t2!=t1 and t in t2.^succs\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t : Track | (t in Junction) implies some(succs.t)\n  \tall t : Track | t not in t.*succs\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t : Track | t in Junction and t not in Entry implies some(succs.t)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t : Track-Entry-Exit | some(succs.t) and t not in t.^succs\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t : Track | (t in Junction) implies some(succs.t)\n  \tall t : Track | (t not in Junction) implies (t in Entry)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t : Track | (t in Junction) implies some(succs.t) and t not in Entry\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  all t: Track | t in Junction iff some( succs.t + t.succs)\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  all t: Track | t in Junction iff (some succs.t and some t.succs)\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  \tall t: Track | t in Junction => some t2: Track | t in t2.succs and some t3: t2.succs | t in t3.succs\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  \tall t: Track | t in Junction => one e: Entry | t in e.succs.*succs\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  \tall disj t1, t2: Track | t1 in Junction <=> some t3: t2.succs | t1 in t3.succs\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  \tall disj t1, t2: Track | t1 in Junction => some t3: t2.succs | t1 in t3.succs\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t1 : Track | t1 in Junction iff all t2,t3 : Track | t1 in t2.succs and t2 in t3.succs\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t: Track | t in Entry <=> no succs.t\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t : Track | no succs.succs.t implies t in Junction\n  \tall e : Entry | no succs.succs.e\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t : Track | some (succs.t-t) implies t in Junction\n  \tall e : Junction | some succs.e\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  \tno Junction\n\tall t : Track | some (succs.succs.t-t) implies t in Junction\n  \tall e : Junction | some (succs.succs.e-e)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  \tall disj t1,t2 : Track | some (t1.succs&t2.succs) iff (t1.succs&t2.succs) in Junction\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  \tall j : Junction | some disj t1,t2 : Track | t1+t2 = succs.j \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n    all t: Junction | some pred1, pred2: Track | pred1 != pred2 && t not in pred1.succs && t in pred2.succs\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t: Junction | some t.succs and some t.succs.succs\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  \tall j : Junction | some j.~succs.~succs && not (j in j.~succs)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  \tall j : Junction | (j.~succs = j.~succs - j) && not (one j.~succs)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall disj p1, p2, j : Track | j in p1.^succs and j in p2.^succs implies j in Junction\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall j : Junction | some disj p1, p2 : Track | j not in j.^succs and j in p1.succs & p2.succs\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall j : Junction | some p1, p2 : Track | p1 = j and p2 != j and j in p1.succs and j in p2.succs\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  \t#succs.Junction > 1\n\tall t : Track | #succs.t > 1 implies t in Junction\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  \n  all t : Track | (some succs.Junction) \n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  \n  all j : Junction | (some t:Track - Entry | t->j in succs) \n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  \n  all j : Junction | (some t:Track - Junction | t->j in succs) \n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t : Track | t in Junction iff some succs.t and t not in ^succs.t\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t1: Track | some t2: Track | t2 not in Entry and t1 in t2.succs implies t1 in Junction\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  \tsome Junction.succs\n\tall t : Track | some t.succs implies t in Junction\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  \tall t: Track | all t2,t3: Track| t in Junction iff \n  \t(t in t2.succs and t in t3.succs)\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  \tall t: Track | t in Junction iff Track.succs.succs != none\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  \tall t: Track | some t1,t2: Track | t in Junction iff (t1 in t2.succs and t in t1.succs)\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  \tall t: Track | some disj t1,t2: Track | t in Junction implies (t1 in t2.succs and t in t1.succs and (t!=t1 or t!=t2))\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  all j: Junction | some s1,s2:Track | s1 in j.succs and s2 in j.succs and not (s1=s2)\n all j: Track - Junction | some s1,s2:Track | s1 in j.succs and s2 in j.succs and  (s1=s2)\n  \n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  \tall t: Track - Junction | one t.succs\n  \tall j: Junction | #(j.succs) > 1\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": true,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  \tall j : Junction | #succs.j > 1 \n  \tall t : Track - Junction - Entry | #succs.t = 1\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall j:Junction | some t1,t2:Track | t1.succs = t2 and t2.succs = j\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall j:Junction | some t1,t2:Track | t1 != t2 and t2 != j and t1.succs = t2 and t2.succs = j\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  all t: Track | t in Junction iff some t1,t2: Track | t1 != t2 and t2 in t1.succs and t in t2.succs\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall disj j, t : Track | j in t.succs and j in (Track - j).succs implies j in Junction\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall disj j, t : Track | j in t.succs and j in (Track - j).succs implies j in Junction\n  \t\n  \tall j : Junction, t : Track | j in t.succs and j in (Track - j).succs \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\t\n  \t\n  \tall j : Junction, t : Track | j in t.succs and j in (Track - j).succs \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\t\n  \t\n  \tall j : Junction, t : Track | j in t.succs implies j in (Track - j).succs \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tno e : Track-Entry-Junction | #e.~succs = 1\n  \tall e : Entry | #e.~succs = 0\n  \tall j : Junction | #j.succs > 1\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tno e : Track-Entry-Junction | #e.~succs = 1\n  \tall e : Entry | #e.~succs = 0\n  \tall j : Junction | #j.~succs > 1\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall e : Track-Entry-Junction | #e.~succs = 1\n  \tall e : Entry | #e.~succs = 0\n  \tall j : Junction | #j.succs > 1\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t1,t2,t3: Track | (t2 in Junction) iff (t1.succs = t2) and (t2.succs=t3)\n\t\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall disj t1,t2,t3: Track | (t2 in Junction) iff (t1.succs = t2) and (t2.succs=t3) \n\t\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  all t:Track-Junction-Entry | lone succs.t  \n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  all t:Track| t not in Junction implies lone succs.t\n  all j:Junction | some succs.j - j\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n  \t\n  \tall j:Track | j in Junction iff \n  \t\t\tlet n = {t:Track | j in t.succs} | #n>2\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t:Track | t in Junction iff (some t1,t2:Track|t1.succs=t and t2.succs=t)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\n  \tall t:Track | t in Junction iff (some disj t1,t2:Track | t1.succs=t and t2.succs=t)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\n  \tall disj t1,t2,t3:Track |(t1 in Junction iff t2.succs=t1 and t3.succs=t1)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\n  \tall t:Track | some t1:Track | t in Junction iff t1.succs=t\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\t#succs.Junction > 1\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\t#succs.Track > 1\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t:Track | lone succs.t implies t in Junction\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t: Junction | some t.succs\n  \tand\n  \tall t: Track | some t.succs implies t in Junction\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Junctions are the tracks with more than one predecessor\n\tall t: Junction | some t.~succs and not one t.~succs\n  \tand\n  \tall t: Track | (some t.~succs and not one t.~succs) implies t in Junction\n}"
+                }
+            ]
+        }
+    ]
+}

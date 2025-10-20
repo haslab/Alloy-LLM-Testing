@@ -1,0 +1,1678 @@
+{
+    "original": "dyj49tEp7j6aWAQQX",
+    "cmd": "inv7",
+    "pred": "this/inv7",
+    "entry_count": 908,
+    "semantic_count": 113,
+    "syntactic_count": 219,
+    "scope": 3,
+    "groups": [
+        {
+            "entry_count": 271,
+            "syntactic_count": 20,
+            "correct": true,
+            "elems": [
+                {
+                    "entry_count": 110,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n\tall c: Component | some (c.parts & Dangerous) implies c in Dangerous\n}"
+                },
+                {
+                    "entry_count": 51,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n  \tall c: Component | all p: c.parts | p in Dangerous implies c in Dangerous\n\n}"
+                },
+                {
+                    "entry_count": 26,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n    all c : Component, d : Dangerous | d in c.parts implies c in Dangerous\n  \n  \n\n}"
+                },
+                {
+                    "entry_count": 24,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n\tall c:Component | (some e:c.parts | e in Dangerous) implies c in Dangerous }"
+                },
+                {
+                    "entry_count": 16,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n  \n  all c : Component, p : Product | c->p in parts and p in Dangerous implies c in Dangerous\n\n}"
+                },
+                {
+                    "entry_count": 16,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n  \tall c:Component, p:Product|\n  \tp in c.parts and p in Dangerous => c in Dangerous\n\n}"
+                },
+                {
+                    "entry_count": 5,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n    all c: Component | (some d: Dangerous | d in c.parts) => c in Dangerous\n}"
+                },
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n  \n\tall c : Component, d : Dangerous | c->d in parts implies c in Dangerous\n\n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n  all c : Component, p : Product | c in parts.p and p in Dangerous implies c in Dangerous\n\n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n\tno c: Component | some c.parts & Dangerous and not c in Dangerous\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n\tall d:Dangerous | parts.d&Component in Dangerous\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n\tall c : Component | some (c.parts & Dangerous) => some (c & Dangerous)\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n\tall c: Component | not no (c.parts & Dangerous) implies c in Dangerous\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n    no ((Component - Dangerous) -> Dangerous) & parts\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n\tall c: Component |\n        (c.parts & Dangerous = none) or (c in Dangerous)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n  all c: Component | #( c.parts & Dangerous)>0 implies c in Dangerous\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n\tall c: Component | all c_parts: c.parts | some (c_parts & Dangerous) implies c in Dangerous\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n  all c:Component | not (Dangerous & c.parts = none) implies c in Dangerous \n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n  \tall x: Component | x in parts.Dangerous implies x in Dangerous\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n  \tComponent & parts.Dangerous in Dangerous\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 128,
+            "syntactic_count": 14,
+            "correct": true,
+            "elems": [
+                {
+                    "entry_count": 85,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n\tall c : Component | some (c.^parts & Dangerous) implies c in Dangerous\n}"
+                },
+                {
+                    "entry_count": 11,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n\tall c : Component | some(Dangerous & c.*parts) implies c in Dangerous\n}"
+                },
+                {
+                    "entry_count": 11,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n\tall c : Component | all d : Dangerous | d in c.^parts => c in Dangerous\n}"
+                },
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n  \tall c: Component | (some d: Dangerous | d in c.^parts) implies c in Dangerous\n\n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n\tall c: Component | (some p: c.*parts | p in Dangerous) => c in Dangerous\n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n\tall c : Component | c.^parts & Dangerous not = none implies c in Dangerous\n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n\tall c: Component | all sc : c.^parts | sc in Dangerous implies c in Dangerous\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n\tall c : Component | (some p : Product | p in c.^parts and p in Dangerous) implies c in Dangerous \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n\tall c: Component, p: Product | (p in Dangerous and p in c.^parts) implies (c in Dangerous)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n    \n  \n  all c : Component | all p : Dangerous | p in c.*parts implies c in Dangerous\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n\tall c : Component | c.*(parts) & Dangerous != none iff c in Dangerous\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n\tall c : Component | c in Dangerous or some c.*parts & Dangerous => c in Dangerous\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n\tall c : Component |  all cp : Product | cp in (Dangerous & c.^parts) implies c in Dangerous\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n\tall c: Component | all p:Product| p in  Dangerous and p in c.*(parts) implies c in Dangerous\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 62,
+            "syntactic_count": 4,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 59,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n\tall o: Component | (o.parts in Dangerous) implies (o in Dangerous)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n\tall c : Component, p : Product | c.parts in Dangerous implies c in Dangerous\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n\tall c : Component | c in Dangerous or c.parts in Dangerous => c in Dangerous\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n  \n\t// Components built of dangerous parts are also dangerous\n  \tall c : Component | \n\t\t(all p : c.parts | p in Dangerous) implies (c in Dangerous)\n\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 54,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 52,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n\tall o: Component | (o.^parts in Dangerous) implies (o in Dangerous)\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n\tall c : Component | c in Dangerous or c.^parts in Dangerous => c in Dangerous\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 48,
+            "syntactic_count": 22,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 10,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n  all c:Component| some p:Product | (p in Dangerous and p in c.parts) implies c in Dangerous\n\n}"
+                },
+                {
+                    "entry_count": 9,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n\n}"
+                },
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n  all c : Component | c.*parts in Dangerous implies c in Dangerous\n\n}"
+                },
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n  \tall c:Component | some p:Product | p in Dangerous and p in c.^parts implies c in Dangerous\n\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n\tall c: Component| some y: Component | (c in Dangerous and c in y.*parts) implies y in Dangerous\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n  \tall c : Component.parts | c in Dangerous implies c in Dangerous\n\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n\tDangerous & Component.^parts in Dangerous\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n\tall c : Component | (all p : c.parts | p !in Dangerous.parts implies c !in Dangerous)\n  }"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n\tall c: Component| some y:Component | (c in Dangerous and y in parts.c ) implies (y in Dangerous)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n\tall c : Component |  some cp : (Product) | cp in (Dangerous & c.^parts) implies c in Dangerous\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n\tall c : Component | c in Dangerous or c.*parts in Dangerous => c in Dangerous\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n\tall c : Component | (some p : c.parts | c in Dangerous) => c in Dangerous\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n\tall c: Component| some y:Component |(c in Dangerous and y in c.*parts) implies (y in Dangerous)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n\tall c : Component | (some p : c.parts | p in Dangerous.parts implies c in Dangerous) or (all p : c.parts | p !in Dangerous.parts implies c !in Dangerous)\n  }"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n\tall c: Component| some y:Component |(c in Dangerous and y in c.^parts) implies (y in Dangerous)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n\tall c:Component | some e:c.*(parts)| e in Dangerous implies c in Dangerous }"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n\tall c: Component| some y: Component | (c in Dangerous and c in y.^parts) implies y in Dangerous\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n\tall c: Component | (Dangerous in c) implies (Dangerous in *parts.c)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n\tall c: Component | some p: Product | p in c.*(parts) and p in Dangerous implies c in Dangerous\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n  all c:Component | some p:Product| c->p in parts and p in Dangerous implies c in Dangerous\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n  \tall c : Component | c in Dangerous implies c.parts in Dangerous.parts\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n\tall c : Component | c.parts & Dangerous in Dangerous\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 40,
+            "syntactic_count": 6,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 14,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n\tall o: Component | (Dangerous in o.^parts) implies (o in Dangerous)\n}"
+                },
+                {
+                    "entry_count": 10,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n  all c:Component | Dangerous in c.^parts implies some (c & Dangerous & Component) \n\n}"
+                },
+                {
+                    "entry_count": 9,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n\tall c : Component | some d : Dangerous | d in c.^parts implies c in Dangerous\n}"
+                },
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n  \tall c : Component | some d : Dangerous | d in c.*parts implies c in Dangerous\n\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n  \tall c : Component | Dangerous in c.*parts implies c in Dangerous\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n  \n  \tall c : Component | Dangerous in c.^parts implies some (c & Dangerous)\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 27,
+            "syntactic_count": 4,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 14,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n\tall o: Component | (Dangerous in o.parts) implies (o in Dangerous)\n}"
+                },
+                {
+                    "entry_count": 11,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n\tall c : Component | some d : Dangerous | d in c.parts implies c in Dangerous\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n\tall c : Component | some d : Dangerous | Dangerous in c.parts implies c in Dangerous\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n  all c: Component | Dangerous in c.parts implies some (c & Dangerous & Component) \n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 24,
+            "syntactic_count": 7,
+            "correct": true,
+            "elems": [
+                {
+                    "entry_count": 9,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n\t(parts.Dangerous) in Dangerous\n}"
+                },
+                {
+                    "entry_count": 5,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n    all d : Dangerous | parts.d in Dangerous\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n\t\n  \tall cd : Dangerous | ^parts.cd in Dangerous\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n\tall c : Product | c in Dangerous implies c.(~parts) in Dangerous\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n\t*parts.Dangerous in Dangerous\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n\tall d: Dangerous, p:Product |  d in p.^parts implies p in Dangerous\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n\tall p1, p2: Product | p2 in p1.parts and p2 in Dangerous implies p1 in Dangerous\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 21,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 21,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n  \tall c: Component | some p: c.parts | p in Dangerous implies c in Dangerous\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 12,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 12,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n  all c:Component | Dangerous in c.^parts implies Dangerous in c \n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 12,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 12,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n\tall c:Component | some e:c.^(parts)| e in Dangerous implies c in Dangerous }"
+                }
+            ]
+        },
+        {
+            "entry_count": 11,
+            "syntactic_count": 5,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 5,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n  all c : Component, p : Product | c in p.parts and p in Dangerous implies c in Dangerous\n\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n\tall disj c: Component, p: Product | (p in Dangerous and p in c.~parts) implies (c in Dangerous)\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n  \n  all c : Component |   (some (parts.c & Dangerous)) implies c in Dangerous \n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n\tall c : Component | c in Dangerous.parts implies c in Dangerous\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n\tall d:Dangerous | d.parts&Component in Dangerous\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 10,
+            "syntactic_count": 3,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 8,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n  all c: Component | (c in Dangerous) implies (c.parts in Dangerous)\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n\t\n  all c : Component, p : Product | p in c.parts and c in Dangerous implies p in Dangerous\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n\tall c: Component | c in Dangerous implies all p: c.parts | p in Dangerous\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 9,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 9,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n    all c : Component | Dangerous in c.parts implies Dangerous in c\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 7,
+            "syntactic_count": 4,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n\tall c : Component | c.parts in Dangerous \n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n  \tall c : Component, p : Product | c.parts in Dangerous\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n\tall c : Component | c.parts + Dangerous in Dangerous\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n\tall c: Component | all p: c.parts | p in Dangerous\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 6,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 5,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n\tall o: Component | (Dangerous in o.parts) implies o = Dangerous\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n  all c : Component | some d : Dangerous | d in c.parts implies c = Dangerous\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 6,
+            "syntactic_count": 3,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n  \tall c: Component | (c in Dangerous) implies (c.^parts in Dangerous)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n\tall c : Component | not (c.^parts in Dangerous) implies c not in Dangerous\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n\tall c : Component | c.*(parts) in Dangerous iff c in Dangerous\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 5,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 5,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n  \tall c: Component | c in Dangerous implies some p: parts.c| p in Dangerous\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 5,
+            "syntactic_count": 3,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n\tall c: Component, d: Dangerous | d in c.^parts => c = Dangerous\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n\tall c : Component | some c.^parts & Dangerous implies c = Dangerous\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n    \n  all c: Component |\n        (some x: c.^parts | x in Dangerous) implies (Dangerous in c)\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 5,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n  \tall c: Component | c in Dangerous iff some p: c.parts | p in Dangerous\n  \t\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n\tall c: Component | c in Dangerous iff some Dangerous & c.parts\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 5,
+            "syntactic_count": 4,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n\tall c: Component | (c in Dangerous) implies (c.~parts in Dangerous)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n\tall c:Component | c in Dangerous implies parts.c in Dangerous\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n\tall c : Component, p : Product | c in p.parts and c in Dangerous implies p in Dangerous\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n\tall c: Component | c in Dangerous implies all p: parts.c | p in Dangerous\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 5,
+            "syntactic_count": 3,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n\tall c, c1 : Component | (c1 in c.parts and c1 in Dangerous) implies c in Dangerous\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n\tall disj c, c1 : Component | (c1 in c.parts and c1 in Dangerous) implies c in Dangerous\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n\tall disj c,d: Component | (c in Dangerous and d in c.~parts) implies (d in Dangerous)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 4,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n  \tall c: Component | c in Dangerous implies some p: c.parts| p in Dangerous\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n\tall c:Component | some p:Product | \n  \t\tp in c.parts and p in Dangerous iff c in Dangerous\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 4,
+            "syntactic_count": 3,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n\tall c : Component | c in Dangerous\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n\tall c : Component | c.parts-(Product-Dangerous) in Dangerous implies c in Dangerous\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n\tall c : Component | c.^parts-(Product-Dangerous) in Dangerous implies c in Dangerous\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 4,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n  \t\tDangerous = {p: Product | some p.parts & Dangerous}\n\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n\tall p: Product | (p in Dangerous) <=> some p2: Product | p2 in p.parts and p2 in Dangerous\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 3,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n    all d : Dangerous | d.parts in Dangerous\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n\tDangerous.parts in Dangerous\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 3,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n  \tall c : Component | some p : c.parts| p in Dangerous.parts implies c in Dangerous\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 3,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n\tall c: Component | Dangerous in c implies Dangerous in ^parts.c\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 3,
+            "syntactic_count": 3,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n\tall c:Component, d:Dangerous | d in ^parts.c implies c in Dangerous\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n\tall c : Component | c in Dangerous.^parts implies c in Dangerous\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n\tall c : Component | some Dangerous & ^parts.c implies c in Dangerous\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 3,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n\tall c: Component | (Dangerous in c) implies all p : ^parts.c |\n  Dangerous in p\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 3,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n\tall c: Component | Dangerous in c.^parts => c = Dangerous\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 3,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n    all c : Component | (some x: c.parts | x in Dangerous) implies (Dangerous in c)\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n  all c : Component, d : Dangerous | d in c.parts implies c = Dangerous\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 3,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n\tall p: Product | some pp:p.parts | pp in Dangerous implies p in Dangerous\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 3,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n\tall c:Component |\n  \t\tone p:c.parts|\n  \t\t\tp in Dangerous implies c in Dangerous\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n  all c: Component | (c in Dangerous) and (c.parts in Dangerous)\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n  \t\n  \tall c:Component | all p: c.parts| p in Dangerous iff c in Dangerous\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n\tall c:Component | c.*parts in Dangerous\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n\tall c : Component | (c.^parts in Dangerous) and c in Dangerous\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n  all c:Component |\n  \tone p:c.^parts |\n  \t\tp in Dangerous implies c in Dangerous\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n\tall c: Component | (some c: Component | c.parts in Dangerous) implies c in Dangerous\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n  \t\n  \tDangerous in Component implies Dangerous.parts in Dangerous\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n  \t\n  \tDangerous in Component implies Dangerous.^parts in Dangerous\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n\tall c : Component | one d : Dangerous | d in c.parts => c in Dangerous\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n\tall c : Component | some p : Dangerous.parts | p in c.parts implies c in Dangerous\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n\tall c : Product | (c.^parts in Dangerous) implies c in Dangerous\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n  \tall c1, c2 : Component | (c2 in c1.parts and c1 in Dangerous) implies c2 in Dangerous \n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n\tall c : Component | c in Dangerous implies c.parts in (Dangerous + Material)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n  \n  all c : Component |  (parts.c in Dangerous) implies c in Dangerous \n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n  \tall c : Component, p : Product | (c.parts in Dangerous) iff (p in Dangerous)\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n  \n  all c : Component | c in Dangerous iff c.^parts in Dangerous \n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n  some c : Component.parts | all c1 : Component | c1 in c and c in Dangerous implies c1 in Dangerous\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n  some c : Component.parts | all c1 : Component | c in c1 and c in Dangerous implies c1 in Dangerous\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n  all c : Component | Dangerous in c implies c in Dangerous\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n    all c : Component | Dangerous in c.^(parts) implies some Dangerous\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n  all c: Component | some d: Dangerous | d.parts in c.parts implies c in d\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n  all c: Component | some d: Dangerous | d.parts in c.parts implies d in c \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n  \tDangerous.parts = Dangerous\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n  \tDangerous.^parts = Dangerous\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n  \tall c: Component | c in Dangerous iff some p: parts.c | p in Dangerous\n  \t\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n  \t\n  \tall c:Component | some p: parts.c| p in Dangerous implies c in Dangerous\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n\tall o: Component | (Dangerous in o.parts)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n  \t\n  \tall c:Component | some p: c.parts| p in Dangerous iff c in Dangerous\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n\t\n\tall c:Component | some (c.^(parts) & Dangerous) }"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n\t\n\tall c:Component | some (c.parts & Dangerous) }"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n\tall c : Component | some d : Dangerous | d in c.^parts <=> c in Dangerous\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": true,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n\tall c : Component| (c.parts in Dangerous) implies (c in Dangerous)\n    all c : Component| some (c.parts & Dangerous) implies (c in Dangerous)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n    all c : Component | (c in Dangerous) implies (Dangerous in c.^(parts))\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n    \n  all c: Component | some p: c.parts | p in Dangerous implies Dangerous in c\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n    all c : Component & Dangerous | Dangerous in c.parts implies Dangerous in c\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n    all c : Component | Dangerous in c.~parts implies Dangerous in c\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n\tall c : Component | one d : Dangerous | d in c.^parts => c in Dangerous\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n\tall c: Component | c in Dangerous iff Dangerous in c.^parts\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n\tall c: Component | c in Dangerous iff some Dangerous & c.^parts\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n\tall c: Component | all p: c.parts | p in Dangerous and c in Dangerous \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n\tall c: Component | all p: c.parts | (p in Dangerous and c in Dangerous) or (c in Dangerous)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n\tall c : Component | some c1 : Component | (c1 in c.^parts and c1 in Component) implies c in Dangerous\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n\tall c, c1 : Component | (c1 in c.^parts and c1 in Dangerous) implies c in Dangerous\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n  \tall c : Component | some p : c.parts&Dangerous | c in Dangerous\n  \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n  all c : Component | Dangerous in c.parts implies c in Dangerous\n\t\n  all c : Component | lone p : Product | p in c.parts and p in Dangerous implies c in Dangerous\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n  \n\t\n  all c : Component | lone p : Product | p in c.parts and p in Dangerous implies c in Dangerous\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n\tsome d: Dangerous | some c: Component| d in c.parts implies c in Dangerous\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n    ((Component - Dangerous) -> Dangerous) not in parts\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n\tall c : Component | not (c.^parts in Dangerous) implies c  in Dangerous\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n\tall c: Component | (some c: Component | c.^parts in Dangerous) implies c in Dangerous\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n\tno c: Component | some c.parts & Dangerous implies c in Dangerous\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n\tall p: Product | (p in Dangerous) <=> some p2: Product | p2 != p and p2 in p.parts and p2 in Dangerous\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n\tDangerous & Component.^parts = Dangerous\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n\t\tall c:Component | ^parts.c in Dangerous\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n\tall p: Product | Dangerous in p.^parts => p in Dangerous\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n\tall c : Component, p : Product | p in Dangerous implies c in Dangerous\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n\tall c : Component, p : Product | p.parts in Dangerous implies c in Dangerous\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n\tall c:Component | c in Dangerous implies parts.Product in Dangerous\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n  \n  all c : Component | no c.*parts & Dangerous \n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n  \n  all c : Component | no c.^parts & Dangerous \n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n  all c:Component, d:Dangerous| d.parts in c.parts implies c in d\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n  all c:Component, d:Dangerous| d.parts in c.parts implies c = Dangerous\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n  all c:Component, d:Dangerous| d.parts in c.^parts implies c = Dangerous\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n\tall c: Component | Dangerous in c.parts implies c.parts in Dangerous\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n\tall c: Component | one d: Dangerous| d in c.parts implies c.parts in Dangerous\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n  \tall c : Component | c.parts in Dangerous.parts implies c in Dangerous\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n\tall c : Component | all p : Dangerous.parts | p in c.parts implies c in Dangerous\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n\tall c : Component | one p : Dangerous.parts | p in c.parts implies c in Dangerous\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n\tall c : Component | some p : Dangerous.parts | p in c.parts iff c in Dangerous\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n  \tall c : Component | some ( c.^(parts.parts) & Dangerous ) implies c in Dangerous\n\t\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n\tall c: Component | (Dangerous in c) implies (Dangerous in parts.c)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n\tall c: Component | (Dangerous in c) implies ^parts.c in Dangerous\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n  all c : Component | c in Dangerous iff c.parts in Dangerous\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n  all c: Component | Dangerous in c.parts implies Dangerous in Component\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n\tsome c: Component | c.parts in Dangerous => c in Dangerous\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n\tsome c: Component | some (c.parts & Dangerous) => c in Dangerous\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n\tall c : Component | some d : Dangerous | d in c.parts implies c in d.parts\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n  \tall c : Component | some d : Dangerous | Dangerous = c.parts implies c in Dangerous\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n  \tall p : Product | p in Dangerous \n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n  \tall c : Component, p : Product | (c.parts in Dangerous) iff (p.parts in Dangerous)\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n  all c: Component|one c.parts & Dangerous implies c in Dangerous\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n\tall c: Component | some d: Dangerous | d in c.parts =>\n  \t\tall p: c.parts | p in Dangerous\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n  some c : Component.parts | all c1 : Component | c1 in c \n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n  \n  some c : Component | c in Dangerous\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n\tall c : Component, p : Product | c in p.parts implies (c in Dangerous and p in Dangerous)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Components built of dangerous parts are also dangerous\n\tall c : Component | some (c.parts & Dangerous) implies no (c.parts & (Product - Dangerous))\n}"
+                }
+            ]
+        }
+    ]
+}

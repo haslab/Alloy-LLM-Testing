@@ -1,0 +1,2866 @@
+{
+    "original": "iP5JL36afv5KbDKP6",
+    "cmd": "inv6",
+    "pred": "this/inv6",
+    "entry_count": 1145,
+    "semantic_count": 177,
+    "syntactic_count": 404,
+    "scope": 3,
+    "groups": [
+        {
+            "entry_count": 419,
+            "syntactic_count": 29,
+            "correct": true,
+            "elems": [
+                {
+                    "entry_count": 206,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n    all s: Student | s.projects in s.enrolled.projects\n    \n    \n}"
+                },
+                {
+                    "entry_count": 64,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall s : Student, p : s.projects | p in s.enrolled.projects\n}"
+                },
+                {
+                    "entry_count": 39,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall s: Student | all p: s.projects | some c: s.enrolled | p in c.projects\n}"
+                },
+                {
+                    "entry_count": 32,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  \tall s : Student, p : Project | p in s.projects implies p in s.enrolled.projects\n\n}"
+                },
+                {
+                    "entry_count": 27,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall s: Student, p: Project | p in s.projects => some c: Course | p in c.projects && c in s.enrolled\n\n}"
+                },
+                {
+                    "entry_count": 13,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  \n  \tall u : Student | (all p: u.projects | (some c : Course | c in u.enrolled and p in c.projects ) )\n\n}"
+                },
+                {
+                    "entry_count": 6,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  all s: Student | s.enrolled.projects & s.projects = s.projects  \n\n}"
+                },
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n    Student<:projects in enrolled.projects  \n  \n    \n    \n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall s : Student | all p : Project | s in projects.p implies p in s.enrolled.projects\n\t\n\n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall s : Student, p : s.projects |\n  \t\tsome s.enrolled & Course <: projects.p\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall s : Student | all p : Project | s->p in projects implies \n  \t\t\t\t\t(some c : Course | c->p in (Course<:projects) and s->c in enrolled) \n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\t\n\n\tall p: Project, x: Student | p in x.projects implies some (x.enrolled & (Course <: projects).p)\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  \tall s : Student, p : s.projects | s in enrolled.(projects.p)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall p : Person & Student | all po : Project | po in p.projects implies po in p.enrolled.projects \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n    all s: Student, p: Project | s.projects - s.enrolled.projects = none\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall s: Student | no (s.projects - s.enrolled.projects)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n    all s: Student | s.projects - s.enrolled.projects = none\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall s: Student | some s.projects implies s.projects in s.enrolled.projects\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall s : Student, p : s.projects | some s.enrolled & (Course <: projects).p\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall s : Student,p : Project  | s.projects in (s.enrolled.projects)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  all s: Student, p: s.projects | s.enrolled.projects & p = p  \n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  all s:Student , proj:s.projects|\n  \tproj in Project implies proj in s.enrolled.projects\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall s : Student , p : s.projects | some(s.enrolled.projects & p )\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  all s: Student, p: Project | \n  \t\t(s->p in projects) \n  \t\timplies\n  \t\t(some c: Course | p in c.projects and c in s.enrolled)\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n   all s: Student | all p: Project | \n        p in s.projects implies some c: s.enrolled | p in c.projects\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  \tall s:Student | all proj:s.projects | some en: s.enrolled.projects | proj in en\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall s : Person & Student, p : s.projects | one pr : s.enrolled.projects | p=pr\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  all s: Student, p: s.projects | s.enrolled.projects & s.projects = s.projects  \n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall s : Student, p : Project | p in s.projects implies p in s.enrolled.^(projects)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 128,
+            "syntactic_count": 31,
+            "correct": true,
+            "elems": [
+                {
+                    "entry_count": 21,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall s:Student,p:Project,c:Course | p in c.projects and p in s.projects implies c in s.enrolled  \n}"
+                },
+                {
+                    "entry_count": 15,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  all s : Student, c: Course | (some s.projects&c.projects) implies s->c in enrolled\n\n}"
+                },
+                {
+                    "entry_count": 15,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall s: Student, c: Course | some s.projects & c.projects implies c in s.enrolled\n}"
+                },
+                {
+                    "entry_count": 14,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\t\n  \tall p : Project, s : Student, c : Course | (s->p in projects and c->p in projects) implies s->c in enrolled\n}"
+                },
+                {
+                    "entry_count": 11,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  all s : Student, pr : Project, c : Course | c in projects.pr and s in projects.pr implies s in enrolled.c\n}"
+                },
+                {
+                    "entry_count": 9,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\t\n\t\n  \tall s : Student, pr : s.projects | (Course <: projects).pr in s.enrolled\n}"
+                },
+                {
+                    "entry_count": 7,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  \tall s : Student, p : s.projects, c : Course | p in c.projects implies c in s.enrolled\n\n}"
+                },
+                {
+                    "entry_count": 5,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  \tall s:Student | (Course<:projects).(s.(Person<:projects)) in s.enrolled \n\t\n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  all s: Student, p: Project | p in s.projects implies (Course <: projects).p in s.enrolled\n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  all s : Student | no s.projects & (Course - s.enrolled).projects\n\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall p : Person | all pr : Project | all c : Course | p in Student and pr in p.projects and pr in c.projects implies c in p.enrolled\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall s : Student | all p : s.projects | (Course <: projects.p) in s.enrolled\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall s: Student | all p: s.projects | p.~(Course <: projects) in s.enrolled\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n all s : Student, c : Course |\n  (some s.projects & c.projects) implies s in enrolled.c\n  \n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall s : Student, c : Course | (some p : Project | p in c.projects and s -> p in projects) implies s->c in enrolled\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall s: Student, c: Course, p: c.projects | p in s.projects implies s in enrolled.c \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall s: Student, c: Course | c not in s.enrolled => no s.projects & c.projects\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n    all pr : Project, s : Student | all c : (Course <: projects).pr | pr in s.projects implies c in s.enrolled\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall student : Student | Course<:projects.(student.projects) in student.enrolled\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  \n  \tall s : Student, c : Course | (some s.projects & c.projects) implies s -> c in enrolled\n\n\tall s : Student, c : Course, pr : Project | c -> pr in projects and s -> pr in projects implies s -> c in enrolled\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall s : Student | (Course & projects.(s.projects)) in s.enrolled\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n      all s: Student, p: Project | ((s->p) in projects) implies ((s->(projects.p & Course)) in enrolled)\n\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  all u : Person, p : Project, c : Course | u in Student and u in projects.p and c in projects.p implies u in enrolled.c\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall s: Student, c: Course | (some s.projects <: c.projects) implies s -> c in enrolled\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall s : Student, p : s.projects | Course:>projects.p in s.enrolled\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  \tall s: Student,c: Course, pr: Project | pr in s.projects implies (Course<:projects).pr in s.enrolled\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  \tall s : Student | s.projects.~projects :> Course in s.enrolled \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  all u : Student, p : Project, c : Course | u in Student and u in projects.p and c in projects.p implies u in enrolled.c\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall s:Student, p:Project | p in s.projects implies projects.p <: Course in s.enrolled\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  \tall s : Student, p : Project |\n  \t\tp in s.projects implies\n  \t\tCourse <: projects.p in s.enrolled\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall s : Student, c : Course, pr : Project | (pr in s.projects) and (pr in \t\t\tc.projects) implies (s in enrolled.c)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 54,
+            "syntactic_count": 27,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 24,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall s : Student, c : Course | (some (Course <: projects).s) implies s->c in enrolled\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  \tlet cProjects = Course <: projects , pProjects =Person <: projects |\n\tcProjects.enrolled in pProjects\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  \tall p : Person | (some c : Course, p : Project | p in enrolled.c and c in projects.p ) implies p in Student \n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tStudent.projects.projects in Student.enrolled\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall p : Person | p.projects.projects in p.enrolled\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\n  all c: Course , s : Student | s.projects.projects in s.enrolled  \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall s : Student, p : s.projects, c : Course | c in s.enrolled implies p in s.projects \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall c: Course, p: Student | c in p.(Person <: projects) implies c in p.enrolled\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  Student->(~projects.Course).projects in enrolled \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  \tall s: Student, pr: Project | pr in s.projects implies pr.(Course<:projects) in s.enrolled \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  \tall s:Student | (Person<:projects).(s.(Course<:projects)) in s.enrolled \n\t\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  \tall s: Student, pr: Project, c: Course | s -> pr in enrolled implies pr in c.projects\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  \tall p: Person | (Person<:projects).p in (Course<:projects).p \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  \tall s:Student | some s \n\t\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall s: Student | all p: s.projects | p.(Course <: projects) in s.enrolled\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tStudent.projects.(Course <: projects) in Student.enrolled\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\t(Course <: Course.projects).enrolled in (Person <: Person.projects)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall s : Student, c : Course | (some (Course <: projects).c) implies s->c in enrolled\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall p: Project | all s: Student | all c: Course | p in c.projects and p in p.projects implies c in s.enrolled\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall s: Student, c: Course | s in c.enrolled implies s.projects in c.projects\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall pe:Person | all c:Course | all p:Project | p in Student and p in pe.projects implies c in pe.enrolled and p in c.projects\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  \tall p: Person | all pr: Project | p -> pr in enrolled implies p in Student\n  \t\t\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall p : Person, pr : Project, c : Course | (pr in p.projects and pr in c) implies c in p.enrolled \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  all c : Course | (Person <: projects).c.projects in Student\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n    // Students only work on projects of courses they are enrolled in\n    all s:Student | all p:Project | all c:Course | s->p in enrolled implies c->p in projects\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall p : Student, c : Course | (p in c.enrolled implies some c.projects)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 39,
+            "syntactic_count": 10,
+            "correct": true,
+            "elems": [
+                {
+                    "entry_count": 11,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\t\n  \t\n  \tall p : Project | (Person<:projects).p in enrolled.projects.p\n  \n}"
+                },
+                {
+                    "entry_count": 7,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  \tall p : Person | p.projects in p.enrolled.projects\n\n}"
+                },
+                {
+                    "entry_count": 6,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall p: Person | all r: p.projects | r in p.enrolled.projects\n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n    Person<:projects in enrolled.projects  \n  \n    \n    \n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\t\n  \tall p: Project | (Person <: projects.p) in enrolled.projects.p \n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  \tall p:Person, proj:Project | \n  \t\t\t\tproj in p.projects implies \n  \t\t\t\t\tsome c:Course | proj in c.projects and c in p.enrolled\n\n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall s1 : Person | all p1 : Project | \n  \ts1->p1 in projects implies (some c1 : Course | c1->p1 in projects and s1->c1 in enrolled)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\t\n  \tall p: Project | (Person <: projects.p) in enrolled.(Course <: projects.p) \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n        (projects & (Person->Project)) in enrolled.(projects & (Course->Project))\n\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall p : Project | all x : (Person<:projects).p | x in enrolled.(Course<:projects).p\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 33,
+            "syntactic_count": 17,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 7,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\n  all s : Student | s.projects in\ts.enrolled\n}"
+                },
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall s : Person & Student, p : s.projects | p in s.enrolled\n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall s : Student | s.projects in s.projects.enrolled \n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  \tall s:Student | (Person<:projects).(s.projects) in s.enrolled \n\t\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  \tall s : Student | all p : Project | p in s.projects implies p in s.enrolled \n\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\t\n  \tall s : Student | s.projects in (s.projects).projects\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  \tStudent.projects in Student.enrolled\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  \tall s : Student, p : Project |\n  \t\tp in s.projects implies p in p.enrolled.projects \n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\t\n  \tall s : Student | s.projects in (s.projects).projects\n  \tall s : Student | s.projects in (s.enrolled).projects\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  \tlet cProjects = Course <: projects , sProjects = Student <: projects |\n\tsProjects in cProjects.enrolled\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  \tall s:Student | all proj:s.projects | some en: s.enrolled | proj in en\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall s : Student | some s.projects implies s.projects in s.enrolled\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  all p : Person, pr : Project | p in Student and p in projects.pr implies p in enrolled.pr\n  \n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  all p : Person, pr : Project | p in Student and p in projects.pr implies p -> pr in enrolled\n  \n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall s : Student, p : Project | p in s.projects implies some c : s.enrolled | p in c.enrolled\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall s : Student , p : Project | s in (Person<:projects).p implies s in enrolled.p\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall s : Student, p : Project | p in s.projects implies some c : Course |\n  \t\t\t\t\t\t\t\t\tp in c.projects and s in c.grades.Student\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 32,
+            "syntactic_count": 12,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 8,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\n        \n\t\n\n        all s : Student | all c : Course | some c.projects implies s->c in enrolled\n}"
+                },
+                {
+                    "entry_count": 5,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  \t\n\n  \n  \tall s : Student | all pr : Project | (Course <: projects).pr in s.enrolled\n  \t\n}"
+                },
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\n\t\n\n\t\n\n        \n\t\n\n     all s : Student | all c : Course | all pr : Project | c in projects.pr implies c in s.enrolled\n\n        \n\n        \n\n        \n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  \t\n\n\t\n \tall s : Student | all c : Course | (some pr : Project | c->pr in projects) implies s->c in enrolled\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  \tall s : Student, c : Course | all p : Project | c in projects.p implies s in enrolled.c\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  \tall s : Student, c : Course | (some p : Project | c in projects.p) implies s in enrolled.c\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  \t\n\n\tall s:Student | all c:Course | (some c.projects implies s in enrolled.c)\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  \tall s : Student | all c : Course | all pr : Project | c->pr in projects implies s->c in enrolled\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall s : Student, c: Course | (some s->c.projects) implies s->c in enrolled\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\n\t\n\n\tall s : Student | all c : Course | (some c.projects) implies s->c in enrolled\n\n        \n\t\n\n     all s : Student | all c : Course | all pr : Project | c in projects.pr implies c in s.enrolled\n\n        \n\n        \n\n        \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  \tall s:Student | all p: Project | all c: (Course <:projects).p |s in enrolled.c\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall p: Project, c: Course, s: Student | p in c.projects implies c in s.enrolled\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 26,
+            "syntactic_count": 9,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 13,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  \tall s: Student| all c:Course | all pr:Project | pr in s.projects implies pr in c.projects and c in \t\t  s.enrolled\n\n}"
+                },
+                {
+                    "entry_count": 5,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  \tall s:Student | all p:Project |all c:Course| s in projects.p implies ( s in enrolled.c and c in projects.p)\n\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall st : Student | all p : Project | p in st.projects implies all c:Course | c in st.enrolled and p in c.projects\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\nall s : Student | all p : s.projects | all c : Course | p in c.projects and c in s.enrolled\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall s: Student, p: Project, c: Course | s in projects.p implies p in c.projects and s in enrolled.c\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\t\n\n\tall s : Student, p : Project, c : Course | s -> p in projects implies (p in c.projects and s -> c in enrolled)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  all u : Person, p : Project, c : Course | u in Student and u in projects.p implies c in projects.p and u in enrolled.c\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  \t\n  \tall s: Student, p: Project, c: Course | p in s.projects implies s in enrolled.c and p in c.projects\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall pe:Person | all c:Course | all p:Project | pe in Student and p in pe.projects implies c in pe.enrolled and p in c.projects\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 24,
+            "syntactic_count": 4,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 17,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall s : Student | s.projects = s.enrolled.projects\n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall s: Student | all p: Project | p in s.projects iff p in s.enrolled.projects\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\t all s : Student | s.projects = s.^(enrolled.projects)\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall s:Student | s.projects =  s.enrolled.^projects\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 24,
+            "syntactic_count": 11,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 6,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall s : Person & Student, p : s.projects, c : s.enrolled | p in c.projects\n}"
+                },
+                {
+                    "entry_count": 5,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall s : Student | all c : s.enrolled | s.projects in c.projects \n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall s : Student, c : Course | c in s.enrolled implies s.projects in c.projects\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall s:Student | all c: Course | all p: Project | p in s.projects and c in s.enrolled implies (p in c.projects )\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  all s : Student, p : Project, c : s.enrolled | p in s.projects implies p in c.projects \n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall s: Student | all s_p: s.projects | all s_c: s.enrolled | \n  \t\tsome (s_p & s_c.projects)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall s : Student | all p : Project | s in projects.p implies s.enrolled in projects.p\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall s : Student | all p : s.projects | all c : s.enrolled | c in projects.p\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall s : Student, p : s.projects, c : s.enrolled | p in c.projects and c in s.enrolled\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall p:Project | all s:Student | s->p in projects implies s.enrolled in (Course<:projects).p\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall s : Student | all p : s.projects | s.enrolled in projects.p\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 21,
+            "syntactic_count": 7,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 8,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n   all s: Student | all p: Project | all c: Course| p in s.projects implies c in s.enrolled\n}"
+                },
+                {
+                    "entry_count": 5,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall s: Student, c: Course | some s.projects implies s->c in enrolled\n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall s: Student, c: Course, pr: Project | pr in s.(Person<:projects) implies s in enrolled.c\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall s: Student, p: Project, c: Course | s in projects.p implies s in enrolled.c\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall p: Project, c: Course, s: Student | s in projects.p implies c in s.enrolled\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  all p : Person, pr : Project, c : Course | p in Student and p in projects.pr implies \n  p in enrolled.c \n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  all s:Student, p:Project, c:Course | s->p in projects implies s->c in enrolled\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 16,
+            "syntactic_count": 13,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n      all s: Student |  s.enrolled.projects in s.projects \n\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n    // Students only work on projects of courses they are enrolled in\n    all s:Student | all p:Project | all c:Course | (s->c in enrolled and c->p in projects) implies s->p in projects\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  all s:Student ,c:s.enrolled,proj:c.projects|\n  \tproj in s.projects\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  \t all s: Student | all p: Project |\n        (some c: Course | c in s.enrolled and p in c.projects) implies p in s.projects and (some c: Course | c in s.enrolled and p in c.projects implies s not in c.teaches)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  \tall s : Student, c : Course | s.enrolled.projects = (s.enrolled.projects & s.projects)\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\nall pr:Project, s:Student, c:Course | c in projects.pr and c in s.enrolled implies pr in s.projects\n  \n  \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  \tall s : Student | s.enrolled.projects = (s.enrolled.projects & s.projects)\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  all s: Student | all p: Project |\n        (some c: Course | c in s.enrolled and p in c.projects) implies p in s.projects and\n        \n        all c: Course | (s in c.teaches) implies (p not in c.projects)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall s: Student, c: Course | c in s.enrolled implies c.projects in s.projects\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n    // Students only work on projects of courses they are enrolled in\n    all s: Student | all c: Course | (s in enrolled.c) implies \n        all p: Project | (p in c.projects) implies (p in s.projects)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\t\n\tall s: Student, c: s.enrolled | c.(Course <: projects) in s.(Person<: projects)\n\t\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  all s:Student | all c:Course, p:c.projects | c in s.enrolled implies p in s.projects\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall p: Student, c: Course, y: Project | (c in projects.y) and (p in enrolled.c) implies (p in projects.y)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 14,
+            "syntactic_count": 5,
+            "correct": true,
+            "elems": [
+                {
+                    "entry_count": 7,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall s: Student | all pj: Project | pj in s.projects => one c: Course | c in s.enrolled and pj in c.projects\n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall s : Student | all p : s.projects | one c : s.enrolled | p in c.projects \n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  \tall s: Student, p: Project | p in s.projects implies one (s.enrolled & (Course<:projects.p))\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  \t\n  \tall s: Student, p: Project | p in s.projects implies (one c: Course | s in enrolled.c and p in c.projects)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall s : Student | all p : s.projects | one c : Course | p in c.projects and c in s.enrolled\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 12,
+            "syntactic_count": 8,
+            "correct": true,
+            "elems": [
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall p:Person,c:Course | some p.projects & c.projects implies p->c in enrolled \n  \n \n  \n  \n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  all c : Course | Person <: projects.(c.projects) in enrolled.c\n\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall p : Person, c : Course, pr : Project | \n  \t(pr in p.projects and pr in c.projects) implies c in p.enrolled\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  \t\n  \t(Person <: projects).{p:Project, c:Course | c->p in projects} in enrolled\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\t(Person->Course & projects.~projects) in enrolled\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall p : Project, st : Person, c :Course | (p in st.projects and p in c.projects) implies st in enrolled.c\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall p:Project | all s:Person | s->p in projects implies (Course<:projects).p in s.enrolled\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall p: Project, s: (Person <: projects).p |\n  (Course <: projects).p in s.enrolled\n  \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 11,
+            "syntactic_count": 6,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall s : Student, p : Project, c : Course | c in s.enrolled implies p in s.projects\n  \n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall p: Project, c: Course, s: Student | s in enrolled.c implies s in projects.p\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n    // Students only work on projects of courses they are enrolled in\n    all s:Student | all p:Project | all c:Course | s->c in enrolled implies s->p in projects\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  \tall s: Student, pr: Project, c: Course | s -> c in enrolled implies pr in s.projects\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  \tall p: Student, pr: Project, c: Course | p -> c in enrolled implies p in Student and pr in p.projects\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall p: Project, c: Course, s: Student | c in s.enrolled implies s in projects.p \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 9,
+            "syntactic_count": 3,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n    all pr : Project, s : Person-Professor | pr in s.projects implies pr in s.enrolled.projects\n\n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  all s : (Person - Professor) , p : s.projects | p in s.enrolled.projects\n\n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall p : Person - Professor |\n  \t\tall proj : p.projects |\n  \t\t\tsome c : p.enrolled | proj in c.projects\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 9,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 8,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\n  all s : Student |  some s.(Person <: projects)  & (s.enrolled).(Course <: projects)  \n  \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall s : Student \n  \t\t| some p : s.projects, c : s.enrolled | p in c.projects\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 7,
+            "syntactic_count": 2,
+            "correct": true,
+            "elems": [
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  \tall s : Student | all p : Project | some c : Course | p in s.projects implies (p in c.projects and c in s.enrolled)\n\n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  \tall s: Student | all p: Project | some c:Course |\n  \ts->p in projects implies c->p in projects and s->c in enrolled\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 7,
+            "syntactic_count": 7,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  \tall p: Project | (Person<:projects).p in (Course<:projects).p \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  all p : Person, pr : Project | p in projects.pr implies p in enrolled.pr\n  \n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall p : Person | all p2 : p.projects | p2 in p.enrolled\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  \tlet cProjects = Course <: projects , pProjects = Person <: projects |\n\tcProjects.enrolled = pProjects\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  \tall pers:Person | pers.projects in pers.enrolled\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  \tlet cProjects = Course <: projects , pProjects = Person <: projects |\n\tpProjects in cProjects.enrolled\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  \tlet cProjects = Course <: projects , pProjects = Person <: projects |\n\tpProjects in cProjects\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 7,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 7,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  \tall s: Student | all c: Course| s.projects in c.projects implies c in s.enrolled  \n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 6,
+            "syntactic_count": 3,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  \t(Student <: projects).Project in enrolled.Course\n\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall st : Student | all p : Project | p in st.projects implies some c:Course | c in st.enrolled \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall s : Student, pr : s.projects\n  \t\t| some c : s.enrolled | pr in s.projects\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 6,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 5,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  all s: Student | all p: Project | p in s.enrolled.projects\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall p : Student | all proj : Project |\n  \t\tsome c : p.enrolled | proj in c.projects\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 6,
+            "syntactic_count": 2,
+            "correct": true,
+            "elems": [
+                {
+                    "entry_count": 5,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  \tall s : Student, c : Course, p : Project | p in s.projects implies p in s.enrolled.projects\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall s : Student | all c : Course | s.projects in s.enrolled.projects\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 5,
+            "syntactic_count": 4,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall s: Student | all p: Project | all c: Course | p in s.projects implies c in p.enrolled\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  \tall s : Student, c : Course, p : Project | p in s.projects implies p in s.enrolled\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\t\n\n\tall s : Student, p : Project, c : Course | p in s.projects implies p in c.projects and s in c.enrolled\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall s: Student | all p: Project | all c: Course | p in s.projects implies (c in p.enrolled and p in c.projects)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 5,
+            "syntactic_count": 4,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall p : Person | all c : p.enrolled | c.projects in p.projects\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall p : Person | some p.enrolled implies p.enrolled.projects in p.projects\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  \tlet cProjects = Course <: projects , pProjects = Person <: projects |\n\tcProjects[enrolled] in pProjects\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\nall pr:Project, s:Person, c:Course | c in projects.pr and c in s.enrolled implies\n  pr in s.projects\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 5,
+            "syntactic_count": 3,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  all s:Student | projects.(s.projects) = s.enrolled\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall s : Student | s.enrolled = (Course & projects.(s.projects))\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall p : Student | p.enrolled = p.projects.~projects\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 5,
+            "syntactic_count": 3,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall s:Student, p:s.enrolled.projects | s.projects in p\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall s:Student|all p:s.projects|s.enrolled.projects in p\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall s : Student | all c : s.enrolled | all p : c.projects | s.projects != none implies s.projects in p\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 4,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  \tall s : Student | all c : Course | some pr : Project | s in projects.pr implies s in enrolled.c and c in projects.pr\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{ \n\t// Students only work on projects of courses they are enrolled in\n\tall c: Course, s: Student | some p: Project | p in s.projects => p in c.projects and c in s.enrolled\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 4,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tenrolled = projects.~projects\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall p : Person | p.enrolled = p.projects.~projects\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 4,
+            "syntactic_count": 3,
+            "correct": true,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall s : Student, c : Course, pr : Project | c->pr in projects and s->pr in projects implies s->c in enrolled\n\n\tall s : Student, c : Course, pr : Project | pr in c.projects and pr in s.projects implies c in s.enrolled\n\n    all s : Student | s.projects in s.enrolled.projects\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  \n  \tall s : Student, c : Course | (some s.projects & c.projects) implies s -> c in enrolled\n\n\tall s : Student, c : Course, pr : Project | c -> pr in projects and s -> pr in projects implies s -> c in enrolled\n\n\tall s : Student, pr : s.projects | (Course <: projects).pr in s.enrolled\n\n\tall s : Student | s.projects in s.enrolled.projects\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  \n  \t\n\n\tall s : Student, c : Course, pr : Project | c -> pr in projects and s -> pr in projects implies s -> c in enrolled\n\n\tall s : Student, pr : s.projects | (Course <: projects).pr in s.enrolled\n\n\tall s : Student | s.projects in s.enrolled.projects\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 4,
+            "syntactic_count": 4,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall s : Student | all c : s.enrolled | some p : s.projects | p in c.projects  \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall p : Student | p.enrolled in p.projects.~projects\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\t\n  \tall s : Student | s.enrolled in projects.(s.projects)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall s : Student | all c : s.enrolled | some s.projects&c.projects\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 3,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall p : Person | some p.enrolled implies p in Student and p.enrolled.projects in p.projects\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall p : Person | all c : p.enrolled | some p.enrolled implies p in Student and (c.projects in p.projects)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 3,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  \t(Student <: projects).Project = enrolled.Course\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 3,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall st : Student | all p : Project | one c : Course | p in st.projects implies c in st.enrolled and p in c.projects\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 3,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 3,
+                    "code": "{ Student.projects in Student.enrolled.projects  \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 3,
+            "syntactic_count": 3,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  all s:Student | all p: Project | p in s.projects => some c:Course | p in c.projects\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  all s: Student | all pr: s.projects | some c: Course | pr in c.projects\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  \tStudent.projects in Course.projects\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 3,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall s : Student | all c : s.enrolled | s.projects in c\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall s:Student|all p:s.projects|s.enrolled in p\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 3,
+            "syntactic_count": 3,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  all p : Person, pr : Project, c : Course | p in projects.pr implies p in enrolled.c \n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall p : Project, st : Person, c :Course | p in st.projects implies st in enrolled.c\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  all pr : Project, c : Course | (Person <: projects).pr in enrolled.c\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 3,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall p : Person, c : Course |\n  \t\t(p.projects in c.projects) implies (c in p.enrolled)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 3,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  \tall s: Student, pr: Project, c: Course | s -> c in enrolled implies pr in c.projects\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n    // Students only work on projects of courses they are enrolled in\n    all s:Student | all p:Project | all c:Course | s->c in enrolled implies c->p in projects\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 3,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  \n  all s : Student, c : Course | some (s.projects & c.projects)  implies s.enrolled in c \n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 3,
+            "syntactic_count": 3,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall s:Student | some p:Project | some c:Course |\n  \t\tp in s.projects implies (p in c.projects and c in s.enrolled)\n  \t\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\t\n  \n  \n  \n  all p: Student | some x: Project, c:Course | p in projects.x implies (p in enrolled.c and c in projects.x) \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\t\n  \n  \n  \n  all p: Student | some x: Project, c:Course | x in p.projects implies (c in projects.x and p in enrolled.c) \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 3,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  all p : Person, c : Course, pr : Project | p in projects.pr implies p in enrolled.c and c in projects.pr\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  all s: Person | all p:Project | all c: Course|p in s.projects implies c in s.enrolled and p in c.projects\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall s : Student | some c : Course | s.projects in c.projects => s.enrolled in c  \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  \tall s:Student | some s.projects implies some c:Course | some c.projects and s->c in enrolled\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall s:Student | some p:Project,c:Course | p in c.projects and p in s.projects implies c in s.enrolled  \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  \tall p: Student | (some pr:Project, c:Course | p in projects.pr and pr in c.projects implies p in enrolled.c)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall p : Person | some c : p.enrolled | c.projects in p.projects\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  \tall s : Student | all c : Course | all pr : Project | \n  \tc in projects.pr implies c in s.enrolled\n  \t\n  \tall s : Student | all pr : Project | pr in s.projects implies pr in \t\ts.enrolled.projects\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall p : Person, c : Course | p.projects in c.enrolled => p in Student\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall p : Person, c : Course | p.projects in c => p in Student\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  all s : Student, c : Course | (some s->Project) implies s->c in enrolled\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  all s : Student, c : Course | (some c->Project) implies s->c in enrolled\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall s:Student | all p:Project | all c:Course | s->p in projects implies c->p in projects\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  \tall s:Person | all p:Project| (some c:Course |  s in Student and c in projects.p and c in projects.p implies p in s.projects)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  all s:Student | all p: Project | p in s.projects => some c:Course | p in c.projects => c in s.enrolled\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  \t\n  \t\n\t\n\t\n\tall s: Student, pr: s.projects | some c: Course | c->pr in projects implies s->c in enrolled\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\t\n  \tall s : Student | s.enrolled in (s.projects).projects\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall s : Student | s.enrolled = s.projects.projects\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  Student->~projects.Course in enrolled \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall s:Student,c:Course | c.projects in s.enrolled\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  \tall p: Person | all pr: Project | p -> pr in (Person <: projects) implies p in Student\n  \t\t\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  \tall p:Project | (Person<:projects).p in Student and (Person<:enrolled).p in Student\n \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall p:Project | all s:Person | s->p in projects implies s.enrolled in (Course<:projects).p\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall p: Person | all c: Course | c in p.enrolled => p.projects in c.projects \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall p:Person, c: p.enrolled | p.projects in c \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall s : Student | all c : s.enrolled | lone p : s.projects | p in c.projects  \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall s: Student | all c: s.enrolled | all p1, p2: s.projects | p1 in c.projects and p2 in c.projects implies p1 = p2\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall s : Student, p : Project, c : Course | p in c.projects\n  \n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  all s : Student, pr : Project, c : Course | c in projects.pr\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall s : Student | some c : s.enrolled | some s.projects implies s.projects in c.projects\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall s : Student | all p : s.projects | p = s.enrolled.projects\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\t\n  all s: Student, c: Course | s->c in enrolled implies some p: Project | p in c.projects\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall p : Student, c : Course | (p in enrolled.c implies some c.projects)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall p: Student, c: Course, y: Project | (c in projects.y) and (p in enrolled.c) and (p not in teaches.c) implies (p in projects.y)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall p: Student,c: Course, x: Project| lone (p.enrolled & projects.x)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n    Course.projects in Student.projects\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n    all p: Student.projects | p in projects.p.enrolled.projects\n    \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall s : Student, p : Project, c : Course | \n  \t\tp in s.projects implies c.projects in s.enrolled\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  \tall s : Student | some c : Course, p : Project | p in c.projects and c in s.enrolled implies p in s.projects\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  \tall s : Person-Professor | some c : Course, p : Project | p in c.projects and c in s.enrolled implies p in s.projects\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  \tall p: Project | (Person<:projects).p = (Course<:projects).p \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  \n  all p: Person | all c: Course | all pr : Project | p in projects.pr implies p in Student and p in enrolled.c\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall s : Student | some c : Course | \n  \t \ts.projects in c.projects and s.enrolled in c\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall s : Student | some c : Course | \n  \t \ts.projects in s.enrolled.projects\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  \tall pr: Project, c:Course | (some p:Student | p in (Person <: projects).pr and pr in (Course <: projects).c implies p in enrolled.c)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  \tall pr: Project, c:Course | (some p:Student | p in (Person <: projects).pr and c in (Course <: projects).pr implies p in enrolled.c)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n    all p: Person - Student | all g: Project | g in p.projects => some c: Course | c in p.enrolled\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall s: Student | some p: Project | p in s.projects implies s in enrolled.(Course <: projects.p)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  \tall p : Student | (some c : Course, p : Project | p in enrolled.c and c in projects.p )  \n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  \tall p : Person | (some c : Course, pr : Project | p in enrolled.c and c in projects.pr ) implies p in Student \n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  \tall p : Person | all c : Course | some pr : Project | p in projects.pr and p in Student implies p in enrolled.c and c in projects.pr\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall s : Student | some(s.projects)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall s : Student, p : s.projects | one c : Course | p in c.projects implies c in s.enrolled\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall c : Course | enrolled.c in Student\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall p : Person | (some p.enrolled and some p.enrolled.projects) implies Person<:projects.Project in p \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n    all s : Student, p : Project, c : Course | p in s.enrolled.projects\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n    all pr : Project, s : Person-Professor | all c : (Course <: projects).pr | pr in s.projects implies c in s.enrolled\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n    all pr : Project, s : Person-Professor | all c : (Course <: projects).pr | pr in s.projects and c in s.enrolled\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall s : Person - Professor | all p : Project | s.enrolled in projects.p\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall s : Person-Professor | all p : s.projects | s.enrolled in projects.p\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  all s : Student | s.projects = s.enrolled \n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\n\tall s: Student, p: Project | s.enrolled.projects in p\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": true,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  \tall p:Person , proj:Project|\n  \t\tproj in p.projects implies\n  \t\t\tone c:Course | proj in c.projects and c in p.enrolled\n  \t\t\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall st : Student | all c : Course | c.projects in st.projects implies c in st.enrolled\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall p : Person, c : Course | p.projects.enrolled in c => p in Student\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall s:Student | some c:Course | c in s.enrolled\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall s:Student | some c:Course | some p:Project | p in s.projects implies c in s.enrolled\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\t\n  \t\n  \tall s: Person - Professor, prj: Project | \n        prj in s.enrolled.projects\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{ \n\t// Students only work on projects of courses they are enrolled in\n\tall p: Project, s: Student | some c: Course | p in s.projects and p in c.projects => c in s.enrolled \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{ \n\t// Students only work on projects of courses they are enrolled in\n\tall c: Course, s: Student | some p: Project | c in s.enrolled and p in s.projects => p in c.projects \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall p : Person | p.enrolled in p.projects.~projects\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  Project->Course in enrolled \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  Student->Course in enrolled \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall x : Student, p : Project | one c : Course | p in x.projects and p in c.projects implies c in x.enrolled\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n  \t// Students only work on projects of courses they are enrolled in\n  \tsome s : Student | all pr : Project | some c : Course |\n  \t\tpr in s.projects implies (pr in c.projects and c in s.enrolled)\n  \n  \t\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n  \t// Students only work on projects of courses they are enrolled in\n  \tsome s : Student | all pr : Project |\n  \t\tpr in s.projects implies (some c : Course | pr in c.projects and c in s.enrolled)\t\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\t\n\tall s : Student, c : Course, p : Project | s.projects in p and c.projects in p implies s -> c in enrolled\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  \tStudent.projects = Course.projects\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  \t(Person <: projects).Project = enrolled.Course\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tno (Person-Student).projects\n  \t(Student <: projects).Project = enrolled.Course\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  \tenrolled.Course in (Student <: projects).Project \n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n    (Course <: projects) . Project in Student . enrolled\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\t\n  \tStudent.projects & Course.projects in Student.enrolled.projects\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\t\n  \tStudent.projects & Course.projects = Student.enrolled.projects\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n    // Students only work on projects of courses they are enrolled in\n    all s:Student-Professor | all p:Project | all c:Course | (s->c in enrolled and c->p in projects) implies s->p in projects\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall s:Student | some p:Project | some c:Course |\n  \t\tp in s.projects implies (p in c.projects and c in p.enrolled)\n  \t\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall s:Student | some p:Project | one c:Course |\n  \t\tp in s.projects implies (p in c.projects and c in s.enrolled)\n  \t\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall s:Student | one p:Project | one c:Course |\n  \t\tp in s.projects implies (p in c.projects and c in s.enrolled)\n  \t\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall s : Student | all p : s.projects | one c : Course | p in c.projects implies s in c.grades.Person\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  \tall s:Student | all p:Project| (some c:Course | c in projects.p and c in projects.p implies p in s.projects)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  \tall s:Student | all p:Project| (some c:Course | s not in Professor and c in projects.p and c in projects.p implies p in s.projects)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  \tall p: Person | (p in Student) implies (p not in Professor)\n  \tall s:Student | all p:Project| (some c:Course | c in projects.p and c in projects.p implies p in s.projects)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  \tall s:Person | all p:Project| (some c:Course | s in Student and c in projects.p and c in projects.p implies p in s.projects and (s in Professor implies s not in projects.p))\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  \t all s: Student | all p: Project | \n        (some c: Course | c in s.enrolled and p in c.projects) implies p in s.projects and\n        (s in Professor implies p not in s.projects)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  \t all s: Student | all p: Project | some c: Course |\n        (c in s.enrolled and p in c.projects) implies p in s.projects and (c in s.enrolled and p in c.projects implies s not in c.teaches)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall s : Student, p : Project | p in s.projects implies some c : s.enrolled | p in c.enrolled or p in s.teaches.projects\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  \n  all s : Student, c : Course | some (s.projects & c.projects)  \n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall s: Student, c: Course | Project in s.(Person<:projects) implies s in enrolled.c\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall s: Student, c: Course, pr: Project | pr in s.(Person<:projects) iff c in s.enrolled\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall p : Person - Professor |\n  \t\tall proj : p.projects |\n  \t\t\tone c : p.enrolled | proj in c.projects\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall pr : Project, p : Person | one c : Course |\n  \t\tp -> pr in projects implies\t\t\n  \t\t\tc -> pr in projects and c in p.enrolled\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall s : Student, pr : Project, c : Course | (pr in s.projects implies c in s.enrolled) and pr in c.projects\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  all pro : Project | some ((Person <: projects).pro & Student) implies Student.enrolled in  (Course <: projects).pro\n  \n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall p : Person, c : Course | p.projects in c\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  all s:Student | some c:Course, p:c.projects | c in s.enrolled implies p in s.projects\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall s: Student | some p: Project | p in s.projects iff p in s.enrolled.projects\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall s: Student | one p: Project | p in s.projects iff p in s.enrolled.projects\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  all p : Person, pr : Project | p in Student and p in projects.pr\n  \n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall p:Person,c:Course | p.(Person <: projects) in c.(Course <: projects) implies p in Student and p in enrolled.c\n  \n \n  \n  \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall s : Student | some c: Course | some ( s.projects & c.projects ) implies ( c in s.enrolled )\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall s : Student, c:Course, pr:Project | pr in s.projects and pr in c.projects\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tStudent.projects = Student.enrolled.projects\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  \tall p: Person, pr: Project, c: Course | p -> pr in (Person <: projects) implies p in Student\n  \t\t\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall p: Person | all c: Course | c in p.enrolled <=> p.projects in c.projects \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall s : Student | some c : s.enrolled | lone p : s.projects | p in c.projects  \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  \tlet cProjects = Course <: projects , pProjects = Person <: projects |\n\tcProjects[enrolled] = pProjects\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  all s : Student | all pro : Project | all c : Course | s.projects in c.projects => c in s.enrolled  \n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  all c : Course.projects | (Person <: projects).c in Student\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  all s: Person, c: Course, p: Project | s in enrolled.c implies s in Student\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\n  all s : Student |  lone  s.(Person <: projects)  & (s.enrolled).(Course <: projects) \n  \n  \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall p : Person, c : Course, pr: c.projects |\n  \t\t(p.projects in pr) implies (c in p.enrolled)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall s : Student, p : Project| some c : Course | c in s.enrolled implies p in s.projects\n  \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall s : Student, p : Project| some c : Course | p in c.projects and s in c.enrolled\n  \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall s: Student, c: Course | s.projects in c.projects iff c in s.enrolled\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  \t\n  \tall s: Student, p: Project | p in s.projects implies one s.enrolled.(Course<:projects)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  \tall s: Student, p: Project | p in s.projects iff one (s.enrolled & (Course<:projects.p))\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall s: Student | some c: Course | c in s.enrolled implies c.projects in s.projects\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall s: Student | some c: Course, p: Project | c in s.enrolled implies p in s.projects\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall s: Student | some c: Course | c in s.enrolled implies s.projects in c.projects\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall s: Student, c: Course | c in s.enrolled implies s.enrolled.projects in c.projects\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall s: Student, p: Project | some c: Course  | p in s.projects implies s in enrolled.c\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n  \tall s : Student, c: Course | some p : Project | s.enrolled in c implies p in s.projects\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall s : Student, c : Course, pr : Project | (pr in s.projects) and (pr in c.projects) and (s in c.enrolled)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall s : Student, c : Course, pr : Project | (pr in s.projects) and (pr in c.projects) and (s in enrolled.c)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\t\n  \n  all p:Person, x: Project, c: Course |( p in projects.x) iff (p in enrolled.c and c in projects.x)  \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\t\n  \n  all p:Student, x: Project, c: Course |( p in projects.x) iff (p in enrolled.c and c in projects.x)  \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\t\n  \n  some p:Student, x: Project, c: Course |( p in projects.x) iff (p in enrolled.c and c in projects.x)  \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\t\n  \n  some p:Student, x: Project, c: Course |( p in projects.x) iff (p in enrolled.c and c in projects.x)  \n  \n  all p: Student | some x: Project, c:Course | p in projects.x iff (p in enrolled.c and c in projects.x)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\t\n  \n  \n  \n  all p: Student | some x: Project, c:Course | p in projects.x iff (p in enrolled.c and c in projects.x)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\t\n  \n  \n  \n  all p: Student | some x: Project, c:Course | p in projects.x implies (p in enrolled.c and c in projects.x) and p not in teaches.c\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\t\n\tall p: Project, c: Course, y: Person | y in enrolled.c implies ( y in Student and y in projects.p)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\t\n\tall p: Project, c: Course, y: Person | y in enrolled.c implies ( y in Student and y in projects.p and (y not in teaches.c ))\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\t\n\tall p: Project, c: Course, y: Person | y in enrolled.c implies ( y in Student and y in projects.p and (y not in projects.p ))\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\t\n\tall p: Project, c: Course|some y: Person | y in enrolled.c implies ( y in Student and y in projects.p and (y not in projects.p ))\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall p: Student,c: Course, x: Project| lone (enrolled.c & projects.x)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall pj: Project | some p: Person | pj in p.enrolled\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall pj: Project | all c: Course | some p: Person | pj in p.projects implies c in p.enrolled\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Students only work on projects of courses they are enrolled in\n\tall s: Student | some c: Course | some s.projects implies s.projects in c.projects and c in s.enrolled\n}"
+                }
+            ]
+        }
+    ]
+}

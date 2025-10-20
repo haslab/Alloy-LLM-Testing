@@ -1,0 +1,42 @@
+{
+    "Photo sharing social network": {
+        "this/inv3": {
+            "valid": [
+                "run InstanceN1 {\n    some disj U1, U2: User | some disj P1: Photo | some disj D1: Day {\n        User = U1 + U2\n        Influencer = U2\n        Photo = P1\n        Ad = P1\n        Day = D1\n\n        follows = none->none\n        posts = U1->P1\n        sees = U1->P1\n        suggested = none->none\n        date = P1->D1\n    }\n} for 2 User, 1 Photo, 1 Day expect 0"
+            ]
+        },
+        "this/inv8": {
+            "previous": [
+                "run NegInstance3 {\n    some disj I : Influencer | some disj U1, U2, U3 : User | some disj AdI, Ad3 : Ad | some disj D1 : Day {\n        User = I + U1 + U2 + U3\n        Influencer = I\n        Photo = AdI + Ad3\n        Ad = AdI + Ad3\n        Day = D1\n\n        follows = U1->I + U2->I + U3->I + I->U2\n        suggested = U1->U2\n\n        posts = I->AdI + U3->Ad3\n        sees = U1->Ad3\n        date = AdI->D1 + Ad3->D1\n    }\n} for 4 User, 2 Photo, 1 Day expect 0"
+            ]
+        }
+    },
+    "Courses": {
+        "this/inv2": {
+            "parse": [
+                "run Pos1 {\n    some disj Course1 : Course | some disj Grade1, Grade2 : Grade {\n        Person = none\n        Professor = none\n        Student = none\n        Course = Course1\n        Project = none\n        Grade = Grade1 + Grade2\n\n        Person <: teaches = none->none\n        Person <: enrolled = none->none\n        Person <: projects = none->none\n        Course <: projects = none\n        Course <: grades = none->none->none\n        Grade <: next = Grade1->Grade2\n    }\n} for 0 Person, 1 Course, 0 Project, 2 Grade expect 1",
+                "run Pos2 {\n    some disj Person1 : Person | some disj Course1 : Course | some disj Grade1, Grade2 : Grade {\n        Person = Person1\n        Professor = Person1\n        Student = none\n        Course = Course1\n        Project = none\n        Grade = Grade1 + Grade2\n\n        Person <: teaches = Person1->Course1\n        Person <: enrolled = none->none\n        Person <: projects = none->none\n        Course <: projects = none\n        Course <: grades = none->none->none\n        Grade <: next = Grade1->Grade2\n    }\n} for 1 Person, 1 Course, 0 Project, 2 Grade expect 1",
+                "run Neg1 {\n    some disj Person1 : Person | some disj Course1 : Course | some disj Grade1, Grade2 : Grade {\n        Person = Person1\n        Professor = none\n        Student = none\n        Course = Course1\n        Project = none\n        Grade = Grade1 + Grade2\n\n        Person <: teaches = Person1->Course1\n        Person <: enrolled = none->none\n        Person <: projects = none->none\n        Course <: projects = none\n        Course <: grades = none->none->none\n        Grade <: next = Grade1->Grade2\n    }\n} for 1 Person, 1 Course, 0 Project, 2 Grade expect 0",
+                "run Neg2 {\n    some disj Person1 : Person | some disj Course1 : Course | some disj Grade1, Grade2 : Grade {\n        Person = Person1\n        Professor = none\n        Student = Person1\n        Course = Course1\n        Project = none\n        Grade = Grade1 + Grade2\n\n        Person <: teaches = Person1->Course1\n        Person <: enrolled = Person1->Course1\n        Person <: projects = none->none\n        Course <: projects = none\n        Course <: grades = none->none->none\n        Grade <: next = Grade1->Grade2\n    }\n} for 1 Person, 1 Course, 0 Project, 2 Grade expect 0",
+                "run Neg3 {\n    some disj Person1, Person2 : Person | some disj Course1 : Course | some disj Grade1, Grade2 : Grade {\n        Person = Person1 + Person2\n        Professor = Person2\n        Student = Person1\n        Course = Course1\n        Project = none\n        Grade = Grade1 + Grade2\n\n        Person <: teaches = Person1->Course1 + Person2->Course1\n        Person <: enrolled = Person1->Course1\n        Person <: projects = none->none\n        Course <: projects = none\n        Course <: grades = none->none->none\n        Grade <: next = Grade1->Grade2\n    }\n} for 2 Person, 1 Course, 0 Project, 2 Grade expect 0"
+            ]
+        },
+        "this/inv6": {
+            "parse": [
+                "run Neg1 {\n    some disj P1 : Person | some disj C1 : Course | some disj PR1 : Project | some disj G1, G2 : Grade {\n        Person = P1\n        Professor = P1\n        Student = P1\n        Course = C1\n        Project = PR1\n        Grade = G1 + G2\n\n        teaches = P1->C1\n        enrolled = none\n        Person <: projects = P1->PR1\n        Course <: projects = C1->PR1\n        grades = none->none->none\n\n        Grade <: next = G1->G2\n    }\n} for 1 Person, 1 Course, 1 Project, 2 Grade expect 0"
+            ]
+        },
+        "this/inv7": {
+            "previous": [
+                "run Neg2 {\n  some disj Pprof,Pstud : Person | some disj C1,C2 : Course | some disj Pr1,Pr2,Pr3 : Project | some disj G1,G2,G3 : Grade {\n    Person = Pprof + Pstud\n    Professor = Pprof\n    Student = Pstud\n\n    Course = C1 + C2\n    Project = Pr1 + Pr2 + Pr3\n    Grade = G1 + G2 + G3\n\n    teaches = Pprof->C1 + Pprof->C2\n    enrolled = Pstud->C1\n\n    Course <: projects = C1->Pr1 + C1->Pr2 + C2->Pr3\n    Person <: projects = Pstud->Pr1 + Pstud->Pr2\n\n    grades = none->none->none\n    Grade <: next = G1->G2 + G2->G3\n  }\n} for 2 Person, 2 Course, 3 Project, 3 Grade expect 0"
+            ]
+        },
+        "this/inv9": {
+            "valid": [
+                "run Neg1 {\n    some disj Prof1, Prof2 : Person | some disj C1 : Course | some disj Pj1 : Project | some disj G1, G2 : Grade {\n        Person = Prof1 + Prof2\n        Professor = Prof1 + Prof2\n        Student = Prof2\n\n        Course = C1\n        Project = Pj1\n        Grade = G1 + G2\n\n        Person <: teaches = Prof1->C1\n        Person <: enrolled = Prof2->C1\n        Person <: projects = Prof2->Pj1\n\n        Course <: projects = C1->Pj1\n        Course <: grades = C1->Prof2->G1\n\n        Grade <: next = G1->G2\n    }\n} for 2 Person, 1 Course, 1 Project, 2 Grade expect 0",
+                "run Neg2 {\n    some disj Prof1, Prof2, Stud1 : Person | some disj C1, C2 : Course | some disj Pj1, Pj2 : Project | some disj G1, G2 : Grade {\n        Person = Prof1 + Prof2 + Stud1\n        Professor = Prof1 + Prof2\n        Student = Prof2 + Stud1\n\n        Course = C1 + C2\n        Project = Pj1 + Pj2\n        Grade = G1 + G2\n\n        Person <: teaches = Prof1->C1 + Prof1->C2\n        Person <: enrolled = Stud1->C1 + Prof2->C2\n        Person <: projects = Stud1->Pj1 + Prof2->Pj2\n\n        Course <: projects = C1->Pj1 + C2->Pj2\n        Course <: grades = C1->Stud1->G1 + C2->Prof2->G2\n\n        Grade <: next = G1->G2\n    }\n} for 3 Person, 2 Course, 2 Project, 2 Grade expect 0",
+                "run Neg3 {\n    some disj Prof1, Prof2, Stud1 : Person | some disj C1 : Course | some disj Pj1 : Project | some disj G1, G2 : Grade {\n        Person = Prof1 + Prof2 + Stud1\n        Professor = Prof1 + Prof2\n        Student = Prof2 + Stud1\n\n        Course = C1\n        Project = Pj1\n        Grade = G1 + G2\n\n        Person <: teaches = Prof1->C1\n        Person <: enrolled = Prof2->C1 + Stud1->C1\n        Person <: projects = Prof2->Pj1\n\n        Course <: projects = C1->Pj1\n        Course <: grades = C1->Prof2->G1\n\n        Grade <: next = G1->G2\n    }\n} for 3 Person, 1 Course, 1 Project, 2 Grade expect 0"
+            ]
+        }
+    }
+}

@@ -1,0 +1,1265 @@
+{
+    "original": "cXPP9QBPTYgTX6WJ6",
+    "cmd": "inv10",
+    "pred": "this/inv10",
+    "entry_count": 425,
+    "semantic_count": 90,
+    "syntactic_count": 156,
+    "scope": 3,
+    "groups": [
+        {
+            "entry_count": 181,
+            "syntactic_count": 24,
+            "correct": true,
+            "elems": [
+                {
+                    "entry_count": 91,
+                    "code": "{\n\t// Every track before a junction has a semaphore\n  \tall t: Track | some (Junction&t.succs) implies some (Semaphore&t.signals)\n\n}"
+                },
+                {
+                    "entry_count": 16,
+                    "code": "{\n\t// Every track before a junction has a semaphore\n  \t\n  \tall t: Track | some t.succs & Junction  implies some s: Semaphore | s in t.signals\n  \t\n  \t\n}"
+                },
+                {
+                    "entry_count": 14,
+                    "code": "{\n\t// Every track before a junction has a semaphore\n\tall t : (succs.Junction) | some(t.signals & Semaphore)\n}"
+                },
+                {
+                    "entry_count": 13,
+                    "code": "{\n\t// Every track before a junction has a semaphore\nall t : Track | all j : Junction | j in t.succs implies (some s : Semaphore | s in t.signals)\n}"
+                },
+                {
+                    "entry_count": 7,
+                    "code": "{\n\t// Every track before a junction has a semaphore\n\tall j : Junction, t : succs.j | some t.signals & Semaphore\n  \t\n}"
+                },
+                {
+                    "entry_count": 6,
+                    "code": "{\n\t// Every track before a junction has a semaphore\n\tall j : Junction, t : Track | j in t.succs implies some (t.signals & Semaphore)\n}"
+                },
+                {
+                    "entry_count": 5,
+                    "code": "{\n\t// Every track before a junction has a semaphore\n\tall t : Track | t.succs & Junction not = none implies t.signals & Semaphore not = none\n}"
+                },
+                {
+                    "entry_count": 5,
+                    "code": "{\n\t// Every track before a junction has a semaphore\n\tall t : Track | t in succs.Junction => some Semaphore & t.signals\n}"
+                },
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// Every track before a junction has a semaphore\n\tall t: Track | \n  \t\t(some j: Junction | j in t.succs) implies (some s: Semaphore | s in t.signals)\n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Every track before a junction has a semaphore\n\tsuccs.Junction = (succs.Junction) <: signals.Semaphore\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Every track before a junction has a semaphore\n  \tall t1, t2 : Track | t2 in t1.succs and t2 in Junction implies some s : Semaphore | s in t1.signals\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Every track before a junction has a semaphore\n\tall t: (Junction.~succs) | t.signals & Semaphore != none\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Every track before a junction has a semaphore\n  all t : Track | ( some t1 : t.succs | t1 in Junction) implies some(t.signals & Semaphore)\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every track before a junction has a semaphore\n  all t: Track , s: t.succs | s in Junction => some t.signals & Semaphore \n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every track before a junction has a semaphore\n\tall t: Track  | (some tnext : t.succs | tnext in Junction) implies some s : Semaphore | s in t.signals\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every track before a junction has a semaphore\n\tall j : Junction | all t : Track | j in t.succs implies (some s:Semaphore | t->s in signals)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every track before a junction has a semaphore\n\tall t : Track | (some s : t.succs | s in Junction) implies some s : t.signals | s in Semaphore\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every track before a junction has a semaphore\n\tall t : Track | all j : Junction | t in succs.j implies some Semaphore & t.signals\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every track before a junction has a semaphore\n\t\n  \tall t: Track | some (t.succs & Junction) implies some (t.signals :> Semaphore)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every track before a junction has a semaphore\n  all t: Junction.~succs | some s: Semaphore | s in t.signals\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every track before a junction has a semaphore\n\tall t1,t2 : Track | t2 in t1.succs and t2 in Junction implies (some e:Semaphore| t1->e in signals)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every track before a junction has a semaphore\n\n  all x: Track |  not (Junction & x.succs = none) implies not (Semaphore & x.signals = none)\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every track before a junction has a semaphore\n  \tall t: Track, j: Junction|\n  \t\tj in t.succs implies (some s: t.signals | s in Semaphore)\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every track before a junction has a semaphore\n\tall t:Track | not no (Junction & t.succs) implies not no(Semaphore & t.signals)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 23,
+            "syntactic_count": 8,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 9,
+                    "code": "{\n\t// Every track before a junction has a semaphore\n  \tall t : Track | some(succs.t & Junction) implies some(t.signals & Semaphore)\n  \n\n}"
+                },
+                {
+                    "entry_count": 5,
+                    "code": "{\n\t// Every track before a junction has a semaphore\n\tall t : Track | (some j : Junction | t in j.succs) implies (some s : Semaphore | s in t.signals)\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Every track before a junction has a semaphore\n\tall t : Track | t in Junction.succs implies some Semaphore & t.signals\n\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Every track before a junction has a semaphore\n  all j:Junction | all t:Track | t in j.succs => some s:Semaphore | s in t.signals\n\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Every track before a junction has a semaphore\n\tall t: (Junction.succs) | some Semaphore & t.signals\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every track before a junction has a semaphore\n\tall t : Track | some Junction.succs & t implies some Semaphore & t.signals\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every track before a junction has a semaphore\nall j: Junction | all t: j.succs | some s: Semaphore | s in t.signals\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every track before a junction has a semaphore\n\tall t: Junction.succs | some s: Semaphore| s in t.signals\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 13,
+            "syntactic_count": 10,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Every track before a junction has a semaphore\n\tall t: Track, j: Junction {\n      j in t.succs => Semaphore in t.signals\n    }\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Every track before a junction has a semaphore\n  \tall j: Junction| all jp: j.~succs| all t: Track| t in jp implies Semaphore in t.signals\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every track before a junction has a semaphore\n  \tall t: Track | all j: Junction| all jp: j.~succs| Semaphore in jp.signals\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every track before a junction has a semaphore\n  succs.Junction->Semaphore in signals\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every track before a junction has a semaphore\n\tall t: Track, j: Junction | all s: Semaphore {\n      j in t.succs => s in t.signals\n  \t}\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every track before a junction has a semaphore\n  \tall j: Junction| all predt: j.~succs & Track| Semaphore in predt.signals\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every track before a junction has a semaphore\n\tall t: Track  | (some tnext : t.succs | tnext in Junction) implies Semaphore in t.signals\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every track before a junction has a semaphore\n\tall t: Track | all j: t.succs | j in Junction implies Semaphore in t.signals\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every track before a junction has a semaphore\n\tall t: Track | all j: t.succs | all s: Semaphore | j in Junction implies s in t.signals\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every track before a junction has a semaphore\n  \tall t: Junction.~succs | Semaphore in t.signals\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 11,
+            "syntactic_count": 3,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 6,
+                    "code": "{\n\t// Every track before a junction has a semaphore\n\tsome succs.Junction.signals & Semaphore\n}"
+                },
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// Every track before a junction has a semaphore\n\tsome {t: Track | some t.succs & Junction }.signals & Semaphore\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every track before a junction has a semaphore\n\tsome s: Semaphore | s in succs.Junction.signals\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 10,
+            "syntactic_count": 4,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 6,
+                    "code": "{\n\t// Every track before a junction has a semaphore\n\tall t : Track | some(t.succs & Junction) implies one(t.signals & Semaphore)\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Every track before a junction has a semaphore\n\tall t:Track | (some j:Junction | j in t.succs) implies (one s:Semaphore | s in t.signals)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every track before a junction has a semaphore\n\tall t : Track | some t.succs & Junction implies one s : Semaphore | s in t.signals\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every track before a junction has a semaphore\n\tall t : Track, j : Junction | j in t.succs implies one s : Semaphore | s in t.signals\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 9,
+            "syntactic_count": 3,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// Every track before a junction has a semaphore\n\tall t: Track | (t.succs in Junction) => some (t.signals&Semaphore)\n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Every track before a junction has a semaphore\n  \tall t: Track | t.succs in Junction implies some s: Semaphore | s in t.signals\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Every track before a junction has a semaphore\n  all t : Track | ( all t1 : t.succs | t1 in Junction) implies some(t.signals & Semaphore)\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 9,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 7,
+                    "code": "{\n\t// Every track before a junction has a semaphore\n  \tall t: Track | some s: Semaphore | t.succs in Junction implies s in t.signals\n\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Every track before a junction has a semaphore\n\tall t : Track | some s:Semaphore |t.succs in Junction implies t->s in signals\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 8,
+            "syntactic_count": 2,
+            "correct": true,
+            "elems": [
+                {
+                    "entry_count": 7,
+                    "code": "{\n\t// Every track before a junction has a semaphore\n\tall t: Track | all j: Junction | some s: Semaphore | (j in t.succs) implies (s in t.signals)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every track before a junction has a semaphore\n    all t:Track, j:Junction | some s:Semaphore | t in succs.j implies s in t.signals\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 8,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 7,
+                    "code": "{\n\t// Every track before a junction has a semaphore\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every track before a junction has a semaphore\n\tall t: Junction | no t.succs & Semaphore\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 8,
+            "syntactic_count": 3,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 4,
+                    "code": "{\n\t// Every track before a junction has a semaphore\n\n  \n  \n  all x: Junction | not (Semaphore & succs.x.signals = none)\n\n}"
+                },
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Every track before a junction has a semaphore\n\tall j : Junction | some succs.j.signals & Semaphore\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every track before a junction has a semaphore\n  all x: Junction | some e:Semaphore |  e in succs.x.signals\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 7,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 6,
+                    "code": "{\n\t// Every track before a junction has a semaphore\n\tall t: Track | some j: Junction | j in t.succs => some s: Semaphore | s in t.signals\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every track before a junction has a semaphore\n\tall t: Track | some j: Junction | j in t.succs => some (t.signals & Semaphore)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 6,
+            "syntactic_count": 3,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Every track before a junction has a semaphore\n\tall t: (Junction.succs) | Semaphore in t.signals\n}"
+                },
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Every track before a junction has a semaphore\n\tall t: Junction.succs | all s: Semaphore| s in t.signals\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every track before a junction has a semaphore\n\tall t: Track | t in Junction.succs implies Semaphore in t.signals\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 5,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 5,
+                    "code": "{\n\t// Every track before a junction has a semaphore\n\tall t: Track | some j: Junction, s: Semaphore | (j in t.succs) implies (s in t.signals)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 5,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 5,
+                    "code": "{\n\t// Every track before a junction has a semaphore\n\tall t : Track | Junction in t.succs implies Semaphore in t.signals\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 4,
+            "syntactic_count": 3,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Every track before a junction has a semaphore\n  \n  all j : Junction | succs.j.signals in Semaphore\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every track before a junction has a semaphore\n\tall t: Track | all j: Junction | (j in t.succs) => (t.signals in Semaphore)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every track before a junction has a semaphore\n\tall t : Track | t in Junction implies succs.t.signals in Semaphore\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 4,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Every track before a junction has a semaphore\n\tall t: Track | Junction in t.succs iff Semaphore in t.signals\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every track before a junction has a semaphore\n\tall t : Track | Junction not in t.succs iff Semaphore not in t.signals \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 3,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Every track before a junction has a semaphore\n\tall t: Track | succs.t in Junction => some t.signals&Semaphore\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 3,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Every track before a junction has a semaphore\n\tall t1,t2 : Track | t2 in t1.*succs and t2 in Junction implies some e:Semaphore| t1->e in signals\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every track before a junction has a semaphore\n\tall j : Junction | all t : Track | j in t.*succs implies (some s:Semaphore | t->s in signals)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 3,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Every track before a junction has a semaphore\n\tall t: Track | Junction in t.succs => some s: Semaphore | s in t.signals\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every track before a junction has a semaphore\n    all t: Track | Junction in t.succs implies some s:t.signals | s in Semaphore\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 3,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 3,
+                    "code": "{\n\t// Every track before a junction has a semaphore\n    all t : Track | t.succs in Junction implies t.signals in Semaphore\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every track before a junction has a semaphore\n\tall t1,t2 : Track | t2 in t1.^succs and t2 in Junction implies (some e:Semaphore| t1->e in signals)\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every track before a junction has a semaphore\n\tall j : Junction | all t : Track | j in t.^succs implies (some s:Semaphore | t->s in signals)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Every track before a junction has a semaphore\n  \tall t: Track | some s: Semaphore | some t.succs and t.succs in Junction implies s in t.signals\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Every track before a junction has a semaphore\n  \tall t: Track | some s: Semaphore | s in t.signals iff t.succs in Junction\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Every track before a junction has a semaphore\n  \tall t: Track | one s: Semaphore | t.succs in Junction implies s in t.signals\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Every track before a junction has a semaphore\n  \t\n  \tall t: Track | one j: t.succs | j in Junction implies some s: Semaphore | s in t.signals\n  \t\n  \t\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Every track before a junction has a semaphore\n    all t: Track | Junction in succs.t implies some s:t.signals | s in Semaphore\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Every track before a junction has a semaphore\n\tall t: Track | one j: Junction| j in t.succs => some s: Semaphore | s in t.signals\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Every track before a junction has a semaphore\n\tall t: Track | some j: Junction | j in t.succs => one s: Semaphore | s in t.signals\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Every track before a junction has a semaphore\n\tall j: Junction, s: Semaphore | some t: Track {\n      t in j.~succs => s in t.signals\n  \t}\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Every track before a junction has a semaphore\n\tall t: Track, s: Semaphore | some j: Junction | {\n      j in t.succs => s in t.signals\n  \t}\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Every track before a junction has a semaphore\n\tall t: Track | one s: Semaphore | some j: Junction | {\n      j in t.succs => s in t.signals\n  \t}\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Every track before a junction has a semaphore\n\tall t: Track | some j: Junction | one s: Semaphore | (j in t.succs) implies (s in t.signals)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every track before a junction has a semaphore\n\tall t: Track | some j: Junction | {\n      j in t.succs => Semaphore in t.signals\n  \t}\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every track before a junction has a semaphore\n\tall t: Track | some j: Junction | all s: Semaphore {\n      j in t.succs => s in t.signals\n  \t}\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Every track before a junction has a semaphore\n  \n  all t : Track | (some succs.t & Junction) implies one Semaphore\n  \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Every track before a junction has a semaphore\n\tall t: Track | all j: t.succs | some s: Semaphore | j in Junction implies s in t.signals\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Every track before a junction has a semaphore\n\tall t: Track | all j: t.succs | some s: t.signals | j in Junction implies s in Semaphore\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every track before a junction has a semaphore\n   all t1, t2: Track | some  s1: t1.signals |\n        t2 in Junction and t2 in t1.succs \n            implies s1 in Semaphore\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every track before a junction has a semaphore\n   all t: Track | some  s: t.signals |\n        some ( Junction & t.succs )\n            implies s in Semaphore\n  \n  \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every track before a junction has a semaphore\n  \n  all t: Track | some s: Semaphore | some (t.succs & Junction) implies s in t.signals\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every track before a junction has a semaphore\n   all t1, t2: Track | some  s: Semaphore |\n        t2 in Junction and t2 in t1.succs \n            implies s in t1.signals\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Every track before a junction has a semaphore\n\tall t: Track |(all j: Junction | t in j.succs) implies (all s: Semaphore | s in t.signals)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every track before a junction has a semaphore\n\tall t: (Junction.succs) | one Semaphore & t.signals\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every track before a junction has a semaphore\n\tall t: Junction.succs | one s: Semaphore| s in t.signals\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 2,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every track before a junction has a semaphore\n\tall j: Junction, t: Track | t in j.^(Junction -> Track) implies some s: Signal | s in t.succs\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every track before a junction has a semaphore\n  all x: Junction | some e:Semaphore |  e in succs.x\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 2,
+                    "code": "{\n\t// Every track before a junction has a semaphore\nall disj x,y:Track, s:Semaphore | y in Junction and x->y in succs implies x->s in signals\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 2,
+            "syntactic_count": 2,
+            "correct": true,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every track before a junction has a semaphore\n   all t: Track | (t.succs & Junction) != none iff (t.signals & Semaphore) != none\n\n}"
+                },
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every track before a junction has a semaphore\n\tall t : Track | some t.succs & Junction <=> some t.signals & Semaphore  \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every track before a junction has a semaphore\n  \tall j: Junction| all jp: j.~succs| all t: Track| t in jp iff Semaphore in t.signals\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every track before a junction has a semaphore\n  \tall t: Track | one s: Semaphore | s in t.signals iff t.succs in Junction\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every track before a junction has a semaphore\n\tall j: Junction | some s: Semaphore | s in j.signals\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every track before a junction has a semaphore\n  all t : Track | some s : Semaphore| s in (succs.t).signals\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every track before a junction has a semaphore\n  \tall t: Track | t.^succs in Junction implies some s: Semaphore | s in t.signals\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every track before a junction has a semaphore\n\tall t:Track | t.succs = Junction implies some t.signals & Semaphore\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every track before a junction has a semaphore\n\tall t: Track | Junction in t.succs => one s: Semaphore | s in t.signals\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every track before a junction has a semaphore\n\tall t: Track | one j: Junction| j in t.succs => one s: Semaphore | s in t.signals\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every track before a junction has a semaphore\n\tall t: Track | some j: Junction | j in t.succs => some s: Semaphore | s in j.signals\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every track before a junction has a semaphore\n\tall t : Track | t.succs in Junction implies lone (t.signals & Semaphore)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every track before a junction has a semaphore\n\tall t : Track | t.succs in Junction => one s : Semaphore | s in t.succs.signals\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every track before a junction has a semaphore\n\tall t : Track, j : Junction | t.succs = j implies one s : Semaphore | s in t.signals\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every track before a junction has a semaphore\n\tall t : Track, j : Junction | t.succs = j implies some s : Semaphore | s in t.signals\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every track before a junction has a semaphore\n\tall t : Track | succs.t in Junction => t.signals in Semaphore\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every track before a junction has a semaphore\n    all t: Track - Junction, j: Junction | some pre: t.^succs & j | some s: Semaphore | s in pre.signals\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every track before a junction has a semaphore\n\tall t: Junction | some s: t.succs.signals | s in Semaphore\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every track before a junction has a semaphore\n\tall t: Junction | t.succs in Semaphore\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every track before a junction has a semaphore\n\tsome {t: Track | some t.succs & Junction }\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every track before a junction has a semaphore\n\tall t: Track, j: Junction {\n      j in t.succs => Semaphore in t.signals\n      j not in t.succs => Semaphore not in t.signals\n    }\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every track before a junction has a semaphore\n\tall t: Track, s: Semaphore | some j: Junction | {\n      j not in t.succs => s not in t.signals\n  \t}\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every track before a junction has a semaphore\n\tall j: Junction, s: Semaphore, ta: Track | some t: Track {\n      t in j.~succs => s in ta.signals\n  \t}\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every track before a junction has a semaphore\n  \n  all t : Track, s : Signal | Junction->t in succs implies t->s in signals and s in Semaphore\n  \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every track before a junction has a semaphore\n  \n  all t : Track, s : Signal | some succs.t & Junction implies t->s in signals and s in Semaphore\n  \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every track before a junction has a semaphore\n\t\n  all t : Track | (no t.succs & Junction) implies no t.signals & Semaphore\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every track before a junction has a semaphore\n\tall t: Track | all j: t.succs | one s: Semaphore | j in Junction implies s in t.signals\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every track before a junction has a semaphore\n\tall t: Track | some j: t.succs | some s: t.signals | j in Junction implies s in Semaphore\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every track before a junction has a semaphore\n  all t : Entry |Junction in t.succs implies Semaphore in t.signals\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every track before a junction has a semaphore\n  all t: Entry | some t.succs & Junction implies some t.signals & Semaphore\n\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every track before a junction has a semaphore\n  all t1, t2:Track | t2 in Junction and t2 in t1.*succs \n  \t\timplies (t1.*succs - t2.*succs).signals in Semaphore\n\t\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every track before a junction has a semaphore\n   all t1, t2: Track |\n        t2 in Junction and t2 in t1.*succs \n            implies all t: (t1.*succs - t2.*succs) | some t.signals & Semaphore\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every track before a junction has a semaphore\n   all t: Track | some  s: t.signals |\n        t in Junction and t in t.succs \n            implies s in Semaphore\n  \n  \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every track before a junction has a semaphore\n\tall t: Track | t in Junction.succs iff Semaphore in t.signals\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every track before a junction has a semaphore\n\tone t: Track | t in Junction.succs implies Semaphore in t.signals\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every track before a junction has a semaphore\n\tall t: Track |one s: Semaphore| t in Junction.succs implies s in t.signals\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every track before a junction has a semaphore\nall t: Track | some j: Junction | t in j.succs implies some s: Semaphore | s in t.signals\n }"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every track before a junction has a semaphore\n\n  \n  \n  all x: Junction | \n    no (x.succs.signals & Semaphore) implies no x.succs\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every track before a junction has a semaphore\n\tall t: Track | some j: Junction | (j in t.succs) => (t.signals in Semaphore)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every track before a junction has a semaphore\n  \n  all t : Track | one succs.t & Junction implies some  t.signals & Semaphore \n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every track before a junction has a semaphore\n\tall t: Track | all j: Junction | all s: Signal | j in t.^(succs) and s in t.signals implies s in Semaphore\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every track before a junction has a semaphore\n\tall t: Track |all j : Junction | all s: Signal | j in t.succs implies  (s in t.signals and s in Semaphore)\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every track before a junction has a semaphore\n  all t: Track | some s: Semaphore | Junction in succs.t implies s in t.signals\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": true,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every track before a junction has a semaphore\nall disj x,y:Track| y in Junction and x->y in succs implies some s: Semaphore |x->s in signals\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every track before a junction has a semaphore\n  \tall t : Track | some (succs.t & Junction) implies some (t.signals & Semaphore) \n    all t : Track | no (t.succs & Junction) implies no (t.signals & Semaphore)\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every track before a junction has a semaphore\n  \tall t : Track | some (succs.t & Junction) implies some (succs.t.signals & Semaphore) \n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every track before a junction has a semaphore\n\tall t: (Junction.~succs) | t.signals & Semaphore = none\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every track before a junction has a semaphore\n  all t : Track | succs.t in Junction implies t in (t.signals & Semaphore)\n\n}"
+                }
+            ]
+        },
+        {
+            "entry_count": 1,
+            "syntactic_count": 1,
+            "correct": false,
+            "elems": [
+                {
+                    "entry_count": 1,
+                    "code": "{\n\t// Every track before a junction has a semaphore\n  all t : Track |some s : Semaphore| succs.t in Junction implies s in t.signals\n\n}"
+                }
+            ]
+        }
+    ]
+}
