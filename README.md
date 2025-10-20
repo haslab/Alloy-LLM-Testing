@@ -52,7 +52,7 @@
 
 ## RQ4: Characterization of invalid test cases
 
-See annotated Alloy [files](analysis/invalid) for the GPT-5, 3 pos, 3 neg, few-show prompt, or the raw [failure files](analysis).
+See annotated Alloy [files](analysis/invalid) for the GPT-5, 3 pos, 3 neg, few-show prompt, or the raw [failure files](analysis/results).
 
 ## RQ5: Effectiveness at detecting incorrect specifications
 
@@ -140,14 +140,14 @@ python3 merge_reqs_groups.py results requirements.json
 
 ## Experiment execution
 
-Scripts in folder `execute` call the APIs of the selected LLMs and ask for the generation of instances of the requirements prepared in `dataset.json`, using one of the provided prompts.
+Scripts in folder `execute` call the APIs of the selected LLMs and ask for the generation of instances of the requirements prepared in the previous phase, using one of the provided prompts.
 
 ### Usage
 
 For each of the supported LLMs, the generation script is run as:
 
 ```
-Usage: python3 [LLM].py <prompt> <dataset> <instances>
+Usage: python3 <LLM>.py <prompt> <dataset> <instances>
 ```
 
 Where `<prompt>` is a header prompt to be passed to the LLM, `<dataset>` is the result of the preparation phase, and `<intances>` is the number of positive and negative instances to be generated.
@@ -162,4 +162,4 @@ For instance, for GPT-5, few-shot prompt and 3 instances, the following command 
 python3 gpt.py prompt_few.txt dataset.json 3
 ```
 
-The results of the generation process are shown collected in [execute/results](execute/results).
+The results of the generation process are collected in [execute/results](execute/results).
