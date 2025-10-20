@@ -29,26 +29,26 @@
 
 | Prompt | Tests | Syntax | Scopes | Previous | Valid | % | Cost |
 | ------ | ----- | ------ | ------ | -------- | ----- | - | ---- |
-| [Few-shot](gpt-5-2025-08-07_200925_few3.md) | 258 | 255 | 255 | 252 | 247 | 96% | $3.56 |
-| [One-shot](gpt-5-2025-08-07_200925_one3.md) | 258 | 226 | 208 | 206 | 205 | 79% | $3.69 |
-| [Zero-shot](gpt-5-2025-08-07_210925_zero3.md) | 258 | 137 | 120 | 119 | 118 | 46% | $4.20 |
+| [Few-shot](analysis/results/gpt-5-2025-08-07_200925_few3.md) | 258 | 255 | 255 | 252 | 247 | 96% | $3.56 |
+| [One-shot](analysis/results/gpt-5-2025-08-07_200925_one3.md) | 258 | 226 | 208 | 206 | 205 | 79% | $3.69 |
+| [Zero-shot](analysis/results/gpt-5-2025-08-07_210925_zero3.md) | 258 | 137 | 120 | 119 | 118 | 46% | $4.20 |
 
 ## RQ2: Effect of non-determinism
 
 | Run | Tests | Syntax | Scopes | Previous | Valid | % | Cost |
 | ------ | ----- | ------ | ------ | -------- | ----- | - | ---- |
-| [1st](gpt-5-2025-08-07_200925_few3.md) | 258 | 255 | 255 | 252 | 247 | 96% | $3.56 |
-| [2nd](gpt-5-2025-08-07_220925_few3.md) | 258 | 256 | 256 | 256 | 251 | 97% | $3.50 |
-| [3rd](gpt-5-2025-08-07_230925_few3.md) | 258 | 252 | 252 | 250 | 246 | 95% | $3.61 |
+| [1st](analysis/results/gpt-5-2025-08-07_200925_few3.md) | 258 | 255 | 255 | 252 | 247 | 96% | $3.56 |
+| [2nd](analysis/results/gpt-5-2025-08-07_220925_few3.md) | 258 | 256 | 256 | 256 | 251 | 97% | $3.50 |
+| [3rd](analysis/results/gpt-5-2025-08-07_230925_few3.md) | 258 | 252 | 252 | 250 | 246 | 95% | $3.61 |
 
 ## RQ3: LLM comparison
 
 | Model | Tests | Syntax | Scopes | Previous | Valid | % | Cost |
 | ------ | ----- | ------ | ------ | -------- | ----- | - | ---- |
-| [GPT-5](gpt-5-2025-08-07_200925_few3.md) | 258 | 255 | 255 | 252 | 247 | 96% | $3.56 |
-| [Gemini 2.5 Pro](gemini-2.5-pro_210925_few3.md) | 258 | 248 | 220 | 212 | 210 | 81% | $2.78 |
-| [Claude Opus 4.1](claude-opus-4-1-20250805_210925_few3.md) | 258 | 258 | 258 | 202 | 197 | 76% | $5.55 |
-| [GPT-5 Mini](gpt-5-mini-2025-08-07_290925_few3.md) | 258 | 188 | 183 | 179 | 174 | 67% | $0.53 |
+| [GPT-5](analysis/results/gpt-5-2025-08-07_200925_few3.md) | 258 | 255 | 255 | 252 | 247 | 96% | $3.56 |
+| [Gemini 2.5 Pro](analysis/results/gemini-2.5-pro_210925_few3.md) | 258 | 248 | 220 | 212 | 210 | 81% | $2.78 |
+| [Claude Opus 4.1](analysis/results/claude-opus-4-1-20250805_210925_few3.md) | 258 | 258 | 258 | 202 | 197 | 76% | $5.55 |
+| [GPT-5 Mini](analysis/results/gpt-5-mini-2025-08-07_290925_few3.md) | 258 | 188 | 183 | 179 | 174 | 67% | $0.53 |
 
 ## RQ4: Characterization of invalid test cases
 
@@ -58,11 +58,11 @@ See annotated Alloy [files](./results/failures) gor the GPT-5, 3 pos, 3 neg, few
 
 | Size | Complete | Wrong | Missed | Mean % |
 | ---- | -------- | ----- | ------ | ------ |
-| [1 pos, 1 neg](gpt-5-2025-08-07_210925_few1.md) | 41 | 5579 | 2202 | 38.10% |
-| [2 pos, 2 neg](gpt-5-2025-08-07_220925_few2.md) | 34 | 4617 | 814 | 17.02% |
-| [3 pos, 3 neg](gpt-5-2025-08-07_200925_few3.md) | 36 | 4387 | 524 | 9.91% |
-| [4 pos, 4 neg](gpt-5-2025-08-07_230925_few4.md) | 35 | 5121 | 444 | 7.44% |
-| [5 pos, 5 neg](gpt-5-2025-08-07_230925_few5.md) | 35 | 4809 | 348 | 6.43% |
+| [1 pos, 1 neg](analysis/results/gpt-5-2025-08-07_210925_few1.md) | 41 | 5579 | 2202 | 38.10% |
+| [2 pos, 2 neg](analysis/results/gpt-5-2025-08-07_220925_few2.md) | 34 | 4617 | 814 | 17.02% |
+| [3 pos, 3 neg](analysis/results/gpt-5-2025-08-07_200925_few3.md) | 36 | 4387 | 524 | 9.91% |
+| [4 pos, 4 neg](analysis/results/gpt-5-2025-08-07_230925_few4.md) | 35 | 5121 | 444 | 7.44% |
+| [5 pos, 5 neg](analysis/results/gpt-5-2025-08-07_230925_few5.md) | 35 | 4809 | 348 | 6.43% |
 
 # Scripts
 
