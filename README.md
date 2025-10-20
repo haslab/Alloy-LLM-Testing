@@ -52,7 +52,7 @@
 
 ## RQ4: Characterization of invalid test cases
 
-See annotated Alloy [files](results/invalid) for the GPT-5, 3 pos, 3 neg, few-show prompt, or the raw [failure files](results).
+See annotated Alloy [files](analysis/invalid) for the GPT-5, 3 pos, 3 neg, few-show prompt, or the raw [failure files](analysis).
 
 ## RQ5: Effectiveness at detecting incorrect specifications
 
