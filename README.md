@@ -58,11 +58,11 @@ See annotated Alloy [files](analysis/invalid) for the GPT-5, 3 pos, 3 neg, few-s
 
 | Size | Complete | Wrong | Missed | Mean % |
 | ---- | -------- | ----- | ------ | ------ |
-| [1 pos, 1 neg](analysis/results/gpt-5-2025-08-07_210925_few1.md) | 41 | 5579 | 2202 | 38.10% |
-| [2 pos, 2 neg](analysis/results/gpt-5-2025-08-07_220925_few2.md) | 34 | 4617 | 814 | 17.02% |
-| [3 pos, 3 neg](analysis/results/gpt-5-2025-08-07_200925_few3.md) | 36 | 4387 | 524 | 9.91% |
-| [4 pos, 4 neg](analysis/results/gpt-5-2025-08-07_230925_few4.md) | 35 | 5121 | 444 | 7.44% |
-| [5 pos, 5 neg](analysis/results/gpt-5-2025-08-07_230925_few5.md) | 35 | 4809 | 348 | 6.43% |
+| [1 pos, 1 neg](analysis/results/gpt-5-2025-08-07_210925_few1.md) | 41 | 5587 | 2204 | 38.10% |
+| [2 pos, 2 neg](analysis/results/gpt-5-2025-08-07_220925_few2.md) | 34 | 4623 | 814 | 17.02% |
+| [3 pos, 3 neg](analysis/results/gpt-5-2025-08-07_200925_few3.md) | 36 | 4395 | 554 | 9.90% |
+| [4 pos, 4 neg](analysis/results/gpt-5-2025-08-07_230925_few4.md) | 35 | 5129 | 446 | 7.45% |
+| [5 pos, 5 neg](analysis/results/gpt-5-2025-08-07_230925_few5.md) | 35 | 4816 | 348 | 6.43% |
 
 # Scripts
 
