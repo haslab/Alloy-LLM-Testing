@@ -5,12 +5,18 @@
    - `model`: the declaration of its structure in Alloy
    - `id`: the id of the model in the Alloy4Fun database containing the oracles
    - `requirements`: the list of requirements for this model, containing a `description` in natural language and the `pred` encoding its oracle
-- [`groups`](./groups): directory containing resources to retrieve oracles and incorrect submissions from Alloy4Fun database and merge into `requirements.json`. It contains:
-   - `models_20250916.json.gz`: a snapshot of the Alloy4Fun database for the selected exercises
+- [`models_20250916.json.gz`](`./models_20250916.json.gz`): a snapshot of the Alloy4Fun database for the selected exercises
+- [`alloytools.jar`](./alloytools.jar): snapshot of AlloyTools, used to parse and execute Alloy models and commands
+- [`prepare`](./prepare): directory containing scripts to retrieve oracles and incorrect submissions from Alloy4Fun database and merge into `requirements.json`. It contains:
    - `semantic_grouping.py`: a script to perform grouping of the entries
    - `merge_reqs_groups.py`: a script to merge groups with `requirements.json` for subsequent analysis
    - `results`: a folder with the pre-calculated results for the scripts
-- [`alloytools.jar`](./alloytools.jar): snapshot of AlloyTools, used to parse and execute Alloy models and commands
+- [`execute`](./execute): directory containing scripts to call LLM APIs and ask for valid/invalid instances for a dataset of requirements
+   - `claude.py`: script for Claude Opus 4.1
+   - `gemini.py`: script for Gemini 2.5 Pro
+   - `gpt.py`: script for GPT-5 and GPT-5 Mini
+   - `llama.py`: script for Llama 3.1
+   - `results`: a folder with the pre-calculated results for the scripts
 
 
 # Results
