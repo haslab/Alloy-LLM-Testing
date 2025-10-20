@@ -8,19 +8,20 @@
 - [`prompt_zero.txt`](./prompt_zero.txt), [`prompt_one.txt`](./prompt_one.txt), and [`prompt_few.txt`](./prompt_few.txt): prompts for the generation of valid/invalid instances from requirements
 - [`models_20250916.json.gz`](./models_20250916.json.gz): a snapshot of the Alloy4Fun database for the selected exercises
 - [`alloytools.jar`](./alloytools.jar): snapshot of AlloyTools, used to parse and execute Alloy models and commands
-- [`prepare`](./prepare): directory containing scripts to retrieve oracles and incorrect submissions from Alloy4Fun database and merge into `requirements.json`. It contains:
+- [`prepare`](./prepare): directory containing scripts to retrieve oracles and incorrect submissions from Alloy4Fun database. It contains:
    - `semantic_grouping.py`: a script to perform grouping of the entries
    - `merge_reqs_groups.py`: a script to merge groups with `requirements.json` for subsequent analysis
    - `results`: a folder with the pre-calculated results for the scripts
-- [`execute`](./execute): directory containing scripts to call LLM APIs and ask for valid/invalid instances given a dataset of requirements and header prompts
+- [`execute`](./execute): directory containing scripts to call LLM APIs for the generation of instances given a dataset of requirements and header prompts
    - `claude.py`: script for Claude Opus 4.1
    - `gemini.py`: script for Gemini 2.5 Pro
    - `gpt.py`: script for GPT-5 and GPT-5 Mini
    - `llama.py`: script for Llama 3.1
    - `results`: a folder with the pre-calculated results for the scripts
-- [`analysis`](./analysis): directory analysis scripts to process the LLM-generated instances
+- [`analysis`](./analysis): directory containing analysis scripts to process the LLM-generated instances
    - `analysis.py`: script for testing syntactic and semantic correctness of generated instances, as well as diversity
    - `results`: a folder with the pre-calculated results for the scripts
+   - `invalid`: a folder containing invalid generated instances with annotations
 
 # Results
 
