@@ -5,6 +5,8 @@
    - `model`: the declaration of its structure in Alloy
    - `id`: the id of the model in the Alloy4Fun database containing the oracles
    - `requirements`: the list of requirements for this model, containing a `description` in natural language and the `pred` encoding its oracle
+- [`groups`][./groups]: directory containing resources to retrieve oracles and incorrect submissions from Alloy4Fun database and merge into `requirements.json` 
+
 
 # Results
 
