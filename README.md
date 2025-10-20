@@ -10,6 +10,7 @@
    - `semantic_grouping.py`: a script to perform grouping of the entries
    - `merge_reqs_groups.py`: a script to merge groups with `requirements.json` for subsequent analysis
    - `results`: a folder with the pre-calculated results for the scripts
+- [`alloytools.jar`](./alloytools.jar): snapshot of AlloyTools, used to parse and execute Alloy models and commands
 
 
 # Results
