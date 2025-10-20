@@ -1,3 +1,11 @@
+# Data
+
+- [`requirements.json`](./requirements.json): all requirements for which specifications were asked, along with pointers to the Alloy4Fun database to retrieve oracles. Each entry consists of the following:
+   - `example`: its description
+   - `model`: the declaration of its structure in Alloy
+   - `id`: the id of the model in the Alloy4Fun database containing the oracles
+   - `requirements`: the list of requirements for this model, containing a `description` in natural language and the `pred` encoding its oracle
+
 # Results
 
 ## RQ1: Influence of prompt design
