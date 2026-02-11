@@ -1,24 +1,35 @@
+
+This artifact accompanies the paper entitled "Validating Formal Specifications with LLM-generated Test Cases", which reports an empirical evaluation of using pre-trained large language models (LLMs) to automate the generation of test cases from natural language requirements. 
+
+The artifact provides the scripts, datasets and required tools for reproducing the experiment and the analysis of the results. More specifically, the artifact is split into 3 components:
+
+- **Data preparation**: Scripts to process the existing Alloy4Fun dataset of formal specifications to create the benchmarks for the evaluation. It also contains the pre-computed benchmarks.
+
+- **Experiment execution**: Scripts to execute the experiment for the prepared benchmarks, which involves the use of LLM APIs. Depending on the LLM, this may require an API key. It also contains the pre-computed results from executing the experiment.
+
+- **Result analysis** Scripts to analyze the results from the experiment, by using a solver to check validity and diversity. It also contains the pre-computed analysis results.
+
 # Data
 
-- [`requirements.json`](./requirements.json): all requirements for which instances were generated, along with pointers to the Alloy4Fun database to retrieve oracles. Each entry consists of the following:
+- [`requirements.json`](./requirements.json): all natural language requirements for which instances were generated, along with pointers to the Alloy4Fun database to retrieve oracles. Each entry consists of the following:
    - `example`: its description
    - `model`: the declaration of its structure in Alloy
    - `id`: the identifier of the model in the Alloy4Fun database containing the oracles
    - `requirements`: the list of requirements for this model, containing a `description` in natural language and the `pred` encoding its oracle
 - [`prompt_zero.txt`](./prompt_zero.txt), [`prompt_one.txt`](./prompt_one.txt), and [`prompt_few.txt`](./prompt_few.txt): prompts for the generation of valid/invalid instances from requirements
-- [`models_20250916.json.gz`](./models_20250916.json.gz): a snapshot of the Alloy4Fun database for the selected exercises
+- [`models_20250916.json.gz`](./models_20250916.json.gz): a snapshot of the Alloy4Fun database filtered for the exercises used in the evaluation
 - [`alloytools.jar`](./alloytools.jar): snapshot of AlloyTools, used to parse and execute Alloy models and commands
-- [`prepare`](./prepare): directory containing scripts to retrieve oracles and incorrect submissions from Alloy4Fun database. It contains:
+- [`prepare`](./prepare): directory containing scripts to retrieve oracles and incorrect submissions from the Alloy4Fun database. It contains:
    - `semantic_grouping.py`: a script to perform grouping of the entries
    - `merge_reqs_groups.py`: a script to merge groups with `requirements.json` for subsequent analysis
    - `results`: a folder with the pre-calculated results for the scripts
-- [`execute`](./execute): directory containing scripts to call LLM APIs for the generation of instances given a dataset of requirements and header prompts
+- [`execute`](./execute): directory containing scripts to call LLM APIs for the generation of instances given a dataset of requirements and header prompts. It contains:
    - `claude.py`: script for Claude Opus 4.1
    - `gemini.py`: script for Gemini 2.5 Pro
    - `gpt.py`: script for GPT-5 and GPT-5 Mini
    - `llama.py`: script for Llama 3.1
    - `results`: a folder with the pre-calculated results for the scripts
-- [`analysis`](./analysis): directory containing analysis scripts to process the LLM-generated instances
+- [`analysis`](./analysis): directory containing analysis scripts to process the LLM-generated instances. It contains:
    - `analysis.py`: script for testing syntactic and semantic correctness of generated instances, as well as diversity
    - `results`: a folder with the pre-calculated results for the scripts
    - `invalid`: a folder containing invalid generated instances with annotations
@@ -52,7 +63,7 @@
 
 ## RQ4: Characterization of invalid test cases
 
-See annotated Alloy [files](analysis/invalid) for the GPT-5, 3 pos, 3 neg, few-show prompt, or the raw [failure files](analysis/results).
+See annotated Alloy [files](analysis/invalid) for the GPT-5, 3 positive / 3 negative instances, few-show prompt, or the raw [failure files](analysis/results).
 
 ## RQ5: Effectiveness at detecting incorrect specifications
 
@@ -64,9 +75,9 @@ See annotated Alloy [files](analysis/invalid) for the GPT-5, 3 pos, 3 neg, few-s
 | [4 pos, 4 neg](analysis/results/gpt-5-2025-08-07_230925_few4.md) | 35 | 5129 | 446 | 7.45% |
 | [5 pos, 5 neg](analysis/results/gpt-5-2025-08-07_230925_few5.md) | 35 | 4816 | 348 | 6.43% |
 
-# Scripts
+# Reproducibility
 
-Start by installing the requirements.
+Start by installing the Python requirements.
 
 ```
 pip install -r requirements.txt
@@ -106,7 +117,9 @@ optional arguments:
                         Scope for equivalence tests (default=3)
 ```
 
-Finally, run the merging script into the requirements:
+This generates a JSON file for each of the selected entries with the grouping information.
+
+Finally, run the merging script into the requirements JSON file:
 ```
 usage: merge_reqs_groups.py [-h] [-o OUTPUT] [-t THRESHOLD] groups reqs
 
@@ -124,18 +137,20 @@ optional arguments:
                         Member group filtering threshold (default=2)
 ```
 
+This generates an extended version of the requirements JSON file with grouping information.
+
 ### Results
 
 The script was run for models Social Network (`x3JXgWhJ3uti5Dzxz`), Courses (`iP5JL36afv5KbDKP6`), Production line (`dyj49tEp7j6aWAQQX`) and Train Station (`cXPP9QBPTYgTX6WJ6`), with scope 3, for the Alloy4Fun database `models_20250916.json.gz`. Statistics are [here](prepare/results/grouping_stats.txt) and groups in [results folder](prepare/results). Note: this takes a few hours to run.
 
 ```
-python3 semantic_grouping.py ./alloytools.jar ./models_20250916.json.gz cXPP9QBPTYgTX6WJ6 x3JXgWhJ3uti5Dzxz iP5JL36afv5KbDKP6 dyj49tEp7j6aWAQQX
+python3 prepare/semantic_grouping.py alloytools.jar models_20250916.json.gz cXPP9QBPTYgTX6WJ6 x3JXgWhJ3uti5Dzxz iP5JL36afv5KbDKP6 dyj49tEp7j6aWAQQX 
 ```
 
-This groups have merged into the provided [requirements](requirements.json) in file [`dataset.json`](prepare/results/dataset.json). Statistics are [here](prepare/results/merging_stats.txt).
+These groups have been merged into the provided [requirements](requirements.json) in file [`dataset.json`](prepare/results/dataset.json). Statistics are [here](prepare/results/merging_stats.txt).
 
 ```
-python3 merge_reqs_groups.py results requirements.json
+python3 prepare/merge_reqs_groups.py prepare/results requirements.json     
 ```
 
 ## Experiment execution
@@ -144,13 +159,25 @@ Scripts in folder `execute` call the APIs of the selected LLMs and ask for the g
 
 ### Usage
 
-For each of the supported LLMs, the generation script is run as:
+For each of the supported LLMs (`gpt`, `gemini`, `claude`, `llama`) , the generation script is run as:
 
 ```
-Usage: python3 <LLM>.py <prompt> <dataset> <instances>
+usage: [LLM].py [-h] prompt dataset instances
+
+Script for generating instances using [LLM]
+
+positional arguments:
+  prompt      the header prompt to be passed to the LLM
+  dataset     the dataset of natural language requirements
+  instances   the number of positive and negative instances to be generated
+
+options:
+  -h, --help  show this help message and exit
 ```
 
-Where `<prompt>` is a header prompt to be passed to the LLM, `<dataset>` is the result of the preparation phase, and `<intances>` is the number of positive and negative instances to be generated.
+Note that running `gpt`, `gemini` or `claude` requires a valid API key to be configured in the environment. For `llama`, a local model version `llama3.1:8b` is expected to be running. Note also that running the script for each LLM may take a few hours.
+
+The output of this script is a JSON file extending the provided `dataset` with a field `instances` containing instances generated by the LLM. 
 
 ### Results
 
@@ -162,7 +189,7 @@ For instance, for GPT-5, few-shot prompt and 3 instances, the following command 
 python3 gpt.py prompt_few.txt dataset.json 3
 ```
 
-The results of the generation process are collected in [execute/results](execute/results), where each requirement in the JSON is extended by a field `instances` constaining the generated instances. 
+The pre-computed results of the generation process as extended JSON files are collected in [execute/results](execute/results).
 
 ## Results analysis
 
@@ -173,9 +200,7 @@ Scripts in folder `analysis` process the instances generated by the LLMs and use
 For each of the JSON files containing LLM-generated instances, the generation script is run as:
 
 ```
-usage: analyze.py [-h] jar results icost ocost
-
-Script for merging entry groups with challenge requirements
+usage: analyze.py process [-h] jar results icost ocost
 
 positional arguments:
   jar         AlloyTools jar path
@@ -183,18 +208,39 @@ positional arguments:
   icost       input cost
   ocost       output cost
 
-optional arguments:
+options:
   -h, --help  show this help message and exit
 ```
 
-The token cost can be passed to print total cost statistics.
+The LLM token cost can be passed to print total cost statistics.
+
+The output reports overall results in terms of valid and failing instances, both in textual `.txt` and markdown `.md` format. Additionally, it provides a JSON file reporting all failing instances for inspection.
+
+Alternatively, the analysis can be run for a set of LLM executions registered in a JSON file.
+
+```
+usage: analyze.py all [-h] jar execs
+
+positional arguments:
+  jar         AlloyTools jar path
+  execs       JSON file reporting a set of LLM executions and costs
+
+options:
+  -h, --help  show this help message and exit
+```
 
 ### Results
 
-The script was run for all LLM executions, whose JSON files are stored in [execute/results](execute/results). For instance, for GPT-5, few-shot prompt and 3 instances, the following command should be run:
+To run the analysis for an LLM execution, for instance, for GPT-5, few-shot prompt and 3 instances, the following command should be run:
 
 ```
-python3 analyze.py alloytools.jar gpt-5-2025-08-07_230925_few3.json 1.25 10
+python analysis/analyze.py process alloytools.jar execute/results/gpt-5-2025-08-07_230925_few3.json 1.25 10
 ```
 
-The results of the generation process are in [analysis/results](analysis/results), containing the overall results in terms of valid and failing instances, both in textual and markdown format. Additionally, a JSON containing all failing instances for inspection is also provided.
+Running the analysis for all executions of the benchmark can be done with the following command. Note that this takes about 30 minutes to execute.
+
+```
+python analysis/analyze.py all alloytools.jar execute/results/results.json
+```
+
+The script was run for all LLM executions, whose JSON files are stored in [execute/results](execute/results). These pre-computed results of the analysis process are in [analysis/results](analysis/results), containing the overall results in textual `.txt` and markdown `.md` format. The JSON files reporting failing instances are contained in [analysis/invalid](analysis/invalid).
