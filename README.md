@@ -1,5 +1,5 @@
 
-This artifact accompanies the paper entitled "Validating Formal Specifications with LLM-generated Test Cases", which reports an empirical evaluation of using pre-trained large language models (LLMs) to automate the generation of test cases from natural language requirements. 
+This artifact accompanies the FM26 paper entitled "Validating Formal Specifications with LLM-generated Test Cases", which reports an empirical evaluation of using pre-trained large language models (LLMs) to automate the generation of test cases from natural language requirements. 
 
 The artifact provides the scripts, datasets and required tools for reproducing the experiment and the analysis of the results. More specifically, the artifact is split into 3 components:
 
@@ -7,7 +7,7 @@ The artifact provides the scripts, datasets and required tools for reproducing t
 
 - **Experiment execution**: Scripts to execute the experiment for the prepared benchmarks, which involves the use of LLM APIs. Depending on the LLM, this may require an API key. It also contains the pre-computed results from executing the experiment.
 
-- **Result analysis** Scripts to analyze the results from the experiment, by using a solver to check validity and diversity. It also contains the pre-computed analysis results.
+- **Result analysis**: Scripts to analyze the results from the experiment, by using a solver to check validity and diversity. It also contains the pre-computed analysis results.
 
 # Data
 
