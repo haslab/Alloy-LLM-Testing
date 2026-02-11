@@ -181,12 +181,12 @@ The output of this script is a JSON file extending the provided `dataset` with a
 
 ### Results
 
-The script was run for some combinations of LLMs (GPT-5, GPT5 Mini, Gemini 2.5 Pro, Claude Opus 4.1), the provided prompts (`prompt_zero.txt`, `prompt_one.txt` and `prompt_few.txt`), and number of instances (from 1 to 5), for the requirements in [`dataset.json`](prepare/results/dataset.json).
+The script was run for a few combinations of LLMs (GPT-5, GPT5 Mini, Gemini 2.5 Pro, Claude Opus 4.1), the provided prompts (`prompt_zero.txt`, `prompt_one.txt` and `prompt_few.txt`), and number of instances (from 1 to 5), for the requirements in [`dataset.json`](prepare/results/dataset.json).
 
 For instance, for GPT-5, few-shot prompt and 3 instances, the following command should be run:
 
 ```
-python3 gpt.py prompt_few.txt dataset.json 3
+python3 execute/gpt.py prompt_few.txt prepare/results/dataset.json 3
 ```
 
 The pre-computed results of the generation process as extended JSON files are collected in [execute/results](execute/results).
@@ -214,9 +214,9 @@ options:
 
 The LLM token cost can be passed to print total cost statistics.
 
-The output reports overall results in terms of valid and failing instances, both in textual `.txt` and markdown `.md` format. Additionally, it provides a JSON file reporting all failing instances for inspection.
+This script reports overall results in terms of valid and failing instances, both in textual `.txt` and markdown `.md` format. Additionally, it provides a JSON file reporting all failing instances for inspection.
 
-Alternatively, the analysis can be run for a set of LLM executions registered in a JSON file.
+Alternatively, the analysis can be run for a set of LLM executions specified in a JSON file.
 
 ```
 usage: analyze.py all [-h] jar execs
@@ -231,7 +231,7 @@ options:
 
 ### Results
 
-To run the analysis for an LLM execution, for instance, for GPT-5, few-shot prompt and 3 instances, the following command should be run:
+To run the analysis for an LLM execution the following command should be run, in this case for GPT-5, few-shot prompt and 3 instances:
 
 ```
 python analysis/analyze.py process alloytools.jar execute/results/gpt-5-2025-08-07_230925_few3.json 1.25 10
