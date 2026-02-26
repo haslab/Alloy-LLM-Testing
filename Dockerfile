@@ -1,5 +1,7 @@
+# Install Python image
 FROM python:3.11-slim
 
+# Install JVM and set environment variables
 RUN apt-get update && apt-get install -y --no-install-recommends \
     openjdk-21-jre-headless \
     ca-certificates \
@@ -10,9 +12,12 @@ ENV PATH="$JAVA_HOME/bin:$PATH"
 
 WORKDIR /app
 
+# Install Python dependencies
 COPY requirements.txt /app/requirements.txt
-
 RUN pip install --no-cache-dir -r requirements.txt
+
+# Default Ollama endpoint
+ENV OLLAMA_HOST=http://host.docker.internal:11434
 
 COPY . /app
 
