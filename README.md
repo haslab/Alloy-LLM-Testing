@@ -77,10 +77,22 @@ See annotated Alloy [files](analysis/invalid) for the GPT-5, 3 positive / 3 nega
 
 # Reproducibility
 
-Start by installing the Python requirements.
+## Setup
 
+The scripts are written in Python and use (through a JPype interface) the Alloy Analyzer (a standalone Java archive). Reproducing the analysis requires: 
+ - A JVM (Java 17 or later), with the `JAVA_HOME` correctly set in the environment
+ - A Python  installation (3.11 or later) (with the same architecture as the JVM) 
+
+Then install the Python requirements:
 ```
 pip install -r requirements.txt
+```
+
+Alternatively, use the provided Dockerfile to create a Docker image and run the scripts from within it:
+
+```
+docker build -t alloy-llm-tests . 
+docker run -it alloy-llm-tests 
 ```
 
 ## Data preparation
@@ -144,13 +156,13 @@ This generates an extended version of the requirements JSON file with grouping i
 The script was run for models Social Network (`x3JXgWhJ3uti5Dzxz`), Courses (`iP5JL36afv5KbDKP6`), Production line (`dyj49tEp7j6aWAQQX`) and Train Station (`cXPP9QBPTYgTX6WJ6`), with scope 3, for the Alloy4Fun database `models_20250916.json.gz`. Statistics are [here](prepare/results/grouping_stats.txt) and groups in [results folder](prepare/results). Note: this takes a few hours to run.
 
 ```
-python3 prepare/semantic_grouping.py alloytools.jar models_20250916.json.gz cXPP9QBPTYgTX6WJ6 x3JXgWhJ3uti5Dzxz iP5JL36afv5KbDKP6 dyj49tEp7j6aWAQQX 
+python prepare/semantic_grouping.py alloytools.jar models_20250916.json.gz cXPP9QBPTYgTX6WJ6 x3JXgWhJ3uti5Dzxz iP5JL36afv5KbDKP6 dyj49tEp7j6aWAQQX 
 ```
 
 These groups have been merged into the provided [requirements](requirements.json) in file [`dataset.json`](prepare/results/dataset.json). Statistics are [here](prepare/results/merging_stats.txt).
 
 ```
-python3 prepare/merge_reqs_groups.py prepare/results requirements.json     
+python prepare/merge_reqs_groups.py prepare/results requirements.json     
 ```
 
 ## Experiment execution
@@ -186,7 +198,7 @@ The script was run for a few combinations of LLMs (GPT-5, GPT5 Mini, Gemini 2.5 
 For instance, for GPT-5, few-shot prompt and 3 instances, the following command should be run:
 
 ```
-python3 execute/gpt.py prompt_few.txt prepare/results/dataset.json 3
+python execute/gpt.py prompt_few.txt prepare/results/dataset.json 3
 ```
 
 The pre-computed results of the generation process as extended JSON files are collected in [execute/results](execute/results).
