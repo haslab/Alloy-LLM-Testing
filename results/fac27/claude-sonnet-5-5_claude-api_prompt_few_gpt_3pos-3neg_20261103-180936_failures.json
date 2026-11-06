@@ -1,0 +1,23 @@
+{
+    "Train station": {
+        "this/inv5": {
+            "consistent": [
+                "run PositiveScenario1 {\n    some disj t1, t2, t3 : Track {\n        Track = t1 + t2 + t3\n        Signal = none\n        Semaphore = none\n        Speed = none\n        Junction = t3\n        Entry = t1 + t2\n        Exit = t3\n        Track <: succs = t1->t3 + t2->t3\n        Track <: signals = none->none\n    }\n} for exactly 4 Track, exactly 0 Signal expect 1"
+            ]
+        },
+        "this/inv6": {
+            "parse": [
+                "run NegativeScenario1 {\n    some disj t1 : Track {\n        Track = t1\n        Signal = none\n        Semaphore = none\n        Speed = none\n        Junction = none\n        Entry = t1\n        Exit = t1\n        Track <: succs = none->none\n        Track <: signals = none->none->none\n    }\n} for exactly 1 Track, exactly 0 Signal expect 0"
+            ]
+        }
+    },
+    "Courses": {
+        "this/inv9": {
+            "valid": [
+                "run NegativeScenario1 {\n    some disj p1, p2 : Person | some disj c1 : Course | some disj g1 : Grade {\n        Person = p1 + p2\n        Professor = p1 + p2\n        Student = p2\n        Course = c1\n        Project = none\n        Grade = g1\n        Grade <: next = none->none\n        Person <: teaches = p1->c1\n        Person <: enrolled = p2->c1\n        Person <: projects = none->none\n        Course <: projects = none->none\n        Course <: grades = none->none->none\n    }\n} for exactly 2 Person, exactly 1 Course, exactly 0 Project, exactly 1 Grade expect 0",
+                "run NegativeScenario2 {\n    some disj p1, p2, s1 : Person | some disj c1 : Course | some disj pr1 : Project | some disj g1, g2 : Grade {\n        Person = p1 + p2 + s1\n        Professor = p1 + p2\n        Student = p2 + s1\n        Course = c1\n        Project = pr1\n        Grade = g1 + g2\n        Grade <: next = g1->g2\n        Person <: teaches = p1->c1\n        Person <: enrolled = p2->c1 + s1->c1\n        Person <: projects = p2->pr1 + s1->pr1\n        Course <: projects = c1->pr1\n        Course <: grades = c1->p2->g1 + c1->s1->g2\n    }\n} for exactly 3 Person, exactly 1 Course, exactly 1 Project, exactly 2 Grade expect 0",
+                "run NegativeScenario3 {\n    some disj p1, p2 : Person | some disj c1, c2 : Course | some disj g1, g2 : Grade {\n        Person = p1 + p2\n        Professor = p1 + p2\n        Student = p1 + p2\n        Course = c1 + c2\n        Project = none\n        Grade = g1 + g2\n        Grade <: next = g1->g2\n        Person <: teaches = p1->c1 + p2->c2\n        Person <: enrolled = p1->c2 + p2->c1\n        Person <: projects = none->none\n        Course <: projects = none->none\n        Course <: grades = c1->p2->g1 + c2->p1->g2\n    }\n} for exactly 2 Person, exactly 2 Course, exactly 0 Project, exactly 2 Grade expect 0"
+            ]
+        }
+    }
+}

@@ -1,0 +1,46 @@
+{
+    "Photo sharing social network": {
+        "this/inv3": {
+            "valid": [
+                "run NegativeScenario1 {\n    some disj u1, u2 : User |\n    some a : Photo |\n    some d : Day {\n        User = u1 + u2\n        Influencer = u2\n        Photo = a\n        Ad = a\n        Day = d\n        User <: follows = none->none\n        User <: sees = u1->a\n        User <: posts = u1->a\n        User <: suggested = none->none\n        Photo <: date = a->d\n    }\n} for exactly 2 User, exactly 1 Photo, exactly 1 Day expect 0",
+                "run NegativeScenario3 {\n    some disj u1, u2 : User |\n    some disj a, n : Photo |\n    some d : Day {\n        User = u1 + u2\n        Influencer = u2\n        Photo = a + n\n        Ad = a\n        Day = d\n        User <: follows = u2->u1\n        User <: sees = u1->a + u2->a\n        User <: posts = u1->n + u2->a\n        User <: suggested = u1->u2\n        Photo <: date = a->d + n->d\n    }\n} for exactly 2 User, exactly 2 Photo, exactly 1 Day expect 0"
+            ]
+        }
+    },
+    "Production line": {
+        "this/inv10": {
+            "previous": [
+                "run NegativeScenario3 {\n    some disj r1, r2 : Worker |\n    some disj c1, c2 : Product {\n        Workstation = begin + end\n        begin = begin\n        end = end\n        Worker = r1 + r2\n        Human = none\n        Robot = r1 + r2\n        Product = c1 + c2\n        Component = c1 + c2\n        Material = none\n        Dangerous = none\n        Workstation <: workers = begin->r1 + end->r2\n        Workstation <: succ = begin->end\n        Product <: parts = c1->c2 + c2->c1\n        Component <: workstation = c1->begin + c2->end\n    }\n} for exactly 2 Workstation, exactly 2 Worker, exactly 2 Product expect 0"
+            ]
+        }
+    },
+    "Train station": {
+        "this/inv10": {
+            "previous": [
+                "run NegativeScenario3 {\n    some disj e1, e2, j1, j2, x : Track |\n    some disj s1, s2, q1 : Signal {\n        Track = e1 + e2 + j1 + j2 + x\n        Junction = j1 + j2\n        Entry = e1 + e2\n        Exit = x\n        Signal = s1 + s2 + q1\n        Speed = s1 + s2\n        Semaphore = q1\n        Track <: succs = e1->j1 + e1->j2 + e2->j1 + e2->j2 + j1->x + j2->x\n        Track <: signals = e1->s1 + e1->q1 + e2->s2\n    }\n} for exactly 5 Track, exactly 3 Signal expect 0"
+            ]
+        }
+    },
+    "Courses": {
+        "this/inv8": {
+            "previous": [
+                "run NegativeScenario2 {\n    some disj p1, p2 : Person |\n    some disj c1, c2 : Course |\n    some disj x1 : Project |\n    some disj g1, g2 : Grade {\n        Person = p1 + p2\n        Professor = p1\n        Student = p2\n        Course = c1 + c2\n        Project = x1\n        Grade = g1 + g2\n        Person <: teaches = p1->c1 + p1->c2\n        Person <: enrolled = p1->c1 + p2->c2\n        Person <: projects = p2->x1\n        Course <: projects = c2->x1\n        Course <: grades = none->none->none\n        Grade <: next = g1->g2\n    }\n} for exactly 2 Person, exactly 2 Course, exactly 1 Project, exactly 2 Grade expect 0"
+            ]
+        },
+        "this/inv9": {
+            "valid": [
+                "run NegativeScenario1 {\n    some disj p1, p2 : Person |\n    some c1 : Course |\n    some g1 : Grade {\n        Person = p1 + p2\n        Professor = p1 + p2\n        Student = p2\n        Course = c1\n        Project = none\n        Grade = g1\n        Person <: teaches = p1->c1\n        Person <: enrolled = p2->c1\n        Person <: projects = none->none\n        Course <: projects = none->none\n        Course <: grades = c1->p2->g1\n        Grade <: next = none->none\n    }\n} for exactly 2 Person, exactly 1 Course, exactly 0 Project, exactly 1 Grade expect 0",
+                "run NegativeScenario2 {\n    some disj p1, p2, s1 : Person |\n    some disj c1, c2 : Course |\n    some disj x1, x2 : Project |\n    some disj g1, g2 : Grade {\n        Person = p1 + p2 + s1\n        Professor = p1 + p2\n        Student = p2 + s1\n        Course = c1 + c2\n        Project = x1 + x2\n        Grade = g1 + g2\n        Person <: teaches = p1->c1 + p2->c2\n        Person <: enrolled = p2->c1 + s1->c2\n        Person <: projects = p2->x1 + s1->x2\n        Course <: projects = c1->x1 + c2->x2\n        Course <: grades = c1->p2->g1 + c2->s1->g2\n        Grade <: next = g1->g2\n    }\n} for exactly 3 Person, exactly 2 Course, exactly 2 Project, exactly 2 Grade expect 0",
+                "run NegativeScenario3 {\n    some disj p0, p1, p2 : Person |\n    some disj c1, c2, c3 : Course |\n    some disj x1, x2, x3 : Project |\n    some disj g1, g2, g3 : Grade {\n        Person = p0 + p1 + p2\n        Professor = p0 + p1\n        Student = p1 + p2\n        Course = c1 + c2 + c3\n        Project = x1 + x2 + x3\n        Grade = g1 + g2 + g3\n        Person <: teaches = p0->c1 + p0->c2 + p1->c3\n        Person <: enrolled = p1->c1 + p2->c2 + p2->c3\n        Person <: projects = p1->x1 + p2->x2 + p2->x3\n        Course <: projects = c1->x1 + c2->x2 + c3->x3\n        Course <: grades = c1->p1->g1 + c2->p2->g2 + c3->p2->g3\n        Grade <: next = g1->g2 + g2->g3\n    }\n} for exactly 3 Person, exactly 3 Course, exactly 3 Project, exactly 3 Grade expect 0"
+            ]
+        },
+        "this/inv10": {
+            "consistent": [
+                "run PositiveScenario3 {\n    some disj p1, s1 : Person |\n    some disj c1, c2 : Course |\n    some disj pr1, pr2 : Project {\n        Person = p1 + s1\n        Professor = p1\n        Student = s1\n        Course = c1 + c2\n        Project = pr1 + pr2\n        Grade = none\n        Person <: teaches = p1->c1 + p1->c2\n        Person <: enrolled = s1->c1 + s1->c2\n        Person <: projects = s1->pr1 + s1->pr2\n        Course <: projects = c1->pr1 + c2->pr2\n        Course <: grades = none->none->none\n    }\n} for exactly 2 Person, exactly 2 Course, exactly 2 Project, exactly 0 Grade expect 1"
+            ],
+            "defined": [
+                "run NegativeScenario2 {\n    some disj p1, p2, s1 : Person |\n    some disj c1 : Course |\n    some disj pr1 : Project |\n    some disj g1, g2 : Grade {\n        Person = p1 + p2 + s1\n        Professor = p1 + p2\n        Student = s1\n        Course = c1\n        Project = pr1\n        Grade = g1 + g2\n        Person <: teaches = p1->c1\n        Person <: enrolled = s1->c1\n        Person <: projects = s1->pr1\n        Course <: projects = c1->pr1\n        Course <: grades = c1->p2->g1 + c1->s1->g2\n    }\n} for exactly 3 Person, exactly 1 Course, exactly 1 Project, exactly 2 Grade expect 0"
+            ]
+        }
+    }
+}

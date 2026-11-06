@@ -1,0 +1,31 @@
+{
+    "Photo sharing social network": {
+        "this/inv3": {
+            "valid": [
+                "run negative1 {\n    some disj jsonAtom1, jsonAtom2 : User |\n    some disj jsonAtom3 : Photo |\n    some disj jsonAtom4 : Day |\n    {\n        User = jsonAtom1 + jsonAtom2\n        Influencer = none\n        Photo = jsonAtom3\n        Ad = jsonAtom3\n        Day = jsonAtom4\n        User <: follows = none->none\n        User <: sees = jsonAtom1->jsonAtom3\n        User <: posts = jsonAtom1->jsonAtom3\n        User <: suggested = none->none\n        Photo <: date = jsonAtom3->jsonAtom4\n    }\n} for 2 but exactly 2 User, exactly 1 Photo, exactly 1 Day expect 0",
+                "run negative3 {\n    some disj jsonAtom1, jsonAtom2, jsonAtom3 : User |\n    some disj jsonAtom4, jsonAtom5 : Photo |\n    some disj jsonAtom6 : Day |\n    {\n        User = jsonAtom1 + jsonAtom2 + jsonAtom3\n        Influencer = jsonAtom3\n        Photo = jsonAtom4 + jsonAtom5\n        Ad = jsonAtom4\n        Day = jsonAtom6\n        User <: follows = jsonAtom1->jsonAtom2\n        User <: sees = jsonAtom1->jsonAtom4 + jsonAtom2->jsonAtom4 + jsonAtom1->jsonAtom5\n        User <: posts = jsonAtom3->jsonAtom4 + jsonAtom2->jsonAtom5\n        User <: suggested = none->none\n        Photo <: date = jsonAtom4->jsonAtom6 + jsonAtom5->jsonAtom6\n    }\n} for 3 but exactly 3 User, exactly 2 Photo, exactly 1 Day expect 0"
+            ]
+        }
+    },
+    "Production line": {
+        "this/inv8": {
+            "previous": [
+                "run negative3 {\n    some disj jsonAtom1, jsonAtom2 : Workstation |\n    some disj jsonAtom3, jsonAtom4 : Worker |\n    some disj jsonAtom5, jsonAtom6, jsonAtom7 : Product |\n    {\n        Workstation = jsonAtom1 + jsonAtom2\n        begin = jsonAtom1\n        end = jsonAtom2\n        Worker = jsonAtom3 + jsonAtom4\n        Human = jsonAtom3\n        Robot = jsonAtom4\n        Product = jsonAtom5 + jsonAtom6 + jsonAtom7\n        Material = jsonAtom5\n        Component = jsonAtom6 + jsonAtom7\n        Dangerous = jsonAtom7\n        Workstation <: workers = jsonAtom1->jsonAtom3 + jsonAtom2->jsonAtom4\n        Workstation <: succ = none->none\n        Product <: parts = jsonAtom6->jsonAtom7 + jsonAtom7->jsonAtom5\n        Component <: workstation = jsonAtom6->jsonAtom1 + jsonAtom7->jsonAtom2\n    }\n} for 3 but exactly 2 Workstation, exactly 2 Worker, exactly 3 Product expect 0"
+            ]
+        },
+        "this/inv10": {
+            "previous": [
+                "run negative3 {\n    some disj jsonAtom1, jsonAtom2, jsonAtom3 : Workstation |\n    some disj jsonAtom4, jsonAtom5, jsonAtom6 : Worker |\n    some disj jsonAtom7, jsonAtom8 : Product |\n    {\n        Workstation = jsonAtom1 + jsonAtom2 + jsonAtom3\n        begin = jsonAtom1\n        end = jsonAtom3\n        Worker = jsonAtom4 + jsonAtom5 + jsonAtom6\n        Human = jsonAtom6\n        Robot = jsonAtom4 + jsonAtom5\n        Product = jsonAtom7 + jsonAtom8\n        Material = none\n        Component = jsonAtom7 + jsonAtom8\n        Dangerous = none\n        Workstation <: workers = jsonAtom1->jsonAtom4 + jsonAtom2->jsonAtom5 + jsonAtom3->jsonAtom6\n        Workstation <: succ = jsonAtom1->jsonAtom2 + jsonAtom2->jsonAtom3\n        Product <: parts = jsonAtom7->jsonAtom8 + jsonAtom8->jsonAtom7\n        Component <: workstation = jsonAtom7->jsonAtom1 + jsonAtom8->jsonAtom2\n    }\n} for 3 but exactly 3 Workstation, exactly 3 Worker, exactly 2 Product expect 0"
+            ]
+        }
+    },
+    "Courses": {
+        "this/inv9": {
+            "valid": [
+                "run negative1 {\n    some disj jsonAtom1, jsonAtom2 : Person |\n    some disj jsonAtom3 : Course |\n    some disj jsonAtom4 : Grade |\n    {\n        Person = jsonAtom1 + jsonAtom2\n        Professor = jsonAtom1 + jsonAtom2\n        Student = jsonAtom2\n        Course = jsonAtom3\n        Project = none\n        Grade = jsonAtom4\n        Person <: teaches = jsonAtom1->jsonAtom3\n        Person <: enrolled = jsonAtom2->jsonAtom3\n        Person <: projects = none->none\n        Course <: projects = none->none\n        Course <: grades = none->none->none\n        Grade <: ordering/next = none->none\n    }\n} for 2 but exactly 2 Person, exactly 1 Course, exactly 0 Project, exactly 1 Grade expect 0",
+                "run negative2 {\n    some disj jsonAtom1, jsonAtom2 : Person |\n    some disj jsonAtom3, jsonAtom4 : Course |\n    some disj jsonAtom5 : Project |\n    some disj jsonAtom6 : Grade |\n    {\n        Person = jsonAtom1 + jsonAtom2\n        Professor = jsonAtom1 + jsonAtom2\n        Student = jsonAtom2\n        Course = jsonAtom3 + jsonAtom4\n        Project = jsonAtom5\n        Grade = jsonAtom6\n        Person <: teaches = jsonAtom1->jsonAtom3 + jsonAtom2->jsonAtom4\n        Person <: enrolled = jsonAtom2->jsonAtom3\n        Person <: projects = jsonAtom2->jsonAtom5\n        Course <: projects = jsonAtom3->jsonAtom5\n        Course <: grades = none->none->none\n        Grade <: ordering/next = none->none\n    }\n} for 2 but exactly 2 Person, exactly 2 Course, exactly 1 Project, exactly 1 Grade expect 0",
+                "run negative3 {\n    some disj jsonAtom1, jsonAtom2, jsonAtom3 : Person |\n    some disj jsonAtom4, jsonAtom5 : Course |\n    some disj jsonAtom6 : Project |\n    some disj jsonAtom7 : Grade |\n    {\n        Person = jsonAtom1 + jsonAtom2 + jsonAtom3\n        Professor = jsonAtom1 + jsonAtom2\n        Student = jsonAtom2 + jsonAtom3\n        Course = jsonAtom4 + jsonAtom5\n        Project = jsonAtom6\n        Grade = jsonAtom7\n        Person <: teaches = jsonAtom1->jsonAtom4 + jsonAtom2->jsonAtom5\n        Person <: enrolled = jsonAtom2->jsonAtom4 + jsonAtom3->jsonAtom5\n        Person <: projects = jsonAtom3->jsonAtom6\n        Course <: projects = jsonAtom5->jsonAtom6\n        Course <: grades = none->none->none\n        Grade <: ordering/next = none->none\n    }\n} for 3 but exactly 3 Person, exactly 2 Course, exactly 1 Project, exactly 1 Grade expect 0"
+            ]
+        }
+    }
+}

@@ -1,0 +1,25 @@
+{
+    "Photo sharing social network": {
+        "this/inv3": {
+            "valid": [
+                "run NegativeScenario1 {\n    some disj u1, u2 : User |\n    some disj a : Photo |\n    some disj d : Day {\n        User = u1 + u2\n        Influencer = none\n        Photo = a\n        Ad = a\n        Day = d\n        User <: follows = none->none\n        User <: sees = u1->a\n        User <: posts = u1->a\n        User <: suggested = none->none\n        Photo <: date = a->d\n    }\n} for exactly 2 User, exactly 1 Photo, exactly 1 Day expect 0"
+            ]
+        }
+    },
+    "Production line": {
+        "this/inv6": {
+            "valid": [
+                "run PositiveScenario2 {\n    some w : Workstation | some r : Worker | some disj c1, c2 : Product {\n        Workstation = w\n        begin = w\n        end = w\n        Worker = r\n        Human = none\n        Robot = r\n        Product = c1 + c2\n        Material = none\n        Component = c1 + c2\n        Dangerous = none\n        Workstation <: workers = w->r\n        Workstation <: succ = none->none\n        Product <: parts = c1->c2 + c2->c1\n        Component <: workstation = c1->w + c2->w\n    }\n} for exactly 1 Workstation, exactly 1 Worker, exactly 2 Product expect 1"
+            ]
+        }
+    },
+    "Courses": {
+        "this/inv9": {
+            "valid": [
+                "run NegativeScenario1 {\n    some disj p, q : Person |\n    some c : Course |\n    some g : Grade {\n        Person = p + q\n        Professor = p + q\n        Student = q\n        Course = c\n        Project = none\n        Grade = g\n        Person <: teaches = p->c\n        Person <: enrolled = q->c\n        Person <: projects = none->none\n        Course <: projects = none->none\n        Course <: grades = none->none->none\n        Grade <: next = none->none\n    }\n} for exactly 2 Person, exactly 1 Course, exactly 0 Project, exactly 1 Grade expect 0",
+                "run NegativeScenario2 {\n    some disj p, q, r : Person |\n    some c : Course |\n    some x : Project |\n    some g : Grade {\n        Person = p + q + r\n        Professor = p + q + r\n        Student = q\n        Course = c\n        Project = x\n        Grade = g\n        Person <: teaches = p->c + r->c\n        Person <: enrolled = q->c\n        Person <: projects = q->x\n        Course <: projects = c->x\n        Course <: grades = c->q->g\n        Grade <: next = none->none\n    }\n} for exactly 3 Person, exactly 1 Course, exactly 1 Project, exactly 1 Grade expect 0",
+                "run NegativeScenario3 {\n    some disj p, q : Person |\n    some disj c1, c2 : Course |\n    some disj x1, x2 : Project |\n    some g : Grade {\n        Person = p + q\n        Professor = p + q\n        Student = p + q\n        Course = c1 + c2\n        Project = x1 + x2\n        Grade = g\n        Person <: teaches = p->c1 + q->c2\n        Person <: enrolled = q->c1 + p->c2\n        Person <: projects = q->x1 + p->x2\n        Course <: projects = c1->x1 + c2->x2\n        Course <: grades = none->none->none\n        Grade <: next = none->none\n    }\n} for exactly 2 Person, exactly 2 Course, exactly 2 Project, exactly 1 Grade expect 0"
+            ]
+        }
+    }
+}

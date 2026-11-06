@@ -1,0 +1,171 @@
+Alloy is a formal modelling language that represents a domain using sets, called signatures, and relations, called fields. A concrete instance is a complete valuation of the user-declared signatures and fields, consistent with the model's declarations, imported module constraints, and facts.
+
+Given a natural language requirement, a positive instance satisfies that requirement and a negative instance violates it. Both kinds of instance must satisfy the original model and any earlier requirements that the task says must also hold. A negative instance violates the target requirement while remaining a valid instance of the model and earlier requirements.
+
+Describe each instance as a JSON valuation. A program will translate these valuations into Alloy run commands that fix the complete concrete valuation. Do not formalize the requirement, its negation, or earlier requirements, and do not generate Alloy commands, quantifiers, scopes, expect clauses, or model declarations, facts, predicates, functions, assertions, or check commands.
+
+During evaluation, a correct formalization of the target requirement is enforced as a fact: positive scenarios must remain satisfiable and negative scenarios must become unsatisfiable. Without that target fact, every positive and negative scenario must be satisfiable under the declarations and required background constraints. A classification label does not make a valuation satisfiable or unsatisfiable.
+
+Return one JSON object with exactly two keys: "positive" and "negative". Each key maps to an array of instances of that classification. Return exactly the requested number in each array; if zero are requested for a classification, its array must be []. Each instance is an object with exactly three keys:
+- "explanation": a short string explaining why this particular valuation satisfies or violates the current requirement.
+- "signatures": an object mapping every user-declared signature name to an array of its atom identifiers, including signatures that are empty.
+- "fields": an object mapping every declared field to an array of tuples, including fields that are empty.
+
+Use strings such as "Person1" and "Car1" as atom identifiers. These are names of individual elements, not Alloy expressions. Different identifiers denote different atoms within an instance. A signature's array lists exactly its atoms. A field's array lists exactly its tuples, with each tuple represented by an array of atom identifiers in declaration order. The first element of a field tuple is its owning atom, so an ordinary field from Person to Car is binary and each tuple has two elements. Use [] for an empty signature or field; do not use null, "none", an empty string, or an omitted key to represent emptiness.
+
+Always qualify a field key with its declaring signature, using the exact form "Person <: owns". The <: text is part of the JSON key. Do not write "Person.owns", and do not put Alloy expressions such as "Person1->Car1" inside a value. Valuations use arrays of individual atoms and tuples, not formulas or fragments of Alloy code.
+
+A signature's array fixes its complete population. A top-level domain signature does not extend or form a subset of another signature; abstract top-level signatures count as top-level signatures too. Descendants share their parent's atoms and population bound. The program derives matching exact command scopes from the chosen populations; do not include scopes in the JSON.
+
+If the task supplies a maximum scope n, use at most n atoms in each top-level domain signature, independently. This is not a bound on the total atoms across different top-level signatures. Use fewer atoms, including zero, wherever the model and required background constraints permit. Do not populate a signature merely to reach n. If no maximum is supplied, do not invent one; prefer small, structurally useful scenarios.
+
+The following worked examples illustrate the format. Each model is separate: use only its own valuations with it. Their counts and models are illustrative; use the actual task's model and requested counts when answering.
+
+First consider a binary field:
+
+sig Person {
+    owns : set Car
+}
+sig Car {}
+
+For the requirement "Every person owns a car", suppose two positive and one negative instances are requested, with maximum scope 3. The following JSON object forms a response:
+
+{
+    "positive": [
+        {
+            "explanation": "Each of the three people owns a car; Person2 and Person3 share Car2.",
+            "signatures": {
+                "Person": ["Person1", "Person2", "Person3"],
+                "Car": ["Car1", "Car2"]
+            },
+            "fields": {
+                "Person <: owns": [
+                    ["Person1", "Car1"],
+                    ["Person2", "Car2"],
+                    ["Person3", "Car2"]
+                ]
+            }
+        },
+        {
+            "explanation": "No people exist, so the requirement holds vacuously.",
+            "signatures": {
+                "Person": [],
+                "Car": ["Car1", "Car2"]
+            },
+            "fields": {
+                "Person <: owns": []
+            }
+        }
+    ],
+    "negative": [
+        {
+            "explanation": "Person1 owns both cars, but Person2 owns no car.",
+            "signatures": {
+                "Person": ["Person1", "Person2"],
+                "Car": ["Car1", "Car2"]
+            },
+            "fields": {
+                "Person <: owns": [
+                    ["Person1", "Car1"],
+                    ["Person1", "Car2"]
+                ]
+            }
+        }
+    ]
+}
+
+All three valuations are satisfiable under the declarations. Once a correct formalization of the requirement is enforced, the positive scenarios remain satisfiable and the negative scenario becomes unsatisfiable. The negative scenario fixes a legal model instance rather than introducing a contradiction. Their chosen populations differ while remaining within the common maximum.
+
+All the signature and field keys are still present. [] is the complete valuation of the empty set or relation; the program determines its arity from the model.
+
+Now consider a separate model with a subset and extensions:
+
+sig Person {
+    owns : set Car
+}
+sig Adult in Person {}
+abstract sig Car {}
+sig Sedan, SUV extends Car {}
+
+Adult may contain any of the Person atoms. Sedan and SUV are disjoint, and together cover the abstract Car signature. Their populations are included in the parent's population bound. For the same requirement, suppose one positive and zero negative instances are requested, with maximum scope 3:
+
+{
+    "positive": [
+        {
+            "explanation": "Every person owns a car; the sedan and SUV cover Car.",
+            "signatures": {
+                "Person": ["Person1", "Person2", "Person3"],
+                "Adult": [],
+                "Car": ["Car1", "Car2"],
+                "Sedan": ["Car1"],
+                "SUV": ["Car2"]
+            },
+            "fields": {
+                "Person <: owns": [
+                    ["Person1", "Car1"],
+                    ["Person2", "Car2"],
+                    ["Person3", "Car2"]
+                ]
+            }
+        }
+    ],
+    "negative": []
+}
+
+Subsignatures reuse their parents' atom identifiers. Car1 in Sedan is the same atom as Car1 in Car; it is not an additional atom. The combined Car population, rather than each extension separately, is bounded by the maximum scope. An inherited field is valued once under its declaring signature: Adult inherits owns, but there is no additional "Adult <: owns" entry.
+
+Finally, consider a separate model with a higher-arity field and an ordering:
+
+open util/ordering[Value]
+sig Person {
+    owns : Car -> lone Value
+}
+sig Car {}
+sig Value {}
+
+The owns field is ternary: each tuple contains a Person, Car, and Value. For each Person/Car pair, lone permits at most one Value. This does not require every person to own a car or every Value to be used in owns. The util/ordering import requires a nonempty ordered Value population.
+
+For the same requirement, suppose one positive and zero negative instances are requested, with maximum scope 3:
+
+{
+    "positive": [
+        {
+            "explanation": "Every person owns a car at a value; Value3 is unused by owns.",
+            "signatures": {
+                "Person": ["Person1", "Person2", "Person3"],
+                "Car": ["Car1", "Car2"],
+                "Value": ["Value1", "Value2", "Value3"]
+            },
+            "fields": {
+                "Person <: owns": [
+                    ["Person1", "Car1", "Value1"],
+                    ["Person2", "Car2", "Value2"],
+                    ["Person3", "Car2", "Value2"]
+                ],
+                "Value <: next": [
+                    ["Value1", "Value2"],
+                    ["Value2", "Value3"]
+                ]
+            }
+        }
+    ],
+    "negative": []
+}
+
+The next relation lists only adjacent pairs in a single chain. An ordered signature cannot be empty, even when its values are unused elsewhere. With exactly one ordered atom, its next relation is empty, represented by []. The program derives an exact command scope equal to the chosen population, which need not reach the task's maximum scope.
+
+Follow these instructions:
+- Return exactly the requested positive and negative counts, which may differ. Use the "positive" and "negative" arrays respectively; if zero are requested for a classification, its array must be []. Count both arrays before answering.
+- Return a single valid JSON object with exactly "positive" and "negative", in that order. Do not add Markdown fences, comments, introductory text, or trailing explanations. Use double-quoted keys and strings, and no trailing commas. Each instance must have exactly "explanation", "signatures", and "fields". Include a short explanation stating why each fixed valuation is positive or negative.
+- Generate valuations only, without Alloy expressions, formulas, commands, quantifiers, scopes, expect clauses, or JSON keys for these constructs. Do not repeat the supplied declarations or formalize the requirement, its negation, or earlier requirements.
+- List each atom in its top-level domain signature and use different identifiers for different atoms, including atoms of different top-level signatures. Reuse parent identifiers for subsets and extensions; do not invent additional atoms for descendants. For an empty signature, use [] and do not invent an atom from it. Include named singleton or enum signatures with the populations required by their declarations. Do not repeat an identifier within a signature array.
+- Give every user-declared signature an array fixing its entire atom set, including abstract parents, extensions, in subsets, and empty signatures. Subsets declared with in may overlap. Sibling extensions declared with extends must be disjoint. An abstract parent's atoms must be covered by its extensions. Respect one, lone, and some signature multiplicities.
+- Give every user-declared field an array fixing its entire tuple set. Each tuple is an array of values in declaration order. A field's arity includes its owning signature: a Person field with a Car range is binary; a Person field with a Car -> Value range is ternary. Cardinalities, inclusions, and existential witnesses alone do not fix an instance. Do not repeat a tuple within a field array.
+- For empty signatures and relations of any arity, use []. Do not omit a valuation or use null or "none". An empty value is permitted only when the declarations and required background constraints allow it.
+- Respect field multiplicities and arrow multiplicities. For a field with a single signature as its range, omitted multiplicity defaults to one target per owner. A higher-arity field with a bare product range can contain zero or several tuples per owner; apply any multiplicities written on its arrows to the appropriate columns. Do not assume every field contains exactly one tuple per owner.
+- Qualify every field key with its declaring signature using "DeclaringSignature <: fieldName", including overloaded fields; use module-qualified names when needed. Value inherited fields under their original declaring signature, rather than inventing additional fields on descendants.
+- Keep each top-level domain population within any task-supplied maximum, including zero wherever permitted. Descendants share their parent's population bound. Do not list built-in Int or String or private module implementation signatures as user-declared signatures. Every tuple must use existing atoms of the appropriate signatures. Represent Int values as JSON integers and String values as JSON strings in their respective typed columns; do not substitute built-in values for user-declared atoms. The program handles command scopes and integer bitwidth; do not output them.
+- For each util/ordering import, explicitly value its complete binary immediate-successor relation under a domain-qualified key such as "Value <: next"; include a separate entry for each ordered signature. It must be one chain covering every atom of the ordered signature, without cycles, branches, skipped atoms, or an edge from last to first. An ordered signature cannot be empty. With exactly one ordered atom, its successor relation is []. Ordered values may be present even if no other field uses them. The ordered population can be smaller than a task-supplied maximum. Do not enumerate the module's private implementation signatures or invent independent valuations for first and last.
+- Give every irrelevant signature and field a small, explicit legal valuation. It may be empty only if that preserves declaration constraints, module constraints, facts, and all required earlier requirements. Do not use unconstrained or arbitrary values as a substitute for a complete instance.
+- Make all scenarios structurally different, including across the two classifications. Renaming atoms or reordering arrays does not create a different scenario. Prefer differences relevant to the requirement, such as empty versus nonempty populations, sharing, connectivity, or cycles where permitted.
+- Before answering, check counts, complete valuations, atom distinctness, tuple arities, multiplicities, scopes, ordering, background requirements, and each explanation's agreement with its valuation and classification. Do not supply invalid scenarios or duplicates to fill a requested count.
