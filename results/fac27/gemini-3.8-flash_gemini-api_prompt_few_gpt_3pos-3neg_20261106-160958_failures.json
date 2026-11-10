@@ -1,0 +1,16 @@
+{
+    "Courses": {
+        "this/inv9": {
+            "valid": [
+                "run NegativeScenario1 {\n    some disj p1, p2 : Person |\n    some disj c1 : Course |\n    some disj pr1 : Project |\n    some disj g1 : Grade {\n        Person = p1 + p2\n        Professor = p1 + p2\n        Student = p2\n        Course = c1\n        Project = pr1\n        Grade = g1\n\n        Person <: teaches = p1->c1\n        Person <: enrolled = p2->c1\n        Person <: projects = p2->pr1\n\n        Course <: projects = c1->pr1\n        Course <: grades = none->none->none\n\n        Grade <: next = none->none\n    }\n} for exactly 2 Person, exactly 1 Course, exactly 1 Project, exactly 1 Grade expect 0",
+                "run NegativeScenario2 {\n    some disj p1, p2, s1 : Person |\n    some disj c1, c2 : Course |\n    some disj pr1, pr2 : Project |\n    some disj g1 : Grade {\n        Person = p1 + p2 + s1\n        Professor = p1 + p2\n        Student = p2 + s1\n        Course = c1 + c2\n        Project = pr1 + pr2\n        Grade = g1\n\n        Person <: teaches = p1->c1 + p2->c2\n        Person <: enrolled = p2->c1 + s1->c2\n        Person <: projects = p2->pr1 + s1->pr2\n\n        Course <: projects = c1->pr1 + c2->pr2\n        Course <: grades = none->none->none\n\n        Grade <: next = none->none\n    }\n} for exactly 3 Person, exactly 2 Course, exactly 2 Project, exactly 1 Grade expect 0",
+                "run NegativeScenario3 {\n    some disj p1, p2 : Person |\n    some disj c1, c2 : Course |\n    some disj pr1, pr2 : Project |\n    some disj g1 : Grade {\n        Person = p1 + p2\n        Professor = p1 + p2\n        Student = p1 + p2\n        Course = c1 + c2\n        Project = pr1 + pr2\n        Grade = g1\n\n        Person <: teaches = p1->c1 + p2->c2\n        Person <: enrolled = p2->c1 + p1->c2\n        Person <: projects = p2->pr1 + p1->pr2\n\n        Course <: projects = c1->pr1 + c2->pr2\n        Course <: grades = none->none->none\n\n        Grade <: next = none->none\n    }\n} for exactly 2 Person, exactly 2 Course, exactly 2 Project, exactly 1 Grade expect 0"
+            ]
+        },
+        "this/inv13": {
+            "parse": [
+                "run NegativeScenario2 {\n    some disj prof, s1, s2 : Person |\n    some disj c : Course |\n    some disj pr : Project |\n    some disj g1, g2 : Grade {\n        Person = prof + s1 + s2\n        Professor = prof\n        Student = s1 + s2\n        Course = c\n        Project = pr\n        Grade = g1 + g2\n        Person <: teaches = prof->c\n        Person <: enrolled = s1->c + s2->c\n        Person <: projects = s2->pr\n        Course <: projects = c->pr\n        Course <: grades = c->s1->g2 + c->s2->g1\n        Grade <: next = g1->g2\n    }\n} for mouse: exactly 3 Person, exactly 1 Course, exactly 1 Project, exactly 2 Grade expect 0"
+            ]
+        }
+    }
+}

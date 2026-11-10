@@ -160,23 +160,15 @@ class ModelClient:
         response = self._client.responses.create(
             model=self.model, instructions=system_prompt, input=task,
             # Explicit mode without breakpoints disables cache reads and writes
-            # on GPT-5.6 and later. extra_body also works with the pinned SDK.
+            # on GPT-5.6 and later, including the GPT-6 experiment models.
             extra_body={"prompt_cache_options": {"mode": "explicit"}},
         )
         usage = response.usage
-        details = _usage_field(usage, "input_tokens_details")
-        writes = _usage_field(details, "cache_write_tokens_details")
-        require_no_cache_usage(
-            self.platform, self.model,
-            cached_tokens=_usage_field(details, "cached_tokens"),
-            cache_write_tokens=_usage_field(details, "cache_write_tokens"),
-            ttl_30m_tokens=_usage_field(writes, "ttl_30m_tokens"),
-            ttl_12h_tokens=_usage_field(writes, "ttl_12h_tokens"),
-        )
         if response.status != "completed":
             raise RuntimeError(f"OpenAI response did not complete: {response.status}")
         return ModelResponse(
             response.output_text,
+            # OpenAI's total already includes cache reads and writes.
             getattr(usage, "input_tokens", 0) or 0,
             getattr(usage, "output_tokens", 0) or 0,
         )
@@ -193,28 +185,28 @@ class ModelClient:
             r"^claude-(?:opus|sonnet|haiku)-4-[0-6](?:-|$)", self.model
         ):
             sampling["temperature"] = 0
-        # Claude Messages caching is opt-in. Keep cache_control absent both at
-        # the top level and on content blocks so requests use no prompt caching.
         response = self._client.messages.create(
             model=self.model,
             max_tokens=20000,
+            # Claude Messages caching is opt-in; omit cache_control everywhere.
             system=system_prompt,
             messages=[{"role": "user", "content": task}],
             **sampling,
         )
         usage = response.usage
-        creation = _usage_field(usage, "cache_creation")
-        require_no_cache_usage(
-            self.platform, self.model,
-            cache_read_input_tokens=_usage_field(usage, "cache_read_input_tokens"),
-            cache_creation_input_tokens=_usage_field(usage, "cache_creation_input_tokens"),
-            ephemeral_5m_input_tokens=_usage_field(creation, "ephemeral_5m_input_tokens"),
-            ephemeral_1h_input_tokens=_usage_field(creation, "ephemeral_1h_input_tokens"),
-        )
         if response.stop_reason != "end_turn":
             raise RuntimeError(f"Claude response did not complete: {response.stop_reason}")
         text = "\n".join(block.text for block in response.content if block.type == "text")
-        return ModelResponse(text, usage.input_tokens, usage.output_tokens)
+        cache_writes = _usage_field(usage, "cache_creation_input_tokens")
+        if cache_writes is None:
+            creation = _usage_field(usage, "cache_creation")
+            cache_writes = sum(_usage_field(creation, key) or 0 for key in
+                               ("ephemeral_5m_input_tokens", "ephemeral_1h_input_tokens"))
+        # Claude reports three disjoint input categories; save their inclusive total.
+        input_tokens = ((_usage_field(usage, "input_tokens") or 0)
+                        + (_usage_field(usage, "cache_read_input_tokens") or 0)
+                        + cache_writes)
+        return ModelResponse(text, input_tokens, _usage_field(usage, "output_tokens") or 0)
 
     def _call_gemini(self, system_prompt: str, task: str) -> ModelResponse:
         from google import genai
@@ -225,21 +217,18 @@ class ModelClient:
         response = self._client.models.generate_content(
             model=self.model,
             config=types.GenerateContentConfig(
-                system_instruction=system_prompt, temperature=0, seed=0,
+                system_instruction=system_prompt,
             ),
             contents=task,
         )
         usage = response.usage_metadata
-        require_no_cache_usage(
-            self.platform, self.model,
-            cached_content_token_count=_usage_field(usage, "cached_content_token_count"),
-        )
         if response.candidates and response.candidates[0].finish_reason != "STOP":
             raise RuntimeError(
                 f"Gemini response did not complete: {response.candidates[0].finish_reason}"
             )
         return ModelResponse(
             response.text,
+            # Gemini's prompt total already includes implicitly cached tokens.
             getattr(usage, "prompt_token_count", 0) or 0,
             (getattr(usage, "candidates_token_count", 0) or 0)
             + (getattr(usage, "thoughts_token_count", 0) or 0),

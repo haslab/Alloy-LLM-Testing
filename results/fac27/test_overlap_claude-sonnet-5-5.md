@@ -1,13 +1,13 @@
-# Structural overlap between generated test runs
+# Structural and fault-detection overlap between generated test runs
 
 Tests are grouped separately for each benchmark, requirement, and intended polarity. Only satisfiable tests with an explicit expect 0/1 and a unique visible structure modulo atom renaming are compared. Each structure is encoded as a complete instance predicate I; another test P matches when P and I is satisfiable under P's original scopes and integer bitwidth. Signatures, fields, and ordering successors are preserved; integer/string values retain their identities. Skolem witnesses and private module implementation relations are ignored. Different commands encoding the same structure count once in overlap sets. No larger comparison scope is introduced.
 
 Cohort: **consistent and unique**. Structural overlap includes consistent, unique tests even when they fail earlier requirements or have incorrect labels.
 Validity is always checked afresh for the separate invalid-test recurrence section.
 
-- **run1**: `/Users/alcino/Projectos/Alloy-LLM-Testing/fac-exps/claude-sonnet-5-5_claude-api_prompt_few_gpt_3pos-3neg_20261103-172111.json`
-- **run2**: `/Users/alcino/Projectos/Alloy-LLM-Testing/fac-exps/claude-sonnet-5-5_claude-api_prompt_few_gpt_3pos-3neg_20261103-174824.json`
-- **run3**: `/Users/alcino/Projectos/Alloy-LLM-Testing/fac-exps/claude-sonnet-5-5_claude-api_prompt_few_gpt_3pos-3neg_20261103-180936.json`
+- **run1**: `/Users/alcino/Projectos/Alloy-LLM-Testing/results/fac27/claude-sonnet-5-5_claude-api_prompt_few_gpt_3pos-3neg_20261103-172111.json`
+- **run2**: `/Users/alcino/Projectos/Alloy-LLM-Testing/results/fac27/claude-sonnet-5-5_claude-api_prompt_few_gpt_3pos-3neg_20261103-174824.json`
+- **run3**: `/Users/alcino/Projectos/Alloy-LLM-Testing/results/fac27/claude-sonnet-5-5_claude-api_prompt_few_gpt_3pos-3neg_20261103-180936.json`
 
 ## Per-run diversity
 
@@ -137,6 +137,109 @@ Only stages with observed failures are listed. Counts are invalid command occurr
 | run1 / run2 | 1 | 3 | 33.33% | no |
 | run1 / run3 | 1 | 4 | 25.00% | no |
 | run2 / run3 | 1 | 4 | 25.00% | no |
+
+## Overlap in detected and missed specifications
+
+Fault detection is compared only for requirements with a complete valid suite in every run. Requested counts come from generation metadata or recognized filenames, never generated counts. All runs use the same erroneous-specification catalogue and preceding requirement oracles. A specification is detected if at least one test disagrees with its expect annotation when that specification replaces the target oracle. Tests retain their original scopes and bitwidth. Exact duplicate specifications are counted once; IDs hash the benchmark, requirement, and specification text with leading/trailing whitespace removed. Unparseable specifications and specifications with an unassessed outcome in any run are excluded from every run's denominator and reported separately, never counted as missed. Empty set unions have no defined Jaccard. Primary averages weight requirements equally; pooled statistics are also provided. Agreement establishes discrimination against this fault catalogue, not scenario equivalence.
+
+Requirements with complete valid suites and a shared catalogue: **38/43**. Requirements with at least one assessed specification: **38**. Assessed specifications: **4147**. Unparseable specifications excluded: **0**. Specifications with assessment gaps: **0**.
+
+### Detection and benefit of combining runs
+
+Coverage below is the unweighted mean of per-requirement detection rates on the shared assessed catalogue. Counts are pooled; they do not determine the mean coverage. `Only this run` counts specifications detected by that run and missed by every other run.
+
+| Run | Detected | Missed | Only this run | Mean coverage |
+| --- | ---: | ---: | ---: | ---: |
+| run1 | 3787 | 360 | 26 | 92.99% |
+| run2 | 3809 | 338 | 70 | 92.70% |
+| run3 | 3772 | 375 | 46 | 92.09% |
+
+Combined mean coverage: **96.16%**; best individual run: **92.99%**; gain: **3.17 percentage points**.
+
+Pooled combined detection: **3942/4147**; best individual run: **3809**; additional specifications detected: **133**.
+
+The combined result uses every test from every run and therefore a larger test budget. Mean coverage gain compares the combined suite with the best single run across the shared requirements, rather than selecting a different best run for each requirement.
+
+### Pairwise overlap of detected and missed sets
+
+Primary Jaccard values are averaged per requirement. The number of contributing requirements can differ between detected and missed sets because empty unions are undefined.
+
+| Runs | Mean detected Jaccard | Requirements | Mean missed Jaccard | Requirements |
+| --- | ---: | ---: | ---: | ---: |
+| run1 / run2 | 94.80% | 38 | 49.65% | 37 |
+| run1 / run3 | 95.02% | 38 | 49.52% | 37 |
+| run2 / run3 | 93.96% | 38 | 45.83% | 37 |
+
+Pooled overlap is also shown; requirements with more faulty specifications have more weight here.
+
+| Runs | Detected shared | Detected union | Detected Jaccard | Left only | Right only | Missed shared | Missed union | Missed Jaccard |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| run1 / run2 | 3700 | 3896 | 94.97% | 87 | 109 | 251 | 447 | 56.15% |
+| run1 / run3 | 3687 | 3872 | 95.22% | 100 | 85 | 275 | 460 | 59.78% |
+| run2 / run3 | 3665 | 3916 | 93.59% | 144 | 107 | 231 | 482 | 47.93% |
+
+**Detected in all runs:** 3626; **detected in any run:** 3942; mean all-run Jaccard: **91.98%** (38 requirements); pooled all-run Jaccard: **91.98%**.
+
+**Missed in all runs:** 205; **missed in any run:** 521; mean all-run Jaccard: **33.14%** (37 requirements); pooled all-run Jaccard: **39.35%**.
+
+### Fault detection per requirement
+
+Per-requirement gain uses that requirement's best individual suite as its baseline.
+
+| Benchmark | Requirement | Assessed faults | Best run | Combined | Gain | Gain (pp) | Detected Jaccard | Missed Jaccard |
+| --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| Photo sharing social network | inv1 | 126 | 125 | 126 | 1 | 0.79 | 95.24% | 0.00% |
+| Photo sharing social network | inv2 | 44 | 43 | 44 | 1 | 2.27 | 93.18% | 0.00% |
+| Photo sharing social network | inv4 | 127 | 123 | 124 | 1 | 0.79 | 95.16% | 33.33% |
+| Photo sharing social network | inv5 | 121 | 121 | 121 | 0 | 0.00 | 98.35% | 0.00% |
+| Photo sharing social network | inv6 | 71 | 65 | 66 | 1 | 1.41 | 92.42% | 50.00% |
+| Photo sharing social network | inv7 | 464 | 454 | 454 | 0 | 0.00 | 98.68% | 62.50% |
+| Photo sharing social network | inv8 | 179 | 161 | 168 | 7 | 3.91 | 65.48% | 15.94% |
+| Production line | inv1 | 50 | 47 | 50 | 3 | 6.00 | 86.00% | 0.00% |
+| Production line | inv2 | 92 | 89 | 89 | 0 | 0.00 | 100.00% | 100.00% |
+| Production line | inv3 | 31 | 31 | 31 | 0 | 0.00 | 100.00% | — |
+| Production line | inv4 | 85 | 81 | 81 | 0 | 0.00 | 85.19% | 25.00% |
+| Production line | inv5 | 66 | 65 | 65 | 0 | 0.00 | 95.38% | 25.00% |
+| Production line | inv6 | 46 | 40 | 40 | 0 | 0.00 | 95.00% | 75.00% |
+| Production line | inv7 | 78 | 72 | 75 | 3 | 3.85 | 85.33% | 21.43% |
+| Production line | inv8 | 78 | 74 | 75 | 1 | 1.28 | 85.33% | 21.43% |
+| Production line | inv9 | 647 | 540 | 553 | 13 | 2.01 | 94.21% | 74.60% |
+| Production line | inv10 | 89 | 80 | 85 | 5 | 5.62 | 82.35% | 21.05% |
+| Train station | inv1 | 134 | 129 | 130 | 1 | 0.75 | 95.38% | 40.00% |
+| Train station | inv2 | 48 | 47 | 47 | 0 | 0.00 | 95.74% | 33.33% |
+| Train station | inv3 | 122 | 121 | 122 | 1 | 0.82 | 95.08% | 0.00% |
+| Train station | inv4 | 77 | 73 | 76 | 3 | 3.90 | 89.47% | 11.11% |
+| Train station | inv7 | 20 | 20 | 20 | 0 | 0.00 | 95.00% | 0.00% |
+| Train station | inv8 | 20 | 18 | 18 | 0 | 0.00 | 100.00% | 100.00% |
+| Train station | inv9 | 143 | 139 | 141 | 2 | 1.40 | 95.04% | 22.22% |
+| Train station | inv10 | 48 | 45 | 45 | 0 | 0.00 | 95.56% | 60.00% |
+| Courses | inv1 | 166 | 163 | 166 | 3 | 1.81 | 90.36% | 0.00% |
+| Courses | inv2 | 34 | 32 | 32 | 0 | 0.00 | 90.62% | 40.00% |
+| Courses | inv3 | 65 | 61 | 65 | 4 | 6.15 | 86.15% | 0.00% |
+| Courses | inv4 | 86 | 84 | 85 | 1 | 1.16 | 92.94% | 14.29% |
+| Courses | inv5 | 205 | 181 | 192 | 11 | 5.37 | 86.46% | 33.33% |
+| Courses | inv6 | 111 | 107 | 108 | 1 | 0.90 | 93.52% | 30.00% |
+| Courses | inv7 | 109 | 105 | 107 | 2 | 1.83 | 83.18% | 10.00% |
+| Courses | inv8 | 62 | 57 | 58 | 1 | 1.61 | 86.21% | 33.33% |
+| Courses | inv10 | 69 | 66 | 66 | 0 | 0.00 | 100.00% | 100.00% |
+| Courses | inv11 | 66 | 61 | 61 | 0 | 0.00 | 91.80% | 50.00% |
+| Courses | inv12 | 54 | 54 | 54 | 0 | 0.00 | 96.30% | 0.00% |
+| Courses | inv14 | 41 | 39 | 39 | 0 | 0.00 | 92.31% | 40.00% |
+| Courses | inv15 | 73 | 62 | 63 | 1 | 1.37 | 96.83% | 83.33% |
+
+### Requirements excluded from fault-detection comparison
+
+Structural comparison and invalid-test recurrence still include these requirements.
+
+| Benchmark | Requirement | Reason |
+| --- | --- | --- |
+| Photo sharing social network | inv3 | run2: suite is not complete and valid |
+| Train station | inv5 | run3: suite is not complete and valid |
+| Train station | inv6 | run3: suite is not complete and valid |
+| Courses | inv9 | run1: suite is not complete and valid; run2: suite is not complete and valid; run3: suite is not complete and valid |
+| Courses | inv13 | run1: suite is not complete and valid |
+
+The JSON report includes stable specification IDs and source text, per-run detected/missed IDs, individual outcomes, per-requirement overlap and gains, and catalogue exclusions.
 
 ## Distinct structures per requirement and polarity
 

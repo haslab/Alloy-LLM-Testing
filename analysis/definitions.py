@@ -71,7 +71,7 @@ class DefinitionChecker:
     def missing(self, command):
         """Recognize a sufficient concrete encoding for the uniqueness fast path."""
         issues = []
-        groups = set()
+        groups = []
 
         def concrete(expression, atoms):
             expression = unwrap(expression)
@@ -123,15 +123,18 @@ class DefinitionChecker:
                     else:
                         issues.append("Quantified variables must each denote one atom")
                         continue
-                    if kind(domain) != "PrimSig" or str(domain.label) not in self.roots:
+                    if kind(domain) != "PrimSig" or ("sig", str(domain.label)) not in self.required:
                         issues.append("Atoms must be quantified over top-level signatures")
                         continue
-                    root = str(domain.label)
-                    if root in groups:
-                        issues.append(f"Bind all {label(root)} atoms in one declaration")
-                    groups.add(root)
+                    name = str(domain.label)
+                    # Distinct branches of an extends hierarchy cannot share
+                    # atoms. Ancestor/descendant domains can, so their separate
+                    # atom groups still require the semantic uniqueness query.
+                    if any(domain.intersects(other) for other in groups):
+                        issues.append(f"Bind all {label(name)} atoms in one declaration")
+                    groups.append(domain)
                     if len(declaration.names) > 1 and declaration.disjoint is None:
-                        issues.append(f"Use disj for multiple atoms of {label(root)}")
+                        issues.append(f"Use disj for multiple atoms of {label(name)}")
                     for variable in declaration.names:
                         bound.pop(str(variable.label), None)
                         quantified.add(variable)

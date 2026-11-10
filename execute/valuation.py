@@ -227,7 +227,7 @@ class ValuationModel:
                 "the target natural language requirement."
             ])
 
-    def validate(self, instance):
+    def validate(self, instance, *, declarations=True):
         errors = []
         if not isinstance(instance, dict):
             raise ValuationError(["Each instance must be an object."])
@@ -270,30 +270,30 @@ class ValuationModel:
             atoms = populations[name]
             if not atoms <= active:
                 errors.append(f"{name} refers to atoms absent from the top-level signatures: {sorted(atoms - active)}.")
-            if sig.isOne is not None and len(atoms) != 1:
+            if declarations and sig.isOne is not None and len(atoms) != 1:
                 errors.append(f"{name} must contain exactly one atom.")
-            if sig.isLone is not None and len(atoms) > 1:
+            if declarations and sig.isLone is not None and len(atoms) > 1:
                 errors.append(f"{name} must contain at most one atom.")
-            if sig.isSome is not None and not atoms:
+            if declarations and sig.isSome is not None and not atoms:
                 errors.append(f"{name} must contain at least one atom.")
             if hasattr(sig, "parent") and name not in self.roots:
                 parent = _name(sig.parent.label)
-                if not atoms <= populations.get(parent, set()):
+                if declarations and not atoms <= populations.get(parent, set()):
                     errors.append(f"{name} must be a subset of {parent}.")
                 children.setdefault(parent, []).append(name)
             elif hasattr(sig, "parents"):
                 parents = [_name(parent.label) for parent in sig.parents]
                 allowed = set().union(*(populations.get(parent, set()) for parent in parents))
-                if not atoms <= allowed:
+                if declarations and not atoms <= allowed:
                     errors.append(f"{name} must be a subset of {' + '.join(parents)}.")
         for parent, names in children.items():
             seen = set()
             for name in names:
-                if seen & populations[name]:
+                if declarations and seen & populations[name]:
                     errors.append(f"The extensions of {parent} must be disjoint.")
                 seen.update(populations[name])
         for name, sig in self.signatures.items():
-            if sig.isAbstract is not None:
+            if declarations and sig.isAbstract is not None:
                 covered = set().union(*(populations[child] for child in children.get(name, [])))
                 if populations[name] != covered:
                     errors.append(f"Abstract signature {name} must equal the union of its extensions.")
@@ -327,7 +327,7 @@ class ValuationModel:
                     errors.append(f"{path} must start with an atom of {field.owner}.")
                 if not any(all(matches(value, column) for value, column in zip(row, types)) for types in field.rows):
                     errors.append(f"{path} contains missing atoms or values of the wrong types; expected {field.rows}.")
-            if field.ordering and all(isinstance(row, list) and len(row) == 2
+            if declarations and field.ordering and all(isinstance(row, list) and len(row) == 2
                                       and all(isinstance(value, str) for value in row) for row in tuples):
                 atoms = populations[field.owner]
                 edges = [tuple(row) for row in tuples]
@@ -353,6 +353,20 @@ class ValuationModel:
 
     def render(self, instance, classification, index):
         self.validate(instance)
+        return self._render(instance, classification, index)
+
+    def render_rejected(self, instance, classification, index):
+        """Encode a final rejected candidate for analysis, without repairing it.
+
+        JSON shape, atom references, scope limits and tuple types must still
+        permit faithful rendering. Declaration violations are left intact so
+        Alloy can report an inconsistent test instead of silently dropping it.
+        This method never makes a candidate eligible for acceptance.
+        """
+        self.validate(instance, declarations=False)
+        return self._render(instance, classification, index)
+
+    def _render(self, instance, classification, index):
         values, fields = instance["signatures"], instance["fields"]
         variables, quantifiers, used_names = {}, [], set(self.reserved)
         counter = 0

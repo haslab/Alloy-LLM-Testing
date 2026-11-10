@@ -33,6 +33,13 @@ DEFINITION_NOTE = (
     "instances are excluded from later validity, completeness, and coverage checks."
 )
 
+VALID_PERCENTAGE_NOTE = (
+    "**Valid %:** 100 × valid tests / requested tests (2 × n per requirement). "
+    "Subtotals and totals divide summed valid counts by summed requested counts. "
+    "Missing tests therefore reduce this percentage; `Tests` still counts actual generated tests. "
+    "`—` means a requested count is unavailable, including in any containing subtotal or total."
+)
+
 
 def repair_call_count(requirement):
     """Count recorded corrective requests, excluding the initial generation."""
@@ -69,9 +76,44 @@ def extract_generated_instances(source):
     return instances
 
 
+def generated_test_sources(requirement):
+    """Include final JSON candidates that could not be rendered as Alloy.
+
+    Preserve those actual JSON values as sources, rather than fabricating run
+    commands or silently omitting them. They fail the existing syntax stage.
+    Missing valuations and undecodable whole responses do not invent tests.
+    """
+    sources = extract_generated_instances(requirement["instances"])
+    state = requirement.get("json repair")
+    if not isinstance(state, dict) or not isinstance(state.get("rejected"), dict):
+        return sources
+    for key, entry in state["rejected"].items():
+        if (isinstance(entry, dict) and key not in (state.get("accepted") or {})
+                and "valuation" in entry and "instances" not in entry):
+            sources.append(json.dumps(entry["valuation"], ensure_ascii=False))
+    return sources
+
+
 def percentage(count, total):
     """An empty population contributes zero rather than dividing by zero."""
     return 100 * count / total if total else 0
+
+
+def requested_test_total(counts):
+    """Sum both requested classifications, retaining unknown counts."""
+    counts = list(counts)
+    return None if any(n is None for n in counts) else 2 * sum(counts)
+
+
+def format_valid_percentage(valid, requested, digits=2):
+    return "—" if requested is None else f"{percentage(valid, requested):.{digits}f}"
+
+
+def analysis_output_paths(results):
+    """Final reports are written in the current working directory."""
+    filename = os.path.basename(results)
+    return (filename.replace('.json', '.txt'), filename.replace('.json', '.md'),
+            filename.replace('.json', '_failures.json'))
 
 
 def parseArgs():
@@ -86,9 +128,11 @@ def parseArgs():
     p_process.add_argument("--max-coverage", metavar="RESULTS_JSON",
                            help="optional minimal/run_rates.py results.json for comparison with the optimum")
 
-    p_all = sub.add_parser("all", help="process a set of LLM executions from a JSON file")
+    p_all = sub.add_parser("all", help="process missing analyses for a set of LLM executions from a JSON file")
     p_all.add_argument("jar", help="AlloyTools jar path")
     p_all.add_argument("execs", help="JSON file reporting a set of LLM executions and costs")
+    p_all.add_argument("--overwrite", action="store_true",
+                       help="rerun every execution and overwrite existing analysis reports")
     p_all.add_argument("--max-coverage", metavar="RESULTS_JSON",
                        help="optional minimal/run_rates.py results.json for comparison with the optimum")
 
@@ -96,6 +140,23 @@ def parseArgs():
 
 def main():
     args = parseArgs()
+    if args.cmd == "process":
+        benchs = [(args.results, args.icost, args.ocost)]
+    else:
+        with open(args.execs, 'r') as bench_file:
+            benchs_execs = json.load(bench_file)
+        benchs = []
+        for entry in benchs_execs:
+            results = os.path.join(os.path.dirname(args.execs), entry["results"])
+            if not args.overwrite and all(os.path.isfile(path) for path in analysis_output_paths(results)):
+                print(f"Skipping {results}: analysis reports already exist (use --overwrite to rerun).")
+                continue
+            benchs.append((results, entry["icost"], entry["ocost"]))
+
+    if not benchs:
+        print("No analyses to run.")
+        return
+
     maximum_coverage = None
     if args.max_coverage:
         if __package__:
@@ -115,23 +176,12 @@ def main():
     from edu.mit.csail.sdg.translator import A4Options, TranslateAlloyToKodkod
     from edu.mit.csail.sdg.alloy4 import A4Reporter
 
-
-    if args.cmd == "process":
-        benchs = [(args.results,args.icost,args.ocost)]
-
-    else:
-
-        with open(args.execs, 'r') as bench_file:
-            benchs_execs = json.load(bench_file)
-        benchs = [(os.path.join(os.path.dirname(args.execs), d["results"]),d["icost"],d["ocost"]) for d in benchs_execs]
-
     for results, icost, ocost in benchs:
         fallback_count, unknown_count = 0, 0
     
         ifile = os.path.basename(results)
         output = ifile.replace('.json','.tsv')
-        outputt = ifile.replace('.json','.txt')
-        outputf = ifile.replace('.json','_failures.json')
+        outputt, outputm, outputf = analysis_output_paths(results)
 
         input_cost = float(icost)/1000000
         output_cost = float(ocost)/1000000
@@ -170,7 +220,7 @@ def main():
                     print('*/')
 
                     # extract generated instances
-                    generated_instances = extract_generated_instances(req['instances'])
+                    generated_instances = generated_test_sources(req)
                     parsed_instances, consistent_instances, defined_instances, previous_instances, oracle_instances = [], [], [], [], []
                     positives, negatives, scoped = 0, 0, 0
 
@@ -325,19 +375,23 @@ def main():
                               percentage(r["detected"], r["wrong"]) if r["complete"] else 0) for r in result[example].values())
                 input_req, output_req, tests_req, syntax_req, scopes_req, defined_req, previous_req, valid_req, wrong_req, detected_req, complete_req, average_req = map(sum, zip(*summaries))
                 repairs_req = repair_call_total(r["repair_calls"] for r in result[example].values())
+                requested_req = requested_test_total(r["n"] for r in result[example].values())
                 repair_totals.append(repairs_req)
                 for req in result[example]:
                     current = result[example][req]
-                    out.write(f'{current["desc"]}\t{current["n"] if current["n"] is not None else "—"}\t{current["input"]}\t{current["output"]}\t{current["input"]*input_cost+current["output"]*output_cost:.2f}\t{format_repair_calls(current["repair_calls"])}\t{current["generated"]}\t{current["parse"]}\t{current["scope"]}\t{current["defined"]}\t{current["previous"]}\t{current["oracle"]}\t{percentage(current["oracle"], current["generated"]):.2f}')
-                    outt.write(f'{current["desc"]}\t{current["n"] if current["n"] is not None else "—"}\t{current["input"]}\t{current["output"]}\t{current["input"]*input_cost+current["output"]*output_cost:.2f}\t{format_repair_calls(current["repair_calls"])}\t{current["generated"]}\t{current["parse"]}\t{current["scope"]}\t{current["defined"]}\t{current["previous"]}\t{current["oracle"]}\t{percentage(current["oracle"], current["generated"]):.2f}')
+                    requested = requested_test_total([current["n"]])
+                    valid_percent = format_valid_percentage(current["oracle"], requested)
+                    out.write(f'{current["desc"]}\t{current["n"] if current["n"] is not None else "—"}\t{current["input"]}\t{current["output"]}\t{current["input"]*input_cost+current["output"]*output_cost:.2f}\t{format_repair_calls(current["repair_calls"])}\t{current["generated"]}\t{current["parse"]}\t{current["scope"]}\t{current["defined"]}\t{current["previous"]}\t{current["oracle"]}\t{valid_percent}')
+                    outt.write(f'{current["desc"]}\t{current["n"] if current["n"] is not None else "—"}\t{current["input"]}\t{current["output"]}\t{current["input"]*input_cost+current["output"]*output_cost:.2f}\t{format_repair_calls(current["repair_calls"])}\t{current["generated"]}\t{current["parse"]}\t{current["scope"]}\t{current["defined"]}\t{current["previous"]}\t{current["oracle"]}\t{valid_percent}')
                     if current["complete"]:
                         out.write(f'\t1\t{current["wrong"]}\t{current["detected"]}\t{percentage(current["detected"], current["wrong"]):.2f}\n')
                         outt.write(f'\t1\t{current["wrong"]}\t{current["detected"]}\t{percentage(current["detected"], current["wrong"]):.2f}\n')
                     else:
                         out.write("\t0\t\t\t\n")
                         outt.write("\t0\t\t\t\n")
-                out.write(f'**{example} totals**\t**—**\t**{input_req}**\t**{output_req}**\t**{input_req*input_cost+output_req*output_cost:.2f}**\t**{format_repair_calls(repairs_req)}**\t**{tests_req}**\t**{syntax_req}**\t**{scopes_req}**\t**{defined_req}**\t**{previous_req}**\t**{valid_req}**\t**{percentage(valid_req, tests_req):.1f}**\t**{complete_req}**\t**{wrong_req}**\t**{detected_req}**\t**{(average_req/complete_req) if complete_req > 0 else 0:.2f}**\n')
-                outt.write(f'{example} totals\t—\t{input_req}\t{output_req}\t{input_req*input_cost+output_req*output_cost:.2f}\t{format_repair_calls(repairs_req)}\t{tests_req}\t{syntax_req}\t{scopes_req}\t{defined_req}\t{previous_req}\t{valid_req}\t{percentage(valid_req, tests_req):.1f}\t{complete_req}\t{wrong_req}\t{detected_req}\t{(average_req/complete_req) if complete_req > 0 else 0:.2f}\n')
+                valid_percent = format_valid_percentage(valid_req, requested_req, digits=1)
+                out.write(f'**{example} totals**\t**—**\t**{input_req}**\t**{output_req}**\t**{input_req*input_cost+output_req*output_cost:.2f}**\t**{format_repair_calls(repairs_req)}**\t**{tests_req}**\t**{syntax_req}**\t**{scopes_req}**\t**{defined_req}**\t**{previous_req}**\t**{valid_req}**\t**{valid_percent}**\t**{complete_req}**\t**{wrong_req}**\t**{detected_req}**\t**{(average_req/complete_req) if complete_req > 0 else 0:.2f}**\n')
+                outt.write(f'{example} totals\t—\t{input_req}\t{output_req}\t{input_req*input_cost+output_req*output_cost:.2f}\t{format_repair_calls(repairs_req)}\t{tests_req}\t{syntax_req}\t{scopes_req}\t{defined_req}\t{previous_req}\t{valid_req}\t{valid_percent}\t{complete_req}\t{wrong_req}\t{detected_req}\t{(average_req/complete_req) if complete_req > 0 else 0:.2f}\n')
                 input_total += input_req
                 output_total += output_req
                 tests_total += tests_req
@@ -351,10 +405,12 @@ def main():
                 complete_total += complete_req
                 average_total += average_req
             repairs_total = repair_call_total(repair_totals)
-            out.write(f'**Totals**\t**—**\t**{input_total}**\t**{output_total}**\t**{input_total*input_cost+output_total*output_cost:.2f}**\t**{format_repair_calls(repairs_total)}**\t**{tests_total}**\t**{syntax_total}**\t**{scopes_total}**\t**{defined_total}**\t**{previous_total}**\t**{valid_total}**\t**{percentage(valid_total, tests_total):.2f}**\t**{complete_total}**\t**{wrong_total}**\t**{detected_total}**\t**{(average_total/complete_total) if complete_total > 0 else 0:.2f}**\n')
-            outt.write(f'Totals\t—\t{input_total}\t{output_total}\t{input_total*input_cost+output_total*output_cost:.2f}\t{format_repair_calls(repairs_total)}\t{tests_total}\t{syntax_total}\t{scopes_total}\t{defined_total}\t{previous_total}\t{valid_total}\t{percentage(valid_total, tests_total):.2f}\t{complete_total}\t{wrong_total}\t{detected_total}\t{(average_total/complete_total) if complete_total > 0 else 0:.2f}\n')
+            requested_total = requested_test_total(r["n"] for reqs in result.values() for r in reqs.values())
+            valid_percent = format_valid_percentage(valid_total, requested_total)
+            out.write(f'**Totals**\t**—**\t**{input_total}**\t**{output_total}**\t**{input_total*input_cost+output_total*output_cost:.2f}**\t**{format_repair_calls(repairs_total)}**\t**{tests_total}**\t**{syntax_total}**\t**{scopes_total}**\t**{defined_total}**\t**{previous_total}**\t**{valid_total}**\t**{valid_percent}**\t**{complete_total}**\t**{wrong_total}**\t**{detected_total}**\t**{(average_total/complete_total) if complete_total > 0 else 0:.2f}**\n')
+            outt.write(f'Totals\t—\t{input_total}\t{output_total}\t{input_total*input_cost+output_total*output_cost:.2f}\t{format_repair_calls(repairs_total)}\t{tests_total}\t{syntax_total}\t{scopes_total}\t{defined_total}\t{previous_total}\t{valid_total}\t{valid_percent}\t{complete_total}\t{wrong_total}\t{detected_total}\t{(average_total/complete_total) if complete_total > 0 else 0:.2f}\n')
 
-        footer = REPAIR_CALLS_NOTE + "\n\n" + DEFINITION_NOTE
+        footer = REPAIR_CALLS_NOTE + "\n\n" + DEFINITION_NOTE + "\n\n" + VALID_PERCENTAGE_NOTE
         if fallback_count:
             note = (f"Requested n was inferred from the filename for {fallback_count} requirement(s) "
                     "without recorded counts.")
@@ -362,13 +418,14 @@ def main():
             footer += "\n\n" + note
         if unknown_count:
             note = (f"Requested n could not be determined for {unknown_count} requirement(s); "
-                    "their suites cannot be marked complete.")
+                    "their suites cannot be marked complete, and their validity percentages "
+                    "and containing subtotals/totals are unavailable.")
             print(f"Warning: {results}: {note}", file=sys.stderr)
             footer += "\n\n" + note
         if maximum_coverage:
             append_comparison_columns((output, outputt), result, maximum_coverage.scope)
             footer += "\n\n" + maximum_coverage.footer()
-        tsv_to_markdown(output, output.replace('.tsv','.md'), footer=footer)
+        tsv_to_markdown(output, outputm, footer=footer)
         os.remove(output)
 
         with open(outputf, 'w') as outf:

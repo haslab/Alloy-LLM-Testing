@@ -1,4 +1,4 @@
-"""Compare generated Alloy tests across runs, modulo atom renaming.
+"""Compare generated Alloy tests and their fault detection across runs.
 
 Example:
     python analysis/compare_runs.py alloytools.jar run1.json run2.json -o overlap
@@ -9,16 +9,19 @@ The input files are read only. Reports are written to overlap.md and overlap.jso
 import argparse
 from collections import Counter, defaultdict
 from dataclasses import dataclass
+import hashlib
 import json
 from pathlib import Path
 import sys
 
 if __package__:
-    from .analyze import extract_generated_instances
+    from .analyze import generated_test_sources
     from .definitions import DefinitionChecker
+    from .suite_metadata import complete_suite, requested_n
 else:
-    from analyze import extract_generated_instances
+    from analyze import generated_test_sources
     from definitions import DefinitionChecker
+    from suite_metadata import complete_suite, requested_n
 
 
 METHOD = (
@@ -42,6 +45,20 @@ FAILURE_METHOD = (
     "not establish that the same semantic misunderstanding occurred. Solver errors and unsupported "
     "encodings are unassessed, not confirmed invalid. Missing tests concern suite completeness "
     "and do not count as invalid commands."
+)
+
+DETECTION_METHOD = (
+    "Fault detection is compared only for requirements with a complete valid suite in every run. "
+    "Requested counts come from generation metadata or recognized filenames, never generated counts. "
+    "All runs use the same erroneous-specification catalogue and preceding requirement oracles. "
+    "A specification is detected if at least one test disagrees with its expect annotation when "
+    "that specification replaces the target oracle. Tests retain their original scopes and bitwidth. "
+    "Exact duplicate specifications are counted once; IDs hash the benchmark, requirement, and "
+    "specification text with leading/trailing whitespace removed. Unparseable specifications and "
+    "specifications with an unassessed outcome in any run are excluded from every run's denominator "
+    "and reported separately, never counted as missed. Empty set unions have no defined Jaccard. "
+    "Primary averages weight requirements equally; pooled statistics are also provided. "
+    "Agreement establishes discrimination against this fault catalogue, not scenario equivalence."
 )
 
 
@@ -170,6 +187,64 @@ class AlloyComparator:
         return self.execute(solved.world, solved.command.change(
             solved.command.formula.and_(expression))).satisfiable()
 
+    def detection_background(self, task):
+        return task["model"] + "\n" + "\n".join(
+            "fact {\n" + oracle + "\n}" for oracle in task["previous"])
+
+    def validate_fault(self, task, specification):
+        # Validate independently of generated command names so parseability
+        # cannot change the shared catalogue from one run to another.
+        try:
+            self.parser.parseEverything_fromString(
+                None, self.detection_background(task) + "\nfact {\n" + specification + "\n}")
+        except Exception as exc:
+            raise TestExclusion("syntax", str(exc)) from exc
+
+    def prepare_detection_suite(self, task, sources):
+        prepared = []
+        for source in dict.fromkeys(sources):
+            world = self.parser.parseEverything_fromString(
+                None, self.detection_background(task) + "\n" + source)
+            commands = world.getAllCommands()
+            if len(commands) != 1 or commands[0].expects not in (0, 1):
+                raise ValueError("A detection test must have one command with an explicit expectation.")
+            prepared.append((world, commands[0]))
+        return prepared
+
+    def detects_fault(self, prepared, specification):
+        for world, command in prepared:
+            try:
+                expression = self.parser.parseOneExpression_fromString(
+                    world, "{\n" + specification + "\n}")
+            except Exception as exc:
+                raise TestExclusion("evaluation_error", str(exc)) from exc
+            try:
+                satisfiable = self.execute(world, command.change(
+                    command.formula.and_(expression))).satisfiable()
+            except Exception as exc:
+                raise TestExclusion("solver_error", str(exc)) from exc
+            if satisfiable != (command.expects == 1):
+                return True
+        return False
+
+
+def fault_catalogue(key, requirement):
+    if "erroneous" not in requirement:
+        return None
+    specifications = requirement["erroneous"]
+    if not isinstance(specifications, list) or any(
+            not isinstance(spec, str) or not spec.strip() for spec in specifications):
+        raise ValueError(f"{key}: erroneous specifications must be a list of nonempty strings.")
+    catalogue = {}
+    for index, specification in enumerate(specifications, 1):
+        specification = specification.strip()
+        digest = hashlib.sha256(json.dumps(
+            [*key, specification], ensure_ascii=False).encode()).hexdigest()
+        entry = catalogue.setdefault(digest, {"id": digest, "specification": specification,
+                                             "source_indices": []})
+        entry["source_indices"].append(index)
+    return catalogue
+
 
 def load_runs(paths, valid_only=False):
     """Require the same tasks/models so missing tasks cannot masquerade as diversity."""
@@ -202,8 +277,11 @@ def load_runs(paths, valid_only=False):
                 oracle = requirement.get("oracle")
                 if not isinstance(oracle, str) or not oracle.strip():
                     raise ValueError(f"{path}: {name} {pred} needs an oracle for failure-recurrence analysis.")
+                n, fallback = requested_n(requirement, path)
                 tasks[key] = {"model": model.strip(), "requirement": requirement,
-                              "previous": previous.copy(), "oracle": oracle}
+                              "previous": previous.copy(), "oracle": oracle,
+                              "n": n, "count_from_filename": fallback,
+                              "faults": fault_catalogue(key, requirement)}
                 previous.append(oracle)
         if not tasks:
             raise ValueError(f"{path}: no requirements found.")
@@ -216,6 +294,9 @@ def load_runs(paths, valid_only=False):
                     raise ValueError(f"{path}: model declarations differ for {key[0]} {key[1]}.")
                 if (task["oracle"], task["previous"]) != (first["oracle"], first["previous"]):
                     raise ValueError(f"{path}: oracles or cumulative requirement order differ for {key}.")
+                if ((task["faults"] is None) != (first["faults"] is None)
+                        or task["faults"] is not None and task["faults"].keys() != first["faults"].keys()):
+                    raise ValueError(f"{path}: erroneous specification sets differ for {key}.")
         else:
             reference = tasks
         runs.append({"id": f"run{index}", "path": str(path), "label": path.stem, "tasks": tasks})
@@ -294,6 +375,154 @@ def failure_recurrence(runs, records):
             "requirements": requirements}
 
 
+def detection_statistics(detected, universe):
+    """Sets share one assessed fault universe; unknown outcomes are not misses."""
+    missed = {run: universe - values for run, values in detected.items()}
+    combined = set().union(*detected.values())
+    best = max((len(values) for values in detected.values()), default=0)
+    total = len(universe)
+    return {"wrong": total, "detected": set_statistics(detected), "missed": set_statistics(missed),
+            "best_single": best, "combined": len(combined), "gain": len(combined) - best,
+            "best_single_coverage": best / total if total else None,
+            "combined_coverage": len(combined) / total if total else None,
+            "coverage_gain": (len(combined) - best) / total if total else None,
+            "runs": [{"run": run, "detected": len(values), "missed": len(missed[run]),
+                      "coverage": len(values) / total if total else None,
+                      "exclusive": len(values - set().union(
+                          *(other for name, other in detected.items() if name != run)))}
+                     for run, values in detected.items()]}
+
+
+def mean_defined(values):
+    values = [value for value in values if value is not None]
+    return sum(values) / len(values) if values else None
+
+
+def detection_macro(requirements, run_ids):
+    compared = [req["summary"] for req in requirements
+                if req["summary"] is not None and req["summary"]["wrong"]]
+    rows = [{"run": run, "coverage": mean_defined(
+        next(row["coverage"] for row in req["runs"] if row["run"] == run) for req in compared)}
+            for run in run_ids]
+    combined = mean_defined(req["combined_coverage"] for req in compared)
+    best = max((row["coverage"] for row in rows if row["coverage"] is not None), default=None)
+    result = {"requirements": len(compared), "runs": rows,
+              "combined_coverage": combined, "best_single_coverage": best,
+              "coverage_gain": combined - best if combined is not None else None}
+    for kind in ("detected", "missed"):
+        values = [req[kind]["jaccard"] for req in compared]
+        pairs = []
+        for left_index, left in enumerate(run_ids):
+            for right in run_ids[left_index + 1:]:
+                observations = [next(pair["jaccard"] for pair in req[kind]["pairwise"]
+                                     if (pair["left"], pair["right"]) == (left, right))
+                                for req in compared]
+                pairs.append({"left": left, "right": right,
+                              "jaccard": mean_defined(observations),
+                              "requirements": sum(value is not None for value in observations)})
+        result[kind] = {"jaccard": mean_defined(values),
+                        "requirements": sum(value is not None for value in values), "pairwise": pairs}
+    return result
+
+
+def fault_detection(runs, records, comparator, progress=None):
+    run_ids = [run["id"] for run in runs]
+    by_task = defaultdict(list)
+    for record in records:
+        by_task[(record["example"], record["requirement"], record["run"])].append(record)
+    requirements, pooled_universe = [], set()
+    pooled = {run: set() for run in run_ids}
+    for key, task in runs[0]["tasks"].items():
+        suites, reasons = [], []
+        sources = {}
+        for run in runs:
+            run_id = run["id"]
+            own_task = run["tasks"][key]
+            tests = by_task[(*key, run_id)]
+            counts = Counter(test["validity"] for test in tests)
+            polarities = Counter(test.get("polarity") for test in tests)
+            n = own_task["n"]
+            complete = complete_suite(n, len(tests), polarities["positive"],
+                                      polarities["negative"], counts["valid"])
+            suites.append({"run": run_id, "requested_per_polarity": n,
+                           "count_from_filename": own_task["count_from_filename"],
+                           "generated": len(tests), "valid": counts["valid"],
+                           "invalid": counts["invalid"], "unassessed": counts["unassessed"],
+                           "positive": polarities["positive"], "negative": polarities["negative"],
+                           "complete": complete})
+            if not complete:
+                reasons.append(f"{run_id}: " + ("unknown requested count" if n is None else
+                                                "suite is not complete and valid"))
+            sources[run_id] = tuple(test["command"] for test in tests if test["validity"] == "valid")
+        if task["faults"] is None:
+            reasons.append("No erroneous-specification catalogue was supplied.")
+        row = {"example": key[0], "requirement": key[1],
+               "description": task["requirement"].get("description", ""),
+               "included": not reasons, "reasons": reasons, "suites": suites,
+               "faults": [], "summary": None}
+        requirements.append(row)
+        if reasons:
+            continue
+        if progress:
+            progress(f"Comparing fault detection {key[0]} / {key[1]}")
+        prepared, preparation_errors = {}, []
+        try:
+            for suite in dict.fromkeys(sources.values()):
+                prepared[suite] = comparator.prepare_detection_suite(task, suite)
+        except Exception as exc:
+            preparation_errors.append(str(exc))
+        detected = {run: set() for run in run_ids}
+        universe = set()
+        for index, entry in enumerate(task["faults"].values(), 1):
+            fault = {**entry, "outcomes": []}
+            row["faults"].append(fault)
+            if progress and index % 50 == 0:
+                progress(f"  {key[0]} / {key[1]}: {index}/{len(task['faults'])} specifications")
+            if preparation_errors:
+                fault.update(status="unassessed", stage="suite_error", reason="; ".join(preparation_errors))
+                continue
+            try:
+                comparator.validate_fault(task, entry["specification"])
+            except TestExclusion as exc:
+                fault.update(status="excluded", stage=exc.stage, reason=str(exc))
+                continue
+            outcomes = {}
+            for run in run_ids:
+                suite = sources[run]
+                if suite not in outcomes:
+                    try:
+                        found = comparator.detects_fault(prepared[suite], entry["specification"])
+                    except TestExclusion as exc:
+                        outcomes[suite] = {"status": "unassessed", "stage": exc.stage, "reason": str(exc)}
+                    else:
+                        outcomes[suite] = {"status": "detected" if found else "missed"}
+                fault["outcomes"].append({"run": run, **outcomes[suite]})
+            if any(outcome["status"] == "unassessed" for outcome in fault["outcomes"]):
+                fault["status"] = "unassessed"
+                continue
+            fault["status"] = "assessed"
+            universe.add(entry["id"])
+            for outcome in fault["outcomes"]:
+                if outcome["status"] == "detected":
+                    detected[outcome["run"]].add(entry["id"])
+        row["summary"] = detection_statistics(detected, universe)
+        for run_row in row["summary"]["runs"]:
+            run_id = run_row["run"]
+            run_row["detected_ids"] = sorted(detected[run_id])
+            run_row["missed_ids"] = sorted(universe - detected[run_id])
+            pooled[run_id].update(detected[run_id])
+        pooled_universe.update(universe)
+        row["excluded_faults"] = sum(fault["status"] == "excluded" for fault in row["faults"])
+        row["unassessed_faults"] = sum(fault["status"] == "unassessed" for fault in row["faults"])
+    summary = detection_statistics(pooled, pooled_universe)
+    summary["macro"] = detection_macro(requirements, run_ids)
+    return {"method": DETECTION_METHOD, "requirement_count": len(requirements),
+            "included_requirements": sum(req["included"] for req in requirements),
+            "excluded_faults": sum(req.get("excluded_faults", 0) for req in requirements),
+            "unassessed_faults": sum(req.get("unassessed_faults", 0) for req in requirements),
+            "summary": summary, "requirements": requirements}
+
+
 def compare_runs(runs, comparator, valid_only=False, progress=None):
     """Build one class catalogue across every run, not a separate catalogue per pair."""
     run_ids = [run["id"] for run in runs]
@@ -308,7 +537,7 @@ def compare_runs(runs, comparator, valid_only=False, progress=None):
         for run in runs:
             run_id = run["id"]
             task = run["tasks"][key]
-            commands = extract_generated_instances(task["requirement"]["instances"])
+            commands = generated_test_sources(task["requirement"])
             for index, source in enumerate(commands, 1):
                 record = {"run": run_id, "example": key[0], "requirement": key[1],
                           "test": index, "command": source}
@@ -389,11 +618,12 @@ def compare_runs(runs, comparator, valid_only=False, progress=None):
                                       "duplicates": count - len(group_sets[run_id]),
                                       "exclusive": sum(entry["runs"] == [run_id] for entry in members)})
             groups.append(group)
-    return {"version": 2, "method": METHOD,
+    return {"version": 3, "method": METHOD,
             "cohort": "valid" if valid_only else "consistent and unique",
             "runs": [{k: run[k] for k in ("id", "path", "label")} for run in runs],
             "summary": summary, "groups": groups, "classes": classes, "tests": records,
-            "failure_recurrence": failure_recurrence(runs, records)}
+            "failure_recurrence": failure_recurrence(runs, records),
+            "fault_detection": fault_detection(runs, records, comparator, progress)}
 
 
 def failure_markdown(failures):
@@ -455,6 +685,102 @@ def failure_markdown(failures):
     return lines
 
 
+def detection_markdown(detection):
+    def cell(value):
+        return str(value).replace("|", "\\|").replace("\n", " ")
+
+    def percent(value):
+        return f"{100 * value:.2f}%" if value is not None else "—"
+
+    def points(value):
+        return f"{100 * value:.2f}" if value is not None else "—"
+
+    summary = detection["summary"]
+    macro = summary["macro"]
+    lines = ["## Overlap in detected and missed specifications", "", detection["method"], "",
+             f"Requirements with complete valid suites and a shared catalogue: "
+             f"**{detection['included_requirements']}/{detection['requirement_count']}**. "
+             f"Requirements with at least one assessed specification: **{macro['requirements']}**. "
+             f"Assessed specifications: **{summary['wrong']}**. "
+             f"Unparseable specifications excluded: **{detection['excluded_faults']}**. "
+             f"Specifications with assessment gaps: **{detection['unassessed_faults']}**.", "",
+             "### Detection and benefit of combining runs", "",
+             "Coverage below is the unweighted mean of per-requirement detection rates on the shared "
+             "assessed catalogue. Counts are pooled; they do not determine the mean coverage. "
+             "`Only this run` counts specifications detected by that run and missed by every other run.", "",
+             "| Run | Detected | Missed | Only this run | Mean coverage |",
+             "| --- | ---: | ---: | ---: | ---: |"]
+    means = {row["run"]: row["coverage"] for row in macro["runs"]}
+    for row in summary["runs"]:
+        lines.append(f"| {row['run']} | {row['detected']} | {row['missed']} | {row['exclusive']} | "
+                     f"{percent(means[row['run']])} |")
+    lines += ["", f"Combined mean coverage: **{percent(macro['combined_coverage'])}**; "
+              f"best individual run: **{percent(macro['best_single_coverage'])}**; "
+              f"gain: **{points(macro['coverage_gain'])} percentage points**.", "",
+              f"Pooled combined detection: **{summary['combined']}/{summary['wrong']}**; "
+              f"best individual run: **{summary['best_single']}**; "
+              f"additional specifications detected: **{summary['gain']}**.", "",
+              "The combined result uses every test from every run and therefore a larger test budget. "
+              "Mean coverage gain compares the combined suite with the best single run across the "
+              "shared requirements, rather than selecting a different best run for each requirement.", "",
+              "### Pairwise overlap of detected and missed sets", "",
+              "Primary Jaccard values are averaged per requirement. The number of contributing "
+              "requirements can differ between detected and missed sets because empty unions are undefined.", "",
+              "| Runs | Mean detected Jaccard | Requirements | Mean missed Jaccard | Requirements |",
+              "| --- | ---: | ---: | ---: | ---: |"]
+    for detected, missed in zip(macro["detected"]["pairwise"], macro["missed"]["pairwise"]):
+        lines.append(f"| {detected['left']} / {detected['right']} | {percent(detected['jaccard'])} | "
+                     f"{detected['requirements']} | {percent(missed['jaccard'])} | {missed['requirements']} |")
+    lines += ["", "Pooled overlap is also shown; requirements with more faulty specifications have more weight here.", "",
+              "| Runs | Detected shared | Detected union | Detected Jaccard | Left only | Right only | Missed shared | Missed union | Missed Jaccard |",
+              "| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |"]
+    for detected, missed in zip(summary["detected"]["pairwise"], summary["missed"]["pairwise"]):
+        values = [f"{detected['left']} / {detected['right']}", detected["intersection"], detected["union"],
+                  percent(detected["jaccard"]), detected["left_only"], detected["right_only"],
+                  missed["intersection"], missed["union"], percent(missed["jaccard"])]
+        lines.append("| " + " | ".join(map(str, values)) + " |")
+    for kind in ("detected", "missed"):
+        stats = summary[kind]
+        lines += ["", f"**{kind.capitalize()} in all runs:** {stats['intersection']}; "
+                  f"**{kind} in any run:** {stats['union']}; "
+                  f"mean all-run Jaccard: **{percent(macro[kind]['jaccard'])}** "
+                  f"({macro[kind]['requirements']} requirements); "
+                  f"pooled all-run Jaccard: **{percent(stats['jaccard'])}**."]
+    lines += ["", "### Fault detection per requirement", "",
+              "Per-requirement gain uses that requirement's best individual suite as its baseline.", "",
+              "| Benchmark | Requirement | Assessed faults | Best run | Combined | Gain | Gain (pp) | Detected Jaccard | Missed Jaccard |",
+              "| --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |"]
+    for req in detection["requirements"]:
+        stats = req["summary"]
+        if stats is None:
+            continue
+        values = [req["example"], req["requirement"], stats["wrong"], stats["best_single"],
+                  stats["combined"], stats["gain"], points(stats["coverage_gain"]),
+                  percent(stats["detected"]["jaccard"]), percent(stats["missed"]["jaccard"])]
+        lines.append("| " + " | ".join(map(cell, values)) + " |")
+    omitted = [req for req in detection["requirements"] if not req["included"]]
+    if omitted:
+        lines += ["", "### Requirements excluded from fault-detection comparison", "",
+                  "Structural comparison and invalid-test recurrence still include these requirements.", "",
+                  "| Benchmark | Requirement | Reason |", "| --- | --- | --- |"]
+        for req in omitted:
+            lines.append("| " + " | ".join(map(cell, [req["example"], req["requirement"],
+                                                       "; ".join(req["reasons"])])) + " |")
+    gaps = [req for req in detection["requirements"] if req.get("excluded_faults") or req.get("unassessed_faults")]
+    if gaps:
+        lines += ["", "### Catalogue and assessment gaps", "",
+                  "These specifications are excluded from every run's coverage and miss sets. "
+                  "Comparisons concern only the remaining assessed catalogue. Reasons and per-run "
+                  "outcomes are retained in JSON.", "",
+                  "| Benchmark | Requirement | Unparseable | Unassessed |", "| --- | --- | ---: | ---: |"]
+        for req in gaps:
+            lines.append("| " + " | ".join(map(cell, [req["example"], req["requirement"],
+                                                       req["excluded_faults"], req["unassessed_faults"]])) + " |")
+    lines += ["", "The JSON report includes stable specification IDs and source text, per-run detected/missed "
+              "IDs, individual outcomes, per-requirement overlap and gains, and catalogue exclusions."]
+    return lines
+
+
 def markdown(report):
     def cell(value):
         return str(value).replace("|", "\\|").replace("\n", " ")
@@ -462,7 +788,7 @@ def markdown(report):
     def percent(value):
         return f"{100 * value:.2f}%" if value is not None else "—"
 
-    lines = ["# Structural overlap between generated test runs", "", METHOD, "",
+    lines = ["# Structural and fault-detection overlap between generated test runs", "", METHOD, "",
              f"Cohort: **{report['cohort']}**. " + (
                  "Structural overlap includes only tests passing all validity checks."
                  if report["cohort"] == "valid" else
@@ -501,6 +827,7 @@ def markdown(report):
                      f"{percent(row['jaccard'])} | {row['left_only']} | {row['right_only']} | "
                      f"{'yes' if row['identical'] else 'no'} |")
     lines += [""] + failure_markdown(report["failure_recurrence"])
+    lines += [""] + detection_markdown(report["fault_detection"])
     lines += ["", "## Distinct structures per requirement and polarity", "",
               "| Benchmark | Requirement | Polarity | Union | In every run | " + " | ".join(run["id"] for run in report["runs"]) + " |",
               "| --- | --- | --- | ---: | ---: | " + " | ".join("---:" for _ in report["runs"]) + " |"]
@@ -519,7 +846,8 @@ def main(argv=None):
     parser.add_argument("-o", "--output", default="test_overlap", metavar="PREFIX",
                         help="output prefix for .md and .json reports (default: test_overlap)")
     parser.add_argument("--valid-only", action="store_true",
-                        help="restrict structural overlap to valid tests; failure recurrence always covers all commands")
+                        help="restrict structural overlap to valid tests; failure recurrence covers all commands, "
+                             "and fault detection always uses requirements complete and valid in every run")
     args = parser.parse_args(argv)
     try:
         runs = load_runs(args.runs, args.valid_only)
@@ -540,6 +868,10 @@ def main(argv=None):
         print(f"{row['run']}: {row['compared']} compared, {row['distinct']} distinct, "
               f"{row['duplicates']} duplicates, {row['exclusive']} only in this run; "
               f"{sum(row['exclusions'].values())} excluded")
+    detection = report["fault_detection"]
+    print(f"Fault detection: {detection['included_requirements']} shared complete requirements, "
+          f"{detection['summary']['wrong']} assessed specifications; "
+          f"{detection['summary']['gain']} additional specifications detected by combining runs")
     print("Reports: " + ", ".join(map(str, destinations)))
 
 

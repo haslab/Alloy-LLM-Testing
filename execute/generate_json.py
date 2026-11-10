@@ -111,6 +111,51 @@ def _targets(accepted, count):
             for classification in CLASSIFICATIONS}
 
 
+def reported_suite(requirement, model, count):
+    """Retain final rejected candidates as well as accepted tests for analysis.
+
+    Only responses already assessed are considered. Each repair array maps to
+    its original target slots; omitted slots and malformed responses replace
+    earlier candidates, rather than resurrecting a more convenient attempt.
+    Raw responses, acceptance decisions and usage totals are never changed.
+    """
+    state = requirement["json repair"]
+    selected = dict(state["accepted"])
+    latest = {}
+    records = [requirement["generation"], *state["rounds"]]
+    for response_index, record in enumerate(records[:state["processed responses"]]):
+        try:
+            payload = decode_response(record["response"])
+        except ValueError:
+            payload = None
+        for classification, indices in record["targets"].items():
+            entries = payload.get(classification) if isinstance(payload, dict) else None
+            for position, index in enumerate(indices):
+                key = _slot(classification, index)
+                if key in selected:
+                    continue
+                entry = {"source response": response_index,
+                         "errors": record.get("errors", {}).get(key, [])}
+                if isinstance(entries, list) and position < len(entries):
+                    entry["valuation"] = entries[position]
+                else:
+                    entry["missing"] = True
+                latest[key] = entry
+    rejected = {}
+    for key, entry in latest.items():
+        if "valuation" in entry:
+            try:
+                command = model.render_rejected(entry["valuation"], *parse_slot(key))
+            except ValuationError as exc:
+                entry["render errors"] = exc.errors
+            else:
+                entry["instances"] = command
+                selected[key] = {"instances": command}
+        rejected[key] = entry
+    state["rejected"] = rejected
+    return _suite(selected, count)
+
+
 def assess_response(model, record, accepted):
     """Validate requested slots independently and keep earlier passing valuations."""
     targets = record["targets"]
@@ -289,6 +334,7 @@ def generate_json_instances(client, system_prompt, dataset, models, count, setti
                 checkpoint()
             state = requirement["json repair"]
             _upgrade_validation(state)
+            state.pop("rejected", None)
             accepted = state["accepted"]
             state["max attempts"] = fix_attempts
             state["complete"] = False
@@ -314,7 +360,7 @@ def generate_json_instances(client, system_prompt, dataset, models, count, setti
                 if not any(targets.values()) or len(state["rounds"]) >= fix_attempts:
                     state["complete"] = True
                     state["successful"] = not any(targets.values())
-                    requirement["instances"] = _suite(accepted, count)
+                    requirement["instances"] = reported_suite(requirement, model, count)
                     successful &= state["successful"]
                     checkpoint()
                     if not state["successful"]:

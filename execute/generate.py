@@ -48,6 +48,8 @@ def parse_args(argv=None, default_model=None):
                         help="resume saved results from an existing --output file")
     parser.add_argument("--attempts", type=positive_int, default=3,
                         help="maximum transport attempts per model request (default: 3)")
+    parser.add_argument("--scope", type=positive_int,
+                        help="request at most this many atoms per top-level signature")
     parser.add_argument("--repair-syntax", type=Path, metavar="ALLOY_JAR",
                         help="check each instance with Alloy and batch parser feedback to repair failures")
     parser.add_argument("--fix-attempts", type=positive_int, default=3,
@@ -58,17 +60,18 @@ def parse_args(argv=None, default_model=None):
     return args
 
 
-def default_output_path(model: str, platform: str, prompt: Path, instances: int) -> Path:
+def default_output_path(model: str, platform: str, prompt: Path, instances: int, scope=None) -> Path:
     components = [
         re.sub(r"[^A-Za-z0-9_.-]", "_", component.strip())
         for component in (model, platform, prompt.stem)
     ]
     count = f"{instances}pos-{instances}neg"
     timestamp = datetime.now().strftime("%Y%m%d-%H%M%S")
-    return Path("_".join([*components, count, timestamp]) + ".json")
+    bound = [f"scope{scope}"] if scope is not None else []
+    return Path("_".join([*components, count, *bound, timestamp]) + ".json")
 
 
-def build_task(model: str, requirement: str, previous: list[str], instances: int) -> str:
+def build_task(model: str, requirement: str, previous: list[str], instances: int, scope=None) -> str:
     # Keep the prompts identical to those used by the original experiment scripts.
     task = (
         f'Generate {instances} positive and {instances} negative instances for the '
@@ -81,7 +84,16 @@ def build_task(model: str, requirement: str, previous: list[str], instances: int
         for description in previous[:-1]:
             task += f'"{description}",'
         task += f'and "{previous[-1]}".'
-    return task + f"\n{model}"
+    task += f"\n{model}"
+    if scope is not None:
+        task += (
+            f"\n\nMaximum scope: {scope} atoms per top-level signature, including all its extensions. "
+            "Use any smaller population, including zero, where permitted by the model. "
+            "Specify exact command scopes matching the chosen populations; no top-level "
+            "signature may exceed this maximum. An ordered signature's exact scope must "
+            "match its actual population and may be smaller than the maximum."
+        )
+    return task
 
 
 def save_results(output: Path, dataset):
@@ -144,13 +156,13 @@ def call_with_retries(client, system_prompt, task, attempts, context, *, respons
             time.sleep(min(2 ** (attempt - 1), 30))
 
 
-def generation_settings(client, prompt, count, jar=None):
+def generation_settings(client, prompt, count, jar=None, scope=None):
     return {
         "version": 1,
         "model": client.model if isinstance(getattr(client, "model", None), str) else None,
         "platform": client.platform if isinstance(getattr(client, "platform", None), str) else None,
         "prompt sha256": hashlib.sha256(prompt.encode()).hexdigest(),
-        "instances": count, "scope": None,
+        "instances": count, "scope": scope,
         "alloy sha256": hashlib.sha256(jar.read_bytes()).hexdigest() if jar else None,
     }
 
@@ -165,6 +177,9 @@ def generate_instances(client, system_prompt, dataset, instances, attempts=3, *,
                 if generation.get("mode") not in (None, "alloy"):
                     raise ValueError("The saved run uses another generation mode.")
                 saved_settings = generation.get("settings", {})
+                has_saved_result = "generation" in requirement or COMPLETED_FIELDS.issubset(requirement)
+                if has_saved_result and saved_settings.get("scope") != settings.get("scope"):
+                    raise ValueError("Resume settings differ: scope. Use the original generation settings.")
                 for key in ("instances", "model", "platform", "prompt sha256"):
                     if saved_settings.get(key) is not None and saved_settings[key] != settings[key]:
                         raise ValueError(f"Resume settings differ: {key}. Use the original generation settings.")
@@ -187,7 +202,8 @@ def generate_instances(client, system_prompt, dataset, instances, attempts=3, *,
                 print("Skipping saved result.")
                 previous.append(requirement["description"])
                 continue
-            task = build_task(example["model"], requirement["description"], previous, instances)
+            task = build_task(example["model"], requirement["description"], previous, instances,
+                              scope=settings.get("scope"))
 
             def checkpoint():
                 if output is not None:
@@ -254,7 +270,7 @@ def main(argv=None, default_model=None):
         system_prompt = args.prompt.read_text(encoding="utf-8")
         dataset = json.loads(args.dataset.read_text(encoding="utf-8"))
         output = args.output or default_output_path(
-            client.model, client.platform, args.prompt, args.instances,
+            client.model, client.platform, args.prompt, args.instances, scope=args.scope,
         )
         if output.resolve() in (args.dataset.resolve(), args.prompt.resolve()):
             raise ValueError("The output path must differ from the dataset and prompt paths.")
@@ -269,7 +285,8 @@ def main(argv=None, default_model=None):
             client, system_prompt, dataset, args.instances, args.attempts,
             output=output, resume=args.resume, syntax_checker=syntax_checker,
             fix_attempts=args.fix_attempts,
-            settings=generation_settings(client, system_prompt, args.instances, args.repair_syntax),
+            settings=generation_settings(client, system_prompt, args.instances, args.repair_syntax,
+                                         scope=args.scope),
         )
         save_results(output, result)
         print(f"Saved results to {output}")
